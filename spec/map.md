@@ -10,6 +10,8 @@
 
 [Testnet]
 
+[Verana Foundation] => go to https://verana.foundation
+
 ## Home
 
 ### What Is Verana?
@@ -60,3 +62,16 @@ Examples:
 - verifiable AI agent browser: try Hologram AI Agent browser, the first Verifiable User Agent
 - build a verifiable social channel browser for browsing influencer decentralized social channels and start earning revenues with credential interactions
 - integrate Verana to your existing wallet and start earning revenues with credential interactions
+
+## Learn
+
+## Build
+
+### For Ecosystems
+
+### For Service providers
+
+## Use
+
+## Testnet
+
