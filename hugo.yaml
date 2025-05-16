@@ -181,17 +181,11 @@ params:
     socialmediatitle: Follow Us
     # Social media links (GitHub, Twitter, etc.). All are optional.
     socialmedia:
-    - link: https://github.com/StefMa
+    - link: https://github.com/verana-labs
       # Icons are from Font Awesome
       icon: github
-    - link: https://dribbble.com/#
-      icon: dribbble
-    - link: https://facebook.com/#
-      icon: facebook
-    - link: https://twitter.com/StefMa91
-      icon: twitter
-    - link: https://bitbucket.org/#
-      icon: bitbucket
+    - link: https://www.linkedin.com/company/verana-foundation
+      icon: linkedin
     bulmalogo: true
     quicklinks:
       column1:
