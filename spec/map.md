@@ -69,7 +69,9 @@ Examples:
 
 ### For Ecosystems
 
-### For Service providers
+### For Service Providers
+
+### For User Agent Builders
 
 ## Use
 
