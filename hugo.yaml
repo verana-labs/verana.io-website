@@ -77,7 +77,7 @@ params:
   - title: Verana Foundation
     url: /
   - title: Testnet
-    url: /
+    url: https://testnet.verana.network
     button: true
   sidebar:
     # Logo (from static/images/logos/___.svg)
@@ -186,7 +186,7 @@ params:
       icon: github
     - link: https://www.linkedin.com/company/verana-foundation
       icon: linkedin
-    bulmalogo: true
+    bulmalogo: false
     quicklinks:
       column1:
         title: "Product"
