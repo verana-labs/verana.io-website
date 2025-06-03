@@ -64,6 +64,23 @@ Verana enables **services, ecosystems, and AI agents** to operate with **verifia
 
 ---
 
+## The Verana Verifiable Trust Network (VVTR) is a Public Good
+
+The **VVTR** is a **public, open, community-operated network**.  
+
+It is designed as **public infrastructure** — not a proprietary platform:  
+
+- **Free to use** — any wallet, user agent, ecosystem, or service can connect  
+- **Open standards** — built on **Verifiable Credentials**, **DIDs**, and **public specifications**  
+- **Decentralized governance** — the network is community-operated and transparent  
+- **No vendor lock-in** — services run on protocol, not platform  
+
+**Anyone can participate, contribute, and benefit** from the Verana Verifiable Trust Network.
+
+**Trust becomes a public good — not a product.**
+
+---
+
 ## Why Now?
 
 - **AI agents are everywhere** — but unverifiable.  
