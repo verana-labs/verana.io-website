@@ -1,4 +1,4 @@
-# Building a Verifiable, Decentralized Trust Layer for the Internet
+# Building the Verifiable Trust Layer of the Internet — as a Public Good
 
 *Open standards. Public infrastructure. Privacy-first.*
 
@@ -24,7 +24,7 @@ Verana enables **services, ecosystems, and AI agents** to operate with **verifia
 
 **Verana provides:**
 
-- ✅ **Verifiable Trust Specification** → defines how services present verifiable credentials  
+- ✅ **Verifiable Trust Specification** → defines how AI agents, user agents, services,... present verifiable credentials  
 - ✅ **Verifiable Public Registry Specification** → defines how ecosystems govern trust  
 - ✅ **The Verana Verifiable Trust Network** → an open, community-operated network to support trust enforcement  
 
