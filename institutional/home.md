@@ -8,48 +8,54 @@ Verana enables **services, ecosystems, and AI agents** to operate with **verifia
 
 ## Today’s Internet runs on implicit trust
 
-### We believe in verifiable trust
+> small section with an illustration, no blocks, in muted, dark tone. Blocks are optionally clickable.
 
-- Centralized platforms decide who is trusted.  
-- AI agents lack verified identity.  
-- Users cannot easily verify services.  
-- Privacy is routinely compromised.  
-- Business models reward surveillance—not trust.  
+Today's digital world suffers from centralized trust, unverifiable AI agents, poor service transparency, broken privacy, and business models that prioritize surveillance over trust.
 
-**Verana changes this** → we provide the specifications and public infrastructure to shift the Internet to **“don’t trust, verify.”**
+**Verana changes this** → we provide the specifications and public infrastructure to shift the Internet to the **“don’t trust, verify” principle.**
+
+## We believe in verifiable trust
+
+> bigger section, in brighter tone, blocks with icon or illustration + title. When hover, show a description (to be written). Similar to accenture blocks (those without a slider)
+
+- **Proof-of-Trust** for any service or agent  
+- **Re-decentralization** → services run on **protocol**, not platform lock-in  
+- **Public verifiable trust registries** 
+- **Fair Privacy-preserving business models** that rewards all participants
+- **Native kid protection** without the need of sharing sensitive data
+- **Computed reputation & governance enforcement** trust deposit, slash, etc
 
 ---
 
 ## How Verana Works
 
+> section with blocks, the bigger ones that have illustration on the left and content on the right
+
 **Verana provides:**
 
+- ✅ **The Verana Verifiable Trust Network** → an open, community-operated network to support trust enforcement  
 - ✅ **Verifiable Trust Specification** → defines how AI agents, user agents, services,... present verifiable credentials  
 - ✅ **Verifiable Public Registry Specification** → defines how ecosystems govern trust  
-- ✅ **The Verana Verifiable Trust Network** → an open, community-operated network to support trust enforcement  
-
-**Key features:**
-
-- **Proof-of-Trust** for any service or agent  
-- **Re-decentralization** → services run on **protocol**, not platform lock-in  
-- **Public verifiable trust registries**  
-- **Privacy-preserving business models**  
-- **Native kid protection**  
-- **Computed reputation & governance enforcement**  
 
 ---
 
 ## Who is Verana for?
 
+> small blocks, can be of the same type than the "We believe in verifiable trust" section. blocks are optionally clickable.
+
 ### 🏛 Ecosystem Owners & Governance Bodies
 
-- Build trusted, privacy-first ecosystems  
-- Monetize ethically (pay-per-verification / pay-per-issuance)  
+- Build trusted, privacy-first ecosystems
+- Create and manage trust registries, credential schemas. Onboard issuers, verifiers and operators.
+- Monetize ethically (pay-per-verification / pay-per-issuance)
+- Make C2PA content signers resolvable
 
 ### 🤖 Service Providers / AI Agents
 
 - Become discoverable & verifiable  
-- Build services users can trust  
+- Build verifiable services users can trust
+- Host anywhere
+- Full privacy: no intermediaries
 
 ### 📲 Wallet & User Agent Developers
 
@@ -66,22 +72,27 @@ Verana enables **services, ecosystems, and AI agents** to operate with **verifia
 
 ## 🛡️ A Public Good — Not a Platform
 
-The **Verana Verifiable Trust Network (VVTR)** is **free to use** and **open to all**.  
+> no clickable bloc, only text and icon / illustrations
 
-It is designed as **public digital infrastructure** — to serve ecosystems, services, and users alike — with:
+The **Verana Verifiable Trust Network (VVTR)** is **open to all**.  
 
-✅ **No licensing fees**  
-✅ **No lock-in**  
-✅ **Decentralized governance**  
-✅ **Built on open standards**  
+It is designed as **public digital infrastructure** to serve ecosystems, services, and users alike, with:
+
+✅ **No licensing fees**
+✅ **No lock-in**
+✅ **Decentralized governance**
+✅ **Built on open standards**
 
 **Trust should be a public good — not a platform business.**  
 
 With Verana, it is.
 
+> here put the logos (DIDComm, DIF, etc)
 ---
 
 ## Why Now?
+
+> no clickable bloc, only text and icon / illustrations
 
 - **AI agents are everywhere** — but unverifiable.  
 - **Decentralized identity is maturing** — but lacks incentives.  
@@ -96,21 +107,37 @@ With Verana, it is.
 
 ### Help build the Verifiable Trust Layer of the Internet.
 
+- → Launch your ecosystem with Verana  
 - → Read the specs  
 - → Join the Verana Verifiable Trust Network (VVTR) Governance
 - → Partner with us  
-- → Contribute to open-source implementations  
-- → Launch your ecosystem with Verana  
+- → Contribute to open-source implementations
 
 ---
 
 ## Footer
 
-- About Verana Foundation  
-- [Verifiable Trust Specification (v2)](#)  
-- [Verifiable Public Registry Specification (v2)](#)  
-- [Verana Verifiable Trust Network](#)  
-- [Open Source Repositories](#)  
-- [Contact / Join Us](#)  
+> in big: Don't trust. Verify.
+> on the left: footer content
+> on the right: The words "Verifiable" and "Trust" like "Change" in accenture website
+
+### Footer Content
+
+Links:
+
+- [Verana Foundation](https://verana.foundation)
+- [Documentation](https://docs.verana.io)
+- [Verifiable Trust Specification (v2)](#)
+- [Verifiable Public Registry Specification (v2)](#)
+- [Open Source Repositories](#)  => redirect to github
+- [Contact / Join Us](#) => redirect to linkedin
+- [Privacy](#)
+- [Terms & Conditions](#)
+
+Icons:
+
+- Github
+- Linkedin
+- Discord
 
 ---
