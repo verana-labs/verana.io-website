@@ -78,10 +78,10 @@ The **Verana Verifiable Trust Network (VVTR)** is **open to all**.
 
 It is designed as **public digital infrastructure** to serve ecosystems, services, and users alike, with:
 
-✅ **No licensing fees**
-✅ **No lock-in**
-✅ **Decentralized governance**
-✅ **Built on open standards**
+- ✅ **No licensing fees**
+- ✅ **No lock-in**
+- ✅ **Decentralized governance**
+- ✅ **Built on open standards**
 
 **Trust should be a public good — not a platform business.**  
 
