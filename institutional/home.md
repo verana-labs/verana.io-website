@@ -90,19 +90,6 @@ With Verana, it is.
 > here put the logos (DIDComm, DIF, etc)
 ---
 
-## Why Now?
-
-> no clickable bloc, only text and icon / illustrations
-
-- **AI agents are everywhere** — but unverifiable.  
-- **Decentralized identity is maturing** — but lacks incentives.  
-- **Users demand privacy** — but services rely on surveillance.  
-- **Trust needs to be built into the fabric of the Internet** — not added as an afterthought.  
-
-**Verana makes this possible — today.**
-
----
-
 ## Join Us
 
 ### Help build the Verifiable Trust Layer of the Internet.
