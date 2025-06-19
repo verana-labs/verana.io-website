@@ -8,7 +8,7 @@ Verana enables **services, ecosystems, and AI agents** to operate with **verifia
 
 ## Today’s Internet runs on implicit trust
 
-> small section with an illustration, no blocks, in muted, dark tone. Blocks are optionally clickable.
+> small section with an illustration, no blocks, in muted, dark tone.
 
 Today's digital world suffers from centralized trust, unverifiable AI agents, poor service transparency, broken privacy, and business models that prioritize surveillance over trust.
 
