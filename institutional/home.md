@@ -68,6 +68,17 @@ Today's digital world suffers from centralized trust, unverifiable AI agents, po
 - Enforce **child safety** & age gating  
 - Support **public trust registries**  
 
+### Contribute to open-source implementations
+
+- join us on github and help building Verana
+
+### Join the Verana Foundation Essential Credential Ecosystem
+
+> link to the verana foundation
+
+- Join the Verana Foundation as an issuer of the essential credential schemas for your country
+
+
 ---
 
 ## 🛡️ A Public Good — Not a Platform
@@ -94,9 +105,7 @@ With Verana, it is.
 
 ### Help build the Verifiable Trust Layer of the Internet.
 
-- → Launch your ecosystem with Verana  
 - → Read the specs  
-- → Join the Verana Verifiable Trust Network (VVTR) Governance
 - → Partner with us  
 - → Contribute to open-source implementations
 
