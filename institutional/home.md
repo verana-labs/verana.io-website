@@ -100,7 +100,7 @@ With this index in place, users, services, and apps can perform **advanced trust
 - 🏨 *List all services with a valid **Hotel Credential** from **Ecosystem PMS Vendor ABC** located in **France**.*  
 - 🔧 *Show certified plumbers who hold a **Plumber Credential** from **Ecosystem Verified Workers** in **Bogotá**.*  
 
-The **Trust Resolver** ensures search results are based solely on **verifiable data** contained in verifiable credentials—not arbitrary or opaque ranking algorithms.  
+The **Trust Resolver** ensures search results are based solely on **verifiable data** contained in verifiable credentials, not arbitrary or opaque ranking algorithms.  
 
 This fundamentally **disrupts today’s economy** of advertising-driven visibility (Google Ads, Facebook Ads, etc.) and replaces it with a **decentralized economy of trust**, where:  
 
@@ -123,6 +123,7 @@ VUAs open the door to a wide variety of decentralized applications:
 - 🎬 **Decentralized Video Apps** — streaming apps that aggregate film catalogs published by creators.  
 - 🏨 **Decentralized Hotel PMS Apps** — apps where users can search hotels powered by compatible PMS software.  
 - 🛒 **E-commerce Aggregators** — apps that list all businesses using e-commerce Verifiable Services.  
+- …and many more (again) innovations waiting to be built.
 
 Because indexing is trust-based, inclusion is **automatic and verifiable**: no gatekeepers, no paywalls.
 
