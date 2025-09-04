@@ -167,18 +167,16 @@ Business models are **fully customizable**, enabling ecosystems to tailor incent
 
 A portion of trust fees collected in business models is allocated to **Trust Deposits** for both payers and payees.  
 
-A **Trust Deposit** acts as a **stake** that grows with participant activity across ecosystems. It reflects engagement, integrity, and contribution to the Verana Trust Network, serving as a foundation for decentralized accountability.  
+A **Trust Deposit** acts as a **stake** that grows with participant activity across ecosystems. It reflects engagement, integrity, and contribution to ecosystems, serving as a foundation for decentralized accountability.  
 
-**Key Purposes of Trust Deposits:**  
+**Key Purposes of Trust Deposits**
 
-| **Purpose**                          | **Description**                                                                                      |
-|--------------------------------------|------------------------------------------------------------------------------------------------------|
-| **Incentivize Good Behavior**        | Participants risk losing part of their deposit if they violate governance rules. |
-| **Signal Serious Intent**            | Ensures participants have “skin in the game,” discouraging fraud, spam, and low-effort engagement. |
-| **Enable Slashing**                  | Deposits can be reduced or removed when trust policies or contractual roles are breached. |
-| **Ecosystem-Specific Control**       | Each ecosystem can only slash deposits linked to its activities, preventing abuse. |
-| **Non-Custodial**                    | Deposits are fully on-chain, beyond the reach of centralized authorities. |
-| **Rewards**                          | Deposits generate yield — the more participants engage in ecosystems, the higher their returns. |
+| **Purpose**            | **Description**                                                                 |
+|-------------------------|---------------------------------------------------------------------------------|
+| **Stake & Incentives** | Grows with activity; rewards engagement with yield and higher reputation.        |
+| **Enforcement**        | Ecosystems can slash deposits for rule violations; slashed deposits must be replenished to continue participation. |
+| **Skin in the Game**   | Ensures participants commit seriously, discouraging fraud and low-effort actions.|
+| **Non-Custodial**      | Held fully on-chain, beyond the control of any centralized authority.            |
 
 This mechanism makes governance **self-enforcing**, combining **incentives** with **accountability** in a decentralized way.  
 
