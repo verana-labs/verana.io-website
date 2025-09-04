@@ -56,21 +56,32 @@ Unlike centralized platforms, Verifiable Services are **self-sovereign**, meanin
 
 Owning a Verifiable Service means:
 
-- 🔐 **Full Data Ownership** — you control your data and connections.  
-- 🛡️ **Privacy by Design** — no intermediaries exploiting or mining user interactions.  
-- ✅ **Proof of Authenticity** — prove ownership of your service to your audience.  
-- ✍️ **Signed Content** — integrate with **C2PA** so all published content is cryptographically signed by your DID.  
-- 🏗️ **Deployment Freedom** — host anywhere: cloud, self-hosted, or migrate freely at any time.  
+- 🔐 **Full Data Ownership**: you control your data and connections.  
+- 🛡️ **Privacy by Design**: no intermediaries exploiting or mining user interactions.  
+- ✅ **Proof of Authenticity**: prove ownership of your service to your audience.  
+- ✍️ **Signed Content**: integrate with **C2PA** so all published content is cryptographically signed by your DID.  
+- 🏗️ **Deployment Freedom**: host anywhere: cloud, self-hosted, or migrate freely at any time.  
 
 This is a radical departure from today’s platforms, where your content and connections are **rented** rather than **owned**.
 
 ### Examples of Verifiable Services
 
-- 📢 **Decentralized Social Channels**  e.g., the official channel of an influencer who owns 100% of their reach.  
-- 🤖 **Decentralized AI Agents**  e.g., a personal AI assistant that runs under your DID and respects your privacy.  
-- 💬 **Decentralized Messaging & Chatbots**  e.g., a customer support chatbot for a mobile operator, verifiable and portable.  
-- 🎬 **Decentralized Content Delivery Channels**  e.g., a film catalog directly published by a studio, with provenance guaranteed.  
-- …and many more innovations waiting to be built.  
+- 📢 **Decentralized Social Channels**  
+  e.g., the official channel of an influencer who owns 100% of their reach.  
+
+- 🤖 **Decentralized AI Agents**  
+  e.g., a personal AI assistant that runs under your DID and respects your privacy.  
+
+- 🔄 **Agent-to-Agent Communication**  
+  e.g., two autonomous AI agents exchanging credentials to securely negotiating a contract, making a payment request, or exchanging verifiable data.  
+
+- 💬 **Decentralized Messaging & Chatbots**  
+  e.g., a customer support chatbot for a mobile operator, verifiable and portable.  
+
+- 🎬 **Decentralized Content Delivery Channels**  
+  e.g., a film catalog directly published by a studio, with provenance guaranteed.  
+
+- …and many more innovations waiting to be built.
 
 ### The Big Picture
 
