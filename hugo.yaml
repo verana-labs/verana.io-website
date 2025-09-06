@@ -1,4 +1,4 @@
-baseURL: https://verana-labs.github.io/verana.io-website/
+baseURL: https://ecs.foundation/
 languageCode: en-us
 title: Verana Verifiable Trust Network
 
@@ -77,7 +77,7 @@ params:
   - title: Verana Foundation
     url: /
   - title: Testnet
-    url: https://testnet.verana.network
+    url: https://app.testnet.verana.network
     button: true
   sidebar:
     # Logo (from static/images/logos/___.svg)
