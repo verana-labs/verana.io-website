@@ -1,0 +1,24 @@
+{{/* Simple CTA button shortcode
+Usage examples:
+  {{< cta text="Get Started" url="/page/principles" align="center" >}}
+  {{< cta text="External Docs" url="https://docs.verana.io" align="right" >}}
+  {{< cta text="Learn more" page="/page/trust-engine" >}}  # uses relref
+Params:
+  - text: button label (default: "Learn more")
+  - url:  target href (absolute or relative)
+  - page: Hugo relref target (e.g., "/page/trust-engine")
+  - align: left|center|right (default: left)
+*/}}
+{{ $text := default "Learn more" (.Get "text") }}
+{{ $url := .Get "url" }}
+{{ with .Get "page" }}{{ $url = relref $ . }}{{ end }}
+{{ $align := lower (default "left" (.Get "align")) }}
+{{ $alignClass := "text-left" }}
+{{ if eq $align "center" }}{{ $alignClass = "text-center" }}{{ else if eq $align "right" }}{{ $alignClass = "text-right" }}{{ end }}
+{{ $isExternal := or (hasPrefix $url "http://") (hasPrefix $url "https://") }}
+
+<div class="w-full {{ $alignClass }} my-6">
+  {{ with $url }}
+    <a href="{{ . }}" class="btn-primary" {{ if $isExternal }}target="_blank" rel="noopener noreferrer"{{ end }}>{{ $text }}</a>
+  {{ end }}
+</div>

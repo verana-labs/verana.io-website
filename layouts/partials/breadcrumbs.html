@@ -1,0 +1,46 @@
+{{/* Breadcrumbs for content under content/page/**
+   Rules:
+   - Always show Home linking to '/'
+   - For pages directly under /page (e.g., /page/foo.md), show only Home
+   - For nested pages (e.g., /page/foo/bar.md), show Home > foo (link to parent)
+   - For deeper nesting, include all parent directories, excluding the current file
+*/}}
+{{/* Do not render on homepage */}}
+{{ if .IsHome }}
+  {{- /* no breadcrumbs on home */ -}}
+{{ else }}
+  {{/* Build from file path to get the content tree: content/page/... */}}
+  {{ $f := .File }}
+  {{ $path := $f.Path }}
+  {{ $dir := path.Dir $path }}
+  {{ $dirSegs := split $dir "/" }}
+  {{ if and (ge (len $dirSegs) 1) (eq (index $dirSegs 0) "page") }}
+    {{ $dirSegs = after 1 $dirSegs }}
+  {{ end }}
+  <div class="w-full text-left text-sm text-slate-600">
+    <nav aria-label="Breadcrumbs">
+      <ol class="inline-flex items-center space-x-2">
+        <li><a class="hover:text-primary-700" href="/">Verana</a></li>
+        {{/* Parents from directory segments */}}
+        {{ $n := len $dirSegs }}
+        {{ if ge $n 1 }}
+          {{ $built := slice }}
+          {{ range $i, $seg := $dirSegs }}
+            {{ $built = $built | append $seg }}
+            {{ $parentPath := printf "page/%s" (delimit $built "/") }}
+            {{ $p := site.GetPage $parentPath }}
+            {{ $name := (humanize (replaceRE "\\.md$" "" $seg)) }}
+            {{ if $p }}{{ $name = $p.Title }}{{ end }}
+            {{ if $p }}
+              <li><span class="text-slate-400">›</span> <a class="hover:text-primary-700" href="{{ $p.RelPermalink }}">{{ $name }}</a></li>
+            {{ else }}
+              <li><span class="text-slate-400">›</span> <span>{{ $name }}</span></li>
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        {{/* Current page title (non-linked) */}}
+        <li><span class="text-slate-400">›</span> <span>{{ .Title }}</span></li>
+      </ol>
+    </nav>
+  </div>
+{{ end }}
