@@ -1,0 +1,27 @@
+{{/* Open Graph and Twitter Card meta */}}
+{{ $siteTitle := .Site.Title }}
+{{ $title := $siteTitle }}
+{{ if .Title }}{{ $title = printf "%s | %s" .Title $siteTitle }}{{ end }}
+
+{{ $desc := "Verifiable trust for digital ecosystems" }}
+{{ with .Params.description }}{{ $desc = . }}{{ else }}{{ with .Site.Params.header.tagline }}{{ $desc = . }}{{ end }}{{ end }}
+
+{{ $type := "website" }}
+{{ if .IsPage }}{{ $type = "article" }}{{ end }}
+
+{{ $firstImg := "" }}
+{{ with .Params.images }}{{ if ge (len .) 1 }}{{ $firstImg = index . 0 }}{{ end }}{{ end }}
+{{ $img := or .Params.og_image (or $firstImg (or .Site.Params.seo.ogImage "/images/verana-og.jpg")) }}
+{{ $imgURL := $img | absURL }}
+
+<meta property="og:type" content="{{ $type }}">
+<meta property="og:site_name" content="{{ $siteTitle }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:image" content="{{ $imgURL }}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $desc }}">
+<meta name="twitter:image" content="{{ $imgURL }}">

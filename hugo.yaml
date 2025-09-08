@@ -28,6 +28,9 @@ params:
       semi: "/fonts/Kantumruy_Pro/static/KantumruyPro-SemiBold.ttf"
       bold: "/fonts/Kantumruy_Pro/static/KantumruyPro-Bold.ttf"
 
+  seo:
+    ogImage: "/images/verana-og.jpg"
+
 menu:
   main:
     - name: "Ecosystems"
@@ -51,4 +54,5 @@ outputs:
 
 taxonomies: {}
 disableKinds: ["home", "RSS"]
+
 
