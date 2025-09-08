@@ -10,7 +10,7 @@ markup:
 params:
   header:
     logo: "/images/verana-logo.svg"
-    tagline: "Verifiable trust for digital ecosystems"
+    tagline: "The Open Trust Layer for the Internet"
   footer:
     company: "Verana Foundation"
     year: 2025

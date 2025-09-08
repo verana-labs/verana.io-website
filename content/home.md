@@ -1,11 +1,12 @@
 ---
-title: "Verana: Verifiable Trust for Ecosystems"
-subtitle: "Portable trust primitives for services, apps, and agents"
+title: "The Open Trust Layer for the Internet"
+subtitle: "Own your identity, your data, and your digital services."
 type: "home"
 url: "/"
 ---
 
-Welcome to Verana, where trust becomes a first‑class feature of your ecosystem. Issue, verify, and resolve trust signals across services, user agents, and participants using open standards.
+## Discover Verana: Reclaiming Your Digital World
 
+Verana marks a radical departure from today’s platforms, where your content and connections are "rented" rather than "owned". We give individuals and organizations true digital sovereignty, empowering them to build autonomous trust networks and self-sovereign verifiable services.
 
-{{< video-cta src="/videos/notebook-slides.mp4" title="Ecosystem overview" text="A quick explainer video on how credentials and policies enable cross‑domain trust relationships." >}}
+{{< video-cta src="/videos/notebook-slides.mp4" title="What is Verana" text="Getting started" >}}
