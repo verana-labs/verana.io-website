@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+<meta property="og:url" content="http://localhost:1313/page/learn-vt-trust-deposit-and-reputation/">
+  <meta property="og:site_name" content="Verana">
+  <meta property="og:title" content="Trust Deposit and Reputation">
+  <meta property="og:description" content="Trust Deposit A Trust Deposit is a stake within the a VPR network that grows automatically as participants interact with the ecosystem. Each participant maintains their own individual Trust Deposit, which reflects their activity and contribution to the trust network.
+How Trust Deposits Grow Validation Process:
+When a Validation Process is executed, the Trust Deposits of both the Applicant and the Validator increase.
+Credential Issuance &amp; Verification:
+If the Ecosystem has enabled pay-per-issuance and/or pay-per-verification, the Trust Deposits of all participants involved in the Permission Tree grow each time a credential is issued or verified.
+Additionally, if applicable, the Trust Deposits of the involved User Agent Owner and Wallet User Agent Owner are also incremented.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="page">
+    <meta property="article:published_time" content="2025-04-01T00:00:00+02:00">
+    <meta property="article:modified_time" content="2025-04-01T00:00:00+02:00">
+
+
+<meta name="description" content="Hardcoded description; the author should update :)" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Verana</title>
+    
+  
+<link rel="icon" type="image/png" href="/images/favicon.png" />
+<link href="https://fonts.googleapis.com/css?family=Open&#43;Sans:400,600" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/icons.css">
+
+  </head>
+  <body>
+    
+    
+    <div id="preloader">
+      <div id="status"></div>
+    </div>
+    
+
+    
+
+  
+<nav class="navbar is-fresh is-transparent no-shadow" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="/images/logos/fresh.svg" alt="" width="112" height="28">
+      </a>
+      <a class="navbar-item is-hidden-desktop is-hidden-tablet">
+        <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+          <svg width="1000px" height="1000px">
+            <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+            <path class="path2" d="M 300 500 L 700 500"></path>
+            <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+          </svg>
+          <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+        </div>
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+      <div id="navbar-menu" class="navbar-menu is-static">
+        <div class="navbar-start">
+          <a class="navbar-item is-hidden-mobile">
+            <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+              <svg width="1000px" height="1000px">
+                <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+                <path class="path2" d="M 300 500 L 700 500"></path>
+                <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+              </svg>
+              <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+            </div>
+          </a>
+        </div>
+
+        <div class="navbar-end">
+          <a href="/" class="navbar-item is-secondary">
+            Ecosystems
+          </a>
+          <a href="/" class="navbar-item is-secondary">
+            Service Owners
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              App Developers
+            </a>
+
+            <div class="navbar-dropdown">
+              <a href="/" class="navbar-item">
+                Dropdown item
+              </a>
+              <a href="/" class="navbar-item">
+                Dropdown item
+              </a>
+              <a href="/" class="navbar-item">
+                Dropdown item
+              </a>
+            </div>
+          </div>
+          <a href="/" class="navbar-item is-secondary">
+            Trust Engine
+          </a>
+          <a href="/" class="navbar-item is-secondary">
+            Principles
+          </a>
+          <a href="https://app.testnet.verana.network" class="navbar-item is-secondary">
+            Testnet
+          </a>
+        </div>
+      </div>
+  </div>
+</nav>
+
+
+<nav id="navbar-clone" class="navbar is-fresh is-transparent" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="/images/logos/fresh.svg" alt="" width="112" height="28">
+      </a>
+      <a class="navbar-item is-hidden-desktop is-hidden-tablet">
+        <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+          <svg width="1000px" height="1000px">
+            <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+            <path class="path2" d="M 300 500 L 700 500"></path>
+            <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+          </svg>
+          <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+        </div>
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="cloned-navbar-menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="cloned-navbar-menu" class="navbar-menu is-fixed">
+      <div class="navbar-start">
+        <a class="navbar-item is-hidden-mobile">
+          <div id="cloned-menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+            <svg width="1000px" height="1000px">
+              <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+              <path class="path2" d="M 300 500 L 700 500"></path>
+              <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+            </svg>
+            <button id="cloned-menu-icon-trigger" class="menu-icon-trigger"></button>
+          </div>
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <a href="/" class="navbar-item is-secondary">
+          Ecosystems
+        </a>
+        <a href="/" class="navbar-item is-secondary">
+          Service Owners
+        </a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            App Developers
+          </a>
+
+          <div class="navbar-dropdown">
+            <a href="/" class="navbar-item">
+              Dropdown item
+            </a>
+            <a href="/" class="navbar-item">
+              Dropdown item
+            </a>
+            <a href="/" class="navbar-item">
+              Dropdown item
+            </a>
+          </div>
+        </div>
+        <a href="/" class="navbar-item is-secondary">
+          Trust Engine
+        </a>
+        <a href="/" class="navbar-item is-secondary">
+          Principles
+        </a>
+        <a href="https://app.testnet.verana.network" class="navbar-item is-secondary">
+          Testnet
+        </a>
+      </div>
+    </div>
+</div>
+</nav>
+
+<section class="section is-medium">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-centered-tablet-portrait">
+        <h1 class="title section-title">Trust Deposit and Reputation</h1>
+        <h5 class="subtitle is-5 is-muted">It takes time to build a reputation.</h5>
+        <div class="divider"></div>
+      </div>
+    </div>
+
+    <div class="content">
+      <h2 id="trust-deposit">Trust Deposit</h2>
+<p>A <strong>Trust Deposit</strong> is a stake within the a VPR network that grows automatically as participants interact with the ecosystem. Each participant maintains their own individual Trust Deposit, which reflects their activity and contribution to the trust network.</p>
+<h3 id="how-trust-deposits-grow">How Trust Deposits Grow</h3>
+<ul>
+<li>
+<p><strong>Validation Process</strong>:<br>
+When a Validation Process is executed, the <strong>Trust Deposits of both the <code>Applicant</code> and the <code>Validator</code></strong> increase.</p>
+</li>
+<li>
+<p><strong>Credential Issuance &amp; Verification</strong>:<br>
+If the Ecosystem has enabled <strong>pay-per-issuance</strong> and/or <strong>pay-per-verification</strong>, the <strong>Trust Deposits of all participants</strong> involved in the Permission Tree grow each time a credential is issued or verified.<br>
+Additionally, if applicable, the Trust Deposits of the involved <code>User Agent Owner</code> and <code>Wallet User Agent Owner</code> are also incremented.</p>
+</li>
+<li>
+<p><strong>Service Directory Participation</strong>:<br>
+Registering or renewing a DID in the <strong>Service Directory</strong> increases the <strong>Trust Deposit</strong> of the participant who executes the transaction.</p>
+</li>
+</ul>
+<h3 id="conceptual-model">Conceptual Model</h3>
+<p>The <strong>Trust Deposit</strong> functions like a <strong>percentage-based deduction</strong> applied to circulating trust fees. These deductions accumulate in individual deposits as a reflection of ongoing participation and service provision.</p>
+<p>For example, in the case of <strong>Verification Fees</strong> (as detailed in the <a href="/page/learn-vt-business-models.md">Business Models</a> section), a portion of each fee is redistributed to grow the Trust Deposits of the relevant actors in the verification process.</p>
+<figure  style="max-width: 1200px; text-align: center; font-style: italic; font-size: smaller; text-indent: 0;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 2.5em; padding: 0em; float: none; "  >
+    <img src="/img/verifier-fee-distrib.svg" alt="" style="max-width: 1200x;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 0.5em; " >
+    <figcaption></figcaption>
+  </figure>  
+<ul>
+<li>
+<p>Each time fees are charged, an additional <strong>20%</strong> is added and allocated to the <strong>Trust Deposit</strong> of the participant executing the transaction. This amount is also linked to the specific <strong>Permission</strong> that authorized the transaction.</p>
+</li>
+<li>
+<p>When fees are distributed to other participants (e.g., Validators, Grantors, etc.), <strong>20%</strong> of the distributed amount is redirected to their <strong>Trust Deposit</strong>, while the remaining <strong>80%</strong> is <strong>liquid and immediately available</strong> for use.</p>
+</li>
+<li>
+<p>The percentage allocated to Trust Deposits (e.g., 20%) is configurable and defined by the <strong>VPR controller</strong>.</p>
+</li>
+</ul>
+<h3 id="core-purposes">Core Purposes</h3>
+<p>The <strong>Trust Deposit</strong> mechanism is designed to ensure that participants within an Ecosystem <strong>adhere to the rules defined in its Ecosystem Governance Framework (EGF)</strong>. It serves as both an incentive and an enforcement tool within decentralized trust infrastructures.</p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Purpose</strong></th>
+          <th><strong>Description</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Incentivize Good Behavior</strong></td>
+          <td>Participants risk losing part of their deposit if they behave dishonestly or violate governance rules.</td>
+      </tr>
+      <tr>
+          <td><strong>Signal Serious Intent</strong></td>
+          <td>Requires participants to have &ldquo;skin in the game,&rdquo; discouraging spam, fraud, and low-effort engagement.</td>
+      </tr>
+      <tr>
+          <td><strong>Enable Slashing</strong></td>
+          <td>Deposits can be partially or fully slashed when participants breach trust policies or contractual roles.</td>
+      </tr>
+      <tr>
+          <td><strong>Support Decentralized Governance</strong></td>
+          <td>Serves as the economic foundation for decentralized permission management, assignment, and revocation.</td>
+      </tr>
+      <tr>
+          <td><strong>Ecosystem-Specific Control</strong></td>
+          <td>Each Ecosystem can only slash the portion of a participant’s deposit that corresponds to activity within that Ecosystem.</td>
+      </tr>
+      <tr>
+          <td><strong>Non-Custodial</strong></td>
+          <td>Trust Deposits are held on-chain within a VPR and are not under the control of any centralized authority.</td>
+      </tr>
+  </tbody>
+</table>
+<figure  style="text-align: center; font-style: italic; font-size: smaller; text-indent: 0;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 2.5em; padding: 0em; float: right; "  >
+    <img src="/img/verifiable-service.png" alt="Example of Trust Reputation." style="max-width: 300px; border: 1px solid #DDDDDD; margin-top: 2.5em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 0.5em;" >
+    <figcaption>Example of Trust Reputation.</figcaption>
+  </figure>  
+<h3 id="slash">Slash</h3>
+<p>Each Ecosystem defines, in its <strong>Ecosystem Governance Framework (EGF)</strong>, the rules that participants must follow to remain in good standing. The EGF also specifies the conditions under which a <strong>slash</strong>—a penalty applied to a participant’s Trust Deposit—may occur.</p>
+<p>When a participant is <strong>slashed</strong>:</p>
+<ul>
+<li>The corresponding portion of their <strong>Trust Deposit</strong> is forfeited, based on the severity or type of violation.</li>
+<li>Their ability to perform actions within the Ecosystem (e.g., issuing or verifying credentials) is <strong>suspended</strong>.</li>
+<li>To regain active status, the participant must <strong>replenish the slashed amount</strong> of their Trust Deposit.</li>
+</ul>
+<p>This mechanism ensures accountability and alignment with the Ecosystem’s trust and governance policies.</p>
+<h3 id="trust-deposit-based-reputation">Trust Deposit-Based Reputation</h3>
+<p>Because network activity and Trust Deposit data are publicly accessible, each participant naturally builds a <strong>digital trust reputation</strong> over time. This reputation reflects both their positive contributions and any violations within the ecosystems they engage in.</p>
+<p>Key reputation signals include:</p>
+<ul>
+<li><strong>Growth of Trust Deposit</strong>: Active, rule-abiding participants see their Trust Deposit increase as they contribute value to the network.</li>
+<li><strong>Ecosystem-Specific History</strong>: For each Ecosystem a participant is involved in, their <strong>Trust Deposit history</strong> is transparently visible to all other participants.</li>
+<li><strong>Credential Activity</strong>: The number of <strong>credentials issued and/or verified</strong> by the participant within each Ecosystem is publicly observable.</li>
+<li><strong>Behavioral Accountability</strong>: Any <strong>dishonest or malicious activity</strong>—especially if penalized through slashing—remains permanently associated with the participant’s account.</li>
+</ul>
+<p>This transparent data can be used to compute a <strong>reputation score</strong> or <strong>star rating</strong>, enabling trust-based decisions across the network.</p>
+
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+  
+
+
+
+    
+    <div id="backtotop"><a href="#"></a></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://unpkg.com/feather-icons"></script>
+<script src="/js/fresh.js"></script>
+<script src="/js/jquery.panelslider.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+  </body>
+</html>

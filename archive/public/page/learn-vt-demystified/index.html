@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+<meta property="og:url" content="http://localhost:1313/page/learn-vt-demystified/">
+  <meta property="og:site_name" content="Verana">
+  <meta property="og:title" content="Verifiable Trust demystified">
+  <meta property="og:description" content="Understanding Verifiable Trust Proof-of-Trust. Trust Resolution is as simple as calling a method passing the DID of the service we want to resolve, to display a Proof-of-Trust to the end-user:
+resolve_trust(&#34;did:example:gaia&#34;) and receive a response similar to this one:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="page">
+    <meta property="article:published_time" content="2025-04-01T00:00:00+02:00">
+    <meta property="article:modified_time" content="2025-04-01T00:00:00+02:00">
+
+
+<meta name="description" content="Hardcoded description; the author should update :)" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Verana</title>
+    
+  
+<link rel="icon" type="image/png" href="/images/favicon.png" />
+<link href="https://fonts.googleapis.com/css?family=Open&#43;Sans:400,600" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/icons.css">
+
+  </head>
+  <body>
+    
+    
+    <div id="preloader">
+      <div id="status"></div>
+    </div>
+    
+
+    
+
+  
+<nav class="navbar is-fresh is-transparent no-shadow" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="/images/logos/fresh.svg" alt="" width="112" height="28">
+      </a>
+      <a class="navbar-item is-hidden-desktop is-hidden-tablet">
+        <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+          <svg width="1000px" height="1000px">
+            <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+            <path class="path2" d="M 300 500 L 700 500"></path>
+            <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+          </svg>
+          <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+        </div>
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+      <div id="navbar-menu" class="navbar-menu is-static">
+        <div class="navbar-start">
+          <a class="navbar-item is-hidden-mobile">
+            <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+              <svg width="1000px" height="1000px">
+                <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+                <path class="path2" d="M 300 500 L 700 500"></path>
+                <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+              </svg>
+              <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+            </div>
+          </a>
+        </div>
+
+        <div class="navbar-end">
+          <a href="/" class="navbar-item is-secondary">
+            Ecosystems
+          </a>
+          <a href="/" class="navbar-item is-secondary">
+            Service Owners
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              App Developers
+            </a>
+
+            <div class="navbar-dropdown">
+              <a href="/" class="navbar-item">
+                Dropdown item
+              </a>
+              <a href="/" class="navbar-item">
+                Dropdown item
+              </a>
+              <a href="/" class="navbar-item">
+                Dropdown item
+              </a>
+            </div>
+          </div>
+          <a href="/" class="navbar-item is-secondary">
+            Trust Engine
+          </a>
+          <a href="/" class="navbar-item is-secondary">
+            Principles
+          </a>
+          <a href="https://app.testnet.verana.network" class="navbar-item is-secondary">
+            Testnet
+          </a>
+        </div>
+      </div>
+  </div>
+</nav>
+
+
+<nav id="navbar-clone" class="navbar is-fresh is-transparent" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="/images/logos/fresh.svg" alt="" width="112" height="28">
+      </a>
+      <a class="navbar-item is-hidden-desktop is-hidden-tablet">
+        <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+          <svg width="1000px" height="1000px">
+            <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+            <path class="path2" d="M 300 500 L 700 500"></path>
+            <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+          </svg>
+          <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+        </div>
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="cloned-navbar-menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="cloned-navbar-menu" class="navbar-menu is-fixed">
+      <div class="navbar-start">
+        <a class="navbar-item is-hidden-mobile">
+          <div id="cloned-menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+            <svg width="1000px" height="1000px">
+              <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+              <path class="path2" d="M 300 500 L 700 500"></path>
+              <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+            </svg>
+            <button id="cloned-menu-icon-trigger" class="menu-icon-trigger"></button>
+          </div>
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <a href="/" class="navbar-item is-secondary">
+          Ecosystems
+        </a>
+        <a href="/" class="navbar-item is-secondary">
+          Service Owners
+        </a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            App Developers
+          </a>
+
+          <div class="navbar-dropdown">
+            <a href="/" class="navbar-item">
+              Dropdown item
+            </a>
+            <a href="/" class="navbar-item">
+              Dropdown item
+            </a>
+            <a href="/" class="navbar-item">
+              Dropdown item
+            </a>
+          </div>
+        </div>
+        <a href="/" class="navbar-item is-secondary">
+          Trust Engine
+        </a>
+        <a href="/" class="navbar-item is-secondary">
+          Principles
+        </a>
+        <a href="https://app.testnet.verana.network" class="navbar-item is-secondary">
+          Testnet
+        </a>
+      </div>
+    </div>
+</div>
+</nav>
+
+<section class="section is-medium">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-centered-tablet-portrait">
+        <h1 class="title section-title">Verifiable Trust demystified</h1>
+        <h5 class="subtitle is-5 is-muted">Intro to Verifiable Trust, Proof-of-Trust, and Deep Dive into Verifiable Trust</h5>
+        <div class="divider"></div>
+      </div>
+    </div>
+
+    <div class="content">
+      <h2 id="understanding-verifiable-trust">Understanding Verifiable Trust</h2>
+<figure  style="text-align: center; font-style: italic; font-size: smaller; text-indent: 0;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 2.5em; padding: 0em; float: right; "  >
+    <img src="/img/proof-of-trust.png" alt="Proof-of-Trust." style="max-width: 300px; border: 1px solid #DDDDDD; margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 0.5em;" >
+    <figcaption>Proof-of-Trust.</figcaption>
+  </figure>  
+<p>Trust Resolution is as simple as calling a method passing the DID of the service we want to resolve, to display a <strong>Proof-of-Trust</strong> to the end-user:</p>
+<pre tabindex="0"><code>resolve_trust(&#34;did:example:gaia&#34;)
+</code></pre><p>and receive a response similar to this one:</p>
+<pre tabindex="0"><code>{
+  &#34;did&#34;:&#34;did:example:gaia&#34;,
+  &#34;verified&#34;: true,
+  &#34;service_provider&#34;: {
+      &#34;id&#34;: &#34;did:example:def&#34;,
+      &#34;type&#34;: &#34;Organization&#34;,
+      &#34;name&#34;: &#34;Gaia Registry LLC&#34;,
+      &#34;country&#34;: &#34;zz&#34;,
+      &#34;reputation&#34;: {
+        &#34;issuedCredentials&#34;: 1234,
+        &#34;verifiedCredentials&#34;: 7678,
+        &#34;trustDepositValue&#34;: 176327.124356,
+        &#34;amountSlashed&#34;: 0,
+        &#34;stars&#34;: 5.0
+      },
+      &#34;issuer&#34;: &#34;did:example:zzz&#34;,
+      ...
+  },
+  &#34;service&#34;: {
+      &#34;name&#34;: &#34;Gaia Registry&#34;,
+      &#34;termsAndConditions&#34;: &#34;http://example.com&#34;,
+      &#34;privacyPolicy&#34;: &#34;http://example.com&#34;,
+      &#34;minimumAgeRequired&#34;: 16,
+      &#34;description&#34;: &#34;Create your Metaverse ID at Gaia Registry! Protect your identity with biometrics and easily recover it if you loose your phone. Use your Gaia Identity to connect to fancy services with no password.&#34;
+      ...
+  },
+  &#34;credentials&#34; : [
+    {
+      &#34;type&#34;: &#34;TrademarkCredential&#34;,
+      ...
+    }
+  ]
+  ...
+}
+</code></pre><h2 id="deep-dive-into-verifiable-trust">Deep Dive into Verifiable Trust</h2>
+<p>Let&rsquo;s explain how the Verifiable Trust does it.</p>
+<figure  style="text-align: center; font-style: italic; font-size: smaller; text-indent: 0;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 2.5em; padding: 0em; float: right; "  >
+    <img src="/img/verifiable-service.png" alt="Popup of a chatbot Verifiable Service." style="max-width: 200px; border: 1px solid #DDDDDD; margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 0.5em;" >
+    <figcaption>Popup of a chatbot Verifiable Service.</figcaption>
+  </figure>  
+<p>Verifiable Trust (VT) introduces 3 main concepts:</p>
+<ul>
+<li>Verifiable Service (VS),</li>
+<li>Verifiable User Agent (VUA), and</li>
+<li>Verifiable Public Registry (VPR).</li>
+</ul>
+<h3 id="what-is-a-verifiable-service-vs">What is a Verifiable Service (VS)?</h3>
+<p>A VS is a service that provides a way to identify itself to a peer, before the peer connects to it.</p>
+<p>Entities that want to connect to a VS can review its presented verifiable credentials, prove their legitimacy by performing a trust resolution, and based on the result, decide to connect or not.</p>
+<p>A VS must resolve trust of peers that attempt to connect to it (VS and/or VUA) and refuse connections from non-verifiable peers.</p>
+<p>Additionally, a verifiable service that would like to issue or request verification of credentials, must prove it is allowed to do so, else peer must refuse that action.</p>
+<h3 id="what-is-a-verifiable-user-agent-vua">What is a Verifiable User Agent (VUA)?</h3>
+<p>A Verifiable User Agent (VUA) is a software (a browser, an app, a wallet…) for connecting to VSs and other VUAs. When establishing connections, a VUA must verify the connection peer(s) and allow connection(s) only to compliant VS and VUA peers.</p>
+<p>Additionally, VUAs must perform a trust resolution by verifying the credentials presented by the peers and query VPR(s) to check that these credentials have been issued by verified issuers.</p>
+<h3 id="what-is-a-verifiable-public-registry-vpr">What is a Verifiable Public Registry (VPR)?</h3>
+<p>A <strong>Verifiable Public Registry (VPR)</strong> is a <strong>“registry of registries”</strong>, a public service that provides foundational infrastructure for decentralized trust ecosystems. It offers:</p>
+<ul>
+<li>
+<p><strong>Trust Registry Management</strong>:<br>
+Ecosystems can create and manage their own <strong>Trust Registries</strong>, each with:</p>
+<ul>
+<li>Defined <strong>Credential Schemas</strong></li>
+<li>Assigned roles for <strong>Issuers</strong>, <strong>Verifiers</strong>, and <strong>Grantors</strong></li>
+<li>Custom <strong>business models</strong> and permission policies</li>
+</ul>
+</li>
+<li>
+<p><strong>Query API for Trust Resolution</strong>:<br>
+A standardized API used by <strong>Verifiable Services (VSs)</strong> and <strong>Verifiable User Agents (VUAs)</strong> to perform trust resolution, enabling them to query registry data and validate roles and permissions in real time.</p>
+</li>
+</ul>
+<figure  style="max-width: 600px; text-align: center; font-style: italic; font-size: smaller; text-indent: 0;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 2.5em; padding: 0em; float: none; "  >
+    <img src="/img/verifiable-public-registry.png" alt="A VPR is a Registry of Registries (RoR)." style="max-width: 600px;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 0.5em; " >
+    <figcaption>A VPR is a Registry of Registries (RoR).</figcaption>
+  </figure>  
+<h4 id="trust-registries">Trust Registries</h4>
+<p>Each <strong>Ecosystem Trust Registry</strong> is uniquely identified by a <strong>resolvable DID</strong> and must provide, at a minimum:</p>
+<ul>
+<li>One or more <strong>Governance Framework</strong> document(s)</li>
+<li>Zero or more <strong>Credential Schemas</strong></li>
+</ul>
+<p>The <strong>Verifiable Public Registry (VPR)</strong> is agnostic to the specific <strong>DID methods</strong> used. Trust resolution is performed externally, outside the VPR, allowing flexibility and interoperability across ecosystems.</p>
+<figure  style="max-width: 200px; text-align: center; font-style: italic; font-size: smaller; text-indent: 0;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 2.5em; padding: 0em; float: none; "  >
+    <img src="/img/tr.png" alt="A Trust Registry." style="max-width: 200px;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 0.5em; " >
+    <figcaption>A Trust Registry.</figcaption>
+  </figure>  
+<h4 id="credential-schemas">Credential Schemas</h4>
+<p><strong>Credential Schemas</strong> are created and managed by <strong>Trust Registry owners</strong> (Ecosystems). Each Credential Schema includes, at a minimum:</p>
+<ul>
+<li>A <strong>JSON Schema</strong> that defines the structure of the corresponding <strong>Verifiable Credential</strong></li>
+<li>A <strong>PermissionManagementMode</strong> for <strong>issuance policy</strong>, which determines how <code>Issuer</code> permissions are granted. Modes include:
+<ul>
+<li><code>OPEN</code>: Anyone can become an Issuer</li>
+<li><code>TRUST_REGISTRY</code>: Permissions are granted directly by the Trust Registry controller</li>
+<li><code>GRANTOR_VALIDATION</code>: Permissions are granted by an <code>Issuer Grantor</code> after a validation process</li>
+</ul>
+</li>
+<li>A <strong>PermissionManagementMode</strong> for <strong>verification policy</strong>, which determines how <code>Verifier</code> permissions are granted. Modes include:
+<ul>
+<li><code>OPEN</code>: Anyone can act as a Verifier</li>
+<li><code>TRUST_REGISTRY</code>: Permissions are granted directly by the Trust Registry controller</li>
+<li><code>GRANTOR_VALIDATION</code>: Permissions are granted by a <code>Verifier Grantor</code> after a validation process</li>
+</ul>
+</li>
+<li>A <strong>Permission Tree</strong> that defines the roles and relationships involved in managing the schema’s lifecycle.</li>
+</ul>
+<figure  style="max-width: 600px; text-align: center; font-style: italic; font-size: smaller; text-indent: 0;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 0em; padding: 0em; float: none; "  >
+    <img src="/img/permission-tree-small.png" alt="A Permission tree." style="max-width: 600px;  margin-top: 0em; margin-bottom: 0em; margin-right: 0em; margin-left: 0em; " >
+    <figcaption>A Permission tree.</figcaption>
+  </figure>  
+<p>Participant roles are defined in the table below:</p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Participant Role</strong></th>
+          <th><strong>Description</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Trust Registry</strong></td>
+          <td>Create and control Credential Schemas. Grant other roles.</td>
+      </tr>
+      <tr>
+          <td><strong>Issuer Grantor</strong></td>
+          <td>Grant Issuer permissions to candidate issuers.</td>
+      </tr>
+      <tr>
+          <td><strong>Verifier Grantor</strong></td>
+          <td>Grant Verifier permissions to candidate verifiers.</td>
+      </tr>
+      <tr>
+          <td><strong>Issuer</strong></td>
+          <td>Can issue credentials of this schema.</td>
+      </tr>
+      <tr>
+          <td><strong>Verifier</strong></td>
+          <td>Can request presentation of credentials of this schema.</td>
+      </tr>
+      <tr>
+          <td><strong>Holder</strong></td>
+          <td>Special role used for selected business models.</td>
+      </tr>
+  </tbody>
+</table>
+<p>Example of a Json Schema credential schema:</p>
+<pre tabindex="0"><code>{
+  &#34;$id&#34;: &#34;vpr-mainnet:/vpr/v1/cs/js/VPR_CREDENTIAL_SCHEMA_ID&#34;,
+  &#34;$schema&#34;: &#34;https://json-schema.org/draft/2020-12/schema&#34;,
+  &#34;title&#34;: &#34;SimpleExampleCredential&#34;,
+  &#34;description&#34;: &#34;SimpleExampleCredential using JsonSchema&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;credentialSubject&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;id&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;format&#34;: &#34;uri&#34;
+        },
+        &#34;firstName&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;minLength&#34;: 0,
+          &#34;maxLength&#34;: 256
+        },
+        &#34;lastName&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;minLength&#34;: 1,
+          &#34;maxLength&#34;: 256
+        },
+        &#34;expirationDate&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;format&#34;: &#34;date&#34;
+        },
+        &#34;countryOfResidence&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;minLength&#34;: 2,
+          &#34;maxLength&#34;: 2
+        }
+      },
+      &#34;required&#34;: [
+        &#34;id&#34;,
+        &#34;lastName&#34;,
+        &#34;birthDate&#34;,
+        &#34;expirationDate&#34;,
+        &#34;countryOfResidence&#34;
+      ]
+    }
+  }
+}
+</code></pre><p>After creating the JSON Schema, the <strong>Ecosystem owner</strong> of the Trust Registry issues a <a href="https://www.w3.org/TR/vc-json-schema/">JSON Schema Credential</a> using the <strong>DID registered as the Trust Registry’s identifier</strong> in the VPR.</p>
+<p>This credential serves as a verifiable proof of:</p>
+<ul>
+<li>Ownership of the <strong>Credential Schema</strong></li>
+<li>Control over the corresponding <strong>Trust Registry DID</strong>.</li>
+</ul>
+<pre tabindex="0"><code>{
+  &#34;@context&#34;: [
+      &#34;https://www.w3.org/ns/credentials/v2&#34;
+  ],
+  &#34;id&#34;: &#34;https://trust-registry/example-credential-json-schema-credential.json&#34;,
+  &#34;type&#34;: [&#34;VerifiableCredential&#34;, &#34;JsonSchemaCredential&#34;],
+  &#34;issuer&#34;: &#34;did:example:trust-registry&#34;,
+  &#34;issuanceDate&#34;: &#34;2024-01-01T19:23:24Z&#34;,
+  &#34;credentialSchema&#34;: {
+    &#34;id&#34;: &#34;https://w3c.github.io/vc-json-schema/schema/json-schema-credential-schema.json&#34;,
+    &#34;type&#34;: &#34;JsonSchema&#34;,
+    &#34;digestSRI&#34;: &#34;sha384-S57yQDg1MTzF56Oi9DbSQ14u7jBy0RDdx0YbeV7shwhCS88G8SCXeFq82PafhCrW&#34;
+  },
+  &#34;credentialSubject&#34;: {
+    &#34;id&#34;: &#34;vpr-mainnet:/vpr/v1/cs/js/12345678&#34;,
+    &#34;type&#34;: &#34;JsonSchema&#34;,
+    &#34;jsonSchema&#34;: {
+      &#34;$ref&#34;: &#34;vpr-mainnet:/vpr/v1/cs/js/12345678&#34;
+    },
+    &#34;digestSRI&#34;: &#34;sha384-ABCSGyugst67rs67rdbugsy0RDdx0YbeV7shwhCS88G8SCXeFq82PafhCeZ&#34; 
+  }
+}
+</code></pre><p>Finally, the Ecosystem must publish both the <strong>JSON Schema Credential</strong> and the <strong>location of the Trust Registry</strong> within the <strong>DID Document</strong> associated with the declared <strong>Trust Registry DID</strong> in the VPR.</p>
+<p>This ensures that the Credential Schema and its controlling Trust Registry are publicly discoverable and cryptographically verifiable.</p>
+<pre tabindex="0"><code>&#34;service&#34;: [
+    {
+      &#34;id&#34;: &#34;did:example:trust-registry#vpr-schemas-example-credential-schema-credential&#34;,
+      &#34;type&#34;: &#34;LinkedVerifiablePresentation&#34;,
+      &#34;serviceEndpoint&#34;: [&#34;https://trust-registry/example-credential-schema-presentation.json&#34;]
+    },
+    {
+      &#34;id&#34;: &#34;did:example:trust-registry#vpr-schemas-trust-registry-1234&#34;,
+      &#34;type&#34;: &#34;VerifiablePublicRegistry&#34;,
+      &#34;version&#34;: &#34;1.0&#34;,
+      &#34;serviceEndpoint&#34;: [&#34;vpr-mainnet:/vpr/v1/&#34;]
+    }
+    ...
+  ]
+</code></pre><h4 id="issue-verifiable-credentials">Issue Verifiable Credentials</h4>
+<p>Once the Ecosystem has:</p>
+<ul>
+<li>Created its <strong>Credential Schemas</strong> in the VPR</li>
+<li>Issued the corresponding <strong>JSON Schema Credentials</strong></li>
+<li>Properly configured the <code>&quot;service&quot;</code> section of its <strong>Trust Registry DID Document</strong></li>
+</ul>
+<p>…it is now possible to issue <strong>Verifiable Credentials</strong> based on these schemas.</p>
+<p>Credentials that comply with the <strong>Verifiable Trust Specification</strong> are referred to as <strong>Verifiable Trust Credentials</strong>. These credentials must include, in their <code>credentialSchema</code> attribute, a reference to the corresponding <strong>JSON Schema Credential</strong> issued by the Trust Registry DID. This linkage ensures cryptographic proof of the schema&rsquo;s origin and trustworthiness.</p>
+<p>In our previous example, that would mean and ExampleCredential should look like this example:</p>
+<pre tabindex="0"><code>{
+  &#34;@context&#34;: [
+    &#34;https://www.w3.org/ns/credentials/v2&#34;
+  ],
+  &#34;id&#34;: &#34;did:example:issuer&#34;,
+  &#34;type&#34;: [&#34;VerifiableCredential&#34;, &#34;VerifiableTrustCredential&#34;, &#34;ExampleCredential&#34;],
+  &#34;issuer&#34;: &#34;did:example:issuer&#34;,
+  &#34;credentialSubject&#34;: {
+     &#34;id&#34;: &#34;did:example:abcdef&#34;,
+    ...
+  },
+  ...
+  &#34;credentialSchema&#34;: {
+    &#34;id&#34;: &#34;https://trust-registry/example-credential-json-schema-credential.json&#34;,
+    &#34;type&#34;: &#34;JsonSchemaCredential&#34;
+  }
+}
+</code></pre><p>We can summarize the dependencies, from trust registry created in VPR, until issued credential.</p>
+<figure  style="max-width: 800px; text-align: center; font-style: italic; font-size: smaller; text-indent: 0;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 2.5em; padding: 0em; float: none; "  >
+    <img src="/img/vt-cred.png" alt="" style="max-width: 800px;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 0.5em; " >
+    <figcaption></figcaption>
+  </figure>  
+
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+  
+
+
+
+    
+    <div id="backtotop"><a href="#"></a></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://unpkg.com/feather-icons"></script>
+<script src="/js/fresh.js"></script>
+<script src="/js/jquery.panelslider.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+  </body>
+</html>

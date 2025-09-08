@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+<meta property="og:url" content="http://localhost:1313/page_old/learn-vt-business-models/">
+  <meta property="og:site_name" content="Verana">
+  <meta property="og:title" content="Verifiable Trust Business Models">
+  <meta property="og:description" content="Business Models VPR spec defines two kind of business models:
+subscription based business model, for being granted a Permission in the Credential Schema Permission tree. pay per issuance and pay per verification. Subscription based Validation Process Based on the configured issuance and verification policies, if a schema is not marked as OPEN, an Applicant must complete a Validation Process to be granted a permission. The Applicant initiates this process by selecting an existing Validator permission. Each Validator defines its own terms, which may include the payment of fees. These fees are typically charged as a yearly subscription, requiring the Applicant to renew their permission annually. If the subscription is not renewed, the permission will expire automatically.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="page_old">
+    <meta property="article:published_time" content="2025-04-01T00:00:00+02:00">
+    <meta property="article:modified_time" content="2025-04-01T00:00:00+02:00">
+
+
+<meta name="description" content="Hardcoded description; the author should update :)" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Verana</title>
+    
+  
+<link rel="icon" type="image/png" href="/images/favicon.png" />
+<link href="https://fonts.googleapis.com/css?family=Open&#43;Sans:400,600" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/icons.css">
+
+  </head>
+  <body>
+    
+    
+    <div id="preloader">
+      <div id="status"></div>
+    </div>
+    
+
+    
+
+  
+<nav class="navbar is-fresh is-transparent no-shadow" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="/images/logos/fresh.svg" alt="" width="112" height="28">
+      </a>
+      <a class="navbar-item is-hidden-desktop is-hidden-tablet">
+        <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+          <svg width="1000px" height="1000px">
+            <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+            <path class="path2" d="M 300 500 L 700 500"></path>
+            <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+          </svg>
+          <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+        </div>
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+      <div id="navbar-menu" class="navbar-menu is-static">
+        <div class="navbar-start">
+          <a class="navbar-item is-hidden-mobile">
+            <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+              <svg width="1000px" height="1000px">
+                <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+                <path class="path2" d="M 300 500 L 700 500"></path>
+                <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+              </svg>
+              <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+            </div>
+          </a>
+        </div>
+
+        <div class="navbar-end">
+          <a href="/page/Ecosystems" class="navbar-item is-secondary">
+            Ecosystems
+          </a>
+          <a href="/page/verifiable-services" class="navbar-item is-secondary">
+            Service Owners
+          </a>
+          <a href="/page/verifiable-user-agents" class="navbar-item is-secondary">
+            App Developers
+          </a>
+          <a href="/page/trust-engine" class="navbar-item is-secondary">
+            Trust Engine
+          </a>
+          <a href="/page/principles" class="navbar-item is-secondary">
+            Principles
+          </a>
+          <a href="https://app.testnet.verana.network" class="navbar-item is-secondary">
+            Testnet
+          </a>
+        </div>
+      </div>
+  </div>
+</nav>
+
+
+<nav id="navbar-clone" class="navbar is-fresh is-transparent" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="/images/logos/fresh.svg" alt="" width="112" height="28">
+      </a>
+      <a class="navbar-item is-hidden-desktop is-hidden-tablet">
+        <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+          <svg width="1000px" height="1000px">
+            <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+            <path class="path2" d="M 300 500 L 700 500"></path>
+            <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+          </svg>
+          <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+        </div>
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="cloned-navbar-menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="cloned-navbar-menu" class="navbar-menu is-fixed">
+      <div class="navbar-start">
+        <a class="navbar-item is-hidden-mobile">
+          <div id="cloned-menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+            <svg width="1000px" height="1000px">
+              <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+              <path class="path2" d="M 300 500 L 700 500"></path>
+              <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+            </svg>
+            <button id="cloned-menu-icon-trigger" class="menu-icon-trigger"></button>
+          </div>
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <a href="/page/Ecosystems" class="navbar-item is-secondary">
+          Ecosystems
+        </a>
+        <a href="/page/verifiable-services" class="navbar-item is-secondary">
+          Service Owners
+        </a>
+        <a href="/page/verifiable-user-agents" class="navbar-item is-secondary">
+          App Developers
+        </a>
+        <a href="/page/trust-engine" class="navbar-item is-secondary">
+          Trust Engine
+        </a>
+        <a href="/page/principles" class="navbar-item is-secondary">
+          Principles
+        </a>
+        <a href="https://app.testnet.verana.network" class="navbar-item is-secondary">
+          Testnet
+        </a>
+      </div>
+    </div>
+</div>
+</nav>
+
+<section class="section is-medium">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-centered-tablet-portrait">
+        <h1 class="title section-title">Verifiable Trust Business Models</h1>
+        <h5 class="subtitle is-5 is-muted">Subscription Business Model for Credential Schema Permissions, *Privacy-preserving* pay per issuance and pay per verification for credentials</h5>
+        <div class="divider"></div>
+      </div>
+    </div>
+
+    <div class="content">
+      <h2 id="business-models">Business Models</h2>
+<p>VPR spec defines two kind of business models:</p>
+<ul>
+<li>subscription based business model, for being granted a Permission in the Credential Schema Permission tree.</li>
+<li>pay per issuance and pay per verification.</li>
+</ul>
+<h3 id="subscription-based-validation-process">Subscription based Validation Process</h3>
+<p>Based on the configured issuance and verification policies, if a schema is not marked as <strong>OPEN</strong>, an <code>Applicant</code> must complete a <strong>Validation Process</strong> to be granted a permission. The <code>Applicant</code> initiates this process by selecting an existing <code>Validator</code> permission. Each <code>Validator</code> defines its own terms, which may include the payment of fees. These fees are typically charged as a <strong>yearly subscription</strong>, requiring the <code>Applicant</code> to renew their permission annually. If the subscription is not renewed, the permission will <strong>expire</strong> automatically.</p>
+<p>Fee Structure:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Validator → Applicant ↓</th>
+          <th>Trust Registry</th>
+          <th>Issuer Grantor</th>
+          <th>Verifier Grantor</th>
+          <th>Issuer</th>
+          <th>Verifier</th>
+          <th>Holder</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Issuer Grantor</td>
+          <td>renewable subscription (1)</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Verifier Grantor</td>
+          <td>renewable subscription (2)</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Issuer</td>
+          <td>renewable subscription (3)</td>
+          <td>renewable subscription (1)</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Verifier</td>
+          <td>renewable subscription (4)</td>
+          <td></td>
+          <td>renewable subscription (2)</td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Holder</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>renewable subscription</td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<ul>
+<li>(1): if <em>issuer PermissionManagementMode</em> is set to GRANTOR_VALIDATION.</li>
+<li>(2): if <em>verifier PermissionManagementMode</em> is set to GRANTOR_VALIDATION.</li>
+<li>(3): if <em>issuer PermissionManagementMode</em> is set to TRUST_REGISTRY.</li>
+<li>(4): if <em>verifier PermissionManagementMode</em> is set to TRUST_REGISTRY.</li>
+</ul>
+<p><strong>Example</strong>: If an <code>Applicant</code> wishes to become an <code>Issuer</code>, and the <code>PermissionManagementMode</code> for credential issuance is configured as <code>GRANTOR_VALIDATION</code>, the <code>Applicant</code> must undergo a <strong>Validation Process</strong> with an <code>Issuer Grantor</code>, who will serve as the <code>Validator</code>.</p>
+<p>If defined, the <code>Applicant</code> is required to pay validation fees, as specified in the <code>Issuer Grantor</code>&rsquo;s permission configuration.</p>
+<p>During the Validation Process, the <code>Applicant</code> must:</p>
+<ul>
+<li>Prove ownership of their <strong>DIDs</strong> and <strong>VPR keys</strong>;</li>
+<li>Provide any additional information required by the <code>Validator</code> to assess and accept the <code>Applicant</code> as an <code>Issuer</code>.</li>
+</ul>
+<p>The specific requirements and process execution rules must be defined within the <strong>Ecosystem Governance Framework (EGF)</strong> of the Ecosystem, the Trust Registry controller.</p>
+<p>Example of a permission tree where schema policy is set to GRANTOR_VALIDATION for issuance, and GRANTOR_VALIDATION for verification:</p>
+<figure  style="max-width: 800px; text-align: center; font-style: italic; font-size: smaller; text-indent: 0;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 2.5em; padding: 0em; float: none; "  >
+    <img src="/img/validation-tree-td.png" alt="" style="max-width: 800x;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 0.5em; " >
+    <figcaption></figcaption>
+  </figure>  
+<p><strong>In this example:</strong></p>
+<ul>
+<li>An <code>Applicant</code> must pay <strong>1,000 × (1 + TD) = 1,200 TUs</strong> to initiate a validation process with <code>Issuer Grantor B</code>, in order to be granted the <code>Issuer C</code> permission for a specific Credential Schema governed by <code>Trust Registry A</code>.</li>
+<li>Once validation begins, the fees paid by the <code>Applicant</code> are <strong>escrowed</strong>.</li>
+<li>The <code>Applicant</code> connects to the <strong>Verifiable Service</strong> provided by the <code>Validator</code> (the DID registered in the Validator’s permission). They exchange the necessary information to complete the validation process.</li>
+<li>Upon successful completion of the validation:
+<ul>
+<li>The <code>Applicant</code> is granted the <code>Issuer</code> permission by the <code>Validator</code>.</li>
+<li>The escrowed fees are <strong>released and distributed</strong> according to the defined rules.</li>
+</ul>
+</li>
+</ul>
+<figure  style="max-width: 800px; text-align: center; font-style: italic; font-size: smaller; text-indent: 0;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 2.5em; padding: 0em; float: none; "  >
+    <img src="/img/vp-fees-distrib-issuer.png" alt="" style="max-width: 800x;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 0.5em; " >
+    <figcaption></figcaption>
+  </figure>  
+<p>The validation fees are partially distributed to designated participant(s), such as the <code>Validator</code> or <code>Grantor</code>. The remaining portion is either allocated to <strong>Trust Deposits</strong> or treated as standard <strong>network fees</strong>, and distributed according to the network’s established fee distribution model.</p>
+<h3 id="pay-per-issuedverified-credential">Pay per issued/verified credential</h3>
+<p>Added to the validation fees, granted Permissions may indicate that some fees must be paid when issuing or verifying (presentation request) a Verifiable Credential of a given schema.</p>
+<p>Example:</p>
+<figure  style="max-width: 1200px; text-align: center; font-style: italic; font-size: smaller; text-indent: 0;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 2.5em; padding: 0em; float: none; "  >
+    <img src="/img/pay-per-issuance-verif.png" alt="" style="max-width: 1200x;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 0.5em; " >
+    <figcaption></figcaption>
+  </figure>  
+<p>In this example:</p>
+<ul>
+<li>Total paid by <code>Issuer C</code> for issuing a credential: (10 + 5) * (1 + UAR + WUAR + TD) = 21 TUs</li>
+<li>Total paid by <code>Verifier E</code> for verifying a credential: (20 + 5 + 2 + 30) * (1 + UAR + WUAR + TD) = 79.8 TUs</li>
+</ul>
+<p>This is a flexible pay per issuance/verification model that rewards all participants.</p>
+<p>Fees involved and distributed, when a credential is issued:</p>
+<figure  style="max-width: 1200px; text-align: center; font-style: italic; font-size: smaller; text-indent: 0;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 2.5em; padding: 0em; float: none; "  >
+    <img src="/img/issuer-fee-distrib.svg" alt="" style="max-width: 1200x;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 0.5em; " >
+    <figcaption></figcaption>
+  </figure>  
+<p>Fees involved and distributed, when a credential is verified:</p>
+<figure  style="max-width: 1200px; text-align: center; font-style: italic; font-size: smaller; text-indent: 0;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 2.5em; padding: 0em; float: none; "  >
+    <img src="/img/verifier-fee-distrib.svg" alt="" style="max-width: 1200x;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 0.5em; " >
+    <figcaption></figcaption>
+  </figure>  
+<p><strong>Payment Enforcement</strong>:</p>
+<p>It is the responsibility of <strong>Verifiable Services (VSs)</strong> and <strong>Verifiable User Agents (VUAs)</strong> to verify that an <code>Issuer</code> or <code>Verifier</code> has paid the required fees <strong>before</strong>:</p>
+<ul>
+<li>Accepting a newly issued credential from an <code>Issuer</code>, or</li>
+<li>Presenting a requested credential to a <code>Verifier</code></li>
+</ul>
+<p>This ensures that only participants with valid, active permissions — backed by payment — are allowed to issue or request verifiable credentials.</p>
+
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+  
+
+
+
+    
+    <div id="backtotop"><a href="#"></a></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://unpkg.com/feather-icons"></script>
+<script src="/js/fresh.js"></script>
+<script src="/js/jquery.panelslider.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+  </body>
+</html>

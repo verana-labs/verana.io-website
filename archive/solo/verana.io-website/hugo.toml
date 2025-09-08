@@ -1,0 +1,24 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'My New Hugo Site'
+[menus]
+  [[menus.main]]
+    name = "Technology"
+    url  = "/technology/"
+    weight = 10
+  [[menus.main]]
+    name = "Developers"
+    url  = "/developers/"
+    weight = 20
+  [[menus.main]]
+    name = "Ecosystems"
+    url  = "/ecosystems/"
+    weight = 30
+  [[menus.main]]
+    name = "Foundation"
+    url  = "/foundation/"
+    weight = 40
+  [[menus.main]]
+    name = "Blog"
+    url  = "/blog/"
+    weight = 50

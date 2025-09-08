@@ -1,0 +1,65 @@
+{{/* Head font setup for Kantumruy Pro */}}
+{{ $family := default "Kantumruy Pro" .Site.Params.fonts.family }}
+{{ $local := .Site.Params.fonts.local }}
+{{ $google := default true .Site.Params.fonts.google }}
+
+{{/* Local font files (TTF/WOFF/WOFF2) */}}
+{{ $reg := default "/fonts/kantumruy-pro-400.woff2" $local.regular }}
+{{ $sem := default "/fonts/kantumruy-pro-600.woff2" $local.semi }}
+{{ $bold := default "/fonts/kantumruy-pro-700.woff2" $local.bold }}
+
+{{ $regExists := fileExists (printf "static%s" $reg) }}
+{{ $semExists := fileExists (printf "static%s" $sem) }}
+{{ $boldExists := fileExists (printf "static%s" $bold) }}
+
+{{ if or $regExists $semExists $boldExists }}
+  {{/* Determine MIME and format per file by extension */}}
+  {{ $regM := "font/woff2" }}{{ $regF := "woff2" }}{{ $rExt := lower (path.Ext $reg) }}
+  {{ if eq $rExt ".ttf" }}{{ $regM = "font/ttf" }}{{ $regF = "truetype" }}{{ end }}
+  {{ if eq $rExt ".otf" }}{{ $regM = "font/otf" }}{{ $regF = "opentype" }}{{ end }}
+  {{ if eq $rExt ".woff" }}{{ $regM = "font/woff" }}{{ $regF = "woff" }}{{ end }}
+
+  {{ $semM := "font/woff2" }}{{ $semF := "woff2" }}{{ $sExt := lower (path.Ext $sem) }}
+  {{ if eq $sExt ".ttf" }}{{ $semM = "font/ttf" }}{{ $semF = "truetype" }}{{ end }}
+  {{ if eq $sExt ".otf" }}{{ $semM = "font/otf" }}{{ $semF = "opentype" }}{{ end }}
+  {{ if eq $sExt ".woff" }}{{ $semM = "font/woff" }}{{ $semF = "woff" }}{{ end }}
+
+  {{ $boldM := "font/woff2" }}{{ $boldF := "woff2" }}{{ $bExt := lower (path.Ext $bold) }}
+  {{ if eq $bExt ".ttf" }}{{ $boldM = "font/ttf" }}{{ $boldF = "truetype" }}{{ end }}
+  {{ if eq $bExt ".otf" }}{{ $boldM = "font/otf" }}{{ $boldF = "opentype" }}{{ end }}
+  {{ if eq $bExt ".woff" }}{{ $boldM = "font/woff" }}{{ $boldF = "woff" }}{{ end }}
+
+  {{ if $regExists }}<link rel="preload" as="font" type="{{ $regM }}" crossorigin href="{{ $reg }}">{{ end }}
+  {{ if $semExists }}<link rel="preload" as="font" type="{{ $semM }}" crossorigin href="{{ $sem }}">{{ end }}
+  {{ if $boldExists }}<link rel="preload" as="font" type="{{ $boldM }}" crossorigin href="{{ $bold }}">{{ end }}
+  <style>
+    @font-face {
+      font-family: '{{ $family }}';
+      src: {{ if $regExists }}url('{{ $reg }}') format('{{ $regF }}'){{ else }}local('sans-serif'){{ end }};
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: '{{ $family }}';
+      src: {{ if $semExists }}url('{{ $sem }}') format('{{ $semF }}'){{ else }}local('sans-serif'){{ end }};
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: '{{ $family }}';
+      src: {{ if $boldExists }}url('{{ $bold }}') format('{{ $boldF }}'){{ else }}local('sans-serif'){{ end }};
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+  </style>
+{{ else if $google }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  {{ $gf := printf "https://fonts.googleapis.com/css2?family=%s:wght@300;400;500;600;700&display=swap" (replace $family " " "+") }}
+  <link rel="preload" as="style" href="{{ $gf }}">
+  <link href="{{ $gf }}" rel="stylesheet">
+  <noscript><link href="{{ $gf }}" rel="stylesheet"></noscript>
+{{ end }}

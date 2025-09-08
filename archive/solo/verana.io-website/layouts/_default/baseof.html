@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="{{ with .Site.Language.Lang }}{{ . }}{{ else }}en{{ end }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>
+      {{- if .IsHome -}}
+        {{ .Site.Title }}
+      {{- else -}}
+        {{ with .Title }}{{ . }} · {{ end }}{{ .Site.Title }}
+      {{- end -}}
+    </title>
+
+    <meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+    <link rel="canonical" href="{{ .Permalink }}" />
+
+    {{/* Tailwind build: ensure it's published & cache-busted */}}
+    {{- $css := resources.Get "css/build.css" | resources.Fingerprint "sha512" -}}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" />
+
+    {{/* RSS (if enabled) */}}
+    {{ with .OutputFormats.Get "RSS" -}}
+      <link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}" title="{{ $.Site.Title }}">
+    {{- end }}
+
+    {{/* OpenGraph / Twitter */}}
+    {{- $desc := or .Params.description .Site.Params.description -}}
+    {{- $ogimg := (cond (isset .Params "images") (index .Params.images 0 | absURL)
+                 (cond (isset .Site.Params "og_image") (.Site.Params.og_image | absURL)
+                 ("/og-default.jpg" | absURL))) -}}
+    <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+    <meta property="og:description" content="{{ $desc }}">
+    <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:image" content="{{ $ogimg }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+    <meta name="twitter:description" content="{{ $desc }}">
+    <meta name="twitter:image" content="{{ $ogimg }}">
+
+    {{/* Favicons (drop files in /static) */}}
+    <link rel="icon" href="{{ "/favicon.ico" | relURL }}">
+
+    {{/* Optional: per-page extra <head> content */}}
+    {{ block "head_extra" . }}{{ end }}
+
+    {{/* Optional: analytics partial (Plausible / Cloudflare) */}}
+    {{/* {{ partialCached "head/analytics.html" . }} */}}
+  </head>
+
+  <body class="min-h-screen antialiased bg-white text-neutral-900">
+    {{ partial "header.html" . }}
+
+    <main id="content" class="relative">
+      {{ block "main" . }}{{ end }}
+    </main>
+
+    {{ partial "footer.html" . }}
+
+    {{/* Optional: global scripts */}}
+    {{ block "scripts" . }}{{ end }}
+  </body>
+</html>

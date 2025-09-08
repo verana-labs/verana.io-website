@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Olds on Verana</title>
+    <link>http://localhost:1313/old/</link>
+    <description>Recent content in Olds on Verana</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 01 Apr 2025 00:00:00 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/old/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Frequently Asked Questions (FAQ)</title>
+      <link>http://localhost:1313/old/faq/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/old/faq/</guid>
+      <description>&lt;h3 id=&#34;-1-what-is-the-verana-foundation&#34;&gt;📌 1. What is the Verana Foundation?&lt;/h3&gt;&#xA;&lt;p&gt;The Verana Foundation is a nonprofit organization dedicated to establishing decentralized digital trust and identity solutions. It develops open technical standards, governance frameworks, and decentralized infrastructure to empower users and organizations to securely interact on the digital web.&lt;/p&gt;&#xA;&lt;h3 id=&#34;-2-what-does-verifiable-trust-mean&#34;&gt;📌 2. What does &amp;ldquo;verifiable trust&amp;rdquo; mean?&lt;/h3&gt;&#xA;&lt;p&gt;Verifiable trust refers to trust built upon cryptographic verification rather than centralized intermediaries. It involves Decentralized Identifiers (DIDs), Verifiable Credentials (VCs), and secure communication channels, enabling direct, secure, peer-to-peer digital interactions without relying on central authorities.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Trust Resolution explained</title>
+      <link>http://localhost:1313/old/learn-vt-decentralization/</link>
+      <pubDate>Tue, 01 Apr 2025 00:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/old/learn-vt-decentralization/</guid>
+      <description>&lt;h2 id=&#34;decentralization-the-perfect-verifiable-trust-companion&#34;&gt;Decentralization: the Perfect Verifiable Trust Companion&lt;/h2&gt;&#xA;&lt;p&gt;Added to the feature of providing a Proof-of-Trust, there are many other benefits offered by Verifiable Credential usage for identifying services, particularly suitable for decentralization.&lt;/p&gt;&#xA;&lt;p&gt;As messaging services were the first explored services by one of our founder members &lt;a href=&#34;https://2060.io&#34;&gt;2060 OÜ&lt;/a&gt;, it will serve as a concrete example - that you can even try on your own as it is implemented.&lt;/p&gt;&#xA;&lt;p&gt;In a normal messaging service, such as Whatsapp or Telegram, everything is centralized and controlled by the owner of the messaging service:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

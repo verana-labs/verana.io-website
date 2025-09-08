@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+<meta property="og:url" content="http://localhost:1313/old/learn-vt-decentralization/">
+  <meta property="og:site_name" content="Verana">
+  <meta property="og:title" content="Trust Resolution explained">
+  <meta property="og:description" content="Decentralization: the Perfect Verifiable Trust Companion Added to the feature of providing a Proof-of-Trust, there are many other benefits offered by Verifiable Credential usage for identifying services, particularly suitable for decentralization.
+As messaging services were the first explored services by one of our founder members 2060 OÜ, it will serve as a concrete example - that you can even try on your own as it is implemented.
+In a normal messaging service, such as Whatsapp or Telegram, everything is centralized and controlled by the owner of the messaging service:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="old">
+    <meta property="article:published_time" content="2025-04-01T00:00:00+02:00">
+    <meta property="article:modified_time" content="2025-04-01T00:00:00+02:00">
+
+
+<meta name="description" content="Hardcoded description; the author should update :)" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Verana</title>
+    
+  
+<link rel="icon" type="image/png" href="/images/favicon.png" />
+<link href="https://fonts.googleapis.com/css?family=Open&#43;Sans:400,600" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/icons.css">
+
+  </head>
+  <body>
+    
+    
+    <div id="preloader">
+      <div id="status"></div>
+    </div>
+    
+
+    
+
+  
+<nav class="navbar is-fresh is-transparent no-shadow" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="/images/logos/fresh.svg" alt="" width="112" height="28">
+      </a>
+      <a class="navbar-item is-hidden-desktop is-hidden-tablet">
+        <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+          <svg width="1000px" height="1000px">
+            <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+            <path class="path2" d="M 300 500 L 700 500"></path>
+            <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+          </svg>
+          <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+        </div>
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+      <div id="navbar-menu" class="navbar-menu is-static">
+        <div class="navbar-start">
+          <a class="navbar-item is-hidden-mobile">
+            <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+              <svg width="1000px" height="1000px">
+                <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+                <path class="path2" d="M 300 500 L 700 500"></path>
+                <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+              </svg>
+              <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+            </div>
+          </a>
+        </div>
+
+        <div class="navbar-end">
+          <a href="/page/Ecosystems" class="navbar-item is-secondary">
+            Ecosystems
+          </a>
+          <a href="/page/verifiable-services" class="navbar-item is-secondary">
+            Service Owners
+          </a>
+          <a href="/page/verifiable-user-agents" class="navbar-item is-secondary">
+            App Developers
+          </a>
+          <a href="/page/trust-engine" class="navbar-item is-secondary">
+            Trust Engine
+          </a>
+          <a href="/page/principles" class="navbar-item is-secondary">
+            Principles
+          </a>
+          <a href="https://app.testnet.verana.network" class="navbar-item is-secondary">
+            Testnet
+          </a>
+        </div>
+      </div>
+  </div>
+</nav>
+
+
+<nav id="navbar-clone" class="navbar is-fresh is-transparent" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="/images/logos/fresh.svg" alt="" width="112" height="28">
+      </a>
+      <a class="navbar-item is-hidden-desktop is-hidden-tablet">
+        <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+          <svg width="1000px" height="1000px">
+            <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+            <path class="path2" d="M 300 500 L 700 500"></path>
+            <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+          </svg>
+          <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+        </div>
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="cloned-navbar-menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="cloned-navbar-menu" class="navbar-menu is-fixed">
+      <div class="navbar-start">
+        <a class="navbar-item is-hidden-mobile">
+          <div id="cloned-menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+            <svg width="1000px" height="1000px">
+              <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+              <path class="path2" d="M 300 500 L 700 500"></path>
+              <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+            </svg>
+            <button id="cloned-menu-icon-trigger" class="menu-icon-trigger"></button>
+          </div>
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <a href="/page/Ecosystems" class="navbar-item is-secondary">
+          Ecosystems
+        </a>
+        <a href="/page/verifiable-services" class="navbar-item is-secondary">
+          Service Owners
+        </a>
+        <a href="/page/verifiable-user-agents" class="navbar-item is-secondary">
+          App Developers
+        </a>
+        <a href="/page/trust-engine" class="navbar-item is-secondary">
+          Trust Engine
+        </a>
+        <a href="/page/principles" class="navbar-item is-secondary">
+          Principles
+        </a>
+        <a href="https://app.testnet.verana.network" class="navbar-item is-secondary">
+          Testnet
+        </a>
+      </div>
+    </div>
+</div>
+</nav>
+
+<section class="section is-medium">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-centered-tablet-portrait">
+        <h1 class="title section-title">Trust Resolution explained</h1>
+        <h5 class="subtitle is-5 is-muted">Proof-of-Trust, decentralized services, credential based business models where all participants are rewarded, transparent service directory with unbiased search results: welcome to the future</h5>
+        <div class="divider"></div>
+      </div>
+    </div>
+
+    <div class="content">
+      <h2 id="decentralization-the-perfect-verifiable-trust-companion">Decentralization: the Perfect Verifiable Trust Companion</h2>
+<p>Added to the feature of providing a Proof-of-Trust, there are many other benefits offered by Verifiable Credential usage for identifying services, particularly suitable for decentralization.</p>
+<p>As messaging services were the first explored services by one of our founder members <a href="https://2060.io">2060 OÜ</a>, it will serve as a concrete example - that you can even try on your own as it is implemented.</p>
+<p>In a normal messaging service, such as Whatsapp or Telegram, everything is centralized and controlled by the owner of the messaging service:</p>
+<figure  style="text-align: center; font-style: italic; font-size: smaller; text-indent: 0;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 2.5em; padding: 0em; float: right; "  >
+    <img src="/img/centralized-messaging.svg" alt="Centralized messaging service." style="max-width: 500px; border: 1px solid #DDDDDD; margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 0.5em;" >
+    <figcaption>Centralized messaging service.</figcaption>
+  </figure>  
+<ul>
+<li>
+<p><strong>Single Point of Control</strong>: These platforms are centralized—owned and operated by private companies (Meta for WhatsApp, Telegram FZ LLC for Telegram). This means users are at the mercy of corporate policies, jurisdictional laws, and potential data sharing with governments. If you want to build a chatbot, you need authorization of the owner of the messaging service, and it can lead to costs for sending messages to your users.</p>
+</li>
+<li>
+<p><strong>Proprietary Code</strong>: WhatsApp is not open-source, so you can&rsquo;t independently verify what it’s doing with your data. Telegram is partially open-source, but the server-side code remains closed.</p>
+</li>
+<li>
+<p><strong>Lack of Interoperability</strong>: You can&rsquo;t message someone on WhatsApp from Telegram or vice versa.</p>
+</li>
+<li>
+<p><strong>Phone Number Dependency</strong>: You need a phone number to sign up, which links your identity to your communication activity. This makes anonymity or pseudonymity difficult. It also creates a centralized attack surface for surveillance or account hijacking.</p>
+</li>
+<li>
+<p><strong>No Verifiability</strong>: You can&rsquo;t prove a message was sent/received by a specific person/service unless you rely on the platform itself to attest it—which defeats the purpose of trust minimization.</p>
+</li>
+</ul>
+<h3 id="decentralized-messaging">Decentralized Messaging</h3>
+<h3 id="decentralized-social-networks">Decentralized Social Networks</h3>
+<h3 id="works-for-centralized-services-too">Works for centralized services too</h3>
+<h3 id="getpurchase-a-credential-to-appear-in-a-mobile-app">Get/purchase a credential to appear in a Mobile App</h3>
+<h3 id="verifiable-credential-based-business-models-to-reward-all-participants">Verifiable Credential based business models to reward all participants</h3>
+<h2 id="the-service-directory-a-fair-unbiased-search-index">The Service Directory: a fair, unbiased search index</h2>
+<p>You are indexed based on the credentials your services present.</p>
+<p>You even can deploy your own container to run your own index</p>
+
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+  
+
+
+
+    
+    <div id="backtotop"><a href="#"></a></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://unpkg.com/feather-icons"></script>
+<script src="/js/fresh.js"></script>
+<script src="/js/jquery.panelslider.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+  </body>
+</html>

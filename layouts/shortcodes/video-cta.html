@@ -1,0 +1,27 @@
+{{ $src := .Get "src" }}
+{{ $title := .Get "title" }}
+{{ $text := .Get "text" }}
+{{ $url := .Get "url" }}
+{{ $words := split (default "" $text) " " }}
+{{ $preview := delimit (first 30 $words) " " }}
+
+<div class="w-full overflow-hidden rounded-lg border border-slate-200 bg-white">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-0">
+    <div class="md:col-span-2 aspect-video">
+      <video controls class="w-full h-full object-cover">
+        <source src="{{ $src }}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="p-6 flex flex-col justify-center">
+      <h3 class="text-xl font-semibold text-slate-900">{{ $title }}</h3>
+      <p class="mt-2 text-slate-600">{{ $preview }}</p>
+      {{ with $url }}
+        <div class="mt-4">
+          <a href="{{ . }}" class="inline-flex items-center justify-center rounded bg-primary-600 px-4 py-2 text-white hover:bg-primary-700">Know more</a>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
+

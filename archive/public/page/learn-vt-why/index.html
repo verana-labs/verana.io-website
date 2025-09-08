@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+<meta property="og:url" content="http://localhost:1313/page/learn-vt-why/">
+  <meta property="og:site_name" content="Verana">
+  <meta property="og:title" content="Why we need Verifiable Trust">
+  <meta property="og:description" content="Why we need Verifiable Trust The internet is broken. Existing communication channels are insecure and outdated. Because they rely on public identifiers — like email addresses, usernames, or phone numbers — anyone who knows your identifier can reach you, whether you invited them or not.
+Worse, there’s no reliable way to verify the identity of either service providers or users. This leaves the door wide open to spam, phishing, fraud, and identity theft.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="page">
+    <meta property="article:published_time" content="2025-04-01T00:00:00+02:00">
+    <meta property="article:modified_time" content="2025-04-01T00:00:00+02:00">
+
+
+<meta name="description" content="Hardcoded description; the author should update :)" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Verana</title>
+    
+  
+<link rel="icon" type="image/png" href="/images/favicon.png" />
+<link href="https://fonts.googleapis.com/css?family=Open&#43;Sans:400,600" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/icons.css">
+
+  </head>
+  <body>
+    
+    
+    <div id="preloader">
+      <div id="status"></div>
+    </div>
+    
+
+    
+
+  
+<nav class="navbar is-fresh is-transparent no-shadow" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="/images/logos/fresh.svg" alt="" width="112" height="28">
+      </a>
+      <a class="navbar-item is-hidden-desktop is-hidden-tablet">
+        <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+          <svg width="1000px" height="1000px">
+            <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+            <path class="path2" d="M 300 500 L 700 500"></path>
+            <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+          </svg>
+          <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+        </div>
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+      <div id="navbar-menu" class="navbar-menu is-static">
+        <div class="navbar-start">
+          <a class="navbar-item is-hidden-mobile">
+            <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+              <svg width="1000px" height="1000px">
+                <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+                <path class="path2" d="M 300 500 L 700 500"></path>
+                <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+              </svg>
+              <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+            </div>
+          </a>
+        </div>
+
+        <div class="navbar-end">
+          <a href="/" class="navbar-item is-secondary">
+            Ecosystems
+          </a>
+          <a href="/" class="navbar-item is-secondary">
+            Service Owners
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              App Developers
+            </a>
+
+            <div class="navbar-dropdown">
+              <a href="/" class="navbar-item">
+                Dropdown item
+              </a>
+              <a href="/" class="navbar-item">
+                Dropdown item
+              </a>
+              <a href="/" class="navbar-item">
+                Dropdown item
+              </a>
+            </div>
+          </div>
+          <a href="/" class="navbar-item is-secondary">
+            Trust Engine
+          </a>
+          <a href="/" class="navbar-item is-secondary">
+            Principles
+          </a>
+          <a href="https://app.testnet.verana.network" class="navbar-item is-secondary">
+            Testnet
+          </a>
+        </div>
+      </div>
+  </div>
+</nav>
+
+
+<nav id="navbar-clone" class="navbar is-fresh is-transparent" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="/images/logos/fresh.svg" alt="" width="112" height="28">
+      </a>
+      <a class="navbar-item is-hidden-desktop is-hidden-tablet">
+        <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+          <svg width="1000px" height="1000px">
+            <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+            <path class="path2" d="M 300 500 L 700 500"></path>
+            <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+          </svg>
+          <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+        </div>
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="cloned-navbar-menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="cloned-navbar-menu" class="navbar-menu is-fixed">
+      <div class="navbar-start">
+        <a class="navbar-item is-hidden-mobile">
+          <div id="cloned-menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+            <svg width="1000px" height="1000px">
+              <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+              <path class="path2" d="M 300 500 L 700 500"></path>
+              <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+            </svg>
+            <button id="cloned-menu-icon-trigger" class="menu-icon-trigger"></button>
+          </div>
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <a href="/" class="navbar-item is-secondary">
+          Ecosystems
+        </a>
+        <a href="/" class="navbar-item is-secondary">
+          Service Owners
+        </a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            App Developers
+          </a>
+
+          <div class="navbar-dropdown">
+            <a href="/" class="navbar-item">
+              Dropdown item
+            </a>
+            <a href="/" class="navbar-item">
+              Dropdown item
+            </a>
+            <a href="/" class="navbar-item">
+              Dropdown item
+            </a>
+          </div>
+        </div>
+        <a href="/" class="navbar-item is-secondary">
+          Trust Engine
+        </a>
+        <a href="/" class="navbar-item is-secondary">
+          Principles
+        </a>
+        <a href="https://app.testnet.verana.network" class="navbar-item is-secondary">
+          Testnet
+        </a>
+      </div>
+    </div>
+</div>
+</nav>
+
+<section class="section is-medium">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-centered-tablet-portrait">
+        <h1 class="title section-title">Why we need Verifiable Trust</h1>
+        <h5 class="subtitle is-5 is-muted">There’s no reliable way to verify the identity of either service providers or users. This leaves the door wide open to spam, phishing, fraud, and identity theft.</h5>
+        <div class="divider"></div>
+      </div>
+    </div>
+
+    <div class="content">
+      <h2 id="why-we-need-verifiable-trust">Why we need Verifiable Trust</h2>
+<p>The internet is broken. Existing communication channels are insecure and outdated. Because they rely on public identifiers — like email addresses, usernames, or phone numbers — anyone who knows your identifier can reach you, whether you invited them or not.</p>
+<p>Worse, there’s no reliable way to verify the identity of either service providers or users. This leaves the door wide open to spam, phishing, fraud, and identity theft.</p>
+<p>On the service side, each provider imposes its own fragmented registration process, often with complex password requirements or forced reliance on federated login systems—effectively handing control over to large third-party platforms.</p>
+<p>Although the World Wide Web was originally built for openness and interoperability, dominant players have reshaped it into a closed, centralized system that most people and organizations now depend on. Privacy has become an afterthought, and personal data is routinely harvested, exploited, or leaked.</p>
+<p>To rebuild a trustworthy internet, we need new communication channels — channels that are secure by design, based on mutual verification, and governed by decentralized trust.</p>
+<p>Connecting to a service, proving who you are, or creating an account should be as simple and safe as presenting a verifiable credential.</p>
+<p>A universal, open trust layer is essential for this vision to succeed.</p>
+<p>That’s the purpose of <strong>Verifiable Trust</strong>.</p>
+<h2 id="problems-we-all-are-facing-today">Problems we all are facing today</h2>
+<h3 id="identification-of-service-providers">Identification of Service Providers</h3>
+<p>Today, identifying who is truly behind a digital service is incredibly difficult. Most communication channels lack built-in mechanisms for trust and verification.</p>
+<figure  style="text-align: center; font-style: italic; font-size: smaller; text-indent: 0;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 2.5em; margin-left: 0em; padding: 0em; float: left; "  >
+    <img src="/img/ssl-cert.png" alt="SSL Certificate. No verifiable service provider." style="max-width: 300px; border: 1px solid #DDDDDD; margin-top: 0em; margin-bottom: 0.5em; margin-right: 0.5em; margin-left: 0em;" >
+    <figcaption>SSL Certificate. No verifiable service provider.</figcaption>
+  </figure>  
+<ul>
+<li>
+<p><strong>SSL certificates</strong>, while effective for encrypting traffic between two endpoints, do not reveal who owns or operates the service on the other side. They ensure secure transmission—not trustworthy identity.</p>
+</li>
+<li>
+<p>On <strong>social networks</strong>, there is no standardized or verifiable way to confirm the identity of a profile or page owner. Impersonation is common, and users are left to guess what&rsquo;s real.</p>
+</li>
+</ul>
+<figure  style="text-align: center; font-style: italic; font-size: smaller; text-indent: 0;  margin-top: 1em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 1em; padding: 0em; float: right; "  >
+    <img src="/img/telegram-group.jpg" alt="Telegram group." style="max-width: 200px; border: 1px solid #DDDDDD; float: right; margin-top: 20px; margin-bottom: 0.5em; margin-right: 0em; margin-left: 1em;" >
+    <figcaption>Telegram group.</figcaption>
+  </figure>  
+<ul>
+<li>
+<p>In <strong>messaging apps</strong> like WhatsApp or Telegram, chatbot services and automated accounts can easily be impersonated. Users have no reliable way to confirm the identity or legitimacy of who they are interacting with.</p>
+</li>
+<li>
+<p>Even in basic <strong>phone communication</strong>, receiving a call from an unknown number provides no indication of the caller&rsquo;s true identity, making fraud and scams rampant.</p>
+</li>
+</ul>
+<p>In short, the internet today <strong>lacks a verifiable identity layer</strong> — a way to confirm who you&rsquo;re interacting with before you share information, take action, or trust a service. This missing layer is one of the fundamental weaknesses that the Verana Foundation seeks to address.</p>
+<h3 id="reputation">Reputation</h3>
+<p>In addition to the difficulty of identifying service providers, there is currently no reliable way to assess their reputation.</p>
+<p>While app stores offer basic rating and review systems for apps themselves, these systems are limited in scope: they reflect general user satisfaction with the app, and not the specific services or service providers operating <strong>within</strong> the app.</p>
+<p>For example, Telegram may have millions of positive reviews, but users have no way to evaluate the trustworthiness of individual channels, groups, or bots inside the app.</p>
+<p>Independent services like <a href="https://www.trustpilot.com/">TrustPilot</a> exist, but they imply user must connect to a third party service separately.</p>
+<p>End users and service providers lack a portable, verifiable reputation that can be carried across platforms and independently verified.</p>
+<p>This absence of a standardized, decentralized reputation layer makes it easy for malicious actors to operate without consequence, while legitimate providers struggle to build trust.</p>
+<h3 id="age-verification">Age Verification</h3>
+<figure  style="text-align: center; font-style: italic; font-size: smaller; text-indent: 0;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 2.5em; padding: 0em; float: right; "  >
+    <img src="/img/age-verif.png" alt="Age verification popup." style="max-width: 330px; border: 1px solid #DDDDDD; margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 0.5em;" >
+    <figcaption>Age verification popup.</figcaption>
+  </figure>  
+<p>We need to protect our kids online — but today’s internet makes it difficult.</p>
+<p>There are no standardized or reliable mechanisms for enforcing age restrictions across websites, apps, or digital services. Most platforms rely on easily bypassed checkboxes or self-declared birthdates.</p>
+<p>A safer internet requires a verifiable, privacy-preserving approach to age control:</p>
+<ul>
+<li>
+<p>Services should declare the minimum age required to access them as part of their published metadata.</p>
+</li>
+<li>
+<p>User agents (e.g., browsers or apps) should be able to automatically block access if the user doesn&rsquo;t meet the age requirement.</p>
+</li>
+</ul>
+<p>This process should be seamless, privacy-respecting, and enforceable without central surveillance or data collection.</p>
+<h3 id="federated-login">Federated Login</h3>
+<figure  style="text-align: center; font-style: italic; font-size: smaller; text-indent: 0;  margin-top: 0em; margin-bottom: 0.5em; margin-right: 0em; margin-left: 0em; padding: 0em; float: right; "  >
+    <img src="/img/sonatype.png" alt="sonatype.com login" style="max-width: 220px; border: 1px solid #DDDDDD; float: right; margin-top: 0px; margin-bottom: 0.5em; margin-right: 0px; margin-left: 30px;" >
+    <figcaption>sonatype.com login</figcaption>
+  </figure>  
+<p>Federated login (e.g., &ldquo;Log in with Google,&rdquo; &ldquo;Log in with Facebook&rdquo;) offers convenience, but it comes with serious drawbacks that undermine privacy, security, and digital sovereignty.</p>
+<p>Here are the main problems with federated login systems:</p>
+<ul>
+<li>
+<p>Tracking across services: The identity provider (e.g., Google, Apple, Facebook) can track where and how you log in, building a detailed profile of your digital activity.</p>
+</li>
+<li>
+<p>Data sharing: Your login may grant the identity provider and/or the relying party access to your personal data (email, name, contacts, etc.), often without granular user control.</p>
+</li>
+<li>
+<p>Centralized risk: If your federated login account is compromised or disabled, you may lose access to all connected services.</p>
+</li>
+<li>
+<p>Dependency on big tech: Users and services become dependent on a few tech giants. This undermines decentralization and gives disproportionate control to a handful of companies.</p>
+</li>
+<li>
+<p>No self-sovereignty: Users don’t own their identity — they’re renting access from a third party.</p>
+</li>
+<li>
+<p>No proof of trust: Relying parties have no way to independently verify that the login comes from a trusted source, or that the user is who they claim to be, without relying on the provider’s internal systems.</p>
+</li>
+</ul>
+<h3 id="search-engines">Search Engines</h3>
+<p>The current search engine model, while incredibly powerful, comes with a number of structural problems, especially when viewed through the lens of digital trust, decentralization, and user autonomy. Here are some of the key issues:</p>
+<h4 id="centralized-control">Centralized Control</h4>
+<ul>
+<li>Search is dominated by a few corporations (e.g., Google, Bing).</li>
+<li>These entities <strong>control what gets indexed and how it ranks</strong>.</li>
+<li>Results are influenced by opaque algorithms. Users can’t verify why something is shown (or hidden).</li>
+<li><strong>Censorship and bias</strong> are difficult to detect or challenge.</li>
+</ul>
+<h4 id="lack-of-trustable-identity">Lack of Trustable Identity</h4>
+<ul>
+<li>Search engines index content, <strong>not trust</strong>.</li>
+<li>There’s no native way to <strong>verify who is behind a website or service</strong>.</li>
+<li>Malicious actors can <strong>mimic legitimate services</strong>, abuse SEO, or spoof brands.</li>
+</ul>
+<h4 id="data-exploitation">Data Exploitation</h4>
+<ul>
+<li>Search queries are <strong>tracked and monetized</strong> to fuel surveillance-based advertising models.</li>
+<li>Users are <strong>profiled without consent</strong>.</li>
+<li>Personalization leads to <strong>filter bubbles</strong> and reinforces existing beliefs, limiting discovery and objectivity.</li>
+</ul>
+<h4 id="fake-content--seo-abuse">Fake Content &amp; SEO Abuse</h4>
+<ul>
+<li>SEO can be <strong>manipulated</strong> to surface:
+<ul>
+<li>Misinformation</li>
+<li>Scam sites</li>
+<li>Low-quality or dangerous products</li>
+</ul>
+</li>
+<li>Search engines often struggle to distinguish real trust from artificial authority.</li>
+</ul>
+<h4 id="no-built-in-reputation-systems">No Built-in Reputation Systems</h4>
+<ul>
+<li>No standard, verifiable way to show:
+<ul>
+<li>Ratings</li>
+<li>Reviews</li>
+<li>Credentialed endorsements</li>
+</ul>
+</li>
+<li>Reputation systems are fragmented and <strong>easily manipulated</strong>.</li>
+</ul>
+
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+  
+
+
+
+    
+    <div id="backtotop"><a href="#"></a></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://unpkg.com/feather-icons"></script>
+<script src="/js/fresh.js"></script>
+<script src="/js/jquery.panelslider.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+  </body>
+</html>

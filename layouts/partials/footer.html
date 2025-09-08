@@ -1,0 +1,16 @@
+<footer class="mt-16 border-t border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-sm text-slate-600 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <div>
+      <div class="font-semibold text-slate-800">{{ with .Site.Params.footer.company }}{{ . }}{{ else }}Verana{{ end }}</div>
+      <div class="text-slate-500">&copy; {{ now.Year }}{{ with .Site.Params.footer.year }}{{ end }}</div>
+    </div>
+    <ul class="flex gap-4">
+      {{ with .Site.Params.footer.links }}
+        {{ range . }}
+          <li><a class="hover:text-primary-600" href="{{ .url }}">{{ .label }}</a></li>
+        {{ end }}
+      {{ end }}
+    </ul>
+  </div>
+</footer>
+

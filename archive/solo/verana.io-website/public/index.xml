@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>My New Hugo Site</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on My New Hugo Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Sep 2025 00:00:00 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>App Developers</title>
+      <link>http://localhost:1313/page/verifiable-user-agents/</link>
+      <pubDate>Mon, 01 Sep 2025 00:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/page/verifiable-user-agents/</guid>
+      <description>&lt;h3 id=&#34;create-the-next-generation-of-browsers-verifiable-user-agents&#34;&gt;Create the Next Generation of Browsers (Verifiable User Agents)&lt;/h3&gt;&#xA;&lt;p&gt;Verifiable User Agents (VUAs) are a new category of applications that aggregate and interact with decentralized Verifiable Services (VSs). Instead of relying on centralized APIs or walled-garden platforms, these apps query the Verana Trust Resolver, making any compatible Verifiable Service instantly visible and usable.&lt;/p&gt;&#xA;&lt;h4 id=&#34;what-vuas-can-be&#34;&gt;What VUAs Can Be&lt;/h4&gt;&#xA;&lt;p&gt;VUAs open the door to a wide variety of decentralized applications:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;🌐 Decentralized Social Networks: E.g., an X-like network built from decentralized Social Channels.&lt;/li&gt;&#xA;&lt;li&gt;🤖 Chatbot &amp;amp; AI Assistant Browsers: Apps for discovering and talking with official chat services and personal AI assistants.&lt;/li&gt;&#xA;&lt;li&gt;🎬 Decentralized Video Apps: Streaming apps that aggregate film catalogs published by creators.&lt;/li&gt;&#xA;&lt;li&gt;🛒 E-commerce Aggregators: Apps that list all businesses using e-commerce Verifiable Services.&lt;/li&gt;&#xA;&lt;li&gt;…and many more innovations waiting to be built.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h4 id=&#34;business-models-for-vua-builders&#34;&gt;Business Models for VUA Builders&lt;/h4&gt;&#xA;&lt;p&gt;VUA developers can also create their own Ecosystem within Verana. This allows them to:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Ecosystems</title>
+      <link>http://localhost:1313/page/ecosystems/</link>
+      <pubDate>Mon, 01 Sep 2025 00:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/page/ecosystems/</guid>
+      <description>&lt;h3 id=&#34;ecosystems-use-verana-to-build-their-own-trust-networks&#34;&gt;Ecosystems Use Verana to Build Their Own Trust Networks&lt;/h3&gt;&#xA;&lt;p&gt;Verana empowers ecosystems, from governments to industries, to establish sovereign, verifiable trust networks that they fully control. Each ecosystem leverages Verana as a trust anchor to define, enforce, and evolve their credential-based governance rules.&lt;/p&gt;&#xA;&lt;h4 id=&#34;how-it-works&#34;&gt;How it Works&lt;/h4&gt;&#xA;&lt;p&gt;Our Modular Trust Architecture Each ecosystem defines its governance through a modular trust architecture:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;📜 Ecosystem Governance Framework (EGF): Defines the mission, rules, and policies that govern the ecosystem.&lt;/li&gt;&#xA;&lt;li&gt;🗂️ Trust Registries: Maintain lists of authorized issuers, verifiers, and schema operators.&lt;/li&gt;&#xA;&lt;li&gt;📑 Credential Schemas: Establish standardized formats for verifiable credentials (identity, training, licenses, etc.).&lt;/li&gt;&#xA;&lt;li&gt;🧑‍⚖️ Onboarding &amp;amp; Delegation: Onboard issuers and verifiers directly—or delegate this task to trust registry operators.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Benefits for Ecosystems With Verana, ecosystems move beyond centralized control to build autonomous trust networks. They gain the tools to self-govern, incentivize participants, and enforce trust at scale, while keeping data ownership and privacy in the hands of individuals and organizations.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Principles</title>
+      <link>http://localhost:1313/page/principles/</link>
+      <pubDate>Mon, 01 Sep 2025 00:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/page/principles/</guid>
+      <description>&lt;h2 id=&#34;our-philosophy-infrastructure-not-a-platform&#34;&gt;Our Philosophy: Infrastructure, Not a Platform&lt;/h2&gt;&#xA;&lt;p&gt;Verana is public digital infrastructure, built to be open, decentralized, and free from vendor lock-in. It is not a subscription service or a platform you must depend on—it is technology anyone can run, extend, and govern.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;🌍 Open and accessible: Free and open source, available for anyone to use.&lt;/li&gt;&#xA;&lt;li&gt;🔗 Decentralized by design: No single operator, no central point of control.&lt;/li&gt;&#xA;&lt;li&gt;🛡️ Neutral and flexible: Works with any wallet, any credential format, any identity method.&lt;/li&gt;&#xA;&lt;li&gt;🤝 Sovereign by default: Ecosystems, organizations, and individuals remain fully in control of their trust networks and data.&#xA;With Verana, you don’t “sign up” to a platform—you own the rails of your digital trust infrastructure.&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Service Owners</title>
+      <link>http://localhost:1313/page/verifiable-services/</link>
+      <pubDate>Mon, 01 Sep 2025 00:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/page/verifiable-services/</guid>
+      <description>&lt;h3 id=&#34;organizations-and-individuals-truly-own-your-digital-services&#34;&gt;Organizations and Individuals: Truly Own Your Digital Services&lt;/h3&gt;&#xA;&lt;p&gt;With Verana, anyone, from global organizations to individual creators, can deploy their own Verifiable Service (VS). Unlike centralized platforms, Verifiable Services are self-sovereign, meaning you fully control your data, identity, and audience relationships.&lt;/p&gt;&#xA;&lt;h3 id=&#34;why-verifiable-services-matter&#34;&gt;Why Verifiable Services Matter&lt;/h3&gt;&#xA;&lt;p&gt;Owning a Verifiable Service means:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;🔐 Full Data Ownership: You control your data and connections.&lt;/li&gt;&#xA;&lt;li&gt;🛡️ Privacy by Design: No intermediaries exploiting or mining user interactions.&lt;/li&gt;&#xA;&lt;li&gt;✅ Proof of Authenticity: Prove ownership of your service to your audience.&lt;/li&gt;&#xA;&lt;li&gt;✍️ Signed Content: Integrate with C2PA so all published content is cryptographically signed by your DID.&lt;/li&gt;&#xA;&lt;li&gt;🏗️ Deployment Freedom: Host anywhere: cloud, self-hosted, or migrate freely at any time.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;examples-of-verifiable-services&#34;&gt;Examples of Verifiable Services&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;📢 Decentralized Social Channels: E.g., the official channel of an influencer who owns 100% of their reach.&lt;/li&gt;&#xA;&lt;li&gt;🤖 Decentralized AI Agents: E.g., a personal AI assistant that runs under your DID and respects your privacy.&lt;/li&gt;&#xA;&lt;li&gt;🔄 Agent-to-Agent Communication: E.g., two autonomous AI agents exchanging credentials to securely negotiating a contract.&lt;/li&gt;&#xA;&lt;li&gt;💬 Decentralized Messaging &amp;amp; Chatbots: E.g., a customer support chatbot for a mobile operator, verifiable and portable.&lt;/li&gt;&#xA;&lt;li&gt;🎬 Decentralized Content Delivery Channels: E.g., a film catalog directly published by a studio, with provenance guaranteed.&lt;/li&gt;&#xA;&lt;li&gt;…and many more innovations waiting to be built.&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Trust Engine</title>
+      <link>http://localhost:1313/page/trust-engine/</link>
+      <pubDate>Mon, 01 Sep 2025 00:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/page/trust-engine/</guid>
+      <description>&lt;p&gt;Verana is public digital infrastructure that guarantees trust and integrity through its fundamental mechanisms:&lt;/p&gt;&#xA;&lt;h2 id=&#34;verifiable-service-directory--trust-resolver&#34;&gt;Verifiable Service Directory &amp;amp; Trust Resolver&lt;/h2&gt;&#xA;&lt;p&gt;This is the yellow pages of verifiable data, cryptographically guaranteed. It enables advanced trust-based queries, ensuring that search results are based solely on verifiable data contained in verifiable credentials, not arbitrary or opaque ranking algorithms. This fundamentally disrupts today’s economy of advertising-driven visibility and replaces it with a decentralized economy of trust, where businesses and individuals compete on trust and authenticity, not ad budgets. The result is a public, verifiable database of claims, open and searchable by anyone, that shifts value from centralized intermediaries to decentralized ecosystems.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

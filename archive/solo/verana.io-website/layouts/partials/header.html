@@ -1,0 +1,111 @@
+{{/* layouts/partials/header.html */}}
+<header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-neutral-200">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="relative flex h-16 items-center justify-between">
+
+      <!-- Logo -->
+      <a href="{{ "/" | relURL }}" class="flex items-center gap-2">
+        {{ with .Site.Params.logo }}
+          <img src="{{ . | relURL }}" alt="{{ $.Site.Title }} logo" class="h-7 w-auto" />
+        {{ else }}
+          <img src="{{ "logo.svg" | relURL }}" alt="{{ $.Site.Title }} logo" class="h-7 w-auto" />
+        {{ end }}
+        <span class="sr-only">{{ .Site.Title }}</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-6">
+        {{ $current := . }}
+        {{ if .Site.Menus.main }}
+          {{ range .Site.Menus.main }}
+            {{ $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }}
+            <a href="{{ .URL | relURL }}"
+               class="text-sm font-medium transition-opacity hover:opacity-80 {{ if $active }}text-neutral-900{{ else }}text-neutral-600{{ end }}">
+              {{ .Name }}
+            </a>
+          {{ end }}
+        {{ else }}
+          {{ $links := slice
+              (dict "name" "Technology" "url" "/technology/")
+              (dict "name" "Developers" "url" "/developers/")
+              (dict "name" "Ecosystems" "url" "/ecosystems/")
+              (dict "name" "Foundation" "url" "/foundation/")
+              (dict "name" "Blog" "url" "/blog/") }}
+          {{ range $links }}
+            {{ $isActive := hasPrefix $current.RelPermalink .url }}
+            <a href="{{ .url | relURL }}"
+               class="text-sm font-medium transition-opacity hover:opacity-80 {{ if $isActive }}text-neutral-900{{ else }}text-neutral-600{{ end }}">
+              {{ .name }}
+            </a>
+          {{ end }}
+        {{ end }}
+      </nav>
+
+      <!-- Desktop CTAs -->
+      <div class="hidden md:flex items-center gap-3">
+        <a href="{{ "/developers/specs/" | relURL }}"
+           class="inline-flex items-center rounded-xl px-3.5 py-2 text-sm font-semibold text-white bg-neutral-900 hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/20">
+          Read the Specs
+        </a>
+        <a href="{{ "/developers/get-started/" | relURL }}"
+           class="inline-flex items-center rounded-xl px-3.5 py-2 text-sm font-semibold text-neutral-900 ring-1 ring-inset ring-neutral-300 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/20">
+          Get Started
+        </a>
+      </div>
+
+      <!-- Mobile Menu (no JS, uses <details>) -->
+      <details class="md:hidden">
+        <summary class="list-none -mr-2 inline-flex items-center rounded-lg p-2 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/20">
+          <span class="sr-only">Open menu</span>
+          <!-- Hamburger icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-neutral-900" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+          </svg>
+        </summary>
+
+        <!-- Flyout -->
+        <div class="absolute inset-x-0 top-16 z-50 border-b border-neutral-200 bg-white/95 backdrop-blur">
+          <div class="mx-auto max-w-7xl px-4 py-4">
+            <nav class="grid gap-1">
+              {{ $current := . }}
+              {{ if .Site.Menus.main }}
+                {{ range .Site.Menus.main }}
+                  {{ $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }}
+                  <a href="{{ .URL | relURL }}"
+                     class="block rounded-lg px-3 py-2 text-base font-medium {{ if $active }}bg-neutral-100 text-neutral-900{{ else }}text-neutral-700 hover:bg-neutral-50{{ end }}">
+                    {{ .Name }}
+                  </a>
+                {{ end }}
+              {{ else }}
+                {{ $links := slice
+                    (dict "name" "Technology" "url" "/technology/")
+                    (dict "name" "Developers" "url" "/developers/")
+                    (dict "name" "Ecosystems" "url" "/ecosystems/")
+                    (dict "name" "Foundation" "url" "/foundation/")
+                    (dict "name" "Blog" "url" "/blog/") }}
+                {{ range $links }}
+                  {{ $isActive := hasPrefix $current.RelPermalink .url }}
+                  <a href="{{ .url | relURL }}"
+                     class="block rounded-lg px-3 py-2 text-base font-medium {{ if $isActive }}bg-neutral-100 text-neutral-900{{ else }}text-neutral-700 hover:bg-neutral-50{{ end }}">
+                    {{ .name }}
+                  </a>
+                {{ end }}
+              {{ end }}
+            </nav>
+
+            <div class="mt-3 grid gap-2">
+              <a href="{{ "/developers/specs/" | relURL }}"
+                 class="inline-flex items-center justify-center rounded-xl px-3.5 py-2 text-sm font-semibold text-white bg-neutral-900 hover:bg-neutral-800">
+                Read the Specs
+              </a>
+              <a href="{{ "/developers/get-started/" | relURL }}"
+                 class="inline-flex items-center justify-center rounded-xl px-3.5 py-2 text-sm font-semibold text-neutral-900 ring-1 ring-inset ring-neutral-300 hover:bg-neutral-50">
+                Get Started
+              </a>
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>

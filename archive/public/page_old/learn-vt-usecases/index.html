@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+<meta property="og:url" content="http://localhost:1313/page_old/learn-vt-usecases/">
+  <meta property="og:site_name" content="Verana">
+  <meta property="og:title" content="Verifiable Trust Use Cases">
+  <meta property="og:description" content="The following use cases summarize the concept of Verifiable Trust.
+🏢 How to Obtain an Organization Credential ✅ 1. Obtain a Decentralized Identifier (DID) for your Organization Create a Organization DID for your organization. You can use any DID method. This Organization DID must be resolvable to a DID Document, which will contains service metadata and linked credentials used to resolve trust. ✅ 2. Obtain an Organization Credential (VT-EC-ORG) You’ll need a Organization Credential, issued by an Ecosystem that is providing Essential Credential Schemas.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="page_old">
+    <meta property="article:published_time" content="2025-04-01T00:00:00+02:00">
+    <meta property="article:modified_time" content="2025-04-01T00:00:00+02:00">
+
+
+<meta name="description" content="Hardcoded description; the author should update :)" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Verana</title>
+    
+  
+<link rel="icon" type="image/png" href="/images/favicon.png" />
+<link href="https://fonts.googleapis.com/css?family=Open&#43;Sans:400,600" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/icons.css">
+
+  </head>
+  <body>
+    
+    
+    <div id="preloader">
+      <div id="status"></div>
+    </div>
+    
+
+    
+
+  
+<nav class="navbar is-fresh is-transparent no-shadow" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="/images/logos/fresh.svg" alt="" width="112" height="28">
+      </a>
+      <a class="navbar-item is-hidden-desktop is-hidden-tablet">
+        <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+          <svg width="1000px" height="1000px">
+            <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+            <path class="path2" d="M 300 500 L 700 500"></path>
+            <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+          </svg>
+          <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+        </div>
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+      <div id="navbar-menu" class="navbar-menu is-static">
+        <div class="navbar-start">
+          <a class="navbar-item is-hidden-mobile">
+            <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+              <svg width="1000px" height="1000px">
+                <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+                <path class="path2" d="M 300 500 L 700 500"></path>
+                <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+              </svg>
+              <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+            </div>
+          </a>
+        </div>
+
+        <div class="navbar-end">
+          <a href="/page/Ecosystems" class="navbar-item is-secondary">
+            Ecosystems
+          </a>
+          <a href="/page/verifiable-services" class="navbar-item is-secondary">
+            Service Owners
+          </a>
+          <a href="/page/verifiable-user-agents" class="navbar-item is-secondary">
+            App Developers
+          </a>
+          <a href="/page/trust-engine" class="navbar-item is-secondary">
+            Trust Engine
+          </a>
+          <a href="/page/principles" class="navbar-item is-secondary">
+            Principles
+          </a>
+          <a href="https://app.testnet.verana.network" class="navbar-item is-secondary">
+            Testnet
+          </a>
+        </div>
+      </div>
+  </div>
+</nav>
+
+
+<nav id="navbar-clone" class="navbar is-fresh is-transparent" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="/images/logos/fresh.svg" alt="" width="112" height="28">
+      </a>
+      <a class="navbar-item is-hidden-desktop is-hidden-tablet">
+        <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+          <svg width="1000px" height="1000px">
+            <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+            <path class="path2" d="M 300 500 L 700 500"></path>
+            <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+          </svg>
+          <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+        </div>
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="cloned-navbar-menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="cloned-navbar-menu" class="navbar-menu is-fixed">
+      <div class="navbar-start">
+        <a class="navbar-item is-hidden-mobile">
+          <div id="cloned-menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+            <svg width="1000px" height="1000px">
+              <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+              <path class="path2" d="M 300 500 L 700 500"></path>
+              <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+            </svg>
+            <button id="cloned-menu-icon-trigger" class="menu-icon-trigger"></button>
+          </div>
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <a href="/page/Ecosystems" class="navbar-item is-secondary">
+          Ecosystems
+        </a>
+        <a href="/page/verifiable-services" class="navbar-item is-secondary">
+          Service Owners
+        </a>
+        <a href="/page/verifiable-user-agents" class="navbar-item is-secondary">
+          App Developers
+        </a>
+        <a href="/page/trust-engine" class="navbar-item is-secondary">
+          Trust Engine
+        </a>
+        <a href="/page/principles" class="navbar-item is-secondary">
+          Principles
+        </a>
+        <a href="https://app.testnet.verana.network" class="navbar-item is-secondary">
+          Testnet
+        </a>
+      </div>
+    </div>
+</div>
+</nav>
+
+<section class="section is-medium">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-centered-tablet-portrait">
+        <h1 class="title section-title">Verifiable Trust Use Cases</h1>
+        <h5 class="subtitle is-5 is-muted">Process for obtaining an ECS Organization Credential and a ECS Service Credential</h5>
+        <div class="divider"></div>
+      </div>
+    </div>
+
+    <div class="content">
+      <p>The following use cases summarize the concept of Verifiable Trust.</p>
+<h2 id="-how-to-obtain-an-organization-credential">🏢 How to Obtain an Organization Credential</h2>
+<h3 id="-1-obtain-a-decentralized-identifier-did-for-your-organization">✅ 1. Obtain a Decentralized Identifier (DID) for your Organization</h3>
+<ul>
+<li>Create a <strong>Organization DID</strong> for your organization. You can use any DID method.</li>
+<li>This <strong>Organization DID</strong> must be resolvable to a <strong>DID Document</strong>, which will contains service metadata and linked credentials used to resolve trust.</li>
+</ul>
+<h3 id="-2-obtain-an-organization-credential-vt-ec-org">✅ 2. Obtain an Organization Credential (VT-EC-ORG)</h3>
+<p>You’ll need a <strong>Organization Credential</strong>, issued by an Ecosystem that is providing <strong>Essential Credential Schemas</strong>.</p>
+<ul>
+<li>For the chosen ecosystem, find an <strong>issuer</strong> that is granted issuance of <strong>Organization Credentials</strong> ECS.</li>
+<li>Start a Validation process with the Issuer.</li>
+</ul>
+<p>Provide proof of:</p>
+<ul>
+<li>Legal name and registration</li>
+<li>Jurisdiction (country code)</li>
+<li>Organization type (e.g., PRIVATE, FOUNDATION)</li>
+<li>Registry URL and ID</li>
+<li>Address and logo</li>
+</ul>
+<p>Additionally:</p>
+<ul>
+<li>prove you own and control the Organization DID</li>
+</ul>
+<p>Once verified, you receive an <strong>Organization Credential</strong> issued to your <strong>Organization DID</strong>.</p>
+<h3 id="-3-update-your-organization-did-document">✅ 3. Update Your Organization DID Document</h3>
+<ul>
+<li>Add a <strong>Linked Verifiable Presentation</strong> to your <strong>Organization Credential</strong>.</li>
+</ul>
+<h3 id="-organization-credential-summary-checklist">🚀 Organization Credential Summary Checklist</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Step</th>
+          <th>Action</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>🆔</td>
+          <td>Create an Organization DID and its DID Document</td>
+      </tr>
+      <tr>
+          <td>🏛️</td>
+          <td>Get an Organization Credential from a granted issuer</td>
+      </tr>
+      <tr>
+          <td>🔗</td>
+          <td>Present Organization Credential in your DID Document</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="-how-to-run-a-verifiable-service-vs">🏢 How to Run a Verifiable Service (VS)</h2>
+<p>Running a Verifiable Service (VS) means your organization (or you as a Person) can operate a Verifiable Service.</p>
+<p>Prerequisite: you must already have an Organization Credential or a Person Credential.</p>
+<h3 id="-1-obtain-a-decentralized-identifier-did">✅ 1. Obtain a Decentralized Identifier (DID)</h3>
+<ul>
+<li>Create a <strong>Service DID</strong> for your service. You can use any DID method.</li>
+<li>This <strong>Service DID</strong> must be resolvable to a <strong>DID Document</strong>, which will contains service metadata and linked credentials used to resolve trust.</li>
+</ul>
+<h3 id="-2-issue-a-service-credential-vt-ec-service-to-your-service-did">✅ 2. Issue a <strong>Service Credential (VT-EC-SERVICE)</strong> to your Service DID.</h3>
+<p>With the your Organization DID, issue to the DID of your service a Service Credential.</p>
+<ul>
+<li>Credential includes:
+<ul>
+<li>Service name, description, logo</li>
+<li>Minimum age required</li>
+<li>Terms &amp; conditions URL</li>
+<li>Privacy policy URL</li>
+</ul>
+</li>
+</ul>
+<h3 id="-3-update-your-service-did-document">✅ 3. Update Your Service DID Document</h3>
+<ul>
+<li>Add a <strong>Linked Verifiable Presentation</strong> to your <strong>Service Credential</strong>.</li>
+</ul>
+<h3 id="-4-start-accepting-secure-connections">✅ 4. Start Accepting Secure Connections</h3>
+<p>Once your Verifiable Service is set up:</p>
+<ul>
+<li>Other Verifiable Services or User Agents can resolve trust by reading the DID Documents of:
+<ul>
+<li>your service</li>
+<li>your organization</li>
+<li>the issuer of your organization credential</li>
+</ul>
+</li>
+</ul>
+<p>Your service will check your credentials and validate them. If trust resolution passes, they’ll allow a secure connection with your Verifiable Service</p>
+<h3 id="-summary-checklist">🚀 Summary Checklist</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Step</th>
+          <th>Action</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>🆔</td>
+          <td>Create a Service DID and its DID Document</td>
+      </tr>
+      <tr>
+          <td>🛠️</td>
+          <td>With your Organization DID, issue a Service Credential to your service</td>
+      </tr>
+      <tr>
+          <td>🔗</td>
+          <td>Present your service credential in the DID Document of your service</td>
+      </tr>
+      <tr>
+          <td>🔍</td>
+          <td>Ensure trust resolution works with VPR</td>
+      </tr>
+      <tr>
+          <td>🌐</td>
+          <td>Go live as a Verifiable Service</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="-user-experience-connecting-to-a-verifiable-service">🔹 User Experience: Connecting to a Verifiable Service</h2>
+<p>This is what the flow would feel like to an everyday user:</p>
+<h3 id="-1-user-opens-their-vua-eg-hologram-trusted-wallet-app">👤 1. User Opens Their VUA (e.g., Hologram, Trusted Wallet App)</h3>
+<ul>
+<li>The user has a secure wallet or messaging app that supports Verifiable Trust.</li>
+<li>This app holds their verifiable credentials (e.g., Person Credential) and performs trust resolution in the background.</li>
+</ul>
+<h3 id="-2-user-clicks-a-link-or-scans-a-qr-code">🔗 2. User Clicks a Link or Scans a QR Code</h3>
+<ul>
+<li>They receive a connection invitation (e.g., to chat with a service, log in, access content).</li>
+<li>The link points to the DID of a Verifiable Service.</li>
+</ul>
+<p><strong>Behind the scenes:</strong></p>
+<ul>
+<li>The VUA resolves the DID Document.</li>
+<li>It fetches the linked verifiable presentations from the service (e.g., Service Credential, Org Credential).</li>
+</ul>
+<h3 id="-3-trust-resolution-is-performed-automatically">🔍 3. Trust Resolution Is Performed Automatically</h3>
+<p>The VUA validates:</p>
+<ul>
+<li>
+<p>Are the credentials conforming to known ECS schemas?</p>
+</li>
+<li>
+<p>Are they issued by authorized issuers in trusted VPRs?</p>
+</li>
+<li>
+<p>Do terms, minimum age, and privacy policy match user preferences?</p>
+</li>
+<li>
+<p>✅ If valid: The VUA displays a “Proof of Trust” badge (with icons, names, logos, and country info).</p>
+</li>
+<li>
+<p>❌ If invalid: The user sees a warning and the app blocks the connection.</p>
+</li>
+</ul>
+<h3 id="-4-user-reviews-the-service-info-optional">🙋 4. User Reviews the Service Info (Optional)</h3>
+<p>Before connecting, the app may display:</p>
+<ul>
+<li>✅ Name of the service</li>
+<li>🌍 Country of registration</li>
+<li>🏛️ Organization name &amp; logo</li>
+<li>📜 Terms of service and privacy policy</li>
+<li>🔞 Age restrictions</li>
+</ul>
+<p>🔒 The user can make an informed decision without relying on branding or gut instinct.</p>
+<h3 id="-5-user-shares-credentials-if-needed">🔑 5. User Shares Credentials If Needed</h3>
+<p>If the service requests a Verifiable Credential (e.g., proof of age, email, or membership):</p>
+<ul>
+<li>The VUA presents prompt the user for a compatible credential.</li>
+<li>The user selects which one to share (or declines).</li>
+</ul>
+<p>🛡️ Selective disclosure and proofs without revealing more than needed are supported.</p>
+<h3 id="-6-connection-established-securely">💬 6. Connection Established Securely</h3>
+<ul>
+<li>A DIDComm connection is established with the service.</li>
+<li>From here, any trusted interaction is possible:
+<ul>
+<li>Secure chat</li>
+<li>Video call</li>
+<li>Credential issuance</li>
+<li>Digital service access</li>
+<li>eKYC / login flow, etc.</li>
+</ul>
+</li>
+</ul>
+<h3 id="-summary-flow">🚀 Summary Flow</h3>
+<ol>
+<li><strong>Click link / scan QR</strong></li>
+<li><strong>VUA resolves &amp; verifies service</strong></li>
+<li><strong>User sees trust info</strong></li>
+<li><strong>User optionally presents credentials</strong></li>
+<li><strong>Secure session starts</strong></li>
+</ol>
+
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+  
+
+
+
+    
+    <div id="backtotop"><a href="#"></a></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://unpkg.com/feather-icons"></script>
+<script src="/js/fresh.js"></script>
+<script src="/js/jquery.panelslider.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+  </body>
+</html>
