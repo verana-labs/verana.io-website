@@ -16,10 +16,10 @@
       <nav id="nav-menu-desktop" class="hidden lg:block w-full lg:w-auto">
         <ul class="lg:flex lg:items-center lg:space-x-6">
           {{ range .Site.Menus.main }}
-            <li class="relative menu-parent">
+            <li class="relative menu-parent lg:pb-2">
               <a class="block px-3 py-2 rounded hover:bg-slate-100" href="{{ .URL }}">{{ .Name }}</a>
               {{ if .HasChildren }}
-                <ul class="menu-children hidden absolute lg:min-w-[14rem] lg:mt-1 lg:bg-white lg:shadow lg:rounded lg:border lg:border-slate-200">
+                <ul class="menu-children hidden absolute lg:left-0 lg:top-full lg:min-w-[14rem] lg:bg-white lg:shadow lg:rounded lg:border lg:border-slate-200 lg:py-1 lg:z-20">
                   {{ range .Children }}
                     <li><a class="block px-4 py-2 hover:bg-slate-50" href="{{ .URL }}">{{ .Name }}</a></li>
                   {{ end }}

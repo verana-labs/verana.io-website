@@ -11,7 +11,8 @@
     <style>
        
       @media (min-width: 1024px) {
-        .menu-parent:hover .menu-children { display: block; }
+        .menu-parent:hover .menu-children,
+        .menu-parent:focus-within .menu-children { display: block; }
       }
     </style>
     
@@ -62,27 +63,39 @@
       <nav id="nav-menu-desktop" class="hidden lg:block w-full lg:w-auto">
         <ul class="lg:flex lg:items-center lg:space-x-6">
           
-            <li class="relative menu-parent">
+            <li class="relative menu-parent lg:pb-2">
               <a class="block px-3 py-2 rounded hover:bg-slate-100" href="/page/ecosystems">Ecosystems</a>
               
             </li>
           
-            <li class="relative menu-parent">
+            <li class="relative menu-parent lg:pb-2">
               <a class="block px-3 py-2 rounded hover:bg-slate-100" href="/page/verifiable-services">Service Owners</a>
               
             </li>
           
-            <li class="relative menu-parent">
+            <li class="relative menu-parent lg:pb-2">
               <a class="block px-3 py-2 rounded hover:bg-slate-100" href="/page/verifiable-user-agents">App Developers</a>
               
             </li>
           
-            <li class="relative menu-parent">
+            <li class="relative menu-parent lg:pb-2">
               <a class="block px-3 py-2 rounded hover:bg-slate-100" href="/page/trust-engine">Trust Engine</a>
+              
+                <ul class="menu-children hidden absolute lg:left-0 lg:top-full lg:min-w-[14rem] lg:bg-white lg:shadow lg:rounded lg:border lg:border-slate-200 lg:py-1 lg:z-20">
+                  
+                    <li><a class="block px-4 py-2 hover:bg-slate-50" href="/page/trust-engine/trust-resolver">Trust Resolver</a></li>
+                  
+                    <li><a class="block px-4 py-2 hover:bg-slate-50" href="/page/trust-engine/business-models">Business Models</a></li>
+                  
+                    <li><a class="block px-4 py-2 hover:bg-slate-50" href="/page/trust-engine/trust-deposit">Trust Deposit</a></li>
+                  
+                    <li><a class="block px-4 py-2 hover:bg-slate-50" href="/page/trust-engine/trust-reputation">Trust Reputation</a></li>
+                  
+                </ul>
               
             </li>
           
-            <li class="relative menu-parent">
+            <li class="relative menu-parent lg:pb-2">
               <a class="block px-3 py-2 rounded hover:bg-slate-100" href="/page/principles">Principles</a>
               
             </li>
@@ -113,6 +126,18 @@
         <li>
           <a class="block px-3 py-2 rounded hover:bg-slate-100" href="/page/trust-engine">Trust Engine</a>
           
+            <ul class="pl-4 border-l border-slate-200 my-1">
+              
+                <li><a class="block px-3 py-2 rounded hover:bg-slate-100" href="/page/trust-engine/trust-resolver">Trust Resolver</a></li>
+              
+                <li><a class="block px-3 py-2 rounded hover:bg-slate-100" href="/page/trust-engine/business-models">Business Models</a></li>
+              
+                <li><a class="block px-3 py-2 rounded hover:bg-slate-100" href="/page/trust-engine/trust-deposit">Trust Deposit</a></li>
+              
+                <li><a class="block px-3 py-2 rounded hover:bg-slate-100" href="/page/trust-engine/trust-reputation">Trust Reputation</a></li>
+              
+            </ul>
+          
         </li>
       
         <li>
@@ -137,6 +162,11 @@
         </li>
       
         <li class="border border-slate-200 rounded p-4 hover:bg-slate-50">
+          <a class="text-primary-700 font-medium" href="/page/trust-engine/business-models/">Business Models</a>
+          
+        </li>
+      
+        <li class="border border-slate-200 rounded p-4 hover:bg-slate-50">
           <a class="text-primary-700 font-medium" href="/page/ecosystems/">Ecosystems</a>
           
         </li>
@@ -152,7 +182,17 @@
         </li>
       
         <li class="border border-slate-200 rounded p-4 hover:bg-slate-50">
+          <a class="text-primary-700 font-medium" href="/page/trust-engine/trust-deposit/">Trust Deposit</a>
+          
+        </li>
+      
+        <li class="border border-slate-200 rounded p-4 hover:bg-slate-50">
           <a class="text-primary-700 font-medium" href="/page/trust-engine/">Trust Engine</a>
+          
+        </li>
+      
+        <li class="border border-slate-200 rounded p-4 hover:bg-slate-50">
+          <a class="text-primary-700 font-medium" href="/page/trust-engine/trust-reputation/">Trust Reputation</a>
           
         </li>
       

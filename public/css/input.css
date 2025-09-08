@@ -1375,8 +1375,16 @@ video {
 
 @media (min-width: 1024px) {
 
-  .lg\:mt-1 {
-    margin-top: 0.25rem;
+  .lg\:left-0 {
+    left: 0px;
+  }
+
+  .lg\:top-full {
+    top: 100%;
+  }
+
+  .lg\:z-20 {
+    z-index: 20;
   }
 
   .lg\:block {
@@ -1430,6 +1438,15 @@ video {
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .lg\:py-1 {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .lg\:pb-2 {
+    padding-bottom: 0.5rem;
   }
 
   .lg\:shadow {

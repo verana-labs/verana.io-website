@@ -43,8 +43,25 @@ menu:
       url: "/page/verifiable-user-agents"
       weight: 30
     - name: "Trust Engine"
+      identifier: "trust-engine"
       url: "/page/trust-engine"
       weight: 40
+    - name: "Trust Resolver"
+      parent: "trust-engine"
+      url: "/page/trust-engine/trust-resolver"
+      weight: 41
+    - name: "Business Models"
+      parent: "trust-engine"
+      url: "/page/trust-engine/business-models"
+      weight: 42
+    - name: "Trust Deposit"
+      parent: "trust-engine"
+      url: "/page/trust-engine/trust-deposit"
+      weight: 43
+    - name: "Trust Reputation"
+      parent: "trust-engine"
+      url: "/page/trust-engine/trust-reputation"
+      weight: 44
     - name: "Principles"
       url: "/page/principles"
       weight: 50
@@ -54,5 +71,4 @@ outputs:
 
 taxonomies: {}
 disableKinds: ["home", "RSS"]
-
 

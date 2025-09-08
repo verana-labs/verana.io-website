@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="{{ $css.RelPermalink }}" />
     {{ block "head" . }}{{ end }}
     <style>
-      /* Basic styles for dropdown handling when using hover on desktop */
+      /* Basic styles for dropdown handling when using hover/focus on desktop */
       @media (min-width: 1024px) {
-        .menu-parent:hover .menu-children { display: block; }
+        .menu-parent:hover .menu-children,
+        .menu-parent:focus-within .menu-children { display: block; }
       }
     </style>
     

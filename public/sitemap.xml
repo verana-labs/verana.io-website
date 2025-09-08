@@ -5,6 +5,9 @@
     <loc>//localhost:1313/page/verifiable-user-agents/</loc>
     <lastmod>2025-09-01T00:00:00+02:00</lastmod>
   </url><url>
+    <loc>//localhost:1313/page/trust-engine/business-models/</loc>
+    <lastmod>2025-09-01T00:00:00+02:00</lastmod>
+  </url><url>
     <loc>//localhost:1313/page/ecosystems/</loc>
     <lastmod>2025-09-01T00:00:00+02:00</lastmod>
   </url><url>
@@ -14,7 +17,13 @@
     <loc>//localhost:1313/page/verifiable-services/</loc>
     <lastmod>2025-09-01T00:00:00+02:00</lastmod>
   </url><url>
+    <loc>//localhost:1313/page/trust-engine/trust-deposit/</loc>
+    <lastmod>2025-09-01T00:00:00+02:00</lastmod>
+  </url><url>
     <loc>//localhost:1313/page/trust-engine/</loc>
+    <lastmod>2025-09-01T00:00:00+02:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/page/trust-engine/trust-reputation/</loc>
     <lastmod>2025-09-01T00:00:00+02:00</lastmod>
   </url><url>
     <loc>//localhost:1313/page/trust-engine/trust-resolver/</loc>
