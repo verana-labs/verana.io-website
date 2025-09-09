@@ -1,0 +1,48 @@
+{{/*
+  Shortcode: img
+  Usage examples:
+    {{< img url="/images/example.png" >}}
+    {{< img url="/images/example.png" align="center" >}}
+    {{< img url="/images/example.png" floating="right" maxWidth="320px" border="1px solid #555555" >}}
+
+  Params:
+    - url: image URL (relative or absolute)
+    - floating: left|right (optional) -> applies CSS float
+    - maxWidth: e.g., "320px" or "20rem" (optional)
+    - border: e.g., "1px solid #555555" (optional)
+    - align: left|center|right (optional; defaults to left) -> wrapper text alignment
+    - alt: alternative text (optional)
+*/}}
+{{ $src := or (.Get "url") (.Get "src") }}
+{{ if not $src }}{{ errorf "img shortcode requires url param" }}{{ end }}
+{{ $alt := default "" (.Get "alt") }}
+{{ $floating := .Get "floating" }}
+{{ $maxw := .Get "maxWidth" }}
+{{/* Normalize numeric maxWidth to px if no unit provided */}}
+{{ if $maxw }}
+  {{ $mw := printf "%v" $maxw }}
+  {{ if findRE `^[0-9]+(\.[0-9]+)?$` $mw }}
+    {{ $maxw = printf "%spx" $mw }}
+  {{ end }}
+{{ end }}
+{{ $border := .Get "border" }}
+{{ $align := lower (default "left" (.Get "align")) }}
+
+{{/* Build wrapper alignment class */}}
+{{ $alignClass := "text-left" }}
+{{ if eq $align "center" }}{{ $alignClass = "text-center" }}{{ else if eq $align "right" }}{{ $alignClass = "text-right" }}{{ end }}
+
+{{/* Build inline style for the image */}}
+{{ $styles := slice "height:auto" }}
+{{ if $maxw }}
+  {{ $styles = $styles | append (printf "max-width:%s" $maxw) }}
+  {{ $styles = $styles | append (printf "width:%s" $maxw) }}
+{{ end }}
+{{ if $border }}{{ $styles = $styles | append (printf "border:%s" $border) }}{{ end }}
+{{ if $floating }}{{ $styles = $styles | append (printf "float:%s" $floating) }}{{ end }}
+{{ $styleAttr := (delimit $styles "; ") | printf "%s;" }}
+
+<div class="w-full {{ $alignClass }} my-4">
+  <img src="{{ $src }}" alt="{{ $alt }}" class="inline-block max-w-full h-auto" style="{{ $styleAttr | safeCSS }}">
+  {{/* Note: safeCSS is required to avoid Go's sanitizer outputting ZgotmplZ in style attributes. */}}
+</div>

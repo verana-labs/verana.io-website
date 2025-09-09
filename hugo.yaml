@@ -41,6 +41,8 @@ params:
         items:
           - label: "Discord"
             url: "https://discord.gg/edjaFn252q"
+          - label: "X"
+            url: "https://x.com/Verana_io"
           - label: "Linkedin"
             url: "https://www.linkedin.com/company/verana-verifiable-trust-network"
           - label: "Visual Identity"
@@ -60,8 +62,17 @@ params:
 menu:
   main:
     - name: "Ecosystems"
+      identifier: "ecosystems"
       url: "/page/ecosystems"
       weight: 10
+    - name: "Government Verifiable Citizen ID"
+      parent: "ecosystems"
+      url: "/page/ecosystems/government-id"
+      weight: 12
+    - name: "Healthcare Workforce Mobility"
+      parent: "ecosystems"
+      url: "/page/ecosystems/healthcare-workforce-mobility"
+      weight: 14
     - name: "Service Owners"
       url: "/page/verifiable-services"
       weight: 20
