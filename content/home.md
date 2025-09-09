@@ -29,14 +29,14 @@ Anyone can register a **Verifiable Service** in the **Verifiable Service Directo
 
 Verifiable User Agents (VUAs) are a new category of applications that **aggregate and interact with decentralized Verifiable Services (VSs)**. Instead of relying on centralized APIs or walled-garden platforms, these apps query the **Verana Trust Resolver**, making any compatible Verifiable Service instantly visible and usable.
 
-## Verana is an Infrastructure, Not a Platform
+## Own the Rails of your Infrastructure
 
 Verana is **public digital infrastructure**, built to be open, decentralized, and free from vendor lock-in.  
-It is not a subscription service or a platform you must depend on—it is technology anyone can run, extend, and govern.  
+It is not a subscription service or a platform you must depend on - it is technology anyone can run, extend, and govern.  
 
 - 🌍 **Open and accessible**: free and open source, available for anyone to use.  
 - 🔗 **Decentralized by design**: no single operator, no central point of control.  
 - 🛡️ **Neutral and flexible**: works with any wallet, any credential format, any identity method.  
 - 🤝 **Sovereign by default**: ecosystems, organizations, and individuals remain fully in control of their trust networks and data.  
 
-With Verana, you don’t “sign up” to a platform—you **own the rails** of your digital trust infrastructure.
+With Verana, you don’t “sign up” to a platform - you **own the rails** of your digital trust infrastructure.

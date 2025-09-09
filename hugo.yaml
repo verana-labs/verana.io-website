@@ -14,11 +14,37 @@ params:
   footer:
     company: "Verana Foundation"
     year: 2025
-    links:
-      - label: "Privacy"
-        url: "/page/principles"
-      - label: "Docs"
-        url: "https://docs.verana.io"
+    columns:
+      - title: "Verana"
+        items:
+          - label: "Principles"
+            url: "/page/principles"
+          - label: "Foundation"
+            url: "https://verana.foundation"
+          - label: "Press"
+            url: "/page/press"
+      - title: "Developers"
+        items:
+          - label: "Docs"
+            url: "https://docs.verana.io"
+          - label: "Github"
+            url: "https://github.com/verana-labs/"
+      - title: "Specifications"
+        items:
+          - label: "Verifiable Trust Spec"
+            url: "https://verana-labs.github.io/verifiable-trust-spec/"
+          - label: "Verifiable Public Registry Spec"
+            url: "https://verana-labs.github.io/verifiable-trust-vpr-spec/"
+          - label: "Trust Registry Query Protocol"
+            url: "https://trustoverip.github.io/tswg-trust-registry-protocol/"
+      - title: "Community"
+        items:
+          - label: "Discord"
+            url: "https://discord.gg/edjaFn252q"
+          - label: "Linkedin"
+            url: "https://www.linkedin.com/company/verana-verifiable-trust-network"
+          - label: "Visual Identity"
+            url: "/page/identity"
 
   fonts:
     family: "Kantumruy Pro"
@@ -71,4 +97,3 @@ outputs:
 
 taxonomies: {}
 disableKinds: ["home", "RSS"]
-
