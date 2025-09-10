@@ -1,0 +1,27 @@
+{{- $ctx := . }}
+{{- if not $ctx.type }}
+  {{- errorf "[github.com/hugomods/kroki] %s" "no diagram type specified" }}
+{{- end }}
+{{- $type := $ctx.type | lower }}
+{{- $body := $ctx.source }}
+{{- $cacheKey := printf "kroki-%s-%s" $type ($body | md5) }}
+{{- $opts := dict
+  "key" $cacheKey
+  "method" "post"
+  "body" $body
+  "headers" (dict "Content-Type" "text/plain")
+}}
+{{- $url := printf "%s/%s/svg" (strings.TrimSuffix "/" site.Params.kroki.endpoint) $type }}
+{{- $resp := try (resources.GetRemote $url $opts) }}
+{{- with $resp }}
+  {{- with .Err }}
+    {{- $err := . }}
+    {{- with .Data.Body }}
+      {{- $err = . }}
+    {{- end }}
+    {{- errorf "[github.com/hugomods/kroki] unable to generate diagrams from %q: %s.\n%s" $url $err $body }}
+  {{- end }}
+{{- else }}
+  {{- errorf "[github.com/hugomods/kroki] unable to generate diagrams from %q.\n%s" $url $body }}
+{{- end }}
+{{- return $resp.Value }}

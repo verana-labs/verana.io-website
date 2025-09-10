@@ -1,10 +1,6 @@
 ---
-title: App Developers
-url: "/page/verifiable-user-agents"
-date: 2025-09-01T00:00:00+02:00
-weight: 15
-subtitle: "Create the Next Generation of Browsers: the Verifiable User Agents"
-comments: false
+title: App Developers Build a Verifiable User Agent
+url: "/page/build/verifiable-user-agents"
 ---
 
 ### Create the Next Generation of Browsers: Verifiable User Agents

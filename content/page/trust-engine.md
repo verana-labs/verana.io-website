@@ -1,10 +1,6 @@
 ---
 title: Trust Engine
 url: "/page/trust-engine"
-date: 2025-09-01T00:00:00+02:00
-weight: 15
-subtitle: The Engine of Trust, or How Verana Works
-comments: false
 ---
 
 Verana is public digital infrastructure that guarantees trust and integrity through its fundamental mechanisms:
@@ -14,12 +10,6 @@ Verana is public digital infrastructure that guarantees trust and integrity thro
  This is the yellow pages of verifiable data, cryptographically guaranteed. It enables advanced trust-based queries, ensuring that search results are based solely on verifiable data contained in verifiable credentials, not arbitrary or opaque ranking algorithms. This fundamentally disrupts today’s economy of advertising-driven visibility and replaces it with a decentralized economy of trust, where businesses and individuals compete on trust and authenticity, not ad budgets. The result is a public, verifiable database of claims, open and searchable by anyone, that shifts value from centralized intermediaries to decentralized ecosystems.
 
 {{<cta text="Learn more" page="/page/trust-engine/trust-resolver" align="right">}}
-
-## Privacy-Preserving Business Models
-
-Verana empowers ecosystems to design and enforce privacy-preserving business models built on Verifiable Credentials. These models define who pays, when, and how rewards are distributed among participants, ensuring fairness and transparency without exposing sensitive data. A percentage of all fees is automatically distributed to Verifiable User Agents (VUAs), ensuring wallets, apps, and browsers that power user adoption are rewarded too.
-
-{{<cta text="Learn more" page="/page/trust-engine/business-models" align="right">}}
 
 ## Trust Deposit
 

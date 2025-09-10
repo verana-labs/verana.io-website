@@ -1,10 +1,6 @@
 ---
-title: Ecosystems
-url: "/page/ecosystems"
-date: 2025-09-01T00:00:00+02:00
-weight: 15
-subtitle: Ecosystems Use Verana to Build Their Own Trust Networks
-comments: false
+title: Build your Trust Network
+url: "/page/build/trust-networks"
 ---
 
 ## Ecosystems Use Verana to Build Their Own Trust Networks

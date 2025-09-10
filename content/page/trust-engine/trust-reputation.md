@@ -1,10 +1,6 @@
 ---
 title: Trust Reputation
 url: "/page/trust-engine/trust-reputation"
-date: 2025-09-01T00:00:00+02:00
-weight: 15
-subtitle: The Engine of Trust, or How Verana Works
-comments: false
 ---
 
 ## Trust Reputation

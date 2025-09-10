@@ -2,48 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:1313/page/ecosystems/healthcare-workforce-mobility/</loc>
-    <lastmod>2025-09-01T00:00:00+02:00</lastmod>
+    <loc>//localhost:1313/page/industry-use-cases/decentralized-social-network/</loc>
   </url><url>
-    <loc>//localhost:1313/page/verifiable-user-agents/</loc>
-    <lastmod>2025-09-01T00:00:00+02:00</lastmod>
+    <loc>//localhost:1313/page/industry-use-cases/healthcare-workforce-mobility/</loc>
   </url><url>
-    <loc>//localhost:1313/page/trust-engine/business-models/</loc>
-    <lastmod>2025-09-01T00:00:00+02:00</lastmod>
+    <loc>//localhost:1313/page/industry-use-cases/hotel-management/</loc>
   </url><url>
-    <loc>//localhost:1313/page/ecosystems/</loc>
-    <lastmod>2025-09-01T00:00:00+02:00</lastmod>
+    <loc>//localhost:1313/page/build/verifiable-user-agents/</loc>
   </url><url>
-    <loc>//localhost:1313/page/ecosystems/government-id/</loc>
-    <lastmod>2025-09-01T00:00:00+02:00</lastmod>
+    <loc>//localhost:1313/page/build/verifiable-services/</loc>
+  </url><url>
+    <loc>//localhost:1313/page/build/trust-networks/</loc>
+  </url><url>
+    <loc>//localhost:1313/page/build/business-models/</loc>
+  </url><url>
+    <loc>//localhost:1313/page/industry-use-cases/government-id/</loc>
   </url><url>
     <loc>//localhost:1313/page/identity/</loc>
-    <lastmod>2025-09-01T00:00:00+02:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/page/press/</loc>
-    <lastmod>2025-09-01T00:00:00+02:00</lastmod>
+    <loc>//localhost:1313/page/industry-use-cases/</loc>
   </url><url>
-    <loc>//localhost:1313/page/principles/</loc>
-    <lastmod>2025-09-01T00:00:00+02:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/page/verifiable-services/</loc>
-    <lastmod>2025-09-01T00:00:00+02:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/page/trust-engine/trust-deposit/</loc>
-    <lastmod>2025-09-01T00:00:00+02:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/page/trust-engine/</loc>
-    <lastmod>2025-09-01T00:00:00+02:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/page/trust-engine/trust-reputation/</loc>
-    <lastmod>2025-09-01T00:00:00+02:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/page/trust-engine/trust-resolver/</loc>
-    <lastmod>2025-09-01T00:00:00+02:00</lastmod>
+    <loc>//localhost:1313/page/build/</loc>
   </url><url>
     <loc>//localhost:1313/page/</loc>
-    <lastmod>2025-09-01T00:00:00+02:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/page/press/</loc>
+  </url><url>
+    <loc>//localhost:1313/page/principles/</loc>
   </url><url>
     <loc>//localhost:1313/</loc>
+  </url><url>
+    <loc>//localhost:1313/page/trust-engine/trust-deposit/</loc>
+  </url><url>
+    <loc>//localhost:1313/page/trust-engine/</loc>
+  </url><url>
+    <loc>//localhost:1313/page/trust-engine/trust-reputation/</loc>
+  </url><url>
+    <loc>//localhost:1313/page/trust-engine/trust-resolver/</loc>
+  </url><url>
+    <loc>//localhost:1313/page/industry-use-cases/verifiable-ai/</loc>
   </url>
 </urlset>

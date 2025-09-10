@@ -1,9 +1,6 @@
 ---
 title: 🆔 Government Digital ID
-url: "/page/ecosystems/government-id"
-date: 2025-09-01T00:00:00+02:00
-weight: 15
-comments: false
+url: "/page/industry-use-cases/government-id"
 ---
 
 Verana provides governments with the infrastructure to issue **privacy-preserving, verifiable, decentralized Digital IDs** that empower citizens while maintaining national sovereignty over identity systems.  

@@ -1,10 +1,6 @@
 ---
 title: Principles
 url: "/page/principles"
-date: 2025-09-01T00:00:00+02:00
-weight: 15
-subtitle: An Infrastructure, not a Platform
-comments: false
 ---
 
 ## Our Philosophy: Infrastructure, Not a Platform

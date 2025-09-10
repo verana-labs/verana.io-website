@@ -1,9 +1,6 @@
 ---
 title: 🏥 Healthcare Workforce Mobility
-url: "/page/ecosystems/healthcare-workforce-mobility"
-date: 2025-09-01T00:00:00+02:00
-weight: 15
-comments: false
+url: "/page/industry-use-cases/healthcare-workforce-mobility"
 ---
 
 ## The Problem: Fragmented Verification
@@ -59,7 +56,7 @@ When a healthcare professional arrives at a new hospital:
 3. The hospital verifies them instantly.  
 4. No repeated onboarding, no paper-based checks, no delays.  
 
-```plantuml
+{{< kroki _type="plantuml" >}}
 @startuml
 ' === Verana Palette ===
 !define BRAND_MAGENTA #9D2A6D
@@ -109,7 +106,7 @@ Hosp --> Holder : Grants access to work / perform tasks
 Gov -down-> VPR : Publishes\nGovernance Framework
 VPR -up-> Gov : Enforces rules,\nrevokes or updates permissions
 @enduml
-```
+{{< /kroki >}}
 
 ### Business Models and Incentives
 
@@ -127,7 +124,7 @@ VPR -up-> Gov : Enforces rules,\nrevokes or updates permissions
 
 ## Conclusion
 
-By adopting Verana, governments can transform healthcare workforce mobility from a **fragmented, manual process** into a **seamless, trusted, and privacy-preserving system**.  
+By building on the Verana Infrastructure, governments can transform healthcare workforce mobility from a **fragmented, manual process** into a **seamless, trusted, and privacy-preserving system**.  
 
 Healthcare workers are verified once, and that verification is valid everywhere. This approach reduces costs, eliminates redundancy, improves patient safety, and strengthens trust in the healthcare system.  
 

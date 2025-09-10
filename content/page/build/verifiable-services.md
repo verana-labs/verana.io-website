@@ -1,10 +1,6 @@
 ---
-title: Service Owners
-url: "/page/verifiable-services"
-date: 2025-09-01T00:00:00+02:00
-weight: 15
-subtitle: "Where Organizations and Individuals Truly Own Their Digital Services"
-comments: false
+title: Build a Verifiable Service that you Own
+url: "/page/build/verifiable-services"
 ---
 
 ### Organizations and Individuals: Truly Own Your Digital Services

@@ -1,10 +1,6 @@
 ---
 title: Trust Resolver
 url: "/page/trust-engine/trust-resolver"
-date: 2025-09-01T00:00:00+02:00
-weight: 15
-subtitle: The Engine of Trust, or How Verana Works
-comments: false
 ---
 
 ## The Verifiable Service Directory and the Trust Resolver
