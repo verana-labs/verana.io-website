@@ -1,5 +1,5 @@
 ---
-title: Build your Trust Network
+title: Build or Join a Trust Network
 url: "/page/build/trust-networks"
 ---
 

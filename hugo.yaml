@@ -71,15 +71,19 @@ params:
 
 menu:
   main:
-    - name: "Principles"
-      url: "/page/principles"
-      weight: 1
-
     - name: "Own the Rails"
       identifier: "build"
       url: "/page/build"
       weight: 20
-    - name: "Build a Trust Network"
+    - name: "Principles"
+      parent: "build"
+      url: "/page/build"
+      weight: 25
+    - name: "Infrastructure"
+      parent: "build"
+      url: "/page/build/infrastructure"
+      weight: 27
+    - name: "Build or Join a Trust Network"
       parent: "build"
       url: "/page/build/trust-networks"
       weight: 30
@@ -91,7 +95,7 @@ menu:
       parent: "build"
       url: "/page/build/verifiable-user-agents"
       weight: 50
-    - name: "Enforce Business Models"
+    - name: "Enable Business Models"
       parent: "build"
       url: "/page/build/business-models"
       weight: 60

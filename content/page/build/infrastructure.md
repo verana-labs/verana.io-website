@@ -1,6 +1,6 @@
 ---
-title: Principles
-url: "/page/principles"
+title: Infrastructure
+url: "/page/build/infrastructure"
 ---
 
 ## Our Philosophy: Infrastructure, Not a Platform
