@@ -1,6 +1,6 @@
 ---
 title: Roadmap
-url: "/page/roadmap"
+url: "/page/about/roadmap"
 ---
 
 ## Roadmap

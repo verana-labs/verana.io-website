@@ -16,6 +16,8 @@
   </url><url>
     <loc>//localhost:1313/page/build/business-models/</loc>
   </url><url>
+    <loc>//localhost:1313/page/community/developers/</loc>
+  </url><url>
     <loc>//localhost:1313/page/industry-use-cases/government-id/</loc>
   </url><url>
     <loc>//localhost:1313/page/identity/</loc>
@@ -24,13 +26,17 @@
   </url><url>
     <loc>//localhost:1313/page/build/infrastructure/</loc>
   </url><url>
+    <loc>//localhost:1313/page/community/integrators/</loc>
+  </url><url>
     <loc>//localhost:1313/page/build/</loc>
   </url><url>
     <loc>//localhost:1313/page/</loc>
   </url><url>
     <loc>//localhost:1313/page/press/</loc>
   </url><url>
-    <loc>//localhost:1313/page/roadmap/</loc>
+    <loc>//localhost:1313/page/about/roadmap/</loc>
+  </url><url>
+    <loc>//localhost:1313/page/about/team/</loc>
   </url><url>
     <loc>//localhost:1313/</loc>
   </url><url>

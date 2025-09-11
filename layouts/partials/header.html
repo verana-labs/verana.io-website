@@ -15,17 +15,33 @@
       </button>
       <nav id="nav-menu-desktop" class="hidden lg:block w-full lg:w-auto">
         <ul class="lg:flex lg:items-center lg:space-x-6">
-          {{ range .Site.Menus.main }}
-            <li class="relative menu-parent lg:pb-2">
-              <a class="block px-3 py-2 rounded hover:bg-slate-100" href="{{ .URL }}">{{ .Name }}</a>
-              {{ if .HasChildren }}
-                <ul class="menu-children hidden absolute lg:left-0 lg:top-full lg:min-w-[14rem] lg:bg-white lg:shadow lg:rounded lg:border lg:border-slate-200 lg:py-1 lg:z-20">
-                  {{ range .Children }}
-                    <li><a class="block px-4 py-2 hover:bg-slate-50" href="{{ .URL }}">{{ .Name }}</a></li>
-                  {{ end }}
-                </ul>
-              {{ end }}
-            </li>
+          {{ $custom := .Site.Params.nav.main }}
+          {{ if $custom }}
+            {{ range $item := $custom }}
+              <li class="relative menu-parent lg:pb-2">
+                <a class="block px-3 py-2 rounded hover:bg-slate-100" href="{{ $item.url }}">{{ $item.title }}</a>
+                {{ with $item.children }}
+                  <ul class="menu-children hidden absolute lg:left-0 lg:top-full lg:min-w-[14rem] lg:bg-white lg:shadow lg:rounded lg:border lg:border-slate-200 lg:py-1 lg:z-20">
+                    {{ range . }}
+                      <li><a class="block px-4 py-2 hover:bg-slate-50" href="{{ .url }}">{{ .title }}</a></li>
+                    {{ end }}
+                  </ul>
+                {{ end }}
+              </li>
+            {{ end }}
+          {{ else }}
+            {{ range .Site.Menus.main }}
+              <li class="relative menu-parent lg:pb-2">
+                <a class="block px-3 py-2 rounded hover:bg-slate-100" href="{{ .URL }}">{{ .Name }}</a>
+                {{ if .HasChildren }}
+                  <ul class="menu-children hidden absolute lg:left-0 lg:top-full lg:min-w-[14rem] lg:bg-white lg:shadow lg:rounded lg:border lg:border-slate-200 lg:py-1 lg:z-20">
+                    {{ range .Children }}
+                      <li><a class="block px-4 py-2 hover:bg-slate-50" href="{{ .URL }}">{{ .Name }}</a></li>
+                    {{ end }}
+                  </ul>
+                {{ end }}
+              </li>
+            {{ end }}
           {{ end }}
         </ul>
       </nav>
@@ -34,17 +50,33 @@
   <!-- Mobile expanded menu -->
   <div id="nav-menu-mobile" class="lg:hidden hidden border-t border-slate-200">
     <ul class="px-4 py-2 space-y-1">
-      {{ range .Site.Menus.main }}
-        <li>
-          <a class="block px-3 py-2 rounded hover:bg-slate-100" href="{{ .URL }}">{{ .Name }}</a>
-          {{ if .HasChildren }}
-            <ul class="pl-4 border-l border-slate-200 my-1">
-              {{ range .Children }}
-                <li><a class="block px-3 py-2 rounded hover:bg-slate-100" href="{{ .URL }}">{{ .Name }}</a></li>
-              {{ end }}
-            </ul>
-          {{ end }}
-        </li>
+      {{ $custom := .Site.Params.nav.main }}
+      {{ if $custom }}
+        {{ range $item := $custom }}
+          <li>
+            <a class="block px-3 py-2 rounded hover:bg-slate-100" href="{{ $item.url }}">{{ $item.title }}</a>
+            {{ with $item.children }}
+              <ul class="pl-4 border-l border-slate-200 my-1">
+                {{ range . }}
+                  <li><a class="block px-3 py-2 rounded hover:bg-slate-100" href="{{ .url }}">{{ .title }}</a></li>
+                {{ end }}
+              </ul>
+            {{ end }}
+          </li>
+        {{ end }}
+      {{ else }}
+        {{ range .Site.Menus.main }}
+          <li>
+            <a class="block px-3 py-2 rounded hover:bg-slate-100" href="{{ .URL }}">{{ .Name }}</a>
+            {{ if .HasChildren }}
+              <ul class="pl-4 border-l border-slate-200 my-1">
+                {{ range .Children }}
+                  <li><a class="block px-3 py-2 rounded hover:bg-slate-100" href="{{ .URL }}">{{ .Name }}</a></li>
+                {{ end }}
+              </ul>
+            {{ end }}
+          </li>
+        {{ end }}
       {{ end }}
     </ul>
   </div>
