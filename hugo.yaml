@@ -127,16 +127,16 @@ params:
             url: "/page/about/roadmap"
           - title: "Foundation"
             url: "https://verana.foundation"
-      - title: "Testnet"
-        children:
-          - title: "App"
-            url: "https://app.testnet.verana.network"
-          - title: "Chain Explorer"
-            url: "https://explorer.testnet.verana.network/"
-          - title: "Purple Pages"
-            url: "/"
-          - title: "Statistics"
-            url: "/"
+#      - title: "Testnet"
+#        children:
+#          - title: "App"
+#            url: "https://app.testnet.verana.network"
+#          - title: "Chain Explorer"
+#            url: "https://explorer.testnet.verana.network/"
+#          - title: "Purple Pages"
+#            url: "/"
+#          - title: "Statistics"
+#            url: "/"
          
 
 menu:
