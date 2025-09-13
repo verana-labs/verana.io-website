@@ -55,7 +55,7 @@ From this point on, Alice’s AI Assistant is **automatically discoverable** thr
 - 🔍 Inside the **Hologram Messaging App**, by searching her name, claims (e.g., first name, last name), or her agent’s service name.
 - 🌐 Through a **search-engine-style interface**, scanning the full database of verifiable services.
 
-## Example #2: Bob's Ecommerce
+## Example #2: Bob's E-commerce
 
 Bob built an e-commerce business to serve a niche market: **children’s shoes**.  
 For his online shop, he chose [Medusa](https://medusajs.com/) as the platform.  

@@ -14,6 +14,17 @@
         .menu-parent:hover .menu-children,
         .menu-parent:focus-within .menu-children { display: block; }
       }
+       
+      .heading-anchor-btn { opacity: 0; display: inline-flex; align-items: center; gap: 0.25rem; margin-left: 0.5rem; color: #64748b; background: transparent; border: 0; cursor: pointer; }
+      .heading-anchor-btn:hover { color: #4f46e5; }
+      .prose h2:hover .heading-anchor-btn,
+      .prose h3:hover .heading-anchor-btn,
+      .prose h4:hover .heading-anchor-btn,
+      .prose h5:hover .heading-anchor-btn,
+      .prose h6:hover .heading-anchor-btn { opacity: 1; }
+       
+      :root { --header-offset: 72px; }
+      .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 { scroll-margin-top: var(--header-offset); }
     </style>
     
     
@@ -505,6 +516,68 @@
           menu.classList.toggle('hidden');
         });
       }
+      
+      (function(){
+        function slugify(text){
+          return text.toString().toLowerCase()
+            .replace(/\s+/g,'-')
+            .replace(/[^\w\-]+/g,'')
+            .replace(/\-\-+/g,'-')
+            .replace(/^-+/, '')
+            .replace(/-+$/, '');
+        }
+        const selector = '.prose h2, .prose h3, .prose h4, .prose h5, .prose h6';
+        document.querySelectorAll(selector).forEach(h => {
+          let id = h.id;
+          if (!id) { id = slugify(h.textContent || ''); h.id = id; }
+          if (!id) return;
+          
+          if (h.querySelector('.heading-anchor-btn')) return;
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'heading-anchor-btn';
+          btn.setAttribute('aria-label','Link to section');
+          btn.textContent = '#';
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            if (history.replaceState) {
+              history.replaceState(null, '', `#${id}`);
+            } else {
+              location.hash = `#${id}`;
+            }
+            
+            scrollToHash(`#${id}`);
+          });
+          h.appendChild(btn);
+        });
+        
+        function updateHeaderOffset(){
+          const header = document.querySelector('header');
+          if (!header) return parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-offset')) || 72;
+          const extra = 8; 
+          const off = header.offsetHeight + extra;
+          document.documentElement.style.setProperty('--header-offset', off + 'px');
+          return off;
+        }
+        function scrollToHash(hash){
+          if (!hash) return;
+          const id = hash.replace(/^#/, '');
+          const el = document.getElementById(id);
+          if (!el) return;
+          const off = updateHeaderOffset();
+          const top = el.getBoundingClientRect().top + window.scrollY - off;
+          window.scrollTo({ top, behavior: 'instant' in window ? 'instant' : 'auto' });
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+          updateHeaderOffset();
+          if (location.hash) {
+            
+            setTimeout(() => scrollToHash(location.hash), 0);
+          }
+        });
+        window.addEventListener('hashchange', () => scrollToHash(location.hash));
+      })();
     </script>
   </body>
   </html>
