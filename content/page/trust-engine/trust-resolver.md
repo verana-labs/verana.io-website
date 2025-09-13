@@ -3,7 +3,15 @@ title: Trust Resolver
 url: "/page/trust-engine/trust-resolver"
 ---
 
-## The Verifiable Service Directory and the Trust Resolver
+The internet today is built on **implicit trust**: users rely on search engines, platforms, and intermediaries to decide what is visible and who can be trusted.  
+This model is opaque, advertising-driven, and often unsafe.  
+
+The **Verana Trust Resolver** offers a new approach: a **public, decentralized index of verifiable services**.  
+Instead of paid rankings or hidden algorithms, discoverability is based solely on **cryptographically verified credentials** issued by trusted ecosystems.  
+
+In short: the Trust Resolver is the **search engine of verifiable trust**, open, transparent, and free from centralized control.  
+
+## How it Works
 
 Anyone can register a **Verifiable Service** in the **Verifiable Service Directory**. Once registered, services are automatically crawled, their credentials dereferenced and verified, and then indexed in the **Verana Trust Resolver**. Think of it as the **yellow pages of verifiable data**, but cryptographically guaranteed.
 
