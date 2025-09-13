@@ -1,0 +1,14 @@
+# Hedera Council–Related Legal Documents
+
+| Document | Description | URL |
+|---|---|---|
+| Fifth Amended & Restated LLC Agreement of Hedera Hashgraph, LLC (Apr 9, 2025) | Core governing contract defining the Council, one-member-one-vote rules, committees, and policy framework; includes Schedules and Exhibits A–D. | https://hederacouncil.org/Clean%20%28FINAL%29%202025-04-09%20-%20Hedera%205th%20A%26R%20LLC%20Agreement%20%28with%20exhibits%20as%20of%206-5-2025%29.docx.pdf |
+| Exhibit A — Governing Member Joinder Agreement (form) | Form used to admit a new Council member; included within the LLC Agreement. | https://hederacouncil.org/Clean%20%28FINAL%29%202025-04-09%20-%20Hedera%205th%20A%26R%20LLC%20Agreement%20%28with%20exhibits%20as%20of%206-5-2025%29.docx.pdf |
+| Exhibit B — Index of Hedera Council Policies | Lists official Council policies (e.g., Antitrust, Election, Node Policy, Transaction Signing, Committee Policy, etc.); included within the LLC Agreement. | https://hederacouncil.org/Clean%20%28FINAL%29%202025-04-09%20-%20Hedera%205th%20A%26R%20LLC%20Agreement%20%28with%20exhibits%20as%20of%206-5-2025%29.docx.pdf |
+| Exhibit C — Indemnification Agreement (form) | Form of indemnification agreement referenced by the LLC Agreement. | https://hederacouncil.org/Clean%20%28FINAL%29%202025-04-09%20-%20Hedera%205th%20A%26R%20LLC%20Agreement%20%28with%20exhibits%20as%20of%206-5-2025%29.docx.pdf |
+| Exhibit D — Undertaking to Repay Indemnification Expenses (form) | Form undertaking for expense advancement; included within the LLC Agreement. | https://hederacouncil.org/Clean%20%28FINAL%29%202025-04-09%20-%20Hedera%205th%20A%26R%20LLC%20Agreement%20%28with%20exhibits%20as%20of%206-5-2025%29.docx.pdf |
+| Membership Committee Charter (MemCom) | Defines purpose, operations, and responsibilities of the Membership Committee. | https://hederacouncil.org/Membership%20Committee%20Charter%20%28app.%202025-04-09%29.docx.pdf |
+| Technical Steering & Product Committee Charter (TechCom) | Charter for the technical governance committee; includes change log and scope. | https://hederacouncil.org/Technical%20Steering%20and%20Product%20Committee%20Charter%20%28app.%202025-04-09%29.docx%20%281%29.pdf |
+| Treasury Management & Coin Economics Committee Charter (CoinCom) | Charter covering treasury management, pricing, and economic incentives. | https://hederacouncil.org/Treasury%20Management%20%26%20Coin%20Economics%20Charter%20%28app.%202025-04-09%29%29.docx.pdf |
+| Network Utilization Committee Charter (UseCom) | Charter for ecosystem/use-case development and adoption forum. | https://hederacouncil.org/Network%20Utilization%20Committee%20Charter%20%28app.%202025-04-09%29.docx.pdf |
+| Council Meeting Minutes (archive) | Public archive of Council meeting minutes documenting votes and decisions. | https://hederacouncil.org/minutes |

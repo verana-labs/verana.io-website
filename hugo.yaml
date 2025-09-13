@@ -125,8 +125,8 @@ params:
             url: "/"
           - title: "Roadmap"
             url: "/page/about/roadmap"
-          - title: "Foundation"
-            url: "https://verana.foundation"
+          - title: "Governance"
+            url: "/page/about/governance"
 #      - title: "Testnet"
 #        children:
 #          - title: "App"

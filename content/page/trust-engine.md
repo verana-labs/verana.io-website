@@ -3,7 +3,7 @@ title: Trust Engine
 url: "/page/trust-engine"
 ---
 
-Verana is public digital infrastructure that guarantees trust and integrity through its fundamental mechanisms:
+Verana is public digital infrastructure that guarantees verifiable trust and integrity through its fundamental trust enforcement engine.
 
 ## Verifiable Service Directory & Trust Resolver
 
