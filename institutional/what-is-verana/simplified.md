@@ -2,6 +2,8 @@
 
 **Verana**: a Trust Layer for the Internet  
 
+> Verana solves three systemic problems holding back the Internet today: trust, ownership, and discovery. These are the pillars of our value proposition. The exact pitch may evolve, but this is the framework guiding how we think about the market opportunity.
+
 ---
 
 ## 1. Making the Internet Trustworthy
