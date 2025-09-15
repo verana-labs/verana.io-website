@@ -5,7 +5,7 @@ url: "/page/about/governance"
 
 ## How Verana Is Governed
 
-Verana is run by a **Council** — a group of trusted, independent organizations from our industry. They don’t own Verana, but they **operate and oversee** the core servers (called “validators”) that keep the network secure and reliable.
+Verana is run by a **Council**: a group of trusted, independent organizations from our industry. They don’t own Verana, but they **operate and oversee** the core servers (called “validators”) that keep the network secure and reliable.
 
 > **Key idea:** Verana uses **Council governance with one-member-one-vote**. It is **not** stake-based or token-holder voting.
 
@@ -70,4 +70,4 @@ Validators serve **multi-year terms**. Changes happen through **proposals and su
 
 ---
 
-**Bottom line:** Verana’s Council model blends **professional stewardship** with **transparent, one-member-one-vote decisions**—so you get a network that’s trustworthy, stable, and built for the long term.
+**Bottom line:** Verana’s Council model blends **professional stewardship** with **transparent, one-member-one-vote decisions**, so you get a network that’s trustworthy, stable, and built for the long term.

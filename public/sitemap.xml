@@ -6,6 +6,8 @@
   </url><url>
     <loc>//localhost:1313/page/industry-use-cases/healthcare-workforce-mobility/</loc>
   </url><url>
+    <loc>//localhost:1313/page/industry-use-cases/healthcare-workforce-mobility/</loc>
+  </url><url>
     <loc>//localhost:1313/page/industry-use-cases/hotel-management/</loc>
   </url><url>
     <loc>//localhost:1313/page/build/verifiable-user-agents/</loc>
@@ -26,9 +28,9 @@
   </url><url>
     <loc>//localhost:1313/page/industry-use-cases/</loc>
   </url><url>
-    <loc>//localhost:1313/page/build/infrastructure/</loc>
-  </url><url>
     <loc>//localhost:1313/page/community/integrators/</loc>
+  </url><url>
+    <loc>//localhost:1313/page/why-verana/trust/</loc>
   </url><url>
     <loc>//localhost:1313/page/build/</loc>
   </url><url>
@@ -38,9 +40,15 @@
   </url><url>
     <loc>//localhost:1313/page/about/roadmap/</loc>
   </url><url>
+    <loc>//localhost:1313/page/why-verana/discovery/</loc>
+  </url><url>
+    <loc>//localhost:1313/page/why-verana/ownership/</loc>
+  </url><url>
     <loc>//localhost:1313/page/about/team/</loc>
   </url><url>
     <loc>//localhost:1313/</loc>
+  </url><url>
+    <loc>//localhost:1313/page/why-verana/</loc>
   </url><url>
     <loc>//localhost:1313/page/trust-engine/trust-deposit/</loc>
   </url><url>
