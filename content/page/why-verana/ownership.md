@@ -17,7 +17,6 @@ The result: vendor lock-in, loss of sovereignty, and a fragile dependency on cen
 {{< kroki _type="plantuml" >}}
 @startuml
 top to bottom direction
-title Problem: Vendor Lock-in
 
 rectangle "Organization / Individual" as Org
 rectangle "Centralized Platform" as Platform
@@ -62,7 +61,6 @@ This migration replaces dependency on centralized vendors with autonomous, verif
 {{< kroki _type="plantuml" >}}
 @startuml
 top to bottom direction
-title Solution: Self-Sovereign Services (Verana)
 
 rectangle "Organization / Individual" as Org
 rectangle "Self-Sovereign Service\n(owned under DID)" as Service

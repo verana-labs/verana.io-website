@@ -5,6 +5,8 @@ url: "/page/industry-use-cases"
 
 ## Exploring Real-World Impact
 
+Add smart contracts
+
 To demonstrate the power of Verana, we’ll dive into several **industry-specific use cases**. These examples illustrate how ecosystems across sectors, from finance to telecom, from AI to government digital ID, can use Verana to build **trustworthy, interoperable, and privacy-first digital services**.
 
 {{< image-cta src="/images/girl-id-card.png" url="/page/industry-use-cases/government-id" title="Government Verifiable Citizen ID" text="Discover how Governments can build a Government Verifiable Citizen ID" >}}

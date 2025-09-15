@@ -1,6 +1,6 @@
 ---
-title: 🏥 Healthcare Workforce Mobility
-url: "/page/industry-use-cases/healthcare-workforce-mobility"
+title: Banking and Direct Payments
+url: "/page/industry-use-cases/payments"
 ---
 
 ## The Problem: Fragmented Verification
