@@ -1,9 +1,7 @@
 ---
-title: Build a Verifiable Service that you Own
+title: Self Sovereign Services
 url: "/page/build/verifiable-services"
 ---
-
-### Organizations and Individuals: Truly Own Your Digital Services
 
 With Verana, anyone, from global organizations to individual creators, can deploy their own Verifiable Service (VS). Unlike centralized platforms, Verifiable Services are self-sovereign, meaning you fully control your data, identity, and audience relationships.
 
@@ -25,6 +23,3 @@ Owning a Verifiable Service means:
 - 💬 Decentralized Messaging & Chatbots: E.g., a customer support chatbot for a mobile operator, verifiable and portable.
 - 🎬 Decentralized Content Delivery Channels: E.g., a film catalog directly published by a studio, with provenance guaranteed.
 - …and many more innovations waiting to be built.
-
-{{< video-cta src="/videos/services.mp4" title="Integrate issuance" text="Plug verifiable credentials into onboarding, access control, and compliance flows with minimal changes." >}}
-

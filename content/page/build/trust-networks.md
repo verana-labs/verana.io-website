@@ -1,24 +1,32 @@
 ---
-title: Build or Join a Trust Network
+title: Trust Networks
 url: "/page/build/trust-networks"
 ---
 
-## Ecosystems Use Verana to Build Their Own Trust Networks
+A digital trust **ecosystem** is an interconnected community of institutions and individuals who share an **ecosystem governance framework** (EGF) and use both technology and human rules to exchange verifiable data in a trustworthy way.
 
-Verana empowers ecosystems, from governments to industries, to establish sovereign, verifiable trust networks that they fully control. Each ecosystem leverages Verana as a trust anchor to define, enforce, and evolve their credential-based governance rules.
+Verana is the **rail system** that **ecosystems** use to build and run their **trust networks**, enforcing the rules they define in their EGF.
 
-### How it Works
+> TODO: rewrite
 
-Each ecosystem defines its governance through a modular trust architecture:
+### Ecosystem Example
+
+In a given country, universities could form the **Utopia University Association** ecosystem. 
+
+They create a governance framework that defines the purpose of the ecosystem, who can join as issuers (universities issuing diploma verifiable credentials), and who can join as verifiers (employers requesting diplomas).
+
+In Verana, this governance is enforced by creating the ecosystem's trust registry, the diploma credential schema, and running validation processes for onboarding participants.
+
+Once onboarded, **universities** can **issue verifiable diplomas**, and **employers** can request them directly from **graduates**, ensuring authenticity, integrity, and trust.
+
+### Creation of an Ecosystem in Verana
+
+Each ecosystem defines its autonomous governance through a modular trust architecture:
 
 - 📜 Ecosystem Governance Framework (EGF): Defines the mission, rules, and policies that govern the ecosystem.
 - 🗂️ Trust Registries: Maintain lists of schemas, authorized issuers, verifiers, and schema operators.
 - 📑 Credential Schemas: Establish standardized formats for **verifiable credentials** (identity, training, licenses, etc.).
 - 🧑‍⚖️ Onboarding & Delegation: Onboard issuers and verifiers directly - or delegate this task to trust registry operators.
-
-### Benefits for Ecosystems
-
-With Verana, ecosystems move beyond centralized control to build **autonomous trust networks**. They gain the tools to self-govern, incentivize participants, and enforce trust at scale, while keeping data ownership and privacy in the hands of individuals and organizations.
 
 ### Who Can Build an Ecosystem?
 
