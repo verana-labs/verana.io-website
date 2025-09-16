@@ -5,6 +5,8 @@ url: "/page/build/verifiable-services"
 
 With Verana, anyone, from global organizations to individual creators, can deploy their own Verifiable Service (VS). Unlike centralized platforms, Verifiable Services are self-sovereign, meaning you fully control your data, identity, and audience relationships.
 
+> TODO: rewrite
+
 ### Why Verifiable Services Matter
 
 Owning a Verifiable Service means:

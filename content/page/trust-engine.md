@@ -29,4 +29,4 @@ Built from deposits, activity, and governance history, it helps anyone know **wh
 
 {{<cta text="Learn more" page="/page/trust-engine/trust-reputation" align="right">}}
 
-{{< image-cta src="/images/engine.jpg" title="Resolve and verify" text="Policies, registries, and cryptographic checks provide consistent, transparent outcomes across domains." >}}
+{{< image-cta src="/images/engine.jpg" title="Test" text="Policies, registries, and cryptographic checks provide consistent, transparent outcomes across domains." >}}
