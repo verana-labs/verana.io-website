@@ -23,9 +23,9 @@ Ecosystems - like governments, industries, or associations - can use Verana to c
 
 {{<cta text="Learn more" page="/page/build/trust-networks" align="right">}}
 
-### Self Sovereign Verifiable Services
+### Discoverable Self Sovereign Verifiable Services
 
-Organizations and individuals can launch their own **Verifiable Services**: digital services they fully own and control. From AI agents to social channels to e-commerce, these services are portable, provable, and free from the risk of deplatforming or lock-in.
+Organizations and individuals can launch their own **Verifiable Services**: digital services they fully own and control, and are automatically **indexed and discoverable**. From AI agents to social channels to e-commerce, these services are portable, provable, and free from the risk of deplatforming or lock-in.
 
 {{<cta text="Learn more" page="/page/build/verifiable-services" align="right">}}
 
