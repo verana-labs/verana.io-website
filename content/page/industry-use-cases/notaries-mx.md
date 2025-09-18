@@ -82,7 +82,7 @@ Cuando el apoderado presenta el poder ante un verificador (ejemplo: un banco):
 - Si la credencial está activa (no revocada), el poder es válido: no se requieren más llamadas ni verificaciones manuales.
 - Los bancos y otros verificadores pueden **consultar periódicamente la validez de la credencial de manera automática**, eliminando llamadas repetitivas a las notarías.
 
-Nota: si el **Colegio Nacional del Notariado Mexicano** lo decide, se pueden activar modelos economicos para que los que verifican los poderes (los verificadores, que incluyen bancos, telecomunicaciones) tengan que realizar un micropago por cada verificación, de tál forma que todos los participantes reciban su comisión.
+> Nota: si el **Colegio Nacional del Notariado Mexicano** lo decide, se pueden activar modelos economicos para que los que verifican los poderes (los verificadores, que incluyen bancos, telecomunicaciones) tengan que realizar un micropago por cada verificación, de tál forma que todos los participantes reciban su comisión.
 
 ## Conclusión: Ahorro de Tiempo y Costos
 
