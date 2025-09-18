@@ -21,6 +21,8 @@ En México, otorgar y usar un **Poder Notarial** es un proceso **basado en papel
 
 ### Uso de un Poder Notarial
 
+Ejemplo: uso del poder en un banco.
+
 - El apoderado presenta la **copia física** del poder.
 - El banco debe llamar al notario que lo emitió para confirmar su autenticidad.
 - El banco además debe **contactar a todas las notarías del país** para asegurarse de que el poder no haya sido revocado en otra oficina.
