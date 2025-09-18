@@ -2,8 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:1313/page/industry-use-cases/notaries-es/</loc>
-  </url><url>
     <loc>//localhost:1313/page/industry-use-cases/notaries/</loc>
   </url><url>
     <loc>//localhost:1313/page/industry-use-cases/decentralized-social-network/</loc>
@@ -66,6 +64,8 @@
   </url><url>
     <loc>//localhost:1313/page/build/verifiable-user-agents/</loc>
   </url><url>
-    <loc>//localhost:1313/page/industry-use-cases/verifiable-ai/</loc>
+    <loc>//localhost:1313/page/industry-use-cases/notaries-mx/</loc>
+  </url><url>
+    <loc>//localhost:1313/page/industry-use-cases/ai-assistants/</loc>
   </url>
 </urlset>

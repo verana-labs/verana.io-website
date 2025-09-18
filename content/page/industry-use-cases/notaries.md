@@ -1,15 +1,13 @@
 ---
-title: 🖋️ Notaries and Power of Attorney
+title: 🇲🇽 Notaries & Power of Attorney
 url: "/page/industry-use-cases/notaries"
 ---
 
-## The Problem: A Manual, Inefficient Process
+## A Manual, Inefficient Process
 
 In Mexico, granting and using a **Power of Attorney (Poder Notarial)** is a **paper-based, fragmented, and costly process**.
 
-### Current Workflow
-
-### Issuing a Power of Attorney 
+### Issuing a Power of Attorney
 
 - The grantor visits a notary and proves they are the legal representative of a company.
 - The notary drafts the power, signs it together with the grantor, and keeps a physical copy in their files.
