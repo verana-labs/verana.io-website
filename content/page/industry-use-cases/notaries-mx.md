@@ -63,7 +63,7 @@ Cuando un notario otorga un nuevo poder:
   - Nombre del apoderado
   - Fecha y periodo de validez
   - ...
-  - Un **hash del documento digital** para garantizar su autenticidad.
+  - Una **huella digital de la copia del poder** para garantizar su autenticidad.
 
 ### Revocación de un Poder Notarial con Credencial Verificable
 
