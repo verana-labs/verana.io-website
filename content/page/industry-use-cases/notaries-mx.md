@@ -44,10 +44,9 @@ El **Colegio Nacional** establece un **Ecosistema Notarial de Confianza** en Ver
 - Reglas para la emisión, verificación y revocación de poderes notariales.
 - El **Esquema de Credencial de Poder Notarial**.
 - Procedimientos para incorporar participantes:
-- Colegio Nacional (propietario del ecosistema)
-- Colegios Estatales (Otorgantes de Registros de Confianza)
-- Notarios (Emisores)
-- Bancos, telecomunicaciones y otras instituciones (Verificadores).
+  - Colegios Estatales (Otorgantes de Registros de Confianza)
+  - Notarios (Emisores)
+  - Bancos, telecomunicaciones y otras instituciones (Verificadores).
 
 ### Emisión de un Poder Notarial con Credencial Verificable
 
