@@ -40,15 +40,20 @@ En México, la organización notarial se estructura de la siguiente forma:
 
 ### Creación de un Ecosistema Digital
 
-El **Colegio Nacional** establece un **Ecosistema Notarial de Confianza** en Verana para digitalizar y simplificar el proceso de poderes notariales.
+El **Colegio Nacional** crea un **Ecosistema Notarial de Confianza** en Verana para digitalizar y simplificar el proceso de poderes notariales.  
 
-- Publica un **Marco de Gobernanza del Ecosistema (EGF)** que define:
-- Reglas para la emisión, verificación y revocación de poderes notariales.
-- El **Esquema de Credencial de Poder Notarial**.
-- Procedimientos para incorporar participantes:
-  - Colegios Estatales (Otorgantes de Registros de Confianza)
-  - Notarios (Emisores)
-  - Bancos, telecomunicaciones y otras instituciones (Verificadores).
+1. **Publica un Marco de Gobernanza del Ecosistema (EGF):**  
+   - Define las reglas para la emisión, verificación, revocación y cumplimiento.  
+   - Establece el **Esquema de Credencial de Poder Notarial**.  
+   - Describe los procedimientos para incorporar participantes, incluyendo:  
+     - Colegios Estatales (Otorgantes de Registros de Confianza)  
+     - Notarías (Emisores)  
+     - Bancos, empresas de telecomunicaciones y otras instituciones (Verificadores).  
+
+2. **Crea un Registro de Confianza:**  
+   - Implementa las reglas y esquemas definidos en el EGF.  
+   - Mantiene la lista de emisores, verificadores y otorgantes de registros autorizados.  
+   - Garantiza la revocación y la validación de credenciales en todo el ecosistema.  
 
 ### Emisión de un Poder Notarial con Credencial Verificable
 
