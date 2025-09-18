@@ -2,11 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>//localhost:1313/page/industry-use-cases/notaries-es/</loc>
+  </url><url>
+    <loc>//localhost:1313/page/industry-use-cases/notaries/</loc>
+  </url><url>
     <loc>//localhost:1313/page/industry-use-cases/decentralized-social-network/</loc>
   </url><url>
     <loc>//localhost:1313/page/industry-use-cases/healthcare-workforce-mobility/</loc>
   </url><url>
     <loc>//localhost:1313/page/industry-use-cases/hotel-management/</loc>
+  </url><url>
+    <loc>//localhost:1313/page/industry-use-cases/healthcare-workforce-mobility/</loc>
   </url><url>
     <loc>//localhost:1313/page/industry-use-cases/payments/</loc>
   </url><url>
@@ -24,6 +30,8 @@
   </url><url>
     <loc>//localhost:1313/page/why-verana/trust/</loc>
   </url><url>
+    <loc>//localhost:1313/page/about/team/</loc>
+  </url><url>
     <loc>//localhost:1313/page/build/</loc>
   </url><url>
     <loc>//localhost:1313/page/</loc>
@@ -38,7 +46,7 @@
   </url><url>
     <loc>//localhost:1313/page/why-verana/ownership/</loc>
   </url><url>
-    <loc>//localhost:1313/page/about/team/</loc>
+    <loc>//localhost:1313/page/testnet/</loc>
   </url><url>
     <loc>//localhost:1313/</loc>
   </url><url>

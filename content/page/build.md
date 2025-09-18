@@ -7,7 +7,7 @@ Verana is **public digital infrastructure** for trust online. Think of it like t
 
 Unlike platforms you must subscribe to, Verana is technology that **any organization can operate, extend, and govern**. It’s not a service you rent; **it’s infrastructure you own.**
 
-- 🌍 **Open and accessible**: Free and open source, available for anyone to use.
+- 🌍 **Open and accessible**: Free and open source, available for anyone to use and extend.
 - 🔗 **Decentralized by design**: No single operator, no central point of control.
 - 📐 **Built on Open Standards**: Interoperable by design, ensuring long-term stability and compatibility.
 - 🛡️ **Neutral and flexible**: Works with any system, tool, or standard.
@@ -25,12 +25,12 @@ Ecosystems - like governments, industries, or associations - can use Verana to c
 
 ### Discoverable Self Sovereign Verifiable Services
 
-Organizations and individuals can launch their own **Verifiable Services**: digital services they fully own and control, and are automatically **indexed and discoverable**. From AI agents to social channels to e-commerce, these services are portable, provable, and free from the risk of deplatforming or lock-in.
+Organizations and individuals can launch their own **verifiable services** (VSs): digital services they fully own and control, and are automatically **indexed and discoverable**. From AI agents to social channels to e-commerce, these services are portable, provable, and free from the risk of deplatforming or lock-in.
 
 {{<cta text="Learn more" page="/page/build/verifiable-services" align="right">}}
 
 ### Verifiable User Agents
 
-**Verifiable User Agents** are new apps and browsers that connect people to Verifiable Services and trust networks. They make discovery, interaction, and transactions seamless, powered by credentials and open standards, not ads or opaque algorithms.
+**Verifiable user agents** (VUAs) are new apps and browsers that connect people to **verifiable services** and **trust networks**. They make discovery, interaction, and transactions seamless, powered by credentials and open standards, not ads or opaque algorithms.
 
 {{<cta text="Learn more" page="/page/build/verifiable-user-agents" align="right">}}
