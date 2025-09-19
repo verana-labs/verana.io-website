@@ -30,3 +30,4 @@ A person holding a glowing digital key in front of a transparent lock containing
 Phrase: “Be discovered for what you truly prove, not for what you pay.”
 
 Photo Prompt: A vast digital marketplace where small and large businesses appear side by side, connected by glowing credential badges, symbolizing fair discovery beyond ads.
+
