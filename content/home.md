@@ -25,7 +25,6 @@ Photo Prompt: A person holding a glowing digital key in front of a transparent l
 
 A person holding a glowing digital key in front of a transparent lock containing a futurist view of the cosmos, representing full digital ownership and control.
 
-
 ## Discovery
 
 Phrase: “Be discovered for what you truly prove, not for what you pay.”
