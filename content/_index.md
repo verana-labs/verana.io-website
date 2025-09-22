@@ -75,7 +75,7 @@ feature_sections:
       style: "solid"
       color: "text-verana"
       bg: "bg-verana/20"
-    title: "Own your digital services, your audience, and your data — not just rent them."
+    title: "Own your digital services, your audience, and your data : not just rent them."
     description: "Move beyond platform lock-in with verifiable services you control, portable audiences, and user-granted data access."
     bullets:
       - "Self-custodied registries of services, schemas, and policies."
