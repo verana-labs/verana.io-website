@@ -5,15 +5,44 @@
 /* Custom utilities or component styles */
 @layer base {
   html { scroll-behavior: smooth; }
-  body { @apply font-sans; }
-}
-
-@layer components {
-  .btn-primary {
-    @apply inline-flex items-center justify-center rounded bg-primary-600 px-4 py-2 text-white hover:bg-primary-700;
+  body {
+    @apply font-sans bg-black text-white;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
+  body::-webkit-scrollbar { display: none; }
 }
 
 @layer utilities {
+  .gradient-mesh {
+    background: radial-gradient(circle at 20% 50%, rgba(118, 62, 240, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(118, 62, 240, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(118, 62, 240, 0.08) 0%, transparent 50%);
+  }
+  .network-bg {
+    background-image:
+      radial-gradient(circle at 25% 25%, rgba(118, 62, 240, 0.1) 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, rgba(118, 62, 240, 0.08) 1px, transparent 1px);
+    background-size: 60px 60px, 40px 40px;
+    animation: network-pulse 4s ease-in-out infinite;
+  }
+  .shadow-pulse-glow { animation: pulse-glow 2s ease-in-out infinite alternate; }
+  .animate-float { animation: float 6s ease-in-out infinite; }
+  .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite alternate; }
+  .animate-network-pulse { animation: network-pulse 3s ease-in-out infinite; }
 }
 
+@layer utilities {
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  @keyframes pulse-glow {
+    0% { box-shadow: 0 0 20px rgba(118, 62, 240, 0.3); }
+    100% { box-shadow: 0 0 40px rgba(118, 62, 240, 0.6); }
+  }
+  @keyframes network-pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+  }
+}

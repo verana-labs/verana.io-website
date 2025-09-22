@@ -1,15 +1,24 @@
-{{ define "main" }}
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    <h1 class="text-3xl font-semibold mb-6">{{ .Title }}</h1>
-    {{ with .Content }}<div class="prose prose-slate max-w-none mb-8">{{ . }}</div>{{ end }}
-    <ul class="space-y-4">
-      {{ range .Pages }}
-        <li class="border border-slate-200 rounded p-4 hover:bg-slate-50">
-          <a class="text-primary-700 font-medium" href="{{ .RelPermalink }}">{{ .Title }}</a>
-          {{ with .Params.description }}<p class="text-slate-600 mt-1">{{ . }}</p>{{ end }}
-        </li>
-      {{ end }}
-    </ul>
-  </section>
+{{ define "head" }}
+  {{ if .IsHome }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  {{ end }}
 {{ end }}
 
+{{ define "main" }}
+  {{ if .IsHome }}
+    {{ partial "uxpilot/home.html" . }}
+  {{ else }}
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <h1 class="text-3xl font-semibold mb-6">{{ .Title }}</h1>
+      {{ with .Content }}<div class="prose prose-slate max-w-none mb-8">{{ . }}</div>{{ end }}
+      <ul class="space-y-4">
+        {{ range .Pages }}
+          <li class="border border-slate-200 rounded p-4 hover:bg-slate-50">
+            <a class="text-primary-700 font-medium" href="{{ .RelPermalink }}">{{ .Title }}</a>
+            {{ with .Params.description }}<p class="text-slate-600 mt-1">{{ . }}</p>{{ end }}
+          </li>
+        {{ end }}
+      </ul>
+    </section>
+  {{ end }}
+{{ end }}

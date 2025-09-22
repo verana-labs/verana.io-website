@@ -240,4 +240,4 @@ outputs:
   home: ["HTML"]
 
 taxonomies: {}
-disableKinds: ["home", "RSS"]
+disableKinds: ["RSS"]

@@ -46,10 +46,6 @@
   </url><url>
     <loc>//localhost:1313/page/testnet/</loc>
   </url><url>
-    <loc>//localhost:1313/</loc>
-  </url><url>
-    <loc>//localhost:1313/</loc>
-  </url><url>
     <loc>//localhost:1313/page/why-verana/</loc>
   </url><url>
     <loc>//localhost:1313/page/trust-engine/trust-deposit/</loc>
@@ -61,6 +57,8 @@
     <loc>//localhost:1313/page/trust-engine/trust-reputation/</loc>
   </url><url>
     <loc>//localhost:1313/page/trust-engine/trust-resolver/</loc>
+  </url><url>
+    <loc>//localhost:1313/</loc>
   </url><url>
     <loc>//localhost:1313/page/build/verifiable-user-agents/</loc>
   </url><url>

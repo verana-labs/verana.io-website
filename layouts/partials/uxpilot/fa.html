@@ -1,0 +1,3 @@
+{{- $style := default "solid" .style -}}
+{{- $prefix := cond (eq $style "brands") "fa-brands" "fa-solid" -}}
+<i class="{{ $prefix }} fa-{{ .name }} {{ .class }}" aria-hidden="true"></i>
