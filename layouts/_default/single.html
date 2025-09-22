@@ -1,18 +1,16 @@
 {{ define "main" }}
-  <section class="bg-black text-white">
-    <div class="container mx-auto px-6 py-16 lg:py-24">
-      <div class="max-w-4xl mx-auto">
-        <div class="mb-6 text-sm text-gray-400">
-          {{ partial "breadcrumbs.html" . }}
+  {{ partial "uxpilot/page-hero.html" . }}
+  {{ if .Params.disable_content_wrapper }}
+    {{ .Content }}
+  {{ else }}
+    <section class="bg-black text-white">
+      <div class="container mx-auto px-6 py-16 lg:py-24">
+        <div class="max-w-4xl mx-auto">
+          <article class="prose prose-invert prose-lg max-w-none bg-gray-900/60 border border-gray-800 rounded-3xl p-8 shadow-[0_0_60px_-30px_rgba(79,70,229,0.45)]">
+            {{ .Content }}
+          </article>
         </div>
-        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight mb-6 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">{{ .Title }}</h1>
-        {{ with .Params.description }}
-          <p class="text-lg text-gray-300 mb-10">{{ . }}</p>
-        {{ end }}
-        <article class="prose prose-invert prose-lg max-w-none bg-gray-900/60 border border-gray-800 rounded-3xl p-8 shadow-[0_0_60px_-30px_rgba(79,70,229,0.45)]">
-          {{ .Content }}
-        </article>
       </div>
-    </div>
-  </section>
+    </section>
+  {{ end }}
 {{ end }}

@@ -60,14 +60,6 @@ params:
             url: "https://trustoverip.github.io/tswg-trust-registry-protocol/"
           
 
-  fonts:
-    family: "Kantumruy Pro"
-    google: false
-    local:
-      regular: "/fonts/Kantumruy_Pro/static/KantumruyPro-Regular.ttf"
-      semi: "/fonts/Kantumruy_Pro/static/KantumruyPro-SemiBold.ttf"
-      bold: "/fonts/Kantumruy_Pro/static/KantumruyPro-Bold.ttf"
-
   seo:
     ogImage: "/images/verana-og.jpg"
 

@@ -1,5 +1,5 @@
-{{/* Head font setup for Kantumruy Pro */}}
-{{ $family := default "Kantumruy Pro" .Site.Params.fonts.family }}
+{{/* Head font setup using site-configured typeface */}}
+{{ $family := default "Inter" .Site.Params.fonts.family }}
 {{ $local := .Site.Params.fonts.local }}
 {{ $google := default true .Site.Params.fonts.google }}
 

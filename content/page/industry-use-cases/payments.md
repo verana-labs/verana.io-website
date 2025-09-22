@@ -70,7 +70,7 @@ When a healthcare professional arrives at a new hospital:
 skinparam backgroundColor white
 skinparam Shadowing false
 skinparam ArrowColor BRAND_MAGENTA
-skinparam defaultFontName Kantumruy Pro
+skinparam defaultFontName Inter
 skinparam defaultTextAlignment center
 
 skinparam rectangle {

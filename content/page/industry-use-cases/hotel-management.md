@@ -28,7 +28,7 @@ Paradoxically, while users believe they’re saving money, they actually pay mor
 skinparam backgroundColor white
 skinparam Shadowing false
 skinparam ArrowColor BRAND_MAGENTA
-skinparam defaultFontName Kantumruy Pro
+skinparam defaultFontName Inter
 skinparam defaultTextAlignment center
 
 skinparam RectangleBorderColor INK
@@ -140,7 +140,7 @@ Open Source HMS Providers can redefine their business models by adding the Verif
 skinparam backgroundColor white
 skinparam Shadowing false
 skinparam ArrowColor BRAND_MAGENTA
-skinparam defaultFontName Kantumruy Pro
+skinparam defaultFontName Inter
 skinparam defaultTextAlignment center
 
 skinparam RectangleBorderColor INK
@@ -226,7 +226,7 @@ Hotels using such an HMS automatically become:
 skinparam backgroundColor white
 skinparam Shadowing false
 skinparam ArrowColor BRAND_MAGENTA
-skinparam defaultFontName Kantumruy Pro
+skinparam defaultFontName Inter
 skinparam defaultTextAlignment center
 
 skinparam RectangleBorderColor INK
