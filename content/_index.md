@@ -2,20 +2,6 @@
 title: "Verana"
 layout: "uxpilot"
 bodyClass: "bg-black text-white overflow-x-hidden font-sans"
-nav:
-  items:
-    - label: "Why Verana"
-      href: "/page/why-verana"
-    - label: "Build"
-      href: "/page/build"
-    - label: "Trust Engine"
-      href: "/page/trust-engine"
-    - label: "Industry Use Cases"
-      href: "/page/industry-use-cases"
-    - label: "Community"
-      href: "/page/community"
-    - label: "About"
-      href: "/page/about"
 hero:
   title_lines:
     - text: "The Open"
@@ -80,7 +66,7 @@ feature_sections:
     cta:
       label: "Learn About Trust"
       href: "/page/why-verana/trust"
-    image: "/images/uxpilot/hero-trust-handshake.png"
+    image: "/images/purple/trust-photo.webp"
     image_alt: "Cryptographic trust handshake"
   - id: "ownership"
     eyebrow: "Ownership"
@@ -98,7 +84,7 @@ feature_sections:
     cta:
       label: "Claim Ownership"
       href: "/page/why-verana/ownership"
-    image: "/images/uxpilot/ownership-key.png"
+    image: "/images/purple/ownership-photo.webp"
     image_alt: "Digital key unlocking"
     align: "left"
   - id: "discovery"
@@ -117,7 +103,7 @@ feature_sections:
     cta:
       label: "Be Discoverable"
       href: "/page/why-verana/discovery"
-    image: "/images/uxpilot/discovery-marketplace.png"
+    image: "/images/purple/discovery-photo.jpg"
     image_alt: "Digital marketplace"
 impact:
   heading: "Exploring Real-World Impact"
@@ -198,15 +184,23 @@ community:
     - title: "Discord"
       description: "Join real-time discussions with the community"
       icon: { name: "discord", style: "brands", color: "text-purple-400", bg: "bg-purple-500/20" }
+      cta_label: "Join Discord Server"
+      href: "https://discord.gg/edjaFn252q"
     - title: "GitHub"
       description: "Contribute to open-source development"
       icon: { name: "github", style: "brands", color: "text-gray-400", bg: "bg-gray-600/20" }
+      cta_label: "Verana Repos"
+      href: "https://github.com/verana-labs"
     - title: "LinkedIn"
       description: "Professional updates and insights"
       icon: { name: "linkedin", style: "brands", color: "text-blue-400", bg: "bg-blue-500/20" }
+      cta_label: "Connect on LinkedIn"
+      href: "https://www.linkedin.com/company/verana-verifiable-trust-network"
     - title: "X (Twitter)"
       description: "Latest news and announcements"
       icon: { name: "x-twitter", style: "brands", color: "text-white", bg: "bg-black/20", border: "border border-gray-600" }
+      cta_label: "Follow us on X"
+      href: "https://x.com/Verana_io"
   cta:
     title: "Get Started Today"
     description: "Ready to build with Verana? Join our testnet and start experimenting with verifiable trust networks."
@@ -218,29 +212,4 @@ community:
     secondary:
       label: "View Documentation"
       href: "https://docs.verana.io"
-footer:
-  description: "The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty."
-  columns:
-    - title: "Verana"
-      links:
-        - label: "Principles"
-          href: "/page/principles"
-        - label: "Foundation"
-          href: "https://verana.foundation"
-        - label: "Press"
-          href: "/page/press"
-    - title: "Developers"
-      links:
-        - label: "Docs"
-          href: "https://docs.verana.io"
-        - label: "GitHub"
-          href: "https://github.com/verana-labs"
-    - title: "Specifications"
-      links:
-        - label: "Verifiable Trust Spec"
-          href: "https://verana-labs.github.io/verifiable-trust-spec/"
-        - label: "Verifiable Public Registry Spec"
-          href: "https://verana-labs.github.io/verifiable-trust-vpr-spec/"
-        - label: "Trust Registry Query Protocol"
-          href: "https://trustoverip.github.io/tswg-trust-registry-protocol/"
 ---

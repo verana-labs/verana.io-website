@@ -1,4 +1,16 @@
 {{ $discover := .Params.discover }}
+{{ $media := $discover.media }}
+{{ $videoScratch := newScratch }}
+{{ $videoScratch.Set "src" "/videos/notebook-slides.mp4" }}
+{{ with $media }}
+  {{ if .video }}
+    {{ $videoScratch.Set "src" .video }}
+  {{ else if .href }}
+    {{ $videoScratch.Set "src" .href }}
+  {{ end }}
+{{ end }}
+{{ $videoSrc := $videoScratch.Get "src" }}
+{{/* We intentionally avoid setting a poster so browsers show the video's first frame */}}
 <section id="discover-verana" class="bg-gray-900 py-20 lg:py-32">
   <div class="container mx-auto px-6">
     <div class="max-w-6xl mx-auto">
@@ -26,15 +38,22 @@
         </div>
         <div class="relative">
           <div class="bg-gray-800 rounded-2xl p-8 border border-gray-700">
-            <div class="aspect-video bg-black rounded-xl flex items-center justify-center mb-6 relative overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-br from-verana/20 to-transparent"></div>
-              <div class="relative z-10 text-center">
-                <div class="w-16 h-16 bg-verana rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-glow">
-                  {{ partial "uxpilot/fa.html" (dict "name" $discover.media.badge_icon "style" (default "solid" $discover.media.badge_icon_style) "class" "text-white text-xl") }}
-                </div>
-                <p class="text-gray-300 text-sm">{{ $discover.media.badge_text }}</p>
-              </div>
+            <div class="aspect-video rounded-xl overflow-hidden border border-gray-700/70 mb-6 shadow-lg">
+              <video controls playsinline webkit-playsinline preload="metadata" class="w-full h-full object-cover">
+                <source src="{{ $videoSrc }}" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
+            {{ if or $discover.media.badge_icon $discover.media.badge_text }}
+              <div class="inline-flex items-center gap-2 rounded-full bg-verana/10 border border-verana/40 px-4 py-1 text-sm text-verana-light mb-4">
+                {{ with $discover.media.badge_icon }}
+                  {{ partial "uxpilot/fa.html" (dict "name" . "style" (default "solid" $discover.media.badge_icon_style) "class" "text-verana-light") }}
+                {{ end }}
+                {{ with $discover.media.badge_text }}
+                  <span>{{ . }}</span>
+                {{ end }}
+              </div>
+            {{ end }}
             <h5 class="text-lg font-semibold text-white mb-2">{{ $discover.media.title }}</h5>
             <p class="text-gray-400 text-sm">{{ $discover.media.description }}</p>
           </div>

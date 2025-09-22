@@ -11,39 +11,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     {{ partial "head-og.html" . }}
   </head>
-  {{ $nav := .Params.nav }}
   {{ $hero := .Params.hero }}
   <body class="bg-black text-white overflow-x-hidden font-sans">
-    <header id="header" class="bg-black/95 backdrop-blur-sm border-b border-gray-800/50 sticky top-0 z-50">
-      <div class="container mx-auto px-6 py-4">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <span class="flex items-center space-x-3 cursor-pointer">
-              <img src="/images/purple/logo.svg" alt="{{ .Site.Title }} logo" class="h-10 w-auto" />
-              <span class="text-2xl font-bold text-white">{{ .Site.Title }}</span>
-            </span>
-          </div>
-          <nav class="hidden lg:flex items-center space-x-8">
-            {{ range $item := $nav.items }}
-              <div class="relative group">
-                <a class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200" href="{{ $item.href }}">
-                  <span>{{ $item.label }}</span>
-                  <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
-                </a>
-              </div>
-            {{ end }}
-          </nav>
-          <div class="flex items-center space-x-4">
-            <a href="{{ .Site.Params.header.testnet.url | default "#" }}" class="bg-verana hover:bg-verana-dark text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer">
-              {{ .Site.Params.header.testnet.label | default "Testnet" }}
-            </a>
-            <button class="lg:hidden text-white">
-              <i class="fa-solid fa-bars text-xl"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </header>
+    {{ partial "uxpilot/header.html" . }}
 
     <section id="hero" class="relative bg-black py-20 lg:py-32 overflow-hidden h-[900px] flex items-center">
       <div class="absolute inset-0 gradient-mesh"></div>

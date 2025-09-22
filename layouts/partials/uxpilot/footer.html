@@ -1,4 +1,117 @@
-{{ $footer := .Params.footer }}
+{{ $pageFooter := .Params.footer }}
+{{ $siteFooter := .Site.Params.footer }}
+
+{{ $descScratch := newScratch }}
+{{ with $pageFooter.description }}{{ $descScratch.Set "description" . }}{{ end }}
+{{ if not ($descScratch.Get "description") }}
+  {{ with $siteFooter.description }}{{ $descScratch.Set "description" . }}{{ end }}
+{{ end }}
+{{ if not ($descScratch.Get "description") }}
+  {{ $descScratch.Set "description" "The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty." }}
+{{ end }}
+{{ $description := $descScratch.Get "description" }}
+
+{{ $columnsScratch := newScratch }}
+{{ $columnsScratch.Set "columns" (slice) }}
+
+{{ with $pageFooter.columns }}
+  {{ range . }}
+    {{ $linksScratch := newScratch }}
+    {{ $linksScratch.Set "links" (slice) }}
+    {{ range (or .links .items) }}
+      {{ $label := or .label (or .title .name) }}
+      {{ $href := or .href .url }}
+      {{ if and $label $href }}
+        {{ $linksScratch.Add "links" (slice (dict "label" $label "href" $href)) }}
+      {{ end }}
+    {{ end }}
+    {{ $links := $linksScratch.Get "links" }}
+    {{ if gt (len $links) 0 }}
+      {{ $columnsScratch.Add "columns" (slice (dict "title" .title "links" $links)) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ if eq (len ($columnsScratch.Get "columns")) 0 }}
+  {{ with $siteFooter.columns }}
+    {{ range . }}
+      {{ $linksScratch := newScratch }}
+      {{ $linksScratch.Set "links" (slice) }}
+      {{ range (or .links .items) }}
+        {{ $label := or .label (or .title .name) }}
+        {{ $href := or .href .url }}
+        {{ if and $label $href }}
+          {{ $linksScratch.Add "links" (slice (dict "label" $label "href" $href)) }}
+        {{ end }}
+      {{ end }}
+      {{ $links := $linksScratch.Get "links" }}
+      {{ if gt (len $links) 0 }}
+        {{ $columnsScratch.Add "columns" (slice (dict "title" .title "links" $links)) }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ $columns := $columnsScratch.Get "columns" }}
+
+{{ $companyScratch := newScratch }}
+{{ with $pageFooter.company }}{{ $companyScratch.Set "company" . }}{{ end }}
+{{ if not ($companyScratch.Get "company") }}
+  {{ with $siteFooter.company }}{{ $companyScratch.Set "company" . }}{{ end }}
+{{ end }}
+{{ if not ($companyScratch.Get "company") }}
+  {{ $companyScratch.Set "company" "Verana Foundation" }}
+{{ end }}
+{{ $company := $companyScratch.Get "company" }}
+
+{{ $socialsScratch := newScratch }}
+{{ $socialsScratch.Set "items" (slice) }}
+{{ $iconMap := dict
+  "github"   (dict "type" "fa"  "value" "fa-brands fa-github")
+  "discord"  (dict "type" "fa"  "value" "fa-brands fa-discord")
+  "linkedin" (dict "type" "fa"  "value" "fa-brands fa-linkedin")
+  "twitter"  (dict "type" "fa"  "value" "fa-brands fa-twitter")
+  "youtube"  (dict "type" "fa"  "value" "fa-brands fa-youtube")
+  "facebook" (dict "type" "fa"  "value" "fa-brands fa-facebook-f")
+  "instagram" (dict "type" "fa" "value" "fa-brands fa-instagram")
+  "mastodon" (dict "type" "fa"  "value" "fa-brands fa-mastodon")
+  "x"        (dict "type" "svg" "value" "x")
+}} 
+
+{{ with $pageFooter.socials }}
+  {{ range . }}
+    {{ $platform := lower (default "" (or .platform (or .name .label))) }}
+    {{ $href := or .href .url }}
+    {{ if $href }}
+      {{ $labelCandidate := or .label (or .name .title) }}
+      {{ $label := default (title $platform) $labelCandidate }}
+      {{ $iconData := index $iconMap $platform }}
+      {{ $iconType := default "" (index $iconData "type") }}
+      {{ $iconValue := default "" (index $iconData "value") }}
+      {{ $socialsScratch.Add "items" (slice (dict "href" $href "label" $label "iconType" $iconType "iconValue" $iconValue)) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ if eq (len ($socialsScratch.Get "items")) 0 }}
+  {{ with $siteFooter.socials }}
+    {{ range . }}
+      {{ $platform := lower (default "" (or .platform (or .name .label))) }}
+      {{ $href := or .href .url }}
+      {{ if $href }}
+        {{ $labelCandidate := or .label (or .name .title) }}
+        {{ $label := default (title $platform) $labelCandidate }}
+        {{ $iconData := index $iconMap $platform }}
+        {{ $iconType := default "" (index $iconData "type") }}
+        {{ $iconValue := default "" (index $iconData "value") }}
+        {{ $socialsScratch.Add "items" (slice (dict "href" $href "label" $label "iconType" $iconType "iconValue" $iconValue)) }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ $socials := $socialsScratch.Get "items" }}
+
 <footer id="footer" class="bg-gray-900 border-t border-gray-800 py-16">
   <div class="container mx-auto px-6">
     <div class="max-w-6xl mx-auto">
@@ -8,15 +121,29 @@
             <img src="/images/purple/logo.svg" alt="{{ .Site.Title }} logo" class="h-10 w-auto" />
             <span class="text-2xl font-bold text-white">{{ .Site.Title }}</span>
           </div>
-          <p class="text-gray-400 mb-8 leading-relaxed">{{ $footer.description }}</p>
-          <div class="flex space-x-4">
-            <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer"><i class="fa-brands fa-github"></i></span>
-            <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer"><i class="fa-brands fa-discord"></i></span>
-            <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer"><i class="fa-brands fa-linkedin"></i></span>
-            <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer"><i class="fa-brands fa-x-twitter"></i></span>
-          </div>
+          <p class="text-gray-400 mb-8 leading-relaxed">{{ $description }}</p>
+          {{ if gt (len $socials) 0 }}
+            <div class="flex space-x-4">
+              {{ range $social := $socials }}
+                <a href="{{ $social.href }}" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer" target="_blank" rel="noopener" aria-label="{{ $social.label }}">
+                  {{ if eq $social.iconType "fa" }}
+                    <i class="{{ $social.iconValue }}"></i>
+                  {{ else if eq $social.iconType "svg" }}
+                    <svg viewBox="0 0 24 24" class="w-5 h-5" aria-hidden="true">
+                      <g>
+                        <path d="M21.742 21.75l-7.563-11.179 7.056-8.321h-2.456l-5.691 6.714-4.54-6.714H2.359l7.29 10.776L2.25 21.75h2.456l6.035-7.118 4.818 7.118h6.191-.008zM7.739 3.818L18.81 20.182h-2.447L5.29 3.818h2.447z" fill="currentColor" />
+                      </g>
+                    </svg>
+                  {{ else }}
+                    <span class="block w-3 h-3 rounded-full border border-gray-500"></span>
+                  {{ end }}
+                  <span class="sr-only">{{ $social.label }}</span>
+                </a>
+              {{ end }}
+            </div>
+          {{ end }}
         </div>
-        {{ range $footer.columns }}
+        {{ range $columns }}
           <div>
             <h4 class="text-lg font-semibold text-white mb-6">{{ .title }}</h4>
             <ul class="space-y-4">
@@ -29,7 +156,7 @@
       </div>
       <div class="border-t border-gray-800 pt-8">
         <div class="flex flex-col sm:flex-row justify-between items-center">
-          <p class="text-gray-400 text-sm">&copy; {{ now.Year }} Verana Foundation. All rights reserved.</p>
+          <p class="text-gray-400 text-sm">&copy; {{ now.Year }} {{ $company }}. All rights reserved.</p>
           <div class="flex space-x-6 mt-4 sm:mt-0">
             <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Privacy Policy</span>
             <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Terms of Service</span>

@@ -8,11 +8,29 @@
         {{ range $community.channels }}
           <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105">
             <div class="w-16 h-16 {{ .icon.bg }} {{ default "" .icon.border }} rounded-2xl flex items-center justify-center mx-auto mb-6">
-              {{ partial "uxpilot/fa.html" (dict "name" .icon.name "style" (default "solid" .icon.style) "class" (printf "%s text-2xl" (default "text-white" .icon.color))) }}
+              {{ $iconName := lower (default "" .icon.name) }}
+              {{ if or (eq $iconName "x") (eq $iconName "x-twitter") }}
+                <svg viewBox="0 0 24 24" class="w-8 h-8" aria-hidden="true">
+                  <g>
+                    <path d="M21.742 21.75l-7.563-11.179 7.056-8.321h-2.456l-5.691 6.714-4.54-6.714H2.359l7.29 10.776L2.25 21.75h2.456l6.035-7.118 4.818 7.118h6.191-.008zM7.739 3.818L18.81 20.182h-2.447L5.29 3.818h2.447z" fill="currentColor" />
+                  </g>
+                </svg>
+              {{ else }}
+                {{ partial "uxpilot/fa.html" (dict "name" .icon.name "style" (default "solid" .icon.style) "class" (printf "%s text-2xl" (default "text-white" .icon.color))) }}
+              {{ end }}
             </div>
             <h3 class="text-xl font-semibold text-white mb-4">{{ .title }}</h3>
             <p class="text-gray-300 mb-6">{{ .description }}</p>
-            <span class="text-verana hover:text-verana-light font-medium cursor-pointer">{{ default "Learn More" .cta_label }}</span>
+            {{ $ctaLabel := default "Learn More" .cta_label }}
+            {{ if .href }}
+              <a href="{{ .href }}" class="inline-flex items-center text-verana hover:text-verana-light font-medium transition-colors duration-200" target="_blank" rel="noopener">
+                <span>{{ $ctaLabel }}</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-2"></i>
+                <span class="sr-only">{{ $ctaLabel }}</span>
+              </a>
+            {{ else }}
+              <span class="text-verana font-medium">{{ $ctaLabel }}</span>
+            {{ end }}
           </div>
         {{ end }}
       </div>

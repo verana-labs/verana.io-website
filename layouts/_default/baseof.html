@@ -7,21 +7,20 @@
     <meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}Verifiable trust for digital ecosystems{{ end }}" />
     {{ $css := resources.Get "css/input.css" | postCSS (dict "config" "postcss.config.cjs") }}
     <link rel="stylesheet" href="{{ $css.RelPermalink }}" />
+    {{ partial "head-fonts.html" . }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     {{ block "head" . }}{{ end }}
     {{ partial "head-og.html" . }}
   </head>
   {{ $bodyClass := .Params.bodyClass }}
-  {{ if not $bodyClass }}{{ $bodyClass = "min-h-screen flex flex-col bg-white text-slate-800 font-sans" }}{{ end }}
+  {{ if not $bodyClass }}{{ $bodyClass = "min-h-screen flex flex-col bg-black text-white overflow-x-hidden font-sans" }}{{ end }}
   <body class="{{ $bodyClass }}">
-    {{ if .IsHome }}
+    {{ partial "uxpilot/header.html" . }}
+    <main id="content" class="flex-1">
       {{ block "main" . }}{{ end }}
-    {{ else }}
-      {{ partial "header.html" . }}
-      <main id="content" class="flex-1">
-        {{ block "main" . }}{{ end }}
-      </main>
-      {{ partial "footer.html" . }}
-      <script>
+    </main>
+    {{ partial "uxpilot/footer.html" . }}
+    <script>
         const btn = document.getElementById('nav-toggle');
         const menu = document.getElementById('nav-menu-mobile');
         if (btn && menu) {
@@ -85,7 +84,6 @@
           });
           window.addEventListener('hashchange', () => scrollToHash(location.hash));
         })();
-      </script>
-    {{ end }}
+    </script>
   </body>
 </html>
