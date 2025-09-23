@@ -125,8 +125,10 @@ hero_icon: "fa-solid fa-scale-balanced"
         icon_bg_class="bg-blue-500/20"
         icon_color_class="text-blue-400"
         icon_size="text-xl"
-        icon_size_outer="3.5rem"
+        icon_size_outer="3rem"
         class="bg-black border border-gray-700 rounded-xl p-6"
+        title_class="text-lg font-semibold text-white mb-3"
+        body_class="text-gray-300 text-sm"
     >}}{{< /gov-card >}}
     {{< gov-card
         title="Stability Over Hype"
@@ -135,8 +137,10 @@ hero_icon: "fa-solid fa-scale-balanced"
         icon_bg_class="bg-green-500/20"
         icon_color_class="text-green-400"
         icon_size="text-xl"
-        icon_size_outer="3.5rem"
+        icon_size_outer="3rem"
         class="bg-black border border-gray-700 rounded-xl p-6"
+        title_class="text-lg font-semibold text-white mb-3"
+        body_class="text-gray-300 text-sm"
     >}}{{< /gov-card >}}
     {{< gov-card
         title="Industry Alignment"
@@ -145,8 +149,10 @@ hero_icon: "fa-solid fa-scale-balanced"
         icon_bg_class="bg-purple-500/20"
         icon_color_class="text-purple-400"
         icon_size="text-xl"
-        icon_size_outer="3.5rem"
+        icon_size_outer="3rem"
         class="bg-black border border-gray-700 rounded-xl p-6"
+        title_class="text-lg font-semibold text-white mb-3"
+        body_class="text-gray-300 text-sm"
     >}}{{< /gov-card >}}
   {{< /gov-card-grid >}}
 
@@ -212,12 +218,12 @@ hero_icon: "fa-solid fa-scale-balanced"
     title="Validators: The Network Nodes That Secure Verana"
 >}}
   {{< gov-card-grid columns_md="md:grid-cols-2" columns_lg="lg:grid-cols-3" gap="gap-8" class="mb-12" >}}
-    {{< gov-card title="Council Members = Validators" body="Only Council members can run validator nodes (the secure servers that process transactions)." icon="fa-solid fa-equals" icon_bg_class="bg-blue-500/20" icon_color_class="text-blue-400" icon_size="text-xl" icon_size_outer="3.5rem" body_class="text-gray-300 text-sm" class="bg-gray-900 border border-gray-700 rounded-xl p-6" >}}{{< /gov-card >}}
-    {{< gov-card title="3-Year Service Terms" body="Validators commit to a <strong>minimum three-year term</strong> of reliable operation." icon="fa-solid fa-calendar-check" icon_bg_class="bg-green-500/20" icon_color_class="text-green-400" icon_size="text-xl" icon_size_outer="3.5rem" body_class="text-gray-300 text-sm" class="bg-gray-900 border border-gray-700 rounded-xl p-6" >}}{{< /gov-card >}}
-    {{< gov-card title="Renewal Reviews" body="At the end of a term, the Council reviews performance and votes on <strong>renewal</strong>." icon="fa-solid fa-sync-alt" icon_bg_class="bg-purple-500/20" icon_color_class="text-purple-400" icon_size="text-xl" icon_size_outer="3.5rem" body_class="text-gray-300 text-sm" class="bg-gray-900 border border-gray-700 rounded-xl p-6" >}}{{< /gov-card >}}
-    {{< gov-card title="Adding or Removing Validators" body="Bringing in a new validator—or offboarding one—<strong>always requires a Council vote</strong>." icon="fa-solid fa-plus-circle" icon_bg_class="bg-orange-500/20" icon_color_class="text-orange-400" icon_size="text-xl" icon_size_outer="3.5rem" body_class="text-gray-300 text-sm" class="bg-gray-900 border border-gray-700 rounded-xl p-6" >}}{{< /gov-card >}}
-    {{< gov-card title="Emergency Safety" body="In urgent situations, the Council can <strong>temporarily pause</strong> a validator, followed by a formal vote." icon="fa-solid fa-exclamation-triangle" icon_bg_class="bg-red-500/20" icon_color_class="text-red-400" icon_size="text-xl" icon_size_outer="3.5rem" body_class="text-gray-300 text-sm" class="bg-gray-900 border border-gray-700 rounded-xl p-6" >}}{{< /gov-card >}}
-    {{< gov-card title="Legal Framework" body="Draft documents are published on <a href=\"https://github.com/verana-labs/\" class=\"text-verana hover:text-verana-light\">GitHub</a>." icon="fa-solid fa-gavel" icon_bg_class="bg-verana/20" icon_color_class="text-verana" icon_size="text-xl" icon_size_outer="3.5rem" body_class="text-gray-300 text-sm" class="bg-gray-900 border border-gray-700 rounded-xl p-6" >}}{{< /gov-card >}}
+    {{< gov-card title="Council Members = Validators" body="Only Council members can run validator nodes (the secure servers that process transactions)." icon="fa-solid fa-equals" icon_bg_class="bg-blue-500/20" icon_color_class="text-blue-400" icon_size="text-xl" icon_size_outer="3rem" class="bg-gray-900 border border-gray-700 rounded-xl p-6" title_class="text-lg font-semibold text-white mb-3" body_class="text-gray-300 text-sm" >}}{{< /gov-card >}}
+    {{< gov-card title="3-Year Service Terms" body="Validators commit to a <strong>minimum three-year term</strong> of reliable operation." icon="fa-solid fa-calendar-check" icon_bg_class="bg-green-500/20" icon_color_class="text-green-400" icon_size="text-xl" icon_size_outer="3rem" class="bg-gray-900 border border-gray-700 rounded-xl p-6" title_class="text-lg font-semibold text-white mb-3" body_class="text-gray-300 text-sm" >}}{{< /gov-card >}}
+    {{< gov-card title="Renewal Reviews" body="At the end of a term, the Council reviews performance and votes on <strong>renewal</strong>." icon="fa-solid fa-sync-alt" icon_bg_class="bg-purple-500/20" icon_color_class="text-purple-400" icon_size="text-xl" icon_size_outer="3rem" class="bg-gray-900 border border-gray-700 rounded-xl p-6" title_class="text-lg font-semibold text-white mb-3" body_class="text-gray-300 text-sm" >}}{{< /gov-card >}}
+    {{< gov-card title="Adding or Removing Validators" body="Bringing in a new validator—or offboarding one—<strong>always requires a Council vote</strong>." icon="fa-solid fa-plus-circle" icon_bg_class="bg-orange-500/20" icon_color_class="text-orange-400" icon_size="text-xl" icon_size_outer="3rem" class="bg-gray-900 border border-gray-700 rounded-xl p-6" title_class="text-lg font-semibold text-white mb-3" body_class="text-gray-300 text-sm" >}}{{< /gov-card >}}
+    {{< gov-card title="Emergency Safety" body="In urgent situations, the Council can <strong>temporarily pause</strong> a validator, followed by a formal vote." icon="fa-solid fa-exclamation-triangle" icon_bg_class="bg-red-500/20" icon_color_class="text-red-400" icon_size="text-xl" icon_size_outer="3rem" class="bg-gray-900 border border-gray-700 rounded-xl p-6" title_class="text-lg font-semibold text-white mb-3" body_class="text-gray-300 text-sm" >}}{{< /gov-card >}}
+    {{< gov-card title="Legal Framework" body="Draft documents are published on <a href=\"https://github.com/verana-labs/\" class=\"text-verana hover:text-verana-light\">GitHub</a>." icon="fa-solid fa-gavel" icon_bg_class="bg-verana/20" icon_color_class="text-verana" icon_size="text-xl" icon_size_outer="3rem" class="bg-gray-900 border border-gray-700 rounded-xl p-6" title_class="text-lg font-semibold text-white mb-3" body_class="text-gray-300 text-sm" >}}{{< /gov-card >}}
   {{< /gov-card-grid >}}
 
 {{< /gov-section >}}
@@ -255,10 +261,10 @@ hero_icon: "fa-solid fa-scale-balanced"
     description="Answers to the questions we hear most from the community."
 >}}
   {{< gov-card-grid columns_md="md:grid-cols-2" gap="gap-8" >}}
-    {{< gov-card title="What's a validator?" body="Independent, secure servers that check transactions and keep the network honest." class="bg-gray-900 border border-gray-700 rounded-xl p-6" >}}{{< /gov-card >}}
-    {{< gov-card title="Who is on the Council?" body="A rotating set of <strong>industry organizations</strong> selected for their track record, independence, and commitment to Verana's mission." class="bg-gray-900 border border-gray-700 rounded-xl p-6" >}}{{< /gov-card >}}
-    {{< gov-card title="Can anyone become a validator?" body="Not directly. <strong>Only Council members</strong> can run validators, and Council membership requires a vote." class="bg-gray-900 border border-gray-700 rounded-xl p-6" >}}{{< /gov-card >}}
-    {{< gov-card title="How often do things change?" body="Validators serve <strong>multi-year terms</strong>. Changes happen through <strong>proposals and supermajority votes</strong>, not on a whim." class="bg-gray-900 border border-gray-700 rounded-xl p-6" >}}{{< /gov-card >}}
+    {{< gov-card title="What's a validator?" body="Independent, secure servers that check transactions and keep the network honest." class="bg-gray-900 border border-gray-700 rounded-xl p-6" title_class="text-lg font-semibold text-white mb-3" body_class="text-gray-300 text-sm" >}}{{< /gov-card >}}
+    {{< gov-card title="Who is on the Council?" body="A rotating set of <strong>industry organizations</strong> selected for their track record, independence, and commitment to Verana's mission." class="bg-gray-900 border border-gray-700 rounded-xl p-6" title_class="text-lg font-semibold text-white mb-3" body_class="text-gray-300 text-sm" >}}{{< /gov-card >}}
+    {{< gov-card title="Can anyone become a validator?" body="Not directly. <strong>Only Council members</strong> can run validators, and Council membership requires a vote." class="bg-gray-900 border border-gray-700 rounded-xl p-6" title_class="text-lg font-semibold text-white mb-3" body_class="text-gray-300 text-sm" >}}{{< /gov-card >}}
+    {{< gov-card title="How often do things change?" body="Validators serve <strong>multi-year terms</strong>. Changes happen through <strong>proposals and supermajority votes</strong>, not on a whim." class="bg-gray-900 border border-gray-700 rounded-xl p-6" title_class="text-lg font-semibold text-white mb-3" body_class="text-gray-300 text-sm" >}}{{< /gov-card >}}
   {{< /gov-card-grid >}}
 {{< /gov-section >}}
 
@@ -300,7 +306,7 @@ hero_icon: "fa-solid fa-scale-balanced"
       title="Bottom Line"
       body="The Verana Foundation ensures Verana evolves into a thriving, innovative ecosystem, while the Verana Council safeguards its integrity and reliability. Together, they balance <strong class='text-green-400'>operational resilience</strong> with <strong class='text-green-400'>ecosystem expansion</strong>."
       class="mt-16 bg-green-900/10 border border-green-500/30 rounded-2xl p-8 text-center"
-      description_class="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto"
+      description_class="text-lg text-gray-300 text-sm max-w-3xl mx-auto"
   >}}
 {{< /gov-section >}}
 

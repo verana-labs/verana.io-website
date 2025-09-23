@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Trust Engine | Verana</title>
@@ -52,13 +52,13 @@
 <meta property="og:site_name" content="Verana">
 <meta property="og:title" content="Trust Engine | Verana">
 <meta property="og:description" content="The Open Trust Layer for the Internet">
-<meta property="og:url" content="/page/trust-engine/">
-<meta property="og:image" content="/images/verana-og.jpg">
+<meta property="og:url" content="//localhost:1313/page/trust-engine/">
+<meta property="og:image" content="//localhost:1313/images/verana-og.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Trust Engine | Verana">
 <meta name="twitter:description" content="The Open Trust Layer for the Internet">
-<meta name="twitter:image" content="/images/verana-og.jpg">
+<meta name="twitter:image" content="//localhost:1313/images/verana-og.jpg">
 
   </head>
   
@@ -757,19 +757,6 @@
     </nav>
   </div>
 </header>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const toggle = document.getElementById('nav-toggle');
-    const menu = document.getElementById('nav-menu-mobile');
-    if (!toggle || !menu) return;
-    toggle.addEventListener('click', function () {
-      const isHidden = menu.classList.toggle('hidden');
-      const expanded = !isHidden;
-      toggle.setAttribute('aria-expanded', expanded.toString());
-      menu.setAttribute('aria-hidden', (!expanded).toString());
-    }, { once: false });
-  });
-</script>
 
     <main id="content" class="flex-1">
       
@@ -1193,13 +1180,27 @@
 </footer>
 
     <script>
-        const btn = document.getElementById('nav-toggle');
-        const menu = document.getElementById('nav-menu-mobile');
-        if (btn && menu) {
-          btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-          });
-        }
+        (function(){
+          function initNavToggle(){
+            var toggle = document.getElementById('nav-toggle');
+            var menu = document.getElementById('nav-menu-mobile');
+            if (!toggle || !menu || toggle.dataset.navInitialized === 'true') return;
+            toggle.dataset.navInitialized = 'true';
+            menu.setAttribute('aria-hidden', menu.classList.contains('hidden') ? 'true' : 'false');
+            toggle.setAttribute('aria-expanded', (!menu.classList.contains('hidden')).toString());
+            toggle.addEventListener('click', function(){
+              var isHidden = menu.classList.toggle('hidden');
+              var expanded = !isHidden;
+              toggle.setAttribute('aria-expanded', expanded.toString());
+              menu.setAttribute('aria-hidden', (!expanded).toString());
+            });
+          }
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initNavToggle, { once: true });
+          } else {
+            initNavToggle();
+          }
+        })();
         (function(){
           function slugify(text){
             return text.toString().toLowerCase()

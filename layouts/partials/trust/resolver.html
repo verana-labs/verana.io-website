@@ -1,0 +1,427 @@
+{{ $page := . }}
+{{ $params := $page.Params }}
+{{ $sidebar := $params.sidebar }}
+{{ $intro := $params.intro }}
+{{ $how := $params.how_it_works }}
+{{ $queries := $params.advanced_queries }}
+{{ $economy := $params.trust_economy }}
+{{ $examples := $params.examples }}
+{{ $summary := $params.trust_summary }}
+{{ $cta := $params.cta }}
+{{ $related := $params.related_components }}
+
+<section id="main-content" class="bg-black py-20 lg:py-32">
+  <div class="container mx-auto px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-4 gap-12">
+        {{ with $sidebar }}
+          <aside id="sidebar-nav" class="lg:col-span-1">
+            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky top-24">
+              {{ with .title }}
+                <h3 class="text-lg font-semibold text-white mb-6">{{ . }}</h3>
+              {{ end }}
+              {{ with .nav }}
+                <nav class="space-y-3">
+                  {{ range . }}
+                    {{ $label := .label | default .title | default .name }}
+                    {{ $href := .url | default .href | default "#" }}
+                    {{ $active := cond (isset . "active") (.active) false }}
+                    {{ if $label }}
+                      <a class="block {{ if $active }}text-verana font-medium{{ else }}text-gray-400 hover:text-white transition-colors duration-200{{ end }}" href="{{ $href }}">{{ $label }}</a>
+                    {{ end }}
+                  {{ end }}
+                </nav>
+              {{ end }}
+              {{ with .quick_links }}
+                <div class="mt-8 pt-6 border-t border-gray-700">
+                  <h4 class="text-sm font-semibold text-white mb-4">Quick Links</h4>
+                  <div class="space-y-2">
+                    {{ range . }}
+                      {{ $label := .label | default .title | default .name }}
+                      {{ $href := .url | default .href | default "#" }}
+                      {{ if $label }}
+                        <a class="block text-sm text-gray-400 hover:text-white transition-colors duration-200" href="{{ $href }}">{{ $label }}</a>
+                      {{ end }}
+                    {{ end }}
+                  </div>
+                </div>
+              {{ end }}
+            </div>
+          </aside>
+        {{ end }}
+
+        <div id="content-area" class="lg:col-span-3">
+          {{ with $intro }}
+            <div id="content-intro" class="mb-16">
+              {{ $paras := .paragraphs }}
+              {{ if $paras }}
+                <div class="space-y-6 text-xl text-gray-300 leading-relaxed">
+                  {{ range $paras }}
+                    {{ . | markdownify }}
+                  {{ end }}
+                </div>
+              {{ end }}
+              {{ with .highlight }}
+                {{ $icon := .icon }}
+                <div class="bg-verana/10 border border-verana/30 rounded-2xl p-8 mt-8">
+                  <h3 class="text-2xl font-bold text-white mb-4 flex items-center">
+                    {{ if $icon }}
+                      <i class="{{ $icon }} text-verana mr-3"></i>
+                    {{ end }}
+                    {{ .title | default "" }}
+                  </h3>
+                  <div class="text-lg text-gray-200 leading-relaxed">
+                    {{ .text | markdownify }}
+                  </div>
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ with $how }}
+            <div id="how-it-works" class="mb-16">
+              {{ with .title }}
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">{{ . }}</h2>
+              {{ end }}
+              {{ $note := .note }}
+              {{ $hasLead := false }}
+              {{ with .lead }}
+                {{ $hasLead = true }}
+                <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+                  <div class="text-lg text-gray-300 leading-relaxed mb-6 space-y-4">
+                    {{ . | markdownify }}
+                  </div>
+                  {{ with $note }}
+                    <div class="bg-verana/10 border border-verana/20 rounded-xl p-6 text-lg text-gray-200 font-medium">
+                      {{ . | markdownify }}
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+              {{ if and (not $hasLead) $note }}
+                <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+                  <div class="bg-verana/10 border border-verana/20 rounded-xl p-6 text-lg text-gray-200 font-medium">
+                    {{ $note | markdownify }}
+                  </div>
+                </div>
+              {{ end }}
+              {{ with .steps }}
+                <div class="grid md:grid-cols-3 gap-6 mb-12">
+                  {{ range . }}
+                    {{ $icon := .icon }}
+                    {{ $iconColor := .icon_color_class | default "text-verana" }}
+                    {{ $iconBg := .icon_bg_class | default "bg-verana/20" }}
+                    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 text-center">
+                      <div class="w-16 h-16 {{ $iconBg }} rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        {{ if $icon }}
+                          <i class="{{ $icon }} {{ $iconColor }} text-2xl"></i>
+                        {{ end }}
+                      </div>
+                      {{ with .title }}
+                        <h3 class="text-xl font-semibold text-white mb-4">{{ . }}</h3>
+                      {{ end }}
+                      {{ with .description }}
+                        <div class="text-gray-300 leading-relaxed">{{ . | markdownify }}</div>
+                      {{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+ 
+          {{ with $queries }}
+            <div id="advanced-queries" class="mb-16">
+              {{ with .title }}
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">{{ . }}</h2>
+              {{ end }}
+              {{ with .description }}
+                <div class="text-lg text-gray-300 mb-8 leading-relaxed">{{ . | markdownify }}</div>
+              {{ end }}
+              {{ with .items }}
+                <div class="space-y-6">
+                  {{ range . }}
+                    {{ $icon := .icon }}
+                    {{ $iconColor := .icon_color_class | default "text-verana" }}
+                    {{ $iconBg := .icon_bg_class | default "bg-verana/20" }}
+                    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300">
+                      <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 {{ $iconBg }} rounded-xl flex items-center justify-center flex-shrink-0">
+                          {{ if $icon }}
+                            <i class="{{ $icon }} {{ $iconColor }} text-xl"></i>
+                          {{ end }}
+                        </div>
+                        <div>
+                          {{ with .title }}
+                            <h3 class="text-lg font-semibold text-white mb-3">{{ . }}</h3>
+                          {{ end }}
+                          {{ with .text }}
+                            <div class="text-gray-300 leading-relaxed italic">{{ . | markdownify }}</div>
+                          {{ end }}
+                        </div>
+                      </div>
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+ 
+          {{ with $economy }}
+            <div id="trust-economy" class="mb-16">
+              {{ with .title }}
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">{{ . }}</h2>
+              {{ end }}
+              {{ $leadParas := .lead_paragraphs }}
+              {{ if $leadParas }}
+                <div class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-8 mb-8 space-y-6">
+                  {{ range $leadParas }}
+                    <div class="text-lg text-gray-200 leading-relaxed">{{ . | markdownify }}</div>
+                  {{ end }}
+                </div>
+              {{ end }}
+              <div class="grid md:grid-cols-2 gap-8">
+                {{ with .old_model }}
+                  {{ $color := .color | default "red" }}
+                  <div class="space-y-6">
+                    {{ with .title }}
+                      <h3 class="text-2xl font-bold {{ if eq $color "green" }}text-green-400{{ else if eq $color "red" }}text-red-400{{ else }}text-white{{ end }} mb-4">{{ . }}</h3>
+                    {{ end }}
+                    <div class="space-y-4">
+                      {{ range .items }}
+                        {{ $bgClass := printf "bg-%s-900/20" $color }}
+                        {{ $borderClass := printf "border-%s-700/50" $color }}
+                        <div class="{{ $bgClass }} {{ $borderClass }} rounded-xl p-4">
+                          <div class="text-gray-300">{{ . | markdownify }}</div>
+                        </div>
+                      {{ end }}
+                    </div>
+                  </div>
+                {{ end }}
+                {{ with .trust_model }}
+                  {{ $color := .color | default "green" }}
+                  <div class="space-y-6">
+                    {{ with .title }}
+                      <h3 class="text-2xl font-bold {{ if eq $color "green" }}text-green-400{{ else if eq $color "red" }}text-red-400{{ else }}text-white{{ end }} mb-4">{{ . }}</h3>
+                    {{ end }}
+                    <div class="space-y-4">
+                      {{ range .items }}
+                        {{ $bgClass := printf "bg-%s-900/20" $color }}
+                        {{ $borderClass := printf "border-%s-700/50" $color }}
+                        <div class="{{ $bgClass }} {{ $borderClass }} rounded-xl p-4">
+                          <div class="text-gray-300">{{ . | markdownify }}</div>
+                        </div>
+                      {{ end }}
+                    </div>
+                  </div>
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+ 
+          {{ with $examples }}
+            {{ range . }}
+              <div id="example-{{ .id | default (urlize .title) }}" class="mb-16">
+                {{ with .title }}
+                  <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">{{ . }}</h2>
+                {{ end }}
+                {{ with .summary }}
+                  {{ $sumIcon := .icon }}
+                  {{ $sumIconColor := .icon_color_class | default "text-verana" }}
+                  {{ $sumIconBg := .icon_bg_class | default "bg-verana/20" }}
+                  <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+                    <div class="flex flex-col md:flex-row md:items-start md:space-x-6 mb-8">
+                      <div class="w-16 h-16 {{ $sumIconBg }} rounded-2xl flex items-center justify-center flex-shrink-0 mb-6 md:mb-0">
+                        {{ if $sumIcon }}
+                          <i class="{{ $sumIcon }} {{ $sumIconColor }} text-2xl"></i>
+                        {{ end }}
+                      </div>
+                      <div>
+                        {{ with .heading }}
+                          <h3 class="text-2xl font-semibold text-white mb-4">{{ . }}</h3>
+                        {{ end }}
+                        {{ with .description }}
+                          <div class="text-gray-300 leading-relaxed mb-4">{{ . | markdownify }}</div>
+                        {{ end }}
+                        {{ with .did }}
+                          <div class="bg-black rounded-xl p-4 border border-gray-600">
+                            <code class="text-green-400 text-sm">{{ . }}</code>
+                          </div>
+                        {{ end }}
+                      </div>
+                    </div>
+                    {{ with .credentials }}
+                      {{ $grid := "grid gap-4" }}
+                      {{ $cols := .columns | default 3 }}
+                      {{ if eq $cols 4 }}
+                        {{ $grid = "grid md:grid-cols-2 lg:grid-cols-4 gap-4" }}
+                      {{ else if eq $cols 3 }}
+                        {{ $grid = "grid md:grid-cols-3 gap-4" }}
+                      {{ else if eq $cols 2 }}
+                        {{ $grid = "grid md:grid-cols-2 gap-4" }}
+                      {{ end }}
+                      <div class="{{ $grid }}">
+                        {{ range .items }}
+                          {{ $credIcon := .icon }}
+                          {{ $credColor := .icon_color_class | default "text-verana" }}
+                          <div class="bg-black border border-gray-600 rounded-xl p-4">
+                            <div class="flex items-center space-x-3 mb-3">
+                              {{ if $credIcon }}
+                                <i class="{{ $credIcon }} {{ $credColor }}"></i>
+                              {{ end }}
+                              {{ with .label }}
+                                <span class="text-white font-medium text-sm">{{ . }}</span>
+                              {{ end }}
+                            </div>
+                            {{ with .text }}
+                              <div class="text-gray-300 text-sm">{{ . | markdownify }}</div>
+                            {{ end }}
+                          </div>
+                        {{ end }}
+                      </div>
+                    {{ end }}
+                  </div>
+                {{ end }}
+                {{ with .steps }}
+                  <div class="grid md:grid-cols-2 gap-8">
+                    {{ range . }}
+                      {{ $style := .style | default "bg-gray-900 border border-gray-700" }}
+                      {{ $icon := .icon | default "fa-solid fa-circle" }}
+                      {{ $iconColor := .icon_color_class | default "text-verana" }}
+                      {{ $bulletColor := .bullet_color_class | default "bg-verana" }}
+                      <div class="{{ $style }} rounded-2xl p-8">
+                        <h4 class="text-xl font-semibold text-white mb-4 flex items-center">
+                          <i class="{{ $icon }} {{ $iconColor }} mr-3"></i>
+                          {{ .title | default "" }}
+                        </h4>
+                        {{ with .description }}
+                          <div class="text-gray-300 leading-relaxed mb-4">{{ . | markdownify }}</div>
+                        {{ end }}
+                        {{ with .bullets }}
+                          <div class="space-y-3">
+                            {{ range . }}
+                              <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 {{ $bulletColor }} rounded-full mt-2"></div>
+                                <span class="text-gray-300">{{ . | markdownify }}</span>
+                              </div>
+                            {{ end }}
+                          </div>
+                        {{ end }}
+                      </div>
+                    {{ end }}
+                  </div>
+                {{ end }}
+              </div>
+            {{ end }}
+          {{ end }}
+ 
+          {{ with $summary }}
+            <div id="trust-summary" class="mb-16">
+              {{ with .title }}
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6">{{ . }}</h2>
+              {{ end }}
+              {{ with .description }}
+                <div class="text-xl text-gray-300 mb-8 leading-relaxed">{{ . | markdownify }}</div>
+              {{ end }}
+              {{ with .items }}
+                <div class="grid md:grid-cols-3 gap-8">
+                  {{ range . }}
+                    {{ $icon := .icon }}
+                    {{ $iconBg := .icon_bg_class | default "bg-verana/20" }}
+                    {{ $iconColor := .icon_color_class | default "text-verana" }}
+                    <div class="text-center">
+                      <div class="w-16 h-16 {{ $iconBg }} rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        {{ if $icon }}
+                          <i class="{{ $icon }} {{ $iconColor }} text-2xl"></i>
+                        {{ end }}
+                      </div>
+                      {{ with .text }}
+                        <div class="text-gray-200 leading-relaxed">{{ . | markdownify }}</div>
+                      {{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+              {{ with .conclusion }}
+                <div class="mt-12 pt-8 border-t border-verana/20">
+                  <div class="text-xl text-center text-gray-200 leading-relaxed">{{ . | markdownify }}</div>
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+ 
+          {{ with $cta }}
+            <div id="page-cta" class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-12 text-center">
+              {{ with .title }}
+                <h2 class="text-3xl font-bold text-white mb-4">{{ . }}</h2>
+              {{ end }}
+              {{ with .text }}
+                <div class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">{{ . | markdownify }}</div>
+              {{ end }}
+              <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                {{ with .primary }}
+                  {{ $href := .href | default "#" }}
+                  {{ $label := .label | default "Start Building" }}
+                  {{ $icon := .icon }}
+                  <a href="{{ $href }}" class="bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2">
+                    {{ if $icon }}
+                      <i class="{{ $icon }}"></i>
+                    {{ end }}
+                    <span>{{ $label }}</span>
+                  </a>
+                {{ end }}
+                {{ with .secondary }}
+                  {{ $href := .href | default "#" }}
+                  {{ $label := .label | default "View Docs" }}
+                  <a href="{{ $href }}" class="border-2 border-gray-600 hover:border-verana text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105">
+                    {{ $label }}
+                  </a>
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ with $related }}
+  <section id="related-content" class="bg-gray-900 py-20">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        {{ with .title }}
+          <h2 class="text-3xl lg:text-4xl font-bold text-white mb-12 text-center">{{ . }}</h2>
+        {{ end }}
+        {{ with .items }}
+          <div class="grid md:grid-cols-3 gap-8">
+            {{ range . }}
+              {{ $icon := .icon }}
+              {{ $iconBg := .icon_bg_class | default "bg-verana/20" }}
+              {{ $iconColor := .icon_color_class | default "text-verana" }}
+              <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                <div class="w-12 h-12 {{ $iconBg }} rounded-xl flex items-center justify-center mb-6">
+                  {{ if $icon }}
+                    <i class="{{ $icon }} {{ $iconColor }} text-xl"></i>
+                  {{ end }}
+                </div>
+                {{ with .title }}
+                  <h3 class="text-xl font-semibold text-white mb-4">{{ . }}</h3>
+                {{ end }}
+                {{ with .description }}
+                  <div class="text-gray-300 mb-6 leading-relaxed">{{ . | markdownify }}</div>
+                {{ end }}
+                {{ $href := .cta_href | default "#" }}
+                {{ $label := .cta_label | default "Learn More" }}
+                <a href="{{ $href }}" class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200">
+                  <span>{{ $label }}</span>
+                  <i class="fa-solid fa-arrow-right text-sm"></i>
+                </a>
+              </div>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}
