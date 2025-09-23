@@ -1,109 +1,290 @@
 ---
 title: Trust Resolver
+subtitle: "The search engine of verifiable trust — a public, decentralized index where discovery is based on cryptographically verified credentials, not advertising budgets."
 url: "/page/trust-engine/trust-resolver"
+hero_icon: "fa-solid fa-magnifying-glass"
+disable_content_wrapper: true
+sidebar:
+  title: Trust Engine
+  nav:
+    - label: Trust Resolver
+      url: "/page/trust-engine/trust-resolver"
+      active: true
+    - label: Verifiable Service Directory
+      url: "/page/trust-engine"
+    - label: Trust Registries
+      url: "/page/trust-engine/trust-registries"
+    - label: Credential Verification
+      url: "/page/trust-engine/credential-verification"
+  quick_links:
+    - label: API Documentation
+      url: "#"
+    - label: Query Examples
+      url: "#"
+    - label: Integration Guide
+      url: "#"
+intro:
+  paragraphs:
+    - |
+      The internet today is built on **implicit trust**: users rely on search engines, platforms, and intermediaries to decide what is visible and who can be trusted. This model is opaque, advertising-driven, and often unsafe.
+    - |
+      The **Verana Trust Resolver** offers a new approach: a **public, decentralized index of verifiable services**. Instead of paid rankings or hidden algorithms, discoverability is based solely on **cryptographically verified credentials** issued by trusted ecosystems.
+  highlight:
+    icon: "fa-solid fa-lightbulb"
+    title: In Short
+    text: |
+      The Trust Resolver is the **search engine of verifiable trust**, open, transparent, and free from centralized control.
+how_it_works:
+  title: How It Works
+  lead: |
+    Anyone can register a **Verifiable Service** in the **Verifiable Service Directory**. Once registered, services are automatically crawled, their credentials dereferenced and verified, and then indexed in the **Verana Trust Resolver**.
+  note: |
+    Think of it as the **yellow pages of verifiable data**, but cryptographically guaranteed.
+  steps:
+    - icon: "fa-solid fa-plus"
+      icon_bg_class: "bg-blue-500/20"
+      icon_color_class: "text-blue-400"
+      title: Register
+      description: |
+        Services register their DID in the Verifiable Service Directory.
+    - icon: "fa-solid fa-spider"
+      icon_bg_class: "bg-green-500/20"
+      icon_color_class: "text-green-400"
+      title: Crawl
+      description: |
+        Credentials are automatically crawled and cryptographically verified.
+    - icon: "fa-solid fa-database"
+      icon_bg_class: "bg-verana/20"
+      icon_color_class: "text-verana"
+      title: Index
+      description: |
+        Verified data is indexed in the public Trust Resolver database.
+advanced_queries:
+  title: Advanced Trust-Based Queries
+  description: |
+    With this index in place, users, services, and apps can perform **advanced trust-based queries**, such as:
+  items:
+    - icon: "fa-solid fa-robot"
+      icon_bg_class: "bg-blue-500/20"
+      icon_color_class: "text-blue-400"
+      title: AI Assistant Discovery
+      text: |
+        "Where is Alice's AI Assistant whose attached **AI Assistant Credential** shows the owner name 'Alice'?"
+    - icon: "fa-solid fa-share-nodes"
+      icon_bg_class: "bg-purple-500/20"
+      icon_color_class: "text-purple-400"
+      title: Social Network Search
+      text: |
+        "Which social channels hold a **Blue Network Credential** from **Ecosystem DEF** and have an avatar credential containing **@bob_influencer**?"
+    - icon: "fa-solid fa-shopping-cart"
+      icon_bg_class: "bg-green-500/20"
+      icon_color_class: "text-green-400"
+      title: E-commerce Discovery
+      text: |
+        "Which services in Bristol, UK present an **E-commerce Retail Credential** from issuers of the **Ecosystem Ecommerce Global Alliance** and sell **baby shoes**?"
+    - icon: "fa-solid fa-bed"
+      icon_bg_class: "bg-orange-500/20"
+      icon_color_class: "text-orange-400"
+      title: Hotel Search
+      text: |
+        "List all services with a valid **Hotel Credential** from **Ecosystem PMS Vendor ABC** located in **France**."
+    - icon: "fa-solid fa-wrench"
+      icon_bg_class: "bg-red-500/20"
+      icon_color_class: "text-red-400"
+      title: Professional Services
+      text: |
+        "Show certified plumbers AI assistants who hold a **Plumber Credential** from **Ecosystem Verified Workers** in **Bogotá**."
+    - icon: "fa-solid fa-id-card"
+      icon_bg_class: "bg-yellow-500/20"
+      icon_color_class: "text-yellow-400"
+      title: Identity Provenance
+      text: |
+        "Which services present a **Government-Issued Credential** proving a verified headquarters in **Toronto**?"
+trust_economy:
+  title: Disrupting the Attention Economy
+  lead_paragraphs:
+    - |
+      The **Trust Resolver** ensures search results are based solely on **verifiable data** contained in verifiable credentials, not arbitrary or opaque ranking algorithms.
+    - |
+      This fundamentally **disrupts today's economy** of advertising-driven visibility (Google Ads, Facebook Ads, etc.) and replaces it with a **decentralized economy of trust**.
+  old_model:
+    title: "❌ Old Model"
+    color: red
+    items:
+      - Opaque algorithms decide visibility
+      - Pay-to-play advertising model
+      - Centralized platform control
+      - No verification of claims
+  trust_model:
+    title: "✅ Trust Economy"
+    color: green
+    items:
+      - Ecosystems certify claims and issue credentials
+      - Results are transparent and verifiable
+      - Compete on trust and authenticity
+      - Public, verifiable database of claims
+examples:
+  - id: alice
+    title: "Example #1: Alice's AI Assistant"
+    summary:
+      icon: "fa-solid fa-robot"
+      icon_bg_class: "bg-blue-500/20"
+      icon_color_class: "text-blue-400"
+      heading: Alice runs an AI Assistant
+      description: |
+        Alice runs an **AI Assistant Verifiable Service (VS)**, deployed on Amazon Lambda.
+      did: did:example:alice-ai-assistant
+      credentials:
+        columns: 3
+        items:
+          - icon: "fa-solid fa-user"
+            icon_color_class: "text-blue-400"
+            label: Person Credential
+            text: |
+              Proves that Alice is the owner of the AI Assistant.
+          - icon: "fa-solid fa-cog"
+            icon_color_class: "text-green-400"
+            label: Service Credential
+            text: |
+              Contains the assistant's name and minimum age requirements.
+          - icon: "fa-solid fa-message"
+            icon_color_class: "text-purple-400"
+            label: Hologram Messaging
+            text: |
+              Shows the assistant can be reached via the Hologram Messaging VUA.
+    steps:
+      - title: Making It Discoverable
+        icon: "fa-solid fa-plus-circle"
+        icon_color_class: "text-verana"
+        bullet_color_class: "bg-verana"
+        style: "bg-verana/10 border border-verana/30"
+        description: |
+          Alice executes a transaction on the **Verana network** to register her DID in the **Verifiable Service Directory**.
+        bullets:
+          - DID is resolved
+          - Credentials are crawled and verified
+          - Results are indexed in Trust Resolver
+      - title: Search in Action
+        icon: "fa-solid fa-magnifying-glass"
+        icon_color_class: "text-green-400"
+        bullet_color_class: "bg-green-400"
+        style: "bg-green-900/20 border border-green-700/50"
+        description: |
+          Alice's AI Assistant is now **automatically discoverable** through Trust Resolver queries:
+        bullets:
+          - Inside Hologram Messaging App
+          - Through search-engine-style interface
+  - id: bob
+    title: "Example #2: Bob's E-commerce"
+    summary:
+      icon: "fa-solid fa-store"
+      icon_bg_class: "bg-green-500/20"
+      icon_color_class: "text-green-400"
+      heading: Bob's Niche E-commerce
+      description: |
+        Bob built an e-commerce business to serve a niche market: **children's shoes**. For his online shop, he chose Medusa as the platform.
+      did: did:example:bob-ecommerce-kid-shoes
+      credentials:
+        columns: 4
+        items:
+          - icon: "fa-solid fa-building"
+            icon_color_class: "text-blue-400"
+            label: Organization
+            text: |
+              Bob Kid Shoes Ltd is the official owner.
+          - icon: "fa-solid fa-cog"
+            icon_color_class: "text-green-400"
+            label: Service
+            text: |
+              Shop name and age requirements.
+          - icon: "fa-solid fa-bag-shopping"
+            icon_color_class: "text-verana"
+            label: E-commerce Retail
+            text: |
+              Describes the products sold and delivery areas covered.
+          - icon: "fa-solid fa-link"
+            icon_color_class: "text-purple-400"
+            label: Medusa Credential
+            text: |
+              Links Bob's store to Medusa's official list of customers.
+    steps:
+      - title: Becoming Discoverable
+        icon: "fa-solid fa-plus-circle"
+        icon_color_class: "text-verana"
+        bullet_color_class: "bg-verana"
+        style: "bg-verana/10 border border-verana/30"
+        description: |
+          Bob executes a transaction on the **Verana network** to add his service DID to the **Verifiable Service Directory**.
+        bullets:
+          - DID is resolved
+          - Credentials are crawled and verified
+          - Content is indexed in Trust Resolver
+      - title: Find My Shop
+        icon: "fa-solid fa-magnifying-glass"
+        icon_color_class: "text-green-400"
+        bullet_color_class: "bg-green-400"
+        style: "bg-green-900/20 border border-green-700/50"
+        description: |
+          Bob's shop can now be found automatically by anyone querying the Trust Resolver:
+        bullets:
+          - |
+            "Which services in Bristol, UK present an **E-commerce Retail Credential** from issuers of the **Ecosystem Ecommerce Global Alliance** and sell **baby shoes**?"
+trust_summary:
+  title: A Trust-Driven Discovery Loop
+  description: |
+    The **Verifiable Service Directory** and the **Trust Resolver** fundamentally change how discovery works online.
+  items:
+    - icon: "fa-solid fa-seedling"
+      text: |
+        **Ecosystems** issue credentials that define trust frameworks.
+    - icon: "fa-solid fa-user-check"
+      icon_color_class: "text-green-400"
+      icon_bg_class: "bg-green-500/20"
+      text: |
+        **Holders** attach credentials to their services to prove claims.
+    - icon: "fa-solid fa-magnifying-glass"
+      text: |
+        Being **searchable** depends on verifiable authenticity within ecosystems.
+  conclusion: |
+    With Verana, discovery becomes fair, transparent, and privacy-preserving, shifting the internet from centralized platforms to a **trust-driven, ecosystem-based economy** where value flows back to those who prove and earn it.
+cta:
+  title: Ready to Build the Trust Economy?
+  text: |
+    Start building verifiable services and join the revolution in decentralized discovery.
+  primary:
+    label: Start Building
+    icon: "fa-solid fa-rocket"
+    href: "#"
+  secondary:
+    label: View API Docs
+    href: "#"
+related_components:
+  title: Related Trust Engine Components
+  items:
+    - icon: "fa-solid fa-folder-open"
+      icon_bg_class: "bg-blue-500/20"
+      icon_color_class: "text-blue-400"
+      title: Verifiable Service Directory
+      description: |
+        The public registry where verifiable services register their DIDs for discovery.
+      cta_label: Learn More
+      cta_href: "/page/trust-engine"
+    - icon: "fa-solid fa-shield-halved"
+      icon_bg_class: "bg-green-500/20"
+      icon_color_class: "text-green-400"
+      title: Trust Registries
+      description: |
+        Ecosystem-governed lists of trusted issuers and their credential schemas.
+      cta_label: Explore
+      cta_href: "/page/trust-engine/trust-registries"
+    - icon: "fa-solid fa-check-double"
+      icon_bg_class: "bg-purple-500/20"
+      icon_color_class: "text-purple-400"
+      title: Credential Verification
+      description: |
+        Cryptographic verification engine that validates credentials against trust registries.
+      cta_label: Verify Now
+      cta_href: "/page/trust-engine/credential-verification"
 ---
 
-The internet today is built on **implicit trust**: users rely on search engines, platforms, and intermediaries to decide what is visible and who can be trusted.  
-This model is opaque, advertising-driven, and often unsafe.  
-
-The **Verana Trust Resolver** offers a new approach: a **public, decentralized index of verifiable services**.  
-Instead of paid rankings or hidden algorithms, discoverability is based solely on **cryptographically verified credentials** issued by trusted ecosystems.  
-
-In short: the Trust Resolver is the **search engine of verifiable trust**, open, transparent, and free from centralized control.  
-
-## How it Works
-
-Anyone can register a **Verifiable Service** in the **Verifiable Service Directory**. Once registered, services are automatically crawled, their credentials dereferenced and verified, and then indexed in the **Verana Trust Resolver**. Think of it as the **yellow pages of verifiable data**, but cryptographically guaranteed.
-
-With this index in place, users, services, and apps can perform **advanced trust-based queries**, such as:
-
-- 🔍 *Where is Alice’s AI Assistant whose attached **AI Assistant Credential** shows the owner name “Alice”?*  
-- 🌐 *Which social channels hold a **Blue Network Credential** from **Ecosystem DEF** and have an avatar credential containing **@bob_influencer**?*  
-- 🛍️ *Which services in Bristol, UK present an **E-commerce Retail Credential** from issuers of the **Ecosystem Ecommerce Global Alliance** and sell **baby shoes**?*  
-- 🏨 *List all services with a valid **Hotel Credential** from **Ecosystem PMS Vendor ABC** located in **France**.*  
-- 🔧 *Show certified plumbers AI assistants who hold a **Plumber Credential** from **Ecosystem Verified Workers** in **Bogotá**.*  
-
-The **Trust Resolver** ensures search results are based solely on **verifiable data** contained in verifiable credentials, not arbitrary or opaque ranking algorithms.  
-
-This fundamentally **disrupts today’s economy** of advertising-driven visibility (Google Ads, Facebook Ads, etc.) and replaces it with a **decentralized economy of trust**, where:  
-
-- ✅ Ecosystems certify claims and issue credentials.  
-- ✅ Results are transparent and verifiable.  
-- ✅ Businesses and individuals compete on **trust and authenticity**, not ad budgets.  
-
-The result is a **public, verifiable database of claims**, open and searchable by anyone, that shifts value from centralized intermediaries to decentralized ecosystems.  
-
-## Example #1: Alice's AI Assistant
-
-Alice runs an **AI Assistant Verifiable Service (VS)**, deployed on [Amazon Lambda](https://aws.amazon.com/pm/lambda/).  
-
-Her AI Assistant is identified by a **Decentralized Identifier (DID)**:  
-`did:example:alice-ai-assistant`  
-
-Attached to her service are several **verifiable credentials**:  
-
-- 👩 A **Person Credential**, proving that Alice is the owner of the AI Assistant.  
-- 🛠 A **Service Credential**, containing details such as the assistant’s name and the minimum age required to connect.  
-- 💬 A **Hologram Messaging Credential**, showing that her assistant can be reached directly within the **Hologram Messaging Verifiable User Agent (VUA)**.  
-
-### Making the Service Discoverable
-
-Alice wants her assistant to be **searchable**. She executes a transaction on the **Verana network** to register her DID in the **Verifiable Service Directory**.  
-
-Once added:
-
-- The DID is resolved,
-- Its credentials are crawled and verified,
-- And the results are indexed in the **Trust Resolver**.
-
-### Search in Action
-
-From this point on, Alice’s AI Assistant is **automatically discoverable** through Trust Resolver queries:
-
-- 🔍 Inside the **Hologram Messaging App**, by searching her name, claims (e.g., first name, last name), or her agent’s service name.
-- 🌐 Through a **search-engine-style interface**, scanning the full database of verifiable services.
-
-## Example #2: Bob's E-commerce
-
-Bob built an e-commerce business to serve a niche market: **children’s shoes**.  
-For his online shop, he chose [Medusa](https://medusajs.com/) as the platform.  
-
-To increase trust and visibility, Bob enabled the **Verifiable Trust** feature in his e-commerce service, turning it into a **Verifiable Service (VS)**. His shop is now identified by a **Decentralized Identifier (DID)**:  
-`did:example:bob-ecommerce-kid-shoes`.
-
-Attached to Bob’s Medusa Verifiable Service are several **verifiable credentials**:  
-
-- 🏢 An **Organization Credential**, proving that *Bob Kid Shoes Ltd* is the official owner.  
-- 🛠 A **Service Credential**, listing details such as the shop’s name and minimum age requirements.  
-- 🛍 An **E-commerce Retail Credential**, describing the products sold and the delivery areas covered.  
-- 🔗 A **Medusa Credential**, linking Bob’s store to Medusa’s official list of customers.  
-
-### Becoming Discoverable
-
-Bob wants his shop to be **searchable**. He executes a transaction on the **Verana network** to add his service DID to the **Verifiable Service Directory**.  
-
-From there:  
-
-- The DID is resolved,  
-- Its credentials are crawled and verified,  
-- The content is indexed in the **Verana Trust Resolver**.  
-
-### Find my Shop
-
-Now, Bob’s shop can be found automatically by anyone querying the Trust Resolver:  
-
-**Example query:**  
-*“Which services in Bristol, UK present an **E-commerce Retail Credential** from issuers of the **Ecosystem Ecommerce Global Alliance** and sell **baby shoes**?”*
-
-## Conclusion
-
-The **Verifiable Service Directory** and the **Trust Resolver** fundamentally change how discovery works online.  
-Instead of being ranked by opaque algorithms or ad budgets, services like Alice’s AI Assistant or Bob’s e-commerce shop are **indexed and searchable through verifiable data**, secured by cryptography and trusted credentials.  
-
-This creates not just better visibility, but a **new kind of decentralized economy**:
-
-- 🌐 Ecosystems issue **credentials** that define trust frameworks.  
-- 🙋 Holders attach these credentials to their services to **prove claims**.  
-- 🔍 Being **searchable** depends not on marketing spend, but on **verifiable authenticity** within ecosystems.  
-
-With Verana, discovery becomes fair, transparent, and privacy-preserving, shifting the internet from centralized platforms to a **trust-driven, ecosystem-based economy** where value flows back to those who prove and earn it.
+{{< trust-resolver >}}

@@ -21,13 +21,27 @@
     </main>
     {{ partial "uxpilot/footer.html" . }}
     <script>
-        const btn = document.getElementById('nav-toggle');
-        const menu = document.getElementById('nav-menu-mobile');
-        if (btn && menu) {
-          btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-          });
-        }
+        (function(){
+          function initNavToggle(){
+            var toggle = document.getElementById('nav-toggle');
+            var menu = document.getElementById('nav-menu-mobile');
+            if (!toggle || !menu || toggle.dataset.navInitialized === 'true') return;
+            toggle.dataset.navInitialized = 'true';
+            menu.setAttribute('aria-hidden', menu.classList.contains('hidden') ? 'true' : 'false');
+            toggle.setAttribute('aria-expanded', (!menu.classList.contains('hidden')).toString());
+            toggle.addEventListener('click', function(){
+              var isHidden = menu.classList.toggle('hidden');
+              var expanded = !isHidden;
+              toggle.setAttribute('aria-expanded', expanded.toString());
+              menu.setAttribute('aria-hidden', (!expanded).toString());
+            });
+          }
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initNavToggle, { once: true });
+          } else {
+            initNavToggle();
+          }
+        })();
         (function(){
           function slugify(text){
             return text.toString().toLowerCase()
