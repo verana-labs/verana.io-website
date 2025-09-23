@@ -1,0 +1,38 @@
+{{ $title := .Get "title" }}
+{{ if not $title }}{{ errorf "team-mission-card shortcode requires title param" }}{{ end }}
+{{ $description := .Get "description" }}
+{{ $icon := default "fa-solid fa-circle" (.Get "icon") }}
+{{ $iconBgClass := default "bg-verana/20" (.Get "icon_bg_class") }}
+{{ $iconColorClass := default "text-verana" (.Get "icon_color_class") }}
+{{ $ctaLabel := .Get "cta_label" }}
+{{ $ctaUrl := .Get "cta_url" }}
+{{ $ctaIcon := .Get "cta_icon" }}
+<div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 text-center">
+  <div class="w-16 h-16 {{ $iconBgClass }} rounded-2xl flex items-center justify-center mx-auto mb-6">
+    <i class="{{ $icon }} {{ $iconColorClass }} text-2xl"></i>
+  </div>
+  <h3 class="text-xl font-semibold text-white mb-4">{{ $title }}</h3>
+  {{ with $description }}
+    <p class="text-gray-300 mb-6">{{ . }}</p>
+  {{ end }}
+  {{ with $ctaLabel }}
+    {{ $label := . }}
+    {{ if $ctaUrl }}
+      {{ $target := "" }}
+      {{ $rel := "" }}
+      {{ if or (hasPrefix $ctaUrl "http://") (hasPrefix $ctaUrl "https://") }}
+        {{ $target = "_blank" }}
+        {{ $rel = "noopener noreferrer" }}
+      {{ end }}
+      <a href="{{ $ctaUrl }}" class="text-verana hover:text-verana-light font-medium inline-flex items-center gap-2 justify-center transition-colors"{{ if $target }} target="{{ $target }}" rel="{{ $rel }}"{{ end }}>
+        {{ if $ctaIcon }}<i class="{{ $ctaIcon }}"></i>{{ end }}
+        <span>{{ $label }}</span>
+      </a>
+    {{ else }}
+      <span class="text-verana hover:text-verana-light font-medium inline-flex items-center gap-2 justify-center transition-colors cursor-pointer">
+        {{ if $ctaIcon }}<i class="{{ $ctaIcon }}"></i>{{ end }}
+        <span>{{ $label }}</span>
+      </span>
+    {{ end }}
+  {{ end }}
+</div>

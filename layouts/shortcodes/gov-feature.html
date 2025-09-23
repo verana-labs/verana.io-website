@@ -1,0 +1,26 @@
+{{ $icon := .Get "icon" }}
+{{ $iconBg := default "bg-verana/20" (.Get "icon_bg_class") }}
+{{ $iconColor := default "text-verana" (.Get "icon_color_class") }}
+{{ $iconSize := default "text-sm" (.Get "icon_size") }}
+{{ $iconWrapClass := default "w-8 h-8 rounded-lg flex items-center justify-center mr-4 mt-1" (.Get "icon_wrap_class") }}
+{{ $title := .Get "title" }}
+{{ $text := .Get "text" }}
+{{ $wrapClass := default "flex items-start" (.Get "wrap_class") }}
+{{ $titleClass := default "text-lg font-semibold text-white mb-2" (.Get "title_class") }}
+{{ $textClass := default "text-gray-300 text-sm" (.Get "text_class") }}
+{{ $inlineWrap := default "flex items-center gap-2" (.Get "inline_wrap_class") }}
+{{ $iconWrapperClasses := printf "%s %s" $iconBg $iconWrapClass | strings.TrimSpace }}
+{{ if $title }}
+  <div class="{{ $wrapClass }}">
+    {{ if $icon }}<div class="{{ $iconWrapperClasses }}"><i class="{{ $icon }} {{ $iconColor }} {{ $iconSize }}"></i></div>{{ end }}
+    <div>
+      <h4 class="{{ $titleClass }}">{{ $title }}</h4>
+      {{ with $text }}<p class="{{ $textClass }}">{{ . | safeHTML }}</p>{{ end }}
+    </div>
+  </div>
+{{ else }}
+  <div class="{{ $inlineWrap }}">
+    {{ if $icon }}<div class="{{ $iconWrapperClasses }}"><i class="{{ $icon }} {{ $iconColor }} {{ $iconSize }}"></i></div>{{ end }}
+    {{ with $text }}<span class="{{ $textClass }}">{{ . | safeHTML }}</span>{{ end }}
+  </div>
+{{ end }}

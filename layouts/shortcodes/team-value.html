@@ -1,0 +1,16 @@
+{{ $title := .Get "title" }}
+{{ if not $title }}{{ errorf "team-value shortcode requires title param" }}{{ end }}
+{{ $description := .Get "description" }}
+{{ if not $description }}{{ errorf "team-value shortcode requires description param" }}{{ end }}
+{{ $icon := .Get "icon" }}
+{{ $iconClass := default "fa-solid fa-star" $icon }}
+{{ $iconBgClass := default "bg-verana/20" (.Get "icon_bg_class") }}
+{{ $iconColorClass := default "text-verana" (.Get "icon_color_class") }}
+
+<div class="bg-black border border-gray-700 rounded-2xl p-8 text-center hover:border-verana/50 transition-all duration-300">
+  <div class="w-16 h-16 {{ $iconBgClass }} rounded-2xl flex items-center justify-center mx-auto mb-6">
+    <i class="{{ $iconClass }} {{ $iconColorClass }} text-2xl"></i>
+  </div>
+  <h3 class="text-2xl font-semibold text-white mb-4">{{ $title }}</h3>
+  <p class="text-gray-300 leading-relaxed">{{ $description | safeHTML }}</p>
+</div>

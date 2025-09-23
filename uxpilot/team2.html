@@ -1,0 +1,527 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet the Team - Verana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "fontFamily": {
+        "inter": [
+          "Inter",
+          "sans-serif"
+        ]
+      },
+      "colors": {
+        "verana": "#763ef0",
+        "verana-light": "#9f7aea",
+        "verana-dark": "#553c9a"
+      },
+      "animation": {
+        "float": "float 6s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite alternate",
+        "network-pulse": "network-pulse 3s ease-in-out infinite"
+      },
+      "keyframes": {
+        "float": {
+          "0%, 100%": {
+            "transform": "translateY(0px)"
+          },
+          "50%": {
+            "transform": "translateY(-20px)"
+          }
+        },
+        "pulse-glow": {
+          "0%": {
+            "boxShadow": "0 0 20px rgba(118, 62, 240, 0.3)"
+          },
+          "100%": {
+            "boxShadow": "0 0 40px rgba(118, 62, 240, 0.6)"
+          }
+        },
+        "network-pulse": {
+          "0%, 100%": {
+            "opacity": "0.4"
+          },
+          "50%": {
+            "opacity": "0.8"
+          }
+        }
+      }
+    }
+  }
+};</script>
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        .gradient-mesh {
+            background: radial-gradient(circle at 20% 50%, rgba(118, 62, 240, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(118, 62, 240, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(118, 62, 240, 0.08) 0%, transparent 50%);
+        }
+        .timeline-line {
+            background: linear-gradient(to bottom, transparent 0%, rgba(118, 62, 240, 0.3) 20%, rgba(118, 62, 240, 0.6) 50%, rgba(118, 62, 240, 0.3) 80%, transparent 100%);
+        }
+    </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-black text-white overflow-x-hidden font-custom">
+
+<!-- Header -->
+<header id="header" class="bg-black/95 backdrop-blur-sm border-b border-gray-800/50 sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <span class="flex items-center space-x-3 cursor-pointer">
+                    <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-white">Verana</span>
+                </span>
+            </div>
+            
+            <nav class="hidden lg:flex items-center space-x-8">
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Why Verana</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Build</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Trust Engine</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Industry Use Cases</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">Community</span>
+                <span class="text-verana font-medium cursor-pointer">About</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <span class="bg-verana hover:bg-verana-dark text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer">
+                    Testnet
+                </span>
+                <button class="lg:hidden text-white">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Breadcrumb -->
+<section id="breadcrumb" class="bg-gray-900 py-4 border-b border-gray-800">
+    <div class="container mx-auto px-6">
+        <div class="flex items-center space-x-2 text-sm">
+            <span class="text-gray-400 hover:text-white cursor-pointer">Home</span>
+            <i class="fa-solid fa-chevron-right text-gray-500 text-xs"></i>
+            <span class="text-gray-400 hover:text-white cursor-pointer">About</span>
+            <i class="fa-solid fa-chevron-right text-gray-500 text-xs"></i>
+            <span class="text-white">Team</span>
+        </div>
+    </div>
+</section>
+
+<!-- Hero Section -->
+<section id="hero" class="relative bg-black py-20 lg:py-32 overflow-hidden h-[600px] flex items-center">
+    <div class="absolute inset-0 gradient-mesh"></div>
+    <div class="absolute inset-0">
+        <div class="absolute top-20 left-20 w-2 h-2 bg-verana rounded-full animate-pulse"></div>
+        <div class="absolute top-40 right-32 w-1 h-1 bg-verana-light rounded-full animate-pulse delay-1000"></div>
+        <div class="absolute bottom-32 left-1/3 w-1.5 h-1.5 bg-verana rounded-full animate-pulse delay-2000"></div>
+    </div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-5xl lg:text-7xl font-black mb-8 leading-tight">
+                <span class="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">Meet the</span>
+                <br>
+                <span class="bg-gradient-to-r from-verana to-verana-light bg-clip-text text-transparent">Team</span>
+            </h1>
+            
+            <p class="text-xl lg:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+                The visionaries and technologists building the future of digital trust and sovereignty.
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<!-- Team Values -->
+<section id="team-values" class="bg-gray-900 py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
+                    Our Values
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    The principles that guide our mission to build a more trustworthy and sovereign digital world.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div id="openness-card" class="bg-black border border-gray-700 rounded-2xl p-8 text-center hover:border-verana/50 transition-all duration-300">
+                    <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-lock-open text-verana text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-4">Openness</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        We believe in open standards, open source, and transparency. Our protocols are public, auditable, and designed for interoperability.
+                    </p>
+                </div>
+                
+                <div id="sovereignty-card" class="bg-black border border-gray-700 rounded-2xl p-8 text-center hover:border-verana/50 transition-all duration-300">
+                    <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-shield-halved text-verana text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-4">Sovereignty</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Individuals and organizations should have full control over their digital identities, data, and services without platform dependencies.
+                    </p>
+                </div>
+                
+                <div id="innovation-card" class="bg-black border border-gray-700 rounded-2xl p-8 text-center hover:border-verana/50 transition-all duration-300">
+                    <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-lightbulb text-verana text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-4">Innovation</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        We push the boundaries of what's possible with cryptography, distributed systems, and decentralized networks to solve real-world problems.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Chronology Section -->
+<section id="chronology" class="bg-black py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl lg:text-6xl font-bold mb-8">
+                    <span class="bg-gradient-to-r from-verana to-verana-light bg-clip-text text-transparent">Chronology</span>
+                </h2>
+                <p class="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                    Verana's journey is rooted in solving the <strong class="text-white">three systemic problems of the internet</strong> — <strong class="text-verana">trust</strong>, <strong class="text-verana">ownership</strong>, and <strong class="text-verana">discovery</strong>.
+                </p>
+            </div>
+            
+            <div class="relative">
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full timeline-line"></div>
+                
+                <!-- 2020 Genesis -->
+                <div id="genesis-2020" class="relative flex items-center mb-16">
+                    <div class="w-1/2 pr-12 text-right">
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300">
+                            <div class="flex items-center justify-end space-x-3 mb-4">
+                                <h3 class="text-2xl font-bold text-white">Genesis</h3>
+                                <div class="w-12 h-12 bg-verana/20 rounded-xl flex items-center justify-center">
+                                    <i class="fa-solid fa-star text-verana"></i>
+                                </div>
+                            </div>
+                            <p class="text-verana font-semibold text-lg mb-4">2020</p>
+                            <p class="text-gray-300 mb-6 leading-relaxed">
+                                After many sessions at the <strong>Internet Identity Workshop (IIW)</strong>, Fabrice Rochette and Ariel Gentile invent the concept of <strong>Verifiable Trust</strong>.
+                            </p>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-end space-x-2">
+                                    <span class="text-gray-400 text-sm">Verifiable Trust Specification</span>
+                                    <i class="fa-solid fa-external-link text-verana text-xs"></i>
+                                </div>
+                                <div class="flex items-center justify-end space-x-2">
+                                    <span class="text-gray-400 text-sm">Verifiable Public Registry Specification</span>
+                                    <i class="fa-solid fa-external-link text-verana text-xs"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-verana rounded-full border-4 border-black z-10"></div>
+                    <div class="w-1/2 pl-12"></div>
+                </div>
+                
+                <!-- 2021-2022 Proofs of Concept -->
+                <div id="poc-2021-2022" class="relative flex items-center mb-16">
+                    <div class="w-1/2 pr-12"></div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-verana rounded-full border-4 border-black z-10"></div>
+                    <div class="w-1/2 pl-12">
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <div class="w-12 h-12 bg-verana/20 rounded-xl flex items-center justify-center">
+                                    <i class="fa-solid fa-flask text-verana"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-white">First Proofs of Concept</h3>
+                            </div>
+                            <p class="text-verana font-semibold text-lg mb-4">2021–2022</p>
+                            <p class="text-gray-300 mb-6 leading-relaxed">
+                                Development of the first <strong>Verifiable User Agent</strong>, the <span class="text-verana">Hologram Messaging App</span>. Creation of <strong>Verifiable Service chatbots</strong>, demonstrating that the Verifiable Trust model works in practice.
+                            </p>
+                            <div class="flex items-center space-x-2">
+                                <i class="fa-solid fa-check-circle text-green-400"></i>
+                                <span class="text-gray-400 text-sm">Hologram.zone launched</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 2023 Network Development -->
+                <div id="network-2023" class="relative flex items-center mb-16">
+                    <div class="w-1/2 pr-12 text-right">
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300">
+                            <div class="flex items-center justify-end space-x-3 mb-4">
+                                <h3 class="text-2xl font-bold text-white">Network Development</h3>
+                                <div class="w-12 h-12 bg-verana/20 rounded-xl flex items-center justify-center">
+                                    <i class="fa-solid fa-network-wired text-verana"></i>
+                                </div>
+                            </div>
+                            <p class="text-verana font-semibold text-lg mb-4">2023</p>
+                            <p class="text-gray-300 mb-6 leading-relaxed">
+                                <strong>Mathieu Gauthron</strong> joins to lead the build of the first decentralized, blockchain-based Verifiable Public Registry (VPR) implementation.
+                            </p>
+                            <div class="flex items-center justify-end space-x-2">
+                                <span class="text-gray-400 text-sm">Team expansion begins</span>
+                                <i class="fa-solid fa-users text-verana text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-verana rounded-full border-4 border-black z-10"></div>
+                    <div class="w-1/2 pl-12"></div>
+                </div>
+                
+                <!-- 2024 Verana Emerges -->
+                <div id="verana-2024" class="relative flex items-center mb-16">
+                    <div class="w-1/2 pr-12"></div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-verana rounded-full border-4 border-black z-10"></div>
+                    <div class="w-1/2 pl-12">
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <div class="w-12 h-12 bg-verana/20 rounded-xl flex items-center justify-center">
+                                    <i class="fa-solid fa-rocket text-verana"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-white">Verana Emerges</h3>
+                            </div>
+                            <p class="text-verana font-semibold text-lg mb-4">2024</p>
+                            <p class="text-gray-300 mb-6 leading-relaxed">
+                                The project adopts its permanent name: <strong class="text-verana">Verana</strong>. Expansion of the ecosystem vision around <strong>Verifiable Services</strong> and <strong>Trust Registries</strong>.
+                            </p>
+                            <div class="space-y-2">
+                                <div class="flex items-center space-x-2">
+                                    <i class="fa-solid fa-check-circle text-green-400"></i>
+                                    <span class="text-gray-400 text-sm">Brand identity established</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <i class="fa-solid fa-check-circle text-green-400"></i>
+                                    <span class="text-gray-400 text-sm">Ecosystem vision expanded</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 2025 Testnet & Strategic Growth -->
+                <div id="testnet-2025" class="relative flex items-center">
+                    <div class="w-1/2 pr-12 text-right">
+                        <div class="bg-gradient-to-br from-verana/10 to-verana-dark/10 border border-verana/50 rounded-2xl p-8 hover:border-verana transition-all duration-300">
+                            <div class="flex items-center justify-end space-x-3 mb-4">
+                                <h3 class="text-2xl font-bold text-white">Testnet &amp; Strategic Growth</h3>
+                                <div class="w-12 h-12 bg-verana/30 rounded-xl flex items-center justify-center animate-pulse-glow">
+                                    <i class="fa-solid fa-chart-line text-verana"></i>
+                                </div>
+                            </div>
+                            <p class="text-verana font-semibold text-lg mb-4">2025</p>
+                            <p class="text-gray-300 mb-6 leading-relaxed">
+                                <strong>Philip A. Bildner</strong> joins as <strong>Strategic Advisor</strong> to guide governance, fundraising, and partnerships. Launch of the <span class="text-verana">Verana Network Testnet</span>.
+                            </p>
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-end space-x-2">
+                                    <span class="text-gray-400 text-sm">Strategic advisor onboarded</span>
+                                    <i class="fa-solid fa-handshake text-verana text-xs"></i>
+                                </div>
+                                <div class="flex items-center justify-end space-x-2">
+                                    <span class="text-gray-400 text-sm">Testnet launched</span>
+                                    <i class="fa-solid fa-globe text-verana text-xs"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-verana rounded-full border-4 border-black z-10 animate-pulse-glow"></div>
+                    <div class="w-1/2 pl-12"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Join Our Mission -->
+<section id="join-mission" class="bg-gray-900 py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl lg:text-5xl font-bold text-white mb-8">
+                Join Our Mission
+            </h2>
+            <p class="text-xl text-gray-300 mb-12 leading-relaxed">
+                We're always looking for talented individuals who share our vision of building a more trustworthy and sovereign digital world. Whether you're a developer, researcher, or strategic thinker, we'd love to hear from you.
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div id="careers-card" class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 text-center">
+                    <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-briefcase text-verana text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Careers</h3>
+                    <p class="text-gray-300 mb-6">Explore open positions and join our growing team of innovators.</p>
+                    <span class="text-verana hover:text-verana-light font-medium cursor-pointer">View Openings</span>
+                </div>
+                
+                <div id="contributors-card" class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 text-center">
+                    <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-code-branch text-verana text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Contributors</h3>
+                    <p class="text-gray-300 mb-6">Contribute to our open-source projects and help build the future.</p>
+                    <span class="text-verana hover:text-verana-light font-medium cursor-pointer">Start Contributing</span>
+                </div>
+                
+                <div id="partnerships-card" class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 text-center">
+                    <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-handshake text-verana text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Partnerships</h3>
+                    <p class="text-gray-300 mb-6">Partner with us to integrate verifiable trust into your ecosystem.</p>
+                    <span class="text-verana hover:text-verana-light font-medium cursor-pointer">Partner With Us</span>
+                </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                <span class="bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2 cursor-pointer">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Contact Us</span>
+                </span>
+                <span class="border-2 border-gray-600 hover:border-verana text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 cursor-pointer">
+                    Join Community
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="bg-gray-900 border-t border-gray-800 py-16">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12 mb-12">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-white">Verana</span>
+                    </div>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty.
+                    </p>
+                    <div class="flex space-x-4">
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-github"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-discord"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Verana</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Principles</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Foundation</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Press</span></li>
+                        <li><span class="text-verana hover:text-verana-light transition-colors duration-200 cursor-pointer">Team</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Developers</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Docs</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">GitHub</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Testnet</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Specifications</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Trust Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Public Registry Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Trust Registry Query Protocol</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col sm:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">© 2025 Verana Foundation. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 sm:mt-0">
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Privacy Policy</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Terms of Service</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Cookie Policy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</body></html>

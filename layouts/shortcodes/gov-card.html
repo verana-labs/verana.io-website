@@ -1,0 +1,52 @@
+{{ $title := .Get "title" }}
+{{ $body := .Get "body" }}
+{{ $icon := .Get "icon" }}
+{{ $iconBg := default "bg-verana/20" (.Get "icon_bg_class") }}
+{{ $iconColor := default "text-verana" (.Get "icon_color_class") }}
+{{ $iconSize := default "text-2xl" (.Get "icon_size") }}
+{{ $wrapSize := default "4rem" (.Get "icon_size_outer") }}
+{{ $class := default "bg-black border border-gray-700 rounded-2xl p-8" (.Get "class") }}
+{{ $align := lower (default "left" (.Get "align")) }}
+{{ if and (ne $align "left") (ne $align "center") (ne $align "right") }}{{ $align = "left" }}{{ end }}
+{{ $contentClass := default "space-y-3" (.Get "inner_class") }}
+{{ $bodyClass := default "text-gray-300 leading-relaxed" (.Get "body_class") }}
+{{ $linkLabel := .Get "link_label" }}
+{{ $linkUrl := .Get "link_url" }}
+{{ $linkIcon := .Get "link_icon" }}
+{{ $linkClass := default "text-verana hover:text-verana-light font-medium inline-flex items-center gap-2 mt-6" (.Get "link_class") }}
+{{ $inner := trim .Inner "\n\r\t " }}
+<div class="{{ $class }}{{ if eq $align "center" }} text-center{{ else if eq $align "right" }} text-right{{ end }}">
+  {{ if $icon }}
+    <div class="{{ $iconBg }} rounded-xl flex items-center justify-center mb-6 {{ if eq $align "center" }}mx-auto{{ else if eq $align "right" }}ml-auto{{ end }}" style="width: {{ $wrapSize }}; height: {{ $wrapSize }};">
+      <i class="{{ $icon }} {{ $iconColor }} {{ $iconSize }}"></i>
+    </div>
+  {{ end }}
+  {{ with $title }}
+    <h3 class="text-2xl font-bold text-white mb-4">{{ . }}</h3>
+  {{ end }}
+  {{ with $body }}
+    {{ $bodyClassFinal := $bodyClass }}
+    {{ if gt (len $inner) 0 }}
+      {{ $bodyClassFinal = printf "%s mb-6" $bodyClassFinal }}
+    {{ end }}
+    <p class="{{ $bodyClassFinal }}">{{ . | safeHTML }}</p>
+  {{ end }}
+  {{ if gt (len $inner) 0 }}
+    <div class="{{ $contentClass }}">
+      {{ .Inner }}
+    </div>
+  {{ end }}
+  {{ with $linkLabel }}
+    {{ if $linkUrl }}
+      <a href="{{ $linkUrl }}" class="{{ $linkClass }}">
+        {{ if $linkIcon }}<i class="{{ $linkIcon }}"></i>{{ end }}
+        <span>{{ . }}</span>
+      </a>
+    {{ else }}
+      <span class="{{ $linkClass }}">
+        {{ if $linkIcon }}<i class="{{ $linkIcon }}"></i>{{ end }}
+        <span>{{ . }}</span>
+      </span>
+    {{ end }}
+  {{ end }}
+</div>

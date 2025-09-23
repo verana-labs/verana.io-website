@@ -1,0 +1,806 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Governance - Verana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "fontFamily": {
+        "inter": [
+          "Inter",
+          "sans-serif"
+        ]
+      },
+      "colors": {
+        "verana": "#763ef0",
+        "verana-light": "#9f7aea",
+        "verana-dark": "#553c9a"
+      },
+      "animation": {
+        "float": "float 6s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite alternate",
+        "network-pulse": "network-pulse 3s ease-in-out infinite",
+        "orbit": "orbit 15s linear infinite",
+        "rotate-slow": "rotate-slow 20s linear infinite"
+      },
+      "keyframes": {
+        "float": {
+          "0%, 100%": {
+            "transform": "translateY(0px)"
+          },
+          "50%": {
+            "transform": "translateY(-20px)"
+          }
+        },
+        "pulse-glow": {
+          "0%": {
+            "boxShadow": "0 0 20px rgba(118, 62, 240, 0.3)"
+          },
+          "100%": {
+            "boxShadow": "0 0 40px rgba(118, 62, 240, 0.6)"
+          }
+        },
+        "network-pulse": {
+          "0%, 100%": {
+            "opacity": "0.4"
+          },
+          "50%": {
+            "opacity": "0.8"
+          }
+        },
+        "orbit": {
+          "0%": {
+            "transform": "rotate(0deg) translateX(100px) rotate(0deg)"
+          },
+          "100%": {
+            "transform": "rotate(360deg) translateX(100px) rotate(-360deg)"
+          }
+        },
+        "rotate-slow": {
+          "0%": {
+            "transform": "rotate(0deg)"
+          },
+          "100%": {
+            "transform": "rotate(360deg)"
+          }
+        }
+      }
+    }
+  }
+};</script>
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        .gradient-mesh {
+            background: radial-gradient(circle at 20% 50%, rgba(118, 62, 240, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(118, 62, 240, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(118, 62, 240, 0.08) 0%, transparent 50%);
+        }
+        .network-bg {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(118, 62, 240, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(118, 62, 240, 0.08) 1px, transparent 1px);
+            background-size: 60px 60px, 40px 40px;
+            animation: network-pulse 4s ease-in-out infinite;
+        }
+        .governance-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .governance-card:hover {
+            transform: translateY(-8px);
+        }
+        .council-orbit {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+        .council-node {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            animation: orbit 15s linear infinite;
+        }
+    </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-black text-white overflow-x-hidden font-custom">
+
+<!-- Header -->
+<header id="header" class="bg-black/95 backdrop-blur-sm border-b border-gray-800/50 sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <span class="flex items-center space-x-3 cursor-pointer">
+                    <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-white">Verana</span>
+                </span>
+            </div>
+            
+            <nav class="hidden lg:flex items-center space-x-8">
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Why Verana</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Build</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Trust Engine</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Industry Use Cases</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">Community</span>
+                <span class="text-verana hover:text-verana-light transition-colors duration-200 cursor-pointer font-medium">About</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <span class="bg-verana hover:bg-verana-dark text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer">
+                    Testnet
+                </span>
+                <button class="lg:hidden text-white">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Page Hero Section -->
+<section id="page-hero" class="relative bg-gray-900 py-16 lg:py-24 overflow-hidden h-[400px] flex items-center">
+    <div class="absolute inset-0 gradient-mesh opacity-50"></div>
+    <div class="absolute inset-0 network-bg opacity-20"></div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <nav class="flex items-center space-x-2 text-sm text-gray-400 mb-8">
+                <span class="hover:text-white cursor-pointer">Home</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="hover:text-white cursor-pointer">About</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="text-verana">Governance</span>
+            </nav>
+            
+            <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-tight flex items-center">
+                <i class="fa-solid fa-balance-scale text-verana mr-4"></i>
+                <span class="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">Governance</span>
+            </h1>
+            
+            <p class="text-xl lg:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+                Verana's dual governance model balances network security with ecosystem growth through the Verana Council and Verana Foundation.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Overview Section -->
+<section id="governance-overview" class="bg-black py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6">How Verana Is Governed</h2>
+                <p class="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                    Verana's governance is intentionally <strong>split between two entities</strong> with distinct but complementary roles to ensure both technical resilience and ecosystem-driven growth.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
+                <div class="governance-card bg-gradient-to-br from-blue-900/20 to-blue-800/10 border border-blue-500/30 rounded-2xl p-8">
+                    <div class="w-16 h-16 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-shield-check text-blue-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">The Verana Council</h3>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        Ensures the <strong>security, reliability, and neutrality</strong> of the network by operating the validator infrastructure and making collective governance decisions.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center text-blue-300">
+                            <i class="fa-solid fa-check-circle mr-3"></i>
+                            <span>Network security &amp; validation</span>
+                        </div>
+                        <div class="flex items-center text-blue-300">
+                            <i class="fa-solid fa-check-circle mr-3"></i>
+                            <span>One-member-one-vote governance</span>
+                        </div>
+                        <div class="flex items-center text-blue-300">
+                            <i class="fa-solid fa-check-circle mr-3"></i>
+                            <span>Supermajority decision making</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="governance-card bg-gradient-to-br from-green-900/20 to-green-800/10 border border-green-500/30 rounded-2xl p-8">
+                    <div class="w-16 h-16 bg-green-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-seedling text-green-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">The Verana Foundation</h3>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        Drives <strong>growth, innovation, and adoption</strong> by supporting developers, funding ecosystem projects, and fostering community engagement.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center text-green-300">
+                            <i class="fa-solid fa-check-circle mr-3"></i>
+                            <span>Ecosystem funding &amp; grants</span>
+                        </div>
+                        <div class="flex items-center text-green-300">
+                            <i class="fa-solid fa-check-circle mr-3"></i>
+                            <span>Developer support &amp; resources</span>
+                        </div>
+                        <div class="flex items-center text-green-300">
+                            <i class="fa-solid fa-check-circle mr-3"></i>
+                            <span>Community building &amp; growth</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 text-center">
+                <h3 class="text-2xl font-bold text-white mb-4">Balanced Governance Model</h3>
+                <p class="text-xl text-gray-300 leading-relaxed">
+                    This dual structure ensures Verana is both <strong class="text-verana">technically resilient</strong> and <strong class="text-verana">ecosystem-driven</strong>, balancing operational stability with long-term growth and adoption.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Verana Council Section -->
+<section id="verana-council" class="bg-gray-900 py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6 flex items-center justify-center">
+                    <i class="fa-solid fa-users-gear text-blue-400 mr-4"></i>
+                    The Verana Council
+                </h2>
+                <p class="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                    Verana is run by a <strong>Council</strong>: a group of trusted, independent organizations from our industry. They don't own Verana, but they <strong>operate and oversee</strong> the core servers (called "validators") that keep the network secure and reliable.
+                </p>
+            </div>
+
+            <div class="bg-blue-900/10 border border-blue-500/30 rounded-2xl p-8 mb-12">
+                <div class="flex items-center mb-4">
+                    <i class="fa-solid fa-lightbulb text-yellow-400 text-2xl mr-4"></i>
+                    <h3 class="text-xl font-bold text-white">Key Idea</h3>
+                </div>
+                <p class="text-lg text-gray-200">
+                    Verana uses <strong>Council governance with one-member-one-vote</strong>. It is <strong>NOT</strong> stake-based or token-holder voting.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8 mb-16">
+                <div class="bg-black border border-gray-700 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-certificate text-blue-400 text-xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-white mb-3">Trust You Can Verify</h4>
+                    <p class="text-gray-300 text-sm">Council members are known, accountable organizations.</p>
+                </div>
+
+                <div class="bg-black border border-gray-700 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-anchor text-green-400 text-xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-white mb-3">Stability Over Hype</h4>
+                    <p class="text-gray-300 text-sm">Changes require broad agreement, not whoever holds the most tokens.</p>
+                </div>
+
+                <div class="bg-black border border-gray-700 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-handshake text-purple-400 text-xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-white mb-3">Industry Alignment</h4>
+                    <p class="text-gray-300 text-sm">The people helping govern the network are active participants in our ecosystem.</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-6">How Decisions Are Made</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-verana/20 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                <i class="fa-solid fa-vote-yea text-verana text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-white mb-2">One Member, One Vote</h4>
+                                <p class="text-gray-300">Every Council member has a single vote.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-verana/20 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                <i class="fa-solid fa-chart-pie text-verana text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-white mb-2">Supermajority Required</h4>
+                                <p class="text-gray-300">Most decisions need a <strong>supermajority (e.g., two-thirds)</strong> to pass.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-verana/20 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                <i class="fa-solid fa-eye text-verana text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-white mb-2">Transparent Process</h4>
+                                <p class="text-gray-300">Proposals and outcomes are recorded and published.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center">
+                    <div class="relative">
+                        <div class="w-64 h-64 border-2 border-verana/30 rounded-full flex items-center justify-center animate-rotate-slow">
+                            <div class="w-32 h-32 bg-verana/20 rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-users text-verana text-3xl"></i>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center animate-pulse">
+                            <i class="fa-solid fa-server text-white"></i>
+                        </div>
+                        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center animate-pulse">
+                            <i class="fa-solid fa-shield-check text-white"></i>
+                        </div>
+                        <div class="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center animate-pulse">
+                            <i class="fa-solid fa-balance-scale text-white"></i>
+                        </div>
+                        <div class="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center animate-pulse">
+                            <i class="fa-solid fa-vote-yea text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Validators Section -->
+<section id="validators-section" class="bg-black py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="text-3xl font-bold text-white mb-12 text-center">Validators: The Network Nodes That Secure Verana</h3>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-900 border border-gray-700 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-equals text-blue-400 text-xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-white mb-3">Council Members = Validators</h4>
+                    <p class="text-gray-300 text-sm">Only Council members can run validator nodes (the secure servers that process transactions).</p>
+                </div>
+
+                <div class="bg-gray-900 border border-gray-700 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-calendar-check text-green-400 text-xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-white mb-3">3-Year Service Terms</h4>
+                    <p class="text-gray-300 text-sm">Validators commit to a <strong>minimum three-year term</strong> of reliable operation.</p>
+                </div>
+
+                <div class="bg-gray-900 border border-gray-700 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-sync-alt text-purple-400 text-xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-white mb-3">Renewal Reviews</h4>
+                    <p class="text-gray-300 text-sm">At the end of a term, the Council reviews performance and votes on <strong>renewal</strong>.</p>
+                </div>
+
+                <div class="bg-gray-900 border border-gray-700 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-plus-circle text-orange-400 text-xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-white mb-3">Adding or Removing Validators</h4>
+                    <p class="text-gray-300 text-sm">Bringing in a new validator—or offboarding one—<strong>always requires a Council vote</strong>.</p>
+                </div>
+
+                <div class="bg-gray-900 border border-gray-700 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-exclamation-triangle text-red-400 text-xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-white mb-3">Emergency Safety</h4>
+                    <p class="text-gray-300 text-sm">In urgent situations, the Council can <strong>temporarily pause</strong> a validator, followed by a formal vote.</p>
+                </div>
+
+                <div class="bg-gray-900 border border-gray-700 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-verana/20 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-gavel text-verana text-xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-white mb-3">Legal Framework</h4>
+                    <p class="text-gray-300 text-sm">Draft documents are published on <span class="text-verana hover:text-verana-light cursor-pointer">GitHub</span>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Benefits Section -->
+<section id="benefits-section" class="bg-gray-900 py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-8">What This Means for Users and Builders</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                <i class="fa-solid fa-shield-alt text-blue-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-white mb-2">Security</h4>
+                                <p class="text-gray-300">Multiple independent operators keep the network resilient.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-green-500/20 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                <i class="fa-solid fa-clock text-green-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-white mb-2">Reliability</h4>
+                                <p class="text-gray-300">Validators are long-term, vetted partners—no fly-by-night actors.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                <i class="fa-solid fa-eye text-purple-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-white mb-2">Transparency</h4>
+                                <p class="text-gray-300">Governance proposals and results are visible.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-orange-500/20 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                <i class="fa-solid fa-user-check text-orange-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-white mb-2">Accountability</h4>
+                                <p class="text-gray-300">Poor performance can lead to non-renewal or removal by a Council vote.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-8">What We <em>Don't</em> Do</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                <i class="fa-solid fa-times text-red-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-white mb-2">No Stake-Weighted Governance</h4>
+                                <p class="text-gray-300">Holding more tokens does <strong>NOT</strong> give you more votes.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                <i class="fa-solid fa-times text-red-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-white mb-2">No Single-Party Control</h4>
+                                <p class="text-gray-300">No company or fund can unilaterally change the rules.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 bg-verana/10 border border-verana/30 rounded-xl p-6">
+                        <h4 class="text-lg font-bold text-white mb-3">Bottom Line</h4>
+                        <p class="text-gray-300">
+                            Verana's Council model blends <strong>professional stewardship</strong> with <strong>transparent, one-member-one-vote decisions</strong>, so you get a network that's trustworthy, stable, and built for the long term.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq-section" class="bg-black py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-3xl font-bold text-white mb-12 text-center">Quick FAQ</h3>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gray-900 border border-gray-700 rounded-xl p-6">
+                    <h4 class="text-lg font-semibold text-white mb-3">What's a "validator"?</h4>
+                    <p class="text-gray-300 text-sm">Independent, secure servers that check transactions and keep the network honest.</p>
+                </div>
+
+                <div class="bg-gray-900 border border-gray-700 rounded-xl p-6">
+                    <h4 class="text-lg font-semibold text-white mb-3">Who is on the Council?</h4>
+                    <p class="text-gray-300 text-sm">A rotating set of <strong>industry organizations</strong> selected for their track record, independence, and commitment to Verana's mission.</p>
+                </div>
+
+                <div class="bg-gray-900 border border-gray-700 rounded-xl p-6">
+                    <h4 class="text-lg font-semibold text-white mb-3">Can anyone become a validator?</h4>
+                    <p class="text-gray-300 text-sm">Not directly. <strong>Only Council members</strong> can run validators, and Council membership requires a vote.</p>
+                </div>
+
+                <div class="bg-gray-900 border border-gray-700 rounded-xl p-6">
+                    <h4 class="text-lg font-semibold text-white mb-3">How often do things change?</h4>
+                    <p class="text-gray-300 text-sm">Validators serve <strong>multi-year terms</strong>. Changes happen through <strong>proposals and supermajority votes</strong>, not on a whim.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Verana Foundation Section -->
+<section id="verana-foundation" class="bg-gray-900 py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6 flex items-center justify-center">
+                    <i class="fa-solid fa-seedling text-green-400 mr-4"></i>
+                    The Verana Foundation
+                </h2>
+                <p class="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                    The <strong>Verana Foundation</strong> is the <strong>ecosystem driver</strong> of Verana. Where the Council ensures network security, the Foundation ensures <strong>adoption, innovation, and growth</strong>.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <div class="bg-black border border-gray-700 rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-green-500/20 rounded-xl flex items-center justify-center mb-4 mx-auto">
+                        <i class="fa-solid fa-hand-holding-usd text-green-400 text-2xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-white mb-3">Funds Innovation</h4>
+                    <p class="text-gray-300 text-sm">Provides <strong>grants and investments</strong> to developers, startups, and organizations building on Verana.</p>
+                </div>
+
+                <div class="bg-black border border-gray-700 rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4 mx-auto">
+                        <i class="fa-solid fa-tools text-blue-400 text-2xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-white mb-3">Supports Builders</h4>
+                    <p class="text-gray-300 text-sm">Offers <strong>technical resources, documentation, and mentorship</strong> for those creating Verifiable Services.</p>
+                </div>
+
+                <div class="bg-black border border-gray-700 rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4 mx-auto">
+                        <i class="fa-solid fa-users text-purple-400 text-2xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-white mb-3">Fosters Community</h4>
+                    <p class="text-gray-300 text-sm">Builds and engages an active community of individuals, enterprises, and institutions.</p>
+                </div>
+
+                <div class="bg-black border border-gray-700 rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-orange-500/20 rounded-xl flex items-center justify-center mb-4 mx-auto">
+                        <i class="fa-solid fa-chart-line text-orange-400 text-2xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-white mb-3">Drives Ecosystem Growth</h4>
+                    <p class="text-gray-300 text-sm">Focuses on key areas like <strong>Trust, Service Ownership, and Discoverability</strong>.</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-6">Why a Foundation?</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-green-500/20 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                <i class="fa-solid fa-arrow-trend-up text-green-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-white mb-2">Long-term Adoption</h4>
+                                <p class="text-gray-300">Ensures Verana isn't just secure but widely used.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                <i class="fa-solid fa-heart text-blue-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-white mb-2">Ecosystem Health</h4>
+                                <p class="text-gray-300">Nurtures projects that expand the network's value.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                <i class="fa-solid fa-balance-scale text-purple-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-white mb-2">Neutral Support</h4>
+                                <p class="text-gray-300">Acts in the interest of all participants, not just one group.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-6">What This Means for the Community</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-green-500/20 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                <i class="fa-solid fa-dollar-sign text-green-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-white mb-2">Funding Opportunities</h4>
+                                <p class="text-gray-300">Developers and entrepreneurs can receive direct support.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                <i class="fa-solid fa-graduation-cap text-blue-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-white mb-2">Technical Guidance</h4>
+                                <p class="text-gray-300">Builders gain resources to accelerate their projects.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                <i class="fa-solid fa-microphone text-purple-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-white mb-2">Community Voice</h4>
+                                <p class="text-gray-300">The Foundation listens and incorporates feedback into Verana's growth strategy.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-green-900/10 border border-green-500/30 rounded-2xl p-8 text-center">
+                <h4 class="text-xl font-bold text-white mb-4">Bottom Line</h4>
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    The Verana Foundation ensures Verana evolves into a thriving, innovative ecosystem, while the Verana Council safeguards its integrity and reliability. Together, they balance <strong class="text-green-400">operational resilience</strong> with <strong class="text-green-400">ecosystem expansion</strong>.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section id="governance-cta" class="bg-gradient-to-r from-verana/10 to-verana-light/10 border-y border-verana/30 py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6">Participate in Verana's Future</h2>
+            <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                Verana's governance model ensures transparency, accountability, and long-term sustainability. Join our community to stay informed about governance decisions and contribute to the network's evolution.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                <span class="bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2 cursor-pointer">
+                    <i class="fa-brands fa-github"></i>
+                    <span>View Legal Documents</span>
+                </span>
+                <span class="border-2 border-gray-600 hover:border-verana text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 cursor-pointer">
+                    Join Community
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="bg-gray-900 border-t border-gray-800 py-16">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12 mb-12">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-white">Verana</span>
+                    </div>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty.
+                    </p>
+                    <div class="flex space-x-4">
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-github"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-discord"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Verana</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Principles</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Foundation</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Press</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Developers</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Docs</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">GitHub</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Specifications</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Trust Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Public Registry Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Trust Registry Query Protocol</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col sm:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">© 2025 Verana Foundation. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 sm:mt-0">
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Privacy Policy</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Terms of Service</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Cookie Policy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</body></html>

@@ -1,0 +1,45 @@
+{{ $title := .Get "title" }}
+{{ $description := .Get "description" }}
+{{ $primaryLabel := .Get "primary_label" }}
+{{ $primaryUrl := .Get "primary_url" }}
+{{ $primaryIcon := .Get "primary_icon" }}
+{{ $secondaryLabel := .Get "secondary_label" }}
+{{ $secondaryUrl := .Get "secondary_url" }}
+{{ $secondaryIcon := .Get "secondary_icon" }}
+{{ $sectionClass := default "bg-gradient-to-r from-verana/10 to-verana-light/10 border-y border-verana/30 py-20" (.Get "class") }}
+<section class="{{ $sectionClass }}">
+  <div class="container mx-auto px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      {{ with $title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-6">{{ . }}</h2>{{ end }}
+      {{ with $description }}<p class="text-xl text-gray-300 mb-8 leading-relaxed">{{ . | safeHTML }}</p>{{ end }}
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+        {{ with $primaryLabel }}
+          {{ if $primaryUrl }}
+            <a href="{{ $primaryUrl }}" class="bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2" target="{{ cond (or (hasPrefix $primaryUrl "http://") (hasPrefix $primaryUrl "https://")) "_blank" "" }}" rel="{{ if or (hasPrefix $primaryUrl "http://") (hasPrefix $primaryUrl "https://") }}noopener noreferrer{{ end }}">
+              {{ if $primaryIcon }}<i class="{{ $primaryIcon }}"></i>{{ end }}
+              <span>{{ . }}</span>
+            </a>
+          {{ else }}
+            <span class="bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2 cursor-pointer">
+              {{ if $primaryIcon }}<i class="{{ $primaryIcon }}"></i>{{ end }}
+              <span>{{ . }}</span>
+            </span>
+          {{ end }}
+        {{ end }}
+        {{ with $secondaryLabel }}
+          {{ if $secondaryUrl }}
+            <a href="{{ $secondaryUrl }}" class="border-2 border-gray-600 hover:border-verana text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2" target="{{ cond (or (hasPrefix $secondaryUrl "http://") (hasPrefix $secondaryUrl "https://")) "_blank" "" }}" rel="{{ if or (hasPrefix $secondaryUrl "http://") (hasPrefix $secondaryUrl "https://") }}noopener noreferrer{{ end }}">
+              {{ if $secondaryIcon }}<i class="{{ $secondaryIcon }}"></i>{{ end }}
+              <span>{{ . }}</span>
+            </a>
+          {{ else }}
+            <span class="border-2 border-gray-600 hover:border-verana text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2 cursor-pointer">
+              {{ if $secondaryIcon }}<i class="{{ $secondaryIcon }}"></i>{{ end }}
+              <span>{{ . }}</span>
+            </span>
+          {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>

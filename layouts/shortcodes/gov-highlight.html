@@ -1,0 +1,17 @@
+{{ $title := .Get "title" }}
+{{ $body := .Get "body" }}
+{{ $emphasisClass := .Get "emphasis_class" }}
+{{ if and (not $emphasisClass) $body }}
+  {{ $emphasisClass = "text-verana" }}
+{{ end }}
+{{ if and $body $emphasisClass }}
+  {{ $body = replaceRE "<strong>" (printf "<strong class=\"%s\">" $emphasisClass) $body }}
+{{ end }}
+{{ $class := default "bg-gray-900 border border-gray-700 rounded-2xl p-8" (.Get "class") }}
+{{ $descriptionClass := default "text-xl text-gray-300 leading-relaxed" (.Get "description_class") }}
+{{ $align := lower (default "center" (.Get "align")) }}
+{{ if and (ne $align "left") (ne $align "center") (ne $align "right") }}{{ $align = "center" }}{{ end }}
+<div class="{{ $class }}{{ if eq $align "center" }} text-center{{ else if eq $align "right" }} text-right{{ end }}">
+  {{ with $title }}<h3 class="text-2xl font-bold text-white mb-4">{{ . }}</h3>{{ end }}
+  {{ with $body }}<p class="{{ $descriptionClass }}">{{ . | safeHTML }}</p>{{ end }}
+</div>

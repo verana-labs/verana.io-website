@@ -1,0 +1,61 @@
+{{ $id := .Get "id" }}
+{{ $title := .Get "title" }}
+{{ $description := .Get "description" }}
+{{ $titleIcon := .Get "title_icon" }}
+{{ $titleIconClass := default "text-verana" (.Get "title_icon_class") }}
+{{ $align := lower (default "center" (.Get "align")) }}
+{{ if and (ne $align "left") (ne $align "center") (ne $align "right") }}{{ $align = "center" }}{{ end }}
+{{ $bg := lower (default "black" (.Get "bg")) }}
+{{ $padding := default "py-20 lg:py-32" (.Get "padding" ) }}
+{{ $class := .Get "class" }}
+{{ $maxWidth := default "max-w-6xl" (.Get "max_width") }}
+{{ $containerClass := default "container mx-auto px-6" (.Get "container_class") }}
+{{ $titleSize := default "text-3xl lg:text-4xl" (.Get "title_size") }}
+{{ $descriptionClass := default "text-xl text-gray-300 max-w-4xl leading-relaxed" (.Get "description_class") }}
+{{ $bgClass := "" }}
+{{ if eq $bg "muted" }}
+  {{ $bgClass = "bg-gray-900" }}
+{{ else if eq $bg "gradient" }}
+  {{ $bgClass = "bg-gradient-to-r from-verana/10 to-verana-light/10 border-y border-verana/30" }}
+{{ else if eq $bg "none" }}
+  {{ $bgClass = "" }}
+{{ else }}
+  {{ $bgClass = "bg-black" }}
+{{ end }}
+{{ $sectionClass := (printf "%s %s %s" $bgClass $padding $class) | strings.TrimSpace }}
+{{ $titleWrapperClass := "mb-16" }}
+{{ if eq $align "left" }}
+  {{ $titleWrapperClass = "text-left mb-16" }}
+{{ else if eq $align "right" }}
+  {{ $titleWrapperClass = "text-right mb-16" }}
+{{ else }}
+  {{ $titleWrapperClass = "text-center mb-16" }}
+{{ end }}
+{{ $descriptionWrapClass := "" }}
+{{ if eq $align "left" }}
+  {{ $descriptionWrapClass = "mx-0" }}
+{{ else if eq $align "right" }}
+  {{ $descriptionWrapClass = "mx-0 ml-auto" }}
+{{ else }}
+  {{ $descriptionWrapClass = "mx-auto" }}
+{{ end }}
+<section{{ if $id }} id="{{ $id }}"{{ end }} class="{{ $sectionClass }}">
+  <div class="{{ $containerClass }}">
+    <div class="{{ $maxWidth }} mx-auto">
+      {{ if or $title $description }}
+        <div class="{{ $titleWrapperClass }}">
+          {{ if $title }}
+            <h2 class="{{ $titleSize }} font-bold text-white mb-6 flex {{ if eq $align "center" }}justify-center{{ else if eq $align "right" }}justify-end{{ else }}justify-start{{ end }} items-center">
+              {{ if $titleIcon }}<i class="{{ $titleIcon }} {{ $titleIconClass }} mr-4"></i>{{ end }}
+              <span>{{ $title }}</span>
+            </h2>
+          {{ end }}
+          {{ with $description }}
+            <p class="{{ $descriptionClass }} {{ $descriptionWrapClass }}">{{ . | safeHTML }}</p>
+          {{ end }}
+        </div>
+      {{ end }}
+      {{ .Inner }}
+    </div>
+  </div>
+</section>

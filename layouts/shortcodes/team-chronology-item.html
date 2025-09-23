@@ -1,0 +1,71 @@
+{{ $title := .Get "title" }}
+{{ if not $title }}{{ errorf "team-chronology-item shortcode requires title param" }}{{ end }}
+{{ $side := lower (default "left" (.Get "side")) }}
+{{ if ne $side "right" }}{{ $side = "left" }}{{ end }}
+{{ $year := .Get "year" }}
+{{ $icon := .Get "icon" }}
+{{ $iconBgClass := default "bg-verana/20" (.Get "icon_bg_class") }}
+{{ $iconColorClass := default "text-verana" (.Get "icon_color_class") }}
+{{ $cardClass := default "bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300" (.Get "card_class") }}
+{{ $markerClass := default "w-6 h-6 bg-verana rounded-full border-4 border-black" (.Get "marker_class") }}
+{{ $markerAnimation := default "" (.Get "marker_animation") }}
+{{ $markerExtraClass := default "" (.Get "marker_extra_class") }}
+{{ $yearClass := default "text-verana font-semibold text-lg mb-4" (.Get "year_class") }}
+{{ $content := "" }}
+{{ $inner := trim .Inner "\n\r\t " }}
+{{ if gt (len $inner) 0 }}
+  {{ $content = .Page.RenderString $inner }}
+{{ end }}
+{{ $iconWrapperClass := printf "w-12 h-12 %s rounded-xl flex items-center justify-center" $iconBgClass }}
+{{ $textAlignment := "text-left" }}
+{{ if eq $side "left" }}
+  {{ $textAlignment = printf "%s md:text-right" $textAlignment }}
+{{ else }}
+  {{ $textAlignment = printf "%s md:text-left" $textAlignment }}
+{{ end }}
+<div class="relative flex flex-col md:flex-row md:items-center py-4 md:py-6">
+  {{ if eq $side "left" }}
+    <div class="md:w-1/2 md:pr-12 mb-10 md:mb-0">
+      <div class="{{ $cardClass }} {{ $textAlignment }}">
+        <div class="flex items-center {{ if eq $side "left" }}justify-end{{ else }}justify-start{{ end }} space-x-3 mb-4">
+          {{ if eq $side "right" }}
+            {{ if $icon }}<div class="{{ $iconWrapperClass }}"><i class="{{ $icon }} {{ $iconColorClass }}"></i></div>{{ end }}
+            <h3 class="text-2xl font-bold text-white">{{ $title }}</h3>
+          {{ else }}
+            <h3 class="text-2xl font-bold text-white">{{ $title }}</h3>
+            {{ if $icon }}<div class="{{ $iconWrapperClass }}"><i class="{{ $icon }} {{ $iconColorClass }}"></i></div>{{ end }}
+          {{ end }}
+        </div>
+        {{ with $year }}<p class="{{ $yearClass }}">{{ . }}</p>{{ end }}
+        {{ if $content }}
+          <div class="space-y-4 text-gray-300 leading-relaxed [&>ul]:list-disc [&>ul]:pl-5 [&>ul>li]:text-gray-300">
+            {{ $content | safeHTML }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+    <div class="md:w-1/2 hidden md:block"></div>
+  {{ else }}
+    <div class="md:w-1/2 hidden md:block"></div>
+    <div class="md:w-1/2 md:pl-12 mb-10 md:mb-0">
+      <div class="{{ $cardClass }} {{ $textAlignment }}">
+        <div class="flex items-center {{ if eq $side "left" }}justify-end{{ else }}justify-start{{ end }} space-x-3 mb-4">
+          {{ if eq $side "right" }}
+            {{ if $icon }}<div class="{{ $iconWrapperClass }}"><i class="{{ $icon }} {{ $iconColorClass }}"></i></div>{{ end }}
+            <h3 class="text-2xl font-bold text-white">{{ $title }}</h3>
+          {{ else }}
+            <h3 class="text-2xl font-bold text-white">{{ $title }}</h3>
+            {{ if $icon }}<div class="{{ $iconWrapperClass }}"><i class="{{ $icon }} {{ $iconColorClass }}"></i></div>{{ end }}
+          {{ end }}
+        </div>
+        {{ with $year }}<p class="{{ $yearClass }}">{{ . }}</p>{{ end }}
+        {{ if $content }}
+          <div class="space-y-4 text-gray-300 leading-relaxed [&>ul]:list-disc [&>ul]:pl-5 [&>ul>li]:text-gray-300">
+            {{ $content | safeHTML }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  {{ end }}
+  <div class="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 {{ $markerClass }} {{ $markerAnimation }} {{ $markerExtraClass }}"></div>
+</div>

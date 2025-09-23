@@ -1,0 +1,13 @@
+{{ $columnsMd := .Get "columns_md" }}
+{{ $columnsLg := .Get "columns_lg" }}
+{{ $columnsXl := .Get "columns_xl" }}
+{{ $gap := default "gap-8" (.Get "gap") }}
+{{ $extraClass := .Get "class" }}
+{{ $classes := printf "grid %s" $gap }}
+{{ with $columnsMd }}{{ $classes = printf "%s %s" $classes . }}{{ end }}
+{{ with $columnsLg }}{{ $classes = printf "%s %s" $classes . }}{{ end }}
+{{ with $columnsXl }}{{ $classes = printf "%s %s" $classes . }}{{ end }}
+{{ with $extraClass }}{{ $classes = printf "%s %s" $classes . }}{{ end }}
+<div class="{{ strings.TrimSpace $classes }}">
+  {{ .Inner }}
+</div>
