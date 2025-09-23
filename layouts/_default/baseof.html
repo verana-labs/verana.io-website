@@ -7,106 +7,83 @@
     <meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}Verifiable trust for digital ecosystems{{ end }}" />
     {{ $css := resources.Get "css/input.css" | postCSS (dict "config" "postcss.config.cjs") }}
     <link rel="stylesheet" href="{{ $css.RelPermalink }}" />
+    {{ partial "head-fonts.html" . }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     {{ block "head" . }}{{ end }}
-    <style>
-      /* Basic styles for dropdown handling when using hover/focus on desktop */
-      @media (min-width: 1024px) {
-        .menu-parent:hover .menu-children,
-        .menu-parent:focus-within .menu-children { display: block; }
-      }
-      /* Heading anchor copy button: hidden until heading hover */
-      .heading-anchor-btn { opacity: 0; display: inline-flex; align-items: center; gap: 0.25rem; margin-left: 0.5rem; color: #64748b; background: transparent; border: 0; cursor: pointer; }
-      .heading-anchor-btn:hover { color: #4f46e5; }
-      .prose h2:hover .heading-anchor-btn,
-      .prose h3:hover .heading-anchor-btn,
-      .prose h4:hover .heading-anchor-btn,
-      .prose h5:hover .heading-anchor-btn,
-      .prose h6:hover .heading-anchor-btn { opacity: 1; }
-      /* Ensure anchored headings are visible below the sticky header */
-      :root { --header-offset: 72px; }
-      .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 { scroll-margin-top: var(--header-offset); }
-    </style>
-    
-    
     {{ partial "head-og.html" . }}
   </head>
-  <body class="min-h-screen flex flex-col bg-white text-slate-800 font-sans">
-    {{ partial "header.html" . }}
+  {{ $bodyClass := .Params.bodyClass }}
+  {{ if not $bodyClass }}{{ $bodyClass = "min-h-screen flex flex-col bg-black text-white overflow-x-hidden font-sans" }}{{ end }}
+  <body class="{{ $bodyClass }}">
+    {{ partial "uxpilot/header.html" . }}
     <main id="content" class="flex-1">
       {{ block "main" . }}{{ end }}
     </main>
-    {{ partial "footer.html" . }}
+    {{ partial "uxpilot/footer.html" . }}
     <script>
-      // Mobile menu toggle
-      const btn = document.getElementById('nav-toggle');
-      const menu = document.getElementById('nav-menu-mobile');
-      if (btn && menu) {
-        btn.addEventListener('click', () => {
-          menu.classList.toggle('hidden');
-        });
-      }
-      // Add copy-link buttons to headings (h2+)
-      (function(){
-        function slugify(text){
-          return text.toString().toLowerCase()
-            .replace(/\s+/g,'-')
-            .replace(/[^\w\-]+/g,'')
-            .replace(/\-\-+/g,'-')
-            .replace(/^-+/, '')
-            .replace(/-+$/, '');
-        }
-        const selector = '.prose h2, .prose h3, .prose h4, .prose h5, .prose h6';
-        document.querySelectorAll(selector).forEach(h => {
-          let id = h.id;
-          if (!id) { id = slugify(h.textContent || ''); h.id = id; }
-          if (!id) return;
-          // Prevent duplicate button
-          if (h.querySelector('.heading-anchor-btn')) return;
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.className = 'heading-anchor-btn';
-          btn.setAttribute('aria-label','Link to section');
-          btn.textContent = '#';
-          btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            // Update URL bar without reloading
-            if (history.replaceState) {
-              history.replaceState(null, '', `#${id}`);
-            } else {
-              location.hash = `#${id}`;
-            }
-            // Scroll to adjusted position below sticky header
-            scrollToHash(`#${id}`);
+        const btn = document.getElementById('nav-toggle');
+        const menu = document.getElementById('nav-menu-mobile');
+        if (btn && menu) {
+          btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
           });
-          h.appendChild(btn);
-        });
-        // Adjust scroll for hash targets so sticky header doesn't cover them
-        function updateHeaderOffset(){
-          const header = document.querySelector('header');
-          if (!header) return parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-offset')) || 72;
-          const extra = 8; // small breathing room
-          const off = header.offsetHeight + extra;
-          document.documentElement.style.setProperty('--header-offset', off + 'px');
-          return off;
         }
-        function scrollToHash(hash){
-          if (!hash) return;
-          const id = hash.replace(/^#/, '');
-          const el = document.getElementById(id);
-          if (!el) return;
-          const off = updateHeaderOffset();
-          const top = el.getBoundingClientRect().top + window.scrollY - off;
-          window.scrollTo({ top, behavior: 'instant' in window ? 'instant' : 'auto' });
-        }
-        document.addEventListener('DOMContentLoaded', () => {
-          updateHeaderOffset();
-          if (location.hash) {
-            // Defer to let browser's default jump complete, then correct
-            setTimeout(() => scrollToHash(location.hash), 0);
+        (function(){
+          function slugify(text){
+            return text.toString().toLowerCase()
+              .replace(/\s+/g,'-')
+              .replace(/[^\w\-]+/g,'')
+              .replace(/\-\-+/g,'-')
+              .replace(/^-+/, '')
+              .replace(/-+$/, '');
           }
-        });
-        window.addEventListener('hashchange', () => scrollToHash(location.hash));
-      })();
+          const selector = '.prose h2, .prose h3, .prose h4, .prose h5, .prose h6';
+          document.querySelectorAll(selector).forEach(h => {
+            let id = h.id;
+            if (!id) { id = slugify(h.textContent || ''); h.id = id; }
+            if (!id) return;
+            if (h.querySelector('.heading-anchor-btn')) return;
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'heading-anchor-btn';
+            btn.setAttribute('aria-label','Link to section');
+            btn.textContent = '#';
+            btn.addEventListener('click', (e) => {
+              e.preventDefault();
+              if (history.replaceState) {
+                history.replaceState(null, '', `#${id}`);
+              } else {
+                location.hash = `#${id}`;
+              }
+              scrollToHash(`#${id}`);
+            });
+            h.appendChild(btn);
+          });
+          function updateHeaderOffset(){
+            const header = document.querySelector('header');
+            if (!header) return parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-offset')) || 72;
+            const extra = 8;
+            const off = header.offsetHeight + extra;
+            document.documentElement.style.setProperty('--header-offset', off + 'px');
+            return off;
+          }
+          function scrollToHash(hash){
+            if (!hash) return;
+            const id = hash.replace(/^#/, '');
+            const el = document.getElementById(id);
+            if (!el) return;
+            const off = updateHeaderOffset();
+            const top = el.getBoundingClientRect().top + window.scrollY - off;
+            window.scrollTo({ top, behavior: 'instant' in window ? 'instant' : 'auto' });
+          }
+          document.addEventListener('DOMContentLoaded', () => {
+            updateHeaderOffset();
+            if (location.hash) {
+              setTimeout(() => scrollToHash(location.hash), 0);
+            }
+          });
+          window.addEventListener('hashchange', () => scrollToHash(location.hash));
+        })();
     </script>
   </body>
-  </html>
+</html>

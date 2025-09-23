@@ -1,0 +1,14 @@
+{{ $title := .Get "title" }}
+{{ $body := .Get "body" }}
+{{ $icon := .Get "icon" }}
+{{ $iconColor := default "text-verana" (.Get "icon_color_class") }}
+{{ $iconBg := default "bg-verana/20" (.Get "icon_bg_class") }}
+{{ $iconSize := default "text-2xl" (.Get "icon_size") }}
+{{ $class := default "bg-gray-900 border border-gray-700 rounded-2xl p-8" (.Get "class") }}
+<div class="{{ $class }}">
+  <div class="flex items-center mb-4">
+    {{ if $icon }}<i class="{{ $icon }} {{ $iconColor }} {{ $iconSize }} mr-4"></i>{{ end }}
+    {{ with $title }}<h3 class="text-xl font-bold text-white">{{ . }}</h3>{{ end }}
+  </div>
+  {{ with $body }}<p class="text-lg text-gray-200 leading-relaxed">{{ . | safeHTML }}</p>{{ end }}
+</div>

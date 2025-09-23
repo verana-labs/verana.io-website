@@ -1,0 +1,64 @@
+{{ $discover := .Params.discover }}
+{{ $media := $discover.media }}
+{{ $videoScratch := newScratch }}
+{{ $videoScratch.Set "src" "/videos/notebook-slides.mp4" }}
+{{ with $media }}
+  {{ if .video }}
+    {{ $videoScratch.Set "src" .video }}
+  {{ else if .href }}
+    {{ $videoScratch.Set "src" .href }}
+  {{ end }}
+{{ end }}
+{{ $videoSrc := $videoScratch.Get "src" }}
+{{/* We intentionally avoid setting a poster so browsers show the video's first frame */}}
+<section id="discover-verana" class="bg-gray-900 py-20 lg:py-32">
+  <div class="container mx-auto px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl lg:text-6xl font-bold mb-8">
+          <span class="bg-gradient-to-r from-verana to-verana-light bg-clip-text text-transparent">{{ $discover.heading }}</span>
+        </h2>
+        <h3 class="text-3xl lg:text-4xl font-semibold text-white mb-8">{{ $discover.subheading }}</h3>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-8">
+          <div class="space-y-6">
+            {{ range $discover.features }}
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 {{ .icon_bg }} rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                  {{ partial "uxpilot/fa.html" (dict "name" .icon "style" (default "solid" .icon_style) "class" (printf "%s" (default "text-white" .icon_color))) }}
+                </div>
+                <div>
+                  <h4 class="text-xl font-semibold text-white mb-2">{{ .title }}</h4>
+                  <p class="text-gray-300">{{ .description }}</p>
+                </div>
+              </div>
+            {{ end }}
+          </div>
+        </div>
+        <div class="relative">
+          <div class="bg-gray-800 rounded-2xl p-8 border border-gray-700">
+            <div class="aspect-video rounded-xl overflow-hidden border border-gray-700/70 mb-6 shadow-lg">
+              <video controls playsinline webkit-playsinline preload="metadata" class="w-full h-full object-cover">
+                <source src="{{ $videoSrc }}" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            {{ if or $discover.media.badge_icon $discover.media.badge_text }}
+              <div class="inline-flex items-center gap-2 rounded-full bg-verana/10 border border-verana/40 px-4 py-1 text-sm text-verana-light mb-4">
+                {{ with $discover.media.badge_icon }}
+                  {{ partial "uxpilot/fa.html" (dict "name" . "style" (default "solid" $discover.media.badge_icon_style) "class" "text-verana-light") }}
+                {{ end }}
+                {{ with $discover.media.badge_text }}
+                  <span>{{ . }}</span>
+                {{ end }}
+              </div>
+            {{ end }}
+            <h5 class="text-lg font-semibold text-white mb-2">{{ $discover.media.title }}</h5>
+            <p class="text-gray-400 text-sm">{{ $discover.media.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

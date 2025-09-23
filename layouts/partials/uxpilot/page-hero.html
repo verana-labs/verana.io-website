@@ -1,0 +1,89 @@
+{{ $page := . }}
+{{ if not $page.IsHome }}
+  {{/* Determine hero content */}}
+  {{ $title := $page.Title }}
+  {{ $subtitle := or ($page.Params.subtitle) ($page.Params.Subtitle) ($page.Params.description) ($page.Params.Description) }}
+  {{ $icon := or ($page.Params.hero_icon) ($page.Params.heroIcon) ($page.Params.heroicon) }}
+
+  {{/* Build breadcrumb slice */}}
+  {{ $crumbs := slice (dict "title" "Home" "url" site.Home.RelPermalink) }}
+  {{ with $page.File }}
+    {{ $path := .Path }}
+    {{ $dir := path.Dir $path }}
+    {{ if ne $dir "." }}
+      {{ $segments := split $dir "/" }}
+      {{ if and (ge (len $segments) 1) (eq (index $segments 0) "page") }}
+        {{ $segments = after 1 $segments }}
+      {{ end }}
+      {{ $built := slice }}
+      {{ range $segments }}
+        {{ $built = $built | append . }}
+        {{ $contentPath := printf "page/%s" (delimit $built "/") }}
+        {{ $p := site.GetPage $contentPath }}
+        {{ if not $p }}
+          {{ $contentPath = printf "page/%s/_index" (delimit $built "/") }}
+          {{ $p = site.GetPage $contentPath }}
+        {{ end }}
+        {{ $name := humanize (replaceRE "\\.md$" "" .) }}
+        {{ if $p }}
+          {{ $name = $p.Title }}
+        {{ end }}
+        {{ if $p }}
+          {{ $crumbs = $crumbs | append (dict "title" $name "url" $p.RelPermalink) }}
+        {{ else }}
+          {{ $crumbs = $crumbs | append (dict "title" $name) }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ $crumbCount := len $crumbs }}
+  {{ if gt $crumbCount 0 }}
+    {{ $last := index $crumbs (sub $crumbCount 1) }}
+    {{ if and (isset $last "url") (eq (index $last "url") $page.RelPermalink) }}
+      {{ $adjusted := slice }}
+      {{ range $i, $crumb := $crumbs }}
+        {{ if eq $i (sub $crumbCount 1) }}
+          {{ $adjusted = $adjusted | append (dict "title" (index $crumb "title")) }}
+        {{ else }}
+          {{ $adjusted = $adjusted | append $crumb }}
+        {{ end }}
+      {{ end }}
+      {{ $crumbs = $adjusted }}
+    {{ else }}
+      {{ $crumbs = $crumbs | append (dict "title" $title) }}
+      {{ $crumbCount = len $crumbs }}
+    {{ end }}
+  {{ else }}
+    {{ $crumbs = slice (dict "title" $title) }}
+    {{ $crumbCount = len $crumbs }}
+  {{ end }}
+  <section class="relative bg-gray-900 py-16 lg:py-24 overflow-hidden min-h-[320px] flex items-center">
+    <div class="absolute inset-0 opacity-50" style="background: radial-gradient(circle at 20% 50%, rgba(118, 62, 240, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(118, 62, 240, 0.1) 0%, transparent 50%), radial-gradient(circle at 40% 80%, rgba(118, 62, 240, 0.08) 0%, transparent 50%);"></div>
+    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 25% 25%, rgba(118, 62, 240, 0.1) 2px, transparent 2px), radial-gradient(circle at 75% 75%, rgba(118, 62, 240, 0.08) 1px, transparent 1px); background-size: 60px 60px, 40px 40px;"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="max-w-4xl mx-auto">
+        <nav class="flex flex-wrap items-center gap-2 text-sm text-gray-400 mb-8" aria-label="Breadcrumb">
+          {{ range $i, $crumb := $crumbs }}
+            {{ if gt $i 0 }}
+              <i class="fa-solid fa-chevron-right text-xs"></i>
+            {{ end }}
+            {{ with index $crumb "url" }}
+              <a class="hover:text-white transition-colors duration-200" href="{{ . }}">{{ index $crumb "title" }}</a>
+            {{ else }}
+              <span class="{{ if eq $i (sub (len $crumbs) 1) }}text-verana{{ else }}text-gray-300{{ end }}">{{ index $crumb "title" }}</span>
+            {{ end }}
+          {{ end }}
+        </nav>
+        <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-tight flex items-center flex-wrap gap-4">
+          {{ if $icon }}
+            <i class="{{ $icon }} text-verana"></i>
+          {{ end }}
+          <span class="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">{{ $title }}</span>
+        </h1>
+        {{ with $subtitle }}
+          <p class="text-xl lg:text-2xl text-gray-300 max-w-3xl leading-relaxed">{{ . }}</p>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}

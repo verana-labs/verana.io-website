@@ -1,0 +1,21 @@
+{{ $text := .Get "text" }}
+{{ if not $text }}{{ errorf "team-chronology-highlight shortcode requires text param" }}{{ end }}
+{{ $align := lower (default "left" (.Get "align")) }}
+{{ if and (ne $align "left") (ne $align "right") }}{{ $align = "left" }}{{ end }}
+{{ $icon := .Get "icon" }}
+{{ $iconColorClass := default "text-verana" (.Get "icon_color_class") }}
+{{ $iconSize := default "text-sm" (.Get "icon_size") }}
+{{ $extraClasses := default "" (.Get "class") }}
+{{ $textHTML := .Page.RenderString $text }}
+{{ $textHTML = trim $textHTML "\n\r\t " }}
+{{ $textHTML = replaceRE "^<p>(?s)(.*)</p>$" "${1}" $textHTML }}
+{{ $baseClasses := "flex w-full items-center gap-2 text-gray-400 text-sm" }}
+{{ if eq $align "right" }}
+  {{ $baseClasses = printf "%s justify-end text-right" $baseClasses }}
+{{ else }}
+  {{ $baseClasses = printf "%s justify-start text-left" $baseClasses }}
+{{ end }}
+<div class="{{ $baseClasses }} {{ $extraClasses }}">
+  {{ if $icon }}<i class="{{ $icon }} {{ $iconColorClass }} {{ $iconSize }}"></i>{{ end }}
+  <span class="leading-relaxed">{{ $textHTML | safeHTML }}</span>
+</div>

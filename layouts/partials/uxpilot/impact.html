@@ -1,0 +1,39 @@
+{{ $impact := .Params.impact }}
+<section id="real-world-impact" class="bg-gray-900 py-20 lg:py-32">
+  <div class="container mx-auto px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl lg:text-6xl font-bold text-white mb-6">{{ $impact.heading }}</h2>
+        <p class="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">{{ $impact.description }}</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {{ range $impact.cards }}
+          <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+            <div class="mb-6">
+              <img class="w-full h-48 object-cover rounded-xl mb-4" src="{{ .image }}" alt="{{ .title }}" />
+            </div>
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="w-10 h-10 {{ .icon.bg }} rounded-lg flex items-center justify-center {{ default "" .icon.border }}">
+                {{ partial "uxpilot/fa.html" (dict "name" .icon.name "style" (default "solid" .icon.style) "class" (printf "%s text-xl" (default "text-white" .icon.color))) }}
+              </div>
+              <h3 class="text-xl font-semibold text-white">{{ .title }}</h3>
+            </div>
+            <p class="text-gray-300 mb-6 leading-relaxed">{{ .description }}</p>
+            <div class="space-y-2 mb-6">
+              {{ range .highlights }}
+                <div class="flex items-center space-x-2 text-sm text-gray-400">
+                  <i class="fa-solid fa-check text-verana text-xs"></i>
+                  <span>{{ . }}</span>
+                </div>
+              {{ end }}
+            </div>
+            <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+              <span>Learn More</span>
+              <i class="fa-solid fa-arrow-right text-sm"></i>
+            </span>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>

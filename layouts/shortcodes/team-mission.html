@@ -1,0 +1,69 @@
+{{ $title := .Get "title" }}
+{{ $description := .Get "description" }}
+{{ $primaryLabel := .Get "primary_label" }}
+{{ $primaryUrl := .Get "primary_url" }}
+{{ $primaryIcon := default "fa-solid fa-envelope" (.Get "primary_icon") }}
+{{ $secondaryLabel := .Get "secondary_label" }}
+{{ $secondaryUrl := .Get "secondary_url" }}
+{{ $secondaryIcon := .Get "secondary_icon" }}
+<section id="join-mission" class="bg-gray-900 py-20">
+  <div class="container mx-auto px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="max-w-4xl mx-auto text-center mb-16">
+        {{ with $title }}
+          <h2 class="text-4xl lg:text-5xl font-bold text-white mb-8">{{ . }}</h2>
+        {{ end }}
+        {{ with $description }}
+          <p class="text-xl text-gray-300 leading-relaxed">{{ . | safeHTML }}</p>
+        {{ end }}
+      </div>
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        {{ .Inner }}
+      </div>
+      {{ if or $primaryLabel $secondaryLabel }}
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+          {{ with $primaryLabel }}
+            {{ $label := . }}
+            {{ if $primaryUrl }}
+              {{ $target := "" }}
+              {{ $rel := "" }}
+              {{ if or (hasPrefix $primaryUrl "http://") (hasPrefix $primaryUrl "https://") }}
+                {{ $target = "_blank" }}
+                {{ $rel = "noopener noreferrer" }}
+              {{ end }}
+              <a href="{{ $primaryUrl }}" class="bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2"{{ if $target }} target="{{ $target }}" rel="{{ $rel }}"{{ end }}>
+                {{ if $primaryIcon }}<i class="{{ $primaryIcon }}"></i>{{ end }}
+                <span>{{ $label }}</span>
+              </a>
+            {{ else }}
+              <span class="bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2">
+                {{ if $primaryIcon }}<i class="{{ $primaryIcon }}"></i>{{ end }}
+                <span>{{ $label }}</span>
+              </span>
+            {{ end }}
+          {{ end }}
+          {{ with $secondaryLabel }}
+            {{ $label := . }}
+            {{ if $secondaryUrl }}
+              {{ $target := "" }}
+              {{ $rel := "" }}
+              {{ if or (hasPrefix $secondaryUrl "http://") (hasPrefix $secondaryUrl "https://") }}
+                {{ $target = "_blank" }}
+                {{ $rel = "noopener noreferrer" }}
+              {{ end }}
+              <a href="{{ $secondaryUrl }}" class="border-2 border-gray-600 hover:border-verana text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2"{{ if $target }} target="{{ $target }}" rel="{{ $rel }}"{{ end }}>
+                {{ if $secondaryIcon }}<i class="{{ $secondaryIcon }}"></i>{{ end }}
+                <span>{{ $label }}</span>
+              </a>
+            {{ else }}
+              <span class="border-2 border-gray-600 hover:border-verana text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2">
+                {{ if $secondaryIcon }}<i class="{{ $secondaryIcon }}"></i>{{ end }}
+                <span>{{ $label }}</span>
+              </span>
+            {{ end }}
+          {{ end }}
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

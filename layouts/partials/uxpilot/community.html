@@ -1,0 +1,56 @@
+{{ $community := .Params.community }}
+<section id="community-section" class="bg-gray-900 py-20 lg:py-32">
+  <div class="container mx-auto px-6">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-5xl lg:text-6xl font-bold text-white mb-8">{{ $community.heading }}</h2>
+      <p class="text-xl lg:text-2xl text-gray-300 mb-16 max-w-3xl mx-auto">{{ $community.description }}</p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        {{ range $community.channels }}
+          <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105">
+            <div class="w-16 h-16 {{ .icon.bg }} {{ default "" .icon.border }} rounded-2xl flex items-center justify-center mx-auto mb-6">
+              {{ $iconName := lower (default "" .icon.name) }}
+              {{ if or (eq $iconName "x") (eq $iconName "x-twitter") }}
+                <svg viewBox="0 0 24 24" class="w-8 h-8" aria-hidden="true">
+                  <g>
+                    <path d="M21.742 21.75l-7.563-11.179 7.056-8.321h-2.456l-5.691 6.714-4.54-6.714H2.359l7.29 10.776L2.25 21.75h2.456l6.035-7.118 4.818 7.118h6.191-.008zM7.739 3.818L18.81 20.182h-2.447L5.29 3.818h2.447z" fill="currentColor" />
+                  </g>
+                </svg>
+              {{ else }}
+                {{ partial "uxpilot/fa.html" (dict "name" .icon.name "style" (default "solid" .icon.style) "class" (printf "%s text-2xl" (default "text-white" .icon.color))) }}
+              {{ end }}
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-4">{{ .title }}</h3>
+            <p class="text-gray-300 mb-6">{{ .description }}</p>
+            {{ $ctaLabel := default "Learn More" .cta_label }}
+            {{ if .href }}
+              <a href="{{ .href }}" class="inline-flex items-center text-verana hover:text-verana-light font-medium transition-colors duration-200" target="_blank" rel="noopener">
+                <span>{{ $ctaLabel }}</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-2"></i>
+                <span class="sr-only">{{ $ctaLabel }}</span>
+              </a>
+            {{ else }}
+              <span class="text-verana font-medium">{{ $ctaLabel }}</span>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+      <div class="bg-black border border-gray-700 rounded-2xl p-12">
+        <h3 class="text-3xl font-bold text-white mb-6">{{ $community.cta.title | default "Get Started Today" }}</h3>
+        <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">{{ $community.cta.description | default "Ready to build with Verana? Join our testnet and start experimenting with verifiable trust networks." }}</p>
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+          {{ with $community.cta.primary }}
+            <a href="{{ .href }}" class="bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2">
+              {{ partial "uxpilot/fa.html" (dict "name" .icon "style" (default "solid" .icon_style) "class" "") }}
+              <span>{{ .label }}</span>
+            </a>
+          {{ end }}
+          {{ with $community.cta.secondary }}
+            <a href="{{ .href }}" class="border-2 border-gray-600 hover:border-verana text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105">
+              {{ .label }}
+            </a>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

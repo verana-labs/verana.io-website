@@ -19,11 +19,20 @@ params:
     enable: true
     server: "https://kroki.testnet.verana.network/"
   header:
-    logo: "/images/verana-logo.svg"
+    logo: "/images/purple/logo.svg"
     tagline: "The Open Trust Layer for the Internet"
   footer:
     company: "Verana Foundation"
-    year: 2025
+    description: "The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty."
+    socials:
+      - platform: "github"
+        url: "https://github.com/verana-labs"
+      - platform: "discord"
+        url: "https://discord.gg/edjaFn252q"
+      - platform: "linkedin"
+        url: "https://www.linkedin.com/company/verana-verifiable-trust-network"
+      - platform: "x"
+        url: "https://x.com/Verana_io"
     columns:
       - title: "Verana"
         items:
@@ -33,6 +42,8 @@ params:
             url: "https://verana.foundation"
           - label: "Press"
             url: "/page/press"
+          - label: "Visual Identity"
+            url: "/page/identity"
       - title: "Developers"
         items:
           - label: "Docs"
@@ -47,24 +58,7 @@ params:
             url: "https://verana-labs.github.io/verifiable-trust-vpr-spec/"
           - label: "Trust Registry Query Protocol"
             url: "https://trustoverip.github.io/tswg-trust-registry-protocol/"
-      - title: "Community"
-        items:
-          - label: "Discord"
-            url: "https://discord.gg/edjaFn252q"
-          - label: "X"
-            url: "https://x.com/Verana_io"
-          - label: "Linkedin"
-            url: "https://www.linkedin.com/company/verana-verifiable-trust-network"
-          - label: "Visual Identity"
-            url: "/page/identity"
-
-  fonts:
-    family: "Kantumruy Pro"
-    google: false
-    local:
-      regular: "/fonts/Kantumruy_Pro/static/KantumruyPro-Regular.ttf"
-      semi: "/fonts/Kantumruy_Pro/static/KantumruyPro-SemiBold.ttf"
-      bold: "/fonts/Kantumruy_Pro/static/KantumruyPro-Bold.ttf"
+          
 
   seo:
     ogImage: "/images/verana-og.jpg"
@@ -240,4 +234,4 @@ outputs:
   home: ["HTML"]
 
 taxonomies: {}
-disableKinds: ["home", "RSS"]
+disableKinds: ["RSS"]
