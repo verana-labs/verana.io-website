@@ -1,0 +1,10 @@
+{{- $media := . -}}
+{{- if eq $media.type "image" }}
+  {{- $wrapper := $media.wrapper_class | default "relative" -}}
+  {{- $imgClass := $media.class | default "w-full h-[500px] object-cover rounded-2xl" -}}
+  {{- $overlay := $media.overlay_class | default "absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-2xl" -}}
+  <div class="{{ $wrapper }}">
+    <img class="{{ $imgClass }}" src="{{ $media.src }}" alt="{{ $media.alt }}">
+    <div class="{{ $overlay }}"></div>
+  </div>
+{{- end }}

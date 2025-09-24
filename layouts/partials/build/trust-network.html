@@ -1,0 +1,263 @@
+{{- $page := . -}}
+{{- $intro := $page.Params.intro_section -}}
+{{- if $intro }}
+  <section id="introduction" class="bg-gray-900 py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="space-y-8">
+            {{- with $intro.title }}
+              <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">{{ . }}</h2>
+            {{- end }}
+            {{- with $intro.paragraphs }}
+              {{- range . }}
+                <p class="text-xl text-gray-300 leading-relaxed">{{ . | markdownify }}</p>
+              {{- end }}
+            {{- end }}
+          </div>
+          {{- with $intro.media }}
+            <div class="relative">
+              <div class="bg-black rounded-2xl p-8 border border-gray-700">
+                <img class="w-full {{ .class | default "h-64" }} object-cover rounded-xl mb-6" src="{{ .src }}" alt="{{ .alt }}">
+                {{- with .bullets }}
+                  <div class="space-y-4">
+                    {{- range . }}
+                      <div class="flex items-center space-x-3">
+                        <div class="w-3 h-3 {{ .color_class | default "bg-verana" }} rounded-full {{ .animation_class | default "animate-pulse" }}"></div>
+                        <span class="text-gray-300">{{ .text | markdownify }}</span>
+                      </div>
+                    {{- end }}
+                  </div>
+                {{- end }}
+              </div>
+            </div>
+          {{- end }}
+        </div>
+      </div>
+    </div>
+  </section>
+{{- end }}
+
+{{- $example := $page.Params.ecosystem_example -}}
+{{- if $example }}
+  <section id="ecosystem-example" class="bg-black py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-5xl lg:text-6xl font-bold text-white mb-8">{{ $example.title }}</h2>
+          {{- with $example.subtitle }}
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">{{ . | markdownify }}</p>
+          {{- end }}
+        </div>
+        {{- range $index, $step := $example.steps }}
+          <div id="{{ $step.id | default (printf "step-%d" (add $index 1)) }}" class="bg-gray-900 rounded-2xl p-8 lg:p-12 border border-gray-700 mb-16 last:mb-0">
+            {{- $media := $step.media -}}
+            {{- $mediaPos := $media.position | default "right" -}}
+            {{- $layout := $step.layout | default "two-column" -}}
+            {{- if eq $layout "two-column" }}
+              <div class="grid lg:grid-cols-3 gap-8 items-center">
+                {{- if eq $mediaPos "left" }}
+                  <div class="{{ $media.wrapper_class | default "relative" }}">
+                    <img class="{{ $media.class | default "w-full h-48 object-cover rounded-xl" }}" src="{{ $media.src }}" alt="{{ $media.alt }}">
+                  </div>
+                {{- end }}
+                <div class="{{ $media.text_span_class | default "lg:col-span-2" }} space-y-6 {{ if eq $mediaPos "left" }}lg:order-2{{ end }}">
+                  <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-verana/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <span class="text-verana font-bold text-lg">{{ $step.number }}</span>
+                    </div>
+                    <h3 class="text-2xl lg:text-3xl font-bold text-white">{{ $step.title }}</h3>
+                  </div>
+                  {{- with $step.description }}
+                    <p class="text-lg text-gray-300 leading-relaxed">{{ . | markdownify }}</p>
+                  {{- end }}
+                  {{- with $step.highlight }}
+                    <div class="flex items-center space-x-3 text-verana">
+                      {{- if .icon }}
+                        <i class="{{ .icon }}"></i>
+                      {{- end }}
+                      <span class="font-semibold">{{ .text }}</span>
+                    </div>
+                  {{- end }}
+                  {{- with $step.details }}
+                    <div class="space-y-4">
+                      {{- range . }}
+                        <div class="flex items-start space-x-3">
+                          {{- if .icon }}
+                            <i class="{{ .icon }} text-verana mt-1"></i>
+                          {{- end }}
+                          <div>
+                            {{- with .title }}
+                              <span class="font-semibold text-white">{{ . }}</span>
+                            {{- end }}
+                            {{- with .text }}
+                              <span class="text-gray-300"> {{ . | markdownify }}</span>
+                            {{- end }}
+                          </div>
+                        </div>
+                      {{- end }}
+                    </div>
+                  {{- end }}
+                </div>
+                {{- if ne $mediaPos "left" }}
+                  <div class="{{ $media.wrapper_class | default "relative" }}">
+                    <img class="{{ $media.class | default "w-full h-48 object-cover rounded-xl" }}" src="{{ $media.src }}" alt="{{ $media.alt }}">
+                  </div>
+                {{- end }}
+              </div>
+            {{- else if eq $layout "flow" }}
+              <div class="text-center mb-8">
+                <div class="flex items-center justify-center space-x-4 mb-6">
+                  <div class="w-12 h-12 bg-verana/20 rounded-xl flex items-center justify-center">
+                    <span class="text-verana font-bold text-lg">{{ $step.number }}</span>
+                  </div>
+                  <h3 class="text-2xl lg:text-3xl font-bold text-white">{{ $step.title }}</h3>
+                </div>
+                {{- with $step.description }}
+                  <p class="text-lg text-gray-300 max-w-3xl mx-auto mb-12">{{ . | markdownify }}</p>
+                {{- end }}
+              </div>
+              <div class="grid md:grid-cols-3 gap-8">
+                {{- range $step.flow_cards }}
+                  <div class="bg-black rounded-xl p-6 border border-gray-600 text-center relative">
+                    <div class="w-16 h-16 {{ .icon_bg | default "bg-verana/20" }} rounded-2xl flex items-center justify-center mx-auto mb-4">
+                      {{- if .icon }}
+                        <i class="{{ .icon }} {{ .icon_class | default "text-verana text-2xl" }}"></i>
+                      {{- end }}
+                    </div>
+                    <h4 class="text-xl font-semibold text-white mb-2">{{ .title }}</h4>
+                    <p class="text-gray-300 text-sm">{{ .text | markdownify }}</p>
+                  </div>
+                {{- end }}
+              </div>
+            {{- end }}
+          </div>
+        {{- end }}
+      </div>
+    </div>
+  </section>
+{{- end }}
+
+{{- $who := $page.Params.who_section -}}
+{{- if $who }}
+  <section id="who-can-create" class="bg-gray-900 py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-5xl lg:text-6xl font-bold text-white mb-8">{{ $who.title }}</h2>
+          {{- with $who.subtitle }}
+            <p class="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">{{ . | markdownify }}</p>
+          {{- end }}
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {{- range $who.cards }}
+            <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+              <div class="w-16 h-16 {{ .icon_bg | default "bg-verana/20" }} rounded-2xl flex items-center justify-center mx-auto mb-6">
+                {{- if .icon }}
+                  <i class="{{ .icon }} {{ .icon_class | default "text-verana text-2xl" }}"></i>
+                {{- end }}
+              </div>
+              <h3 class="text-xl font-semibold text-white mb-4 text-center">{{ .title }}</h3>
+              <p class="text-gray-300 text-center leading-relaxed">{{ .text | markdownify }}</p>
+            </div>
+          {{- end }}
+        </div>
+        {{- with $who.footer }}
+          <div class="text-center mt-12">
+            <p class="text-xl text-gray-300">{{ . | markdownify }}</p>
+          </div>
+        {{- end }}
+      </div>
+    </div>
+  </section>
+{{- end }}
+
+{{- $business := $page.Params.business_models -}}
+{{- if $business }}
+  <section id="business-models" class="bg-black py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-5xl lg:text-6xl font-bold text-white mb-8">{{ $business.title }}</h2>
+          {{- with $business.subtitle }}
+            <p class="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">{{ . | markdownify }}</p>
+          {{- end }}
+        </div>
+        <div class="grid lg:grid-cols-2 gap-16 items-center mb-16">
+          <div class="space-y-8">
+            {{- with $business.left.title }}
+              <h3 class="text-3xl lg:text-4xl font-bold text-white mb-6">{{ . }}</h3>
+            {{- end }}
+            {{- with $business.left.description }}
+              <p class="text-lg text-gray-300 mb-8 leading-relaxed">{{ . | markdownify }}</p>
+            {{- end }}
+            {{- with $business.left.flows }}
+              <div class="space-y-6">
+                {{- range . }}
+                  <div class="bg-gray-900 rounded-xl p-6 border border-gray-700">
+                    <div class="flex items-center space-x-3 mb-3">
+                      <div class="w-8 h-8 {{ .icon_bg | default "bg-verana/20" }} rounded-lg flex items-center justify-center">
+                        {{- if .icon }}
+                          <i class="{{ .icon }} {{ .icon_class | default "text-verana" }}"></i>
+                        {{- end }}
+                      </div>
+                      <span class="font-semibold text-white">{{ .title }}</span>
+                    </div>
+                    <p class="text-gray-300 text-sm">{{ .text | markdownify }}</p>
+                  </div>
+                {{- end }}
+              </div>
+            {{- end }}
+          </div>
+          {{- with $business.media }}
+            {{- partial "build/sections_media.html" . }}
+          {{- end }}
+        </div>
+        {{- with $business.reward }}
+          <div class="bg-gray-900 rounded-2xl p-8 lg:p-12 border border-gray-700">
+            <div class="grid lg:grid-cols-3 gap-8 items-center">
+              <div class="lg:col-span-2">
+                <h3 class="text-2xl lg:text-3xl font-bold text-white mb-6">{{ .title }}</h3>
+                <p class="text-lg text-gray-300 leading-relaxed">{{ .text | markdownify }}</p>
+              </div>
+              <div class="text-center">
+                <div class="w-20 h-20 {{ .icon_bg | default "bg-verana/20" }} rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  {{- if .icon }}
+                    <i class="{{ .icon }} {{ .icon_class | default "text-verana text-3xl" }}"></i>
+                  {{- end }}
+                </div>
+                <span class="text-verana font-semibold">{{ .label }}</span>
+              </div>
+            </div>
+          </div>
+        {{- end }}
+      </div>
+    </div>
+  </section>
+{{- end }}
+
+{{- $cta := $page.Params.cta_section -}}
+{{- if $cta }}
+  <section id="cta-section" class="bg-gray-900 py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl lg:text-5xl font-bold text-white mb-8">{{ $cta.title }}</h2>
+        {{- with $cta.text }}
+          <p class="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">{{ . | markdownify }}</p>
+        {{- end }}
+        {{- with $cta.buttons }}
+          <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+            {{- range . }}
+              <a href="{{ .href | default "#" }}" class="{{ .class | default "bg-verana hover:bg-verana-dark text-white" }} px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2">
+                {{- if .icon }}
+                  <i class="{{ .icon }}"></i>
+                {{- end }}
+                <span>{{ .text }}</span>
+              </a>
+            {{- end }}
+          </div>
+        {{- end }}
+      </div>
+    </div>
+  </section>
+{{- end }}

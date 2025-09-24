@@ -1,0 +1,76 @@
+{{- $page := . -}}
+{{- $section := $page.Params.build_sections -}}
+{{- if $section }}
+  <section id="what-can-we-build" class="bg-black py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-20">
+          {{- with $section.title }}
+            <h2 class="{{ .class | default "text-5xl lg:text-6xl font-bold text-white mb-8" }}">{{ .text }}</h2>
+          {{- end }}
+          {{- with $section.subtitle }}
+            <p class="{{ .class | default "text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed" }}">{{ .text | markdownify }}</p>
+          {{- end }}
+        </div>
+
+        {{- range $index, $item := $section.items }}
+          {{- $media := $item.media -}}
+          {{- $mediaPos := $media.position | default "right" -}}
+          <div id="{{ $item.id | default (urlize $item.title.text) }}" class="mb-24">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+              {{- if eq $mediaPos "left" }}
+                {{- partial "build/sections_media.html" $media }}
+              {{- end }}
+
+              <div class="space-y-8 {{ if eq $mediaPos "left" }}lg:order-2{{ end }}">
+                {{- $badge := $item.badge -}}
+                {{- if $badge }}
+                  <div class="flex items-center space-x-3 mb-6">
+                    <div class="{{ $badge.wrapper_class | default "w-12 h-12 bg-verana/20 rounded-xl flex items-center justify-center" }}">
+                      {{- if $badge.icon }}
+                        <i class="{{ $badge.icon }} {{ $badge.icon_class | default "text-verana text-xl" }}"></i>
+                      {{- end }}
+                    </div>
+                    <span class="{{ $badge.text_class | default "text-verana font-semibold uppercase tracking-wide" }}">{{ $badge.text }}</span>
+                  </div>
+                {{- end }}
+
+                {{- with $item.title }}
+                  <h3 class="{{ .class | default "text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight" }}">{{ .text }}</h3>
+                {{- end }}
+
+                {{- with $item.description }}
+                  <p class="{{ .class | default "text-xl text-gray-300 mb-8 leading-relaxed" }}">{{ .text | markdownify }}</p>
+                {{- end }}
+
+                {{- with $item.bullets }}
+                  <div class="space-y-4">
+                    {{- range . }}
+                      <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-check-circle text-verana"></i>
+                        <span class="text-gray-300">{{ .text | markdownify }}</span>
+                      </div>
+                    {{- end }}
+                  </div>
+                {{- end }}
+
+                {{- with $item.cta }}
+                  <div class="flex justify-end">
+                    <a href="{{ .href | default "#" }}" class="inline-flex items-center space-x-2 {{ .class | default "bg-verana hover:bg-verana-dark text-white" }} px-8 py-4 rounded-xl font-semibold transition-all duration-200 hover:scale-105">
+                      <span>{{ .text | default "Learn More" }}</span>
+                      <i class="{{ .icon | default "fa-solid fa-arrow-right" }}"></i>
+                    </a>
+                  </div>
+                {{- end }}
+              </div>
+
+              {{- if ne $mediaPos "left" }}
+                {{- partial "build/sections_media.html" $media }}
+              {{- end }}
+            </div>
+          </div>
+        {{- end }}
+      </div>
+    </div>
+  </section>
+{{- end }}

@@ -1,0 +1,82 @@
+{{- $page := . -}}
+{{- $section := $page.Params.components_section -}}
+{{- if $section }}
+  <section id="{{ $section.id | default "trust-components" }}" class="{{ $section.section_class | default "bg-gray-900 py-20 lg:py-32" }}">
+    <div class="container mx-auto px-6">
+      <div class="{{ $section.wrapper_class | default "max-w-7xl mx-auto" }}">
+        <div class="text-center mb-16">
+          {{- with $section.title }}
+            <h2 class="{{ .class | default "text-4xl lg:text-5xl font-bold text-white mb-6" }}">{{ .text }}</h2>
+          {{- end }}
+          {{- with $section.subtitle }}
+            <p class="{{ .class | default "text-xl text-gray-300 max-w-3xl mx-auto" }}">{{ .text | markdownify }}</p>
+          {{- end }}
+        </div>
+
+        {{- range $section.components }}
+          {{- $component := . -}}
+          <div {{ if $component.id }}id="{{ $component.id }}"{{ end }} class="{{ $component.container_class | default "grid lg:grid-cols-2 gap-16 items-center" }} mb-20">
+            {{- if ne ($component.card_side | default "left") "right" }}
+              {{- with $component.card }}
+                {{- partial "trust/component-card.html" (dict "card" .) }}
+              {{- end }}
+            {{- end }}
+
+            {{- $textWrapper := $component.text_wrapper_class -}}
+            {{- if eq ($component.card_side | default "left") "right" }}
+              {{- $textWrapper = (print (cond (ne $textWrapper "") $textWrapper "lg:order-2") "") -}}
+            {{- end }}
+            <div class="space-y-8 {{ $textWrapper }}">
+              {{- with $component.badge }}
+                <div class="flex items-center space-x-3 mb-6">
+                  <div class="{{ .wrapper_class | default "w-12 h-12 bg-verana/20 rounded-xl flex items-center justify-center" }}">
+                    <i class="{{ .icon }} {{ .icon_class }}"></i>
+                  </div>
+                  <span class="{{ .text_class | default "text-verana font-semibold uppercase tracking-wide" }}">{{ .text }}</span>
+                </div>
+              {{- end }}
+
+              {{- with $component.title }}
+                <h2 class="{{ .class | default "text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight" }}">{{ .text }}</h2>
+              {{- end }}
+
+              {{- with $component.tagline }}
+                <p class="{{ .class | default "text-2xl text-gray-100 mb-6 font-medium" }}">{{ .text | markdownify }}</p>
+              {{- end }}
+
+              {{- with $component.description }}
+                <p class="{{ .class | default "text-xl text-gray-300 mb-8 leading-relaxed" }}">{{ .text | markdownify }}</p>
+              {{- end }}
+
+              {{- with $component.bullets }}
+                <div class="space-y-4">
+                  {{- range . }}
+                    <div class="flex items-center space-x-3">
+                      <i class="{{ .icon | default "fa-solid fa-check-circle" }} {{ .icon_class | default "text-verana" }}"></i>
+                      <span class="{{ .text_class | default "text-gray-300" }}">{{ .text | markdownify }}</span>
+                    </div>
+                  {{- end }}
+                </div>
+              {{- end }}
+
+              {{- with $component.cta }}
+                <div class="flex {{ .container_class | default "justify-end" }}">
+                  <a href="{{ .href | default "#" }}" class="inline-flex items-center space-x-2 {{ .class | default "bg-verana hover:bg-verana-dark text-white" }} px-8 py-4 rounded-xl font-semibold transition-all duration-200 hover:scale-105">
+                    <span>{{ .text | default "Learn more" }}</span>
+                    <i class="{{ .icon | default "fa-solid fa-arrow-right" }}"></i>
+                  </a>
+                </div>
+              {{- end }}
+            </div>
+
+            {{- if eq ($component.card_side | default "left") "right" }}
+              {{- with $component.card }}
+                {{- partial "trust/component-card.html" (dict "card" .) }}
+              {{- end }}
+            {{- end }}
+          </div>
+        {{- end }}
+      </div>
+    </div>
+  </section>
+{{- end }}
