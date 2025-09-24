@@ -3,6 +3,14 @@
 {{ $description := .Get "description" }}
 {{ $titleIcon := .Get "title_icon" }}
 {{ $titleIconClass := default "text-verana" (.Get "title_icon_class") }}
+{{ $titleIconUseSiteLogo := eq (lower (printf "%v" (default "" (.Get "title_icon_use_site_logo")))) "true" }}
+{{ $siteLogo := site.Params.header.logo }}
+{{ $titleIconImage := or (.Get "title_icon_image") (and $titleIconUseSiteLogo $siteLogo) }}
+{{ $titleText := default "" $title }}
+{{ $titleIconAltDefault := cond (gt (len $titleText) 0) (printf "%s logo" $titleText) (printf "%s logo" site.Title) }}
+{{ $titleIconAlt := default $titleIconAltDefault (.Get "title_icon_alt") }}
+{{ $titleIconImageClass := default "h-10 w-auto" (.Get "title_icon_image_class") }}
+{{ $titleIconWrapClass := default "mr-4 rounded-xl bg-verana/20 flex items-center justify-center w-12 h-12" (.Get "title_icon_wrap_class") }}
 {{ $align := lower (default "center" (.Get "align")) }}
 {{ if and (ne $align "left") (ne $align "center") (ne $align "right") }}{{ $align = "center" }}{{ end }}
 {{ $bg := lower (default "black" (.Get "bg")) }}
@@ -46,7 +54,13 @@
         <div class="{{ $titleWrapperClass }}">
           {{ if $title }}
             <h2 class="{{ $titleSize }} font-bold text-white mb-6 flex {{ if eq $align "center" }}justify-center{{ else if eq $align "right" }}justify-end{{ else }}justify-start{{ end }} items-center">
-              {{ if $titleIcon }}<i class="{{ $titleIcon }} {{ $titleIconClass }} mr-4"></i>{{ end }}
+              {{ if $titleIcon }}
+                <i class="{{ $titleIcon }} {{ $titleIconClass }} mr-4"></i>
+              {{ else if $titleIconImage }}
+                <span class="{{ $titleIconWrapClass }}">
+                  <img src="{{ $titleIconImage }}" alt="{{ $titleIconAlt }}" class="{{ $titleIconImageClass }}">
+                </span>
+              {{ end }}
               <span>{{ $title }}</span>
             </h2>
           {{ end }}

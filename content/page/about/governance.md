@@ -15,9 +15,9 @@ hero_icon: "fa-solid fa-scale-balanced"
     {{< gov-card
         title="The Verana Council"
         body="Ensures the <strong>security, reliability, and neutrality</strong> of the network by operating the validator infrastructure and making collective governance decisions."
-        icon="fa-solid fa-shield-check"
+        icon_use_site_logo="true"
+        icon_image_class="h-8 w-auto"
         icon_bg_class="bg-blue-500/20"
-        icon_color_class="text-blue-400"
         class="bg-gradient-to-br from-blue-900/20 to-blue-800/10 border border-blue-500/30 rounded-2xl p-8"
     >}}
       {{< gov-feature
@@ -55,9 +55,9 @@ hero_icon: "fa-solid fa-scale-balanced"
     {{< gov-card
         title="The Verana Foundation"
         body="Drives <strong>growth, innovation, and adoption</strong> by supporting developers, funding ecosystem projects, and fostering community engagement."
-        icon="fa-solid fa-seedling"
+        icon_use_site_logo="true"
+        icon_image_class="h-8 w-auto"
         icon_bg_class="bg-green-500/20"
-        icon_color_class="text-green-400"
         class="bg-gradient-to-br from-green-900/20 to-green-800/10 border border-green-500/30 rounded-2xl p-8"
     >}}
       {{< gov-feature
@@ -103,8 +103,9 @@ hero_icon: "fa-solid fa-scale-balanced"
 {{< gov-section
     id="verana-council"
     title="The Verana Council"
-    title_icon="fa-solid fa-users-gear"
-    title_icon_class="text-blue-400"
+    title_icon_use_site_logo="true"
+    title_icon_wrap_class="mr-4 rounded-xl bg-blue-500/20 flex items-center justify-center w-16 h-16"
+    title_icon_image_class="h-8 w-auto"
     description="Verana is run by a <strong>Council</strong>: a group of trusted, independent organizations from our industry. They don't own Verana, but they <strong>operate and oversee</strong> the core servers (called “validators”) that keep the network secure and reliable."
     bg="muted"
 >}}
@@ -271,8 +272,9 @@ hero_icon: "fa-solid fa-scale-balanced"
 {{< gov-section
     id="verana-foundation"
     title="The Verana Foundation"
-    title_icon="fa-solid fa-seedling"
-    title_icon_class="text-green-400"
+    title_icon_use_site_logo="true"
+    title_icon_wrap_class="mr-4 rounded-xl bg-green-500/20 flex items-center justify-center w-16 h-16"
+    title_icon_image_class="h-8 w-auto"
     description="The <strong>Verana Foundation</strong> is the <strong>ecosystem driver</strong> of Verana. Where the Council ensures network security, the Foundation ensures <strong>adoption, innovation, and growth</strong>."
     bg="muted"
 >}}
