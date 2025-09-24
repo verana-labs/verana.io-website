@@ -1,0 +1,104 @@
+{{- $card := .card -}}
+{{- if $card }}
+  <div class="relative {{ $card.wrapper_class | default "bg-black border border-gray-700 rounded-2xl p-8 overflow-hidden" }}">
+    {{- with $card.overlay_class }}
+      <div class="absolute inset-0 {{ . }}"></div>
+    {{- end }}
+    <div class="{{ $card.inner_wrapper_class | default "relative z-10" }}">
+      {{- with $card.header }}
+        {{- $badge := .badge -}}
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center space-x-3">
+            {{- if $badge }}
+              <div class="{{ $badge.wrapper_class | default "w-12 h-12 bg-verana/20 rounded-xl flex items-center justify-center" }}">
+                {{- with $badge.icon }}
+                  <i class="{{ . }} {{ $badge.icon_class }}"></i>
+                {{- end }}
+              </div>
+              {{- with $badge.text }}
+                <span class="{{ $badge.text_class | default "text-verana font-semibold" }}">{{ . }}</span>
+              {{- end }}
+            {{- end }}
+          </div>
+          {{- with .status }}
+            <div class="{{ .wrapper_class | default "text-xs text-gray-400 bg-gray-800 px-3 py-1 rounded-full" }}">{{ .text }}</div>
+          {{- end }}
+        </div>
+      {{- end }}
+
+      {{- with $card.items }}
+        <div class="space-y-4">
+          {{- range . }}
+            {{- $item := . -}}
+            {{- $left := $item.left -}}
+            {{- $right := $item.right -}}
+            <div class="{{ $item.wrapper_class | default "bg-gray-800/50 rounded-lg p-4 border border-gray-600" }}">
+              <div class="flex {{ $item.header_class | default "items-center" }}">
+                <div class="flex-1 flex items-center space-x-3 {{ $item.left_class }}">
+                  {{- if $left.icon }}
+                    <div class="{{ $left.icon_wrapper_class | default "w-8 h-8 bg-verana/20 rounded-lg flex items-center justify-center" }}">
+                      <i class="{{ $left.icon }} {{ $left.icon_class }}"></i>
+                    </div>
+                  {{- end }}
+                  <div>
+                    {{- with $left.title }}
+                      {{- $title := . -}}
+                      <div class="{{ $title.class | default "text-white font-medium" }}">{{ $title.text }}</div>
+                    {{- end }}
+                    {{- with $left.subtitle }}
+                      {{- $subtitle := . -}}
+                      <div class="{{ $subtitle.class | default "text-gray-400 text-sm" }}">{{ $subtitle.text }}</div>
+                    {{- end }}
+                  </div>
+                </div>
+                {{- if $right }}
+                  {{- $rightClass := $right.class | default "text-sm text-verana" -}}
+                  <div class="ml-auto text-right {{ $rightClass }}">
+                    {{- if $right.html }}
+                      {{ $right.html | safeHTML }}
+                    {{- else if $right.text }}
+                      {{ $right.text }}
+                    {{- end }}
+                  </div>
+                {{- end }}
+              </div>
+              {{- with $item.meta }}
+                <div class="{{ .wrapper_class | default "flex items-center space-x-4 text-xs mt-3" }}">
+                  {{- range .items }}
+                    <div class="flex items-center space-x-1">
+                      {{- with .icon_class }}
+                        <div class="w-2 h-2 {{ . }} rounded-full"></div>
+                      {{- end }}
+                      <span class="{{ .text_class | default "text-gray-400" }}">{{ .text }}</span>
+                    </div>
+                  {{- end }}
+                </div>
+              {{- end }}
+              {{- with $item.progress }}
+                <div class="mt-2">
+                  <div class="w-full {{ .track_class | default "bg-gray-700" }} rounded-full h-2">
+                    <div class="h-2 rounded-full {{ .fill_class | default "bg-verana" }} {{ .width_class | default "w-1/2" }}"></div>
+                  </div>
+                  {{- with .label }}
+                    <div class="text-xs {{ .class | default "text-gray-400" }} mt-1">{{ .text }}</div>
+                  {{- end }}
+                </div>
+              {{- end }}
+            </div>
+          {{- end }}
+        </div>
+      {{- end }}
+
+      {{- with $card.footnote }}
+        <div class="{{ .wrapper_class | default "mt-6 p-3 bg-verana/10 rounded-lg border border-verana/20" }}">
+          <div class="flex items-center space-x-2 {{ .text_class | default "text-sm text-verana" }}">
+            {{- with .icon }}
+              <i class="{{ . }}"></i>
+            {{- end }}
+            <span>{{ .text }}</span>
+          </div>
+        </div>
+      {{- end }}
+    </div>
+  </div>
+{{- end }}

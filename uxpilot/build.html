@@ -1,0 +1,669 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Own the Rails - Verana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "fontFamily": {
+        "inter": [
+          "Inter",
+          "sans-serif"
+        ]
+      },
+      "colors": {
+        "verana": "#763ef0",
+        "verana-light": "#9f7aea",
+        "verana-dark": "#553c9a"
+      },
+      "animation": {
+        "float": "float 6s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite alternate",
+        "network-pulse": "network-pulse 3s ease-in-out infinite"
+      },
+      "keyframes": {
+        "float": {
+          "0%, 100%": {
+            "transform": "translateY(0px)"
+          },
+          "50%": {
+            "transform": "translateY(-20px)"
+          }
+        },
+        "pulse-glow": {
+          "0%": {
+            "boxShadow": "0 0 20px rgba(118, 62, 240, 0.3)"
+          },
+          "100%": {
+            "boxShadow": "0 0 40px rgba(118, 62, 240, 0.6)"
+          }
+        },
+        "network-pulse": {
+          "0%, 100%": {
+            "opacity": "0.4"
+          },
+          "50%": {
+            "opacity": "0.8"
+          }
+        }
+      }
+    }
+  }
+};</script>
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        .gradient-mesh {
+            background: radial-gradient(circle at 20% 50%, rgba(118, 62, 240, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(118, 62, 240, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(118, 62, 240, 0.08) 0%, transparent 50%);
+        }
+        .network-bg {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(118, 62, 240, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(118, 62, 240, 0.08) 1px, transparent 1px);
+            background-size: 60px 60px, 40px 40px;
+            animation: network-pulse 4s ease-in-out infinite;
+        }
+    </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-black text-white overflow-x-hidden font-custom">
+
+<!-- Header -->
+<header id="header" class="bg-black/95 backdrop-blur-sm border-b border-gray-800/50 sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <span class="flex items-center space-x-3 cursor-pointer">
+                    <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-white">Verana</span>
+                </span>
+            </div>
+            
+            <nav class="hidden lg:flex items-center space-x-8">
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Why Verana</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-verana font-medium flex items-center space-x-1 transition-colors duration-200">
+                        <span>Build</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Trust Engine</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Industry Use Cases</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">Community</span>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">About</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <span class="bg-verana hover:bg-verana-dark text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer">
+                    Testnet
+                </span>
+                <button class="lg:hidden text-white">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section id="hero" class="relative bg-black py-20 lg:py-32 overflow-hidden h-[700px] flex items-center">
+    <div class="absolute inset-0 gradient-mesh"></div>
+    <div class="absolute inset-0 network-bg opacity-20"></div>
+    <div class="absolute inset-0">
+        <div class="absolute top-20 left-20 w-2 h-2 bg-verana rounded-full animate-pulse"></div>
+        <div class="absolute top-40 right-32 w-1 h-1 bg-verana-light rounded-full animate-pulse delay-1000"></div>
+        <div class="absolute bottom-32 left-1/3 w-1.5 h-1.5 bg-verana rounded-full animate-pulse delay-2000"></div>
+        <div class="absolute top-1/3 right-1/4 w-1 h-1 bg-verana-light rounded-full animate-pulse delay-500"></div>
+    </div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-5xl mx-auto text-center">
+            <h1 class="text-6xl lg:text-8xl font-black mb-8 leading-tight">
+                <span class="bg-gradient-to-r from-verana to-verana-light bg-clip-text text-transparent">Own the Rails</span>
+            </h1>
+            
+            <p class="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
+                Verana is <strong class="text-white">public digital infrastructure</strong> for trust online. Think of it like the <strong class="text-white">roads, power grid, or the internet itself</strong>: open, shared, and not controlled by a single company.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                <span class="bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 hover:shadow-xl flex items-center space-x-2 cursor-pointer">
+                    <i class="fa-solid fa-hammer"></i>
+                    <span>Start Building</span>
+                </span>
+                <span class="border-2 border-gray-600 hover:border-verana text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 cursor-pointer">
+                    View Documentation
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Infrastructure Principles Section -->
+<section id="infrastructure-principles" class="bg-gray-900 py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-white mb-8">
+                    Infrastructure You Own, Not Rent
+                </h2>
+                <p class="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                    Unlike platforms you must subscribe to, Verana is technology that <strong class="text-white">any organization can operate, extend, and govern</strong>. It's not a service you rent; <strong class="text-white">it's infrastructure you own.</strong>
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Open and Accessible -->
+                <div id="open-accessible-card" class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 group">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
+                            <i class="fa-solid fa-globe text-green-400 text-xl"></i>
+                        </div>
+                        <span class="text-2xl">🌍</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Open and Accessible</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Free and open source, available for anyone to use and extend. No licenses, no subscriptions, no gatekeepers.
+                    </p>
+                </div>
+                
+                <!-- Decentralized by Design -->
+                <div id="decentralized-card" class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 group">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                            <i class="fa-solid fa-network-wired text-blue-400 text-xl"></i>
+                        </div>
+                        <span class="text-2xl">🔗</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Decentralized by Design</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        No single operator, no central point of control. Power distributed across participants in the network.
+                    </p>
+                </div>
+                
+                <!-- Built on Open Standards -->
+                <div id="open-standards-card" class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 group">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                            <i class="fa-solid fa-code text-purple-400 text-xl"></i>
+                        </div>
+                        <span class="text-2xl">📐</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Built on Open Standards</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Interoperable by design, ensuring long-term stability and compatibility across systems.
+                    </p>
+                </div>
+                
+                <!-- Neutral and Flexible -->
+                <div id="neutral-flexible-card" class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 group">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center">
+                            <i class="fa-solid fa-tools text-yellow-400 text-xl"></i>
+                        </div>
+                        <span class="text-2xl">🛡️</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Neutral and Flexible</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Works with any system, tool, or standard. Adapts to your needs, not the other way around.
+                    </p>
+                </div>
+                
+                <!-- Sovereign by Default -->
+                <div id="sovereign-card" class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 group md:col-span-2 lg:col-span-1">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-verana/20 rounded-xl flex items-center justify-center">
+                            <i class="fa-solid fa-crown text-verana text-xl"></i>
+                        </div>
+                        <span class="text-2xl">🤝</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Sovereign by Default</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Organizations, industries, and governments remain fully in control of their <strong class="text-white">trust networks</strong> and <strong class="text-white">data</strong>.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16">
+                <div class="bg-black border border-gray-700 rounded-2xl p-12 max-w-4xl mx-auto">
+                    <h3 class="text-3xl font-bold text-white mb-6">
+                        You Don't "Sign Up" to a Platform
+                    </h3>
+                    <p class="text-xl text-gray-300 leading-relaxed">
+                        With Verana, you <strong class="text-white">own the rails of digital trust</strong> your ecosystem runs on.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- What Can We Build Section -->
+<section id="what-can-we-build" class="bg-black py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl lg:text-6xl font-bold text-white mb-8">
+                    What Can We Build with Verana?
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                    Three foundational building blocks that enable a new generation of digital infrastructure.
+                </p>
+            </div>
+            
+            <!-- Trust Networks -->
+            <div id="trust-networks-section" class="mb-24">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="space-y-8">
+                        <div>
+                            <div class="flex items-center space-x-3 mb-6">
+                                <div class="w-12 h-12 bg-verana/20 rounded-xl flex items-center justify-center">
+                                    <i class="fa-solid fa-sitemap text-verana text-xl"></i>
+                                </div>
+                                <span class="text-verana font-semibold uppercase tracking-wide">Infrastructure</span>
+                            </div>
+                            
+                            <h3 class="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+                                Trust Networks
+                            </h3>
+                            
+                            <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                                Ecosystems - like governments, industries, or associations - can use Verana to create <strong class="text-white">trust networks</strong> where rules are enforced by verifiable data instead of central gatekeepers. This allows them to issue credentials, define governance, and enable participants to interact with confidence and transparency.
+                            </p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-check-circle text-verana"></i>
+                                <span class="text-gray-300">Issue and verify credentials across organizations</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-check-circle text-verana"></i>
+                                <span class="text-gray-300">Define governance rules and policies</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-check-circle text-verana"></i>
+                                <span class="text-gray-300">Enable transparent, verifiable interactions</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-end">
+                            <span class="inline-flex items-center space-x-2 bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold transition-all duration-200 hover:scale-105 cursor-pointer">
+                                <span>Learn More</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="relative">
+                        <img class="w-full h-[500px] object-cover rounded-2xl" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/b91ba4a55c-abef16288fe58083d8ce.png" alt="Interconnected network nodes representing trust relationships between government agencies, industry associations, and organizations, with flowing data streams and verification badges, futuristic digital infrastructure visualization">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-2xl"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Discoverable Self Sovereign Verifiable Services -->
+            <div id="verifiable-services-section" class="mb-24">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="relative lg:order-1">
+                        <img class="w-full h-[500px] object-cover rounded-2xl" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/9a76b1ab9a-2f5581d91a88f24e821e.png" alt="Digital marketplace showing various self-sovereign services with ownership badges, AI agents, social channels, e-commerce platforms, all with verification marks and portability indicators, modern interface design">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-2xl"></div>
+                    </div>
+                    
+                    <div class="space-y-8 lg:order-2">
+                        <div>
+                            <div class="flex items-center space-x-3 mb-6">
+                                <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
+                                    <i class="fa-solid fa-server text-green-400 text-xl"></i>
+                                </div>
+                                <span class="text-green-400 font-semibold uppercase tracking-wide">Services</span>
+                            </div>
+                            
+                            <h3 class="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+                                Discoverable Self Sovereign Verifiable Services
+                            </h3>
+                            
+                            <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                                Organizations and individuals can launch their own <strong class="text-white">verifiable services</strong> (VSs): digital services they fully own and control, and are automatically <strong class="text-white">indexed and discoverable</strong>. From AI agents to social channels to e-commerce, these services are portable, provable, and free from the risk of deplatforming or lock-in.
+                            </p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-check-circle text-green-400"></i>
+                                <span class="text-gray-300">Full ownership and control of digital services</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-check-circle text-green-400"></i>
+                                <span class="text-gray-300">Automatic indexing and discovery</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-check-circle text-green-400"></i>
+                                <span class="text-gray-300">Portability across platforms</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-end">
+                            <span class="inline-flex items-center space-x-2 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-200 hover:scale-105 cursor-pointer">
+                                <span>Learn More</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Verifiable User Agents -->
+            <div id="user-agents-section" class="mb-16">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="space-y-8">
+                        <div>
+                            <div class="flex items-center space-x-3 mb-6">
+                                <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                                    <i class="fa-solid fa-user-gear text-blue-400 text-xl"></i>
+                                </div>
+                                <span class="text-blue-400 font-semibold uppercase tracking-wide">User Experience</span>
+                            </div>
+                            
+                            <h3 class="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+                                Verifiable User Agents
+                            </h3>
+                            
+                            <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                                <strong class="text-white">Verifiable user agents</strong> (VUAs) are new apps and browsers that connect people to <strong class="text-white">verifiable services</strong> and <strong class="text-white">trust networks</strong>. They make discovery, interaction, and transactions seamless, powered by credentials and open standards, not ads or opaque algorithms.
+                            </p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-check-circle text-blue-400"></i>
+                                <span class="text-gray-300">Credential-powered discovery and interaction</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-check-circle text-blue-400"></i>
+                                <span class="text-gray-300">No ads or algorithmic manipulation</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-check-circle text-blue-400"></i>
+                                <span class="text-gray-300">Seamless transactions and verification</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-end">
+                            <span class="inline-flex items-center space-x-2 bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-200 hover:scale-105 cursor-pointer">
+                                <span>Learn More</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="relative">
+                        <img class="w-full h-[500px] object-cover rounded-2xl" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/7544caeec5-e6dddf8a096e53120dc6.png" alt="Modern browser interface showing verifiable user agent connecting to various services with credential verification, clean UI with trust indicators, discovery without ads, seamless interaction flows">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-2xl"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Foundation Section -->
+<section id="technical-foundation" class="bg-gray-900 py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl lg:text-6xl font-bold text-white mb-6">
+                    Built for Builders
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Comprehensive tools, documentation, and infrastructure to help you build the future of digital trust.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-rocket text-verana text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-4">Quick Start</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Get up and running in minutes with our comprehensive quick start guides and example implementations.
+                    </p>
+                </div>
+                
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-book text-verana text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-4">Documentation</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Detailed technical documentation, API references, and architectural guides for every component.
+                    </p>
+                </div>
+                
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-users text-verana text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-4">Community</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Join thousands of developers building the next generation of trust-based applications and services.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="bg-black border border-gray-700 rounded-2xl p-12">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-3xl font-bold text-white mb-6">Ready to Build?</h3>
+                        <p class="text-xl text-gray-300 mb-8">
+                            Start with our testnet environment and explore the full capabilities of Verana's trust infrastructure.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <span class="bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold transition-all duration-200 hover:scale-105 flex items-center space-x-2 cursor-pointer">
+                                <i class="fa-solid fa-play"></i>
+                                <span>Join Testnet</span>
+                            </span>
+                            <span class="border-2 border-gray-600 hover:border-verana text-white px-8 py-4 rounded-xl font-semibold transition-all duration-200 hover:scale-105 cursor-pointer">
+                                View Docs
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-900 rounded-xl p-6 border border-gray-600">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-gray-400 text-sm">example.js</span>
+                            <div class="flex space-x-1">
+                                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                        </div>
+                        <pre class="text-green-400 text-sm overflow-x-auto"><code>// Create a trust network
+const network = await verana.createTrustNetwork({
+  name: "Healthcare Credentials",
+  governance: {
+    issuers: ["did:verana:medical-board"],
+    policies: ["license-verification"]
+  }
+});
+
+// Launch a verifiable service
+const service = await verana.launchService({
+  type: "healthcare-directory",
+  credentials: ["medical-license"],
+  discoverable: true
+});
+
+console.log("Trust network active:", network.id);</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section id="cta-section" class="bg-black py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-5xl lg:text-6xl font-bold text-white mb-8">
+                Build the Future of Digital Trust
+            </h2>
+            <p class="text-xl lg:text-2xl text-gray-300 mb-12 leading-relaxed">
+                Join the movement to create truly open, sovereign, and verifiable digital infrastructure.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6 mb-16">
+                <span class="bg-verana hover:bg-verana-dark text-white px-10 py-5 rounded-xl font-semibold text-xl transition-all duration-200 hover:scale-105 hover:shadow-xl flex items-center space-x-3 cursor-pointer">
+                    <i class="fa-solid fa-rocket"></i>
+                    <span>Start Building Now</span>
+                </span>
+                <span class="border-2 border-gray-600 hover:border-verana text-white px-10 py-5 rounded-xl font-semibold text-xl transition-all duration-200 hover:scale-105 cursor-pointer">
+                    Explore Use Cases
+                </span>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-verana mb-2">100%</div>
+                    <div class="text-gray-300">Open Source</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-verana mb-2">0</div>
+                    <div class="text-gray-300">Platform Fees</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-verana mb-2">∞</div>
+                    <div class="text-gray-300">Possibilities</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="bg-gray-900 border-t border-gray-800 py-16">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12 mb-12">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-white">Verana</span>
+                    </div>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty.
+                    </p>
+                    <div class="flex space-x-4">
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-github"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-discord"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Verana</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Principles</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Foundation</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Press</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Developers</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Docs</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">GitHub</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Specifications</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Trust Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Public Registry Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Trust Registry Query Protocol</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col sm:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">© 2025 Verana Foundation. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 sm:mt-0">
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Privacy Policy</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Terms of Service</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Cookie Policy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</body></html>
