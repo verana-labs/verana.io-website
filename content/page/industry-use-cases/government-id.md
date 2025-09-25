@@ -1,5 +1,5 @@
 ---
-title: 🆔 Government Digital ID
+title: Government Digital ID
 url: "/page/industry-use-cases/government-id"
 ---
 
@@ -7,28 +7,29 @@ Verana provides governments with full **open source software and infrastructure*
 
 ## Create the Digital Identity Ecosystem
 
-Governments begin by creating their **Ecosystem Trust Registry** in Verana.
+Governments:
 
-- Define a **Citizen ID Credential Schema**.
-- Establish an **Ecosystem Governance Framework (EGF)** that sets rules for issuance, verification, and authorization of participants.
+- Establish an **Ecosystem Governance Framework (EGF)** that sets rules for the Citizen ID issuance, verification, and authorization of participants, including pay-per-verification business model if the desire.
 
-This registry ensures that only authorized issuers and verifiers can participate in the Digital ID system.
+- Create an **Ecosystem Trust Registry** in Verana to match the EGF, including the **Citizen ID Credential Schema**.
 
-## Build the Digital Wallet
+- Start onboarding ecosystem participants, as explained in the EGF, using Verana's trust registry onboarding process. Participants can be verifiers, or trust registry operators, if the want to delegate the onbaording of verifiers to one or more entities.
 
-Governments (or local providers) build a **Digital Wallet mobile app** that acts as a **Verifiable User Agent (VUA)**.
+## Build a Digital Wallet
+
+Governments build a **Digital Wallet mobile app** that acts as a **Verifiable User Agent (VUA)**.
 
 - Citizens use the wallet to **store their Citizen ID Verifiable Credential (VC)**.
 - The wallet is **self-sovereign**: citizens own their credentials, with no central account or dependency.
 - Compatible with open standards like **EIDAS2, DIDs, DIDComm, W3C VCs, OpenID4VC, OpenID4VP**.
 
-## Citizen Onboarding into the Registry
+## Citizen Onboarding into the Central Database of the Registry
 
 {{< img url="/images/iuc/gov-id-onboard.png" floating="none" border="1px solid #DDDDDD" maxWidth="500px" >}}
 
 At public offices (e.g., civil registry):
 
-1. **Onboarding Verifiable Service** captures biometric data and validates documents.
+1. Citizen biometric data is captured and documents validated.
 2. Citizen data is recorded in the **central registry database**.
 3. Citizen receives an **NFC-enabled ID card** containing personal and biometric information.
 
