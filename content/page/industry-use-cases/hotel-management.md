@@ -1,5 +1,5 @@
 ---
-title: 🏨 Decentralizing Hotel Management
+title: Decentralizing Hotel Management
 url: "/page/industry-use-cases/hotel-management"
 ---
 

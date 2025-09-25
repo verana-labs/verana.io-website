@@ -1,5 +1,5 @@
 ---
-title: 🌐 Decentralized Social Networks
+title: Decentralized Social Networks
 url: "/page/industry-use-cases/decentralized-social-network"
 ---
 

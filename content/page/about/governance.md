@@ -307,8 +307,8 @@ hero_icon: "fa-solid fa-scale-balanced"
   {{< gov-highlight
       title="Bottom Line"
       body="The Verana Foundation ensures Verana evolves into a thriving, innovative ecosystem, while the Verana Council safeguards its integrity and reliability. Together, they balance <strong class='text-green-400'>operational resilience</strong> with <strong class='text-green-400'>ecosystem expansion</strong>."
-      class="mt-16 bg-green-900/10 border border-green-500/30 rounded-2xl p-8 text-center"
-      description_class="text-lg text-gray-300 text-sm max-w-3xl mx-auto"
+      class="mt-32 bg-green-900/10 border border-green-500/30 rounded-2xl p-8 text-center"
+      description_class="text-lg text-gray-300 max-w-3xl mx-auto"
   >}}
 {{< /gov-section >}}
 
@@ -320,5 +320,5 @@ hero_icon: "fa-solid fa-scale-balanced"
     primary_url="https://github.com/verana-labs/"
     secondary_label="Join Community"
     secondary_icon="fa-solid fa-users"
-    secondary_url="https://discord.gg/verana"
+    secondary_url="https://discord.gg/edjaFn252q"
 >}}

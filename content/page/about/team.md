@@ -186,7 +186,7 @@ Philip A. Bildner joins as Strategic Advisor to guide governance, fundraising, a
     primary_label="Contact Us"
     primary_url="mailto:hello@verana.io"
     secondary_label="Join Community"
-    secondary_url="https://discord.gg/verana"
+    secondary_url="https://discord.gg/edjaFn252q"
     secondary_icon="fa-solid fa-users"
 >}}
 {{< team-mission-card
@@ -194,6 +194,7 @@ Philip A. Bildner joins as Strategic Advisor to guide governance, fundraising, a
     description="Explore open positions and join our growing team of innovators."
     icon="fa-solid fa-briefcase"
     cta_label="View Openings"
+    cta_url="https://www.linkedin.com/company/verana-foundation/"
 >}}
 
 {{< team-mission-card
@@ -201,6 +202,7 @@ Philip A. Bildner joins as Strategic Advisor to guide governance, fundraising, a
     description="Contribute to our open-source projects and help build the future."
     icon="fa-solid fa-code-branch"
     cta_label="Start Contributing"
+    cta_url="https://github.com/verana-labs"
 >}}
 
 {{< team-mission-card
@@ -208,5 +210,6 @@ Philip A. Bildner joins as Strategic Advisor to guide governance, fundraising, a
     description="Partner with us to integrate verifiable trust into your ecosystem."
     icon="fa-solid fa-handshake"
     cta_label="Partner With Us"
+    cta_url="https://www.linkedin.com/company/verana-foundation/"
 >}}
 {{< /team-mission >}}

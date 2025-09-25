@@ -5,7 +5,7 @@ url: "/page/trust-engine/trust-deposit"
 hero_icon: "fa-solid fa-piggy-bank"
 disable_content_wrapper: true
 sidebar:
-  title: Trust Engine
+  title: Deposit & Reputation
   nav:
     - label: Trust Deposit
       url: "#trust-deposit-intro"

@@ -1,5 +1,5 @@
 ---
-title: 🏥 Healthcare Workforce Mobility
+title: Healthcare Workforce Mobility
 url: "/page/industry-use-cases/healthcare-workforce-mobility"
 ---
 

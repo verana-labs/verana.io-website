@@ -5,7 +5,7 @@ url: "/page/trust-engine/trust-resolver"
 hero_icon: "fa-solid fa-magnifying-glass"
 disable_content_wrapper: true
 sidebar:
-  title: Trust Engine
+  title: Trust Resolver
   nav:
     - label: How It Works
       url: "#how-it-works"
