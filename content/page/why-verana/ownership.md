@@ -1,6 +1,6 @@
 ---
-title: Service Ownership
-subtitle: "Own your digital services, your audience, and your data — not just rent them from centralized platforms."
+title: Solving Ownership
+subtitle: "Own your digital services, your audience, and your data, not just rent them from centralized platforms."
 url: "/page/why-verana/ownership"
 hero_icon: "fa-solid fa-key"
 disable_content_wrapper: true
@@ -14,17 +14,15 @@ sidebar:
       url: "#self-sovereign-services"
     - label: Examples
       url: "#examples-section"
-    - label: Call to Action
-      url: "#page-cta"
   quick_links:
     title: Quick Links
     items:
-      - label: Getting Started
-        url: "#page-cta"
-      - label: Use Cases
-        url: "#examples-section"
-      - label: Migration Guide
-        url: "#self-sovereign-services"
+      - label: Documentation
+        url: "https://docs.verana.io"
+      - label: Discord
+        url: "https://discord.gg/edjaFn252q"
+      - label: Github
+        url: "https://github.com/verana-labs"
 problem:
   id: no-ownership-problem
   title: The No Ownership Problem

@@ -48,44 +48,100 @@
           {{ with $problem }}
             {{ $sectionID := .id | default "broken-discovery" }}
             <section id="{{ $sectionID }}" class="scroll-mt-28 md:scroll-mt-32">
-              {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-6">{{ . }}</h2>{{ end }}
-              {{ with .description }}<p class="text-xl text-gray-300 leading-relaxed mb-10">{{ . | markdownify }}</p>{{ end }}
+              {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">{{ . }}</h2>{{ end }}
+              {{ with .description }}
+                <div class="prose prose-invert max-w-none mb-12">
+                  <p class="text-xl text-gray-300 leading-relaxed mb-8">{{ . }}</p>
+                </div>
+              {{ end }}
+
+              {{ with .cards }}
+                <div class="grid md:grid-cols-3 gap-6 mb-12">
+                  {{ range . }}
+                    {{ $card := . }}
+                    <div class="{{ $card.wrapper_class | default "bg-red-900/20 border border-red-700/50 rounded-2xl p-8" }}">
+                      <div class="w-12 h-12 {{ $card.icon_bg_class | default "bg-red-500/20" }} rounded-xl flex items-center justify-center mb-6">
+                        {{ with $card.icon }}<i class="{{ . }} {{ $card.icon_color_class | default "text-red-400" }} text-xl"></i>{{ end }}
+                      </div>
+                      {{ with $card.title }}<h3 class="text-xl font-semibold text-white mb-4">{{ . }}</h3>{{ end }}
+                      {{ with $card.text }}<p class="text-gray-300 leading-relaxed">{{ . }}</p>{{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
 
               {{ with .model }}
-                <div class="bg-gray-900 border border-gray-700 rounded-2xl p-10 mb-10">
-                  {{ with .title }}<h3 class="text-2xl font-bold text-white mb-10 text-center">{{ . }}</h3>{{ end }}
-                  <div class="grid lg:grid-cols-4 gap-6">
-                    {{ range .columns }}
-                      <div>
-                        {{ with .title }}<h4 class="text-lg font-semibold text-white text-center mb-4">{{ . }}</h4>{{ end }}
-                        <div class="bg-gray-900/50 border border-gray-700 rounded-xl p-6">
-                          {{ with .card }}
-                            {{ $icon := .icon }}
-                            {{ $color := .icon_color_class | default "text-verana" }}
-                            <div class="flex items-center space-x-3 mb-4">
-                              <div class="w-10 h-10 {{ .icon_bg_class | default "bg-verana/20" }} rounded-lg flex items-center justify-center">
-                                {{ if $icon }}<i class="{{ $icon }} {{ $color }}"></i>{{ end }}
+                <div id="{{ .id | default "current-model-diagram" }}" class="{{ .wrapper_class | default "border border-red-700/30 rounded-2xl p-12 mb-8" }}">
+                  {{ with .title }}<h3 class="text-2xl font-bold text-white mb-8 text-center">{{ . }}</h3>{{ end }}
+                  {{ $columns := .columns }}
+                  <div class="grid lg:grid-cols-{{ cond (gt (len $columns) 0) (len $columns) 3 }} gap-8">
+                    {{ range $columns }}
+                      {{ $column := . }}
+                      <div class="{{ $column.wrapper_class | default "space-y-6" }}">
+                        {{ with $column.title }}<h4 class="text-lg font-semibold text-white text-center mb-6">{{ . }}</h4>{{ end }}
+                        {{ with $column.cards }}
+                          {{ range . }}
+                            {{ $card := . }}
+                            <div class="{{ $card.wrapper_class | default "bg-gray-900/50 border border-gray-700 rounded-xl p-6" }}">
+                              {{ $headerClass := $card.header_class | default "flex items-center space-x-3 mb-4" }}
+                              {{ $iconWrapperClass := $card.icon_wrapper_class | default "w-8 h-8 rounded-lg" }}
+                              {{ $iconBackgroundClass := $card.icon_bg_class | default "bg-verana/20" }}
+                              {{ $iconColorClass := $card.icon_color_class | default "text-verana" }}
+                              {{ $iconSizeClass := $card.icon_class | default "text-xl" }}
+                              <div class="{{ $headerClass }}">
+                                <div class="{{ $iconWrapperClass }} {{ $iconBackgroundClass }} flex items-center justify-center">
+                                  {{ with $card.icon }}<i class="{{ . }} {{ $iconColorClass }} {{ $iconSizeClass }}"></i>{{ end }}
+                                </div>
+                                {{ with $card.title }}<h5 class="{{ $card.title_class | default "font-semibold text-white" }}">{{ . }}</h5>{{ end }}
                               </div>
-                              {{ with .title }}<h5 class="text-white font-semibold">{{ . }}</h5>{{ end }}
-                            </div>
-                            {{ with .description }}<p class="text-sm text-gray-300 mb-4">{{ . | markdownify }}</p>{{ end }}
-                          {{ end }}
-                          {{ with .items }}
-                            <div class="space-y-2">
-                              {{ range . }}
-                                {{ $icon := .icon }}
-                                {{ $color := .icon_color_class | default "text-verana" }}
-                                <div class="flex items-center space-x-2">
-                                  {{ if $icon }}<i class="{{ $icon }} {{ $color }} text-xs"></i>{{ end }}
-                                  <span class="text-xs {{ .class | default "text-gray-300" }}">{{ .text }}</span>
+                              {{ with $card.subtitle }}<p class="{{ $card.subtitle_class | default "text-sm text-gray-300 mb-4" }}">{{ . }}</p>{{ end }}
+                              {{ with $card.description }}<p class="{{ $card.description_class | default "text-sm text-gray-300 mb-4" }}">{{ . }}</p>{{ end }}
+                              {{ with $card.rows }}
+                                <div class="{{ $card.rows_wrapper_class | default "space-y-3" }}">
+                                  {{ range . }}
+                                    {{ $row := . }}
+                                    {{ $rowClass := $row.class | default "flex items-center space-x-2" }}
+                                    <div class="{{ $rowClass }}">
+                                      {{ $icon := $row.icon }}
+                                      {{ $iconColor := $row.icon_color_class | default "text-verana" }}
+                                      {{ $iconSize := $row.icon_size_class | default "" }}
+                                      {{ $text := $row.text }}
+                                      {{ $textClass := $row.text_class | default "text-xs text-gray-300" }}
+                                      {{ $iconPosition := $row.icon_position | default "start" }}
+                                      {{ if eq $iconPosition "end" }}
+                                        {{ if $text }}<span class="{{ $textClass }}">{{ $text }}</span>{{ end }}
+                                        {{ if $icon }}<i class="{{ $icon }} {{ $iconColor }} {{ $iconSize }}"></i>{{ end }}
+                                      {{ else }}
+                                        {{ if $icon }}<i class="{{ $icon }} {{ $iconColor }} {{ $iconSize }}"></i>{{ end }}
+                                        {{ if $text }}<span class="{{ $textClass }}">{{ $text }}</span>{{ end }}
+                                      {{ end }}
+                                    </div>
+                                  {{ end }}
+                                </div>
+                              {{ end }}
+                              {{ with $card.blocks }}
+                                <div class="{{ $card.blocks_wrapper_class | default "space-y-3 mt-4" }}">
+                                  {{ range . }}
+                                    <div class="{{ .wrapper_class | default "bg-gray-800/50 border border-gray-600 rounded-lg p-3" }}">
+                                      <p class="{{ .text_class | default "text-xs text-gray-300 text-center" }}">{{ .text }}</p>
+                                    </div>
+                                  {{ end }}
                                 </div>
                               {{ end }}
                             </div>
                           {{ end }}
-                        </div>
-                        {{ with .note }}
-                          <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-3 mt-4">
-                            <p class="text-xs text-gray-400 text-center">{{ . | markdownify }}</p>
+                        {{ end }}
+                        {{ with $column.note }}
+                          {{ $note := . }}
+                          {{ $noteType := printf "%T" $note }}
+                          <div class="{{ $note.wrapper_class | default "bg-gray-800/50 border border-gray-700 rounded-lg p-4" }}">
+                            {{ if eq $noteType "map[string]interface {}" }}
+                              {{ with $note.text }}
+                                <p class="{{ $note.text_class | default "text-xs text-gray-400 text-center italic" }}">{{ . }}</p>
+                              {{ end }}
+                            {{ else }}
+                              <p class="text-xs text-gray-400 text-center italic">{{ $note }}</p>
+                            {{ end }}
                           </div>
                         {{ end }}
                       </div>
@@ -95,13 +151,17 @@
               {{ end }}
 
               {{ with .issues }}
-                <div class="grid md:grid-cols-2 gap-6">
-                  {{ range . }}
-                    <div class="bg-red-900/20 border border-red-700/40 rounded-2xl p-6">
-                      {{ with .title }}<h3 class="text-lg font-semibold text-white mb-3">{{ . }}</h3>{{ end }}
-                      {{ with .text }}<p class="text-sm text-gray-300 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
-                    </div>
-                  {{ end }}
+                {{ $issues := . }}
+                <div class="{{ $issues.wrapper_class | default "mt-12 pt-8 border-t border-red-700/30" }}">
+                  <div class="{{ $issues.grid_class | default "grid md:grid-cols-2 gap-6" }}">
+                    {{ range $issues.items }}
+                      {{ $item := . }}
+                      <div class="{{ $item.wrapper_class | default "bg-red-900/20 border border-red-700/50 rounded-xl p-6" }}">
+                        {{ with $item.title }}<h5 class="{{ $item.title_class | default "font-semibold text-white mb-3" }}">{{ . }}</h5>{{ end }}
+                        {{ with $item.text }}<p class="{{ $item.text_class | default "text-sm text-gray-300" }}">{{ . }}</p>{{ end }}
+                      </div>
+                    {{ end }}
+                  </div>
                 </div>
               {{ end }}
             </section>

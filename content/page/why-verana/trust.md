@@ -1,5 +1,5 @@
 ---
-title: Making the Internet Trustworthy
+title: Solving Trust
 subtitle: "Building a native trust layer for the internet through verifiable credentials and cryptographic proof of identity, authenticity, and ownership."
 url: "/page/why-verana/trust"
 hero_icon: "fa-solid fa-shield-check"
@@ -16,17 +16,17 @@ sidebar:
       url: "#verifiable-examples"
     - label: How Trust Flows
       url: "#trust-flow"
-    - label: Call to Action
-      url: "#page-cta"
   quick_links:
     title: Quick Links
     items:
-      - label: Trust Layer Architecture
-        url: "#verana-solution"
-      - label: Verifiable Credentials
-        url: "#verifiable-examples"
-      - label: Ecosystem Guide
-        url: "#trust-flow"
+      - label: Trust Resolver
+        url: "/page/trust-engine/trust-resolver/"
+      - label: Documentation
+        url: "https://docs.verana.io"
+      - label: Discord
+        url: "https://discord.gg/edjaFn252q"
+      - label: Github
+        url: "https://github.com/verana-labs"
 trust_problem:
   id: trust-problem
   title: The Trust Problem
@@ -157,12 +157,12 @@ cta:
   title: Ready to Build Trustworthy Digital Services?
   text: "Start implementing verifiable credentials and join the movement toward a more trustworthy internet."
   buttons:
-    - label: Get Started
+    - label: Build
       icon: "fa-solid fa-rocket"
-      href: "#"
+      href: "/page/build"
       class: "bg-verana hover:bg-verana-dark text-white"
-    - label: Learn More
-      href: "#"
+    - label: Documentation
+      href: "https://docs.verana.io"
       class: "border-2 border-gray-600 hover:border-verana text-white"
 related:
   title: Explore More About Verana
@@ -184,10 +184,10 @@ related:
     - icon: "fa-solid fa-crown"
       icon_bg_class: "bg-purple-500/20"
       icon_color_class: "text-purple-400"
-      title: Digital Sovereignty
-      text: "Reclaim control over your digital presence and break free from platform dependency."
-      url: "/page/why-verana/digital-sovereignty"
-      cta_label: Claim Sovereignty
+      title: Trust Engine
+      text: "Learn about Verana's trust engine"
+      url: "/page/trust-engine"
+      cta_label: Understand Verifiable Trust
 ---
 
 {{< why-trust >}}

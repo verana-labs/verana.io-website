@@ -29,63 +29,132 @@ problem:
   id: broken-discovery
   title: Why Discoverability is Broken
   description: |
-    Today, discoverability of services is dominated by centralized platforms that rank and surface results based on advertising spend, SEO games, and now sponsored AI answers. A handful of companies capture the majority of value while smaller players and consumers absorb the cost.
+    Today, consumer discoverability of goods and services is controlled by centralized platforms that rely on advertising, opaque SEO algorithms, and now even sponsored AI results.
+  cards:
+    - wrapper_class: "bg-red-900/20 border border-red-700/50 rounded-2xl p-8"
+      icon: "fa-solid fa-building"
+      icon_bg_class: "bg-red-500/20"
+      icon_color_class: "text-red-400"
+      title: Wealth Concentration
+      text: "Wealth is concentrated in a handful of dominant companies that control discovery algorithms."
+    - wrapper_class: "bg-red-900/20 border border-red-700/50 rounded-2xl p-8"
+      icon: "fa-solid fa-seedling"
+      icon_bg_class: "bg-red-500/20"
+      icon_color_class: "text-red-400"
+      title: Stifled Innovation
+      text: "Startups and SMEs cannot compete with massive advertising budgets, limiting innovation."
+    - wrapper_class: "bg-red-900/20 border border-red-700/50 rounded-2xl p-8"
+      icon: "fa-solid fa-dollar-sign"
+      icon_bg_class: "bg-red-500/20"
+      icon_color_class: "text-red-400"
+      title: Higher Prices
+      text: "Intermediaries capture disproportionate value, forcing consumers to pay higher prices."
   model:
-    title: Advertising-Driven Discovery Loop
+    title: Current Discovery Model
+    wrapper_class: "broken-model border border-red-700/30 rounded-2xl p-12 mb-8"
     columns:
       - title: Organizations
-        card:
-          icon: "fa-solid fa-building"
-          icon_bg_class: "bg-blue-500/20"
-          icon_color_class: "text-blue-400"
-          title: High-Budget Organizations
-          description: "Enterprises and funded scale-ups buy visibility through massive ad campaigns."
-        items:
-          - icon: "fa-solid fa-arrow-right"
-            icon_color_class: "text-green-400"
-            text: "$$$ ad spend guarantees top placement"
-          - icon: "fa-solid fa-store"
+        cards:
+          - wrapper_class: "bg-gray-900/50 border border-gray-700 rounded-xl p-6"
+            icon: "fa-solid fa-building"
+            icon_bg_class: "bg-blue-500/20"
+            icon_color_class: "text-blue-400"
+            title: High-Budget Organizations
+            title_class: "font-semibold text-white"
+            subtitle: "Enterprises, funded scale-ups"
+            subtitle_class: "text-sm text-gray-300 mb-4"
+            rows_wrapper_class: "space-y-2"
+            rows:
+              - icon: "fa-solid fa-arrow-right"
+                icon_color_class: "text-green-400"
+                text: "$$$ Ad Spend"
+                text_class: "text-green-400 text-sm font-medium"
+                class: "flex items-center space-x-2"
+          - wrapper_class: "bg-gray-900/50 border border-gray-700 rounded-xl p-6"
+            icon: "fa-solid fa-store"
+            icon_bg_class: "bg-orange-500/20"
             icon_color_class: "text-orange-400"
-            class: "text-orange-400"
-            text: "Low-budget teams rely on weak ad spend and stay invisible"
-        note: "Small budgets ⇒ little or no discoverability. Competing on ads is unsustainable."
+            title: Low-Budget Organizations
+            title_class: "font-semibold text-white"
+            subtitle: "Startups, SMEs"
+            subtitle_class: "text-sm text-gray-300 mb-4"
+            rows_wrapper_class: "space-y-2"
+            rows:
+              - icon: "fa-solid fa-arrow-right"
+                icon_color_class: "text-red-400"
+                text: "$ Weak Ad Spend"
+                text_class: "text-red-400 text-sm font-medium opacity-50"
+                class: "flex items-center space-x-2 opacity-50"
       - title: Dominant Platforms
-        card:
-          icon: "fa-solid fa-crown"
-          icon_bg_class: "bg-red-500/20"
-          icon_color_class: "text-red-400"
-          title: Advertising Platforms
-          description: "Control discovery & ranking, siphoning value from both sides."
-        items:
-          - icon: "fa-solid fa-arrow-right"
-            icon_color_class: "text-green-400"
-            text: "High spenders secure premium visibility"
-          - icon: "fa-solid fa-arrow-right"
+        cards:
+          - wrapper_class: "bg-red-900/30 border border-red-700/50 rounded-xl p-8 text-center"
+            icon: "fa-solid fa-crown"
+            icon_bg_class: "bg-red-500/20"
             icon_color_class: "text-red-400"
-            class: "text-red-400"
-            text: "Small orgs are deprioritized or excluded"
-        note: "Wealth and audience data concentrate in a few gatekeepers."
+            icon_wrapper_class: "w-16 h-16 rounded-2xl mx-auto"
+            icon_class: "text-2xl"
+            header_class: "flex flex-col items-center justify-center gap-4 mb-6"
+            title: Advertising Platforms
+            title_class: "font-bold text-white"
+            subtitle: "Control discovery & ranking"
+            subtitle_class: "text-sm text-gray-300 mb-6"
+            rows_wrapper_class: "space-y-3"
+            rows:
+              - text: "High Visibility"
+                text_class: "text-green-400 text-sm"
+                icon: "fa-solid fa-arrow-right"
+                icon_color_class: "text-green-400"
+                icon_position: end
+                class: "flex items-center justify-between"
+              - text: "Low/No Visibility"
+                text_class: "text-red-400 text-sm"
+                icon: "fa-solid fa-arrow-right"
+                icon_color_class: "text-red-400"
+                icon_position: end
+                class: "flex items-center justify-between opacity-50"
+        note:
+          wrapper_class: "bg-gray-800/50 border border-gray-600 rounded-lg p-4"
+          text: "Wealth concentration at dominant platforms"
+          text_class: "text-xs text-gray-400 text-center italic"
       - title: Consumers
-        card:
-          icon: "fa-solid fa-user"
-          icon_bg_class: "bg-gray-500/20"
-          icon_color_class: "text-gray-300"
-          title: End Users
-          description: "Discover what platforms promote—not what best fits their needs."
-        items:
-          - icon: "fa-solid fa-arrow-right"
-            icon_color_class: "text-green-400"
-            text: "Find the brands that can afford visibility"
-          - icon: "fa-solid fa-arrow-right"
-            icon_color_class: "text-red-400"
-            class: "text-red-400"
-            text: "Rarely see lower-cost alternatives"
-        note: "Consumers pay an indirect ad tax every time they choose from sponsored results."
+        cards:
+          - wrapper_class: "bg-gray-900/50 border border-gray-700 rounded-xl p-8 text-center"
+            icon: "fa-solid fa-user"
+            icon_bg_class: "bg-gray-500/20"
+            icon_color_class: "text-gray-400"
+            icon_wrapper_class: "w-16 h-16 rounded-2xl mx-auto"
+            icon_class: "text-2xl"
+            header_class: "flex flex-col items-center justify-center gap-4 mb-6"
+            title: End Users
+            title_class: "font-semibold text-white"
+            subtitle: "Pay higher prices due to ad cost pass-through"
+            subtitle_class: "text-sm text-gray-300 mb-6"
+            blocks_wrapper_class: "space-y-3"
+            blocks:
+              - wrapper_class: "bg-green-900/20 border border-green-700/50 rounded-lg p-3"
+                text: "Find high-budget services easily"
+                text_class: "text-xs text-green-400"
+              - wrapper_class: "bg-red-900/20 border border-red-700/50 rounded-lg p-3 opacity-50"
+                text: "Rarely discover low-budget alternatives"
+                text_class: "text-xs text-red-400"
+        note:
+          wrapper_class: "bg-gray-800/50 border border-gray-600 rounded-lg p-4"
+          text: "Consumers pay higher prices to cover ad spend"
+          text_class: "text-xs text-gray-400 text-center italic"
   issues:
-    - title: For Small Organizations
-      text: "Marketing budgets become the barrier to entry, limiting innovation and competition."
-    - title: For Consumers
-      text: "Choice shrinks and prices rise as intermediaries capture a disproportionate share of value."
+    wrapper_class: "mt-12 pt-8 border-t border-red-700/30"
+    grid_class: "grid md:grid-cols-2 gap-6"
+    items:
+      - title: For Small Organizations
+        title_class: "font-semibold text-white mb-3"
+        text: "Small budgets ⇒ little/no discoverability. Competing on ads is unsustainable."
+        text_class: "text-sm text-gray-300"
+        wrapper_class: "bg-red-900/20 border border-red-700/50 rounded-xl p-6"
+      - title: For Consumers
+        title_class: "font-semibold text-white mb-3"
+        text: "Limited choice and higher prices due to platform intermediaries capturing value."
+        text_class: "text-sm text-gray-300"
+        wrapper_class: "bg-red-900/20 border border-red-700/50 rounded-xl p-6"
 solution:
   id: verana-solution
   title: "Service Discovery: Re-distribution of Wealth"
