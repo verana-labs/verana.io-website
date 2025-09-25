@@ -1,0 +1,658 @@
+{{ $page := . }}
+{{ $params := $page.Params }}
+{{ $sidebar := $params.sidebar }}
+{{ $problem := $params.problem_section }}
+{{ $solution := $params.solution_intro }}
+{{ $architecture := $params.architecture }}
+{{ $identity := $params.identity_trust }}
+{{ $moderation := $params.moderation }}
+{{ $economics := $params.economics }}
+{{ $whyBetter := $params.why_better }}
+{{ $conclusion := $params.conclusion }}
+{{ $cta := $params.cta }}
+{{ $related := $params.related_use_cases }}
+
+<section id="main-content" class="bg-black py-20 lg:py-32">
+  <div class="container mx-auto px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-4 gap-12">
+        {{ with $sidebar }}
+          <aside id="sidebar-nav" class="lg:col-span-1">
+            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky top-24">
+              {{ with .title }}<h3 class="text-lg font-semibold text-white mb-6">{{ . }}</h3>{{ end }}
+              {{ with .nav }}
+                <nav class="space-y-3">
+                  {{ range . }}
+                    {{ $label := .label | default .title | default .name }}
+                    {{ $href := .url | default .href | default "#" }}
+                    {{ $active := cond (isset . "active") (.active) false }}
+                    {{ if $label }}
+                      <a href="{{ $href }}" class="block {{ if $active }}text-verana font-medium{{ else }}text-gray-400 hover:text-white transition-colors duration-200{{ end }}">{{ $label }}</a>
+                    {{ end }}
+                  {{ end }}
+                </nav>
+              {{ end }}
+              {{ with .quick_links }}
+                <div class="mt-8 pt-6 border-t border-gray-700">
+                  {{ with .title }}<h4 class="text-sm font-semibold text-white mb-4">{{ . }}</h4>{{ end }}
+                  <div class="space-y-2">
+                    {{ range .items }}
+                      {{ $label := .label | default .title | default .name }}
+                      {{ $href := .url | default .href | default "#" }}
+                      {{ if $label }}
+                        <a href="{{ $href }}" class="block text-sm text-gray-400 hover:text-white transition-colors duration-200">{{ $label }}</a>
+                      {{ end }}
+                    {{ end }}
+                  </div>
+                </div>
+              {{ end }}
+            </div>
+          </aside>
+        {{ end }}
+
+        <div id="content-area" class="lg:col-span-3">
+          {{ with $problem }}
+            {{ $problemID := or .id "problem-section" }}
+            {{ $problemIcon := .icon }}
+            {{ $problemIconClass := .icon_color_class | default "text-red-400" }}
+            <div id="{{ $problemID }}" class="mb-16 scroll-mt-28 md:scroll-mt-32">
+              {{ with .title }}
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8 flex items-center">
+                  {{ if $problemIcon }}<i class="{{ $problemIcon }} {{ $problemIconClass }} mr-4"></i>{{ end }}
+                  <span>{{ . }}</span>
+                </h2>
+              {{ end }}
+              {{ with .intro }}<div class="text-xl text-gray-300 leading-relaxed mb-8">{{ . | markdownify }}</div>{{ end }}
+              {{ with .image }}
+                {{ $image := . }}
+                <div class="{{ $image.wrapper_class | default "bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-12" }}">
+                  {{ with $image.src }}<img class="w-full h-96 object-cover rounded-2xl {{ $image.image_class }}" src="{{ . }}" alt="{{ $image.alt }}" loading="lazy" />{{ end }}
+                  {{ with $image.caption }}
+                    <div class="{{ .wrapper_class | default "bg-red-900/20 border border-red-700/30 rounded-xl p-8 text-center mt-8" }}">
+                      {{ with .title }}<h4 class="text-2xl font-semibold text-white mb-4">{{ . }}</h4>{{ end }}
+                      {{ with .text }}<p class="text-xl text-gray-300 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+              {{ with .cards }}
+                <div class="grid md:grid-cols-2 gap-6 mb-12">
+                  {{ range . }}
+                    {{ $card := . }}
+                    <div class="{{ $card.wrapper_class | default "bg-red-900/20 border border-red-700/50 rounded-2xl p-8" }}">
+                      <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-12 h-12 {{ $card.icon_bg_class | default "bg-red-500/20" }} rounded-xl flex items-center justify-center">
+                          {{ with $card.icon }}<i class="{{ . }} {{ $card.icon_color_class | default "text-red-400" }} text-xl"></i>{{ end }}
+                        </div>
+                        {{ with $card.title }}<h3 class="text-xl font-semibold text-white">{{ . }}</h3>{{ end }}
+                      </div>
+                      {{ with $card.text }}<p class="text-gray-300 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+              {{ with .challenges }}
+                {{ $ch := . }}
+                <div class="{{ $ch.wrapper_class | default "bg-red-900/20 border border-red-700/50 rounded-2xl p-12" }}">
+                  {{ with $ch.title }}<h3 class="text-2xl font-semibold text-white mb-8 text-center">{{ . }}</h3>{{ end }}
+                  {{ with $ch.columns }}
+                    <div class="grid md:grid-cols-{{ len . }} gap-8">
+                      {{ range . }}
+                        {{ $col := . }}
+                        <div class="{{ $col.wrapper_class | default "space-y-6" }}">
+                          {{ range $col.items }}
+                            {{ $item := . }}
+                            <div class="flex items-start space-x-4">
+                              <div class="w-3 h-3 {{ $item.bullet_class | default "bg-red-400" }} rounded-full mt-2 flex-shrink-0"></div>
+                              <span class="text-lg text-gray-300">{{ $item.text | markdownify }}</span>
+                            </div>
+                          {{ end }}
+                        </div>
+                      {{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+              {{ with .result }}
+                <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                  <div class="text-center">
+                    {{ with .title }}<h3 class="text-2xl font-bold text-red-400 mb-4">{{ . }}</h3>{{ end }}
+                    {{ with .text }}<p class="text-xl text-gray-200 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                  </div>
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ with $solution }}
+            {{ $solutionID := or .id "solution-intro" }}
+            {{ $solutionIcon := .icon }}
+            {{ $solutionIconClass := .icon_color_class | default "text-verana" }}
+            <div id="{{ $solutionID }}" class="mb-16 scroll-mt-28 md:scroll-mt-32">
+              {{ with .title }}
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8 flex items-center">
+                  {{ if $solutionIcon }}<i class="{{ $solutionIcon }} {{ $solutionIconClass }} mr-4"></i>{{ end }}
+                  <span>{{ . }}</span>
+                </h2>
+              {{ end }}
+              {{ with .highlight }}
+                {{ $highlight := . }}
+                <div class="{{ $highlight.wrapper_class | default "bg-gradient-to-br from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-12 mb-12" }}">
+                  <div class="text-center">
+                    <div class="w-20 h-20 {{ $highlight.icon_bg_class | default "bg-verana/20" }} rounded-3xl flex items-center justify-center mx-auto mb-6 animate-pulse-glow">
+                      {{ with $highlight.icon }}<i class="{{ . }} {{ $highlight.icon_color_class | default "text-verana" }} text-3xl"></i>{{ end }}
+                    </div>
+                    {{ with $highlight.title }}<h3 class="text-3xl font-bold text-white mb-6">{{ . }}</h3>{{ end }}
+                    {{ with $highlight.text }}<p class="text-xl text-gray-200 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                  </div>
+                </div>
+              {{ end }}
+              {{ with .image }}
+                <div class="mb-12">
+                  <img class="w-full h-96 object-cover rounded-2xl" src="{{ .src }}" alt="{{ .alt }}" loading="lazy" />
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ with $architecture }}
+            {{ $architectureID := or .id "architecture" }}
+            {{ $architectureIcon := .icon }}
+            {{ $architectureIconClass := .icon_color_class | default "text-verana" }}
+            <div id="{{ $architectureID }}" class="mb-16 scroll-mt-28 md:scroll-mt-32">
+              {{ with .title }}
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-12 flex items-center">
+                  {{ if $architectureIcon }}<i class="{{ $architectureIcon }} {{ $architectureIconClass }} mr-4"></i>{{ end }}
+                  <span>{{ . }}</span>
+                </h2>
+              {{ end }}
+              {{ with .components }}
+                {{ range . }}
+                  {{ $component := . }}
+                  <div class="{{ $component.wrapper_class | default "bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8" }}">
+                    <div class="flex flex-col md:flex-row md:items-start md:space-x-6 mb-8">
+                      <div class="w-16 h-16 {{ $component.icon_bg_class | default "bg-blue-500/20" }} rounded-2xl flex items-center justify-center flex-shrink-0 mb-6 md:mb-0">
+                        {{ with $component.icon }}<i class="{{ . }} {{ $component.icon_color_class | default "text-blue-400" }} text-2xl"></i>{{ end }}
+                      </div>
+                      <div>
+                        {{ with $component.title }}<h3 class="text-2xl font-semibold text-white mb-4">{{ . }}</h3>{{ end }}
+                        {{ with $component.description }}<p class="text-gray-300 leading-relaxed mb-6">{{ . | markdownify }}</p>{{ end }}
+                      </div>
+                    </div>
+                    {{ with $component.features }}
+                      <div class="grid md:grid-cols-3 gap-6">
+                        {{ range . }}
+                          {{ $feature := . }}
+                          <div class="{{ $feature.wrapper_class | default "bg-black border border-gray-600 rounded-xl p-6" }}">
+                            {{ with $feature.icon }}
+                              <div class="flex items-center space-x-3 mb-4">
+                                <i class="{{ . }} {{ $feature.icon_color_class | default "text-blue-400" }}"></i>
+                                {{ with $feature.title }}<span class="text-white font-semibold">{{ . }}</span>{{ end }}
+                              </div>
+                              {{ with $feature.text }}<p class="text-gray-300 text-sm">{{ . | markdownify }}</p>{{ end }}
+                            {{ else }}
+                              {{ with $feature.title }}<h4 class="text-white font-semibold mb-2">{{ . }}</h4>{{ end }}
+                              {{ with $feature.text }}<p class="text-gray-300 text-sm">{{ . | markdownify }}</p>{{ end }}
+                            {{ end }}
+                          </div>
+                        {{ end }}
+                      </div>
+                    {{ end }}
+                  </div>
+                {{ end }}
+              {{ end }}
+              {{ with .network_example }}
+                <div class="{{ .wrapper_class | default "bg-verana/10 border border-verana/30 rounded-2xl p-8" }}">
+                  {{ with .title }}<h3 class="text-2xl font-semibold text-white mb-6">{{ . }}</h3>{{ end }}
+                  {{ with .image }}
+                    <div class="mb-8">
+                      <img class="w-full h-96 object-cover rounded-2xl" src="{{ .src }}" alt="{{ .alt }}" loading="lazy" />
+                    </div>
+                  {{ end }}
+                  {{ with .note }}
+                    <div class="{{ .wrapper_class | default "bg-verana/20 border border-verana/40 rounded-xl p-6" }}">
+                      {{ with .text }}<p class="text-gray-200 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ with $identity }}
+            {{ $identityID := or .id "identity-trust" }}
+            {{ $identityIcon := .icon }}
+            {{ $identityIconClass := .icon_color_class | default "text-verana" }}
+            <div id="{{ $identityID }}" class="mb-16 scroll-mt-28 md:scroll-mt-32">
+              {{ with .title }}
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8 flex items-center">
+                  {{ if $identityIcon }}<i class="{{ $identityIcon }} {{ $identityIconClass }} mr-4"></i>{{ end }}
+                  <span>{{ . }}</span>
+                </h2>
+              {{ end }}
+              <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+                {{ with .intro }}<p class="text-lg text-gray-300 leading-relaxed mb-8">{{ . | markdownify }}</p>{{ end }}
+                {{ with .steps }}
+                  <div class="space-y-6">
+                    {{ range . }}
+                      {{ $step := . }}
+                      <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 {{ $step.badge_bg_class | default "bg-blue-500/20" }} rounded-xl flex items-center justify-center flex-shrink-0">
+                          {{ with $step.badge_icon }}<i class="{{ . }} {{ $step.badge_icon_class | default "text-blue-400" }}"></i>{{ else }}<span class="{{ $step.badge_text_class | default "text-blue-400 font-bold" }}">{{ $step.label }}</span>{{ end }}
+                        </div>
+                        <div>
+                          {{ with $step.title }}<h3 class="text-lg font-semibold text-white mb-2">{{ . }}</h3>{{ end }}
+                          {{ with $step.text }}<p class="text-gray-300 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                        </div>
+                      </div>
+                    {{ end }}
+                  </div>
+                {{ end }}
+                {{ with .key_features }}
+                  {{ $features := . }}
+                  <div class="{{ $features.wrapper_class | default "bg-blue-900/20 border border-blue-700/50 rounded-2xl p-8 mt-8" }}">
+                    {{ with $features.title }}<h4 class="text-xl font-semibold text-white mb-6">{{ . }}</h4>{{ end }}
+                    {{ with $features.columns }}
+                      <div class="grid md:grid-cols-{{ len . }} gap-6">
+                        {{ range . }}
+                          {{ $column := . }}
+                          <div class="{{ $column.wrapper_class | default "space-y-4" }}">
+                            {{ range $column.items }}
+                              {{ $item := . }}
+                              <div class="flex items-start space-x-3">
+                                {{ with $item.icon }}<i class="{{ . }} {{ $item.icon_color_class | default "text-blue-400" }} mt-1"></i>{{ else }}<div class="w-2 h-2 {{ $item.bullet_class | default "bg-blue-400" }} rounded-full mt-2"></div>{{ end }}
+                                <span class="text-gray-300">{{ $item.text | markdownify }}</span>
+                              </div>
+                            {{ end }}
+                          </div>
+                        {{ end }}
+                      </div>
+                    {{ end }}
+                  </div>
+                {{ end }}
+              </div>
+              {{ with .trust_guarantee }}
+                {{ $guarantee := . }}
+                <div class="{{ $guarantee.wrapper_class | default "bg-verana/10 border border-verana/30 rounded-2xl p-8" }}">
+                  <div class="flex items-center space-x-4 mb-4">
+                    {{ with $guarantee.icon }}<i class="{{ . }} {{ $guarantee.icon_color_class | default "text-verana" }} text-2xl"></i>{{ end }}
+                    {{ with $guarantee.title }}<h3 class="text-xl font-semibold text-white">{{ . }}</h3>{{ end }}
+                  </div>
+                  {{ with $guarantee.text }}<p class="text-lg text-gray-200 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ with $moderation }}
+            {{ $moderationID := or .id "moderation" }}
+            {{ $moderationIcon := .icon }}
+            {{ $moderationIconClass := .icon_color_class | default "text-verana" }}
+            <div id="{{ $moderationID }}" class="mb-16 scroll-mt-28 md:scroll-mt-32">
+              {{ with .title }}
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8 flex items-center">
+                  {{ if $moderationIcon }}<i class="{{ $moderationIcon }} {{ $moderationIconClass }} mr-4"></i>{{ end }}
+                  <span>{{ . }}</span>
+                </h2>
+              {{ end }}
+              {{ with .cards }}
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                  {{ range . }}
+                    {{ $card := . }}
+                    <div class="{{ $card.wrapper_class | default "bg-gray-900 border border-gray-700 rounded-2xl p-8" }}">
+                      <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 {{ $card.icon_bg_class | default "bg-blue-500/20" }} rounded-xl flex items-center justify-center">
+                          {{ with $card.icon }}<i class="{{ . }} {{ $card.icon_color_class | default "text-blue-400" }} text-xl"></i>{{ end }}
+                        </div>
+                        {{ with $card.title }}<h3 class="text-xl font-semibold text-white">{{ . }}</h3>{{ end }}
+                      </div>
+                      {{ with $card.text }}<p class="text-gray-300 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+              {{ with .warning }}
+                {{ $warning := . }}
+                <div class="{{ $warning.wrapper_class | default "bg-yellow-900/20 border border-yellow-700/50 rounded-2xl p-8" }}">
+                  <div class="flex items-start space-x-4">
+                    <div class="w-12 h-12 {{ $warning.icon_bg_class | default "bg-yellow-500/20" }} rounded-xl flex items-center justify-center flex-shrink-0">
+                      {{ with $warning.icon }}<i class="{{ . }} {{ $warning.icon_color_class | default "text-yellow-400" }} text-xl"></i>{{ end }}
+                    </div>
+                    <div>
+                      {{ with $warning.title }}<h3 class="text-xl font-semibold text-white mb-4">{{ . }}</h3>{{ end }}
+                      {{ with $warning.text }}<p class="text-gray-300 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                    </div>
+                  </div>
+                </div>
+              {{ end }}
+              {{ with .image }}
+                {{ $image := . }}
+                <div class="{{ $image.wrapper_class | default "bg-gray-900 border border-gray-700 rounded-2xl p-8 mt-8" }}">
+                  {{ with $image.src }}<img class="w-full h-80 object-cover rounded-2xl {{ $image.image_class }}" src="{{ . }}" alt="{{ $image.alt }}" loading="lazy" />{{ end }}
+                </div>
+              {{ end }}
+              {{ with .bottom_line }}
+                <div class="mt-8 {{ .wrapper_class | default "bg-verana/10 border border-verana/30 rounded-2xl p-8 text-center" }}">
+                  {{ with .title }}<h3 class="text-2xl font-bold text-white mb-4">{{ . }}</h3>{{ end }}
+                  {{ with .text }}<p class="text-lg text-gray-200 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ with $economics }}
+            {{ $economicsID := or .id "economics" }}
+            {{ $economicsIcon := .icon }}
+            {{ $economicsIconClass := .icon_color_class | default "text-verana" }}
+            <div id="{{ $economicsID }}" class="mb-16 scroll-mt-28 md:scroll-mt-32">
+              {{ with .title }}
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8 flex items-center">
+                  {{ if $economicsIcon }}<i class="{{ $economicsIcon }} {{ $economicsIconClass }} mr-4"></i>{{ end }}
+                  <span>{{ . }}</span>
+                </h2>
+              {{ end }}
+              {{ with .intro_card }}
+                <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+                  {{ with .heading }}<h3 class="text-2xl font-semibold text-white mb-6">{{ . }}</h3>{{ end }}
+                  {{ with .description }}<p class="text-lg text-gray-300 leading-relaxed mb-8">{{ . | markdownify }}</p>{{ end }}
+                  {{ with .feature_lists }}
+                    <div class="grid md:grid-cols-2 gap-8">
+                      {{ range . }}
+                        {{ $group := . }}
+                        <div class="{{ $group.wrapper_class | default "space-y-6" }}">
+                          {{ with $group.items }}
+                            {{ range . }}
+                              {{ $item := . }}
+                              <div class="{{ $item.wrapper_class | default "bg-black border border-gray-600 rounded-xl p-6" }}">
+                                {{ with $item.icon }}
+                                  <div class="flex items-center space-x-3 mb-4">
+                                    <i class="{{ . }} {{ $item.icon_color_class | default "text-blue-400" }}"></i>
+                                    {{ with $item.title }}<span class="text-white font-semibold">{{ . }}</span>{{ end }}
+                                  </div>
+                                {{ end }}
+                                {{ if not $item.icon }}
+                                  {{ with $item.title }}<h4 class="text-white font-semibold mb-2">{{ . }}</h4>{{ end }}
+                                {{ end }}
+                                {{ with $item.text }}<p class="text-gray-300 text-sm">{{ . | markdownify }}</p>{{ end }}
+                              </div>
+                            {{ end }}
+                          {{ end }}
+                        </div>
+                      {{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+              {{ with .benefits }}
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {{ range . }}
+                    {{ $benefit := . }}
+                    <div class="{{ $benefit.wrapper_class | default "bg-green-900/20 border border-green-700/50 rounded-2xl p-8" }}">
+                      <div class="w-12 h-12 {{ $benefit.icon_bg_class | default "bg-green-500/20" }} rounded-xl flex items-center justify-center mb-6">
+                        {{ with $benefit.icon }}<i class="{{ . }} {{ $benefit.icon_color_class | default "text-green-400" }} text-xl"></i>{{ end }}
+                      </div>
+                      {{ with $benefit.title }}<h3 class="text-lg font-semibold text-white mb-4">{{ . }}</h3>{{ end }}
+                      {{ with $benefit.text }}<p class="text-gray-300 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ with $whyBetter }}
+            {{ $whyID := or .id "why-better" }}
+            {{ $whyIcon := .icon }}
+            {{ $whyIconClass := .icon_color_class | default "text-verana" }}
+            <div id="{{ $whyID }}" class="mb-16 scroll-mt-28 md:scroll-mt-32">
+              {{ with .title }}
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-12 flex items-center">
+                  {{ if $whyIcon }}<i class="{{ $whyIcon }} {{ $whyIconClass }} mr-4"></i>{{ end }}
+                  <span>{{ . }}</span>
+                </h2>
+              {{ end }}
+              {{ with .items }}
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {{ range . }}
+                    {{ $item := . }}
+                    <div class="{{ $item.wrapper_class | default "bg-green-900/20 border border-green-700/50 rounded-2xl p-8" }}">
+                      <div class="w-12 h-12 {{ $item.icon_bg_class | default "bg-green-500/20" }} rounded-xl flex items-center justify-center mb-6">
+                        {{ with $item.icon }}<i class="{{ . }} {{ $item.icon_color_class | default "text-green-400" }} text-xl"></i>{{ end }}
+                      </div>
+                      {{ with $item.title }}<h3 class="text-lg font-semibold text-white mb-4">{{ . }}</h3>{{ end }}
+                      {{ with $item.text }}<p class="text-gray-300 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ with $conclusion }}
+            {{ $conclusionID := or .id "conclusion" }}
+            {{ $conclusionIcon := .icon }}
+            {{ $conclusionIconClass := .icon_color_class | default "text-verana" }}
+            <div id="{{ $conclusionID }}" class="mb-16 scroll-mt-28 md:scroll-mt-32">
+              {{ with .title }}
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8 flex items-center">
+                  {{ if $conclusionIcon }}<i class="{{ $conclusionIcon }} {{ $conclusionIconClass }} mr-4"></i>{{ end }}
+                  <span>{{ . }}</span>
+                </h2>
+              {{ end }}
+              <div class="bg-gradient-to-br from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-12">
+                {{ with .intro }}<p class="text-xl text-gray-200 leading-relaxed mb-8">{{ . | markdownify }}</p>{{ end }}
+                {{ with .vision }}
+                  {{ $vision := . }}
+                  <div class="{{ $vision.wrapper_class | default "bg-green-900/30 border border-green-700/30 rounded-xl p-8 mb-8" }}">
+                    {{ with $vision.title }}<h3 class="text-2xl font-bold text-white mb-4 text-center">{{ . }}</h3>{{ end }}
+                    {{ with $vision.text }}<p class="text-lg text-center text-gray-200 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                  </div>
+                {{ end }}
+                {{ with .transitions }}
+                  {{ $transitionCount := len . }}
+                  <div class="grid md:grid-cols-2 lg:grid-cols-{{ if gt $transitionCount 3 }}4{{ else }}{{ $transitionCount }}{{ end }} gap-8 mb-12">
+                    {{ range . }}
+                      {{ $transition := . }}
+                      <div class="text-center">
+                        <div class="w-16 h-16 {{ $transition.icon_bg_class | default "bg-red-500/20" }} rounded-2xl flex items-center justify-center mx-auto mb-4">
+                          {{ with $transition.icon }}<i class="{{ . }} {{ $transition.icon_color_class | default "text-red-400" }} text-2xl"></i>{{ end }}
+                        </div>
+                        {{ with $transition.title }}<h3 class="text-lg font-semibold text-white mb-2">{{ . }}</h3>{{ end }}
+                        {{ with $transition.text }}<p class="text-gray-300">{{ . | markdownify }}</p>{{ end }}
+                      </div>
+                    {{ end }}
+                  </div>
+                {{ end }}
+                {{ with .closing }}
+                  {{ $closing := . }}
+                  <div class="text-center">
+                    {{ with $closing.headline }}<p class="text-2xl font-bold text-white mb-4">{{ . | markdownify }}</p>{{ end }}
+                    {{ with $closing.message }}
+                      {{ $message := . }}
+                      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mt-4">
+                        {{ with $message.icon }}<i class="{{ . }} {{ $message.icon_color_class | default "text-verana" }} text-2xl"></i>{{ end }}
+                        {{ with $message.text }}<p class="text-xl text-gray-200">{{ . | markdownify }}</p>{{ end }}
+                      </div>
+                    {{ end }}
+                  </div>
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+
+          {{ with $cta }}
+            <div id="page-cta" class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-12 text-center scroll-mt-28 md:scroll-mt-32">
+              {{ with .title }}<h2 class="text-3xl font-bold text-white mb-4">{{ . }}</h2>{{ end }}
+              {{ with .body }}<p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">{{ . | markdownify }}</p>{{ end }}
+              <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                {{ with .primary }}
+                  {{ $href := .url | default "#" }}
+                  <a href="{{ $href }}" class="bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2">
+                    {{ with .icon }}<i class="{{ . }}"></i>{{ end }}
+                    <span>{{ .label | default "Get Started" }}</span>
+                  </a>
+                {{ end }}
+                {{ with .secondary }}
+                  {{ $href := .url | default "#" }}
+                  <a href="{{ $href }}" class="border-2 border-gray-600 hover:border-verana text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105">
+                    {{ .label | default "Learn More" }}
+                  </a>
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const navLinks = Array.from(document.querySelectorAll('#sidebar-nav a[href^="#"]'));
+    if (!navLinks.length) {
+      return;
+    }
+
+    const sections = navLinks
+      .map((link) => {
+        const selector = link.getAttribute('href');
+        if (!selector || selector === '#') return null;
+        try { return document.querySelector(selector); } catch (e) { return null; }
+      })
+      .filter(Boolean);
+
+    if (!sections.length) {
+      return;
+    }
+
+    const activateLink = (id) => {
+      navLinks.forEach((link) => {
+        const targetId = (link.getAttribute('href') || '').slice(1);
+        if (targetId === id) {
+          link.classList.add('text-verana', 'font-medium');
+          link.classList.remove('text-gray-400');
+        } else {
+          link.classList.remove('text-verana', 'font-medium');
+          if (!link.classList.contains('text-gray-400')) {
+            link.classList.add('text-gray-400');
+          }
+        }
+      });
+    };
+
+    const getHeaderOffset = () => {
+      const header = document.querySelector('header');
+      return header ? header.getBoundingClientRect().height + 24 : 96;
+    };
+
+    let headerOffset = getHeaderOffset();
+
+    const updateActiveLink = () => {
+      const scrollPosition = window.scrollY + headerOffset + 4;
+      let currentSection = sections[0];
+      for (const section of sections) {
+        if (section.offsetTop <= scrollPosition) {
+          currentSection = section;
+        } else {
+          break;
+        }
+      }
+      if (currentSection && currentSection.id) {
+        activateLink(currentSection.id);
+      }
+    };
+
+    sections.forEach((section) => {
+      if (!section.id) {
+        section.id = (section.textContent || '')
+          .trim()
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-');
+      }
+    });
+
+    const initialSectionId = window.location.hash ? window.location.hash.slice(1) : (sections[0] && sections[0].id);
+    if (initialSectionId) activateLink(initialSectionId);
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateActiveLink();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+      headerOffset = getHeaderOffset();
+      updateActiveLink();
+    });
+
+    navLinks.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const selector = link.getAttribute('href');
+        if (selector && selector.startsWith('#')) {
+          const target = document.querySelector(selector);
+          if (target) {
+            event.preventDefault();
+            const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            activateLink(target.id);
+            history.replaceState(null, '', selector);
+          }
+        }
+      });
+    });
+
+    const scrollToHashIfPresent = () => {
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+          const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+          window.scrollTo({ top: targetPosition });
+        }
+      }
+    };
+
+    window.addEventListener('hashchange', () => {
+      headerOffset = getHeaderOffset();
+      scrollToHashIfPresent();
+      updateActiveLink();
+    });
+
+    updateActiveLink();
+    setTimeout(scrollToHashIfPresent, 0);
+  });
+</script>
+
+{{ with $related }}
+  <section id="related-use-cases" class="bg-gray-900 py-20">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-12 text-center">{{ . }}</h2>{{ end }}
+        {{ with .items }}
+          <div class="grid md:grid-cols-3 gap-8">
+            {{ range . }}
+              {{ $item := . }}
+              <div class="{{ $item.wrapper_class | default "bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group" }}">
+                <div class="w-12 h-12 {{ $item.icon_bg_class | default "bg-blue-500/20" }} rounded-xl flex items-center justify-center mb-6">
+                  {{ with $item.icon }}<i class="{{ . }} {{ $item.icon_color_class | default "text-blue-400" }} text-xl"></i>{{ end }}
+                </div>
+                {{ with $item.title }}<h3 class="text-xl font-semibold text-white mb-4">{{ . }}</h3>{{ end }}
+                {{ with $item.text }}<p class="text-gray-300 mb-6 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                {{ $href := $item.url | default "#" }}
+                <a href="{{ $href }}" class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200">
+                  <span>{{ $item.cta_label | default "Learn More" }}</span>
+                  <i class="fa-solid fa-arrow-right text-sm"></i>
+                </a>
+              </div>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}

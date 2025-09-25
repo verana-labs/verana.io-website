@@ -1,0 +1,912 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Workforce Mobility - Verana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "fontFamily": {
+        "inter": [
+          "Inter",
+          "sans-serif"
+        ]
+      },
+      "colors": {
+        "verana": "#763ef0",
+        "verana-light": "#9f7aea",
+        "verana-dark": "#553c9a"
+      },
+      "animation": {
+        "float": "float 6s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite alternate",
+        "network-pulse": "network-pulse 3s ease-in-out infinite",
+        "medical-pulse": "medical-pulse 2s ease-in-out infinite",
+        "credential-flow": "credential-flow 4s ease-in-out infinite"
+      },
+      "keyframes": {
+        "float": {
+          "0%, 100%": {
+            "transform": "translateY(0px)"
+          },
+          "50%": {
+            "transform": "translateY(-20px)"
+          }
+        },
+        "pulse-glow": {
+          "0%": {
+            "boxShadow": "0 0 20px rgba(118, 62, 240, 0.3)"
+          },
+          "100%": {
+            "boxShadow": "0 0 40px rgba(118, 62, 240, 0.6)"
+          }
+        },
+        "network-pulse": {
+          "0%, 100%": {
+            "opacity": "0.4"
+          },
+          "50%": {
+            "opacity": "0.8"
+          }
+        },
+        "medical-pulse": {
+          "0%, 100%": {
+            "transform": "scale(1)",
+            "opacity": "0.7"
+          },
+          "50%": {
+            "transform": "scale(1.05)",
+            "opacity": "1"
+          }
+        },
+        "credential-flow": {
+          "0%": {
+            "transform": "translateX(-100px)",
+            "opacity": "0"
+          },
+          "50%": {
+            "transform": "translateX(0px)",
+            "opacity": "1"
+          },
+          "100%": {
+            "transform": "translateX(100px)",
+            "opacity": "0"
+          }
+        }
+      }
+    }
+  }
+};</script>
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        .gradient-mesh {
+            background: radial-gradient(circle at 20% 50%, rgba(118, 62, 240, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
+        }
+        .medical-bg {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(34, 197, 94, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
+            background-size: 60px 60px, 40px 40px;
+            animation: network-pulse 4s ease-in-out infinite;
+        }
+        .healthcare-pattern {
+            background-image: 
+                linear-gradient(45deg, rgba(34, 197, 94, 0.05) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(34, 197, 94, 0.05) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(34, 197, 94, 0.05) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(34, 197, 94, 0.05) 75%);
+            background-size: 40px 40px;
+            background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+        }
+    </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-black text-white overflow-x-hidden font-custom">
+
+<!-- Header -->
+<header id="header" class="bg-black/95 backdrop-blur-sm border-b border-gray-800/50 sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <span class="flex items-center space-x-3 cursor-pointer">
+                    <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-white">Verana</span>
+                </span>
+            </div>
+            
+            <nav class="hidden lg:flex items-center space-x-8">
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Why Verana</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Build</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Trust Engine</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-verana flex items-center space-x-1 transition-colors duration-200">
+                        <span>Industry Use Cases</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">Community</span>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">About</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <span class="bg-verana hover:bg-verana-dark text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer">
+                    Testnet
+                </span>
+                <button class="lg:hidden text-white">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Page Hero Section -->
+<section id="page-hero" class="relative bg-gray-900 py-16 lg:py-24 overflow-hidden h-[450px] flex items-center">
+    <div class="absolute inset-0 gradient-mesh opacity-50"></div>
+    <div class="absolute inset-0 medical-bg opacity-20"></div>
+    <div class="absolute inset-0 healthcare-pattern opacity-10"></div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <!-- Breadcrumb -->
+            <nav class="flex items-center space-x-2 text-sm text-gray-400 mb-8">
+                <span class="hover:text-white cursor-pointer">Home</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="hover:text-white cursor-pointer">Industry Use Cases</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="text-verana">Healthcare Workforce Mobility</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4 mb-6">
+                <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center animate-pulse-glow">
+                    <i class="fa-solid fa-user-md text-green-400 text-2xl"></i>
+                </div>
+                <h1 class="text-4xl lg:text-6xl font-bold leading-tight">
+                    <span class="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">Healthcare Workforce Mobility</span>
+                </h1>
+            </div>
+            
+            <p class="text-xl lg:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+                Let clinicians carry verifiable licenses, training, and background checks—so onboarding takes minutes, not weeks.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content Section -->
+<section id="main-content" class="bg-black py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12">
+                <!-- Sidebar Navigation -->
+                <aside id="sidebar-nav" class="lg:col-span-1">
+                    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky top-24">
+                        <h3 class="text-lg font-semibold text-white mb-6">Industry Use Cases</h3>
+                        <nav class="space-y-3">
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Government Digital ID</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Decentralized Social Networks</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable AI Assistants</span>
+                            <span class="block text-verana font-medium cursor-pointer">Healthcare Workforce Mobility</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Hotel Discovery</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Notaries &amp; Power of Attorney</span>
+                        </nav>
+                        
+                        <div class="mt-8 pt-6 border-t border-gray-700">
+                            <h4 class="text-sm font-semibold text-white mb-4">Quick Links</h4>
+                            <div class="space-y-2">
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Implementation Guide</span>
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Credential Schemas</span>
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Governance Framework</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                
+                <!-- Content Area -->
+                <div id="content-area" class="lg:col-span-3">
+                    <!-- The Problem Section -->
+                    <div id="problem-section" class="mb-16">
+    <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8 flex items-center">
+        <i class="fa-solid fa-exclamation-triangle text-red-400 mr-4"></i>
+        The Problem: Fragmented Verification
+    </h2>
+    
+    <div class="prose prose-invert max-w-none">
+        <p class="text-xl text-gray-300 leading-relaxed mb-12">
+            Healthcare workers are the backbone of public health systems. Yet, their mobility across hospitals, clinics, and cities is severely constrained by <strong>duplicated, manual, and siloed verification processes</strong>.
+        </p>
+        
+        <!-- Full width image -->
+        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-12">
+            <img class="w-full h-96 object-cover rounded-2xl mb-8" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/76c2ae882a-623a34c6af0b0afd6425.png" alt="Healthcare worker looking frustrated while filling out paperwork at multiple hospital desks, showing the inefficiency of repeated verification processes, professional medical environment, soft lighting">
+            <div class="bg-red-900/20 border border-red-700/30 rounded-xl p-8 text-center">
+                <h4 class="text-2xl font-semibold text-white mb-4">The Impact</h4>
+                <p class="text-xl text-gray-300 leading-relaxed">
+                    This inefficiency translates into <strong>wasted time, wasted resources, and slower access to healthcare services</strong> for patients.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Current Challenges -->
+        <div class="bg-red-900/20 border border-red-700/50 rounded-2xl p-12">
+            <h3 class="text-2xl font-semibold text-white mb-8 flex items-center justify-center">
+                <i class="fa-solid fa-clock text-red-400 mr-3"></i>
+                Current Challenges
+            </h3>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-3 h-3 bg-red-400 rounded-full mt-2 flex-shrink-0"></div>
+                        <span class="text-lg text-gray-300">Surgeons fully vetted in one city must undergo same checks elsewhere</span>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-3 h-3 bg-red-400 rounded-full mt-2 flex-shrink-0"></div>
+                        <span class="text-lg text-gray-300">Onboarding verifies identity, licenses, grants, DBS checks, training records</span>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-3 h-3 bg-red-400 rounded-full mt-2 flex-shrink-0"></div>
+                        <span class="text-lg text-gray-300">Each verification is costly, time-consuming, and delays work</span>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-3 h-3 bg-red-400 rounded-full mt-2 flex-shrink-0"></div>
+                        <span class="text-lg text-gray-300">Hospitals repeat checks other trusted institutions performed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                    
+                    <!-- Solution Section -->
+                    <div id="solution-section" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8 flex items-center">
+                            <i class="fa-solid fa-lightbulb text-green-400 mr-4"></i>
+                            Solution: Healthcare Workforce Ecosystem
+                        </h2>
+                        
+                        <div class="bg-green-900/20 border border-green-700/50 rounded-2xl p-8 mb-8">
+                            <p class="text-xl text-gray-200 leading-relaxed">
+                                The government (or national healthcare authority) establishes a <strong>Healthcare Workforce Ecosystem</strong>, a digital trust framework for managing verification and compliance across all participants.
+                            </p>
+                        </div>
+                        
+                        <!-- Ecosystem Components -->
+                        <div id="ecosystem-components" class="space-y-8">
+                            <!-- Governance Framework -->
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                                <div class="flex items-start space-x-6 mb-6">
+                                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-gavel text-blue-400 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-2xl font-semibold text-white mb-4">Establish Ecosystem and Governance Framework</h3>
+                                        <ul class="space-y-3">
+                                            <li class="flex items-start space-x-3">
+                                                <div class="w-2 h-2 bg-blue-400 rounded-full mt-2"></div>
+                                                <span class="text-gray-300">The <strong>Healthcare Workforce Ecosystem</strong> defines and publishes an <strong>Ecosystem Governance Framework (EGF)</strong></span>
+                                            </li>
+                                            <li class="flex items-start space-x-3">
+                                                <div class="w-2 h-2 bg-blue-400 rounded-full mt-2"></div>
+                                                <span class="text-gray-300">The EGF sets policies for <strong>credential issuance, verification, revocation, and compliance</strong></span>
+                                            </li>
+                                            <li class="flex items-start space-x-3">
+                                                <div class="w-2 h-2 bg-blue-400 rounded-full mt-2"></div>
+                                                <span class="text-gray-300">Ensures consistent standards nationwide</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Trust Registry -->
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                                <div class="flex items-start space-x-6 mb-6">
+                                    <div class="w-12 h-12 bg-verana/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-database text-verana text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-2xl font-semibold text-white mb-4">Create an Ecosystem Trust Registry</h3>
+                                        <p class="text-gray-300 mb-6">The ecosystem deploys a <strong>Trust Registry</strong> on Verana to implement the EGF rules.</p>
+                                        
+                                        <div class="grid md:grid-cols-2 gap-6">
+                                            <div>
+                                                <h4 class="text-lg font-semibold text-white mb-4">Defines Credential Schemas:</h4>
+                                                <div class="space-y-3">
+                                                    <div class="bg-black border border-gray-600 rounded-lg p-3 flex items-center space-x-3">
+                                                        <i class="fa-solid fa-id-card text-blue-400"></i>
+                                                        <span class="text-gray-300">Identity</span>
+                                                    </div>
+                                                    <div class="bg-black border border-gray-600 rounded-lg p-3 flex items-center space-x-3">
+                                                        <i class="fa-solid fa-certificate text-green-400"></i>
+                                                        <span class="text-gray-300">Grant to Work (license to practice)</span>
+                                                    </div>
+                                                    <div class="bg-black border border-gray-600 rounded-lg p-3 flex items-center space-x-3">
+                                                        <i class="fa-solid fa-shield-halved text-red-400"></i>
+                                                        <span class="text-gray-300">DBS / Background Checks</span>
+                                                    </div>
+                                                    <div class="bg-black border border-gray-600 rounded-lg p-3 flex items-center space-x-3">
+                                                        <i class="fa-solid fa-graduation-cap text-purple-400"></i>
+                                                        <span class="text-gray-300">Training &amp; Continuous Education</span>
+                                                    </div>
+                                                    <div class="bg-black border border-gray-600 rounded-lg p-3 flex items-center space-x-3">
+                                                        <i class="fa-solid fa-award text-orange-400"></i>
+                                                        <span class="text-gray-300">Specialty Certifications</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div>
+                                                <h4 class="text-lg font-semibold text-white mb-4">Manages:</h4>
+                                                <div class="space-y-3">
+                                                    <div class="flex items-start space-x-3">
+                                                        <div class="w-2 h-2 bg-verana rounded-full mt-2"></div>
+                                                        <span class="text-gray-300">List of <strong>authorized issuers and verifiers</strong></span>
+                                                    </div>
+                                                    <div class="flex items-start space-x-3">
+                                                        <div class="w-2 h-2 bg-verana rounded-full mt-2"></div>
+                                                        <span class="text-gray-300">Enforces compliance with governance framework</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Approve Issuers and Verifiers -->
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                                <div class="flex items-start space-x-6 mb-6">
+                                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-check-circle text-green-400 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-2xl font-semibold text-white mb-6">Approve Issuers and Verifiers</h3>
+                                        
+                                        <div class="grid md:grid-cols-2 gap-8">
+                                            <div class="bg-blue-900/20 border border-blue-700/50 rounded-xl p-6">
+                                                <h4 class="text-lg font-semibold text-white mb-4 flex items-center">
+                                                    <i class="fa-solid fa-university text-blue-400 mr-3"></i>
+                                                    Issuers
+                                                </h4>
+                                                <p class="text-gray-300 mb-4">Universities, professional councils, certification authorities, and government agencies can apply to issue credentials.</p>
+                                                <div class="bg-blue-900/30 rounded-lg p-3">
+                                                    <span class="text-blue-200 text-sm">Once validated, they become <strong>authorized issuers</strong></span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-900/20 border border-green-700/50 rounded-xl p-6">
+                                                <h4 class="text-lg font-semibold text-white mb-4 flex items-center">
+                                                    <i class="fa-solid fa-hospital text-green-400 mr-3"></i>
+                                                    Verifiers
+                                                </h4>
+                                                <p class="text-gray-300 mb-4">Hospitals, clinics, research centers, and government bodies can apply for verifier status.</p>
+                                                <div class="bg-green-900/30 rounded-lg p-3">
+                                                    <span class="text-green-200 text-sm">Allows them to request and validate credential presentations</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mt-6 bg-verana/10 border border-verana/30 rounded-xl p-6">
+                                            <p class="text-gray-200 font-medium">
+                                                This ensures that <strong>only accredited entities</strong> can issue or verify credentials within the ecosystem.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Healthcare Worker Image -->
+                    <div id="healthcare-worker-image" class="mb-16">
+    <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8 flex items-center">
+        <i class="fa-solid fa-id-badge text-blue-400 mr-4"></i>
+        Healthcare Worker Credential Issuance
+    </h2>
+    
+    <div class="grid md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 text-center">
+            <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <i class="fa-solid fa-certificate text-blue-400 text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-3">Receive Credentials</h3>
+            <p class="text-gray-300 text-sm">Healthcare workers receive verifiable credentials from trusted issuers</p>
+        </div>
+        
+        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 text-center">
+            <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <i class="fa-solid fa-wallet text-green-400 text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-3">Digital Wallet</h3>
+            <p class="text-gray-300 text-sm">Stored in a Digital Wallet controlled solely by the worker</p>
+        </div>
+        
+        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 text-center">
+            <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <i class="fa-solid fa-eye-slash text-purple-400 text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-3">Selective Disclosure</h3>
+            <p class="text-gray-300 text-sm">Share only necessary claims while preserving privacy</p>
+        </div>
+    </div>
+    
+    <div class="bg-blue-900/20 border border-blue-700/50 rounded-2xl p-8">
+        <h4 class="text-xl font-semibold text-white mb-6">Key Features:</h4>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="space-y-4">
+                <div class="flex items-start space-x-3">
+                    <div class="w-2 h-2 bg-blue-400 rounded-full mt-2"></div>
+                    <span class="text-gray-300">Healthcare workers receive <strong>verifiable credentials</strong> from trusted issuers (universities, licensing boards, training organizations)</span>
+                </div>
+                <div class="flex items-start space-x-3">
+                    <div class="w-2 h-2 bg-blue-400 rounded-full mt-2"></div>
+                    <span class="text-gray-300">Credentials are stored in a <strong>Digital Wallet</strong> (a Verifiable User Agent) controlled solely by the worker</span>
+                </div>
+            </div>
+            <div class="space-y-4">
+                <div class="flex items-start space-x-3">
+                    <div class="w-2 h-2 bg-blue-400 rounded-full mt-2"></div>
+                    <span class="text-gray-300">Workers can share only the <strong>necessary claims</strong> (e.g., proof of valid license, specialty, training)</span>
+                </div>
+                <div class="flex items-start space-x-3">
+                    <div class="w-2 h-2 bg-blue-400 rounded-full mt-2"></div>
+                    <span class="text-gray-300">Uses <strong>selective disclosure</strong>, preserving privacy while proving eligibility</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                    
+                    <!-- Credential Issuance -->
+                    <div id="credential-issuance" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8 flex items-center">
+                            <i class="fa-solid fa-id-badge text-blue-400 mr-4"></i>
+                            Healthcare Worker Credential Issuance
+                        </h2>
+                        
+                        <div class="grid md:grid-cols-3 gap-6 mb-8">
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 text-center">
+                                <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                    <i class="fa-solid fa-certificate text-blue-400 text-2xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-white mb-3">Receive Credentials</h3>
+                                <p class="text-gray-300 text-sm">Healthcare workers receive verifiable credentials from trusted issuers</p>
+                            </div>
+                            
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 text-center">
+                                <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                    <i class="fa-solid fa-wallet text-green-400 text-2xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-white mb-3">Digital Wallet</h3>
+                                <p class="text-gray-300 text-sm">Stored in a Digital Wallet controlled solely by the worker</p>
+                            </div>
+                            
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 text-center">
+                                <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                    <i class="fa-solid fa-eye-slash text-purple-400 text-2xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-white mb-3">Selective Disclosure</h3>
+                                <p class="text-gray-300 text-sm">Share only necessary claims while preserving privacy</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-blue-900/20 border border-blue-700/50 rounded-2xl p-8">
+                            <h4 class="text-xl font-semibold text-white mb-6">Key Features:</h4>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="space-y-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-2 h-2 bg-blue-400 rounded-full mt-2"></div>
+                                        <span class="text-gray-300">Healthcare workers receive <strong>verifiable credentials</strong> from trusted issuers (universities, licensing boards, training organizations)</span>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-2 h-2 bg-blue-400 rounded-full mt-2"></div>
+                                        <span class="text-gray-300">Credentials are stored in a <strong>Digital Wallet</strong> (a Verifiable User Agent) controlled solely by the worker</span>
+                                    </div>
+                                </div>
+                                <div class="space-y-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-2 h-2 bg-blue-400 rounded-full mt-2"></div>
+                                        <span class="text-gray-300">Workers can share only the <strong>necessary claims</strong> (e.g., proof of valid license, specialty, training)</span>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-2 h-2 bg-blue-400 rounded-full mt-2"></div>
+                                        <span class="text-gray-300">Uses <strong>selective disclosure</strong>, preserving privacy while proving eligibility</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Workforce Mobility in Practice -->
+                    <div id="mobility-practice" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8 flex items-center">
+                            <i class="fa-solid fa-route text-green-400 mr-4"></i>
+                            Workforce Mobility in Practice
+                        </h2>
+                        
+                        <div class="bg-gradient-to-br from-green-900/20 to-blue-900/20 border border-green-700/50 rounded-2xl p-8 mb-8">
+                            <p class="text-xl text-gray-200 leading-relaxed mb-8">
+                                When a healthcare professional arrives at a new hospital:
+                            </p>
+                            
+                            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                <div class="bg-black/50 border border-gray-600 rounded-xl p-6 text-center">
+                                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                        <span class="text-blue-400 font-bold text-xl">1</span>
+                                    </div>
+                                    <h4 class="text-white font-semibold mb-3">Request</h4>
+                                    <p class="text-gray-300 text-sm">Hospital requests credential presentation from worker</p>
+                                </div>
+                                
+                                <div class="bg-black/50 border border-gray-600 rounded-xl p-6 text-center">
+                                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                        <span class="text-green-400 font-bold text-xl">2</span>
+                                    </div>
+                                    <h4 class="text-white font-semibold mb-3">Present</h4>
+                                    <p class="text-gray-300 text-sm">Worker presents verifiable credentials from their wallet</p>
+                                </div>
+                                
+                                <div class="bg-black/50 border border-gray-600 rounded-xl p-6 text-center">
+                                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                        <span class="text-purple-400 font-bold text-xl">3</span>
+                                    </div>
+                                    <h4 class="text-white font-semibold mb-3">Verify</h4>
+                                    <p class="text-gray-300 text-sm">Hospital verifies authenticity against Trust Registry</p>
+                                </div>
+                                
+                                <div class="bg-black/50 border border-gray-600 rounded-xl p-6 text-center">
+                                    <div class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                        <span class="text-orange-400 font-bold text-xl">4</span>
+                                    </div>
+                                    <h4 class="text-white font-semibold mb-3">Start</h4>
+                                    <p class="text-gray-300 text-sm">Worker can start immediately - no delays</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-8 bg-green-900/30 border border-green-700/30 rounded-xl p-6 text-center">
+                                <p class="text-lg text-green-200 font-semibold">
+                                    No repeated onboarding, no paper-based checks, no delays — the worker can start immediately.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                            <img class="w-full h-80 object-cover rounded-2xl" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/4a0bf0a1ec-4e1d3baf8ea7f56097fb.png" alt="Modern hospital reception area with healthcare worker showing digital credentials on tablet to receptionist, clean professional environment, digital verification process visualization, efficient workflow">
+                        </div>
+                    </div>
+                    
+                    <!-- Business Models and Benefits -->
+                    <div id="business-models" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8 flex items-center">
+                            <i class="fa-solid fa-chart-line text-verana mr-4"></i>
+                            Business Models and Benefits
+                        </h2>
+                        
+                        <div class="grid md:grid-cols-2 gap-8 mb-8">
+                            <div class="bg-verana/10 border border-verana/30 rounded-2xl p-8">
+                                <h3 class="text-2xl font-semibold text-white mb-6 flex items-center">
+                                    <i class="fa-solid fa-coins text-verana mr-3"></i>
+                                    Business Models
+                                </h3>
+                                <div class="space-y-4">
+                                    <div class="bg-black border border-gray-600 rounded-lg p-4">
+                                        <h4 class="text-white font-medium mb-2">Pay-per-Verification</h4>
+                                        <p class="text-gray-300 text-sm">Governments can adopt models where verifiers pay small privacy-preserving fees for credential checks</p>
+                                    </div>
+                                    <div class="bg-black border border-gray-600 rounded-lg p-4">
+                                        <h4 class="text-white font-medium mb-2">Issuer Rewards</h4>
+                                        <p class="text-gray-300 text-sm">Universities and licensing boards may be rewarded for maintaining credential quality</p>
+                                    </div>
+                                    <div class="bg-black border border-gray-600 rounded-lg p-4">
+                                        <h4 class="text-white font-medium mb-2">Sustainable Ecosystem</h4>
+                                        <p class="text-gray-300 text-sm">Wallet providers and user agent vendors are incentivized without surveillance-driven monetization</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-green-900/20 border border-green-700/50 rounded-2xl p-8">
+                                <h3 class="text-2xl font-semibold text-white mb-6 flex items-center">
+                                    <i class="fa-solid fa-star text-green-400 mr-3"></i>
+                                    Additional Benefits
+                                </h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-start space-x-3">
+                                        <i class="fa-solid fa-plane text-blue-400 mt-1"></i>
+                                        <div>
+                                            <h4 class="text-white font-medium">Portability</h4>
+                                            <p class="text-gray-300 text-sm">Credentials travel with worker, valid nationwide or cross-border</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <i class="fa-solid fa-shield text-purple-400 mt-1"></i>
+                                        <div>
+                                            <h4 class="text-white font-medium">Security</h4>
+                                            <p class="text-gray-300 text-sm">Cryptographically verifiable, revocable, and fraud-resistant</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <i class="fa-solid fa-clock text-orange-400 mt-1"></i>
+                                        <div>
+                                            <h4 class="text-white font-medium">Efficiency</h4>
+                                            <p class="text-gray-300 text-sm">Cuts onboarding times from weeks to minutes</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <i class="fa-solid fa-handshake text-green-400 mt-1"></i>
+                                        <div>
+                                            <h4 class="text-white font-medium">Trust</h4>
+                                            <p class="text-gray-300 text-sm">Hospitals gain confidence without duplicated checks</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <i class="fa-solid fa-heart-pulse text-red-400 mt-1"></i>
+                                        <div>
+                                            <h4 class="text-white font-medium">Patient Safety</h4>
+                                            <p class="text-gray-300 text-sm">Only fully verified staff deployed in critical environments</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Conclusion -->
+                    <div id="conclusion" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Conclusion</h2>
+                        
+                        <div class="bg-gradient-to-br from-verana/10 to-green-900/10 border border-verana/30 rounded-2xl p-12">
+                            <p class="text-xl text-gray-200 leading-relaxed mb-8">
+                                By building on the Verana Infrastructure, governments can transform healthcare workforce mobility from a <strong>fragmented, manual process</strong> into a <strong>seamless, trusted, and privacy-preserving system</strong>.
+                            </p>
+                            
+                            <div class="bg-green-900/30 border border-green-700/30 rounded-xl p-8 mb-8">
+                                <h3 class="text-2xl font-bold text-white mb-4 text-center">The Vision</h3>
+                                <p class="text-lg text-center text-gray-200 leading-relaxed">
+                                    Healthcare workers are verified once, and that verification is valid everywhere.
+                                </p>
+                            </div>
+                            
+                            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                        <i class="fa-solid fa-dollar-sign text-blue-400 text-2xl"></i>
+                                    </div>
+                                    <h4 class="text-white font-semibold mb-2">Reduces Costs</h4>
+                                    <p class="text-gray-300 text-sm">Eliminates redundant verification processes</p>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                        <i class="fa-solid fa-recycle text-green-400 text-2xl"></i>
+                                    </div>
+                                    <h4 class="text-white font-semibold mb-2">Eliminates Redundancy</h4>
+                                    <p class="text-gray-300 text-sm">No more repeated checks across institutions</p>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                        <i class="fa-solid fa-shield-heart text-purple-400 text-2xl"></i>
+                                    </div>
+                                    <h4 class="text-white font-semibold mb-2">Improves Safety</h4>
+                                    <p class="text-gray-300 text-sm">Ensures only verified staff in critical roles</p>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-orange-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                        <i class="fa-solid fa-handshake text-orange-400 text-2xl"></i>
+                                    </div>
+                                    <h4 class="text-white font-semibold mb-2">Strengthens Trust</h4>
+                                    <p class="text-gray-300 text-sm">Builds confidence in healthcare systems</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-12 pt-8 border-t border-verana/20">
+                                <p class="text-xl text-center text-gray-200 leading-relaxed">
+                                    Verana turns the principle of <strong>"don't trust, verify"</strong> into a practical foundation for <strong>modern, mobile healthcare ecosystems</strong>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Call to Action -->
+                    <div id="page-cta" class="bg-gradient-to-r from-verana/10 to-green-900/10 border border-verana/30 rounded-2xl p-12 text-center">
+                        <h2 class="text-3xl font-bold text-white mb-4">Ready to Transform Healthcare Workforce Mobility?</h2>
+                        <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                            Start building verifiable healthcare ecosystems that put workers and patients first.
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                            <span class="bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2 cursor-pointer">
+                                <i class="fa-solid fa-stethoscope"></i>
+                                <span>Start Implementation</span>
+                            </span>
+                            <span class="border-2 border-gray-600 hover:border-verana text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 cursor-pointer">
+                                View Governance Framework
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Use Cases Section -->
+<section id="related-use-cases" class="bg-gray-900 py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-12 text-center">Related Industry Use Cases</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-id-card text-blue-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Government Digital ID</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Issue privacy-preserving national IDs and let citizens prove attributes anywhere—without centralizing their data.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Learn More</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+                
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-robot text-green-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Verifiable AI Assistants</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Bind AI agents to real owners and policies so users know who's behind the bot—and what it's allowed to do.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Explore</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+                
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-file-contract text-purple-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Notaries &amp; Power of Attorney</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Turn paper-based powers into verifiable credentials—issue, use, and revoke instantly across institutions.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Discover</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="bg-gray-900 border-t border-gray-800 py-16">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12 mb-12">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-white">Verana</span>
+                    </div>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty.
+                    </p>
+                    <div class="flex space-x-4">
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-github"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-discord"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Verana</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Principles</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Foundation</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Press</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Developers</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Docs</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">GitHub</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Specifications</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Trust Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Public Registry Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Trust Registry Query Protocol</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col sm:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">© 2025 Verana Foundation. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 sm:mt-0">
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Privacy Policy</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Terms of Service</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Cookie Policy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</body></html>

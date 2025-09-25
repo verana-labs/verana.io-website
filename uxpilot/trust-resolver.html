@@ -457,170 +457,204 @@
                     
                     <!-- Example 1: Alice's AI Assistant -->
                     <div id="example-alice" class="mb-16">
-                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Example #1: Alice's AI Assistant</h2>
-                        
-                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
-                            <div class="flex items-start space-x-6 mb-8">
-                                <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
-                                    <i class="fa-solid fa-robot text-blue-400 text-2xl"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-2xl font-semibold text-white mb-4">Alice runs an AI Assistant</h3>
-                                    <p class="text-gray-300 leading-relaxed mb-4">
-                                        Alice runs an <strong>AI Assistant Verifiable Service (VS)</strong>, deployed on Amazon Lambda.
-                                    </p>
-                                    <div class="bg-black rounded-xl p-4 border border-gray-600 mb-6">
-                                        <code class="text-green-400 text-sm">did:example:alice-ai-assistant</code>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <h4 class="text-xl font-semibold text-white mb-6">Attached Verifiable Credentials:</h4>
-                            <div class="grid md:grid-cols-3 gap-4">
-                                <div class="bg-black border border-gray-600 rounded-xl p-4">
-                                    <div class="flex items-center space-x-3 mb-3">
-                                        <i class="fa-solid fa-user text-blue-400"></i>
-                                        <span class="text-white font-medium">Person Credential</span>
-                                    </div>
-                                    <p class="text-gray-300 text-sm">Proves that Alice is the owner of the AI Assistant</p>
-                                </div>
-                                
-                                <div class="bg-black border border-gray-600 rounded-xl p-4">
-                                    <div class="flex items-center space-x-3 mb-3">
-                                        <i class="fa-solid fa-cog text-green-400"></i>
-                                        <span class="text-white font-medium">Service Credential</span>
-                                    </div>
-                                    <p class="text-gray-300 text-sm">Contains assistant's name and minimum age requirements</p>
-                                </div>
-                                
-                                <div class="bg-black border border-gray-600 rounded-xl p-4">
-                                    <div class="flex items-center space-x-3 mb-3">
-                                        <i class="fa-solid fa-message text-purple-400"></i>
-                                        <span class="text-white font-medium">Hologram Messaging</span>
-                                    </div>
-                                    <p class="text-gray-300 text-sm">Shows assistant can be reached via Hologram Messaging VUA</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div class="bg-verana/10 border border-verana/30 rounded-2xl p-8">
-                                <h4 class="text-xl font-semibold text-white mb-4 flex items-center">
-                                    <i class="fa-solid fa-plus-circle text-verana mr-3"></i>
-                                    Making It Discoverable
-                                </h4>
-                                <p class="text-gray-300 leading-relaxed mb-4">
-                                    Alice executes a transaction on the <strong>Verana network</strong> to register her DID in the <strong>Verifiable Service Directory</strong>.
-                                </p>
-                                <div class="space-y-3">
-                                    <div class="flex items-center space-x-3">
-                                        <div class="w-2 h-2 bg-verana rounded-full"></div>
-                                        <span class="text-gray-300">DID is resolved</span>
-                                    </div>
-                                    <div class="flex items-center space-x-3">
-                                        <div class="w-2 h-2 bg-verana rounded-full"></div>
-                                        <span class="text-gray-300">Credentials are crawled and verified</span>
-                                    </div>
-                                    <div class="flex items-center space-x-3">
-                                        <div class="w-2 h-2 bg-verana rounded-full"></div>
-                                        <span class="text-gray-300">Results are indexed in Trust Resolver</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="bg-green-900/20 border border-green-700/50 rounded-2xl p-8">
-                                <h4 class="text-xl font-semibold text-white mb-4 flex items-center">
-                                    <i class="fa-solid fa-magnifying-glass text-green-400 mr-3"></i>
-                                    Search in Action
-                                </h4>
-                                <p class="text-gray-300 leading-relaxed mb-4">
-                                    Alice's AI Assistant is now <strong>automatically discoverable</strong> through Trust Resolver queries:
-                                </p>
-                                <div class="space-y-3">
-                                    <div class="flex items-start space-x-3">
-                                        <div class="w-2 h-2 bg-green-400 rounded-full mt-2"></div>
-                                        <span class="text-gray-300">Inside Hologram Messaging App</span>
-                                    </div>
-                                    <div class="flex items-start space-x-3">
-                                        <div class="w-2 h-2 bg-green-400 rounded-full mt-2"></div>
-                                        <span class="text-gray-300">Through search-engine-style interface</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Example #1: Alice's AI Assistant</h2>
+    
+    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+        <div class="flex items-start space-x-6 mb-8">
+            <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-robot text-blue-400 text-2xl"></i>
+            </div>
+            <div>
+                <h3 class="text-2xl font-semibold text-white mb-4">Alice runs an AI Assistant</h3>
+                <p class="text-gray-300 leading-relaxed mb-4">
+                    Alice runs an <strong>AI Assistant Verifiable Service (VS)</strong>, deployed on Amazon Lambda.
+                </p>
+                <div class="bg-black rounded-xl p-4 border border-gray-600 mb-6">
+                    <code class="text-green-400 text-sm">did:example:alice-ai-assistant</code>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-8">
+            <img class="w-full h-96 object-cover rounded-2xl" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/7d3953925e-0c0f98870fb82d6e6e40.png" alt="Photoreal portrait of Alice adult woman at a clean desk with a phone laptop looking engaged. Tasteful translucent holographic UI elements lines particles visibly connecting from her device to a small glowing assistant avatar orb beside her subtle shield check and chip DID style icons no readable text. Modern apartment office soft key light and gentle rim light 35 85mm lens look shallow depth of field editorial tech aesthetic ultra realistic detail high resolution">
+        </div>
+        
+        <h4 class="text-xl font-semibold text-white mb-6">Attached Verifiable Credentials:</h4>
+        <div class="grid md:grid-cols-3 gap-4">
+            <div class="bg-black border border-gray-600 rounded-xl p-4">
+                <div class="flex items-center space-x-3 mb-3">
+                    <i class="fa-solid fa-user text-blue-400"></i>
+                    <span class="text-white font-medium">Person Credential</span>
+                </div>
+                <p class="text-gray-300 text-sm">Proves that Alice is the owner of the AI Assistant</p>
+            </div>
+            
+            <div class="bg-black border border-gray-600 rounded-xl p-4">
+                <div class="flex items-center space-x-3 mb-3">
+                    <i class="fa-solid fa-cog text-green-400"></i>
+                    <span class="text-white font-medium">Service Credential</span>
+                </div>
+                <p class="text-gray-300 text-sm">Contains assistant's name and minimum age requirements</p>
+            </div>
+            
+            <div class="bg-black border border-gray-600 rounded-xl p-4">
+                <div class="flex items-center space-x-3 mb-3">
+                    <i class="fa-solid fa-message text-purple-400"></i>
+                    <span class="text-white font-medium">Hologram Messaging</span>
+                </div>
+                <p class="text-gray-300 text-sm">Shows assistant can be reached via Hologram Messaging VUA</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-verana/10 border border-verana/30 rounded-2xl p-8">
+            <h4 class="text-xl font-semibold text-white mb-4 flex items-center">
+                <i class="fa-solid fa-plus-circle text-verana mr-3"></i>
+                Making It Discoverable
+            </h4>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Alice executes a transaction on the <strong>Verana network</strong> to register her DID in the <strong>Verifiable Service Directory</strong>.
+            </p>
+            <div class="space-y-3">
+                <div class="flex items-center space-x-3">
+                    <div class="w-2 h-2 bg-verana rounded-full"></div>
+                    <span class="text-gray-300">DID is resolved</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="w-2 h-2 bg-verana rounded-full"></div>
+                    <span class="text-gray-300">Credentials are crawled and verified</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="w-2 h-2 bg-verana rounded-full"></div>
+                    <span class="text-gray-300">Results are indexed in Trust Resolver</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-green-900/20 border border-green-700/50 rounded-2xl p-8">
+            <h4 class="text-xl font-semibold text-white mb-4 flex items-center">
+                <i class="fa-solid fa-magnifying-glass text-green-400 mr-3"></i>
+                Search in Action
+            </h4>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Alice's AI Assistant is now <strong>automatically discoverable</strong> through Trust Resolver queries:
+            </p>
+            <div class="space-y-3">
+                <div class="flex items-start space-x-3">
+                    <div class="w-2 h-2 bg-green-400 rounded-full mt-2"></div>
+                    <span class="text-gray-300">Inside Hologram Messaging App</span>
+                </div>
+                <div class="flex items-start space-x-3">
+                    <div class="w-2 h-2 bg-green-400 rounded-full mt-2"></div>
+                    <span class="text-gray-300">Through search-engine-style interface</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
                     
                     <!-- Example 2: Bob's E-commerce -->
                     <div id="example-bob" class="mb-16">
-                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Example #2: Bob's E-commerce</h2>
-                        
-                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
-                            <div class="flex items-start space-x-6 mb-8">
-                                <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
-                                    <i class="fa-solid fa-store text-green-400 text-2xl"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-2xl font-semibold text-white mb-4">Bob's Niche E-commerce</h3>
-                                    <p class="text-gray-300 leading-relaxed mb-4">
-                                        Bob built an e-commerce business to serve a niche market: <strong>children's shoes</strong>. For his online shop, he chose Medusa as the platform.
-                                    </p>
-                                    <div class="bg-black rounded-xl p-4 border border-gray-600 mb-6">
-                                        <code class="text-green-400 text-sm">did:example:bob-ecommerce-kid-shoes</code>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <h4 class="text-xl font-semibold text-white mb-6">Attached Verifiable Credentials:</h4>
-                            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                                <div class="bg-black border border-gray-600 rounded-xl p-4">
-                                    <div class="flex items-center space-x-3 mb-3">
-                                        <i class="fa-solid fa-building text-blue-400"></i>
-                                        <span class="text-white font-medium text-sm">Organization</span>
-                                    </div>
-                                    <p class="text-gray-300 text-xs">Bob Kid Shoes Ltd is the official owner</p>
-                                </div>
-                                
-                                <div class="bg-black border border-gray-600 rounded-xl p-4">
-                                    <div class="flex items-center space-x-3 mb-3">
-                                        <i class="fa-solid fa-cog text-green-400"></i>
-                                        <span class="text-white font-medium text-sm">Service</span>
-                                    </div>
-                                    <p class="text-gray-300 text-xs">Shop name and age requirements</p>
-                                </div>
-                                
-                                <div class="bg-black border border-gray-600 rounded-xl p-4">
-                                    <div class="flex items-center space-x-3 mb-3">
-                                        <i class="fa-solid fa-shopping-cart text-purple-400"></i>
-                                        <span class="text-white font-medium text-sm">E-commerce</span>
-                                    </div>
-                                    <p class="text-gray-300 text-xs">Products sold and delivery areas</p>
-                                </div>
-                                
-                                <div class="bg-black border border-gray-600 rounded-xl p-4">
-                                    <div class="flex items-center space-x-3 mb-3">
-                                        <i class="fa-solid fa-link text-orange-400"></i>
-                                        <span class="text-white font-medium text-sm">Medusa</span>
-                                    </div>
-                                    <p class="text-gray-300 text-xs">Links to Medusa's customer list</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-gradient-to-r from-green-900/20 to-blue-900/20 border border-green-700/50 rounded-2xl p-8">
-                            <h4 class="text-xl font-semibold text-white mb-4 flex items-center">
-                                <i class="fa-solid fa-search text-green-400 mr-3"></i>
-                                Find My Shop
-                            </h4>
-                            <p class="text-gray-300 leading-relaxed mb-6">
-                                Now, Bob's shop can be found automatically by anyone querying the Trust Resolver:
-                            </p>
-                            <div class="bg-black rounded-xl p-6 border border-gray-600">
-                                <p class="text-yellow-400 italic text-lg leading-relaxed">
-                                    "Which services in Bristol, UK present an <strong>E-commerce Retail Credential</strong> from issuers of the <strong>Ecosystem Ecommerce Global Alliance</strong> and sell <strong>baby shoes</strong>?"
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+    <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Example #2: Bob's E-commerce</h2>
+    
+    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+        <div class="flex items-start space-x-6 mb-8">
+            <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-store text-green-400 text-2xl"></i>
+            </div>
+            <div>
+                <h3 class="text-2xl font-semibold text-white mb-4">Bob's Niche E-commerce</h3>
+                <p class="text-gray-300 leading-relaxed mb-4">
+                    Bob built an e-commerce business to serve a niche market: <strong>children's shoes</strong>. For his online shop, he chose Medusa as the platform.
+                </p>
+                <div class="bg-black rounded-xl p-4 border border-gray-600 mb-6">
+                    <code class="text-green-400 text-sm">did:example:bob-ecommerce-kid-shoes</code>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-8">
+            <img class="w-full h-96 object-cover rounded-2xl" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/0d6119f854-3672b3881cdc8ebc6b5d.png" alt="Photoreal lifestyle shot of Bob adult man standing behind a wooden table covered with neatly arranged children">
+        </div>
+        
+        <h4 class="text-xl font-semibold text-white mb-6">Attached Verifiable Credentials:</h4>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="bg-black border border-gray-600 rounded-xl p-4">
+                <div class="flex items-center space-x-3 mb-3">
+                    <i class="fa-solid fa-building text-blue-400"></i>
+                    <span class="text-white font-medium text-sm">Organization</span>
+                </div>
+                <p class="text-gray-300 text-xs">Bob Kid Shoes Ltd is the official owner</p>
+            </div>
+            
+            <div class="bg-black border border-gray-600 rounded-xl p-4">
+                <div class="flex items-center space-x-3 mb-3">
+                    <i class="fa-solid fa-cog text-green-400"></i>
+                    <span class="text-white font-medium text-sm">Service</span>
+                </div>
+                <p class="text-gray-300 text-xs">Shop name and age requirements</p>
+            </div>
+            
+            <div class="bg-black border border-gray-600 rounded-xl p-4">
+                <div class="flex items-center space-x-3 mb-3">
+                    <i class="fa-solid fa-shopping-cart text-purple-400"></i>
+                    <span class="text-white font-medium text-sm">E-commerce</span>
+                </div>
+                <p class="text-gray-300 text-xs">Products sold and delivery areas</p>
+            </div>
+            
+            <div class="bg-black border border-gray-600 rounded-xl p-4">
+                <div class="flex items-center space-x-3 mb-3">
+                    <i class="fa-solid fa-link text-orange-400"></i>
+                    <span class="text-white font-medium text-sm">Medusa</span>
+                </div>
+                <p class="text-gray-300 text-xs">Links to Medusa's customer list</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-verana/10 border border-verana/30 rounded-2xl p-8">
+            <h4 class="text-xl font-semibold text-white mb-4 flex items-center">
+                <i class="fa-solid fa-plus-circle text-verana mr-3"></i>
+                Becoming Discoverable
+            </h4>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Bob executes a transaction on the <strong>Verana network</strong> to add his service DID to the <strong>Verifiable Service Directory</strong>.
+            </p>
+            <div class="space-y-3">
+                <div class="flex items-center space-x-3">
+                    <div class="w-2 h-2 bg-verana rounded-full"></div>
+                    <span class="text-gray-300">DID is resolved</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="w-2 h-2 bg-verana rounded-full"></div>
+                    <span class="text-gray-300">Credentials are crawled and verified</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="w-2 h-2 bg-verana rounded-full"></div>
+                    <span class="text-gray-300">Content is indexed in Trust Resolver</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-green-900/20 border border-green-700/50 rounded-2xl p-8">
+            <h4 class="text-xl font-semibold text-white mb-4 flex items-center">
+                <i class="fa-solid fa-search text-green-400 mr-3"></i>
+                Find My Shop
+            </h4>
+            <p class="text-gray-300 leading-relaxed mb-6">
+                Now, Bob's shop can be found automatically by anyone querying the Trust Resolver:
+            </p>
+            <div class="bg-black rounded-xl p-6 border border-gray-600">
+                <p class="text-yellow-400 italic text-lg leading-relaxed">
+                    "Which services in Bristol, UK present an <strong>E-commerce Retail Credential</strong> from issuers of the <strong>Ecosystem Ecommerce Global Alliance</strong> and sell <strong>baby shoes</strong>?"
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
                     
                     <!-- Conclusion -->
                     <div id="conclusion" class="mb-16">

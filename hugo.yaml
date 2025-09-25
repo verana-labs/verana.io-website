@@ -21,6 +21,9 @@ params:
   header:
     logo: "/images/purple/logo.svg"
     tagline: "The Open Trust Layer for the Internet"
+    testnet:
+      label: "Testnet"
+      url: "https://testnet.verana.network/"
   footer:
     company: "Verana Foundation"
     description: "The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty."
@@ -30,7 +33,7 @@ params:
       - platform: "discord"
         url: "https://discord.gg/edjaFn252q"
       - platform: "linkedin"
-        url: "https://www.linkedin.com/company/verana-verifiable-trust-network"
+        url: "https://www.linkedin.com/company/verana-foundation"
       - platform: "x"
         url: "https://x.com/Verana_io"
     columns:
@@ -89,36 +92,31 @@ params:
           - title: "Verifiable User Agents"
             url: "/page/build/verifiable-user-agents"
       - title: "Trust Engine"
-        url: "/page/trust-engine"
         children:
-          - title: "Overview"
-            url: "/page/trust-engine"
           - title: "Trust Resolver"
             url: "/page/trust-engine/trust-resolver"
-          - title: "Trust Deposit"
+          - title: "Trust Deposit & Reputation"
             url: "/page/trust-engine/trust-deposit"
-          - title: "Trust Reputation"
-            url: "/page/trust-engine/trust-reputation"
       - title: "Industry Use Cases"
         url: "/page/industry-use-cases"
         children:
           - title: "Overview"
             url: "/page/industry-use-cases"
-          - title: "🆔 Government Verifiable Citizen ID"
+          - title: "Government Verifiable Citizen ID"
             url: "/page/industry-use-cases/government-id"
-          - title: "🏥 Healthcare Workforce Mobility"
+          - title: "Healthcare Workforce Mobility"
             url: "/page/industry-use-cases/healthcare-workforce-mobility"
-          - title: "📜 Notaries: Power of Attorney"
-            url: "/page/industry-use-cases/notaries"
-#          - title: "🇪🇺 SEPA Direct Debit payments"
+#          - title: "Notaries: Power of Attorney"
+#            url: "/page/industry-use-cases/notaries"
+#          - title: "SEPA Direct Debit payments"
 #            url: "/page/industry-use-cases/payments"
-          - title: "🏩 Decentralizing Hotel Management"
+          - title: "Hotels: for PMS Providers"
             url: "/page/industry-use-cases/hotel-management"
-          - title: "🤖 AI Assistants"
+          - title: "Personal AI Assistants"
             url: "/page/industry-use-cases/ai-assistants"
-#          - title: "🌍 Verifiable Smart Contracts and RWAs"
+#          - title: "Verifiable Smart Contracts and RWAs"
 #            url: "/page/industry-use-cases/sc-rwa"
-          - title: "🗣️ Decentralized Social Networks"
+          - title: "Decentralized Social Networks"
             url: "/page/industry-use-cases/decentralized-social-network"
       - title: "Community"
         children:
@@ -147,88 +145,6 @@ params:
 #          - title: "Statistics"
 #            url: "/"
          
-
-menu:
-  main:
-    - name: "Own the Rails"
-      identifier: "build"
-      url: "/page/build"
-      weight: 20
-    - name: "Principles"
-      parent: "build"
-      url: "/page/build"
-      weight: 25
-    - name: "Infrastructure"
-      parent: "build"
-      url: "/page/build/infrastructure"
-      weight: 27
-    - name: "Build or Join a Trust Network"
-      parent: "build"
-      url: "/page/build/trust-networks"
-      weight: 30
-    - name: "Build a Verifiable Service that you Own"
-      parent: "build"
-      url: "/page/build/verifiable-services"
-      weight: 40
-    - name: "Build a Verifiable User Agent"
-      parent: "build"
-      url: "/page/build/verifiable-user-agents"
-      weight: 50
-    - name: "Enable Business Models"
-      parent: "build"
-      url: "/page/build/business-models"
-      weight: 60
-
-    - name: "Industry Use Cases"
-      identifier: "industry-use-cases"
-      url: "/page/industry-use-cases"
-      weight: 120
-    - name: "Overview"
-      parent: "industry-use-cases"
-      url: "/page/industry-use-cases"
-      weight: 130
-    - name: "Government Verifiable Citizen ID"
-      parent: "industry-use-cases"
-      url: "/page/industry-use-cases/government-id"
-      weight: 140
-    - name: "Healthcare Workforce Mobility"
-      parent: "industry-use-cases"
-      url: "/page/industry-use-cases/healthcare-workforce-mobility"
-      weight: 150
-    - name: "Verifiable AI"
-      parent: "industry-use-cases"
-      url: "/page/industry-use-cases/verifiable-ai"
-      weight: 160
-    - name: "Decentralizing Hotel Management"
-      parent: "industry-use-cases"
-      url: "/page/industry-use-cases/hotel-management"
-      weight: 180
-    - name: "Decentralized Social Networks"
-      parent: "industry-use-cases"
-      url: "/page/industry-use-cases/decentralized-social-network"
-      weight: 190
-    
-    
-    - name: "Trust Engine"
-      identifier: "trust-engine"
-      url: "/page/trust-engine"
-      weight: 400
-    - name: "Trust Resolver"
-      parent: "trust-engine"
-      url: "/page/trust-engine/trust-resolver"
-      weight: 410
-    - name: "Trust Deposit"
-      parent: "trust-engine"
-      url: "/page/trust-engine/trust-deposit"
-      weight: 430
-    - name: "Trust Reputation"
-      parent: "trust-engine"
-      url: "/page/trust-engine/trust-reputation"
-      weight: 440
-    - name: "Roadmap"
-      identifier: "roadmap"
-      url: "/page/roadmap"
-      weight: 600
 
 outputs:
   home: ["HTML"]

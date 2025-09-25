@@ -1,0 +1,6 @@
+{{ $partialName := .Page.Params.use_case_partial }}
+{{ if $partialName }}
+  {{ partial (printf "industry/%s.html" $partialName) .Page }}
+{{ else }}
+  {{ partial "industry/use-case.html" .Page }}
+{{ end }}

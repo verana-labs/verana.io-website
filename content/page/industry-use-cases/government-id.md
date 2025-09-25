@@ -1,68 +1,214 @@
 ---
-title: 🆔 Government Digital ID
+title: Government Digital ID
+subtitle: "Issue privacy-preserving national IDs and let citizens prove attributes anywhere—without centralizing their data."
 url: "/page/industry-use-cases/government-id"
+hero_icon: "fa-solid fa-id-card"
+disable_content_wrapper: true
+use_case_partial: "government-id"
+sidebar:
+  title: Industry Use Cases
+  nav:
+    - label: Overview
+      url: "#introduction-section"
+      active: true
+    - label: Digital Identity Ecosystem
+      url: "#ecosystem-section"
+    - label: Digital Wallet
+      url: "#wallet-section"
+    - label: Citizen Onboarding
+      url: "#onboarding-section"
+    - label: Issuing the ID VC
+      url: "#issuing-section"
+    - label: Authorized Verifiers
+      url: "#verifiers-section"
+    - label: Selective Disclosure
+      url: "#disclosure-section"
+    - label: Call to Action
+      url: "#page-cta"
+  quick_links:
+    title: Quick Links
+    items:
+      - label: Implementation Guide
+        url: "#page-cta"
+      - label: Credential Schemas
+        url: "#ecosystem-section"
+      - label: Governance Framework
+        url: "#ecosystem-section"
+intro:
+  id: introduction-section
+  text: |
+    Verana provides governments with full **open source software and infrastructure** to issue **privacy-preserving, verifiable, decentralized Digital IDs** that empower citizens while maintaining national sovereignty over identity systems.
+ecosystem:
+  id: ecosystem-section
+  icon: "fa-solid fa-building"
+  icon_color_class: "text-blue-400"
+  title: Create the Digital Identity Ecosystem
+  heading: "Governments establish:"
+  cards:
+    - icon: "fa-solid fa-gavel"
+      icon_bg_class: "bg-blue-500/20"
+      icon_color_class: "text-blue-400"
+      title: Ecosystem Governance Framework (EGF)
+      text: |
+        Sets rules for Citizen ID issuance, verification, and authorization of participants, including optional pay-per-verification revenue models.
+    - icon: "fa-solid fa-database"
+      icon_bg_class: "bg-verana/20"
+      icon_color_class: "text-verana"
+      title: Ecosystem Trust Registry
+      text: |
+        Deploy in Verana to mirror the EGF and publish the **Citizen ID Credential Schema** for issuers and verifiers.
+    - icon: "fa-solid fa-users"
+      icon_bg_class: "bg-green-500/20"
+      icon_color_class: "text-green-400"
+      title: Onboard Ecosystem Participants
+      text: |
+        Use Verana’s trust registry onboarding flows to accredit verifiers or delegate onboarding to other government-approved operators.
+wallet:
+  id: wallet-section
+  icon: "fa-solid fa-mobile-alt"
+  icon_color_class: "text-green-400"
+  title: Build a Digital Wallet
+  intro: |
+    Governments deliver a **Digital Wallet mobile app** that acts as a **Verifiable User Agent (VUA)** for citizens.
+  cards:
+    - icon: "fa-solid fa-wallet"
+      icon_bg_class: "bg-blue-500/20"
+      icon_color_class: "text-blue-400"
+      title: Store Credentials
+      text: Citizens keep their Citizen ID Verifiable Credential securely inside the wallet.
+    - icon: "fa-solid fa-crown"
+      icon_bg_class: "bg-purple-500/20"
+      icon_color_class: "text-purple-400"
+      title: Self-Sovereign
+      text: Citizens control their credentials with no central account or dependency on a single provider.
+    - icon: "fa-solid fa-handshake"
+      icon_bg_class: "bg-orange-500/20"
+      icon_color_class: "text-orange-400"
+      title: Open Standards
+      text: Compatible with EIDAS2, DIDs, DIDComm, W3C VCs, OpenID4VC, and OpenID4VP.
+onboarding:
+  id: onboarding-section
+  icon: "fa-solid fa-user-plus"
+  icon_color_class: "text-purple-400"
+  title: Citizen Onboarding into the Central Registry
+  left_heading: "At public offices (e.g., civil registry):"
+  steps:
+    - badge_number: "1"
+      text: Citizen biometric data is captured and documents validated.
+    - badge_number: "2"
+      text: Citizen data is recorded in the **central registry database**.
+    - badge_number: "3"
+      text: Citizen receives an **NFC-enabled ID card** containing personal and biometric information.
+  highlight:
+    text: This ensures **official enrollment** into the state identity system.
+  image:
+    src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/e0c0133aea-13d0b9681ac2e7de7f5f.png"
+    alt: "Citizen enrollment at civil registry capturing biometrics and issuing NFC-enabled ID card"
+issuing:
+  id: issuing-section
+  icon: "fa-solid fa-certificate"
+  icon_color_class: "text-orange-400"
+  title: Issuing the Citizen ID Verifiable Credential
+  description: |
+    Citizens obtain their **Citizen ID Verifiable Credential** by downloading the Government Digital Wallet and completing a secure identity validation flow.
+  steps_heading: "Example Enrollment Flow:"
+  steps:
+    - badge_number: "1"
+      text: Citizen captures a photo of the **physical ID card**; the app reads the **MRZ** to retrieve the NFC access key.
+    - badge_number: "2"
+      text: Citizen enters the **card PIN** to authorize the process.
+    - badge_number: "3"
+      text: Citizen taps the ID card on the handset, enabling an **NFC read** of personal and biometric data.
+    - badge_number: "4"
+      text: App performs a **live face match** with the ID photo to ensure the legitimate cardholder.
+    - badge_number: "5"
+      text: Upon success, a **Citizen ID Verifiable Credential** is issued directly to the digital wallet.
+  image:
+    src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/a906916d75-acaf08f249d49d54abfc.png"
+    alt: "Citizen using mobile app to enroll ID card via NFC and biometric verification"
+  highlight:
+    text: "👉 Any previously issued credential is **automatically revoked**, guaranteeing only **one valid credential** per citizen."
+verifiers:
+  id: verifiers-section
+  icon: "fa-solid fa-shield-check"
+  icon_color_class: "text-green-400"
+  title: Authorized Verifiers
+  intro: |
+    Governments decide who can request credential presentations and how they are authorized.
+  validation_cards:
+    - icon: "fa-solid fa-check-circle"
+      icon_color_class: "text-green-400"
+      title: Validation Process
+      text: Applicants such as banks, telecoms, and hospitals complete a formal **validation process** before onboarding.
+    - icon: "fa-solid fa-user-check"
+      icon_color_class: "text-blue-400"
+      title: Authorization
+      text: Once approved, organizations are registered as **authorized verifiers** for the Citizen ID schema.
+  pay_per_model:
+    title: Pay-per-Verification Model
+    icon: "fa-solid fa-coins"
+    icon_color_class: "text-verana"
+    items:
+      - text: Each verification request incurs a privacy-preserving fee.
+      - text: Issuers are rewarded without learning which citizen presented credentials.
+      - text: Supports sustainable funding for national digital identity services.
+disclosure:
+  id: disclosure-section
+  icon: "fa-solid fa-eye-slash"
+  icon_color_class: "text-purple-400"
+  title: Selective Disclosure
+  intro: |
+    By supporting advanced credential formats (ZKPs, BBS+, Anoncreds), governments deliver privacy-preserving verification.
+  cards:
+    - icon: "fa-solid fa-mask"
+      icon_color_class: "text-purple-400"
+      title: Minimal Disclosure
+      text: Citizens can **prove attributes without revealing full data** (e.g., “over 18” without disclosing birthdate).
+    - icon: "fa-solid fa-shield"
+      icon_color_class: "text-green-400"
+      title: Privacy Protection
+      text: Minimal disclosure reduces risks of data misuse across public and private services.
+  image:
+    src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/6b57a02397-65f6b266a5d5d14c2652.png"
+    alt: "Visualization of selective disclosure protecting citizen data during verification"
+cta:
+  title: Ready to Build Sovereign Digital Identity?
+  text: |
+    Start implementing privacy-preserving digital ID systems that empower citizens while maintaining national sovereignty.
+  primary:
+    label: Start Implementation
+    url: "#"
+    icon: "fa-solid fa-id-card"
+  secondary:
+    label: View Technical Specs
+    url: "#"
+related_use_cases:
+  title: Related Industry Use Cases
+  items:
+    - icon: "fa-solid fa-user-md"
+      icon_bg_class: "bg-green-500/20"
+      icon_color_class: "text-green-400"
+      title: Healthcare Workforce Mobility
+      text: |
+        Let clinicians carry verifiable licenses, training, and background checks—so onboarding takes minutes, not weeks.
+      url: "/page/industry-use-cases/healthcare-workforce-mobility"
+      cta_label: Learn More
+    - icon: "fa-solid fa-robot"
+      icon_bg_class: "bg-purple-500/20"
+      icon_color_class: "text-purple-400"
+      title: Verifiable AI Assistants
+      text: |
+        Bind AI agents to real owners and policies so users know who's behind the bot—and what it's allowed to do.
+      url: "/page/industry-use-cases/ai-assistants"
+      cta_label: Explore
+    - icon: "fa-solid fa-file-contract"
+      icon_bg_class: "bg-orange-500/20"
+      icon_color_class: "text-orange-400"
+      title: Notaries & Power of Attorney
+      text: |
+        Turn paper-based powers into verifiable credentials—issue, use, and revoke instantly across institutions.
+      url: "/page/industry-use-cases/notaries"
+      cta_label: Discover
 ---
 
-Verana provides governments with full **open source software and infrastructure** to issue **privacy-preserving, verifiable, decentralized Digital IDs** that empower citizens while maintaining national sovereignty over identity systems.
-
-## Create the Digital Identity Ecosystem
-
-Governments begin by creating their **Ecosystem Trust Registry** in Verana.
-
-- Define a **Citizen ID Credential Schema**.
-- Establish an **Ecosystem Governance Framework (EGF)** that sets rules for issuance, verification, and authorization of participants.
-
-This registry ensures that only authorized issuers and verifiers can participate in the Digital ID system.
-
-## Build the Digital Wallet
-
-Governments (or local providers) build a **Digital Wallet mobile app** that acts as a **Verifiable User Agent (VUA)**.
-
-- Citizens use the wallet to **store their Citizen ID Verifiable Credential (VC)**.
-- The wallet is **self-sovereign**: citizens own their credentials, with no central account or dependency.
-- Compatible with open standards like **EIDAS2, DIDs, DIDComm, W3C VCs, OpenID4VC, OpenID4VP**.
-
-## Citizen Onboarding into the Registry
-
-{{< img url="/images/iuc/gov-id-onboard.png" floating="none" border="1px solid #DDDDDD" maxWidth="500px" >}}
-
-At public offices (e.g., civil registry):
-
-1. **Onboarding Verifiable Service** captures biometric data and validates documents.
-2. Citizen data is recorded in the **central registry database**.
-3. Citizen receives an **NFC-enabled ID card** containing personal and biometric information.
-
-This ensures **official enrollment** into the state identity system.
-
-## Issuing the Citizen ID Verifiable Credential
-
-{{< img url="/images/iuc/gov-id-vc.png" floating="none" border="1px solid #DDDDDD" maxWidth="500px" >}}
-
-Citizens obtain their **Citizen ID Verifiable Credential** by downloading the Government Digital Wallet and completing a secure identity validation process.  
-
-### Example Enrollment Flow
-
-1. The citizen captures a photo of their **physical ID card**. The app reads the **MRZ** to retrieve the key required for NFC access.  
-2. The citizen enters the **PIN code of the card** to authorize the process.  
-3. The citizen taps the ID card on the handset, enabling an **NFC read** of the document to extract personal and biometric information.  
-4. The app performs a **live face match** against the extracted ID photo to confirm that the handset user is the legitimate cardholder.  
-5. If all checks succeed, a **Citizen ID Verifiable Credential** is securely issued to the citizen’s digital wallet.  
-
-👉 Any previously issued credential is **automatically revoked**, guaranteeing that only **one valid credential** exists per citizen at any time.  
-
-## Authorized Verifiers
-
-The government decides who can request credential presentations:
-
-- Applicants (e.g., banks, telecoms, hospitals) undergo a **validation process** before being authorized.
-- Once approved, they are registered as **authorized verifiers** for the Citizen ID schema.
-- Governments can implement a **pay-per-verification** model:
-- Each verification request incurs a fee.
-- Fee payment is **privacy-preserving**, issuers of a Citizen ID credential cannot know, even if they receive a payment for a presentation request, who is the citizen that presented the credential to a verifier (bank,...).
-
-## Selective Disclosure
-
-By supporting advanced credential formats (e.g., ZKPs, BBS+, Anoncreds), governments can enable:
-
-- Citizens to **prove attributes without revealing full data** (e.g., “over 18” without disclosing date of birth).
-- Minimal disclosure principles, reducing risks of data misuse.
+{{< industry-use-case >}}

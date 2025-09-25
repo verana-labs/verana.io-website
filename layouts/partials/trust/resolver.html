@@ -25,9 +25,8 @@
                   {{ range . }}
                     {{ $label := .label | default .title | default .name }}
                     {{ $href := .url | default .href | default "#" }}
-                    {{ $active := cond (isset . "active") (.active) false }}
                     {{ if $label }}
-                      <a class="block {{ if $active }}text-verana font-medium{{ else }}text-gray-400 hover:text-white transition-colors duration-200{{ end }}" href="{{ $href }}">{{ $label }}</a>
+                      <a class="sidebar-link block text-gray-400 hover:text-white transition-colors duration-200" href="{{ $href }}">{{ $label }}</a>
                     {{ end }}
                   {{ end }}
                 </nav>
@@ -229,6 +228,12 @@
                   {{ $sumIcon := .icon }}
                   {{ $sumIconColor := .icon_color_class | default "text-verana" }}
                   {{ $sumIconBg := .icon_bg_class | default "bg-verana/20" }}
+                  {{ $sumImage := .image }}
+                  {{ $sumHeading := .heading | default "" }}
+                  {{ $sumImageAlt := .image_alt | default (printf "%s photo" $sumHeading) }}
+                  {{ $sumImageWrapClass := .image_wrap_class | default "mt-6 mb-6 rounded-2xl overflow-hidden border border-gray-800" }}
+                  {{ $sumImageClass := .image_class | default "w-full h-full object-cover" }}
+                  {{ $sumImageStyle := .image_style | default "aspect-ratio: 2 / 1;" }}
                   <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
                     <div class="flex flex-col md:flex-row md:items-start md:space-x-6 mb-8">
                       <div class="w-16 h-16 {{ $sumIconBg }} rounded-2xl flex items-center justify-center flex-shrink-0 mb-6 md:mb-0">
@@ -250,6 +255,16 @@
                         {{ end }}
                       </div>
                     </div>
+                    {{ with $sumImage }}
+                      <div class="{{ $sumImageWrapClass }}" style="{{ $sumImageStyle }}">
+                        <img src="{{ . }}" alt="{{ $sumImageAlt }}" class="{{ $sumImageClass }}">
+                      </div>
+                    {{ end }}
+
+                    {{ with .attached_credentials_title }}
+                      <h4 class="text-xl font-semibold text-white mb-6">{{ . }}</h4>
+                    {{ end }}
+
                     {{ with .credentials }}
                       {{ $grid := "grid gap-4" }}
                       {{ $cols := .columns | default 3 }}
@@ -264,9 +279,16 @@
                         {{ range .items }}
                           {{ $credIcon := .icon }}
                           {{ $credColor := .icon_color_class | default "text-verana" }}
+                          {{ $credIconImage := .icon_image }}
+                          {{ $credIconImageClass := .icon_image_class | default "h-5 w-5" }}
+                          {{ $credLabel := .label | default "" }}
+                          {{ $credIconAltDefault := cond (gt (len $credLabel) 0) (printf "%s icon" $credLabel) "Credential icon" }}
+                          {{ $credIconAlt := .icon_alt | default $credIconAltDefault }}
                           <div class="bg-black border border-gray-600 rounded-xl p-4">
                             <div class="flex items-center space-x-3 mb-3">
-                              {{ if $credIcon }}
+                              {{ if $credIconImage }}
+                                <img src="{{ $credIconImage }}" alt="{{ $credIconAlt }}" class="{{ $credIconImageClass }}">
+                              {{ else if $credIcon }}
                                 <i class="{{ $credIcon }} {{ $credColor }}"></i>
                               {{ end }}
                               {{ with .label }}
@@ -384,6 +406,115 @@
       </div>
     </div>
   </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const navLinks = Array.from(document.querySelectorAll('#sidebar-nav nav a[href^="#"]'));
+    if (!navLinks.length) {
+      return;
+    }
+
+    const sections = navLinks
+      .map((link) => {
+        const selector = link.getAttribute('href');
+        if (!selector || selector === '#') {
+          return null;
+        }
+        try {
+          return document.querySelector(selector);
+        } catch (error) {
+          return null;
+        }
+      })
+      .filter(Boolean);
+
+    if (!sections.length) {
+      return;
+    }
+
+    const activateLink = (id) => {
+      navLinks.forEach((link) => {
+        const targetId = link.getAttribute('href').slice(1);
+        if (targetId === id) {
+          link.classList.add('text-verana', 'font-medium');
+          link.classList.remove('text-gray-400');
+        } else {
+          link.classList.remove('text-verana', 'font-medium');
+          if (!link.classList.contains('text-gray-400')) {
+            link.classList.add('text-gray-400');
+          }
+        }
+      });
+    };
+
+    const getHeaderOffset = () => {
+      const header = document.querySelector('header');
+      return header ? header.getBoundingClientRect().height + 24 : 96;
+    };
+
+    let headerOffset = getHeaderOffset();
+
+    const updateActiveLink = () => {
+      const scrollPosition = window.scrollY + headerOffset + 4;
+      let currentSection = sections[0];
+      for (const section of sections) {
+        if (section.offsetTop <= scrollPosition) {
+          currentSection = section;
+        } else {
+          break;
+        }
+      }
+      activateLink(currentSection.id);
+    };
+
+    const initialSectionId = window.location.hash ? window.location.hash.slice(1) : sections[0].id;
+    activateLink(initialSectionId);
+
+    sections.forEach((section) => {
+      const existingId = section.id;
+      if (!existingId) {
+        section.id = section.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      }
+    });
+
+    let ticking = false;
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            updateActiveLink();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+
+    window.addEventListener('resize', () => {
+      headerOffset = getHeaderOffset();
+      updateActiveLink();
+    });
+
+    navLinks.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const selector = link.getAttribute('href');
+        if (selector && selector.startsWith('#')) {
+          const target = document.querySelector(selector);
+          if (target) {
+            event.preventDefault();
+            const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            activateLink(target.id);
+            history.replaceState(null, '', selector);
+          }
+        }
+      });
+    });
+
+    updateActiveLink();
+  });
+</script>
 </section>
 
 {{ with $related }}

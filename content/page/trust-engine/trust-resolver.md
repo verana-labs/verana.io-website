@@ -1,32 +1,37 @@
 ---
 title: Trust Resolver
-subtitle: "The search engine of verifiable trust — a public, decentralized index where discovery is based on cryptographically verified credentials, not advertising budgets."
+subtitle: "A public, decentralized index where discovery is based on cryptographically verified credentials, not advertising budgets."
 url: "/page/trust-engine/trust-resolver"
 hero_icon: "fa-solid fa-magnifying-glass"
 disable_content_wrapper: true
 sidebar:
-  title: Trust Engine
+  title: Trust Resolver
   nav:
-    - label: Trust Resolver
-      url: "/page/trust-engine/trust-resolver"
+    - label: How It Works
+      url: "#how-it-works"
       active: true
-    - label: Verifiable Service Directory
-      url: "/page/trust-engine"
-    - label: Trust Registries
-      url: "/page/trust-engine/trust-registries"
-    - label: Credential Verification
-      url: "/page/trust-engine/credential-verification"
+    - label: Advanced Trust-Based Queries
+      url: "#advanced-queries"
+    - label: Disrupting the Attention Economy
+      url: "#trust-economy"
+    - label: "Example #1: Alice's AI Assistant"
+      url: "#example-alice"
+    - label: "Example #2: Bob's E-commerce"
+      url: "#example-bob"
+    - label: A Trust-Driven Discovery Loop
+      url: "#trust-summary"
   quick_links:
-    - label: API Documentation
-      url: "#"
-    - label: Query Examples
-      url: "#"
-    - label: Integration Guide
-      url: "#"
+    - label: Documentation
+      url: "https://docs.verana.io"
+    - label: Discord
+      url: "https://discord.gg/edjaFn252q"
+    - label: Github
+      url: "https://github.com/verana-labs"
 intro:
   paragraphs:
     - |
       The internet today is built on **implicit trust**: users rely on search engines, platforms, and intermediaries to decide what is visible and who can be trusted. This model is opaque, advertising-driven, and often unsafe.
+    - <br/><br/>
     - |
       The **Verana Trust Resolver** offers a new approach: a **public, decentralized index of verifiable services**. Instead of paid rankings or hidden algorithms, discoverability is based solely on **cryptographically verified credentials** issued by trusted ecosystems.
   highlight:
@@ -130,7 +135,10 @@ examples:
       icon: "fa-solid fa-robot"
       icon_bg_class: "bg-blue-500/20"
       icon_color_class: "text-blue-400"
+      image: "/images/iuc/alice-ai-assistant.webp"
+      image_alt: "Alice operating her AI assistant"
       heading: Alice runs an AI Assistant
+      attached_credentials_title: "Attached Verifiable Credentials:"
       description: |
         Alice runs an **AI Assistant Verifiable Service (VS)**, deployed on Amazon Lambda.
       did: did:example:alice-ai-assistant
@@ -180,9 +188,12 @@ examples:
       icon: "fa-solid fa-store"
       icon_bg_class: "bg-green-500/20"
       icon_color_class: "text-green-400"
+      image: "/images/iuc/bob-shoes.webp"
+      image_alt: "Bob showcasing children's shoes"
       heading: Bob's Niche E-commerce
+      attached_credentials_title: "Attached Verifiable Credentials:"
       description: |
-        Bob built an e-commerce business to serve a niche market: **children's shoes**. For his online shop, he chose Medusa as the platform.
+        Bob built an e-commerce business to serve a niche market: **children's shoes**. For his online shop, he chose [<u>Medusa</u>](https://medusajs.com/) as the platform.
       did: did:example:bob-ecommerce-kid-shoes
       credentials:
         columns: 4
@@ -202,8 +213,9 @@ examples:
             label: E-commerce Retail
             text: |
               Describes the products sold and delivery areas covered.
-          - icon: "fa-solid fa-link"
-            icon_color_class: "text-purple-400"
+          - icon_image: "/images/logos/medusa-white.svg"
+            icon_image_class: "h-5 w-5"
+            icon_alt: "Medusa logo"
             label: Medusa Credential
             text: |
               Links Bob's store to Medusa's official list of customers.
@@ -254,10 +266,10 @@ cta:
   primary:
     label: Start Building
     icon: "fa-solid fa-rocket"
-    href: "#"
+    href: "https://docs.verana.io"
   secondary:
-    label: View API Docs
-    href: "#"
+    label: Talk to Us
+    href: "https://discord.gg/edjaFn252q"
 related_components:
   title: Related Trust Engine Components
   items:

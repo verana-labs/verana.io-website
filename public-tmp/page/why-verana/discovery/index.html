@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Service Discovery | Verana</title>
+    <meta name="description" content="Verifiable trust for digital ecosystems" />
+    
+    <link rel="stylesheet" href="/css/input.css" />
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"></noscript>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Verana">
+<meta property="og:title" content="Service Discovery | Verana">
+<meta property="og:description" content="The Open Trust Layer for the Internet">
+<meta property="og:url" content="/page/why-verana/discovery/">
+<meta property="og:image" content="/images/verana-og.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Service Discovery | Verana">
+<meta name="twitter:description" content="The Open Trust Layer for the Internet">
+<meta name="twitter:image" content="/images/verana-og.jpg">
+
+  </head>
+  
+  
+  <body class="min-h-screen flex flex-col bg-black text-white overflow-x-hidden font-sans">
+    
+
+
+
+
+  
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+    
+    
+
+    
+
+    
+    
+    
+    
+      
+    
+  
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+    
+    
+
+    
+
+    
+    
+    
+    
+      
+    
+  
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+    
+    
+
+    
+      
+      
+    
+
+    
+    
+    
+    
+      
+    
+  
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+    
+    
+
+    
+
+    
+    
+    
+    
+      
+    
+  
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+    
+    
+
+    
+      
+      
+    
+
+    
+    
+    
+    
+      
+    
+  
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+    
+    
+
+    
+      
+      
+    
+
+    
+    
+    
+    
+      
+    
+  
+
+
+
+
+<header id="header" class="bg-black/75 backdrop-blur-lg border-b border-gray-800/50 sticky top-0 z-50">
+  <div class="container mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center">
+        <a href="/" class="flex items-center space-x-3 cursor-pointer">
+          <img src="/images/purple/logo.svg" alt="Verana logo" class="h-10 w-auto" />
+          <span class="text-2xl font-bold text-white">Verana</span>
+        </a>
+      </div>
+      <nav class="hidden lg:flex items-center space-x-10">
+        
+          
+          <div class="relative group">
+            <a class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200" href="/page/why-verana">
+              <span>Why Verana</span>
+              
+                <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+              
+            </a>
+            
+              <div class="absolute left-0 top-full mt-2 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
+                <span class="absolute inset-x-0 -top-2 h-2 bg-transparent"></span>
+                <ul class="pt-2 pb-4">
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/why-verana">
+                        Three Systemic Problems
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/why-verana/trust">
+                        Solving Trust
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/why-verana/ownership">
+                        Solving Ownership
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/why-verana/discovery">
+                        Solving Discovery
+                      </a>
+                    </li>
+                  
+                </ul>
+              </div>
+            
+          </div>
+        
+          
+          <div class="relative group">
+            <a class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200" href="/page/build">
+              <span>Build with Verana</span>
+              
+                <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+              
+            </a>
+            
+              <div class="absolute left-0 top-full mt-2 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
+                <span class="absolute inset-x-0 -top-2 h-2 bg-transparent"></span>
+                <ul class="pt-2 pb-4">
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/build">
+                        Own the Rails
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/build/trust-networks">
+                        Trust Networks
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/build/verifiable-services">
+                        Self Sovereign Services
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/build/verifiable-user-agents">
+                        Verifiable User Agents
+                      </a>
+                    </li>
+                  
+                </ul>
+              </div>
+            
+          </div>
+        
+          
+          <div class="relative group">
+            <a class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200" href="/page/trust-engine/trust-resolver">
+              <span>Trust Engine</span>
+              
+                <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+              
+            </a>
+            
+              <div class="absolute left-0 top-full mt-2 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
+                <span class="absolute inset-x-0 -top-2 h-2 bg-transparent"></span>
+                <ul class="pt-2 pb-4">
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/trust-engine/trust-resolver">
+                        Trust Resolver
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/trust-engine/trust-deposit">
+                        Trust Deposit &amp; Reputation
+                      </a>
+                    </li>
+                  
+                </ul>
+              </div>
+            
+          </div>
+        
+          
+          <div class="relative group">
+            <a class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200" href="/page/industry-use-cases">
+              <span>Industry Use Cases</span>
+              
+                <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+              
+            </a>
+            
+              <div class="absolute left-0 top-full mt-2 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
+                <span class="absolute inset-x-0 -top-2 h-2 bg-transparent"></span>
+                <ul class="pt-2 pb-4">
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases">
+                        Overview
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases/government-id">
+                        Government Verifiable Citizen ID
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases/healthcare-workforce-mobility">
+                        Healthcare Workforce Mobility
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases/hotel-management">
+                        Hotels: for PMS Providers
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases/ai-assistants">
+                        Personal AI Assistants
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases/decentralized-social-network">
+                        Decentralized Social Networks
+                      </a>
+                    </li>
+                  
+                </ul>
+              </div>
+            
+          </div>
+        
+          
+          <div class="relative group">
+            <a class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200" href="/page/community/developers">
+              <span>Community</span>
+              
+                <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+              
+            </a>
+            
+              <div class="absolute left-0 top-full mt-2 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
+                <span class="absolute inset-x-0 -top-2 h-2 bg-transparent"></span>
+                <ul class="pt-2 pb-4">
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/community/developers">
+                        Developer Hub
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/community/integrators">
+                        Integrators
+                      </a>
+                    </li>
+                  
+                </ul>
+              </div>
+            
+          </div>
+        
+          
+          <div class="relative group">
+            <a class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200" href="/page/about/team">
+              <span>About</span>
+              
+                <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+              
+            </a>
+            
+              <div class="absolute left-0 top-full mt-2 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
+                <span class="absolute inset-x-0 -top-2 h-2 bg-transparent"></span>
+                <ul class="pt-2 pb-4">
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/about/team">
+                        Team
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/">
+                        Whitepaper
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/about/roadmap">
+                        Roadmap
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/about/governance">
+                        Governance
+                      </a>
+                    </li>
+                  
+                </ul>
+              </div>
+            
+          </div>
+        
+      </nav>
+      <div class="flex items-center space-x-4">
+        
+        <button id="nav-toggle" class="lg:hidden text-white" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu-mobile">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="nav-menu-mobile" class="lg:hidden hidden border-t border-gray-800 bg-black/95" aria-hidden="true">
+    <nav class="container mx-auto px-6 py-4 space-y-4">
+      
+        
+        <div>
+          <a class="block text-gray-200 font-medium hover:text-white transition-colors duration-200" href="/page/why-verana">Why Verana</a>
+          
+            <ul class="mt-2 space-y-2 border-l border-gray-700/60 pl-4">
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/why-verana">Three Systemic Problems</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/why-verana/trust">Solving Trust</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/why-verana/ownership">Solving Ownership</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/why-verana/discovery">Solving Discovery</a></li>
+              
+            </ul>
+          
+        </div>
+      
+        
+        <div>
+          <a class="block text-gray-200 font-medium hover:text-white transition-colors duration-200" href="/page/build">Build with Verana</a>
+          
+            <ul class="mt-2 space-y-2 border-l border-gray-700/60 pl-4">
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/build">Own the Rails</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/build/trust-networks">Trust Networks</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/build/verifiable-services">Self Sovereign Services</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/build/verifiable-user-agents">Verifiable User Agents</a></li>
+              
+            </ul>
+          
+        </div>
+      
+        
+        <div>
+          <a class="block text-gray-200 font-medium hover:text-white transition-colors duration-200" href="/page/trust-engine/trust-resolver">Trust Engine</a>
+          
+            <ul class="mt-2 space-y-2 border-l border-gray-700/60 pl-4">
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/trust-engine/trust-resolver">Trust Resolver</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/trust-engine/trust-deposit">Trust Deposit &amp; Reputation</a></li>
+              
+            </ul>
+          
+        </div>
+      
+        
+        <div>
+          <a class="block text-gray-200 font-medium hover:text-white transition-colors duration-200" href="/page/industry-use-cases">Industry Use Cases</a>
+          
+            <ul class="mt-2 space-y-2 border-l border-gray-700/60 pl-4">
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/industry-use-cases">Overview</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/industry-use-cases/government-id">Government Verifiable Citizen ID</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/industry-use-cases/healthcare-workforce-mobility">Healthcare Workforce Mobility</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/industry-use-cases/hotel-management">Hotels: for PMS Providers</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/industry-use-cases/ai-assistants">Personal AI Assistants</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/industry-use-cases/decentralized-social-network">Decentralized Social Networks</a></li>
+              
+            </ul>
+          
+        </div>
+      
+        
+        <div>
+          <a class="block text-gray-200 font-medium hover:text-white transition-colors duration-200" href="/page/community/developers">Community</a>
+          
+            <ul class="mt-2 space-y-2 border-l border-gray-700/60 pl-4">
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/community/developers">Developer Hub</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/community/integrators">Integrators</a></li>
+              
+            </ul>
+          
+        </div>
+      
+        
+        <div>
+          <a class="block text-gray-200 font-medium hover:text-white transition-colors duration-200" href="/page/about/team">About</a>
+          
+            <ul class="mt-2 space-y-2 border-l border-gray-700/60 pl-4">
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/about/team">Team</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/">Whitepaper</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/about/roadmap">Roadmap</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/about/governance">Governance</a></li>
+              
+            </ul>
+          
+        </div>
+      
+      
+    </nav>
+  </div>
+</header>
+
+    <main id="content" class="flex-1">
+      
+  
+
+  
+  
+  
+  
+
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+      
+      
+        
+        
+        
+        
+        
+        
+          
+        
+        
+          
+        
+      
+    
+  
+  
+  
+    
+    
+      
+      
+    
+  
+  <section class="relative bg-gray-900 py-16 lg:py-24 overflow-hidden min-h-[320px] flex items-center">
+    <div class="absolute inset-0 opacity-50" style="background: radial-gradient(circle at 20% 50%, rgba(118, 62, 240, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(118, 62, 240, 0.1) 0%, transparent 50%), radial-gradient(circle at 40% 80%, rgba(118, 62, 240, 0.08) 0%, transparent 50%);"></div>
+    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 25% 25%, rgba(118, 62, 240, 0.1) 2px, transparent 2px), radial-gradient(circle at 75% 75%, rgba(118, 62, 240, 0.08) 1px, transparent 1px); background-size: 60px 60px, 40px 40px;"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="max-w-4xl mx-auto">
+        <nav class="flex flex-wrap items-center gap-2 text-sm text-gray-400 mb-8" aria-label="Breadcrumb">
+          
+            
+            
+              <a class="hover:text-white transition-colors duration-200" href="/">Home</a>
+            
+          
+            
+              <i class="fa-solid fa-chevron-right text-xs"></i>
+            
+            
+              <a class="hover:text-white transition-colors duration-200" href="/page/why-verana/">Three Systemic Problems</a>
+            
+          
+            
+              <i class="fa-solid fa-chevron-right text-xs"></i>
+            
+            
+              <span class="text-verana">Service Discovery</span>
+            
+          
+        </nav>
+        <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-tight flex items-center flex-wrap gap-4">
+          
+          <span class="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">Service Discovery</span>
+        </h1>
+        
+      </div>
+    </div>
+  </section>
+
+
+  
+    <section class="bg-black text-white">
+      <div class="container mx-auto px-6 py-16 lg:py-24">
+        <div class="max-w-4xl mx-auto">
+          <article class="prose prose-invert prose-lg max-w-none bg-gray-900/60 border border-gray-800 rounded-3xl p-8 shadow-[0_0_60px_-30px_rgba(79,70,229,0.45)]">
+            <h2 id="why-discoverability-is-broken">Why Discoverability is Broken</h2>
+<p>Today, consumer discoverability of goods and services is controlled by centralized platforms that rely on advertising, opaque SEO algorithms, and now even sponsored AI results.</p>
+<ul>
+<li>Wealth is concentrated in a handful of dominant companies.</li>
+<li>Innovation suffers, as startups and SMEs cannot compete with massive advertising budgets.</li>
+<li>These intermediaries capture a disproportionate share of value, forcing consumers to pay higher prices for goods and services.</li>
+</ul>
+
+    
+    <svg class="kroki" contentStyleType="text/css" data-diagram-type="DESCRIPTION" preserveAspectRatio="xMidYMid meet" style=";;max-width:100%;height:auto;" version="1.1" viewBox="0 0 1200 355" width="100%" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" zoomAndPan="magnify"><defs/><g><!--cluster ORGS--><g class="cluster" data-entity="ORGS" data-source-line="3" data-uid="ent0002" id="cluster_ORGS"><rect fill="none" height="191" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:1;" width="302.59" x="260.94" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="287.8477" x="268.3112" y="21.9951">Organizations (need discoverability)</text></g><!--entity HighOrg--><g class="entity" data-entity="HighOrg" data-source-line="4" data-uid="ent0003" id="entity_HighOrg"><rect fill="#F1F1F1" height="52.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="238.5928" x="292.94" y="41.71"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="181.7813" x="302.94" y="64.7051">High-Budget Organization</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="218.5928" x="302.94" y="81.002">(enterprises, funded scale-ups)</text></g><!--entity LowOrg--><g class="entity" data-entity="LowOrg" data-source-line="5" data-uid="ent0004" id="entity_LowOrg"><rect fill="#F1F1F1" height="52.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="197.4199" x="313.52" y="129.71"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="177.4199" x="323.52" y="152.7051">Low-Budget Organization</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="114.5908" x="323.52" y="169.002">(startups, SMEs)</text></g><!--entity BigTech--><g class="entity" data-entity="BigTech" data-source-line="8" data-uid="ent0005" id="entity_BigTech"><rect fill="#F1F1F1" height="68.8906" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="243.6104" x="914.21" y="42.56"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="223.6104" x="924.21" y="65.5551">Dominant Advertising Platforms</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="212.4336" x="924.21" y="81.852">(ad networks, search &amp; social)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="193.3408" x="924.21" y="98.1489">control discovery &amp; ranking</text></g><!--entity Consumer--><g class="entity" data-entity="Consumer" data-source-line="9" data-uid="ent0006" id="entity_Consumer"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="91.3877" x="366.54" y="251.86"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="71.3877" x="376.54" y="274.8551">Consumer</text></g><g class="entity" data-entity="GMN14" data-source-line="27" data-uid="ent0015" id="entity_GMN14"><path d="M893.14,206.87 L893.14,247.1356 L1178.8817,247.1356 L1178.8817,216.87 L1168.8817,206.87 L893.14,206.87" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1168.8817,206.87 L1168.8817,216.87 L1178.8817,216.87 L1168.8817,206.87" fill="#FEFFDD" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="264.7417" x="899.14" y="223.9369">Small budgets &#8658; little/no discoverability.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="232.3813" x="899.14" y="239.0697">Competing on ads is unsustainable.</text></g><g class="entity" data-entity="GMN17" data-source-line="32" data-uid="ent0018" id="entity_GMN17"><path d="M878.62,146.44 L878.62,171.5728 A0,0 0 0 0 878.62,171.5728 L1193.4086,171.5728 A0,0 0 0 0 1193.4086,171.5728 L1193.4086,156.44 L1183.4086,146.44 L1040.01,146.44 L1036.01,111.87 L1032.01,146.44 L878.62,146.44 A0,0 0 0 0 878.62,146.44" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1183.4086,146.44 L1183.4086,156.44 L1193.4086,156.44 L1183.4086,146.44" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="293.7886" x="884.62" y="163.5069">Wealth concentration at dominant platforms.</text></g><g class="entity" data-entity="GMN20" data-source-line="36" data-uid="ent0021" id="entity_GMN20"><path d="M243.85,323.44 L243.85,348.5728 A0,0 0 0 0 243.85,348.5728 L580.6142,348.5728 A0,0 0 0 0 580.6142,348.5728 L580.6142,333.44 L570.6142,323.44 L416.23,323.44 L412.23,288.26 L408.23,323.44 L243.85,323.44 A0,0 0 0 0 243.85,323.44" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M570.6142,323.44 L570.6142,333.44 L580.6142,333.44 L570.6142,323.44" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="315.7642" x="249.85" y="340.5069">Consumers pay higher prices to cover ad spend.</text></g><!--link HighOrg to BigTech--><g class="link" data-entity-1="HighOrg" data-entity-2="BigTech" data-source-line="12" data-uid="lnk7" id="link_HighOrg_BigTech"><path d="M532.02,69.72 C641.55,71.31 797.4106,73.563 907.7306,75.163" fill="none" id="HighOrg-to-BigTech" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="913.73,75.25,904.789,71.1199,908.7305,75.1775,904.6729,79.1191,913.73,75.25" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="187.3765" x="636.12" y="67.0669">$$$ Ad Spend (buy visibility)</text></g><!--link BigTech to HighOrg--><g class="link" data-entity-1="BigTech" data-entity-2="HighOrg" data-source-line="16" data-uid="lnk9" id="link_BigTech_HighOrg"><path d="M913.8,53.88 C892.17,50.6 869.79,47.75 848.62,46 C743.2,37.3 716.23,40.14 610.62,46 C585.05,47.42 563.6863,49.2352 537.7463,51.9952" fill="none" id="BigTech-to-HighOrg" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="531.78,52.63,541.1527,55.6553,536.7519,52.101,540.3063,47.7002,531.78,52.63" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="224.2563" x="617.62" y="37.0669">High Visibility (top ranking, traffic)</text></g><!--link LowOrg to BigTech--><g class="link" data-entity-1="LowOrg" data-entity-2="BigTech" data-source-line="13" data-uid="lnk8" id="link_LowOrg_BigTech"><path d="M511.25,170.66 C621.37,185.22 792.12,201.48 848.62,172 C869.28,161.23 859.94,142.94 878.62,129 C889.39,120.96 896.0344,116.629 908.5944,110.819" fill="none" id="LowOrg-to-BigTech" style="stroke:#181818;stroke-width:1;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="914.04,108.3,904.1923,108.4481,909.502,110.3992,907.551,115.7089,914.04,108.3" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="196.0029" x="631.62" y="168.0669">$ Ad Spend (weak/ineffective)</text></g><!--link BigTech to LowOrg--><g class="link" data-entity-1="BigTech" data-entity-2="LowOrg" data-source-line="17" data-uid="lnk10" id="link_BigTech_LowOrg"><path d="M913.88,92.39 C796.42,107.32 626.3621,128.9237 517.3621,142.7737" fill="none" id="BigTech-to-LowOrg" style="stroke:#181818;stroke-width:1;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="511.41,143.53,520.8424,146.3636,516.3701,142.8997,519.834,138.4274,511.41,143.53" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="211.4785" x="624.12" y="99.0669">Low / No Visibility (deprioritized)</text></g><!--link HighOrg to Consumer--><g class="link" data-entity-1="HighOrg" data-entity-2="Consumer" data-source-line="20" data-uid="lnk11" id="link_HighOrg_Consumer"><path d="M292.45,71.92 C169.91,80.4 6,106.88 70.92,189 C141.45,278.23 284.725,280.8044 360.315,275.4444" fill="none" id="HighOrg-to-Consumer" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="366.3,275.02,357.0396,271.6666,361.3125,275.3737,357.6055,279.6466,366.3,275.02" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="114.2261" x="60.9899" y="170.0669">Goods &amp; Services</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="190.5059" x="22.85" y="185.1997">(ad costs embedded in price)</text></g><!--link LowOrg to Consumer--><g class="link" data-entity-1="LowOrg" data-entity-2="Consumer" data-source-line="21" data-uid="lnk12" id="link_LowOrg_Consumer"><path d="M412.23,182.66 C412.23,203.78 412.23,226.76 412.23,245.43" fill="none" id="LowOrg-to-Consumer" style="stroke:#181818;stroke-width:1;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="412.23,251.43,416.23,242.43,412.23,246.43,408.23,242.43,412.23,251.43" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="114.2261" x="336.2464" y="214.1469">Goods &amp; Services</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="123.2588" x="331.73" y="229.2797">(rarely discovered)</text></g><!--link Consumer to BigTech--><g class="link" data-entity-1="Consumer" data-entity-2="BigTech" data-source-line="24" data-uid="lnk13" id="link_Consumer_BigTech"><path d="M458.1,280.52 C544.39,297.9 735,322.13 848.62,229 C884.5,199.59 846.29,162.3 878.62,129 C888.68,118.64 895.5124,113.0609 908.5824,106.4109" fill="none" id="Consumer-to-BigTech" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="913.93,103.69,904.0947,104.2062,909.4737,105.9574,907.7225,111.3364,913.93,103.69" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="134.9702" x="662.3822" y="210.0669">Indirect payment via</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="236.4946" x="611.62" y="225.1997">higher prices (ad cost pass-through)</text></g><!--link LowOrg to GMN14--><g class="link" data-entity-1="LowOrg" data-entity-2="GMN14" data-source-line="27" data-uid="lnk16" id="link_LowOrg_GMN14"><path d="M505.38,182.76 C538.31,191.29 575.87,199.84 610.62,205 C704.03,218.89 810.13,224.39 892.87,226.42" fill="none" id="LowOrg-GMN14" style="stroke:#181818;stroke-width:1;stroke-dasharray:7.0,7.0;"/></g><!--SRC=[VLJ1Rfj04Btp5QCeQcqfEFSSAZasIP1iOm5952cNDGom2koYtRKZf-gvztvYlgIpXAMcLNCRj3DlthoPHus50ID1yR8oa7E5cU5IU9uDc2XhXBD8bKpmDsOVD4m4OawPEfC7L6p7QswEqpDW6gBuDe7l7i19yHq1-zVxl4G3fq3FOeB2e6eLrwWleDYBd71rnchqzwt-GBJLL3M6NCdN_o1gmvIXuWj8ra4FGTaMuSTefALik632m3od8GpNN9ImhPaff6eq8R4S19fNgLu8J2DJMGLVGCkCithwB38fZ9Br8CEH7XKJBmJJDRtcPOfPTTfoGUBj6rJTk_lmlA_W-pwieqtm13Uhw361D8Bv4hQhUNeJnUl4ldkz3XH_SzXm1UVdvpG092sA72Qx_H4ED4c_4UzZS83PR5HpKl6AxEMI2omAk_K3JXsTPPWieeSWdb-7gp1zWaaSfFVnfYCuxGWvG4l8aRlg8dWOEC34oDRfSW56iQBWsNGejimSooiRmILiv0WWHpeGgRZXRvWF_9BvAaX8ycqSBWBOpfF4J-_YwFxsxX-rdDBKu5RAN5DLWkh0C-pNd4bjD62pmzmU81T07JCSw_SvYc8Aw-Dm32T4myqoZ8D52ejeazolWnY8abjj9sT7U80VxpSK7uQ4bXqRSWkjbpsBYgQZr8ubsR4VWNAqzasbvBwigB-G1djNoyAP86bONSEkyuw6zv-_W5GsDLuA-RUZPqIgQT5OOqW1Z6Rc6lR4aqn6tjdLEFFi5Tb6VRkTD4Osjf-x_qTajQc8eCY8l-fy2en-DCv_hVFS9s23MLoWhI0mre7-OHrzOWhQdlSVmDy0]--></g></svg>
+
+
+<h2 id="service-discovery-re-distribution-of-wealth">Service Discovery: Re-distribution of Wealth</h2>
+<p>Verana replaces this extractive model with an open, decentralized, and verifiable trust system powered by verifiable credentials:</p>
+<ul>
+<li><strong>Ecosystems</strong> establish <strong>decentralized trust networks</strong>, each specializing in <strong>certifying specific claims</strong> within defined jurisdictions.</li>
+<li><strong>Individuals</strong> and <strong>organizations</strong> join the ecosystems they care about, <strong>collecting verifiable credentials</strong> that can be <strong>attached to their digital channels</strong>.</li>
+<li><strong>Automatic indexing</strong> ensures these credentials are crawled, verified, and included in a <strong>global directory of verifiable data</strong>.</li>
+<li><strong>Discoverability becomes instant and transparent</strong>: services are surfaced based on <strong>what their credentials prove</strong>, not on who paid for ads.</li>
+</ul>
+<p>This marks a shift away from centralized control by a few corporations toward a <strong>federated economy of thousands of ecosystems</strong>, each competing on trust, authenticity, and the quality of their certifications.</p>
+
+    
+    <svg class="kroki" contentStyleType="text/css" data-diagram-type="DESCRIPTION" preserveAspectRatio="xMidYMid meet" style=";;max-width:100%;height:auto;" version="1.1" viewBox="0 0 1130 456" width="100%" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" zoomAndPan="magnify"><defs/><g><!--entity Org--><g class="entity" data-entity="Org" data-source-line="3" data-uid="ent0002" id="entity_Org"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="196.3398" x="557.85" y="138.27"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="176.3398" x="567.85" y="161.2651">Any-Budget Organization</text></g><!--entity Issuers--><g class="entity" data-entity="Issuers" data-source-line="4" data-uid="ent0003" id="entity_Issuers"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="226.2402" x="542.9" y="7.99"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="206.2402" x="552.9" y="30.9851">Ecosystem Credential Issuers</text></g><!--entity Resolver--><g class="entity" data-entity="Resolver" data-source-line="5" data-uid="ent0004" id="entity_Resolver"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="254.0352" x="7" y="276.12"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="234.0352" x="17" y="299.1151">Verana Trust Resolver / Directory</text></g><!--entity Consumers--><g class="entity" data-entity="Consumers" data-source-line="6" data-uid="ent0005" id="entity_Consumers"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="98.6816" x="606.68" y="413.96"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="78.6816" x="616.68" y="436.9551">Consumers</text></g><g class="entity" data-entity="GMN12" data-source-line="23" data-uid="ent0013" id="entity_GMN12"><path d="M804.23,6 L804.23,22.14 L769.41,26.14 L804.23,30.14 L804.23,46.2656 A0,0 0 0 0 804.23,46.2656 L1123.7984,46.2656 A0,0 0 0 0 1123.7984,46.2656 L1123.7984,16 L1113.7984,6 L804.23,6 A0,0 0 0 0 804.23,6" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1113.7984,6 L1113.7984,16 L1123.7984,16 L1113.7984,6" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="298.5684" x="810.23" y="23.0669">Issuer fees fund ecosystems and governance,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="201.1382" x="810.23" y="38.1997">not centralized ad monopolies.</text></g><g class="entity" data-entity="GMN15" data-source-line="28" data-uid="ent0016" id="entity_GMN15"><path d="M296.48,266.56 L296.48,290.26 L261.43,294.26 L296.48,298.26 L296.48,321.9584 A0,0 0 0 0 296.48,321.9584 L585.5542,321.9584 A0,0 0 0 0 585.5542,321.9584 L585.5542,276.56 L575.5542,266.56 L296.48,266.56 A0,0 0 0 0 296.48,266.56" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M575.5542,266.56 L575.5542,276.56 L585.5542,276.56 L575.5542,266.56" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="254.5093" x="302.48" y="283.6269">Search &amp; ranking use verifiable claims,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="268.0742" x="302.48" y="298.7597">not ad budgets. Any credentialed service</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="160.4243" x="302.48" y="313.8925">is discoverable on merit.</text></g><!--link Org to Issuers--><g class="link" data-entity-1="Org" data-entity-2="Issuers" data-source-line="9" data-uid="lnk6" id="link_Org_Issuers"><path d="M710.91,137.94 C724.38,130.92 737.17,121.3 745.02,108.27 C752.35,96.08 752.25,88.52 745.02,76.27 C736.76,62.28 728.2758,54.7733 713.9558,47.3433" fill="none" id="Org-to-Issuers" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="708.63,44.58,714.7765,52.2755,713.0682,46.8828,718.4609,45.1744,708.63,44.58" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="142.8921" x="752.02" y="89.3369">Request credentialing</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="108.4053" x="769.2634" y="104.4697">(pay issuer fees)</text></g><!--link Issuers to Org--><g class="link" data-entity-1="Issuers" data-entity-2="Org" data-source-line="10" data-uid="lnk7" id="link_Issuers_Org"><path d="M578.92,44.74 C538.38,57.85 501.03,78.64 522.02,108.27 C531.35,121.45 539.2477,128.4224 553.9177,135.3024" fill="none" id="Issuers-to-Org" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="559.35,137.85,552.9,130.407,554.8231,135.727,549.5032,137.65,559.35,137.85" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="213.605" x="523.02" y="96.8369">Issue verifiable credentials (VCs)</text></g><!--link Org to Resolver--><g class="link" data-entity-1="Org" data-entity-2="Resolver" data-source-line="13" data-uid="lnk8" id="link_Org_Resolver"><path d="M565.19,175.04 C524.85,183.29 476.89,193.69 434.02,204.56 C347.55,226.49 254.2616,254.9935 194.4016,273.8935" fill="none" id="Org-to-Resolver" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="188.68,275.7,198.4667,276.8046,193.448,274.1946,196.058,269.1758,188.68,275.7" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="194.3525" x="435.02" y="217.6269">Register service + attach VCs</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="134.3101" x="465.0412" y="232.7597">(auto crawl + verify)</text></g><!--link Resolver to Consumers--><g class="link" data-entity-1="Resolver" data-entity-2="Consumers" data-source-line="16" data-uid="lnk9" id="link_Resolver_Consumers"><path d="M198.3,312.89 C264.92,331.07 372.11,360.05 465.02,383.96 C512.98,396.31 562.0598,408.3729 600.6498,417.7529" fill="none" id="Resolver-to-Consumers" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="606.48,419.17,598.6794,413.1575,601.6215,417.989,596.7899,420.9311,606.48,419.17" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="143.9268" x="475.6907" y="365.0269">Trust-based discovery</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="163.2681" x="466.02" y="380.1597">(query by proven claims)</text></g><!--link Consumers to Org--><g class="link" data-entity-1="Consumers" data-entity-2="Org" data-source-line="17" data-uid="lnk10" id="link_Consumers_Org"><path d="M656.02,413.72 C656.02,364.46 656.02,230.39 656.02,180.95" fill="none" id="Consumers-to-Org" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="656.02,174.95,652.02,183.95,656.02,179.95,660.02,183.95,656.02,174.95" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="234.7808" x="657.02" y="298.8269">Find &amp; engage if claims match need</text></g><!--link Consumers to Org--><g class="link" data-entity-1="Consumers" data-entity-2="Org" data-source-line="20" data-uid="lnk11" id="link_Consumers_Org"><path d="M705.82,420.43 C791.57,399.61 953.03,348.35 900.02,266.56 C867.84,216.91 812.9652,191.2771 760.1852,176.4071" fill="none" id="Consumers-to-Org-1" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="754.41,174.78,761.988,181.0707,759.2226,176.1359,764.1575,173.3705,754.41,174.78" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="146.542" x="912.02" y="298.8269">Pay for goods/services</text></g><!--SRC=[RLDDRzGm4BtdLpprK1hHRSN7gOTAPG6f9n2WddgPjIUfHM8l7gTL-kiPEvji5d5px7aVysQImXufO1TI2ZsiYsoI2xwgye5ysp7Exlou-JJObXE-nPQyUwLSSmQIVB4k_MA2Z9AunpQoPPySTRWN6JXAgJ-SrvW7ZkG9l-8W2JzOGlVC4TVuNCo4E1RW_B16ReENeP-fbw-gUeDtzObNX5qYvmLciIML5c2pkPqzuKP5_WoiBevLphUF_c9F8rofGiCiTJL3CZpJt4maK8EkSRHJToibN3ni5QIstjUuIudCqyapUOl8hTFWuk9gIIBRcjuW79-TORm5JIpAg_Peq16QI2-TlXGBOr7xK6k8Oe9UZTYHi8L6iOzwuM4wShrQyo61hDfR1BFw4gRAbybi9hoT-LHMiygyuobZNHsnntY-Ektn7EnRQXckcULxIjg6PxRPyCSQtsdiDHSqNNYH_r9f1PeGqOPWvVeGYGvT6s54rpubX6PPjFlZsD0CQeBd5ProRtCtdhpXoym0e-9Hv_wgpP957tpOXywnN5MivLdaNwbbDNyoHUtc7BhGltLpCCZfIfIU9ntbtfL_IgwWFzXg7rJuq5JbP0cy4EZqD0oNLbx-0W00]--></g></svg>
+
+
+
+          </article>
+        </div>
+      </div>
+    </section>
+  
+
+    </main>
+    
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+    
+      
+      
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+      
+      
+        
+      
+    
+      
+      
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+      
+      
+        
+      
+    
+      
+      
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+      
+      
+        
+      
+    
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+ 
+
+
+
+
+  
+    
+      
+      
+      
+        
+        
+        
+        
+        
+        
+      
+    
+      
+      
+      
+        
+        
+        
+        
+        
+        
+      
+    
+      
+      
+      
+        
+        
+        
+        
+        
+        
+      
+    
+      
+      
+      
+        
+        
+        
+        
+        
+        
+      
+    
+  
+
+
+
+
+<footer id="footer" class="bg-gray-900 border-t border-gray-800 py-16">
+  <div class="container mx-auto px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-4 gap-12 mb-12">
+        <div class="lg:col-span-1">
+          <div class="flex items-center space-x-3 mb-6">
+            <img src="/images/purple/logo.svg" alt="Verana logo" class="h-10 w-auto" />
+            <span class="text-2xl font-bold text-white">Verana</span>
+          </div>
+          <p class="text-gray-400 mb-8 leading-relaxed">The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty.</p>
+          
+            <div class="flex space-x-4">
+              
+                <a href="https://github.com/verana-labs" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer" target="_blank" rel="noopener" aria-label="Github">
+                  
+                    <i class="fa-brands fa-github"></i>
+                  
+                  <span class="sr-only">Github</span>
+                </a>
+              
+                <a href="https://discord.gg/edjaFn252q" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer" target="_blank" rel="noopener" aria-label="Discord">
+                  
+                    <i class="fa-brands fa-discord"></i>
+                  
+                  <span class="sr-only">Discord</span>
+                </a>
+              
+                <a href="https://www.linkedin.com/company/verana-foundation" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer" target="_blank" rel="noopener" aria-label="Linkedin">
+                  
+                    <i class="fa-brands fa-linkedin"></i>
+                  
+                  <span class="sr-only">Linkedin</span>
+                </a>
+              
+                <a href="https://x.com/Verana_io" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer" target="_blank" rel="noopener" aria-label="X">
+                  
+                    <svg viewBox="0 0 24 24" class="w-5 h-5" aria-hidden="true">
+                      <g>
+                        <path d="M21.742 21.75l-7.563-11.179 7.056-8.321h-2.456l-5.691 6.714-4.54-6.714H2.359l7.29 10.776L2.25 21.75h2.456l6.035-7.118 4.818 7.118h6.191-.008zM7.739 3.818L18.81 20.182h-2.447L5.29 3.818h2.447z" fill="currentColor" />
+                      </g>
+                    </svg>
+                  
+                  <span class="sr-only">X</span>
+                </a>
+              
+            </div>
+          
+        </div>
+        
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">Verana</h4>
+            <ul class="space-y-4">
+              
+                <li><a class="text-gray-400 hover:text-white transition-colors duration-200" href="/page/principles">Principles</a></li>
+              
+                <li><a class="text-gray-400 hover:text-white transition-colors duration-200" href="https://verana.foundation">Foundation</a></li>
+              
+                <li><a class="text-gray-400 hover:text-white transition-colors duration-200" href="/page/press">Press</a></li>
+              
+                <li><a class="text-gray-400 hover:text-white transition-colors duration-200" href="/page/identity">Visual Identity</a></li>
+              
+            </ul>
+          </div>
+        
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">Developers</h4>
+            <ul class="space-y-4">
+              
+                <li><a class="text-gray-400 hover:text-white transition-colors duration-200" href="https://docs.verana.io">Docs</a></li>
+              
+                <li><a class="text-gray-400 hover:text-white transition-colors duration-200" href="https://github.com/verana-labs/">Github</a></li>
+              
+            </ul>
+          </div>
+        
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">Specifications</h4>
+            <ul class="space-y-4">
+              
+                <li><a class="text-gray-400 hover:text-white transition-colors duration-200" href="https://verana-labs.github.io/verifiable-trust-spec/">Verifiable Trust Spec</a></li>
+              
+                <li><a class="text-gray-400 hover:text-white transition-colors duration-200" href="https://verana-labs.github.io/verifiable-trust-vpr-spec/">Verifiable Public Registry Spec</a></li>
+              
+                <li><a class="text-gray-400 hover:text-white transition-colors duration-200" href="https://trustoverip.github.io/tswg-trust-registry-protocol/">Trust Registry Query Protocol</a></li>
+              
+            </ul>
+          </div>
+        
+      </div>
+      <div class="border-t border-gray-800 pt-8">
+        <div class="flex flex-col sm:flex-row justify-between items-center">
+          <p class="text-gray-400 text-sm">&copy; 2025 Verana Foundation. All rights reserved.</p>
+          <div class="flex space-x-6 mt-4 sm:mt-0">
+            <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Privacy Policy</span>
+            <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Terms of Service</span>
+            <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Cookie Policy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script>
+        (function(){
+          function initNavToggle(){
+            var toggle = document.getElementById('nav-toggle');
+            var menu = document.getElementById('nav-menu-mobile');
+            if (!toggle || !menu || toggle.dataset.navInitialized === 'true') return;
+            toggle.dataset.navInitialized = 'true';
+            menu.setAttribute('aria-hidden', menu.classList.contains('hidden') ? 'true' : 'false');
+            toggle.setAttribute('aria-expanded', (!menu.classList.contains('hidden')).toString());
+            toggle.addEventListener('click', function(){
+              var isHidden = menu.classList.toggle('hidden');
+              var expanded = !isHidden;
+              toggle.setAttribute('aria-expanded', expanded.toString());
+              menu.setAttribute('aria-hidden', (!expanded).toString());
+            });
+          }
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initNavToggle, { once: true });
+          } else {
+            initNavToggle();
+          }
+        })();
+        (function(){
+          function slugify(text){
+            return text.toString().toLowerCase()
+              .replace(/\s+/g,'-')
+              .replace(/[^\w\-]+/g,'')
+              .replace(/\-\-+/g,'-')
+              .replace(/^-+/, '')
+              .replace(/-+$/, '');
+          }
+          const selector = '.prose h2, .prose h3, .prose h4, .prose h5, .prose h6';
+          document.querySelectorAll(selector).forEach(h => {
+            let id = h.id;
+            if (!id) { id = slugify(h.textContent || ''); h.id = id; }
+            if (!id) return;
+            if (h.querySelector('.heading-anchor-btn')) return;
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'heading-anchor-btn';
+            btn.setAttribute('aria-label','Link to section');
+            btn.textContent = '#';
+            btn.addEventListener('click', (e) => {
+              e.preventDefault();
+              if (history.replaceState) {
+                history.replaceState(null, '', `#${id}`);
+              } else {
+                location.hash = `#${id}`;
+              }
+              scrollToHash(`#${id}`);
+            });
+            h.appendChild(btn);
+          });
+          function updateHeaderOffset(){
+            const header = document.querySelector('header');
+            if (!header) return parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-offset')) || 72;
+            const extra = 8;
+            const off = header.offsetHeight + extra;
+            document.documentElement.style.setProperty('--header-offset', off + 'px');
+            return off;
+          }
+          function scrollToHash(hash){
+            if (!hash) return;
+            const id = hash.replace(/^#/, '');
+            const el = document.getElementById(id);
+            if (!el) return;
+            const off = updateHeaderOffset();
+            const top = el.getBoundingClientRect().top + window.scrollY - off;
+            window.scrollTo({ top, behavior: 'instant' in window ? 'instant' : 'auto' });
+          }
+          document.addEventListener('DOMContentLoaded', () => {
+            updateHeaderOffset();
+            if (location.hash) {
+              setTimeout(() => scrollToHash(location.hash), 0);
+            }
+          });
+          window.addEventListener('hashchange', () => scrollToHash(location.hash));
+        })();
+    </script>
+  </body>
+</html>

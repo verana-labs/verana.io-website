@@ -1,0 +1,828 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Ownership - Verana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "fontFamily": {
+        "inter": [
+          "Inter",
+          "sans-serif"
+        ]
+      },
+      "colors": {
+        "verana": "#763ef0",
+        "verana-light": "#9f7aea",
+        "verana-dark": "#553c9a"
+      },
+      "animation": {
+        "float": "float 6s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite alternate",
+        "network-pulse": "network-pulse 3s ease-in-out infinite",
+        "ownership-flow": "ownership-flow 4s ease-in-out infinite",
+        "chain-break": "chain-break 3s ease-in-out infinite",
+        "freedom-pulse": "freedom-pulse 2s ease-in-out infinite",
+        "sovereign-glow": "sovereign-glow 3s ease-in-out infinite alternate"
+      },
+      "keyframes": {
+        "float": {
+          "0%, 100%": {
+            "transform": "translateY(0px)"
+          },
+          "50%": {
+            "transform": "translateY(-20px)"
+          }
+        },
+        "pulse-glow": {
+          "0%": {
+            "boxShadow": "0 0 20px rgba(118, 62, 240, 0.3)"
+          },
+          "100%": {
+            "boxShadow": "0 0 40px rgba(118, 62, 240, 0.6)"
+          }
+        },
+        "network-pulse": {
+          "0%, 100%": {
+            "opacity": "0.4"
+          },
+          "50%": {
+            "opacity": "0.8"
+          }
+        },
+        "ownership-flow": {
+          "0%": {
+            "transform": "translateX(-100px)",
+            "opacity": "0"
+          },
+          "50%": {
+            "transform": "translateX(0px)",
+            "opacity": "1"
+          },
+          "100%": {
+            "transform": "translateX(100px)",
+            "opacity": "0"
+          }
+        },
+        "chain-break": {
+          "0%, 50%": {
+            "transform": "scale(1)",
+            "opacity": "1"
+          },
+          "75%": {
+            "transform": "scale(1.1)",
+            "opacity": "0.5"
+          },
+          "100%": {
+            "transform": "scale(1)",
+            "opacity": "1"
+          }
+        },
+        "freedom-pulse": {
+          "0%, 100%": {
+            "transform": "scale(1)",
+            "boxShadow": "0 0 0 0 rgba(34, 197, 94, 0.7)"
+          },
+          "70%": {
+            "transform": "scale(1.05)",
+            "boxShadow": "0 0 0 10px rgba(34, 197, 94, 0)"
+          }
+        },
+        "sovereign-glow": {
+          "0%": {
+            "boxShadow": "0 0 20px rgba(34, 197, 94, 0.3)",
+            "transform": "rotate(0deg)"
+          },
+          "100%": {
+            "boxShadow": "0 0 40px rgba(34, 197, 94, 0.6)",
+            "transform": "rotate(5deg)"
+          }
+        }
+      }
+    }
+  }
+};</script>
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        .gradient-mesh {
+            background: radial-gradient(circle at 20% 50%, rgba(118, 62, 240, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(118, 62, 240, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(118, 62, 240, 0.08) 0%, transparent 50%);
+        }
+        .ownership-pattern {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(34, 197, 94, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(118, 62, 240, 0.08) 1px, transparent 1px);
+            background-size: 60px 60px, 40px 40px;
+            animation: network-pulse 4s ease-in-out infinite;
+        }
+        .chain-pattern {
+            background-image: 
+                linear-gradient(45deg, rgba(239, 68, 68, 0.05) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(239, 68, 68, 0.05) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(239, 68, 68, 0.05) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(239, 68, 68, 0.05) 75%);
+            background-size: 40px 40px;
+            background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+        }
+    </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-black text-white overflow-x-hidden font-custom">
+
+<!-- Header -->
+<header id="header" class="bg-black/95 backdrop-blur-sm border-b border-gray-800/50 sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <span class="flex items-center space-x-3 cursor-pointer">
+                    <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-white">Verana</span>
+                </span>
+            </div>
+            
+            <nav class="hidden lg:flex items-center space-x-8">
+                <div class="relative group">
+                    <button class="text-verana flex items-center space-x-1 transition-colors duration-200">
+                        <span>Why Verana</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Build</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Trust Engine</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Industry Use Cases</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">Community</span>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">About</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <span class="bg-verana hover:bg-verana-dark text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer">
+                    Testnet
+                </span>
+                <button class="lg:hidden text-white">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Page Hero Section -->
+<section id="page-hero" class="relative bg-gray-900 py-16 lg:py-24 overflow-hidden h-[450px] flex items-center">
+    <div class="absolute inset-0 gradient-mesh opacity-50"></div>
+    <div class="absolute inset-0 ownership-pattern opacity-20"></div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <!-- Breadcrumb -->
+            <nav class="flex items-center space-x-2 text-sm text-gray-400 mb-8">
+                <span class="hover:text-white cursor-pointer">Home</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="hover:text-white cursor-pointer">Why Verana</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="text-verana">Service Ownership</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4 mb-6">
+                <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center animate-sovereign-glow">
+                    <i class="fa-solid fa-key text-green-400 text-2xl"></i>
+                </div>
+                <h1 class="text-4xl lg:text-6xl font-bold leading-tight">
+                    <span class="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">Service Ownership</span>
+                </h1>
+            </div>
+            
+            <p class="text-xl lg:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+                Own your digital services, your audience, and your data — not just rent them from centralized platforms.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content Section -->
+<section id="main-content" class="bg-black py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12">
+                <!-- Sidebar Navigation -->
+                <aside id="sidebar-nav" class="lg:col-span-1">
+                    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky top-24">
+                        <h3 class="text-lg font-semibold text-white mb-6">Why Verana</h3>
+                        <nav class="space-y-3">
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Digital Sovereignty</span>
+                            <span class="block text-verana font-medium cursor-pointer">Service Ownership</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Trust &amp; Discovery</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Open Standards</span>
+                        </nav>
+                        
+                        <div class="mt-8 pt-6 border-t border-gray-700">
+                            <h4 class="text-sm font-semibold text-white mb-4">Quick Links</h4>
+                            <div class="space-y-2">
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Getting Started</span>
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Use Cases</span>
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Migration Guide</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                
+                <!-- Content Area -->
+                <div id="content-area" class="lg:col-span-3">
+                    
+                    <!-- The No Ownership Problem -->
+                    <div id="no-ownership-problem" class="mb-20">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">The No Ownership Problem</h2>
+                        
+                        <div class="prose prose-invert max-w-none mb-12">
+                            <p class="text-xl text-gray-300 leading-relaxed mb-8">
+                                Today's digital services are built on centralized platforms that act as gatekeepers. Whether it's a social network, an app store, or a SaaS provider, organizations and individuals rarely own their services or their audiences:
+                            </p>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-8 mb-12">
+                            <div class="space-y-6">
+                                <div class="bg-red-900/20 border border-red-700/50 rounded-2xl p-6">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center flex-shrink-0 animate-chain-break">
+                                            <i class="fa-solid fa-link text-red-400 text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-white mb-2">Content and connections are rented, not owned</h3>
+                                            <p class="text-gray-300">Your audience, data, and digital presence exist at the mercy of platform policies</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-red-900/20 border border-red-700/50 rounded-2xl p-6">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                            <i class="fa-solid fa-gavel text-red-400 text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-white mb-2">Opaque rules and arbitrary de-platforming</h3>
+                                            <p class="text-gray-300">Platforms can change rules or remove your service without warning or recourse</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-6">
+                                <div class="bg-red-900/20 border border-red-700/50 rounded-2xl p-6">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                            <i class="fa-solid fa-truck text-red-400 text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-white mb-2">Costly and disruptive migration</h3>
+                                            <p class="text-gray-300">Moving between providers means losing audience, data, and starting from scratch</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-red-900/20 border border-red-700/50 rounded-2xl p-6">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                            <i class="fa-solid fa-chart-line text-red-400 text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-white mb-2">Data captured and monetized</h3>
+                                            <p class="text-gray-300">User data is mined and monetized by intermediaries, not service owners</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Centralized Platform Illustration -->
+                        <div id="centralized-illustration" class="bg-gray-900 border border-gray-700 rounded-2xl p-12 mb-8">
+                            <h3 class="text-2xl font-bold text-white mb-8 text-center">Current Centralized Model</h3>
+                            
+                            <div class="relative">
+                                <!-- Background pattern -->
+                                <div class="absolute inset-0 chain-pattern opacity-10 rounded-xl"></div>
+                                
+                                <div class="relative flex items-center justify-center min-h-[300px]">
+                                    <!-- Organization/Individual -->
+                                    <div class="absolute left-0 top-1/2 transform -translate-y-1/2">
+                                        <div class="bg-blue-500/20 border border-blue-500/50 rounded-2xl p-6 text-center">
+                                            <div class="w-16 h-16 bg-blue-500/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                                <i class="fa-solid fa-user text-blue-400 text-2xl"></i>
+                                            </div>
+                                            <h4 class="text-white font-semibold mb-2">Organization</h4>
+                                            <p class="text-gray-300 text-sm">Individual</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Platform (Center) -->
+                                    <div class="bg-red-500/20 border border-red-500/50 rounded-2xl p-8 text-center animate-pulse-glow">
+                                        <div class="w-20 h-20 bg-red-500/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                            <i class="fa-solid fa-building text-red-400 text-3xl"></i>
+                                        </div>
+                                        <h4 class="text-white font-bold mb-2">Centralized Platform</h4>
+                                        <div class="space-y-2 text-sm text-gray-300">
+                                            <p>• Opaque rules</p>
+                                            <p>• Arbitrary de-platforming</p>
+                                            <p>• Vendor lock-in</p>
+                                            <p>• Data exploitation</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- End Users -->
+                                    <div class="absolute right-0 top-1/2 transform -translate-y-1/2">
+                                        <div class="bg-gray-500/20 border border-gray-500/50 rounded-2xl p-6 text-center">
+                                            <div class="w-16 h-16 bg-gray-500/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                                <i class="fa-solid fa-users text-gray-400 text-2xl"></i>
+                                            </div>
+                                            <h4 class="text-white font-semibold mb-2">End Users</h4>
+                                            <p class="text-gray-300 text-sm">Audience</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Arrows showing dependency -->
+                                    <div class="absolute left-32 top-1/2 transform -translate-y-1/2">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-24 h-0.5 bg-red-400"></div>
+                                            <i class="fa-solid fa-arrow-right text-red-400"></i>
+                                        </div>
+                                        <p class="text-xs text-red-400 mt-1 text-center">Dependent</p>
+                                    </div>
+                                    
+                                    <div class="absolute right-32 top-1/2 transform -translate-y-1/2">
+                                        <div class="flex items-center space-x-2">
+                                            <i class="fa-solid fa-arrow-left text-red-400"></i>
+                                            <div class="w-24 h-0.5 bg-red-400"></div>
+                                        </div>
+                                        <p class="text-xs text-red-400 mt-1 text-center">Controlled</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-red-900/10 border border-red-700/30 rounded-2xl p-8">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center">
+                                    <i class="fa-solid fa-exclamation-triangle text-red-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">The Result</h3>
+                            </div>
+                            <p class="text-lg text-gray-200 leading-relaxed">
+                                Vendor lock-in, loss of sovereignty, and a fragile dependency on centralized operators.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Self-Sovereign Services -->
+                    <div id="self-sovereign-services" class="mb-20">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Migrating from Vendor Lock-in to Self-Sovereign Services</h2>
+                        
+                        <div class="prose prose-invert max-w-none mb-12">
+                            <p class="text-xl text-gray-300 leading-relaxed mb-8">
+                                Verana enables organizations and individuals to deploy <strong>Self-Sovereign Services</strong>: digital services they fully own and control. Built on verifiable credentials and decentralized trust registries, these services are portable, provable, and free from platform lock-in.
+                            </p>
+                        </div>
+                        
+                        <!-- Key Properties -->
+                        <div id="key-properties" class="mb-12">
+                            <h3 class="text-2xl font-bold text-white mb-8">Key Properties</h3>
+                            
+                            <div class="grid md:grid-cols-2 gap-8">
+                                <div class="space-y-6">
+                                    <div class="bg-green-900/20 border border-green-700/50 rounded-2xl p-6">
+                                        <div class="flex items-start space-x-4">
+                                            <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0 animate-freedom-pulse">
+                                                <i class="fa-solid fa-crown text-green-400 text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-lg font-semibold text-white mb-2">True Ownership</h4>
+                                                <p class="text-gray-300">Services run under your decentralized identifier (DID), not under a platform account</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-green-900/20 border border-green-700/50 rounded-2xl p-6">
+                                        <div class="flex items-start space-x-4">
+                                            <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                                <i class="fa-solid fa-database text-green-400 text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-lg font-semibold text-white mb-2">Data Sovereignty</h4>
+                                                <p class="text-gray-300">You retain full control over your data, audience, and connections</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-green-900/20 border border-green-700/50 rounded-2xl p-6">
+                                        <div class="flex items-start space-x-4">
+                                            <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                                <i class="fa-solid fa-arrows-alt text-green-400 text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-lg font-semibold text-white mb-2">Portability</h4>
+                                                <p class="text-gray-300">Migrate freely between cloud, self-hosted, or hybrid environments without losing trust</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="space-y-6">
+                                    <div class="bg-green-900/20 border border-green-700/50 rounded-2xl p-6">
+                                        <div class="flex items-start space-x-4">
+                                            <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                                <i class="fa-solid fa-certificate text-green-400 text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-lg font-semibold text-white mb-2">Verifiable Authenticity</h4>
+                                                <p class="text-gray-300">Cryptographically prove the legitimacy of your service to users and partners</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-green-900/20 border border-green-700/50 rounded-2xl p-6">
+                                        <div class="flex items-start space-x-4">
+                                            <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                                <i class="fa-solid fa-magnifying-glass text-green-400 text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-lg font-semibold text-white mb-2">Trust-Based Discovery</h4>
+                                                <p class="text-gray-300">Services are discoverable via Verana's resolver, ranked by credentials—not ad budgets</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-verana/10 border border-verana/30 rounded-2xl p-6">
+                                        <div class="flex items-start space-x-4">
+                                            <div class="w-12 h-12 bg-verana/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                                <i class="fa-solid fa-shield-halved text-verana text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-lg font-semibold text-white mb-2">Autonomous Operation</h4>
+                                                <p class="text-gray-300">Services operate independently without requiring platform permissions or approvals</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Examples Section -->
+                        <div id="examples-section" class="mb-12">
+                            <h3 class="text-2xl font-bold text-white mb-8">Examples of Self-Sovereign Services</h3>
+                            
+                            <div class="grid md:grid-cols-2 gap-8">
+                                <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300">
+                                    <div class="flex items-center space-x-4 mb-6">
+                                        <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                                            <i class="fa-solid fa-share-nodes text-purple-400 text-xl"></i>
+                                        </div>
+                                        <h4 class="text-xl font-semibold text-white">Decentralized Social Channels</h4>
+                                    </div>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        Social media channels owned entirely by creators, with portable audiences and verifiable authenticity.
+                                    </p>
+                                </div>
+                                
+                                <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300">
+                                    <div class="flex items-center space-x-4 mb-6">
+                                        <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                                            <i class="fa-solid fa-robot text-blue-400 text-xl"></i>
+                                        </div>
+                                        <h4 class="text-xl font-semibold text-white">Agentic AI &amp; IoT Services</h4>
+                                    </div>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        AI agents and IoT devices operating under verifiable credentials with provable ownership.
+                                    </p>
+                                </div>
+                                
+                                <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300">
+                                    <div class="flex items-center space-x-4 mb-6">
+                                        <div class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center">
+                                            <i class="fa-solid fa-play text-orange-400 text-xl"></i>
+                                        </div>
+                                        <h4 class="text-xl font-semibold text-white">Content Delivery Channels</h4>
+                                    </div>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        Media catalogs and content services with guaranteed provenance and creator attribution.
+                                    </p>
+                                </div>
+                                
+                                <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300">
+                                    <div class="flex items-center space-x-4 mb-6">
+                                        <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
+                                            <i class="fa-solid fa-comments text-green-400 text-xl"></i>
+                                        </div>
+                                        <h4 class="text-xl font-semibold text-white">Business Chatbots</h4>
+                                    </div>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        Customer support and business chatbots that are verifiable, portable, and independently operated.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Self-Sovereign Model Illustration -->
+                        <div id="sovereign-illustration" class="bg-gray-900 border border-gray-700 rounded-2xl p-12 mb-8">
+                            <h3 class="text-2xl font-bold text-white mb-8 text-center">Self-Sovereign Service Model</h3>
+                            
+                            <div class="relative">
+                                <!-- Background pattern -->
+                                <div class="absolute inset-0 ownership-pattern opacity-10 rounded-xl"></div>
+                                
+                                <div class="relative min-h-[400px]">
+                                    <!-- Organization/Individual -->
+                                    <div class="absolute left-0 top-8">
+                                        <div class="bg-green-500/20 border border-green-500/50 rounded-2xl p-6 text-center">
+                                            <div class="w-16 h-16 bg-green-500/30 rounded-2xl flex items-center justify-center mx-auto mb-4 animate-sovereign-glow">
+                                                <i class="fa-solid fa-user-crown text-green-400 text-2xl"></i>
+                                            </div>
+                                            <h4 class="text-white font-semibold mb-2">Organization</h4>
+                                            <p class="text-gray-300 text-sm">Individual</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Self-Sovereign Service -->
+                                    <div class="absolute left-1/2 transform -translate-x-1/2 top-0">
+                                        <div class="bg-verana/20 border border-verana/50 rounded-2xl p-8 text-center animate-pulse-glow">
+                                            <div class="w-20 h-20 bg-verana/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                                <i class="fa-solid fa-key text-verana text-3xl"></i>
+                                            </div>
+                                            <h4 class="text-white font-bold mb-4">Self-Sovereign Service</h4>
+                                            <p class="text-sm text-gray-300 mb-4">(owned under DID)</p>
+                                            <div class="space-y-2 text-xs text-gray-300">
+                                                <p>• True ownership</p>
+                                                <p>• Portability</p>
+                                                <p>• Data sovereignty</p>
+                                                <p>• Verifiable authenticity</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Trust Resolver -->
+                                    <div class="absolute right-0 top-8">
+                                        <div class="bg-blue-500/20 border border-blue-500/50 rounded-2xl p-6 text-center">
+                                            <div class="w-16 h-16 bg-blue-500/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                                <i class="fa-solid fa-magnifying-glass text-blue-400 text-2xl"></i>
+                                            </div>
+                                            <h4 class="text-white font-semibold mb-2">Verana Trust</h4>
+                                            <p class="text-gray-300 text-sm">Resolver</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- End Users -->
+                                    <div class="absolute left-1/2 transform -translate-x-1/2 bottom-0">
+                                        <div class="bg-gray-500/20 border border-gray-500/50 rounded-2xl p-6 text-center">
+                                            <div class="w-16 h-16 bg-gray-500/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                                <i class="fa-solid fa-users text-gray-400 text-2xl"></i>
+                                            </div>
+                                            <h4 class="text-white font-semibold mb-2">End Users</h4>
+                                            <p class="text-gray-300 text-sm">Audience</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Arrows showing relationships -->
+                                    <div class="absolute left-32 top-16">
+                                        <div class="flex items-center space-x-2 transform rotate-12">
+                                            <div class="w-20 h-0.5 bg-green-400"></div>
+                                            <i class="fa-solid fa-arrow-right text-green-400"></i>
+                                        </div>
+                                        <p class="text-xs text-green-400 mt-1">Deploy &amp; Control</p>
+                                    </div>
+                                    
+                                    <div class="absolute right-32 top-16">
+                                        <div class="flex items-center space-x-2 transform -rotate-12">
+                                            <i class="fa-solid fa-arrow-left text-blue-400"></i>
+                                            <div class="w-20 h-0.5 bg-blue-400"></div>
+                                        </div>
+                                        <p class="text-xs text-blue-400 mt-1">Auto-indexed</p>
+                                    </div>
+                                    
+                                    <div class="absolute left-1/2 transform -translate-x-1/2 top-40">
+                                        <div class="flex flex-col items-center">
+                                            <i class="fa-solid fa-arrow-down text-verana text-xl mb-2"></i>
+                                            <p class="text-xs text-verana">Direct Interaction</p>
+                                            <p class="text-xs text-gray-400">(no intermediaries)</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="absolute right-16 bottom-32">
+                                        <div class="flex items-center space-x-2 transform rotate-45">
+                                            <div class="w-16 h-0.5 bg-blue-400"></div>
+                                            <i class="fa-solid fa-arrow-down text-blue-400"></i>
+                                        </div>
+                                        <p class="text-xs text-blue-400 mt-1 transform -rotate-45">Discover</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-green-900/10 border border-green-700/30 rounded-2xl p-8">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
+                                    <i class="fa-solid fa-lightbulb text-green-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">The Migration</h3>
+                            </div>
+                            <p class="text-lg text-gray-200 leading-relaxed">
+                                This migration replaces dependency on centralized vendors with autonomous, verifiable ownership, turning digital services into <strong>assets you control</strong>, not permissions you rent.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Call to Action -->
+                    <div id="page-cta" class="bg-gradient-to-r from-green-500/10 to-verana/10 border border-green-500/30 rounded-2xl p-12 text-center">
+                        <h2 class="text-3xl font-bold text-white mb-4">Ready to Own Your Digital Services?</h2>
+                        <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                            Start building self-sovereign services that you truly own and control.
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                            <span class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2 cursor-pointer">
+                                <i class="fa-solid fa-key"></i>
+                                <span>Start Building</span>
+                            </span>
+                            <span class="border-2 border-gray-600 hover:border-green-500 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 cursor-pointer">
+                                View Migration Guide
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Content Section -->
+<section id="related-content" class="bg-gray-900 py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-12 text-center">Related Concepts</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-globe text-blue-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Digital Sovereignty</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Reclaim control over your digital presence and break free from platform dependency.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Learn More</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+                
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-magnifying-glass text-green-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Trust &amp; Discovery</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Be discovered based on verifiable credentials, not advertising budgets.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Explore</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+                
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-code text-purple-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Open Standards</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Built on open protocols that ensure interoperability and prevent lock-in.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>View Standards</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="bg-gray-900 border-t border-gray-800 py-16">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12 mb-12">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-white">Verana</span>
+                    </div>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty.
+                    </p>
+                    <div class="flex space-x-4">
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-github"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-discord"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Verana</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Principles</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Foundation</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Press</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Developers</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Docs</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">GitHub</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Specifications</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Trust Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Public Registry Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Trust Registry Query Protocol</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col sm:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">© 2025 Verana Foundation. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 sm:mt-0">
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Privacy Policy</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Terms of Service</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Cookie Policy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</body></html>
