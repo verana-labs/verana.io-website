@@ -1234,6 +1234,9 @@ video {
 .visible {
   visibility: visible;
 }
+.collapse {
+  visibility: collapse;
+}
 .static {
   position: static;
 }
@@ -1721,6 +1724,9 @@ video {
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
+.grid-cols-\[auto_auto_auto\] {
+  grid-template-columns: auto auto auto;
+}
 .flex-col {
   flex-direction: column;
 }
@@ -1774,6 +1780,9 @@ video {
 }
 .gap-8 {
   gap: 2rem;
+}
+.gap-\[var\(--header-gap\)\] {
+  gap: var(--header-gap);
 }
 .space-x-1 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
@@ -1840,11 +1849,20 @@ video {
   margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(2rem * var(--tw-space-y-reverse));
 }
+.justify-self-end {
+  justify-self: end;
+}
+.justify-self-center {
+  justify-self: center;
+}
 .overflow-hidden {
   overflow: hidden;
 }
 .overflow-x-auto {
   overflow-x: auto;
+}
+.overflow-y-auto {
+  overflow-y: auto;
 }
 .overflow-x-hidden {
   overflow-x: hidden;
@@ -2503,6 +2521,10 @@ video {
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
+}
+.px-\[var\(--header-gap\)\] {
+  padding-left: var(--header-gap);
+  padding-right: var(--header-gap);
 }
 .py-1 {
   padding-top: 0.25rem;
@@ -3339,11 +3361,6 @@ video {
 
   .lg\:p-12 {
     padding: 3rem;
-  }
-
-  .lg\:px-10 {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
   }
 
   .lg\:px-8 {
