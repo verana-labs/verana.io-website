@@ -111,7 +111,7 @@ impact:
   cards:
     - title: "Government Digital ID"
       description: "Issue privacy-preserving national IDs and let citizens prove attributes anywhere—without centralizing their data."
-      image: "/images/uxpilot/impact-government-id.png"
+      image: "/images/purple/civilreg2.webp"
       icon: { name: "id-card", style: "solid", color: "text-blue-400", bg: "bg-blue-500/20" }
       highlights:
         - "Authorized issuers & verifiers"
@@ -119,7 +119,7 @@ impact:
         - "Selective disclosure proofs"
     - title: "Decentralized Social Networks"
       description: "Give creators portable audiences and verifiable provenance, while curators trust what flows through their feeds."
-      image: "/images/uxpilot/impact-social.png"
+      image: "/images/purple/social2.webp"
       icon: { name: "share-nodes", style: "solid", color: "text-purple-400", bg: "bg-purple-500/20" }
       highlights:
         - "Signed content provenance"
@@ -127,7 +127,7 @@ impact:
         - "Spam-resilient discovery"
     - title: "Trusted AI Assistants"
       description: "Equip AI agents with signed credentials so people see who stands behind every action, policy, or recommendation."
-      image: "/images/uxpilot/impact-ai.png"
+      image: "/images/purple/medit1.webp"
       icon: { name: "robot", style: "solid", color: "text-green-400", bg: "bg-green-500/20" }
       highlights:
         - "Provable policy attestations"
@@ -135,7 +135,7 @@ impact:
         - "Verifiable service providers"
     - title: "Healthcare Workforce Mobility"
       description: "Move clinicians across borders with verifiable licenses, training, and employment credentials."
-      image: "/images/uxpilot/impact-healthcare.png"
+      image: "/images/purple/healthcare2.webp"
       icon: { name: "user-doctor", style: "solid", color: "text-red-400", bg: "bg-red-500/20" }
       highlights:
         - "Cross-jurisdiction verification"
@@ -143,7 +143,7 @@ impact:
         - "Automated onboarding flows"
     - title: "Hospitality Networks"
       description: "Certify properties, staff, and guest experiences with verifiable credentials that eliminate middlemen."
-      image: "/images/uxpilot/impact-hospitality.png"
+      image: "/images/purple/hotel1.webp"
       icon: { name: "hotel", style: "solid", color: "text-yellow-400", bg: "bg-yellow-500/20" }
       highlights:
         - "Trusted property registries"
