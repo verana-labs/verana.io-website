@@ -18,7 +18,7 @@
   </url><url>
     <loc>//localhost:1313/page/industry-use-cases/government-id/</loc>
   </url><url>
-    <loc>//localhost:1313/page/industry-use-cases/healthcare-workforce-mobility/</loc>
+    <loc>//localhost:1313/archive/healthcare-workforce-mobility-backup/</loc>
   </url><url>
     <loc>//localhost:1313/page/industry-use-cases/healthcare-workforce-mobility/</loc>
   </url><url>
@@ -28,7 +28,7 @@
   </url><url>
     <loc>//localhost:1313/page/community/integrators/</loc>
   </url><url>
-    <loc>//localhost:1313/page/why-verana/trust/</loc>
+    <loc>//localhost:1313/archive/trust/</loc>
   </url><url>
     <loc>//localhost:1313/page/why-verana/trust/</loc>
   </url><url>
@@ -46,11 +46,11 @@
   </url><url>
     <loc>//localhost:1313/page/build/verifiable-services/</loc>
   </url><url>
-    <loc>//localhost:1313/page/why-verana/discovery/</loc>
+    <loc>//localhost:1313/archive/discovery/</loc>
   </url><url>
     <loc>//localhost:1313/page/why-verana/discovery/</loc>
   </url><url>
-    <loc>//localhost:1313/page/why-verana/ownership/</loc>
+    <loc>//localhost:1313/archive/ownership/</loc>
   </url><url>
     <loc>//localhost:1313/page/why-verana/ownership/</loc>
   </url><url>
@@ -60,7 +60,7 @@
   </url><url>
     <loc>//localhost:1313/page/trust-engine/trust-deposit/</loc>
   </url><url>
-    <loc>//localhost:1313/page/trust-engine/</loc>
+    <loc>//localhost:1313/archive/trust-engine/</loc>
   </url><url>
     <loc>//localhost:1313/page/build/trust-networks/</loc>
   </url><url>
@@ -68,7 +68,7 @@
   </url><url>
     <loc>//localhost:1313/</loc>
   </url><url>
-    <loc>//localhost:1313/page/build/verifiable-user-agents/</loc>
+    <loc>//localhost:1313/archive/verifiable-user-agents/</loc>
   </url><url>
     <loc>//localhost:1313/page/build/verifiable-user-agents/</loc>
   </url><url>

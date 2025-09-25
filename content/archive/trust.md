@@ -1,6 +1,5 @@
 ---
 title: Making the Internet trustworthy
-url: "/page/why-verana/trust"
 ---
 
 ## The Trust Problem

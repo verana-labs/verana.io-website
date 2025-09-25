@@ -1,6 +1,5 @@
 ---
 title: Service Ownership
-url: "/page/why-verana/ownership"
 ---
 
 ## The No Ownership Problem

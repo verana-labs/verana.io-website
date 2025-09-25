@@ -1,6 +1,5 @@
 ---
 title: Service Discovery
-url: "/page/why-verana/discovery"
 ---
 
 ## Why Discoverability is Broken

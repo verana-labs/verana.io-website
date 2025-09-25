@@ -1,6 +1,5 @@
 ---
 title: Healthcare Workforce Mobility
-url: "/page/industry-use-cases/healthcare-workforce-mobility"
 ---
 
 ## The Problem: Fragmented Verification

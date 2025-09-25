@@ -1,7 +1,6 @@
 ---
 title: Trust Engine
 subtitle: "Verana is public digital infrastructure that delivers trust you can verify. Its Trust Engine powers fair, transparent, and decentralized interactions."
-url: "/page/trust-engine"
 hero_icon: "fa-solid fa-gears"
 disable_content_wrapper: true
 components_section:
