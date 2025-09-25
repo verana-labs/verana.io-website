@@ -19,7 +19,7 @@ problems_overview:
       icon_bg_class: "bg-orange-500/20"
       icon_color_class: "text-orange-400"
       title: Ownership Illusion
-      text: "You don't own your digital services or audience — you just rent space from centralized platforms."
+      text: "You don't own your digital services or audience: you just rent space from centralized platforms."
     - wrapper_class: "bg-green-900/10"
       border_class: "border-green-700/30"
       icon: "fa-solid fa-magnifying-glass"

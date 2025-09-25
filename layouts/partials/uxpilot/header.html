@@ -125,8 +125,8 @@
 {{ $navItems := $navScratch.Get "items" }}
 {{ $logo := or .Params.header.logo .Site.Params.header.logo "/images/purple/logo.svg" }}
 <header id="header" class="bg-black/75 backdrop-blur-lg border-b border-gray-800/50 sticky top-0 z-50">
-  <div class="container mx-auto px-6 py-4">
-    <div class="flex items-center justify-between">
+  <div class="w-full px-6 lg:px-10 py-4">
+    <div class="flex items-center justify-between gap-6">
       <div class="flex items-center">
         <a href="/" class="flex items-center space-x-4 cursor-pointer">
           <span class="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-verana to-verana-light shadow-lg shadow-verana/30">
@@ -135,15 +135,12 @@
           <span class="text-2xl font-bold text-white">{{ .Site.Title }}</span>
         </a>
       </div>
-      <nav class="hidden lg:flex items-center space-x-8">
+      <nav class="hidden lg:flex flex-1 items-center justify-center gap-6 min-w-0 px-4">
         {{ range $item := $navItems }}
           {{ $hasChildren := gt (len $item.children) 0 }}
-          <div class="relative group">
-            <a class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200" href="{{ default "#" $item.href }}">
-              <span>{{ $item.label }}</span>
-              {{ if $hasChildren }}
-                <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
-              {{ end }}
+          <div class="relative group flex-shrink-0">
+            <a class="text-gray-300 hover:text-verana whitespace-nowrap transition-colors duration-200" href="{{ default "#" $item.href }}">
+              {{ $item.label }}
             </a>
             {{ if $hasChildren }}
               <div class="absolute left-0 top-full mt-2 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
@@ -151,7 +148,7 @@
                 <ul class="pt-2 pb-4">
                   {{ range $child := $item.children }}
                     <li>
-                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="{{ $child.href }}">
+                      <a class="block px-5 py-2 text-gray-300 hover:text-verana hover:bg-verana/10 transition-colors duration-150" href="{{ $child.href }}">
                         {{ $child.label }}
                       </a>
                     </li>
@@ -162,9 +159,9 @@
           </div>
         {{ end }}
       </nav>
-      <div class="flex items-center space-x-4">
+      <div class="flex items-center space-x-3">
         {{ with .Site.Params.header.testnet }}
-          <a href="{{ .url | default "#" }}" class="bg-verana hover:bg-verana-dark text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer">
+          <a href="{{ .url | default "#" }}" class="hidden md:inline-flex bg-verana hover:bg-verana-dark text-white px-5 py-2.5 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer whitespace-nowrap">
             {{ .label | default "Testnet" }}
           </a>
         {{ end }}
@@ -179,18 +176,18 @@
       {{ range $item := $navItems }}
         {{ $hasChildren := gt (len $item.children) 0 }}
         <div>
-          <a class="block text-gray-200 font-medium hover:text-white transition-colors duration-200" href="{{ default "#" $item.href }}">{{ $item.label }}</a>
+          <a class="block text-gray-200 font-medium hover:text-verana transition-colors duration-200 whitespace-nowrap" href="{{ default "#" $item.href }}">{{ $item.label }}</a>
           {{ if $hasChildren }}
             <ul class="mt-2 space-y-2 border-l border-gray-700/60 pl-4">
               {{ range $child := $item.children }}
-                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="{{ $child.href }}">{{ $child.label }}</a></li>
+                <li><a class="block text-gray-400 hover:text-verana transition-colors duration-150 whitespace-nowrap" href="{{ $child.href }}">{{ $child.label }}</a></li>
               {{ end }}
             </ul>
           {{ end }}
         </div>
       {{ end }}
       {{ with .Site.Params.header.testnet }}
-        <a href="{{ .url | default "#" }}" class="block text-center bg-verana hover:bg-verana-dark text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-[1.02]">
+        <a href="{{ .url | default "#" }}" class="block text-center bg-verana hover:bg-verana-dark text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-[1.02] whitespace-nowrap">
           {{ .label | default "Testnet" }}
         </a>
       {{ end }}
