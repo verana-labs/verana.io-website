@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Verifiable User Agents | Verana</title>
+    <meta name="description" content="Verifiable trust for digital ecosystems" />
+    
+    <link rel="stylesheet" href="/css/input.css" />
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"></noscript>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Verana">
+<meta property="og:title" content="Verifiable User Agents | Verana">
+<meta property="og:description" content="The Open Trust Layer for the Internet">
+<meta property="og:url" content="/page/build/verifiable-user-agents/">
+<meta property="og:image" content="/images/verana-og.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Verifiable User Agents | Verana">
+<meta name="twitter:description" content="The Open Trust Layer for the Internet">
+<meta name="twitter:image" content="/images/verana-og.jpg">
+
+  </head>
+  
+  
+  <body class="min-h-screen flex flex-col bg-black text-white overflow-x-hidden font-sans">
+    
+
+
+
+
+  
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+    
+    
+
+    
+
+    
+    
+    
+    
+      
+    
+  
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+    
+    
+
+    
+
+    
+    
+    
+    
+      
+    
+  
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+    
+    
+
+    
+
+    
+    
+    
+    
+      
+    
+  
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+    
+    
+
+    
+
+    
+    
+    
+    
+      
+    
+  
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+    
+    
+
+    
+      
+      
+    
+
+    
+    
+    
+    
+      
+    
+  
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+    
+    
+
+    
+      
+      
+    
+
+    
+    
+    
+    
+      
+    
+  
+
+
+
+
+<header id="header" class="bg-black/75 backdrop-blur-lg border-b border-gray-800/50 sticky top-0 z-50">
+  <div class="container mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center">
+        <a href="/" class="flex items-center space-x-3 cursor-pointer">
+          <img src="/images/purple/logo.svg" alt="Verana logo" class="h-10 w-auto" />
+          <span class="text-2xl font-bold text-white">Verana</span>
+        </a>
+      </div>
+      <nav class="hidden lg:flex items-center space-x-10">
+        
+          
+          <div class="relative group">
+            <a class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200" href="/page/why-verana">
+              <span>Why Verana</span>
+              
+                <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+              
+            </a>
+            
+              <div class="absolute left-0 top-full mt-2 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
+                <span class="absolute inset-x-0 -top-2 h-2 bg-transparent"></span>
+                <ul class="pt-2 pb-4">
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/why-verana">
+                        Three Systemic Problems
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/why-verana/trust">
+                        Solving Trust
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/why-verana/ownership">
+                        Solving Ownership
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/why-verana/discovery">
+                        Solving Discovery
+                      </a>
+                    </li>
+                  
+                </ul>
+              </div>
+            
+          </div>
+        
+          
+          <div class="relative group">
+            <a class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200" href="/page/build">
+              <span>Build</span>
+              
+                <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+              
+            </a>
+            
+              <div class="absolute left-0 top-full mt-2 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
+                <span class="absolute inset-x-0 -top-2 h-2 bg-transparent"></span>
+                <ul class="pt-2 pb-4">
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/build">
+                        Own the Rails
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/build/trust-networks">
+                        Trust Networks
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/build/verifiable-services">
+                        Self Sovereign Services
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/build/verifiable-user-agents">
+                        Verifiable User Agents
+                      </a>
+                    </li>
+                  
+                </ul>
+              </div>
+            
+          </div>
+        
+          
+          <div class="relative group">
+            <a class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200" href="/page/trust-engine">
+              <span>Trust Engine</span>
+              
+                <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+              
+            </a>
+            
+              <div class="absolute left-0 top-full mt-2 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
+                <span class="absolute inset-x-0 -top-2 h-2 bg-transparent"></span>
+                <ul class="pt-2 pb-4">
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/trust-engine">
+                        Overview
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/trust-engine/trust-resolver">
+                        Trust Resolver
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/trust-engine/trust-deposit">
+                        Trust Deposit
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/trust-engine/trust-reputation">
+                        Trust Reputation
+                      </a>
+                    </li>
+                  
+                </ul>
+              </div>
+            
+          </div>
+        
+          
+          <div class="relative group">
+            <a class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200" href="/page/industry-use-cases">
+              <span>Industry Use Cases</span>
+              
+                <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+              
+            </a>
+            
+              <div class="absolute left-0 top-full mt-2 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
+                <span class="absolute inset-x-0 -top-2 h-2 bg-transparent"></span>
+                <ul class="pt-2 pb-4">
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases">
+                        Overview
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases/government-id">
+                        🆔 Government Verifiable Citizen ID
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases/healthcare-workforce-mobility">
+                        🏥 Healthcare Workforce Mobility
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases/notaries">
+                        📜 Notaries: Power of Attorney
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases/hotel-management">
+                        🏩 Decentralizing Hotel Management
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases/ai-assistants">
+                        🤖 AI Assistants
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases/decentralized-social-network">
+                        🗣️ Decentralized Social Networks
+                      </a>
+                    </li>
+                  
+                </ul>
+              </div>
+            
+          </div>
+        
+          
+          <div class="relative group">
+            <a class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200" href="/page/community/developers">
+              <span>Community</span>
+              
+                <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+              
+            </a>
+            
+              <div class="absolute left-0 top-full mt-2 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
+                <span class="absolute inset-x-0 -top-2 h-2 bg-transparent"></span>
+                <ul class="pt-2 pb-4">
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/community/developers">
+                        Developer Hub
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/community/integrators">
+                        Integrators
+                      </a>
+                    </li>
+                  
+                </ul>
+              </div>
+            
+          </div>
+        
+          
+          <div class="relative group">
+            <a class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200" href="/page/about/team">
+              <span>About</span>
+              
+                <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+              
+            </a>
+            
+              <div class="absolute left-0 top-full mt-2 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
+                <span class="absolute inset-x-0 -top-2 h-2 bg-transparent"></span>
+                <ul class="pt-2 pb-4">
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/about/team">
+                        Team
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/">
+                        Whitepaper
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/about/roadmap">
+                        Roadmap
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/about/governance">
+                        Governance
+                      </a>
+                    </li>
+                  
+                </ul>
+              </div>
+            
+          </div>
+        
+      </nav>
+      <div class="flex items-center space-x-4">
+        
+        <button id="nav-toggle" class="lg:hidden text-white" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu-mobile">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="nav-menu-mobile" class="lg:hidden hidden border-t border-gray-800 bg-black/95" aria-hidden="true">
+    <nav class="container mx-auto px-6 py-4 space-y-4">
+      
+        
+        <div>
+          <a class="block text-gray-200 font-medium hover:text-white transition-colors duration-200" href="/page/why-verana">Why Verana</a>
+          
+            <ul class="mt-2 space-y-2 border-l border-gray-700/60 pl-4">
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/why-verana">Three Systemic Problems</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/why-verana/trust">Solving Trust</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/why-verana/ownership">Solving Ownership</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/why-verana/discovery">Solving Discovery</a></li>
+              
+            </ul>
+          
+        </div>
+      
+        
+        <div>
+          <a class="block text-gray-200 font-medium hover:text-white transition-colors duration-200" href="/page/build">Build</a>
+          
+            <ul class="mt-2 space-y-2 border-l border-gray-700/60 pl-4">
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/build">Own the Rails</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/build/trust-networks">Trust Networks</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/build/verifiable-services">Self Sovereign Services</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/build/verifiable-user-agents">Verifiable User Agents</a></li>
+              
+            </ul>
+          
+        </div>
+      
+        
+        <div>
+          <a class="block text-gray-200 font-medium hover:text-white transition-colors duration-200" href="/page/trust-engine">Trust Engine</a>
+          
+            <ul class="mt-2 space-y-2 border-l border-gray-700/60 pl-4">
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/trust-engine">Overview</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/trust-engine/trust-resolver">Trust Resolver</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/trust-engine/trust-deposit">Trust Deposit</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/trust-engine/trust-reputation">Trust Reputation</a></li>
+              
+            </ul>
+          
+        </div>
+      
+        
+        <div>
+          <a class="block text-gray-200 font-medium hover:text-white transition-colors duration-200" href="/page/industry-use-cases">Industry Use Cases</a>
+          
+            <ul class="mt-2 space-y-2 border-l border-gray-700/60 pl-4">
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/industry-use-cases">Overview</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/industry-use-cases/government-id">🆔 Government Verifiable Citizen ID</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/industry-use-cases/healthcare-workforce-mobility">🏥 Healthcare Workforce Mobility</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/industry-use-cases/notaries">📜 Notaries: Power of Attorney</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/industry-use-cases/hotel-management">🏩 Decentralizing Hotel Management</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/industry-use-cases/ai-assistants">🤖 AI Assistants</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/industry-use-cases/decentralized-social-network">🗣️ Decentralized Social Networks</a></li>
+              
+            </ul>
+          
+        </div>
+      
+        
+        <div>
+          <a class="block text-gray-200 font-medium hover:text-white transition-colors duration-200" href="/page/community/developers">Community</a>
+          
+            <ul class="mt-2 space-y-2 border-l border-gray-700/60 pl-4">
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/community/developers">Developer Hub</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/community/integrators">Integrators</a></li>
+              
+            </ul>
+          
+        </div>
+      
+        
+        <div>
+          <a class="block text-gray-200 font-medium hover:text-white transition-colors duration-200" href="/page/about/team">About</a>
+          
+            <ul class="mt-2 space-y-2 border-l border-gray-700/60 pl-4">
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/about/team">Team</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/">Whitepaper</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/about/roadmap">Roadmap</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/about/governance">Governance</a></li>
+              
+            </ul>
+          
+        </div>
+      
+      
+    </nav>
+  </div>
+</header>
+
+    <main id="content" class="flex-1">
+      
+  
+
+  
+  
+  
+  
+
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+      
+      
+        
+        
+        
+        
+        
+        
+          
+        
+        
+          
+        
+      
+    
+  
+  
+  
+    
+    
+      
+      
+    
+  
+  <section class="relative bg-gray-900 py-16 lg:py-24 overflow-hidden min-h-[320px] flex items-center">
+    <div class="absolute inset-0 opacity-50" style="background: radial-gradient(circle at 20% 50%, rgba(118, 62, 240, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(118, 62, 240, 0.1) 0%, transparent 50%), radial-gradient(circle at 40% 80%, rgba(118, 62, 240, 0.08) 0%, transparent 50%);"></div>
+    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 25% 25%, rgba(118, 62, 240, 0.1) 2px, transparent 2px), radial-gradient(circle at 75% 75%, rgba(118, 62, 240, 0.08) 1px, transparent 1px); background-size: 60px 60px, 40px 40px;"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="max-w-4xl mx-auto">
+        <nav class="flex flex-wrap items-center gap-2 text-sm text-gray-400 mb-8" aria-label="Breadcrumb">
+          
+            
+            
+              <a class="hover:text-white transition-colors duration-200" href="/">Home</a>
+            
+          
+            
+              <i class="fa-solid fa-chevron-right text-xs"></i>
+            
+            
+              <a class="hover:text-white transition-colors duration-200" href="/page/build/">Own the Rails</a>
+            
+          
+            
+              <i class="fa-solid fa-chevron-right text-xs"></i>
+            
+            
+              <span class="text-verana">Verifiable User Agents</span>
+            
+          
+        </nav>
+        <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-tight flex items-center flex-wrap gap-4">
+          
+          <span class="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">Verifiable User Agents</span>
+        </h1>
+        
+      </div>
+    </div>
+  </section>
+
+
+  
+    <section class="bg-black text-white">
+      <div class="container mx-auto px-6 py-16 lg:py-24">
+        <div class="max-w-4xl mx-auto">
+          <article class="prose prose-invert prose-lg max-w-none bg-gray-900/60 border border-gray-800 rounded-3xl p-8 shadow-[0_0_60px_-30px_rgba(79,70,229,0.45)]">
+            <p>Verifiable User Agents (VUAs) are a new category of applications that aggregate and interact with decentralized Verifiable Services (VSs). Instead of relying on centralized APIs or walled-garden platforms, these apps query the Verana Trust Resolver, making any compatible Verifiable Service instantly visible and usable.</p>
+<h3 id="what-vuas-can-be">What VUAs Can Be</h3>
+<p>VUAs open the door to a wide variety of decentralized applications:</p>
+<ul>
+<li>🌐 Decentralized Social Networks: E.g., an X-like network built from decentralized Social Channels.</li>
+<li>🤖 Chatbot &amp; AI Assistant Browsers: Apps for discovering and talking with official chat services and personal AI assistants.</li>
+<li>🎬 Decentralized Video Apps: Streaming apps that aggregate film catalogs published by creators.</li>
+<li>🛒 E-commerce Aggregators: Apps that list all businesses using e-commerce Verifiable Services.</li>
+<li>…and many more innovations waiting to be built.</li>
+</ul>
+<h3 id="business-models-for-vua-builders">Business Models for VUA Builders</h3>
+<p>VUA developers can also create their own ecosystem within Verana. This allows them to:</p>
+<ul>
+<li>Define their Ecosystem Governance Framework (EGF).</li>
+<li>Issue or sell credentials to Verifiable Service owners.</li>
+<li>Control how services appear within their VUA app. When a service owner attaches such a credential to their Verifiable Service’s, they automatically become discoverable inside the VUA.</li>
+</ul>
+<h3 id="why-this-matters">Why This Matters</h3>
+<p>Traditional apps depend on opaque algorithms and advertising-driven models. VUAs flip this model: visibility and ranking are based on verifiable credentials and ecosystem-defined governance, ensuring fairness, privacy, and transparency.</p>
+
+          </article>
+        </div>
+      </div>
+    </section>
+  
+
+    </main>
+    
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+    
+      
+      
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+      
+      
+        
+      
+    
+      
+      
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+      
+      
+        
+      
+    
+      
+      
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+        
+        
+        
+          
+        
+      
+      
+      
+        
+      
+    
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+ 
+
+
+
+
+  
+    
+      
+      
+      
+        
+        
+        
+        
+        
+        
+      
+    
+      
+      
+      
+        
+        
+        
+        
+        
+        
+      
+    
+      
+      
+      
+        
+        
+        
+        
+        
+        
+      
+    
+      
+      
+      
+        
+        
+        
+        
+        
+        
+      
+    
+  
+
+
+
+
+<footer id="footer" class="bg-gray-900 border-t border-gray-800 py-16">
+  <div class="container mx-auto px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-4 gap-12 mb-12">
+        <div class="lg:col-span-1">
+          <div class="flex items-center space-x-3 mb-6">
+            <img src="/images/purple/logo.svg" alt="Verana logo" class="h-10 w-auto" />
+            <span class="text-2xl font-bold text-white">Verana</span>
+          </div>
+          <p class="text-gray-400 mb-8 leading-relaxed">The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty.</p>
+          
+            <div class="flex space-x-4">
+              
+                <a href="https://github.com/verana-labs" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer" target="_blank" rel="noopener" aria-label="Github">
+                  
+                    <i class="fa-brands fa-github"></i>
+                  
+                  <span class="sr-only">Github</span>
+                </a>
+              
+                <a href="https://discord.gg/edjaFn252q" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer" target="_blank" rel="noopener" aria-label="Discord">
+                  
+                    <i class="fa-brands fa-discord"></i>
+                  
+                  <span class="sr-only">Discord</span>
+                </a>
+              
+                <a href="https://www.linkedin.com/company/verana-verifiable-trust-network" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer" target="_blank" rel="noopener" aria-label="Linkedin">
+                  
+                    <i class="fa-brands fa-linkedin"></i>
+                  
+                  <span class="sr-only">Linkedin</span>
+                </a>
+              
+                <a href="https://x.com/Verana_io" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer" target="_blank" rel="noopener" aria-label="X">
+                  
+                    <svg viewBox="0 0 24 24" class="w-5 h-5" aria-hidden="true">
+                      <g>
+                        <path d="M21.742 21.75l-7.563-11.179 7.056-8.321h-2.456l-5.691 6.714-4.54-6.714H2.359l7.29 10.776L2.25 21.75h2.456l6.035-7.118 4.818 7.118h6.191-.008zM7.739 3.818L18.81 20.182h-2.447L5.29 3.818h2.447z" fill="currentColor" />
+                      </g>
+                    </svg>
+                  
+                  <span class="sr-only">X</span>
+                </a>
+              
+            </div>
+          
+        </div>
+        
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">Verana</h4>
+            <ul class="space-y-4">
+              
+                <li><a class="text-gray-400 hover:text-white transition-colors duration-200" href="/page/principles">Principles</a></li>
+              
+                <li><a class="text-gray-400 hover:text-white transition-colors duration-200" href="https://verana.foundation">Foundation</a></li>
+              
+                <li><a class="text-gray-400 hover:text-white transition-colors duration-200" href="/page/press">Press</a></li>
+              
+                <li><a class="text-gray-400 hover:text-white transition-colors duration-200" href="/page/identity">Visual Identity</a></li>
+              
+            </ul>
+          </div>
+        
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">Developers</h4>
+            <ul class="space-y-4">
+              
+                <li><a class="text-gray-400 hover:text-white transition-colors duration-200" href="https://docs.verana.io">Docs</a></li>
+              
+                <li><a class="text-gray-400 hover:text-white transition-colors duration-200" href="https://github.com/verana-labs/">Github</a></li>
+              
+            </ul>
+          </div>
+        
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">Specifications</h4>
+            <ul class="space-y-4">
+              
+                <li><a class="text-gray-400 hover:text-white transition-colors duration-200" href="https://verana-labs.github.io/verifiable-trust-spec/">Verifiable Trust Spec</a></li>
+              
+                <li><a class="text-gray-400 hover:text-white transition-colors duration-200" href="https://verana-labs.github.io/verifiable-trust-vpr-spec/">Verifiable Public Registry Spec</a></li>
+              
+                <li><a class="text-gray-400 hover:text-white transition-colors duration-200" href="https://trustoverip.github.io/tswg-trust-registry-protocol/">Trust Registry Query Protocol</a></li>
+              
+            </ul>
+          </div>
+        
+      </div>
+      <div class="border-t border-gray-800 pt-8">
+        <div class="flex flex-col sm:flex-row justify-between items-center">
+          <p class="text-gray-400 text-sm">&copy; 2025 Verana Foundation. All rights reserved.</p>
+          <div class="flex space-x-6 mt-4 sm:mt-0">
+            <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Privacy Policy</span>
+            <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Terms of Service</span>
+            <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Cookie Policy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script>
+        (function(){
+          function initNavToggle(){
+            var toggle = document.getElementById('nav-toggle');
+            var menu = document.getElementById('nav-menu-mobile');
+            if (!toggle || !menu || toggle.dataset.navInitialized === 'true') return;
+            toggle.dataset.navInitialized = 'true';
+            menu.setAttribute('aria-hidden', menu.classList.contains('hidden') ? 'true' : 'false');
+            toggle.setAttribute('aria-expanded', (!menu.classList.contains('hidden')).toString());
+            toggle.addEventListener('click', function(){
+              var isHidden = menu.classList.toggle('hidden');
+              var expanded = !isHidden;
+              toggle.setAttribute('aria-expanded', expanded.toString());
+              menu.setAttribute('aria-hidden', (!expanded).toString());
+            });
+          }
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initNavToggle, { once: true });
+          } else {
+            initNavToggle();
+          }
+        })();
+        (function(){
+          function slugify(text){
+            return text.toString().toLowerCase()
+              .replace(/\s+/g,'-')
+              .replace(/[^\w\-]+/g,'')
+              .replace(/\-\-+/g,'-')
+              .replace(/^-+/, '')
+              .replace(/-+$/, '');
+          }
+          const selector = '.prose h2, .prose h3, .prose h4, .prose h5, .prose h6';
+          document.querySelectorAll(selector).forEach(h => {
+            let id = h.id;
+            if (!id) { id = slugify(h.textContent || ''); h.id = id; }
+            if (!id) return;
+            if (h.querySelector('.heading-anchor-btn')) return;
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'heading-anchor-btn';
+            btn.setAttribute('aria-label','Link to section');
+            btn.textContent = '#';
+            btn.addEventListener('click', (e) => {
+              e.preventDefault();
+              if (history.replaceState) {
+                history.replaceState(null, '', `#${id}`);
+              } else {
+                location.hash = `#${id}`;
+              }
+              scrollToHash(`#${id}`);
+            });
+            h.appendChild(btn);
+          });
+          function updateHeaderOffset(){
+            const header = document.querySelector('header');
+            if (!header) return parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-offset')) || 72;
+            const extra = 8;
+            const off = header.offsetHeight + extra;
+            document.documentElement.style.setProperty('--header-offset', off + 'px');
+            return off;
+          }
+          function scrollToHash(hash){
+            if (!hash) return;
+            const id = hash.replace(/^#/, '');
+            const el = document.getElementById(id);
+            if (!el) return;
+            const off = updateHeaderOffset();
+            const top = el.getBoundingClientRect().top + window.scrollY - off;
+            window.scrollTo({ top, behavior: 'instant' in window ? 'instant' : 'auto' });
+          }
+          document.addEventListener('DOMContentLoaded', () => {
+            updateHeaderOffset();
+            if (location.hash) {
+              setTimeout(() => scrollToHash(location.hash), 0);
+            }
+          });
+          window.addEventListener('hashchange', () => scrollToHash(location.hash));
+        })();
+    </script>
+  </body>
+</html>

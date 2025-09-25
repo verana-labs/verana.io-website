@@ -1,0 +1,950 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trust Deposit and Reputation - Verana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "fontFamily": {
+        "inter": [
+          "Inter",
+          "sans-serif"
+        ]
+      },
+      "colors": {
+        "verana": "#763ef0",
+        "verana-light": "#9f7aea",
+        "verana-dark": "#553c9a"
+      },
+      "animation": {
+        "float": "float 6s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite alternate",
+        "network-pulse": "network-pulse 3s ease-in-out infinite",
+        "deposit-growth": "deposit-growth 3s ease-in-out infinite",
+        "trust-flow": "trust-flow 4s ease-in-out infinite",
+        "reputation-shine": "reputation-shine 4s ease-in-out infinite"
+      },
+      "keyframes": {
+        "float": {
+          "0%, 100%": {
+            "transform": "translateY(0px)"
+          },
+          "50%": {
+            "transform": "translateY(-20px)"
+          }
+        },
+        "pulse-glow": {
+          "0%": {
+            "boxShadow": "0 0 20px rgba(118, 62, 240, 0.3)"
+          },
+          "100%": {
+            "boxShadow": "0 0 40px rgba(118, 62, 240, 0.6)"
+          }
+        },
+        "network-pulse": {
+          "0%, 100%": {
+            "opacity": "0.4"
+          },
+          "50%": {
+            "opacity": "0.8"
+          }
+        },
+        "deposit-growth": {
+          "0%": {
+            "transform": "scale(1)",
+            "opacity": "0.6"
+          },
+          "50%": {
+            "transform": "scale(1.1)",
+            "opacity": "1"
+          },
+          "100%": {
+            "transform": "scale(1)",
+            "opacity": "0.6"
+          }
+        },
+        "trust-flow": {
+          "0%": {
+            "transform": "translateX(-100px)",
+            "opacity": "0"
+          },
+          "50%": {
+            "transform": "translateX(0px)",
+            "opacity": "1"
+          },
+          "100%": {
+            "transform": "translateX(100px)",
+            "opacity": "0"
+          }
+        },
+        "reputation-shine": {
+          "0%": {
+            "transform": "translateX(-100%)",
+            "opacity": "0"
+          },
+          "50%": {
+            "opacity": "1"
+          },
+          "100%": {
+            "transform": "translateX(100%)",
+            "opacity": "0"
+          }
+        }
+      }
+    }
+  }
+};</script>
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        .gradient-mesh {
+            background: radial-gradient(circle at 20% 50%, rgba(118, 62, 240, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(118, 62, 240, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(118, 62, 240, 0.08) 0%, transparent 50%);
+        }
+        .network-bg {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(118, 62, 240, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(118, 62, 240, 0.08) 1px, transparent 1px);
+            background-size: 60px 60px, 40px 40px;
+            animation: network-pulse 4s ease-in-out infinite;
+        }
+        .trust-pattern {
+            background-image: 
+                linear-gradient(45deg, rgba(118, 62, 240, 0.05) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(118, 62, 240, 0.05) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(118, 62, 240, 0.05) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(118, 62, 240, 0.05) 75%);
+            background-size: 40px 40px;
+            background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+        }
+        .deposit-bar {
+            background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);
+            height: 8px;
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+        .reputation-stars {
+            background: linear-gradient(90deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-black text-white overflow-x-hidden font-custom">
+
+<!-- Header -->
+<header id="header" class="bg-black/95 backdrop-blur-sm border-b border-gray-800/50 sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <span class="flex items-center space-x-3 cursor-pointer">
+                    <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-white">Verana</span>
+                </span>
+            </div>
+            
+            <nav class="hidden lg:flex items-center space-x-8">
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Why Verana</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Build</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-verana flex items-center space-x-1 transition-colors duration-200">
+                        <span>Trust Engine</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Industry Use Cases</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">Community</span>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">About</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <span class="bg-verana hover:bg-verana-dark text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer">
+                    Testnet
+                </span>
+                <button class="lg:hidden text-white">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Page Hero Section -->
+<section id="page-hero" class="relative bg-gray-900 py-16 lg:py-24 overflow-hidden h-[450px] flex items-center">
+    <div class="absolute inset-0 gradient-mesh opacity-50"></div>
+    <div class="absolute inset-0 network-bg opacity-20"></div>
+    <div class="absolute inset-0 trust-pattern opacity-10"></div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <!-- Breadcrumb -->
+            <nav class="flex items-center space-x-2 text-sm text-gray-400 mb-8">
+                <span class="hover:text-white cursor-pointer">Home</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="hover:text-white cursor-pointer">Trust Engine</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="text-verana">Trust Deposit and Reputation</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4 mb-6">
+                <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center animate-pulse-glow">
+                    <i class="fa-solid fa-piggy-bank text-verana text-2xl"></i>
+                </div>
+                <h1 class="text-4xl lg:text-6xl font-bold leading-tight">
+                    <span class="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">Trust Deposit</span>
+                    <br>
+                    <span class="bg-gradient-to-r from-verana to-verana-light bg-clip-text text-transparent">&amp; Reputation</span>
+                </h1>
+            </div>
+            
+            <p class="text-xl lg:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+                A stake-based system that grows with participation and builds transparent, verifiable reputation across decentralized trust networks.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content Section -->
+<section id="main-content" class="bg-black py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12">
+                <!-- Sidebar Navigation -->
+                <aside id="sidebar-nav" class="lg:col-span-1">
+                    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky top-24">
+                        <h3 class="text-lg font-semibold text-white mb-6">Trust Engine</h3>
+                        <nav class="space-y-3">
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Trust Resolver</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Service Directory</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Trust Registries</span>
+                            <span class="block text-verana font-medium cursor-pointer">Trust Deposit &amp; Reputation</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Credential Verification</span>
+                        </nav>
+                        
+                        <div class="mt-8 pt-6 border-t border-gray-700">
+                            <h4 class="text-sm font-semibold text-white mb-4">Quick Links</h4>
+                            <div class="space-y-2">
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Slash Mechanisms</span>
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Reputation Scoring</span>
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Governance Framework</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                
+                <!-- Content Area -->
+                <div id="content-area" class="lg:col-span-3">
+                    <!-- Trust Deposit Introduction -->
+                    <div id="trust-deposit-intro" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Trust Deposit</h2>
+                        
+                        <div class="bg-verana/10 border border-verana/30 rounded-2xl p-8 mb-8">
+                            <p class="text-xl text-gray-200 leading-relaxed">
+                                A <strong>Trust Deposit</strong> is a stake within a VPR that grows automatically as participants interact with the ecosystem. Each participant maintains their own individual trust deposit, which reflects their activity and contribution to the trust network.
+                            </p>
+                        </div>
+                        
+                        <!-- Visual Trust Deposit Representation -->
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+                            <h3 class="text-2xl font-semibold text-white mb-6 text-center">Trust Deposit Growth Visualization</h3>
+                            
+                            <div class="grid md:grid-cols-3 gap-6">
+                                <div class="text-center">
+                                    <div class="w-20 h-20 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4 animate-deposit-growth">
+                                        <i class="fa-solid fa-coins text-white text-2xl"></i>
+                                    </div>
+                                    <h4 class="text-lg font-semibold text-white mb-2">Initial Deposit</h4>
+                                    <div class="bg-gray-800 rounded-full h-3 mb-2">
+                                        <div class="deposit-bar" style="width: 30%"></div>
+                                    </div>
+                                    <p class="text-gray-300 text-sm">Starting participation</p>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <div class="w-20 h-20 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 animate-deposit-growth" style="animation-delay: 0.5s">
+                                        <i class="fa-solid fa-chart-line text-white text-2xl"></i>
+                                    </div>
+                                    <h4 class="text-lg font-semibold text-white mb-2">Growing Activity</h4>
+                                    <div class="bg-gray-800 rounded-full h-3 mb-2">
+                                        <div class="deposit-bar" style="width: 65%"></div>
+                                    </div>
+                                    <p class="text-gray-300 text-sm">Credential issuance &amp; verification</p>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <div class="w-20 h-20 bg-gradient-to-br from-verana to-verana-light rounded-full flex items-center justify-center mx-auto mb-4 animate-deposit-growth" style="animation-delay: 1s">
+                                        <i class="fa-solid fa-trophy text-white text-2xl"></i>
+                                    </div>
+                                    <h4 class="text-lg font-semibold text-white mb-2">Established Trust</h4>
+                                    <div class="bg-gray-800 rounded-full h-3 mb-2">
+                                        <div class="deposit-bar" style="width: 90%"></div>
+                                    </div>
+                                    <p class="text-gray-300 text-sm">High ecosystem participation</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- How Trust Deposits Grow -->
+                    <div id="deposit-growth" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">How Trust Deposits Grow</h2>
+                        
+                        <div class="space-y-8">
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300">
+                                <div class="flex items-start space-x-6">
+                                    <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-check-circle text-blue-400 text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-2xl font-semibold text-white mb-4">Validation Process</h3>
+                                        <p class="text-gray-300 leading-relaxed text-lg">
+                                            When a validation process is executed, the <strong>trust deposits of both the applicant and the validator</strong> increase, rewarding participation in the verification ecosystem.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300">
+                                <div class="flex items-start space-x-6">
+                                    <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-certificate text-green-400 text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-2xl font-semibold text-white mb-4">Credential Issuance &amp; Verification</h3>
+                                        <p class="text-gray-300 leading-relaxed text-lg mb-4">
+                                            If the ecosystem has enabled <strong>pay-per-issuance</strong> and/or <strong>pay-per-verification</strong>, the trust deposits of all participants involved in the permission tree grow each time a credential is issued or verified.
+                                        </p>
+                                        <div class="bg-green-900/20 border border-green-700/30 rounded-xl p-4">
+                                            <p class="text-green-200 text-sm">
+                                                Additionally, the trust deposits of involved user agents and wallet user agents are also incremented.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300">
+                                <div class="flex items-start space-x-6">
+                                    <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-folder-open text-purple-400 text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-2xl font-semibold text-white mb-4">Service Directory Participation</h3>
+                                        <p class="text-gray-300 leading-relaxed text-lg">
+                                            Registering or renewing a DID in the <strong>service directory</strong> increases the trust deposit of the participant who executes the transaction, encouraging active ecosystem participation.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Conceptual Model -->
+                    <div id="conceptual-model" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Conceptual Model</h2>
+                        
+                        <div class="bg-gradient-to-br from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-8 mb-8">
+                            <div class="flex items-start space-x-6">
+                                <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-percentage text-verana text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-semibold text-white mb-4">Percentage-Based Deduction System</h3>
+                                    <p class="text-xl text-gray-200 leading-relaxed">
+                                        The <strong>trust deposit</strong> functions like a <strong>percentage-based deduction</strong> applied to circulating trust fees. These deductions accumulate in individual deposits as a reflection of ongoing participation and service provision.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Fee Distribution Example -->
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                            <h3 class="text-2xl font-semibold text-white mb-6">Fee Distribution Example</h3>
+                            
+                            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                                <div class="bg-black rounded-xl p-6 border border-gray-600">
+                                    <h4 class="text-lg font-semibold text-white mb-4 flex items-center">
+                                        <i class="fa-solid fa-coins text-yellow-400 mr-3"></i>
+                                        Transaction Fees
+                                    </h4>
+                                    <div class="space-y-3">
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-gray-300">Base Fee</span>
+                                            <span class="text-white font-mono">100 TUs</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-gray-300">Additional (20%)</span>
+                                            <span class="text-verana font-mono">+20 TUs</span>
+                                        </div>
+                                        <div class="border-t border-gray-600 pt-3">
+                                            <div class="flex justify-between items-center font-semibold">
+                                                <span class="text-white">Total Charged</span>
+                                                <span class="text-white font-mono">120 TUs</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-black rounded-xl p-6 border border-gray-600">
+                                    <h4 class="text-lg font-semibold text-white mb-4 flex items-center">
+                                        <i class="fa-solid fa-chart-pie text-green-400 mr-3"></i>
+                                        Distribution Split
+                                    </h4>
+                                    <div class="space-y-3">
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-gray-300">Liquid (80%)</span>
+                                            <span class="text-green-400 font-mono">80 TUs</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-gray-300">Trust Deposit (20%)</span>
+                                            <span class="text-verana font-mono">20 TUs</span>
+                                        </div>
+                                        <div class="border-t border-gray-600 pt-3">
+                                            <div class="flex justify-between items-center font-semibold">
+                                                <span class="text-white">Total Distributed</span>
+                                                <span class="text-white font-mono">100 TUs</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-verana/10 border border-verana/20 rounded-xl p-6">
+                                <p class="text-gray-200 leading-relaxed">
+                                    <strong>Note:</strong> The percentage allocated to trust deposits (e.g., 20%) is configurable and defined by the <strong>VPR governance authority</strong>. This ensures flexibility while maintaining ecosystem-specific control over incentive structures.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Core Purposes -->
+                    <div id="core-purposes" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Core Purposes</h2>
+                        
+                        <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                            The <strong>trust deposit</strong> mechanism is designed to ensure that participants within an ecosystem <strong>adhere to the rules defined in its ecosystem governance framework (EGF)</strong>. It serves as both an incentive and an enforcement tool within decentralized trust infrastructures.
+                        </p>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-green-500/50 transition-all duration-300">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-heart text-green-400 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-semibold text-white mb-3">Incentivize Good Behavior</h3>
+                                        <p class="text-gray-300 leading-relaxed">
+                                            Participants risk losing part of their deposit if they behave dishonestly or violate governance rules.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-blue-500/50 transition-all duration-300">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-handshake text-blue-400 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-semibold text-white mb-3">Signal Serious Intent</h3>
+                                        <p class="text-gray-300 leading-relaxed">
+                                            Requires participants to have "skin in the game," discouraging spam, fraud, and low-effort engagement.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-yellow-500/50 transition-all duration-300">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-balance-scale text-yellow-400 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-semibold text-white mb-3">Dispute Resolution</h3>
+                                        <p class="text-gray-300 leading-relaxed">
+                                            Deposits can be frozen during disputes. If harm is confirmed, held deposits may compensate for damage.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-red-500/50 transition-all duration-300">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-slash text-red-400 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-semibold text-white mb-3">Enable Slashing</h3>
+                                        <p class="text-gray-300 leading-relaxed">
+                                            Deposits can be partially or fully slashed when participants breach trust policies or contractual roles.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-purple-500/50 transition-all duration-300">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-users text-purple-400 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-semibold text-white mb-3">Support Decentralized Governance</h3>
+                                        <p class="text-gray-300 leading-relaxed">
+                                            Serves as the economic foundation for decentralized permission management, assignment, and revocation.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-verana/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-key text-verana text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-semibold text-white mb-3">Non-Custodial</h3>
+                                        <p class="text-gray-300 leading-relaxed">
+                                            Trust Deposits are held on-chain within a VPR and are not under the control of any centralized authority.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slash Mechanism -->
+                    <div id="slash-mechanism" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Slash Mechanism</h2>
+                        
+                        <div class="bg-red-900/20 border border-red-700/50 rounded-2xl p-8 mb-8">
+                            <div class="flex items-start space-x-6">
+                                <div class="w-16 h-16 bg-red-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-exclamation-triangle text-red-400 text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-semibold text-white mb-4">Governance Framework Rules</h3>
+                                    <p class="text-xl text-gray-200 leading-relaxed">
+                                        Each ecosystem defines, in its <strong>ecosystem governance framework (EGF)</strong>, the rules that participants must follow to remain in good standing. The EGF also specifies the conditions under which a <strong>slash</strong> — a penalty applied to a participant's trust deposit — may occur.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-2xl font-semibold text-white mb-6">Pre-Slash Process</h3>
+                        <div class="grid md:grid-cols-3 gap-6 mb-8">
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 text-center">
+                                <div class="w-16 h-16 bg-orange-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                    <i class="fa-solid fa-search text-orange-400 text-2xl"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-white mb-3">1. Assess Harm</h4>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    Determine whether the participant's actions caused measurable harm to the ecosystem or its members.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 text-center">
+                                <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                    <i class="fa-solid fa-hand-holding-dollar text-blue-400 text-2xl"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-white mb-3">2. Compensation Request</h4>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    Provide the participant with the opportunity to compensate affected parties directly.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 text-center">
+                                <div class="w-16 h-16 bg-red-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                    <i class="fa-solid fa-gavel text-red-400 text-2xl"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-white mb-3">3. Unresolved Dispute</h4>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    If the dispute cannot be resolved and harm is evidenced, the ecosystem may authorize a slash.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                            <h3 class="text-2xl font-semibold text-white mb-6">When a Participant is Slashed</h3>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-8 h-8 bg-red-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-minus text-red-400"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-white mb-2">Deposit Forfeiture</h4>
+                                        <p class="text-gray-300 leading-relaxed">
+                                            The corresponding portion of their <strong>trust deposit</strong> is forfeited, based on the severity or type of violation.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-8 h-8 bg-red-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-ban text-red-400"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-white mb-2">Activity Suspension</h4>
+                                        <p class="text-gray-300 leading-relaxed">
+                                            Their ability to perform actions within the ecosystem (e.g., issuing or verifying credentials) is <strong>suspended</strong>.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-8 h-8 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-refresh text-green-400"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-white mb-2">Restoration Process</h4>
+                                        <p class="text-gray-300 leading-relaxed">
+                                            To regain active status, the participant must <strong>replenish the slashed amount</strong> of their trust deposit.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Trust Deposit-Based Reputation -->
+                    <div id="reputation-system" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Trust Deposit-Based Reputation</h2>
+                        
+                        <div class="bg-gradient-to-br from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-8 mb-8">
+                            <div class="flex items-start space-x-6">
+                                <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-chart-line text-verana text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-semibold text-white mb-4">Transparent Digital Reputation</h3>
+                                    <p class="text-xl text-gray-200 leading-relaxed">
+                                        Because network activity and trust deposit data are publicly accessible, each participant naturally builds a <strong>digital trust reputation</strong> over time. This reputation reflects both their positive contributions and any violations within the ecosystems they engage in.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Reputation Signals -->
+                        <h3 class="text-2xl font-semibold text-white mb-6">Key Reputation Signals</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-8">
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-green-500/50 transition-all duration-300">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-trending-up text-green-400 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-white mb-3">Growth of Trust Deposit</h4>
+                                        <p class="text-gray-300 leading-relaxed">
+                                            Active, rule-abiding participants see their trust deposit increase as they contribute value to the network.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-blue-500/50 transition-all duration-300">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-history text-blue-400 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-white mb-3">Ecosystem-Specific History</h4>
+                                        <p class="text-gray-300 leading-relaxed">
+                                            For each ecosystem a participant is involved in, their trust deposit history is transparently visible to all other participants.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-purple-500/50 transition-all duration-300">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-certificate text-purple-400 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-white mb-3">Credential Activity</h4>
+                                        <p class="text-gray-300 leading-relaxed">
+                                            The number of credentials issued and/or verified by the participant within each ecosystem is publicly observable.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-red-500/50 transition-all duration-300">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-shield-halved text-red-400 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-white mb-3">Behavioral Accountability</h4>
+                                        <p class="text-gray-300 leading-relaxed">
+                                            Any dishonest or malicious activity — especially if penalized through slashing — remains permanently associated with the participant's account.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Reputation Visualization -->
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                            <h3 class="text-2xl font-semibold text-white mb-6 text-center">Reputation Score Visualization</h3>
+                            
+                            <div class="grid md:grid-cols-3 gap-8">
+                                <div class="text-center">
+                                    <div class="w-24 h-24 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4 relative overflow-hidden">
+                                        <i class="fa-solid fa-user text-white text-2xl"></i>
+                                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -translate-x-full animate-reputation-shine"></div>
+                                    </div>
+                                    <div class="reputation-stars text-2xl mb-2">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                    </div>
+                                    <h4 class="text-lg font-semibold text-white mb-2">New Participant</h4>
+                                    <p class="text-gray-300 text-sm">Building initial trust deposit</p>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <div class="w-24 h-24 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 relative overflow-hidden">
+                                        <i class="fa-solid fa-user-check text-white text-2xl"></i>
+                                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -translate-x-full animate-reputation-shine" style="animation-delay: 1s"></div>
+                                    </div>
+                                    <div class="reputation-stars text-2xl mb-2">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                    </div>
+                                    <h4 class="text-lg font-semibold text-white mb-2">Established Member</h4>
+                                    <p class="text-gray-300 text-sm">Active in multiple ecosystems</p>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <div class="w-24 h-24 bg-gradient-to-br from-verana to-verana-light rounded-full flex items-center justify-center mx-auto mb-4 relative overflow-hidden">
+                                        <i class="fa-solid fa-crown text-white text-2xl"></i>
+                                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -translate-x-full animate-reputation-shine" style="animation-delay: 2s"></div>
+                                    </div>
+                                    <div class="reputation-stars text-2xl mb-2">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <h4 class="text-lg font-semibold text-white mb-2">Trusted Authority</h4>
+                                    <p class="text-gray-300 text-sm">High trust deposits across ecosystems</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-8 pt-8 border-t border-gray-700">
+                                <p class="text-center text-gray-300 leading-relaxed">
+                                    This transparent data can be used to compute a <strong>reputation score</strong> or <strong>star rating</strong>, enabling trust-based decisions across the network.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Call to Action -->
+                    <div id="page-cta" class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-12 text-center">
+                        <h2 class="text-3xl font-bold text-white mb-4">Build Trust Through Participation</h2>
+                        <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                            Start building your trust deposit and reputation in the decentralized trust economy.
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                            <span class="bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2 cursor-pointer">
+                                <i class="fa-solid fa-rocket"></i>
+                                <span>Join an Ecosystem</span>
+                            </span>
+                            <span class="border-2 border-gray-600 hover:border-verana text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 cursor-pointer">
+                                Learn About Governance
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Content Section -->
+<section id="related-content" class="bg-gray-900 py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-12 text-center">Related Trust Engine Components</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-magnifying-glass text-blue-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Trust Resolver</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        The search engine of verifiable trust, indexing services based on cryptographically verified credentials.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Explore</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+                
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-shield-halved text-green-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Trust Registries</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Ecosystem-governed lists of trusted issuers and their credential schemas.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Learn More</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+                
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-check-double text-purple-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Credential Verification</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Cryptographic verification engine that validates credentials against trust registries.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Verify Now</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="bg-gray-900 border-t border-gray-800 py-16">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12 mb-12">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-white">Verana</span>
+                    </div>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty.
+                    </p>
+                    <div class="flex space-x-4">
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-github"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-discord"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Verana</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Principles</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Foundation</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Press</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Developers</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Docs</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">GitHub</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Specifications</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Trust Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Public Registry Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Trust Registry Query Protocol</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col sm:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">© 2025 Verana Foundation. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 sm:mt-0">
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Privacy Policy</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Terms of Service</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Cookie Policy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</body></html>

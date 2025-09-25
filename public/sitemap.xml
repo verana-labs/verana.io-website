@@ -54,8 +54,6 @@
   </url><url>
     <loc>//localhost:1313/page/build/trust-networks/</loc>
   </url><url>
-    <loc>//localhost:1313/page/trust-engine/trust-reputation/</loc>
-  </url><url>
     <loc>//localhost:1313/page/trust-engine/trust-resolver/</loc>
   </url><url>
     <loc>//localhost:1313/</loc>
