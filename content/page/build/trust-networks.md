@@ -10,7 +10,7 @@ intro_section:
     - "A digital trust **ecosystem** is an interconnected community of institutions and individuals who share an **ecosystem governance framework** (EGF) and use both technology and human rules to exchange verifiable data in a trustworthy way."
     - "Verana is the **rail system** that **ecosystems** use to build and run their **trust networks**, enforcing the rules they define in their EGF."
   media:
-    src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/42487feea1-b8b8e8864eb8db765c45.png"
+    src: "/images/purple/trust-network.webp"
     alt: "Digital trust ecosystem visualization showing interconnected nodes of institutions, individuals, and governance frameworks with flowing data connections."
     class: "h-64"
     bullets:
@@ -18,7 +18,7 @@ intro_section:
         text: Ecosystem Governance Framework (EGF)
       - color_class: "bg-blue-400"
         animation_class: "animate-pulse delay-500"
-        text: Trust Networks &amp; Registries
+        text: Trust Networks Registries
       - color_class: "bg-green-400"
         animation_class: "animate-pulse delay-1000"
         text: Verifiable Data Exchange
@@ -29,13 +29,13 @@ ecosystem_example:
     - id: governance-framework
       number: "1"
       title: Create Ecosystem Governance Framework
-      description: "They create an **📜 ecosystem governance framework (EGF)**: a legal framework that defines the purpose of the ecosystem, in this case, the rules for issuing and verifying university diplomas of the country of Utopia."
+      description: "They create an **ecosystem governance framework (EGF)**: a legal framework that defines the purpose of the ecosystem, in this case, the rules for issuing and verifying university diplomas of the country of Utopia."
       highlight:
         icon: "fa-solid fa-scroll"
-        text: Legal Framework &amp; Rules
+        text: Legal Framework Rules
       media:
         position: right
-        src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/f079cec328-ac9a3c02854cca9c19c0.png"
+        src: "/images/purple/utopia-university.webp"
         alt: "Legal document scroll with university seals and governance framework."
         class: "w-full h-48 object-cover rounded-xl"
     - id: trust-registry
@@ -44,23 +44,23 @@ ecosystem_example:
       description: "In Verana, this governance is enforced by creating the ecosystem's **trust registry** and related assets:"
       details:
         - icon: "fa-solid fa-folder-open"
-          title: "🗂️ Trust Registries:"
+          title: "Trust Registries:"
           text: Maintain lists of schemas, authorized issuers, verifiers, and schema operators.
         - icon: "fa-solid fa-file-contract"
-          title: "📑 Credential Schemas:"
+          title: "Credential Schemas:"
           text: Establish standardized formats for verifiable credentials. In this case, a **diploma credential schema**.
         - icon: "fa-solid fa-user-tie"
-          title: "🧑‍⚖️ Onboarding &amp; Delegation:"
+          title: "Onboarding of Participants:"
           text: Onboard issuers and verifiers directly—or delegate this task to trust registry operators.
       media:
         position: left
-        src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/9c9d8ecdd9-15f62922603b2e2925fc.png"
+        src: "/images/purple/integrate-egf.webp"
         alt: "Digital trust registry interface with university schemas, issuer lists, and credential templates."
         class: "w-full h-48 object-cover rounded-xl"
     - id: credential-flow
       number: "3"
       layout: flow
-      title: Credential Issuance &amp; Verification
+      title: Credential Issuance Verification
       description: "Once onboarded, **universities** can **issue verifiable diplomas**, and **employers** can request them directly from **graduates**, ensuring authenticity, integrity, and trust." 
       flow_cards:
         - icon: "fa-solid fa-university"
@@ -85,32 +85,32 @@ who_section:
     - icon: "fa-solid fa-landmark"
       icon_bg: "bg-blue-500/20"
       icon_class: "text-blue-400 text-2xl"
-      title: "🏛️ Governments"
+      title: "Governments"
       text: Issue and verify digital IDs, business credentials, regulatory licenses.
     - icon: "fa-solid fa-hospital"
       icon_bg: "bg-red-500/20"
       icon_class: "text-red-400 text-2xl"
-      title: "🏥 Healthcare"
+      title: "Healthcare"
       text: Manage professional certifications, patient access, cross-border mobility.
     - icon: "fa-solid fa-tower-cell"
       icon_bg: "bg-purple-500/20"
       icon_class: "text-purple-400 text-2xl"
-      title: "📡 Telecommunications"
+      title: "Telecommunications"
       text: Verify customer onboarding (KYC), issue proof of mobile phone number, proof of address.
     - icon: "fa-solid fa-university"
       icon_bg: "bg-green-500/20"
       icon_class: "text-green-400 text-2xl"
-      title: "🏦 Banks &amp; Finance"
+      title: "Banks & Finance"
       text: Establish verified credit, KYC/AML compliance, and financial trust frameworks.
     - icon: "fa-solid fa-graduation-cap"
       icon_bg: "bg-yellow-500/20"
       icon_class: "text-yellow-400 text-2xl"
-      title: "🎓 Education"
+      title: "Education"
       text: Issue diplomas, professional training certificates, and lifelong learning credentials.
     - icon: "fa-solid fa-certificate"
       icon_bg: "bg-indigo-500/20"
       icon_class: "text-indigo-400 text-2xl"
-      title: "🏅 Certification Bodies"
+      title: "Certification Bodies"
       text: Issue and verify trade skills, professional certifications, and manage cross-border recognition.
   footer: "…and **countless others**."
 business_models:
@@ -133,11 +133,11 @@ business_models:
       - icon: "fa-solid fa-eye"
         icon_bg: "bg-purple-500/20"
         icon_class: "text-purple-400"
-        title: Verifier → Issuer &amp; Ecosystem
+        title: Verifier → Issuer Ecosystem
         text: "**Verifiers** pay both the **issuer** and the **ecosystem owner** when requesting credential presentations."
   media:
     type: image
-    src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/3e21bc49b1-d2862b678461d270c940.png"
+    src: "/images/purple/business-models.webp"
     alt: "Privacy-preserving business model visualization with encrypted payment flows and fair distribution networks."
     class: "w-full h-[500px] object-cover rounded-2xl"
     overlay_class: "absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl"

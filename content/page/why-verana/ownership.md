@@ -185,35 +185,35 @@ cta:
   buttons:
     - label: Start Building
       icon: "fa-solid fa-key"
-      href: "#"
+      href: "https://docs.verana.io"
       class: "bg-green-500 hover:bg-green-600 text-white"
-    - label: View Migration Guide
-      href: "#"
+    - label: Talk to the Community
+      href: "https://discord.gg/edjaFn252q"
       class: "border-2 border-gray-600 hover:border-green-500 text-white"
 related:
-  title: Related Concepts
+  title: Explore More About Verana
   items:
-    - icon: "fa-solid fa-globe"
-      icon_bg_class: "bg-blue-500/20"
-      icon_color_class: "text-blue-400"
-      title: Digital Sovereignty
-      text: "Reclaim control over your digital presence and break free from platform dependency."
-      url: "/page/why-verana/digital-sovereignty"
-      cta_label: Learn More
-    - icon: "fa-solid fa-magnifying-glass"
+    - icon: "fa-solid fa-key"
       icon_bg_class: "bg-green-500/20"
       icon_color_class: "text-green-400"
-      title: Trust & Discovery
-      text: "Be discovered based on verifiable credentials, not advertising budgets."
-      url: "/page/why-verana/trust"
-      cta_label: Explore
-    - icon: "fa-solid fa-code"
+      title: Industry Use Cases
+      text: "Browse industry use cases to understand what you can build with Verana."
+      url: "/page/industry-use-cases"
+      cta_label: View The Impact
+    - icon: "fa-solid fa-compass"
+      icon_bg_class: "bg-blue-500/20"
+      icon_color_class: "text-blue-400"
+      title: Discovery
+      text: "Be discovered for what you prove, not for what you pay in advertising."
+      url: "/page/why-verana/discovery"
+      cta_label: Explore Discovery
+    - icon: "fa-solid fa-crown"
       icon_bg_class: "bg-purple-500/20"
       icon_color_class: "text-purple-400"
-      title: Open Standards
-      text: "Build on open protocols that ensure interoperability and prevent lock-in."
-      url: "/page/why-verana/open-standards"
-      cta_label: View Standards
+      title: Trust Engine
+      text: "Learn about Verana's trust engine"
+      url: "/page/trust-engine"
+      cta_label: Understand Verifiable Trust
 ---
 
 {{< why-ownership >}}

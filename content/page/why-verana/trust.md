@@ -33,7 +33,7 @@ trust_problem:
   description: |
     Today, the internet still lacks a native verifiable trust layer. Content, services, and users interact without cryptographic guarantees of who they are or what they represent. This fuels misinformation, fraud, opaque intermediaries, and a general erosion of trust online.
   image:
-    src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/b19b51b2fe-348a9cb45746643bab4c.png"
+    src: "/images/purple/untrusted-photo.webp"
     alt: "Illustration of the current internet trust problem with fragmented services, fake profiles, and warning indicators"
   cards:
     - icon: "fa-solid fa-exclamation-triangle"
@@ -63,7 +63,7 @@ solution:
     title: The Result
     text: "This creates a **Verifiable Identity Layer for the Internet**, turning the web into an environment where trust is transparent, interoperable, and verifiable."
   image:
-    src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/8854f05533-b772b6bcbb012b82f99f.png"
+    src: "/images/purple/trust-photo.webp"
     alt: "Illustration of Verana's trust architecture with issuing, verifying, attaching, and trusting"
   steps:
     - icon: "fa-solid fa-certificate"
@@ -110,7 +110,7 @@ examples:
       icon_bg_class: "bg-orange-500/20"
       icon_color_class: "text-orange-400"
       title: Content Provenance
-      text: "Signed content reveals exactly who published it and when."
+      text: "DID-signed content reveals exactly who published it and when thanks to C2PA and Verifiable Credentials."
     - icon: "fa-solid fa-code"
       icon_bg_class: "bg-red-500/20"
       icon_color_class: "text-red-400"
@@ -121,37 +121,6 @@ examples:
       icon_color_class: "text-yellow-400"
       title: RWA Token Ownership
       text: "Individuals can prove ownership of real-world asset tokens."
-trust_flow:
-  id: trust-flow
-  title: How Trust Flows in Verana
-  image:
-    src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/1d010441de-6c31303c73e9ac73cff4.png"
-    alt: "Diagram showing credential issuance, attachment to services, and local verification in Verana"
-  steps:
-    - icon: "fa-solid fa-certificate"
-      icon_bg_class: "bg-blue-500/20"
-      icon_color_class: "text-blue-400"
-      title: 1. Credential Issuance
-      text: "Owners request verification from trusted issuers and receive verifiable credentials."
-    - icon: "fa-solid fa-link"
-      icon_bg_class: "bg-green-500/20"
-      icon_color_class: "text-green-400"
-      title: 2. Credential Attachment
-      text: "Owners attach credentials to their services, proving ownership and authenticity."
-    - icon: "fa-solid fa-shield-check"
-      icon_bg_class: "bg-verana/20"
-      icon_color_class: "text-verana"
-      title: 3. Local Verification
-      text: "Users verify credentials locally without contacting the issuer, establishing trust instantly."
-  benefits:
-    title: Key Benefits of Local Verification
-    icon: "fa-solid fa-info-circle"
-    icon_color_class: "text-verana"
-    items:
-      - Check issuer signatures cryptographically.
-      - Validate credential integrity and expiry status.
-      - Use cached keys and trust registries.
-      - No contact with the issuer required.
 cta:
   id: page-cta
   title: Ready to Build Trustworthy Digital Services?
@@ -171,7 +140,7 @@ related:
       icon_bg_class: "bg-green-500/20"
       icon_color_class: "text-green-400"
       title: Ownership
-      text: "Own your digital services, audience, and data—not just rent them from platforms."
+      text: "Own your digital services, audience, and data: not just rent them from platforms."
       url: "/page/why-verana/ownership"
       cta_label: Learn About Ownership
     - icon: "fa-solid fa-compass"
