@@ -1872,6 +1872,9 @@ video {
 .border-green-700\/50 {
   border-color: rgb(21 128 61 / 0.5);
 }
+.border-orange-700\/50 {
+  border-color: rgb(194 65 12 / 0.5);
+}
 .border-red-600\/30 {
   border-color: rgb(220 38 38 / 0.3);
 }
@@ -1992,6 +1995,9 @@ video {
 }
 .bg-orange-500\/20 {
   background-color: rgb(249 115 22 / 0.2);
+}
+.bg-orange-900\/20 {
+  background-color: rgb(124 45 18 / 0.2);
 }
 .bg-primary-600 {
   --tw-bg-opacity: 1;
@@ -2186,6 +2192,9 @@ video {
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
+}
+.p-10 {
+  padding: 2.5rem;
 }
 .p-12 {
   padding: 3rem;
