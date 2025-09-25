@@ -20,7 +20,7 @@ sections:
       icon: "fa-solid fa-arrow-right"
       class: "bg-verana hover:bg-verana-dark text-white"
     image:
-      src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/4ba99be52c-d86de06afcd6b9415d11.png"
+      src: "/images/purple/civilreg2.webp"
       alt: "Government official verifying a citizen's digital ID credential at a modern service desk"
   - id: healthcare
     background: bg-gray-900
@@ -37,7 +37,7 @@ sections:
       icon: "fa-solid fa-arrow-right"
       class: "bg-verana hover:bg-verana-dark text-white"
     image:
-      src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/350bd36270-a11367f199b0de3878c3.png"
+      src: "/images/purple/healthcare1.webp"
       alt: "Healthcare professional reviewing verified credentials on a tablet inside a modern hospital"
   - id: hotels
     background: bg-black
@@ -54,7 +54,7 @@ sections:
       icon: "fa-solid fa-arrow-right"
       class: "bg-verana hover:bg-verana-dark text-white"
     image:
-      src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/817f5b74de-164e0a82447e500fe28b.png"
+      src: "/images/purple/hotel2.webp"
       alt: "Modern hotel front desk leveraging verifiable credentials for guest check-in"
   - id: ai-assistants
     background: bg-gray-900
@@ -71,7 +71,7 @@ sections:
       icon: "fa-solid fa-arrow-right"
       class: "bg-verana hover:bg-verana-dark text-white"
     image:
-      src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/2a60d1577b-babe656d40dde617cdbc.png"
+      src: "/images/purple/medit1.webp"
       alt: "AI assistant holographic interface with verified credential badges in a futuristic digital environment"
   - id: social-networks
     background: bg-black
@@ -88,7 +88,7 @@ sections:
       icon: "fa-solid fa-arrow-right"
       class: "bg-verana hover:bg-verana-dark text-white"
     image:
-      src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/495dd5f57b-e9015df578fcb50dca9e.png"
+      src: "/images/purple/social1.webp"
       alt: "Creators collaborating across decentralized social platforms with verification badges"
 overview:
   title: The Future of Trust-Based Industries
