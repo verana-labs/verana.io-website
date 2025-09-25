@@ -30,6 +30,8 @@
   </url><url>
     <loc>//localhost:1313/page/why-verana/trust/</loc>
   </url><url>
+    <loc>//localhost:1313/page/why-verana/trust/</loc>
+  </url><url>
     <loc>//localhost:1313/page/about/team/</loc>
   </url><url>
     <loc>//localhost:1313/page/build/</loc>
@@ -45,6 +47,10 @@
     <loc>//localhost:1313/page/build/verifiable-services/</loc>
   </url><url>
     <loc>//localhost:1313/page/why-verana/discovery/</loc>
+  </url><url>
+    <loc>//localhost:1313/page/why-verana/discovery/</loc>
+  </url><url>
+    <loc>//localhost:1313/page/why-verana/ownership/</loc>
   </url><url>
     <loc>//localhost:1313/page/why-verana/ownership/</loc>
   </url><url>
