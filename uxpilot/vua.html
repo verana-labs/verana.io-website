@@ -1,0 +1,854 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifiable User Agents - Verana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "fontFamily": {
+        "inter": [
+          "Inter",
+          "sans-serif"
+        ]
+      },
+      "colors": {
+        "verana": "#763ef0",
+        "verana-light": "#9f7aea",
+        "verana-dark": "#553c9a"
+      },
+      "animation": {
+        "float": "float 6s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite alternate",
+        "network-pulse": "network-pulse 3s ease-in-out infinite",
+        "search-pulse": "search-pulse 2s ease-in-out infinite",
+        "trust-flow": "trust-flow 4s ease-in-out infinite",
+        "orbit": "orbit 8s linear infinite",
+        "connect": "connect 3s ease-in-out infinite"
+      },
+      "keyframes": {
+        "float": {
+          "0%, 100%": {
+            "transform": "translateY(0px)"
+          },
+          "50%": {
+            "transform": "translateY(-20px)"
+          }
+        },
+        "pulse-glow": {
+          "0%": {
+            "boxShadow": "0 0 20px rgba(118, 62, 240, 0.3)"
+          },
+          "100%": {
+            "boxShadow": "0 0 40px rgba(118, 62, 240, 0.6)"
+          }
+        },
+        "network-pulse": {
+          "0%, 100%": {
+            "opacity": "0.4"
+          },
+          "50%": {
+            "opacity": "0.8"
+          }
+        },
+        "search-pulse": {
+          "0%, 100%": {
+            "transform": "scale(1)",
+            "opacity": "0.7"
+          },
+          "50%": {
+            "transform": "scale(1.05)",
+            "opacity": "1"
+          }
+        },
+        "trust-flow": {
+          "0%": {
+            "transform": "translateX(-100px)",
+            "opacity": "0"
+          },
+          "50%": {
+            "transform": "translateX(0px)",
+            "opacity": "1"
+          },
+          "100%": {
+            "transform": "translateX(100px)",
+            "opacity": "0"
+          }
+        },
+        "orbit": {
+          "0%": {
+            "transform": "rotate(0deg) translateX(120px) rotate(0deg)"
+          },
+          "100%": {
+            "transform": "rotate(360deg) translateX(120px) rotate(-360deg)"
+          }
+        },
+        "connect": {
+          "0%, 100%": {
+            "strokeDasharray": "5,5",
+            "opacity": "0.5"
+          },
+          "50%": {
+            "strokeDasharray": "10,0",
+            "opacity": "1"
+          }
+        }
+      }
+    }
+  }
+};</script>
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        .gradient-mesh {
+            background: radial-gradient(circle at 20% 50%, rgba(118, 62, 240, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(118, 62, 240, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(118, 62, 240, 0.08) 0%, transparent 50%);
+        }
+        .network-bg {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(118, 62, 240, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(118, 62, 240, 0.08) 1px, transparent 1px);
+            background-size: 60px 60px, 40px 40px;
+            animation: network-pulse 4s ease-in-out infinite;
+        }
+        .trust-pattern {
+            background-image: 
+                linear-gradient(45deg, rgba(118, 62, 240, 0.05) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(118, 62, 240, 0.05) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(118, 62, 240, 0.05) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(118, 62, 240, 0.05) 75%);
+            background-size: 40px 40px;
+            background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+        }
+        .vua-pattern {
+            background-image: 
+                radial-gradient(circle at 30% 30%, rgba(159, 122, 234, 0.1) 3px, transparent 3px),
+                radial-gradient(circle at 70% 70%, rgba(118, 62, 240, 0.08) 2px, transparent 2px),
+                radial-gradient(circle at 50% 10%, rgba(159, 122, 234, 0.05) 1px, transparent 1px);
+            background-size: 80px 80px, 60px 60px, 40px 40px;
+            animation: network-pulse 6s ease-in-out infinite;
+        }
+    </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-black text-white overflow-x-hidden font-custom">
+
+<!-- Header -->
+<header id="header" class="bg-black/95 backdrop-blur-sm border-b border-gray-800/50 sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <span class="flex items-center space-x-3 cursor-pointer">
+                    <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-white">Verana</span>
+                </span>
+            </div>
+            
+            <nav class="hidden lg:flex items-center space-x-8">
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Why Verana</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-verana flex items-center space-x-1 transition-colors duration-200">
+                        <span>Build</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Trust Engine</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Industry Use Cases</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">Community</span>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">About</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <span class="bg-verana hover:bg-verana-dark text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer">
+                    Testnet
+                </span>
+                <button class="lg:hidden text-white">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Page Hero Section -->
+<section id="page-hero" class="relative bg-gray-900 py-16 lg:py-24 overflow-hidden h-[450px] flex items-center">
+    <div class="absolute inset-0 gradient-mesh opacity-50"></div>
+    <div class="absolute inset-0 vua-pattern opacity-20"></div>
+    <div class="absolute inset-0 trust-pattern opacity-10"></div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <!-- Breadcrumb -->
+            <nav class="flex items-center space-x-2 text-sm text-gray-400 mb-8">
+                <span class="hover:text-white cursor-pointer">Home</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="hover:text-white cursor-pointer">Build</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="text-verana">Verifiable User Agents</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4 mb-6">
+                <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center animate-pulse-glow">
+                    <i class="fa-solid fa-users-gear text-verana text-2xl"></i>
+                </div>
+                <h1 class="text-4xl lg:text-6xl font-bold leading-tight">
+                    <span class="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">Verifiable User Agents</span>
+                </h1>
+            </div>
+            
+            <p class="text-xl lg:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+                A new class of applications that aggregate and interact with decentralized Verifiable Services, making trust-based discovery automatic and verifiable.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content Section -->
+<section id="main-content" class="bg-black py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12">
+                <!-- Sidebar Navigation -->
+                <aside id="sidebar-nav" class="lg:col-span-1">
+                    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky top-24">
+                        <h3 class="text-lg font-semibold text-white mb-6">Build</h3>
+                        <nav class="space-y-3">
+                            <span class="block text-verana font-medium cursor-pointer">Verifiable User Agents</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Services</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Developer Tools</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">SDK &amp; APIs</span>
+                        </nav>
+                        
+                        <div class="mt-8 pt-6 border-t border-gray-700">
+                            <h4 class="text-sm font-semibold text-white mb-4">Quick Links</h4>
+                            <div class="space-y-2">
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Getting Started</span>
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">VUA Examples</span>
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Architecture Guide</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                
+                <!-- Content Area -->
+                <div id="content-area" class="lg:col-span-3">
+                    <!-- Content Introduction -->
+                    <div id="content-intro" class="mb-16">
+                        <div class="prose prose-invert max-w-none">
+                            <p class="text-xl text-gray-300 leading-relaxed mb-8">
+                                <strong>Verifiable User Agents (VUAs)</strong> are a new class of applications that <strong>aggregate and interact with decentralized Verifiable Services (VSs)</strong>. Instead of relying on centralized APIs or walled-garden platforms, these apps query the <strong>Verana Trust Resolver</strong>, making any compatible Verifiable Service instantly visible and usable.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- What VUAs Can Be Section -->
+                    <div id="vua-examples" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">What VUAs Can Be</h2>
+                        
+                        <p class="text-lg text-gray-300 mb-8">
+                            VUAs unlock a wide variety of decentralized apps, for example:
+                        </p>
+                        
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 hover:border-verana/50 transition-all duration-300 group">
+                                <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
+                                    <i class="fa-solid fa-share-nodes text-blue-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold text-white mb-3">Decentralized Social Networks</h3>
+                                <p class="text-gray-300 text-sm">
+                                    An X-like network built from decentralized Social Channels
+                                </p>
+                            </div>
+                            
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 hover:border-verana/50 transition-all duration-300 group">
+                                <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
+                                    <i class="fa-solid fa-robot text-green-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold text-white mb-3">AI Assistant Browsers</h3>
+                                <p class="text-gray-300 text-sm">
+                                    Apps for discovering and talking with official chat services and AI assistants
+                                </p>
+                            </div>
+                            
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 hover:border-verana/50 transition-all duration-300 group">
+                                <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
+                                    <i class="fa-solid fa-video text-purple-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold text-white mb-3">Decentralized Video Apps</h3>
+                                <p class="text-gray-300 text-sm">
+                                    Streaming apps that aggregate film catalogs published by creators
+                                </p>
+                            </div>
+                            
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 hover:border-verana/50 transition-all duration-300 group">
+                                <div class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center mb-4">
+                                    <i class="fa-solid fa-shopping-cart text-orange-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold text-white mb-3">E-commerce Aggregators</h3>
+                                <p class="text-gray-300 text-sm">
+                                    Apps that list all businesses using e-commerce Verifiable Services
+                                </p>
+                            </div>
+                            
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 hover:border-verana/50 transition-all duration-300 group">
+                                <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center mb-4">
+                                    <i class="fa-solid fa-bed text-red-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold text-white mb-3">Hotel PMS Apps</h3>
+                                <p class="text-gray-300 text-sm">
+                                    Users can book hotels directly through verified PMS-powered services
+                                </p>
+                            </div>
+                            
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 hover:border-verana/50 transition-all duration-300 group">
+                                <div class="w-12 h-12 bg-verana/20 rounded-xl flex items-center justify-center mb-4">
+                                    <i class="fa-solid fa-ellipsis text-verana text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold text-white mb-3">And Many More</h3>
+                                <p class="text-gray-300 text-sm">
+                                    Innovations waiting to be built with trust-based indexing
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-verana/10 border border-verana/30 rounded-2xl p-8">
+                            <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                                <i class="fa-solid fa-key text-verana mr-3"></i>
+                                Key Advantage
+                            </h3>
+                            <p class="text-lg text-gray-200 leading-relaxed">
+                                Because indexing is trust-based, inclusion is <strong>automatic and verifiable</strong>: no gatekeepers, no paywalls.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Business Models Section -->
+                    <div id="business-models" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Business Models for VUA Builders</h2>
+                        
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+                            <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                                VUA developers can also create their <strong>own ecosystem</strong> within Verana. This allows them to:
+                            </p>
+                            
+                            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                                <div class="bg-black border border-gray-600 rounded-xl p-6">
+                                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
+                                        <i class="fa-solid fa-gavel text-blue-400"></i>
+                                    </div>
+                                    <h4 class="text-white font-semibold mb-2">Define Governance</h4>
+                                    <p class="text-gray-300 text-sm">Create their Ecosystem Governance Framework (EGF)</p>
+                                </div>
+                                
+                                <div class="bg-black border border-gray-600 rounded-xl p-6">
+                                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
+                                        <i class="fa-solid fa-certificate text-green-400"></i>
+                                    </div>
+                                    <h4 class="text-white font-semibold mb-2">Issue Credentials</h4>
+                                    <p class="text-gray-300 text-sm">Issue or sell credentials to Verifiable Service owners</p>
+                                </div>
+                                
+                                <div class="bg-black border border-gray-600 rounded-xl p-6">
+                                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
+                                        <i class="fa-solid fa-eye text-purple-400"></i>
+                                    </div>
+                                    <h4 class="text-white font-semibold mb-2">Control Visibility</h4>
+                                    <p class="text-gray-300 text-sm">Control how services appear within their VUA app</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-verana/10 border border-verana/20 rounded-xl p-6">
+                                <p class="text-lg text-gray-200 leading-relaxed">
+                                    When a service owner attaches such a credential to their Verifiable Service's DID, they <strong>automatically become discoverable</strong> inside the VUA.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-r from-blue-900/20 to-purple-900/20 border border-blue-700/50 rounded-2xl p-8">
+                            <h3 class="text-2xl font-bold text-white mb-4 flex items-center">
+                                <i class="fa-solid fa-lightbulb text-yellow-400 mr-3"></i>
+                                Example: Blue Network VUA
+                            </h3>
+                            <p class="text-lg text-gray-200 leading-relaxed mb-6">
+                                In a "Blue Network" VUA, an influencer could:
+                            </p>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="bg-black/50 rounded-xl p-6">
+                                    <h4 class="text-white font-semibold mb-3 flex items-center">
+                                        <i class="fa-solid fa-gift text-green-400 mr-2"></i>
+                                        Free Option
+                                    </h4>
+                                    <p class="text-gray-300">Get a free credential to appear in the app</p>
+                                </div>
+                                <div class="bg-black/50 rounded-xl p-6">
+                                    <h4 class="text-white font-semibold mb-3 flex items-center">
+                                        <i class="fa-solid fa-crown text-yellow-400 mr-2"></i>
+                                        Premium Option
+                                    </h4>
+                                    <p class="text-gray-300">Purchase a premium credential to guarantee an ad-free experience for followers</p>
+                                </div>
+                            </div>
+                            <div class="mt-6 pt-6 border-t border-gray-600">
+                                <p class="text-lg text-gray-200 leading-relaxed">
+                                    This creates sustainable, privacy-preserving business models while giving service owners full autonomy over visibility and monetization.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- How VUAs Work Section -->
+                    <div id="how-vuas-work" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">How VUAs Work</h2>
+                        
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+                            <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                                A <strong>Verifiable User Agent (VUA)</strong> is software—such as a browser, wallet, or app—that connects to VSs and other VUAs. To establish connections, a VUA must:
+                            </p>
+                            
+                            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                                <div class="bg-black border border-gray-600 rounded-xl p-6">
+                                    <div class="w-12 h-12 bg-verana/20 rounded-xl flex items-center justify-center mb-4">
+                                        <i class="fa-solid fa-shield-check text-verana"></i>
+                                    </div>
+                                    <h4 class="text-white font-semibold mb-3">Verify Credentials</h4>
+                                    <p class="text-gray-300">Verify the credentials presented by peers to establish trusted connections</p>
+                                </div>
+                                
+                                <div class="bg-black border border-gray-600 rounded-xl p-6">
+                                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
+                                        <i class="fa-solid fa-search text-green-400"></i>
+                                    </div>
+                                    <h4 class="text-white font-semibold mb-3">Query Network</h4>
+                                    <p class="text-gray-300">Query the Verana Network to confirm credentials were issued by recognized authorities</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-verana/10 border border-verana/20 rounded-xl p-6">
+                                <p class="text-lg text-gray-200 leading-relaxed">
+                                    This ensures all connections are based on <strong>verifiable trust</strong>, not assumptions.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-2xl p-8">
+                            <h3 class="text-2xl font-bold text-white mb-6">VUA Discovery Capabilities</h3>
+                            
+                            <p class="text-lg text-gray-300 mb-6">
+                                In addition, VUAs can query the <strong>Verifiable Service Directory</strong> (indexed by the Trust Resolver) to:
+                            </p>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                        <i class="fa-solid fa-search text-blue-400 text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-semibold mb-2">Smart Search</h4>
+                                        <p class="text-gray-300">Let users search for services by credential attributes (e.g., find a social channel linked to an influencer's name)</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                        <i class="fa-solid fa-filter text-purple-400 text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-semibold mb-2">Policy Enforcement</h4>
+                                        <p class="text-gray-300">Enforce inclusion policies (e.g., only VSs with certain credentials can be listed or promoted)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Architecture Diagrams Section -->
+                    <div id="architecture-diagrams" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">VUA Architecture</h2>
+                        
+                        <div class="grid md:grid-cols-2 gap-8 mb-12">
+                            <!-- VUA Instance Diagram -->
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                                <h3 class="text-xl font-semibold text-white mb-6">VUA Instance Components</h3>
+                                <div class="relative h-64 flex items-center justify-center">
+                                    <div class="w-48 h-32 bg-verana/20 border-2 border-verana rounded-2xl flex flex-col items-center justify-center relative">
+                                        <h4 class="text-white font-bold mb-2">Verifiable User Agent</h4>
+                                        <div class="space-y-1 text-center">
+                                            <div class="text-gray-300 text-sm flex items-center justify-center">
+                                                <i class="fa-solid fa-key mr-2 text-yellow-400"></i>
+                                                Keys
+                                            </div>
+                                            <div class="text-gray-300 text-sm flex items-center justify-center">
+                                                <i class="fa-solid fa-link mr-2 text-blue-400"></i>
+                                                Connections
+                                            </div>
+                                            <div class="text-gray-300 text-sm flex items-center justify-center">
+                                                <i class="fa-solid fa-wallet mr-2 text-green-400"></i>
+                                                VC Wallet
+                                            </div>
+                                            <div class="text-gray-300 text-sm flex items-center justify-center">
+                                                <i class="fa-solid fa-coins mr-2 text-orange-400"></i>
+                                                Crypto Wallet
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Network Architecture -->
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                                <h3 class="text-xl font-semibold text-white mb-6">Network Architecture</h3>
+                                <div class="relative h-64">
+                                    <!-- Central VPR -->
+                                    <div class="absolute top-4 left-1/2 transform -translate-x-1/2 w-32 h-12 bg-pink-500/20 border border-pink-400 rounded-xl flex items-center justify-center">
+                                        <span class="text-pink-400 text-xs font-semibold">VPR</span>
+                                    </div>
+                                    
+                                    <!-- Service Provider Side -->
+                                    <div class="absolute left-4 top-20 w-24 h-32 border border-gray-600 rounded-xl p-2">
+                                        <div class="text-gray-400 text-xs mb-2">Services</div>
+                                        <div class="space-y-2">
+                                            <div class="w-full h-4 bg-teal-500/20 border border-teal-400 rounded text-xs flex items-center justify-center">
+                                                <span class="text-teal-400 text-xs">VS1</span>
+                                            </div>
+                                            <div class="w-full h-4 bg-teal-500/20 border border-teal-400 rounded text-xs flex items-center justify-center">
+                                                <span class="text-teal-400 text-xs">VS2</span>
+                                            </div>
+                                            <div class="w-full h-4 bg-gray-600/20 border border-gray-500 rounded text-xs flex items-center justify-center">
+                                                <span class="text-gray-400 text-xs">TR</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- VUA Provider Side -->
+                                    <div class="absolute right-4 top-20 w-24 h-32 border border-gray-600 rounded-xl p-2">
+                                        <div class="text-gray-400 text-xs mb-2">VUA App</div>
+                                        <div class="space-y-2">
+                                            <div class="w-full h-4 bg-verana/20 border border-verana rounded text-xs flex items-center justify-center">
+                                                <span class="text-verana text-xs">VUA1</span>
+                                            </div>
+                                            <div class="w-full h-4 bg-verana/20 border border-verana rounded text-xs flex items-center justify-center">
+                                                <span class="text-verana text-xs">VUA2</span>
+                                            </div>
+                                            <div class="w-full h-4 bg-gray-600/20 border border-gray-500 rounded text-xs flex items-center justify-center">
+                                                <span class="text-gray-400 text-xs">TR</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Connection Lines -->
+                                    <svg class="absolute inset-0 w-full h-full pointer-events-none">
+                                        <line x1="50%" y1="60" x2="50%" y2="120" stroke="#9f7aea" strokewidth="1" strokedasharray="3,3" opacity="0.6"></line>
+                                        <line x1="100" y1="140" x2="140" y2="140" stroke="#3fbdb6" strokewidth="1" strokedasharray="3,3" opacity="0.6"></line>
+                                        <line x1="140" y1="160" x2="180" y2="160" stroke="#9f7aea" strokewidth="1" strokedasharray="3,3" opacity="0.6"></line>
+                                    </svg>
+                                    
+                                    <!-- Users -->
+                                    <div class="absolute bottom-4 right-16 flex space-x-2">
+                                        <div class="w-6 h-6 bg-gray-600 rounded-full flex items-center justify-center">
+                                            <i class="fa-solid fa-user text-gray-400 text-xs"></i>
+                                        </div>
+                                        <div class="w-6 h-6 bg-gray-600 rounded-full flex items-center justify-center">
+                                            <i class="fa-solid fa-user text-gray-400 text-xs"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Why This Matters Section -->
+                    <div id="why-matters" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Why This Matters</h2>
+                        
+                        <div class="grid md:grid-cols-2 gap-8 mb-8">
+                            <div class="space-y-6">
+                                <h3 class="text-2xl font-bold text-red-400 mb-4">❌ Traditional Apps</h3>
+                                <div class="space-y-4">
+                                    <div class="bg-red-900/20 border border-red-700/50 rounded-xl p-4">
+                                        <p class="text-gray-300">Rely on opaque algorithms</p>
+                                    </div>
+                                    <div class="bg-red-900/20 border border-red-700/50 rounded-xl p-4">
+                                        <p class="text-gray-300">Advertising-driven models</p>
+                                    </div>
+                                    <div class="bg-red-900/20 border border-red-700/50 rounded-xl p-4">
+                                        <p class="text-gray-300">Centralized gatekeepers</p>
+                                    </div>
+                                    <div class="bg-red-900/20 border border-red-700/50 rounded-xl p-4">
+                                        <p class="text-gray-300">Walled garden platforms</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-6">
+                                <h3 class="text-2xl font-bold text-green-400 mb-4">✅ VUAs Flip This Model</h3>
+                                <div class="space-y-4">
+                                    <div class="bg-green-900/20 border border-green-700/50 rounded-xl p-4">
+                                        <p class="text-gray-300">Verifiable credentials determine visibility</p>
+                                    </div>
+                                    <div class="bg-green-900/20 border border-green-700/50 rounded-xl p-4">
+                                        <p class="text-gray-300">Ecosystem-defined governance</p>
+                                    </div>
+                                    <div class="bg-green-900/20 border border-green-700/50 rounded-xl p-4">
+                                        <p class="text-gray-300">Ensuring fairness and privacy</p>
+                                    </div>
+                                    <div class="bg-green-900/20 border border-green-700/50 rounded-xl p-4">
+                                        <p class="text-gray-300">Complete transparency</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Real Example Section -->
+                    <div id="real-example" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Real-World Example</h2>
+                        
+                        <div class="bg-gradient-to-br from-purple-900/30 to-blue-900/30 border border-purple-700/50 rounded-2xl p-8">
+                            <div class="flex items-center space-x-4 mb-6">
+                                <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center">
+                                    <i class="fa-solid fa-message text-purple-400 text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white">Hologram Messaging</h3>
+                                    <p class="text-gray-300">The first known Verifiable User Agent</p>
+                                </div>
+                            </div>
+                            
+                            <div class="grid md:grid-cols-2 gap-8">
+                                <div>
+                                    <h4 class="text-xl font-semibold text-white mb-4">What It Is</h4>
+                                    <p class="text-gray-300 leading-relaxed mb-6">
+                                        A chatbot and AI agent browser that demonstrates the power of VUAs in practice.
+                                    </p>
+                                    
+                                    <div class="space-y-3">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                                            <span class="text-gray-300">Trust-based discovery</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                                            <span class="text-gray-300">Verifiable AI assistants</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                                            <span class="text-gray-300">Decentralized messaging</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-black/50 rounded-xl p-6">
+                                    <h4 class="text-white font-semibold mb-4 flex items-center">
+                                        <i class="fa-solid fa-external-link text-purple-400 mr-2"></i>
+                                        Learn More
+                                    </h4>
+                                    <p class="text-gray-300 mb-4">
+                                        Explore how Hologram Messaging implements VUA principles in a real application.
+                                    </p>
+                                    <span class="inline-flex items-center space-x-2 text-purple-400 hover:text-purple-300 font-medium cursor-pointer">
+                                        <span>Visit hologram.zone</span>
+                                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Call to Action -->
+                    <div id="page-cta" class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-12 text-center">
+                        <h2 class="text-3xl font-bold text-white mb-4">Ready to Build Your VUA?</h2>
+                        <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                            Start creating decentralized applications that aggregate verifiable services and unlock the trust economy.
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                            <span class="bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2 cursor-pointer">
+                                <i class="fa-solid fa-code"></i>
+                                <span>Start Building</span>
+                            </span>
+                            <span class="border-2 border-gray-600 hover:border-verana text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 cursor-pointer">
+                                View Documentation
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Content Section -->
+<section id="related-content" class="bg-gray-900 py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-12 text-center">Related Build Components</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-cogs text-teal-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Verifiable Services</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Learn how to create the decentralized services that VUAs discover and interact with.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Learn More</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+                
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-tools text-orange-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Developer Tools</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Access the tools and frameworks needed to build robust VUAs.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Explore Tools</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+                
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-plug text-blue-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">SDK &amp; APIs</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Integrate with Verana's trust infrastructure using our comprehensive APIs.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>View APIs</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="bg-gray-900 border-t border-gray-800 py-16">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12 mb-12">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-white">Verana</span>
+                    </div>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty.
+                    </p>
+                    <div class="flex space-x-4">
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-github"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-discord"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Verana</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Principles</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Foundation</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Press</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Developers</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Docs</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">GitHub</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Specifications</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Trust Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Public Registry Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Trust Registry Query Protocol</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col sm:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">© 2025 Verana Foundation. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 sm:mt-0">
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Privacy Policy</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Terms of Service</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Cookie Policy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</body></html>

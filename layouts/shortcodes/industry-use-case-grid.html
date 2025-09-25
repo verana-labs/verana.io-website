@@ -1,0 +1,81 @@
+{{ $menu := site.Menus.main }}
+
+{{ $meta := dict
+  "/page/industry-use-cases/government-id" (dict
+    "image" "https://storage.googleapis.com/uxpilot-auth.appspot.com/e0c0133aea-13d0b9681ac2e7de7f5f.png"
+    "alt" "Citizen enrolling for a government digital ID"
+    "description" "Issue privacy-preserving national IDs and let citizens prove attributes anywhere."
+    "tag" "Government"
+  )
+  "/page/industry-use-cases/healthcare-workforce-mobility" (dict
+    "image" "https://storage.googleapis.com/uxpilot-auth.appspot.com/76c2ae882a-623a34c6af0b0afd6425.png"
+    "alt" "Healthcare worker onboarding with digital credentials"
+    "description" "Let clinicians carry verifiable licenses, training, and background checks—so onboarding takes minutes, not weeks."
+    "tag" "Healthcare"
+  )
+  "/page/industry-use-cases/hotel-management" (dict
+    "image" "https://storage.googleapis.com/uxpilot-auth.appspot.com/235432f8c8-c95def7f9acded1a1a65.png"
+    "alt" "Hotel discovery interface without brokers"
+    "description" "Give hotels verifiable discovery and direct bookings without broker monopolies."
+    "tag" "Travel"
+  )
+  "/page/industry-use-cases/ai-assistants" (dict
+    "image" "https://storage.googleapis.com/uxpilot-auth.appspot.com/a906916d75-acaf08f249d49d54abfc.png"
+    "alt" "User issuing credentials to an AI assistant"
+    "description" "Bind AI agents to real owners and policies so users know who's behind the bot—and what it can do."
+    "tag" "AI"
+  )
+  "/page/industry-use-cases/decentralized-social-network" (dict
+    "image" "https://storage.googleapis.com/uxpilot-auth.appspot.com/3ba8fd7054-fd84d00aba1d556a2658.png"
+    "alt" "Creators connected across decentralized social channels"
+    "description" "Creators own their channels, followers, and provenance. Discovery based on credentials, not ads."
+    "tag" "Social"
+  )
+}}
+
+{{ range $item := $menu }}
+  {{ if eq $item.Title "Industry Use Cases" }}
+    <section class="bg-gray-900 py-20">
+      <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {{ range $child := $item.Children }}
+          {{ if ne $child.Title "Overview" }}
+            {{ $key := strings.TrimSuffix "/" $child.URL }}
+            {{ $data := index $meta $key }}
+            {{ $image := "https://storage.googleapis.com/uxpilot-auth.appspot.com/3ba8fd7054-fd84d00aba1d556a2658.png" }}
+            {{ $alt := printf "Illustration for %s" $child.Title }}
+            {{ $description := "Learn more about this industry use case." }}
+            {{ $tag := "" }}
+            {{ if $data }}
+              {{ with $data.image }}{{ $image = . }}{{ end }}
+              {{ with $data.alt }}{{ $alt = . }}{{ end }}
+              {{ with $data.description }}{{ $description = . }}{{ end }}
+              {{ with $data.tag }}{{ $tag = . }}{{ end }}
+            {{ end }}
+            <a href="{{ $child.URL }}" class="group bg-black border border-gray-700 rounded-2xl overflow-hidden hover:border-verana/50 transition-all duration-300 hover:scale-[1.02] flex flex-col">
+              <div class="relative h-48 overflow-hidden">
+                <img src="{{ $image }}" alt="{{ $alt }}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+                {{ if $tag }}
+                  <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 text-xs font-semibold bg-verana/80 text-white rounded-full backdrop-blur">
+                    {{ $tag }}
+                  </span>
+                {{ end }}
+              </div>
+              <div class="p-6 flex flex-col flex-1">
+                <h3 class="text-xl font-semibold text-white mb-3">{{ $child.Title }}</h3>
+                <p class="text-gray-300 leading-relaxed flex-1">{{ $description }}</p>
+                <span class="mt-6 inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium">
+                  <span>Explore Use Case</span>
+                  <i class="fa-solid fa-arrow-right text-sm"></i>
+                </span>
+              </div>
+            </a>
+          {{ end }}
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </section>
+  {{ end }}
+{{ end }}

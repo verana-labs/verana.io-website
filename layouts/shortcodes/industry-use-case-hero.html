@@ -1,0 +1,14 @@
+{{ $hero := .Page.Params.hero }}
+{{ if not $hero }}
+  {{ return }}
+{{ end }}
+
+<section class="bg-black py-20 lg:py-28">
+  <div class="container mx-auto px-6">
+    <div class="max-w-5xl mx-auto text-center">
+      {{ with $hero.eyebrow }}<span class="text-sm uppercase tracking-[0.3em] text-verana/80">{{ . }}</span>{{ end }}
+      {{ with $hero.title }}<h1 class="text-4xl lg:text-6xl font-bold text-white mt-4">{{ . }}</h1>{{ end }}
+      {{ with $hero.description }}<p class="text-xl text-gray-300 leading-relaxed mt-6">{{ . | markdownify }}</p>{{ end }}
+    </div>
+  </div>
+</section>

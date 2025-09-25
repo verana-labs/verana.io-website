@@ -2090,6 +2090,9 @@ video {
 .bg-verana\/30 {
   background-color: rgb(118 62 240 / 0.3);
 }
+.bg-verana\/80 {
+  background-color: rgb(118 62 240 / 0.8);
+}
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
@@ -2418,6 +2421,9 @@ video {
 .tracking-\[0\.35em\] {
   letter-spacing: 0.35em;
 }
+.tracking-\[0\.3em\] {
+  letter-spacing: 0.3em;
+}
 .tracking-wide {
   letter-spacing: 0.025em;
 }
@@ -2527,6 +2533,9 @@ video {
 .text-verana-light {
   --tw-text-opacity: 1;
   color: rgb(159 122 234 / var(--tw-text-opacity, 1));
+}
+.text-verana\/80 {
+  color: rgb(118 62 240 / 0.8);
 }
 .text-white {
   --tw-text-opacity: 1;
@@ -2806,6 +2815,12 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.group:hover .group-hover\:scale-105 {
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .group:hover .group-hover\:text-verana {
   --tw-text-opacity: 1;
   color: rgb(118 62 240 / var(--tw-text-opacity, 1));
@@ -3059,6 +3074,11 @@ video {
   .lg\:py-24 {
     padding-top: 6rem;
     padding-bottom: 6rem;
+  }
+
+  .lg\:py-28 {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
   }
 
   .lg\:py-32 {
