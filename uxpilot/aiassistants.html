@@ -1,0 +1,709 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistants - Verana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "fontFamily": {
+        "inter": [
+          "Inter",
+          "sans-serif"
+        ]
+      },
+      "colors": {
+        "verana": "#763ef0",
+        "verana-light": "#9f7aea",
+        "verana-dark": "#553c9a"
+      },
+      "animation": {
+        "float": "float 6s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite alternate",
+        "network-pulse": "network-pulse 3s ease-in-out infinite",
+        "search-pulse": "search-pulse 2s ease-in-out infinite",
+        "trust-flow": "trust-flow 4s ease-in-out infinite",
+        "ai-pulse": "ai-pulse 3s ease-in-out infinite",
+        "data-flow": "data-flow 5s ease-in-out infinite"
+      },
+      "keyframes": {
+        "float": {
+          "0%, 100%": {
+            "transform": "translateY(0px)"
+          },
+          "50%": {
+            "transform": "translateY(-20px)"
+          }
+        },
+        "pulse-glow": {
+          "0%": {
+            "boxShadow": "0 0 20px rgba(118, 62, 240, 0.3)"
+          },
+          "100%": {
+            "boxShadow": "0 0 40px rgba(118, 62, 240, 0.6)"
+          }
+        },
+        "network-pulse": {
+          "0%, 100%": {
+            "opacity": "0.4"
+          },
+          "50%": {
+            "opacity": "0.8"
+          }
+        },
+        "search-pulse": {
+          "0%, 100%": {
+            "transform": "scale(1)",
+            "opacity": "0.7"
+          },
+          "50%": {
+            "transform": "scale(1.05)",
+            "opacity": "1"
+          }
+        },
+        "trust-flow": {
+          "0%": {
+            "transform": "translateX(-100px)",
+            "opacity": "0"
+          },
+          "50%": {
+            "transform": "translateX(0px)",
+            "opacity": "1"
+          },
+          "100%": {
+            "transform": "translateX(100px)",
+            "opacity": "0"
+          }
+        },
+        "ai-pulse": {
+          "0%, 100%": {
+            "transform": "scale(1)",
+            "opacity": "0.8"
+          },
+          "50%": {
+            "transform": "scale(1.1)",
+            "opacity": "1"
+          }
+        },
+        "data-flow": {
+          "0%": {
+            "transform": "translateY(-20px)",
+            "opacity": "0"
+          },
+          "50%": {
+            "transform": "translateY(0px)",
+            "opacity": "1"
+          },
+          "100%": {
+            "transform": "translateY(20px)",
+            "opacity": "0"
+          }
+        }
+      }
+    }
+  }
+};</script>
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        .gradient-mesh {
+            background: radial-gradient(circle at 20% 50%, rgba(118, 62, 240, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(118, 62, 240, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(118, 62, 240, 0.08) 0%, transparent 50%);
+        }
+        .network-bg {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(118, 62, 240, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(118, 62, 240, 0.08) 1px, transparent 1px);
+            background-size: 60px 60px, 40px 40px;
+            animation: network-pulse 4s ease-in-out infinite;
+        }
+        .ai-pattern {
+            background-image: 
+                linear-gradient(30deg, rgba(118, 62, 240, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(118, 62, 240, 0.05) 87.5%, rgba(118, 62, 240, 0.05)),
+                linear-gradient(150deg, rgba(118, 62, 240, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(118, 62, 240, 0.05) 87.5%, rgba(118, 62, 240, 0.05));
+            background-size: 30px 30px;
+        }
+    </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-black text-white overflow-x-hidden font-custom">
+
+<!-- Header -->
+<header id="header" class="bg-black/95 backdrop-blur-sm border-b border-gray-800/50 sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <span class="flex items-center space-x-3 cursor-pointer">
+                    <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-white">Verana</span>
+                </span>
+            </div>
+            
+            <nav class="hidden lg:flex items-center space-x-8">
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Why Verana</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Build</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Trust Engine</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-verana flex items-center space-x-1 transition-colors duration-200">
+                        <span>Industry Use Cases</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">Community</span>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">About</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <span class="bg-verana hover:bg-verana-dark text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer">
+                    Testnet
+                </span>
+                <button class="lg:hidden text-white">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Page Hero Section -->
+<section id="page-hero" class="relative bg-gray-900 py-16 lg:py-24 overflow-hidden h-[450px] flex items-center">
+    <div class="absolute inset-0 gradient-mesh opacity-50"></div>
+    <div class="absolute inset-0 network-bg opacity-20"></div>
+    <div class="absolute inset-0 ai-pattern opacity-10"></div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <!-- Breadcrumb -->
+            <nav class="flex items-center space-x-2 text-sm text-gray-400 mb-8">
+                <span class="hover:text-white cursor-pointer">Home</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="hover:text-white cursor-pointer">Industry Use Cases</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="text-verana">AI Assistants</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4 mb-6">
+                <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center animate-ai-pulse">
+                    <i class="fa-solid fa-robot text-verana text-2xl"></i>
+                </div>
+                <h1 class="text-4xl lg:text-6xl font-bold leading-tight">
+                    <span class="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">AI Assistants</span>
+                </h1>
+            </div>
+            
+            <p class="text-xl lg:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+                Bind AI agents to real owners and policies so users know who's behind the bot — and what it's allowed to do.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content Section -->
+<section id="main-content" class="bg-black py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12">
+                <!-- Sidebar Navigation -->
+                <aside id="sidebar-nav" class="lg:col-span-1">
+                    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky top-24">
+                        <h3 class="text-lg font-semibold text-white mb-6">Use Cases</h3>
+                        <nav class="space-y-3">
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Government Digital ID</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Decentralized Social Networks</span>
+                            <span class="block text-verana font-medium cursor-pointer">Verifiable AI Assistants</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Healthcare Workforce Mobility</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Hotel Discovery</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Notaries &amp; Power of Attorney</span>
+                        </nav>
+                        
+                        <div class="mt-8 pt-6 border-t border-gray-700">
+                            <h4 class="text-sm font-semibold text-white mb-4">What you can verify</h4>
+                            <div class="space-y-2">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-2 h-2 bg-verana rounded-full"></div>
+                                    <span class="text-sm text-gray-400">Owner credential binding</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-2 h-2 bg-verana rounded-full"></div>
+                                    <span class="text-sm text-gray-400">Policy-gated actions</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-2 h-2 bg-verana rounded-full"></div>
+                                    <span class="text-sm text-gray-400">Audit-ready provenance</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                
+                <!-- Content Area -->
+                <div id="content-area" class="lg:col-span-3">
+                    <!-- Problem Section -->
+                    <div id="problem-section" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8 flex items-center">
+                            <i class="fa-solid fa-exclamation-triangle text-red-400 mr-4"></i>
+                            The Problem: Unverifiable AI Services
+                        </h2>
+                        
+                        <div class="prose prose-invert max-w-none mb-8">
+                            <p class="text-xl text-gray-300 leading-relaxed mb-8">
+                                AI assistants are rapidly becoming part of everyday life: from customer service bots, to personal digital companions, to enterprise productivity tools. But today, most AI assistants face a <strong>trust and accountability gap</strong>:
+                            </p>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6 mb-12">
+                            <div class="bg-red-900/20 border border-red-700/50 rounded-2xl p-8">
+                                <div class="flex items-start space-x-4 mb-6">
+                                    <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-user-slash text-red-400 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-semibold text-white mb-3">No Clear Ownership</h3>
+                                        <p class="text-gray-300 leading-relaxed">
+                                            It's difficult to prove who controls an AI assistant. Anyone could spin up a chatbot and impersonate a person, brand, or organization.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-red-900/20 border border-red-700/50 rounded-2xl p-8">
+                                <div class="flex items-start space-x-4 mb-6">
+                                    <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-mask text-red-400 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-semibold text-white mb-3">Risk of Impersonation</h3>
+                                        <p class="text-gray-300 leading-relaxed">
+                                            Fraudsters can deploy fake assistants pretending to represent a company or individual.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-red-900/20 border border-red-700/50 rounded-2xl p-8">
+                                <div class="flex items-start space-x-4 mb-6">
+                                    <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-question-circle text-red-400 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-semibold text-white mb-3">Lack of Accountability</h3>
+                                        <p class="text-gray-300 leading-relaxed">
+                                            Without proof of control, there's no verifiable link between the assistant's actions and its owner.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-red-900/20 border border-red-700/50 rounded-2xl p-8">
+                                <div class="flex items-start space-x-4 mb-6">
+                                    <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-dollar-sign text-red-400 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-semibold text-white mb-3">Unrecognized Economic Activity</h3>
+                                        <p class="text-gray-300 leading-relaxed">
+                                            AI assistants generate economic value, but without verifiable ownership links, there's no way to properly account for, regulate, or tax this work.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-puzzle-piece text-orange-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-white mb-3">Ecosystem Fragmentation</h3>
+                                    <p class="text-gray-300 leading-relaxed mb-4">
+                                        Each AI vendor builds proprietary trust systems, creating silos and preventing interoperability.
+                                    </p>
+                                    <div class="bg-orange-900/20 border border-orange-700/30 rounded-xl p-6">
+                                        <p class="text-gray-200 leading-relaxed">
+                                            This erodes trust between humans, organizations, and AI services — and in the near future, will also create <strong>regulatory and fiscal challenges</strong> when governments seek to identify and tax the work performed by AI assistants.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Solution Section -->
+                    <div id="solution-section" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8 flex items-center">
+                            <i class="fa-solid fa-lightbulb text-green-400 mr-4"></i>
+                            The Solution: Verifiable AI Assistants
+                        </h2>
+
+                        <div class="bg-gradient-to-br from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-8 mb-12">
+                            <p class="text-xl text-gray-200 leading-relaxed">
+                                With Verana, individuals and organizations can issue <strong>Verifiable Credentials</strong> that bind an <strong>AI Assistant Service</strong> to its legitimate owner.
+                            </p>
+                        </div>
+
+                        <!-- AI Assistant Visual -->
+                        <div id="ai-visual" class="mb-12">
+                            <img class="w-full h-96 object-cover rounded-2xl mb-8" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/8049eea632-fbd1d3ce012d18b323c4.png" alt="A friendly agent icon with a signed-by badge Org Credential connected to a policy card subtle cryptographic motifs futuristic digital interface glowing connections trust verification elements clean modern design">
+                        </div>
+
+                        <!-- Binding Process -->
+                        <div id="binding-process" class="mb-12">
+                            <h3 class="text-2xl font-bold text-white mb-8">Binding the AI Assistant</h3>
+                            
+                            <div class="space-y-8">
+                                <div class="flex items-start space-x-6">
+                                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <span class="text-blue-400 font-bold text-xl">1</span>
+                                    </div>
+                                    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 flex-1">
+                                        <h4 class="text-xl font-semibold text-white mb-4">Owner Verification</h4>
+                                        <p class="text-gray-300 leading-relaxed">
+                                            A person or organization obtains a <strong>Person Credential</strong> or <strong>Organization Credential</strong> from an authorized issuer.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start space-x-6">
+                                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <span class="text-green-400 font-bold text-xl">2</span>
+                                    </div>
+                                    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 flex-1">
+                                        <h4 class="text-xl font-semibold text-white mb-4">Credential Binding</h4>
+                                        <p class="text-gray-300 leading-relaxed">
+                                            Service owners attach a Person or Organization credential to their agent.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start space-x-6">
+                                    <div class="w-12 h-12 bg-verana/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <span class="text-verana font-bold text-xl">3</span>
+                                    </div>
+                                    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 flex-1">
+                                        <h4 class="text-xl font-semibold text-white mb-4">Register in Service Directory</h4>
+                                        <p class="text-gray-300 leading-relaxed">
+                                            Optionally, they register the agent's DID in the service directory: AI Assistant is now discoverable.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Assistants in Practice -->
+                    <div id="practice-section" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">AI Assistants in Practice</h2>
+                        
+                        <div class="space-y-8">
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300">
+                                <div class="flex items-start space-x-6">
+                                    <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-palette text-purple-400 text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-2xl font-semibold text-white mb-4">For Individuals</h3>
+                                        <p class="text-gray-300 leading-relaxed text-lg">
+                                            A digital artist registers their AI assistant under their Person Credential. Fans interacting with the assistant can verify it truly represents the artist.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300">
+                                <div class="flex items-start space-x-6">
+                                    <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-building text-blue-400 text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-2xl font-semibold text-white mb-4">For Organizations</h3>
+                                        <p class="text-gray-300 leading-relaxed text-lg">
+                                            A telecom operator deploys a customer service AI. The AI is bound to the company's Organization Credential, ensuring customers trust they're speaking to the real brand.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300">
+                                <div class="flex items-start space-x-6">
+                                    <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-gavel text-green-400 text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-2xl font-semibold text-white mb-4">For Regulators</h3>
+                                        <p class="text-gray-300 leading-relaxed text-lg">
+                                            Authorities can require that all public-facing AI services be verifiably linked to a legal entity, ensuring accountability and enabling governments to tax the work and revenue generated by AI assistants.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Key Benefits -->
+                    <div id="benefits-section" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Key Benefits</h2>
+                        
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="space-y-6">
+                                <div class="bg-green-900/20 border border-green-700/50 rounded-xl p-6">
+                                    <div class="flex items-center space-x-3 mb-3">
+                                        <i class="fa-solid fa-shield-halved text-green-400 text-xl"></i>
+                                        <h3 class="text-lg font-semibold text-white">Trust &amp; Authenticity</h3>
+                                    </div>
+                                    <p class="text-gray-300">Users can verify the true owner behind any AI assistant</p>
+                                </div>
+
+                                <div class="bg-blue-900/20 border border-blue-700/50 rounded-xl p-6">
+                                    <div class="flex items-center space-x-3 mb-3">
+                                        <i class="fa-solid fa-user-check text-blue-400 text-xl"></i>
+                                        <h3 class="text-lg font-semibold text-white">Clear Accountability</h3>
+                                    </div>
+                                    <p class="text-gray-300">Direct link between AI actions and responsible parties</p>
+                                </div>
+
+                                <div class="bg-purple-900/20 border border-purple-700/50 rounded-xl p-6">
+                                    <div class="flex items-center space-x-3 mb-3">
+                                        <i class="fa-solid fa-network-wired text-purple-400 text-xl"></i>
+                                        <h3 class="text-lg font-semibold text-white">Interoperability</h3>
+                                    </div>
+                                    <p class="text-gray-300">Works across different AI platforms and ecosystems</p>
+                                </div>
+                            </div>
+
+                            <div class="space-y-6">
+                                <div class="bg-orange-900/20 border border-orange-700/50 rounded-xl p-6">
+                                    <div class="flex items-center space-x-3 mb-3">
+                                        <i class="fa-solid fa-balance-scale text-orange-400 text-xl"></i>
+                                        <h3 class="text-lg font-semibold text-white">Regulatory Compliance</h3>
+                                    </div>
+                                    <p class="text-gray-300">Enables proper taxation and regulation of AI economic activity</p>
+                                </div>
+
+                                <div class="bg-red-900/20 border border-red-700/50 rounded-xl p-6">
+                                    <div class="flex items-center space-x-3 mb-3">
+                                        <i class="fa-solid fa-ban text-red-400 text-xl"></i>
+                                        <h3 class="text-lg font-semibold text-white">Anti-Impersonation</h3>
+                                    </div>
+                                    <p class="text-gray-300">Prevents fraudulent AI assistants from impersonating brands</p>
+                                </div>
+
+                                <div class="bg-teal-900/20 border border-teal-700/50 rounded-xl p-6">
+                                    <div class="flex items-center space-x-3 mb-3">
+                                        <i class="fa-solid fa-search text-teal-400 text-xl"></i>
+                                        <h3 class="text-lg font-semibold text-white">Discoverability</h3>
+                                    </div>
+                                    <p class="text-gray-300">AI assistants can be found through trust-based search</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Conclusion -->
+                    <div id="conclusion" class="mb-16">
+                        <div class="bg-gradient-to-br from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-12">
+                            <h2 class="text-3xl font-bold text-white mb-6 text-center">The Future of AI Trust</h2>
+                            <p class="text-xl text-gray-200 leading-relaxed text-center">
+                                Verana ensures AI Assistants are not anonymous black boxes, but <strong>verifiable digital agents</strong> with clear ownership, trust, accountability, and economic transparency.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Call to Action -->
+                    <div id="page-cta" class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-12 text-center">
+                        <h2 class="text-3xl font-bold text-white mb-4">Ready to Build Verifiable AI?</h2>
+                        <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                            Start creating AI assistants with verifiable ownership and clear accountability.
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                            <span class="bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2 cursor-pointer">
+                                <i class="fa-solid fa-rocket"></i>
+                                <span>Start Building</span>
+                            </span>
+                            <span class="border-2 border-gray-600 hover:border-verana text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 cursor-pointer">
+                                View Documentation
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Use Cases Section -->
+<section id="related-use-cases" class="bg-gray-900 py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-12 text-center">Related Use Cases</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-id-card text-blue-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Government Digital ID</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Issue privacy-preserving national IDs and let citizens prove attributes anywhere.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Learn More</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+                
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-share-nodes text-purple-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Decentralized Social</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Creators own their channels, followers, and provenance. Discovery based on credentials.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Explore</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+                
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-user-md text-green-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Healthcare Workforce</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Let clinicians carry verifiable licenses and training for instant onboarding.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Discover</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="bg-gray-900 border-t border-gray-800 py-16">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12 mb-12">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-white">Verana</span>
+                    </div>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty.
+                    </p>
+                    <div class="flex space-x-4">
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-github"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-discord"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Verana</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Principles</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Foundation</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Press</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Developers</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Docs</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">GitHub</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Specifications</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Trust Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Public Registry Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Trust Registry Query Protocol</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col sm:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">© 2025 Verana Foundation. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 sm:mt-0">
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Privacy Policy</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Terms of Service</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Cookie Policy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</body></html>
