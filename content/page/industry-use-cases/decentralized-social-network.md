@@ -4,6 +4,7 @@ subtitle: "Where creators own their channels, followers, and provenance. Discove
 url: "/page/industry-use-cases/decentralized-social-network"
 hero_icon: "fa-solid fa-users"
 disable_content_wrapper: true
+use_case_partial: "decentralized-social-network"
 sidebar:
   title: Industry Use Cases
   nav:

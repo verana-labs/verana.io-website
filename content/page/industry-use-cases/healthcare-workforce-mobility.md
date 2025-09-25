@@ -4,6 +4,7 @@ subtitle: "Let clinicians carry verifiable licenses, training, and background ch
 url: "/page/industry-use-cases/healthcare-workforce-mobility"
 hero_icon: "fa-solid fa-user-md"
 disable_content_wrapper: true
+use_case_partial: "healthcare-workforce-mobility"
 sidebar:
   title: Industry Use Cases
   nav:
@@ -91,21 +92,55 @@ architecture:
       icon_bg_class: "bg-verana/20"
       icon_color_class: "text-verana"
       title: "Create an Ecosystem Trust Registry"
-      description: "Deploy a **Trust Registry on Verana** to operationalize the governance framework."
-      features:
-        - icon: "fa-solid fa-id-card"
-          icon_color_class: "text-blue-400"
-          title: Credential Schemas
-          text: "Identity, grant-to-work, DBS/background checks, training & continuous education, specialty certifications."
-        - text: "Maintains the roster of **authorized issuers and verifiers** and enforces compliance."
+      description: "The ecosystem deploys a **Trust Registry** on Verana to implement the EGF rules."
+      schema_section:
+        title: "Defines Credential Schemas:"
+        items:
+          - icon: "fa-solid fa-id-card"
+            icon_color_class: "text-blue-400"
+            text: Identity
+          - icon: "fa-solid fa-certificate"
+            icon_color_class: "text-green-400"
+            text: "Grant to Work (license to practice)"
+          - icon: "fa-solid fa-shield-halved"
+            icon_color_class: "text-red-400"
+            text: "DBS / Background Checks"
+          - icon: "fa-solid fa-graduation-cap"
+            icon_color_class: "text-purple-400"
+            text: "Training & Continuous Education"
+          - icon: "fa-solid fa-award"
+            icon_color_class: "text-orange-400"
+            text: "Specialty Certifications"
+      management_section:
+        title: "Manages:"
+        items:
+          - text: "List of **authorized issuers and verifiers**"
+          - text: "Enforces compliance with the governance framework"
     - icon: "fa-solid fa-check-circle"
       icon_bg_class: "bg-green-500/20"
       icon_color_class: "text-green-400"
       title: "Approve Issuers and Verifiers"
-      description: "Universities, licensing boards, and hospitals apply once; after validation they operate with ecosystem-wide trust."
-      features:
-        - text: "Approved issuers can mint verifiable credentials for healthcare professionals."
-        - text: "Validated verifiers can request and validate credential presentations instantly."
+      description: "Universities, licensing boards, hospitals, and government bodies apply once; after validation they operate with ecosystem-wide trust."
+      entity_cards:
+        - wrapper_class: "bg-blue-900/20 border border-blue-700/50 rounded-xl p-6"
+          icon: "fa-solid fa-university"
+          icon_color_class: "text-blue-400"
+          title: Issuers
+          text: "Universities, professional councils, certification authorities, and government agencies can apply to issue credentials."
+          highlight:
+            wrapper_class: "bg-blue-900/30 rounded-lg p-3"
+            text: "Once validated, they become **authorized issuers**."
+        - wrapper_class: "bg-green-900/20 border border-green-700/50 rounded-xl p-6"
+          icon: "fa-solid fa-hospital"
+          icon_color_class: "text-green-400"
+          title: Verifiers
+          text: "Hospitals, clinics, research centers, and government bodies can apply for verifier status."
+          highlight:
+            wrapper_class: "bg-green-900/30 rounded-lg p-3"
+            text: "Allows them to request and validate credential presentations."
+      note_box:
+        wrapper_class: "mt-6 bg-verana/10 border border-verana/30 rounded-xl p-6"
+        text: "This ensures that **only accredited entities** can issue or verify credentials within the ecosystem."
 identity_trust:
   id: credential-issuance
   icon: "fa-solid fa-id-badge"
