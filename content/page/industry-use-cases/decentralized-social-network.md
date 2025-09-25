@@ -1,151 +1,284 @@
 ---
 title: Decentralized Social Networks
+subtitle: "Where creators own their channels, followers, and provenance. Discovery is based on credentials—not ads."
 url: "/page/industry-use-cases/decentralized-social-network"
+hero_icon: "fa-solid fa-users"
+disable_content_wrapper: true
+sidebar:
+  title: Industry Use Cases
+  nav:
+    - label: The Problem
+      url: "#problem-section"
+      active: true
+    - label: Solution Overview
+      url: "#solution-intro"
+    - label: Architecture
+      url: "#architecture"
+    - label: Identity & Trust
+      url: "#identity-trust"
+    - label: Moderation
+      url: "#moderation"
+    - label: Economics
+      url: "#economics"
+    - label: Why This is Better
+      url: "#why-better"
+    - label: Conclusion
+      url: "#conclusion"
+    - label: Call to Action
+      url: "#page-cta"
+  quick_links:
+    title: Quick Links
+    items:
+      - label: Architecture Guide
+        url: "#architecture"
+      - label: Identity Requirements
+        url: "#identity-trust"
+      - label: Business Model
+        url: "#economics"
+problem_section:
+  title: "The Problem with Today's Social Networks"
+  intro: |
+    Traditional social networks are **centralized platforms** that dictate who can publish, how content is moderated, and how user data is monetized. They come with serious drawbacks:
+  cards:
+    - icon: "fa-solid fa-database"
+      icon_bg_class: "bg-red-500/20"
+      icon_color_class: "text-red-400"
+      title: Data Exploitation
+      text: "Platforms harvest and sell user data without transparent consent or fair compensation."
+    - icon: "fa-solid fa-ban"
+      icon_bg_class: "bg-red-500/20"
+      icon_color_class: "text-red-400"
+      title: Censorship & Bias
+      text: "Opaque moderation rules are uneven, biased, and controlled by a central authority."
+    - icon: "fa-solid fa-lock"
+      icon_bg_class: "bg-red-500/20"
+      icon_color_class: "text-red-400"
+      title: Vendor Lock-in
+      text: "Creators cannot easily move their audience from one network to another."
+    - icon: "fa-solid fa-robot"
+      icon_bg_class: "bg-red-500/20"
+      icon_color_class: "text-red-400"
+      title: Fake Accounts & Bots
+      text: "Lack of verifiable identity creates fraud and misinformation."
+  result:
+    title: "The Result?"
+    text: "A system where **users are products, not participants**."
+solution_intro:
+  title: "Introducing the Verifiable Trust Social Network"
+  highlight:
+    icon: "fa-solid fa-users"
+    icon_bg_class: "bg-verana/20"
+    icon_color_class: "text-verana"
+    title: Imagine This
+    text: "A social network where creators and communities **own their channels**, manage their own moderation, and connect in a network secured by verifiable trust."
+  image:
+    src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/3ba8fd7054-fd84d00aba1d556a2658.png"
+    alt: "Decentralized social network with independently owned channels connected by verifiable trust lines"
+architecture:
+  title: "Architecture Components"
+  components:
+    - icon: "fa-solid fa-tv"
+      icon_bg_class: "bg-blue-500/20"
+      icon_color_class: "text-blue-400"
+      title: "1. Social Channel (Verifiable Service)"
+      description: "A Verifiable Trust Social Network provides an **open source Social Channel Verifiable Service**. Any influencer, creator, or community can deploy their own channel in the datacenter of their choice."
+      features:
+        - icon: "fa-solid fa-crown"
+          icon_color_class: "text-yellow-400"
+          title: "100% Ownership"
+          text: "Complete ownership of data and followers."
+        - icon: "fa-solid fa-server"
+          icon_color_class: "text-green-400"
+          title: Self-Hosted
+          text: "Channels are not platform-dependent."
+        - icon: "fa-solid fa-signature"
+          icon_color_class: "text-purple-400"
+          title: Signed Content
+          text: "Every post is cryptographically signed by the channel's DID."
+    - icon: "fa-solid fa-globe"
+      icon_bg_class: "bg-green-500/20"
+      icon_color_class: "text-green-400"
+      title: "2. Social Browser (Verifiable User Agent)"
+      description: "A **browser and/or mobile app** that lets users explore decentralized social channels. Instead of visiting centralized feeds, users navigate across independently hosted channels."
+      features:
+        - icon: "fa-solid fa-magnifying-glass"
+          icon_color_class: "text-blue-400"
+          title: Searchable
+          text: "Discovery powered by Verana's DID Directory."
+        - icon: "fa-solid fa-shield-check"
+          icon_color_class: "text-green-400"
+          title: Verifiable
+          text: "Channels present verifiable credentials before appearing."
+        - icon: "fa-solid fa-arrows-up-down-left-right"
+          icon_color_class: "text-purple-400"
+          title: Portable
+          text: "No single platform controls visibility or reach."
+  network_example:
+    title: "3. Network Example"
+    image:
+      src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/9b2ba032fa-98dba522b821cbff5485.png"
+      alt: "Creators and followers connected via Verana blockchain, indexer, and trust resolver"
+    note:
+      text: "**Note:** To simplify, we represented a single instance of the Trust Resolver, Verana Indexer, and Verana Blockchain. Channel owners can deploy their own instance for full decentralization."
+identity_trust:
+  title: "Identity and Trust"
+  intro: "To appear in the Social Channel User Agent, channel owners must:"
+  steps:
+    - label: "1"
+      badge_bg_class: "bg-blue-500/20"
+      badge_text_class: "text-blue-400 font-bold"
+      title: Attach Person Credential
+      text: "Attach a **Person Credential (ECS)** with an avatar or identity proof."
+    - label: "2"
+      badge_bg_class: "bg-green-500/20"
+      badge_text_class: "text-green-400 font-bold"
+      title: Obtain Social Channel Credential
+      text: "Obtain a **Social Channel Credential** (free or purchased) that marks the channel as usable."
+    - label: "3"
+      badge_bg_class: "bg-verana/20"
+      badge_text_class: "text-verana font-bold"
+      title: Register DID
+      text: "Register the **channel DID** in the **Verana DID Directory**, making it indexed and searchable."
+  trust_guarantee:
+    icon: "fa-solid fa-shield-check"
+    icon_color_class: "text-verana"
+    title: Trust Guarantee
+    text: "Followers always know **who owns the channel**."
+moderation:
+  title: Moderation
+  cards:
+    - icon: "fa-solid fa-user-shield"
+      icon_bg_class: "bg-blue-500/20"
+      icon_color_class: "text-blue-400"
+      title: Channel-Level Responsibility
+      text: "Each creator moderates their own channel, maintaining full control over community standards."
+    - icon: "fa-solid fa-id-badge"
+      icon_bg_class: "bg-green-500/20"
+      icon_color_class: "text-green-400"
+      title: Credential-Based Access
+      text: "Followers can be required to present credentials—age, membership, verified identity—for deeper engagement."
+  warning:
+    icon: "fa-solid fa-exclamation-triangle"
+    icon_bg_class: "bg-yellow-500/20"
+    icon_color_class: "text-yellow-400"
+    title: Credential Revocation
+    text: "If harmful content is posted or moderation fails, the ecosystem can revoke the Social Channel Credential—or even the Person Credential."
+  bottom_line:
+    title: Bottom-Up Moderation
+    text: "A **bottom-up, verifiable moderation system** replaces opaque centralized censorship."
+economics:
+  title: "Economics and Incentives"
+  intro_card:
+    heading: Privacy-Preserving Business Model
+    description: "Building around the Verifiable Trust concept enables **privacy-preserving business models**:"
+    feature_lists:
+      - items:
+          - icon: "fa-solid fa-id-card"
+            icon_color_class: "text-blue-400"
+            title: Credential Requests
+            text: "Social channels can request credential presentations from other ecosystems."
+          - icon: "fa-solid fa-coins"
+            icon_color_class: "text-green-400"
+            title: User Agent Rewards
+            text: "The social network earns rewards whenever credential flows occur in its app."
+      - items:
+          - wrapper_class: "bg-verana/10 border border-verana/30 rounded-xl p-6 flex items-center justify-center text-center"
+            icon: "fa-solid fa-balance-scale"
+            icon_color_class: "text-verana"
+            title: Fair Economics
+            text: "**Decentralized economics** replace surveillance advertising."
+why_better:
+  title: "Why This is Better"
+  items:
+    - icon: "fa-solid fa-crown"
+      icon_bg_class: "bg-green-500/20"
+      icon_color_class: "text-green-400"
+      title: User Sovereignty
+      text: "Creators own their channels, not a corporation."
+    - icon: "fa-solid fa-shield-check"
+      icon_bg_class: "bg-green-500/20"
+      icon_color_class: "text-green-400"
+      title: Verifiable Trust
+      text: "DIDs and verifiable credentials prove identities and prevent fraud."
+    - icon: "fa-solid fa-signature"
+      icon_bg_class: "bg-green-500/20"
+      icon_color_class: "text-green-400"
+      title: Content Provenance
+      text: "Every post is signed by the channel's DID."
+    - icon: "fa-solid fa-users-gear"
+      icon_bg_class: "bg-green-500/20"
+      icon_color_class: "text-green-400"
+      title: Decentralized Moderation
+      text: "Community-driven, credential-backed moderation."
+    - icon: "fa-solid fa-user-secret"
+      icon_bg_class: "bg-green-500/20"
+      icon_color_class: "text-green-400"
+      title: Privacy-Preserving
+      text: "Monetization happens without surveillance."
+    - icon: "fa-solid fa-arrows-up-down-left-right"
+      icon_bg_class: "bg-green-500/20"
+      icon_color_class: "text-green-400"
+      title: Interoperability
+      text: "Channels work across ecosystems—no vendor lock-in."
+conclusion:
+  title: "A Trustable Internet, One Channel at a Time"
+  intro: "We just showed how the **Verifiable Trust Concept** can reimagine social networking:"
+  transitions:
+    - icon: "fa-solid fa-arrow-right"
+      icon_bg_class: "bg-red-500/20"
+      icon_color_class: "text-red-400"
+      title: "From Centralized Control"
+      text: "to **decentralized ownership**"
+    - icon: "fa-solid fa-arrow-right"
+      icon_bg_class: "bg-yellow-500/20"
+      icon_color_class: "text-yellow-400"
+      title: "From Opaque Moderation"
+      text: "to **transparent governance**"
+    - icon: "fa-solid fa-arrow-right"
+      icon_bg_class: "bg-green-500/20"
+      icon_color_class: "text-green-400"
+      title: "From Surveillance Ads"
+      text: "to **privacy-preserving incentives**"
+  closing:
+    headline: 'It''s time to move from "social media platforms" to a **social internet of verifiable services**.'
+    message:
+      icon: "fa-solid fa-rocket"
+      icon_color_class: "text-verana"
+      text: "With Verana, the future of social networking is **trustable, decentralized, and user-owned**."
+cta:
+  title: "Ready to Build Decentralized Social?"
+  body: "Start creating your own social channels and join the revolution in creator sovereignty."
+  primary:
+    label: Deploy Your Channel
+    url: "#"
+    icon: "fa-solid fa-rocket"
+  secondary:
+    label: View Documentation
+    url: "#"
+related_use_cases:
+  title: Related Industry Use Cases
+  items:
+    - icon: "fa-solid fa-id-card"
+      icon_bg_class: "bg-blue-500/20"
+      icon_color_class: "text-blue-400"
+      title: Government Digital ID
+      text: "Issue privacy-preserving national IDs and let citizens prove attributes anywhere."
+      url: "/page/industry-use-cases/government-id"
+      cta_label: Learn More
+    - icon: "fa-solid fa-robot"
+      icon_bg_class: "bg-green-500/20"
+      icon_color_class: "text-green-400"
+      title: Verifiable AI Assistants
+      text: "Bind AI agents to real owners and policies so users know who's behind the bot."
+      url: "/page/industry-use-cases/ai-assistants"
+      cta_label: Explore
+    - icon: "fa-solid fa-user-md"
+      icon_bg_class: "bg-purple-500/20"
+      icon_color_class: "text-purple-400"
+      title: Healthcare Workforce
+      text: "Let clinicians carry verifiable licenses so onboarding takes minutes, not weeks."
+      url: "/page/industry-use-cases/healthcare-workforce-mobility"
+      cta_label: Discover
 ---
 
-## The Problem with Today’s Social Networks
-
-Traditional social networks are **centralized platforms** that dictate who can publish, how content is moderated, and how user data is monetized.  
-They come with serious drawbacks:
-
-- **Data exploitation**: platforms harvest and sell user data.  
-- **Censorship and opaque moderation**: rules are uneven, biased, and controlled by a central authority.  
-- **Vendor lock-in**: creators cannot easily move their audience from one network to another.  
-- **Fake accounts & bots**: lack of verifiable identity creates fraud and misinformation.  
-- **Content provenance**: users can’t prove authorship of posts and media.
-
-The result? A system where users are products, not participants.
-
-## Introducing the Verifiable Trust Social Network Concept
-
-Imagine a social network where creators and communities **own their channels**, manage their own moderation, and connect in a network secured by verifiable trust.  
-
-### 1. Social Channel (Verifiable Service)
-
-A Verifiable Trust Social Network provides an **open source Social Channel Verifiable Service** (a container).  
-Any influencer, creator, or community can deploy their own channel in the datacenter of their choice.  
-
-- 100% ownership of data and followers.  
-- Channels are **self-hosted**, not platform-dependent.  
-- Content is cryptographically signed by the channel’s DID for **provenance**.
-
-### 2. Social Browser (Verifiable User Agent)
-
-A **browser and/or mobile app** that lets users explore decentralized social channels.  
-Think of it as a **social browser**: instead of visiting centralized feeds, users navigate across independently hosted channels.
-
-- **Searchable & Discoverable**: through Verana's DID Directory.  
-- **Verifiable**: channels present Verifiable Credentials (VCs).  
-- **Portable**: no single platform controls visibility.
-
-### 3. Example
-
-{{< kroki _type="plantuml" >}}
-@startuml
-
-actor "Alice" as alice
-actor "Bob" as bob
-actor "Carol" as carol
-
-[Alice's Social Channel] as CHA #3fbdb6
-[Bob's Social Channel] as CHB #3fbdb6
-
-[Alice's Social Browser Instance] as VUA #b99bce
-[Bob's Social Browser Instance] as VUB #b99bce
-[Carol's Social Browser Instance] as VUC #b99bce
-
-[Verana Blockchain] as VPR #D88AB3
-[Verana Indexer] as VUAidx #D88AB3
-[Trust Resolver] as VUAtr
-
-VUAtr --> VUAidx
-VUAidx --> VPR
-
-alice --> VUA : uses
-bob --> VUB : uses
-carol --> VUC : uses
-
-VUA --> CHA : to administrate
-VUB --> CHB : to administrate
-
-VUC --> CHA : to follow
-VUC --> CHB : to follow
-
-CHA --> VUAtr
-CHB --> VUAtr
-
-VUA --> VUAtr
-VUB --> VUAtr
-VUC --> VUAtr
-
-note right of CHA
-  Presents credential in DID Document:
-  - Person or Organization Credential
-  - Service Credential
-  - Social Channel Credential
-  Declare "services" DID Document entries
-end note
-
-note left of CHB
-  Presents credential in DID Document:
-  - Person or Organization Credential
-  - Service Credential
-  - Social Channel Credential
-  Declare "services" DID Document entries
-end note
-
-
-@enduml
-
-{{< /kroki >}}
-
-:::tip
-To simplify, we represented a single instance of components Trust Resolver, Verana Indexer, and Verana Blockchain. But, channel owners could decide to deploy their own instance for full decentralization.
-:::
-
-## Identity and Trust
-
-To appear in the Social Channel User Agent, channel owners:  
-
-- Attach a **Person Credential (ECS)** to their channel (with an avatar or identity proof).  
-- Obtain a **Social Channel Credential** (free or purchased, depends on Social Channel Verifiable User Agent owner) that marks the channel as usable in the Social Channel Verifiable User Agent.  
-- Register their **DID** in the **Verana DID Directory**, making the channel indexed and searchable.  
-
-This ensures followers know exactly **who owns the channel**.
-
-## Moderation
-
-- **Channel-level responsibility**: Each creator moderates their own channel.  
-- **Credential-based access**: For followers, posting comments or engaging deeply can require presenting a credential (e.g., proof of age, membership, or verified identity).  
-- **Credential revocation**: If harmful content is posted by channel owner, or channel not properly moderated by its owner, the ecosystem can revoke the Social Channel Credential, or even the Person Credential.
-
-This creates a **bottom-up, verifiable moderation system** instead of opaque centralized censorship.
-
-## Economics and Incentives
-
-Building around the Verifiable Trust concept enables **privacy-preserving business model**:  
-
-- Social Channels can request presentation of credential of other ecosystems.  
-- The Social Network company earns a **User Agent reward** whenever credential flows occur in its app.  
-- **Fair, decentralized economics** replace surveillance advertising.
-
-## Why This is Better
-
-- **User Sovereignty**: Creators own their channels, not a corporation.  
-- **Verifiable Trust**: DIDs + VCs prove identities and prevent fraud.  
-- **Content Provenance**: Every content, post... is signed by channel's DID.
-- **Decentralized Moderation**: Community-driven, credential-backed moderation.  
-- **Privacy-Preserving Economics**: Monetization without surveillance.  
-- **Interoperability**: Channels work across ecosystems, with no vendor lock-in.  
-
-## A Trustable Internet, One Channel at a Time
-
-We just show how the **Verifiable Trust Concept** can reimagine social networking:
-
-- From centralized control to **decentralized ownership**.  
-- From opaque moderation to **transparent governance**.  
-- From surveillance-driven ads to **privacy-preserving incentives**.  
-
-It’s time to move from “social media platforms” to a **social internet of verifiable services**.  
-
-🚀 With Verana, the future of social networking is **trustable, decentralized, and user-owned**.  
+{{< industry-use-case >}}

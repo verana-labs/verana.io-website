@@ -1,0 +1,923 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decentralizing Hotel Management - Verana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "fontFamily": {
+        "inter": [
+          "Inter",
+          "sans-serif"
+        ]
+      },
+      "colors": {
+        "verana": "#763ef0",
+        "verana-light": "#9f7aea",
+        "verana-dark": "#553c9a"
+      },
+      "animation": {
+        "float": "float 6s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite alternate",
+        "network-pulse": "network-pulse 3s ease-in-out infinite",
+        "search-pulse": "search-pulse 2s ease-in-out infinite",
+        "trust-flow": "trust-flow 4s ease-in-out infinite"
+      },
+      "keyframes": {
+        "float": {
+          "0%, 100%": {
+            "transform": "translateY(0px)"
+          },
+          "50%": {
+            "transform": "translateY(-20px)"
+          }
+        },
+        "pulse-glow": {
+          "0%": {
+            "boxShadow": "0 0 20px rgba(118, 62, 240, 0.3)"
+          },
+          "100%": {
+            "boxShadow": "0 0 40px rgba(118, 62, 240, 0.6)"
+          }
+        },
+        "network-pulse": {
+          "0%, 100%": {
+            "opacity": "0.4"
+          },
+          "50%": {
+            "opacity": "0.8"
+          }
+        },
+        "search-pulse": {
+          "0%, 100%": {
+            "transform": "scale(1)",
+            "opacity": "0.7"
+          },
+          "50%": {
+            "transform": "scale(1.05)",
+            "opacity": "1"
+          }
+        },
+        "trust-flow": {
+          "0%": {
+            "transform": "translateX(-100px)",
+            "opacity": "0"
+          },
+          "50%": {
+            "transform": "translateX(0px)",
+            "opacity": "1"
+          },
+          "100%": {
+            "transform": "translateX(100px)",
+            "opacity": "0"
+          }
+        }
+      }
+    }
+  }
+};</script>
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        .gradient-mesh {
+            background: radial-gradient(circle at 20% 50%, rgba(118, 62, 240, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(118, 62, 240, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(118, 62, 240, 0.08) 0%, transparent 50%);
+        }
+        .network-bg {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(118, 62, 240, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(118, 62, 240, 0.08) 1px, transparent 1px);
+            background-size: 60px 60px, 40px 40px;
+            animation: network-pulse 4s ease-in-out infinite;
+        }
+        .trust-pattern {
+            background-image: 
+                linear-gradient(45deg, rgba(118, 62, 240, 0.05) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(118, 62, 240, 0.05) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(118, 62, 240, 0.05) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(118, 62, 240, 0.05) 75%);
+            background-size: 40px 40px;
+            background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+        }
+        .hotel-pattern {
+            background-image: 
+                linear-gradient(30deg, rgba(255, 184, 77, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(255, 184, 77, 0.05) 87.5%, rgba(255, 184, 77, 0.05)),
+                linear-gradient(150deg, rgba(255, 184, 77, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(255, 184, 77, 0.05) 87.5%, rgba(255, 184, 77, 0.05)),
+                linear-gradient(30deg, rgba(255, 184, 77, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(255, 184, 77, 0.05) 87.5%, rgba(255, 184, 77, 0.05)),
+                linear-gradient(150deg, rgba(255, 184, 77, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(255, 184, 77, 0.05) 87.5%, rgba(255, 184, 77, 0.05));
+            background-size: 80px 140px;
+            background-position: 0 0, 0 0, 40px 70px, 40px 70px;
+        }
+    </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-black text-white overflow-x-hidden font-custom">
+
+<!-- Header -->
+<header id="header" class="bg-black/95 backdrop-blur-sm border-b border-gray-800/50 sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <span class="flex items-center space-x-3 cursor-pointer">
+                    <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-white">Verana</span>
+                </span>
+            </div>
+            
+            <nav class="hidden lg:flex items-center space-x-8">
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Why Verana</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Build</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Trust Engine</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-verana flex items-center space-x-1 transition-colors duration-200">
+                        <span>Industry Use Cases</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">Community</span>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">About</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <span class="bg-verana hover:bg-verana-dark text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer">
+                    Testnet
+                </span>
+                <button class="lg:hidden text-white">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Page Hero Section -->
+<section id="page-hero" class="relative bg-gray-900 py-16 lg:py-24 overflow-hidden h-[450px] flex items-center">
+    <div class="absolute inset-0 gradient-mesh opacity-50"></div>
+    <div class="absolute inset-0 hotel-pattern opacity-20"></div>
+    <div class="absolute inset-0 trust-pattern opacity-10"></div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <!-- Breadcrumb -->
+            <nav class="flex items-center space-x-2 text-sm text-gray-400 mb-8">
+                <span class="hover:text-white cursor-pointer">Home</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="hover:text-white cursor-pointer">Industry Use Cases</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="text-verana">Decentralizing Hotel Management</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4 mb-6">
+                <div class="w-16 h-16 bg-orange-500/20 rounded-2xl flex items-center justify-center animate-pulse-glow">
+                    <i class="fa-solid fa-hotel text-orange-400 text-2xl"></i>
+                </div>
+                <h1 class="text-4xl lg:text-6xl font-bold leading-tight">
+                    <span class="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">Decentralizing Hotel Management</span>
+                </h1>
+            </div>
+            
+            <p class="text-xl lg:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+                Breaking free from broker monopolies through verifiable hotel credentials and direct discovery.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content Section -->
+<section id="main-content" class="bg-black py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12">
+                <!-- Sidebar Navigation -->
+                <aside id="sidebar-nav" class="lg:col-span-1">
+                    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky top-24">
+                        <h3 class="text-lg font-semibold text-white mb-6">Industry Use Cases</h3>
+                        <nav class="space-y-3">
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Government Digital ID</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Decentralized Social Networks</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable AI Assistants</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Healthcare Workforce Mobility</span>
+                            <span class="block text-verana font-medium cursor-pointer">Decentralizing Hotel Management</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Notaries &amp; Power of Attorney</span>
+                        </nav>
+                        
+                        <div class="mt-8 pt-6 border-t border-gray-700">
+                            <h4 class="text-sm font-semibold text-white mb-4">Quick Links</h4>
+                            <div class="space-y-2">
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Implementation Guide</span>
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Technical Specs</span>
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Case Studies</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                
+                <!-- Content Area -->
+                <div id="content-area" class="lg:col-span-3">
+                    <!-- The Problem Section -->
+                    <div id="problem-section" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">The Problem: Hotel Discovery &amp; Broker Domination</h2>
+                        
+                        <div class="prose prose-invert max-w-none mb-8">
+                            <p class="text-xl text-gray-300 leading-relaxed mb-8">
+                                The hotel industry is a striking example of how centralization locks value. Today, nearly all hotel reservations happen through <strong>brokering platforms</strong> like <strong>Booking.com</strong>, <strong>Expedia</strong>, <strong>Agoda</strong>, or <strong>Airbnb</strong>. These intermediaries have achieved near-monopoly power, <strong>capturing a huge share of hotel revenues</strong> and indirectly <strong>raising room costs for users</strong>.
+                            </p>
+                            
+                            <div class="bg-red-900/20 border border-red-700/50 rounded-2xl p-8 mb-8">
+                                <h3 class="text-2xl font-bold text-red-400 mb-4 flex items-center">
+                                    <i class="fa-solid fa-exclamation-triangle mr-3"></i>
+                                    The Paradox
+                                </h3>
+                                <p class="text-lg text-gray-200 leading-relaxed">
+                                    While users believe they're saving money, they actually pay more, since hotels must increase their prices to cover broker fees.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-orange-900/20 border border-orange-700/50 rounded-2xl p-8 mb-8">
+                                <div class="flex items-center space-x-4 mb-4">
+                                    <i class="fa-solid fa-eye-slash text-orange-400 text-2xl"></i>
+                                    <h3 class="text-xl font-bold text-white">Market Reality</h3>
+                                </div>
+                                <p class="text-lg text-gray-200 leading-relaxed">
+                                    <strong>If a hotel isn't listed on broker platforms, it effectively doesn't exist in the market.</strong>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Current Ecosystem Visualization -->
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+                            <h3 class="text-2xl font-semibold text-white mb-8 text-center">Current Centralized Model</h3>
+                            
+                            <div class="relative">
+                                <img class="w-full h-96 object-cover rounded-2xl mb-8" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/235432f8c8-c95def7f9acded1a1a65.png" alt="Modern illustration showing a traveler at a computer surrounded by large broker platform logos (Booking.com, Expedia, Agoda, Airbnb) with money symbols flowing from small hotel buildings toward the platforms, representing the centralized hotel booking ecosystem with broker domination">
+                                
+                                <div class="grid md:grid-cols-3 gap-6 mt-8">
+                                    <div class="bg-blue-900/20 border border-blue-700/50 rounded-xl p-6 text-center">
+                                        <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                            <i class="fa-solid fa-user text-blue-400 text-xl"></i>
+                                        </div>
+                                        <h4 class="text-lg font-semibold text-white mb-2">Travelers</h4>
+                                        <p class="text-gray-300 text-sm">Search and book through centralized platforms</p>
+                                    </div>
+                                    
+                                    <div class="bg-orange-900/20 border border-orange-700/50 rounded-xl p-6 text-center">
+                                        <div class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                            <i class="fa-solid fa-building text-orange-400 text-xl"></i>
+                                        </div>
+                                        <h4 class="text-lg font-semibold text-white mb-2">Brokers</h4>
+                                        <p class="text-gray-300 text-sm">Control visibility and extract high commissions</p>
+                                    </div>
+                                    
+                                    <div class="bg-green-900/20 border border-green-700/50 rounded-xl p-6 text-center">
+                                        <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                            <i class="fa-solid fa-hotel text-green-400 text-xl"></i>
+                                        </div>
+                                        <h4 class="text-lg font-semibold text-white mb-2">Hotels</h4>
+                                        <p class="text-gray-300 text-sm">Pay high commissions for visibility</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Hotel Management Systems Today -->
+                    <div id="hms-today" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Hotel Management Systems Today</h2>
+                        
+                        <p class="text-lg text-gray-300 leading-relaxed mb-8">
+                            To manage their properties, hotels often rely on <strong>Hotel Management Systems (HMS)</strong>, which may be <strong>proprietary (SaaS)</strong> or <strong>open source</strong> (self-hosted/cloud-hosted).
+                        </p>
+                        
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+                            <h3 class="text-2xl font-semibold text-white mb-6">Why Open Source HMS Appeals to Hotels</h3>
+                            
+                            <div class="grid md:grid-cols-2 gap-8">
+                                <div class="space-y-4">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-8 h-8 bg-green-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                            <i class="fa-solid fa-unlock text-green-400"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-lg font-semibold text-white mb-2">No Vendor Lock-in</h4>
+                                            <p class="text-gray-300">Host software anywhere, maintain full control</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                            <i class="fa-solid fa-database text-blue-400"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-lg font-semibold text-white mb-2">Data Ownership</h4>
+                                            <p class="text-gray-300">Hotels retain complete ownership of their data</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-black border border-gray-600 rounded-xl p-6">
+                                    <h4 class="text-lg font-semibold text-white mb-4">Key Open Source Modules</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-center space-x-2">
+                                            <div class="w-2 h-2 bg-verana rounded-full"></div>
+                                            <span class="text-gray-300">Property Management System (PMS)</span>
+                                        </li>
+                                        <li class="flex items-center space-x-2">
+                                            <div class="w-2 h-2 bg-verana rounded-full"></div>
+                                            <span class="text-gray-300">Booking Engine</span>
+                                        </li>
+                                        <li class="flex items-center space-x-2">
+                                            <div class="w-2 h-2 bg-verana rounded-full"></div>
+                                            <span class="text-gray-300">Hotel Website Builder</span>
+                                        </li>
+                                        <li class="flex items-center space-x-2">
+                                            <div class="w-2 h-2 bg-verana rounded-full"></div>
+                                            <span class="text-gray-300">Hotel Mobile App Skeleton</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Current Business Models -->
+                        <div id="current-business-models" class="mb-8">
+                            <h3 class="text-2xl font-semibold text-white mb-6">Current Business Models of Open Source HMS</h3>
+                            
+                            <div class="grid md:grid-cols-3 gap-6">
+                                <div class="bg-purple-900/20 border border-purple-700/50 rounded-2xl p-6">
+                                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
+                                        <i class="fa-solid fa-puzzle-piece text-purple-400 text-xl"></i>
+                                    </div>
+                                    <h4 class="text-lg font-semibold text-white mb-3">Software Add-ons</h4>
+                                    <p class="text-gray-300 text-sm">Channel managers to sync with booking platforms</p>
+                                </div>
+                                
+                                <div class="bg-blue-900/20 border border-blue-700/50 rounded-2xl p-6">
+                                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
+                                        <i class="fa-solid fa-code text-blue-400 text-xl"></i>
+                                    </div>
+                                    <h4 class="text-lg font-semibold text-white mb-3">Custom Development</h4>
+                                    <p class="text-gray-300 text-sm">Tailored development services for specific needs</p>
+                                </div>
+                                
+                                <div class="bg-green-900/20 border border-green-700/50 rounded-2xl p-6">
+                                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
+                                        <i class="fa-solid fa-server text-green-400 text-xl"></i>
+                                    </div>
+                                    <h4 class="text-lg font-semibold text-white mb-3">Hosting Solutions</h4>
+                                    <p class="text-gray-300 text-sm">Managed hosting and infrastructure services</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-yellow-900/20 border border-yellow-700/50 rounded-2xl p-8">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <i class="fa-solid fa-triangle-exclamation text-yellow-400 text-2xl"></i>
+                                <h3 class="text-xl font-bold text-white">The Visibility Problem Remains</h3>
+                            </div>
+                            <p class="text-lg text-gray-200 leading-relaxed">
+                                These systems work well for <strong>hotel management</strong>, but <strong>visibility is still dictated by brokers</strong>. Even when hotels run their own websites/apps, most new customers still arrive via brokers.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Enter Verana Section -->
+                    <div id="verana-solution" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Enter Verana: Making Hotels Instantly Discoverable</h2>
+                        
+                        <div class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-8 mb-8">
+                            <p class="text-xl text-gray-200 leading-relaxed">
+                                Verana changes the game by <strong>removing dependency on centralized brokers</strong>.
+                            </p>
+                        </div>
+                        
+                        <!-- Visual representation -->
+                        <div class="mb-12">
+                            <img class="w-full h-96 object-cover rounded-2xl" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/039fae8a18-90db96fd7308034322d3.png" alt="Futuristic hotel discovery interface showing multiple hotel buildings connected by glowing verification badges and trust credentials, with travelers using mobile devices to search directly without broker intermediaries, clean modern illustration style">
+                        </div>
+                        
+                        <h3 class="text-2xl font-semibold text-white mb-8">How Open Source HMS Providers Can Use Verana</h3>
+                        
+                        <div class="space-y-8">
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                                <div class="flex items-start space-x-6">
+                                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <span class="text-blue-400 font-bold text-xl">1</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-semibold text-white mb-4">Create a Hotel Ecosystem in Verana</h4>
+                                        <ul class="space-y-2">
+                                            <li class="flex items-start space-x-3">
+                                                <div class="w-2 h-2 bg-verana rounded-full mt-2"></div>
+                                                <span class="text-gray-300">Establish rules via an <strong>Ecosystem Governance Framework (EGF)</strong></span>
+                                            </li>
+                                            <li class="flex items-start space-x-3">
+                                                <div class="w-2 h-2 bg-verana rounded-full mt-2"></div>
+                                                <span class="text-gray-300">Create Trust Registry and define a <strong>Hotel Credential Schema</strong> in Verana</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                                <div class="flex items-start space-x-6">
+                                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <span class="text-green-400 font-bold text-xl">2</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-semibold text-white mb-4">Add Verifiable Trust to Open Source HMS Software</h4>
+                                        <p class="text-gray-300">
+                                            Integrate <strong>Verana's Verifiable Trust stack</strong> into booking engines, PMS, and mobile apps.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                                <div class="flex items-start space-x-6">
+                                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <span class="text-purple-400 font-bold text-xl">3</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-semibold text-white mb-4">Launch a Verifiable User Agent</h4>
+                                        <ul class="space-y-2">
+                                            <li class="flex items-start space-x-3">
+                                                <div class="w-2 h-2 bg-verana rounded-full mt-2"></div>
+                                                <span class="text-gray-300">Build a <strong>global mobile app or website</strong> (the "HMS Provider App")</span>
+                                            </li>
+                                            <li class="flex items-start space-x-3">
+                                                <div class="w-2 h-2 bg-verana rounded-full mt-2"></div>
+                                                <span class="text-gray-300">Functions as a <strong>browser for verifiable hotels</strong></span>
+                                            </li>
+                                            <li class="flex items-start space-x-3">
+                                                <div class="w-2 h-2 bg-verana rounded-full mt-2"></div>
+                                                <span class="text-gray-300">Acts as a <strong>broker competitor</strong>, but <strong>without extracting rents</strong></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- New Architecture Visualization -->
+                    <div id="new-architecture" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">The Verana Hotel Ecosystem</h2>
+                        
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+                            <img class="w-full h-96 object-cover rounded-2xl mb-8" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/07d52c5da7-feb2b17b5efe6ae6fc2c.png" alt="Technical architecture diagram showing Verana trust layer connecting hotels directly to travelers through HMS provider apps, with trust registries, credential verification, and decentralized discovery, modern clean illustration style">
+                            
+                            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                <div class="bg-verana/10 border border-verana/30 rounded-xl p-4 text-center">
+                                    <div class="w-10 h-10 bg-verana/20 rounded-lg flex items-center justify-center mx-auto mb-3">
+                                        <i class="fa-solid fa-shield-halved text-verana text-lg"></i>
+                                    </div>
+                                    <h4 class="text-white font-medium mb-2">Trust Layer</h4>
+                                    <p class="text-gray-300 text-sm">VPR, DID Directory, Search API</p>
+                                </div>
+                                
+                                <div class="bg-blue-900/20 border border-blue-700/50 rounded-xl p-4 text-center">
+                                    <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center mx-auto mb-3">
+                                        <i class="fa-solid fa-building text-blue-400 text-lg"></i>
+                                    </div>
+                                    <h4 class="text-white font-medium mb-2">HMS Providers</h4>
+                                    <p class="text-gray-300 text-sm">Governance &amp; User Agents</p>
+                                </div>
+                                
+                                <div class="bg-green-900/20 border border-green-700/50 rounded-xl p-4 text-center">
+                                    <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center mx-auto mb-3">
+                                        <i class="fa-solid fa-hotel text-green-400 text-lg"></i>
+                                    </div>
+                                    <h4 class="text-white font-medium mb-2">Hotels</h4>
+                                    <p class="text-gray-300 text-sm">Verifiable Services</p>
+                                </div>
+                                
+                                <div class="bg-orange-900/20 border border-orange-700/50 rounded-xl p-4 text-center">
+                                    <div class="w-10 h-10 bg-orange-500/20 rounded-lg flex items-center justify-center mx-auto mb-3">
+                                        <i class="fa-solid fa-user text-orange-400 text-lg"></i>
+                                    </div>
+                                    <h4 class="text-white font-medium mb-2">Travelers</h4>
+                                    <p class="text-gray-300 text-sm">Direct Search &amp; Booking</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Benefits Section -->
+                    <div id="benefits-section" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">What Everyone Gains</h2>
+                        
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <!-- What Hotels Gain -->
+                            <div class="bg-green-900/20 border border-green-700/50 rounded-2xl p-8">
+                                <h3 class="text-2xl font-semibold text-white mb-6 flex items-center">
+                                    <i class="fa-solid fa-hotel text-green-400 mr-3"></i>
+                                    What Hotels Gain
+                                </h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-6 h-6 bg-green-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                            <i class="fa-solid fa-magnifying-glass text-green-400 text-xs"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-medium mb-1">Searchable</h4>
+                                            <p class="text-gray-300 text-sm">In the HMS Provider's global app</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-6 h-6 bg-green-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                            <i class="fa-solid fa-calendar-check text-green-400 text-xs"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-medium mb-1">Bookable Directly</h4>
+                                            <p class="text-gray-300 text-sm">Bypassing brokers completely</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-6 h-6 bg-green-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                            <i class="fa-solid fa-key text-green-400 text-xs"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-medium mb-1">Empowered</h4>
+                                            <p class="text-gray-300 text-sm">Interact with guests through verifiable credentials</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- What Guests Gain -->
+                            <div class="bg-blue-900/20 border border-blue-700/50 rounded-2xl p-8">
+                                <h3 class="text-2xl font-semibold text-white mb-6 flex items-center">
+                                    <i class="fa-solid fa-user text-blue-400 mr-3"></i>
+                                    What Guests Gain
+                                </h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-6 h-6 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                            <i class="fa-solid fa-shield-check text-blue-400 text-xs"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-medium mb-1">Trustworthy Search</h4>
+                                            <p class="text-gray-300 text-sm">Verifiable search experience</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-6 h-6 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                            <i class="fa-solid fa-handshake text-blue-400 text-xs"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-medium mb-1">Direct Booking</h4>
+                                            <p class="text-gray-300 text-sm">Book directly with hotels via HMS Provider app</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-6 h-6 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                            <i class="fa-solid fa-user-shield text-blue-400 text-xs"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-medium mb-1">Privacy-Preserving</h4>
+                                            <p class="text-gray-300 text-sm">Identity verified but never exploited</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- User Journey Section -->
+                    <div id="user-journey" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">The Verifiable Hotel Discovery Journey</h2>
+                        
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+                            <img class="w-full h-80 object-cover rounded-2xl mb-8" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/fd34117340-f46b634bf225e478d7f6.png" alt="Step-by-step user journey showing traveler using HMS provider app to search for verified hotels, view trust credentials, and book directly, modern interface design with verification badges and trust indicators">
+                            
+                            <div class="grid md:grid-cols-4 gap-6">
+                                <div class="text-center">
+                                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                        <span class="text-blue-400 font-bold">1</span>
+                                    </div>
+                                    <h4 class="text-white font-medium mb-2">Discover &amp; Trust</h4>
+                                    <p class="text-gray-300 text-sm">Search hotels with trust filters</p>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                        <span class="text-green-400 font-bold">2</span>
+                                    </div>
+                                    <h4 class="text-white font-medium mb-2">Verify Results</h4>
+                                    <p class="text-gray-300 text-sm">View verified credentials and governance</p>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                        <span class="text-purple-400 font-bold">3</span>
+                                    </div>
+                                    <h4 class="text-white font-medium mb-2">Verify &amp; Book</h4>
+                                    <p class="text-gray-300 text-sm">Check credentials and create reservation</p>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <div class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                        <span class="text-orange-400 font-bold">4</span>
+                                    </div>
+                                    <h4 class="text-white font-medium mb-2">Direct Booking</h4>
+                                    <p class="text-gray-300 text-sm">Confirmation without intermediaries</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Why This Matters -->
+                    <div id="why-matters" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Why This Matters</h2>
+                        
+                        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="bg-green-900/20 border border-green-700/50 rounded-2xl p-6">
+                                <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
+                                    <i class="fa-solid fa-hotel text-green-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold text-white mb-3">For Hotels</h3>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    Regain independence, stop paying excessive broker fees, own your data
+                                </p>
+                            </div>
+                            
+                            <div class="bg-blue-900/20 border border-blue-700/50 rounded-2xl p-6">
+                                <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
+                                    <i class="fa-solid fa-user text-blue-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold text-white mb-3">For Users</h3>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    Enjoy lower prices, verified reviews, and more trust in bookings
+                                </p>
+                            </div>
+                            
+                            <div class="bg-purple-900/20 border border-purple-700/50 rounded-2xl p-6">
+                                <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
+                                    <i class="fa-solid fa-code text-purple-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold text-white mb-3">For HMS Providers</h3>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    Compete with global brokers by offering open, decentralized visibility
+                                </p>
+                            </div>
+                            
+                            <div class="bg-verana/20 border border-verana/30 rounded-2xl p-6">
+                                <div class="w-12 h-12 bg-verana/30 rounded-xl flex items-center justify-center mb-4">
+                                    <i class="fa-solid fa-globe text-verana text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold text-white mb-3">For the Internet</h3>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    Public-good trust layer, shifting value back to participants
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Conclusion -->
+                    <div id="conclusion" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Conclusion</h2>
+                        
+                        <div class="bg-gradient-to-br from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-12">
+                            <p class="text-xl text-gray-200 leading-relaxed mb-8">
+                                The hotel industry doesn't need to be trapped by centralized brokers. By using <strong>Verana's decentralized trust infrastructure</strong>, Hotel Management Systems can:
+                            </p>
+                            
+                            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                        <i class="fa-solid fa-eye text-blue-400 text-2xl"></i>
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-white mb-2">Instant Visibility</h3>
+                                    <p class="text-gray-200 text-sm">Make hotels instantly visible without intermediaries</p>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                        <i class="fa-solid fa-handshake text-green-400 text-2xl"></i>
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-white mb-2">Trustworthy Interactions</h3>
+                                    <p class="text-gray-200 text-sm">Enable credential-based interactions between hotels and guests</p>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                        <i class="fa-solid fa-balance-scale text-verana text-2xl"></i>
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-white mb-2">Fair Economic Model</h3>
+                                    <p class="text-gray-200 text-sm">Privacy-preserving model where value stays with participants</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-verana/20 border border-verana/40 rounded-2xl p-8 text-center">
+                                <h3 class="text-2xl font-bold text-white mb-4">The Hotel Revolution</h3>
+                                <p class="text-xl text-gray-200 leading-relaxed">
+                                    With Verana, hotels can finally say: <strong>"We own our reservations, our reputation, and our data"</strong>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Call to Action -->
+                    <div id="page-cta" class="bg-gradient-to-r from-orange-500/10 to-orange-400/10 border border-orange-500/30 rounded-2xl p-12 text-center">
+                        <h2 class="text-3xl font-bold text-white mb-4">Ready to Liberate Your Hotel Business?</h2>
+                        <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                            Join the revolution in decentralized hotel discovery and take back control from centralized brokers.
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                            <span class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2 cursor-pointer">
+                                <i class="fa-solid fa-hotel"></i>
+                                <span>Start Building</span>
+                            </span>
+                            <span class="border-2 border-gray-600 hover:border-orange-500 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 cursor-pointer">
+                                View Implementation Guide
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Content Section -->
+<section id="related-content" class="bg-gray-900 py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-12 text-center">Related Industry Use Cases</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-id-card text-blue-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Government Digital ID</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Issue privacy-preserving national IDs and let citizens prove attributes anywhere.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Learn More</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+                
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-user-md text-green-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Healthcare Workforce Mobility</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Let clinicians carry verifiable licenses and credentials for instant verification.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Explore</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+                
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-stamp text-purple-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Notaries &amp; Power of Attorney</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Turn paper-based powers into verifiable credentials with instant revocation.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Discover</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="bg-gray-900 border-t border-gray-800 py-16">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12 mb-12">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-white">Verana</span>
+                    </div>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty.
+                    </p>
+                    <div class="flex space-x-4">
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-github"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-discord"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Verana</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Principles</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Foundation</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Press</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Developers</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Docs</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">GitHub</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Specifications</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Trust Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Public Registry Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Trust Registry Query Protocol</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col sm:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">© 2025 Verana Foundation. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 sm:mt-0">
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Privacy Policy</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Terms of Service</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Cookie Policy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</body></html>
