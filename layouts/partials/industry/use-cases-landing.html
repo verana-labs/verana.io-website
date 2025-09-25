@@ -1,0 +1,100 @@
+{{ $page := . }}
+{{ $sections := $page.Params.sections }}
+{{ $overview := $page.Params.overview }}
+
+{{ range $index, $section := $sections }}
+  {{ $background := printf "%s py-20 lg:py-24" ($section.background | default "bg-black") }}
+  {{ $image := $section.image }}
+  {{ $cta := $section.cta }}
+  {{ $imagePosition := lower ($section.image_position | default "right") }}
+  {{ $imageLeft := eq $imagePosition "left" }}
+  <section id="{{ $section.id }}" class="{{ $background }}">
+    <div class="container mx-auto px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="{{ if $imageLeft }}order-2 lg:order-1{{ else }}order-2{{ end }}">
+            {{ with $image }}
+              <img class="w-full h-96 object-cover rounded-2xl shadow-2xl" src="{{ .src }}" alt="{{ .alt }}" loading="lazy" />
+            {{ end }}
+          </div>
+          <div class="{{ if $imageLeft }}order-1 lg:order-2{{ else }}order-1{{ end }}">
+            {{ with $section.title }}<h2 class="text-3xl lg:text-5xl font-bold text-white mb-6 leading-tight">{{ . }}</h2>{{ end }}
+            {{ with $section.description }}<p class="text-xl text-gray-300 mb-8 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+            {{ with $section.bullets }}
+              <div class="space-y-4 mb-8">
+                {{ range . }}
+                  <div class="flex items-center space-x-3">
+                    <div class="w-2 h-2 bg-verana rounded-full"></div>
+                    <span class="text-gray-300">{{ . | markdownify }}</span>
+                  </div>
+                {{ end }}
+              </div>
+            {{ end }}
+            {{ with $cta }}
+              {{ $label := .label | default .text }}
+              {{ $href := .href | default .url | default "#" }}
+              {{ if $label }}
+                <a href="{{ $href }}" class="{{ .class | default "bg-verana hover:bg-verana-dark text-white" }} px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 inline-flex items-center space-x-2">
+                  <span>{{ $label }}</span>
+                  {{ with .icon }}<i class="{{ . }}"></i>{{ end }}
+                </a>
+              {{ end }}
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{{ end }}
+
+{{ with $overview }}
+  <section id="overview" class="bg-gray-900 py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto text-center">
+        {{ with .title }}<h2 class="text-3xl lg:text-5xl font-bold text-white mb-8">{{ . }}</h2>{{ end }}
+        {{ with .description }}<p class="text-xl text-gray-300 mb-16 leading-relaxed max-w-4xl mx-auto">{{ . | markdownify }}</p>{{ end }}
+        {{ with .cards }}
+          <div class="grid md:grid-cols-3 gap-8 mb-16">
+            {{ range . }}
+              {{ $card := . }}
+              <div class="bg-black border border-gray-700 rounded-2xl p-8 text-center">
+                <div class="w-16 h-16 {{ $card.icon_bg_class | default "bg-verana/20" }} rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  {{ with $card.icon }}<i class="{{ . }} {{ $card.icon_color_class | default "text-verana" }} text-2xl"></i>{{ end }}
+                </div>
+                {{ with $card.title }}<h3 class="text-xl font-semibold text-white mb-4">{{ . }}</h3>{{ end }}
+                {{ with $card.text }}<p class="text-gray-300 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+              </div>
+            {{ end }}
+          </div>
+        {{ end }}
+        {{ with .cta }}
+          <div class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-12">
+            {{ with .title }}<h3 class="text-2xl font-bold text-white mb-6">{{ . }}</h3>{{ end }}
+            {{ with .text }}<p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">{{ . | markdownify }}</p>{{ end }}
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+              {{ with .primary }}
+                {{ $label := .label | default .text }}
+                {{ $href := .href | default .url | default "#" }}
+                {{ if $label }}
+                  <a href="{{ $href }}" class="{{ .class | default "bg-verana hover:bg-verana-dark text-white" }} px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 inline-flex items-center space-x-2">
+                    {{ with .icon }}<i class="{{ . }}"></i>{{ end }}
+                    <span>{{ $label }}</span>
+                  </a>
+                {{ end }}
+              {{ end }}
+              {{ with .secondary }}
+                {{ $label := .label | default .text }}
+                {{ $href := .href | default .url | default "#" }}
+                {{ if $label }}
+                  <a href="{{ $href }}" class="{{ .class | default "border-2 border-gray-600 hover:border-verana text-white" }} px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105">
+                    <span>{{ $label }}</span>
+                  </a>
+                {{ end }}
+              {{ end }}
+            </div>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}

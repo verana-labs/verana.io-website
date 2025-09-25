@@ -1,0 +1,819 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Discovery - Verana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "fontFamily": {
+        "inter": [
+          "Inter",
+          "sans-serif"
+        ]
+      },
+      "colors": {
+        "verana": "#763ef0",
+        "verana-light": "#9f7aea",
+        "verana-dark": "#553c9a"
+      },
+      "animation": {
+        "float": "float 6s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite alternate",
+        "network-pulse": "network-pulse 3s ease-in-out infinite",
+        "search-pulse": "search-pulse 2s ease-in-out infinite",
+        "trust-flow": "trust-flow 4s ease-in-out infinite",
+        "slide-up": "slide-up 0.6s ease-out",
+        "fade-in": "fade-in 0.8s ease-out"
+      },
+      "keyframes": {
+        "float": {
+          "0%, 100%": {
+            "transform": "translateY(0px)"
+          },
+          "50%": {
+            "transform": "translateY(-20px)"
+          }
+        },
+        "pulse-glow": {
+          "0%": {
+            "boxShadow": "0 0 20px rgba(118, 62, 240, 0.3)"
+          },
+          "100%": {
+            "boxShadow": "0 0 40px rgba(118, 62, 240, 0.6)"
+          }
+        },
+        "network-pulse": {
+          "0%, 100%": {
+            "opacity": "0.4"
+          },
+          "50%": {
+            "opacity": "0.8"
+          }
+        },
+        "search-pulse": {
+          "0%, 100%": {
+            "transform": "scale(1)",
+            "opacity": "0.7"
+          },
+          "50%": {
+            "transform": "scale(1.05)",
+            "opacity": "1"
+          }
+        },
+        "trust-flow": {
+          "0%": {
+            "transform": "translateX(-100px)",
+            "opacity": "0"
+          },
+          "50%": {
+            "transform": "translateX(0px)",
+            "opacity": "1"
+          },
+          "100%": {
+            "transform": "translateX(100px)",
+            "opacity": "0"
+          }
+        },
+        "slide-up": {
+          "0%": {
+            "transform": "translateY(50px)",
+            "opacity": "0"
+          },
+          "100%": {
+            "transform": "translateY(0)",
+            "opacity": "1"
+          }
+        },
+        "fade-in": {
+          "0%": {
+            "opacity": "0"
+          },
+          "100%": {
+            "opacity": "1"
+          }
+        }
+      }
+    }
+  }
+};</script>
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        .gradient-mesh {
+            background: radial-gradient(circle at 20% 50%, rgba(118, 62, 240, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(118, 62, 240, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(118, 62, 240, 0.08) 0%, transparent 50%);
+        }
+        .network-bg {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(118, 62, 240, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(118, 62, 240, 0.08) 1px, transparent 1px);
+            background-size: 60px 60px, 40px 40px;
+            animation: network-pulse 4s ease-in-out infinite;
+        }
+        .trust-pattern {
+            background-image: 
+                linear-gradient(45deg, rgba(118, 62, 240, 0.05) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(118, 62, 240, 0.05) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(118, 62, 240, 0.05) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(118, 62, 240, 0.05) 75%);
+            background-size: 40px 40px;
+            background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+        }
+        .broken-model {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.05) 100%);
+        }
+        .verana-model {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(22, 163, 74, 0.05) 100%);
+        }
+    </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-black text-white overflow-x-hidden font-custom">
+
+<!-- Header -->
+<header id="header" class="bg-black/95 backdrop-blur-sm border-b border-gray-800/50 sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <span class="flex items-center space-x-3 cursor-pointer">
+                    <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-white">Verana</span>
+                </span>
+            </div>
+            
+            <nav class="hidden lg:flex items-center space-x-8">
+                <div class="relative group">
+                    <button class="text-verana flex items-center space-x-1 transition-colors duration-200">
+                        <span>Why Verana</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Build</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Trust Engine</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Industry Use Cases</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">Community</span>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">About</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <span class="bg-verana hover:bg-verana-dark text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer">
+                    Testnet
+                </span>
+                <button class="lg:hidden text-white">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Page Hero Section -->
+<section id="page-hero" class="relative bg-gray-900 py-16 lg:py-24 overflow-hidden h-[450px] flex items-center">
+    <div class="absolute inset-0 gradient-mesh opacity-50"></div>
+    <div class="absolute inset-0 network-bg opacity-20"></div>
+    <div class="absolute inset-0 trust-pattern opacity-10"></div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <!-- Breadcrumb -->
+            <nav class="flex items-center space-x-2 text-sm text-gray-400 mb-8">
+                <span class="hover:text-white cursor-pointer">Home</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="hover:text-white cursor-pointer">Why Verana</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="text-verana">Service Discovery</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4 mb-6">
+                <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center animate-pulse-glow">
+                    <i class="fa-solid fa-compass text-verana text-2xl"></i>
+                </div>
+                <h1 class="text-4xl lg:text-6xl font-bold leading-tight">
+                    <span class="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">Service Discovery</span>
+                </h1>
+            </div>
+            
+            <p class="text-xl lg:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+                Breaking free from centralized platforms that control discovery through advertising budgets and opaque algorithms.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content Section -->
+<section id="main-content" class="bg-black py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12">
+                <!-- Sidebar Navigation -->
+                <aside id="sidebar-nav" class="lg:col-span-1">
+                    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky top-24">
+                        <h3 class="text-lg font-semibold text-white mb-6">Why Verana</h3>
+                        <nav class="space-y-3">
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Ownership</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Trust</span>
+                            <span class="block text-verana font-medium cursor-pointer">Discovery</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Digital Sovereignty</span>
+                        </nav>
+                        
+                        <div class="mt-8 pt-6 border-t border-gray-700">
+                            <h4 class="text-sm font-semibold text-white mb-4">Quick Links</h4>
+                            <div class="space-y-2">
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Platform Economy</span>
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Trust Resolver</span>
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Ecosystem Model</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                
+                <!-- Content Area -->
+                <div id="content-area" class="lg:col-span-3">
+                    <!-- Why Discoverability is Broken -->
+                    <div id="broken-discovery" class="mb-20">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Why Discoverability is Broken</h2>
+                        
+                        <div class="prose prose-invert max-w-none mb-12">
+                            <p class="text-xl text-gray-300 leading-relaxed mb-8">
+                                Today, consumer discoverability of goods and services is controlled by centralized platforms that rely on advertising, opaque SEO algorithms, and now even sponsored AI results.
+                            </p>
+                        </div>
+                        
+                        <!-- Problems Grid -->
+                        <div class="grid md:grid-cols-3 gap-6 mb-12">
+                            <div class="bg-red-900/20 border border-red-700/50 rounded-2xl p-8">
+                                <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center mb-6">
+                                    <i class="fa-solid fa-building text-red-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-white mb-4">Wealth Concentration</h3>
+                                <p class="text-gray-300 leading-relaxed">
+                                    Wealth is concentrated in a handful of dominant companies that control discovery algorithms.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-red-900/20 border border-red-700/50 rounded-2xl p-8">
+                                <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center mb-6">
+                                    <i class="fa-solid fa-seedling text-red-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-white mb-4">Stifled Innovation</h3>
+                                <p class="text-gray-300 leading-relaxed">
+                                    Startups and SMEs cannot compete with massive advertising budgets, limiting innovation.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-red-900/20 border border-red-700/50 rounded-2xl p-8">
+                                <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center mb-6">
+                                    <i class="fa-solid fa-dollar-sign text-red-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-white mb-4">Higher Prices</h3>
+                                <p class="text-gray-300 leading-relaxed">
+                                    Intermediaries capture disproportionate value, forcing consumers to pay higher prices.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Current Model Diagram -->
+                        <div id="current-model-diagram" class="broken-model border border-red-700/30 rounded-2xl p-12 mb-8">
+                            <h3 class="text-2xl font-bold text-white mb-8 text-center">Current Discovery Model</h3>
+                            
+                            <div class="grid lg:grid-cols-3 gap-8">
+                                <!-- Organizations Column -->
+                                <div class="space-y-6">
+                                    <h4 class="text-lg font-semibold text-white text-center mb-6">Organizations</h4>
+                                    
+                                    <div class="bg-gray-900/50 border border-gray-700 rounded-xl p-6">
+                                        <div class="flex items-center space-x-3 mb-4">
+                                            <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                                                <i class="fa-solid fa-building text-blue-400"></i>
+                                            </div>
+                                            <h5 class="font-semibold text-white">High-Budget Organizations</h5>
+                                        </div>
+                                        <p class="text-sm text-gray-300 mb-4">Enterprises, funded scale-ups</p>
+                                        <div class="flex items-center space-x-2">
+                                            <i class="fa-solid fa-arrow-right text-green-400"></i>
+                                            <span class="text-green-400 text-sm font-medium">$$$ Ad Spend</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-gray-900/50 border border-gray-700 rounded-xl p-6">
+                                        <div class="flex items-center space-x-3 mb-4">
+                                            <div class="w-8 h-8 bg-orange-500/20 rounded-lg flex items-center justify-center">
+                                                <i class="fa-solid fa-store text-orange-400"></i>
+                                            </div>
+                                            <h5 class="font-semibold text-white">Low-Budget Organizations</h5>
+                                        </div>
+                                        <p class="text-sm text-gray-300 mb-4">Startups, SMEs</p>
+                                        <div class="flex items-center space-x-2">
+                                            <i class="fa-solid fa-arrow-right text-red-400 opacity-50"></i>
+                                            <span class="text-red-400 text-sm font-medium opacity-50">$ Weak Ad Spend</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Platform Column -->
+                                <div class="space-y-6">
+                                    <h4 class="text-lg font-semibold text-white text-center mb-6">Dominant Platforms</h4>
+                                    
+                                    <div class="bg-red-900/30 border border-red-700/50 rounded-xl p-8 text-center">
+                                        <div class="w-16 h-16 bg-red-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                                            <i class="fa-solid fa-crown text-red-400 text-2xl"></i>
+                                        </div>
+                                        <h5 class="font-bold text-white mb-4">Advertising Platforms</h5>
+                                        <p class="text-sm text-gray-300 mb-6">Control discovery &amp; ranking</p>
+                                        
+                                        <div class="space-y-3">
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-green-400 text-sm">High Visibility</span>
+                                                <i class="fa-solid fa-arrow-right text-green-400"></i>
+                                            </div>
+                                            <div class="flex items-center justify-between opacity-50">
+                                                <span class="text-red-400 text-sm">Low/No Visibility</span>
+                                                <i class="fa-solid fa-arrow-right text-red-400"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-gray-800/50 border border-gray-600 rounded-lg p-4">
+                                        <p class="text-xs text-gray-400 text-center italic">Wealth concentration at dominant platforms</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Consumer Column -->
+                                <div class="space-y-6">
+                                    <h4 class="text-lg font-semibold text-white text-center mb-6">Consumers</h4>
+                                    
+                                    <div class="bg-gray-900/50 border border-gray-700 rounded-xl p-8 text-center">
+                                        <div class="w-16 h-16 bg-gray-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                                            <i class="fa-solid fa-user text-gray-400 text-2xl"></i>
+                                        </div>
+                                        <h5 class="font-semibold text-white mb-4">End Users</h5>
+                                        <p class="text-sm text-gray-300 mb-6">Pay higher prices due to ad cost pass-through</p>
+                                        
+                                        <div class="space-y-3">
+                                            <div class="bg-green-900/20 border border-green-700/50 rounded-lg p-3">
+                                                <p class="text-xs text-green-400">Find high-budget services easily</p>
+                                            </div>
+                                            <div class="bg-red-900/20 border border-red-700/50 rounded-lg p-3 opacity-50">
+                                                <p class="text-xs text-red-400">Rarely discover low-budget alternatives</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-gray-800/50 border border-gray-600 rounded-lg p-4">
+                                        <p class="text-xs text-gray-400 text-center italic">Consumers pay higher prices to cover ad spend</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Key Problems -->
+                            <div class="mt-12 pt-8 border-t border-red-700/30">
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div class="bg-red-900/20 border border-red-700/50 rounded-xl p-6">
+                                        <h5 class="font-semibold text-white mb-3">For Small Organizations</h5>
+                                        <p class="text-sm text-gray-300">Small budgets ⇒ little/no discoverability. Competing on ads is unsustainable.</p>
+                                    </div>
+                                    <div class="bg-red-900/20 border border-red-700/50 rounded-xl p-6">
+                                        <h5 class="font-semibold text-white mb-3">For Consumers</h5>
+                                        <p class="text-sm text-gray-300">Limited choice and higher prices due to platform intermediaries capturing value.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Verana Solution -->
+                    <div id="verana-solution" class="mb-20">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Service Discovery: Re-distribution of Wealth</h2>
+                        
+                        <div class="prose prose-invert max-w-none mb-12">
+                            <p class="text-xl text-gray-300 leading-relaxed mb-8">
+                                Verana replaces this extractive model with an open, decentralized, and verifiable trust system powered by verifiable credentials:
+                            </p>
+                        </div>
+                        
+                        <!-- Solution Features -->
+                        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                            <div class="bg-verana/10 border border-verana/30 rounded-2xl p-6">
+                                <div class="w-12 h-12 bg-verana/20 rounded-xl flex items-center justify-center mb-4">
+                                    <i class="fa-solid fa-network-wired text-verana text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold text-white mb-3">Ecosystems</h3>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    Establish decentralized trust networks, specializing in certifying specific claims within defined jurisdictions.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-blue-500/10 border border-blue-500/30 rounded-2xl p-6">
+                                <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
+                                    <i class="fa-solid fa-certificate text-blue-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold text-white mb-3">Credentials</h3>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    Individuals and organizations collect verifiable credentials that can be attached to their digital channels.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-green-500/10 border border-green-500/30 rounded-2xl p-6">
+                                <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
+                                    <i class="fa-solid fa-spider text-green-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold text-white mb-3">Auto-Indexing</h3>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    Credentials are crawled, verified, and included in a global directory of verifiable data.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-purple-500/10 border border-purple-500/30 rounded-2xl p-6">
+                                <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
+                                    <i class="fa-solid fa-magnifying-glass text-purple-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold text-white mb-3">Discovery</h3>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    Services are surfaced based on what their credentials prove, not on who paid for ads.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Transformation Statement -->
+                        <div class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-8 mb-12">
+                            <h3 class="text-2xl font-bold text-white mb-4 text-center">Economic Transformation</h3>
+                            <p class="text-lg text-gray-200 leading-relaxed text-center">
+                                This marks a shift away from centralized control by a few corporations toward a <strong>federated economy of thousands of ecosystems</strong>, each competing on trust, authenticity, and the quality of their certifications.
+                            </p>
+                        </div>
+                        
+                        <!-- Verana Model Diagram -->
+                        <div id="verana-model-diagram" class="verana-model border border-green-700/30 rounded-2xl p-12">
+                            <h3 class="text-2xl font-bold text-white mb-8 text-center">Verana Discovery Model</h3>
+                            
+                            <div class="grid lg:grid-cols-4 gap-6">
+                                <!-- Any-Budget Organization -->
+                                <div class="space-y-4">
+                                    <h4 class="text-lg font-semibold text-white text-center mb-4">Organizations</h4>
+                                    
+                                    <div class="bg-gray-900/50 border border-gray-700 rounded-xl p-6">
+                                        <div class="flex items-center space-x-3 mb-4">
+                                            <div class="w-8 h-8 bg-verana/20 rounded-lg flex items-center justify-center">
+                                                <i class="fa-solid fa-balance-scale text-verana"></i>
+                                            </div>
+                                            <h5 class="font-semibold text-white text-sm">Any-Budget Organizations</h5>
+                                        </div>
+                                        <p class="text-xs text-gray-300 mb-4">Equal opportunity for discovery</p>
+                                        <div class="space-y-2">
+                                            <div class="flex items-center space-x-2">
+                                                <i class="fa-solid fa-arrow-right text-blue-400 text-xs"></i>
+                                                <span class="text-blue-400 text-xs">Request credentialing</span>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <i class="fa-solid fa-arrow-right text-verana text-xs"></i>
+                                                <span class="text-verana text-xs">Register + attach VCs</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Ecosystem Issuers -->
+                                <div class="space-y-4">
+                                    <h4 class="text-lg font-semibold text-white text-center mb-4">Ecosystems</h4>
+                                    
+                                    <div class="bg-blue-900/30 border border-blue-700/50 rounded-xl p-6">
+                                        <div class="w-12 h-12 bg-blue-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                            <i class="fa-solid fa-stamp text-blue-400 text-xl"></i>
+                                        </div>
+                                        <h5 class="font-semibold text-white text-center mb-3">Credential Issuers</h5>
+                                        <p class="text-xs text-gray-300 text-center mb-4">Issue verifiable credentials</p>
+                                        
+                                        <div class="space-y-2">
+                                            <div class="flex items-center justify-center space-x-2">
+                                                <i class="fa-solid fa-arrow-left text-blue-400 text-xs"></i>
+                                                <span class="text-blue-400 text-xs">Issuer fees</span>
+                                            </div>
+                                            <div class="flex items-center justify-center space-x-2">
+                                                <i class="fa-solid fa-arrow-right text-green-400 text-xs"></i>
+                                                <span class="text-green-400 text-xs">Issue VCs</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-gray-800/50 border border-gray-600 rounded-lg p-3">
+                                        <p class="text-xs text-gray-400 text-center italic">Issuer fees fund ecosystems, not ad monopolies</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Trust Resolver -->
+                                <div class="space-y-4">
+                                    <h4 class="text-lg font-semibold text-white text-center mb-4">Trust Resolver</h4>
+                                    
+                                    <div class="bg-verana/20 border border-verana/50 rounded-xl p-6">
+                                        <div class="w-12 h-12 bg-verana/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                            <i class="fa-solid fa-database text-verana text-xl"></i>
+                                        </div>
+                                        <h5 class="font-semibold text-white text-center mb-3">Directory</h5>
+                                        <p class="text-xs text-gray-300 text-center mb-4">Auto crawl + verify</p>
+                                        
+                                        <div class="space-y-2">
+                                            <div class="flex items-center justify-center space-x-2">
+                                                <i class="fa-solid fa-arrow-left text-verana text-xs"></i>
+                                                <span class="text-verana text-xs">Services</span>
+                                            </div>
+                                            <div class="flex items-center justify-center space-x-2">
+                                                <i class="fa-solid fa-arrow-right text-green-400 text-xs"></i>
+                                                <span class="text-green-400 text-xs">Discovery</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-gray-800/50 border border-gray-600 rounded-lg p-3">
+                                        <p class="text-xs text-gray-400 text-center italic">Search by proven claims, not ad budgets</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Consumers -->
+                                <div class="space-y-4">
+                                    <h4 class="text-lg font-semibold text-white text-center mb-4">Consumers</h4>
+                                    
+                                    <div class="bg-green-900/30 border border-green-700/50 rounded-xl p-6">
+                                        <div class="w-12 h-12 bg-green-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                            <i class="fa-solid fa-users text-green-400 text-xl"></i>
+                                        </div>
+                                        <h5 class="font-semibold text-white text-center mb-3">End Users</h5>
+                                        <p class="text-xs text-gray-300 text-center mb-4">Query by proven claims</p>
+                                        
+                                        <div class="space-y-2">
+                                            <div class="flex items-center justify-center space-x-2">
+                                                <i class="fa-solid fa-arrow-left text-green-400 text-xs"></i>
+                                                <span class="text-green-400 text-xs">Trust-based discovery</span>
+                                            </div>
+                                            <div class="flex items-center justify-center space-x-2">
+                                                <i class="fa-solid fa-arrow-right text-blue-400 text-xs"></i>
+                                                <span class="text-blue-400 text-xs">Find &amp; engage</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-green-900/20 border border-green-700/50 rounded-lg p-3">
+                                        <p class="text-xs text-green-400 text-center">Pay for goods/services directly</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Key Benefits Section -->
+                    <div id="key-benefits" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Key Benefits of the Verana Model</h2>
+                        
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <!-- For Organizations -->
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                                <h3 class="text-2xl font-semibold text-white mb-6 flex items-center">
+                                    <i class="fa-solid fa-building text-blue-400 mr-3"></i>
+                                    For Organizations
+                                </h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-start space-x-3">
+                                        <i class="fa-solid fa-check text-green-400 mt-1"></i>
+                                        <p class="text-gray-300">Equal discovery opportunities regardless of budget size</p>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <i class="fa-solid fa-check text-green-400 mt-1"></i>
+                                        <p class="text-gray-300">Compete on trust and quality, not advertising spend</p>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <i class="fa-solid fa-check text-green-400 mt-1"></i>
+                                        <p class="text-gray-300">Direct relationship with customers without intermediaries</p>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <i class="fa-solid fa-check text-green-400 mt-1"></i>
+                                        <p class="text-gray-300">Transparent, verifiable reputation system</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- For Consumers -->
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                                <h3 class="text-2xl font-semibold text-white mb-6 flex items-center">
+                                    <i class="fa-solid fa-users text-purple-400 mr-3"></i>
+                                    For Consumers
+                                </h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-start space-x-3">
+                                        <i class="fa-solid fa-check text-green-400 mt-1"></i>
+                                        <p class="text-gray-300">Lower prices without advertising markup</p>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <i class="fa-solid fa-check text-green-400 mt-1"></i>
+                                        <p class="text-gray-300">Discover quality services from any size business</p>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <i class="fa-solid fa-check text-green-400 mt-1"></i>
+                                        <p class="text-gray-300">Verifiable claims and credentials for trust</p>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <i class="fa-solid fa-check text-green-400 mt-1"></i>
+                                        <p class="text-gray-300">No manipulation by advertising algorithms</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Call to Action -->
+                    <div id="page-cta" class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-12 text-center">
+                        <h2 class="text-3xl font-bold text-white mb-4">Ready to Transform Discovery?</h2>
+                        <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                            Join the movement toward fair, transparent, and trust-based service discovery.
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                            <span class="bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2 cursor-pointer">
+                                <i class="fa-solid fa-rocket"></i>
+                                <span>Start Building</span>
+                            </span>
+                            <span class="border-2 border-gray-600 hover:border-verana text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 cursor-pointer">
+                                Learn More
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Content Section -->
+<section id="related-content" class="bg-gray-900 py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-12 text-center">Related Concepts</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-key text-blue-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Digital Ownership</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Own your digital services, audience, and data — not just rent them from platforms.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Learn More</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+                
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-shield-halved text-green-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Verifiable Trust</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Know who to trust online with verifiable digital proof backed by cryptography.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Explore</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+                
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-magnifying-glass text-purple-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Trust Resolver</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        The search engine of verifiable trust — discover services based on proven claims.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Discover</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="bg-gray-900 border-t border-gray-800 py-16">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12 mb-12">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-white">Verana</span>
+                    </div>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty.
+                    </p>
+                    <div class="flex space-x-4">
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-github"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-discord"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Verana</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Principles</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Foundation</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Press</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Developers</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Docs</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">GitHub</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Specifications</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Trust Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Public Registry Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Trust Registry Query Protocol</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col sm:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">© 2025 Verana Foundation. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 sm:mt-0">
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Privacy Policy</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Terms of Service</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Cookie Policy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</body></html>
