@@ -2,7 +2,7 @@
 title: Solving Trust
 subtitle: "Building a native trust layer for the internet through verifiable credentials and cryptographic proof of identity, authenticity, and ownership."
 url: "/page/why-verana/trust"
-hero_icon: "fa-solid fa-shield-check"
+hero_icon: "fa-solid fa-shield-halved"
 disable_content_wrapper: true
 sidebar:
   title: Why Verana

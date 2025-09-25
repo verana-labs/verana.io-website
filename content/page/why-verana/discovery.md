@@ -14,17 +14,15 @@ sidebar:
       url: "#verana-solution"
     - label: Key Benefits
       url: "#key-benefits"
-    - label: Call to Action
-      url: "#page-cta"
   quick_links:
     title: Quick Links
     items:
-      - label: Platform Economy
-        url: "#broken-discovery"
-      - label: Trust Resolver
-        url: "#verana-solution"
-      - label: Ecosystem Model
-        url: "#verana-solution"
+      - label: Documentation
+        url: "https://docs.verana.io"
+      - label: Discord
+        url: "https://discord.gg/edjaFn252q"
+      - label: Github
+        url: "https://github.com/verana-labs"
 problem:
   id: broken-discovery
   title: Why Discoverability is Broken

@@ -22,17 +22,15 @@ sidebar:
       url: "#why-matters"
     - label: Real-World Example
       url: "#real-example"
-    - label: Call to Action
-      url: "#page-cta"
-  quick_links:
+  quick_links:  
     title: Quick Links
     items:
-      - label: Getting Started
-        url: "#page-cta"
-      - label: VUA Examples
-        url: "#vua-examples"
-      - label: Architecture Guide
-        url: "#architecture-diagrams"
+      - label: Documentation
+        url: "https://docs.verana.io"
+      - label: Discord
+        url: "https://discord.gg/edjaFn252q"
+      - label: Github
+        url: "https://github.com/verana-labs"
 intro:
   text: |
     **Verifiable User Agents (VUAs)** are a new class of applications that **aggregate and interact with decentralized Verifiable Services (VSs)**. Instead of relying on centralized APIs or walled-garden platforms, these apps query the **Verana Trust Resolver**, making any compatible Verifiable Service instantly visible and usable.
@@ -242,14 +240,14 @@ related:
       title: Developer Tools
       text: "Access the tools and frameworks needed to build robust VUAs."
       cta_label: Explore Tools
-      url: "#"
+      url: "https://docs.verana.io"
     - icon: "fa-solid fa-plug"
       icon_bg_class: "bg-blue-500/20"
       icon_color_class: "text-blue-400"
-      title: SDK & APIs
-      text: "Integrate with Verana's trust infrastructure using our comprehensive APIs."
-      cta_label: View APIs
-      url: "#"
+      title: Respositories
+      text: "Integrate with Verana's trust infrastructure using our comprehensive repositories."
+      cta_label: View Repositories
+      url: "https://github.io/verana-labs/"
 ---
 
 {{< verifiable-user-agents >}}

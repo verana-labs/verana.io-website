@@ -77,7 +77,7 @@ params:
             url: "/page/why-verana/ownership"
           - title: "Solving Discovery"
             url: "/page/why-verana/discovery"
-      - title: "Build with Verana"
+      - title: "Build"
         url: "/page/build"
         children:
           - title: "Own the Rails"
