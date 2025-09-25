@@ -36,6 +36,8 @@
   </url><url>
     <loc>//localhost:1313/page/</loc>
   </url><url>
+    <loc>//localhost:1313/page/industry-use-cases/ai-assistants/</loc>
+  </url><url>
     <loc>//localhost:1313/page/press/</loc>
   </url><url>
     <loc>//localhost:1313/page/about/roadmap/</loc>
@@ -62,8 +64,8 @@
   </url><url>
     <loc>//localhost:1313/page/build/verifiable-user-agents/</loc>
   </url><url>
-    <loc>//localhost:1313/page/industry-use-cases/notaries-mx/</loc>
+    <loc>//localhost:1313/page/build/verifiable-user-agents/</loc>
   </url><url>
-    <loc>//localhost:1313/page/industry-use-cases/ai-assistants/</loc>
+    <loc>//localhost:1313/page/industry-use-cases/notaries-mx/</loc>
   </url>
 </urlset>
