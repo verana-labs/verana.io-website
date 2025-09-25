@@ -1,0 +1,541 @@
+{{ $page := . }}
+{{ $params := $page.Params }}
+{{ $sidebar := $params.sidebar }}
+{{ $intro := $params.intro }}
+{{ $examples := $params.examples }}
+{{ $business := $params.business_models }}
+{{ $how := $params.how_it_works }}
+{{ $architecture := $params.architecture }}
+{{ $why := $params.why_matters }}
+{{ $real := $params.real_example }}
+{{ $cta := $params.cta }}
+{{ $related := $params.related }}
+
+<section id="main-content" class="bg-black py-20 lg:py-32">
+  <div class="container mx-auto px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-4 gap-12">
+        {{ with $sidebar }}
+          <aside id="sidebar-nav" class="lg:col-span-1">
+            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky top-24">
+              {{ with .title }}<h3 class="text-lg font-semibold text-white mb-6">{{ . }}</h3>{{ end }}
+              {{ with .nav }}
+                <nav class="space-y-3">
+                  {{ range . }}
+                    {{ $label := .label | default .title | default .name }}
+                    {{ $href := .url | default .href | default "#" }}
+                    {{ $active := cond (isset . "active") (.active) false }}
+                    {{ if $label }}
+                      <a href="{{ $href }}" class="block {{ if $active }}text-verana font-medium{{ else }}text-gray-400 hover:text-white transition-colors duration-200{{ end }}">{{ $label }}</a>
+                    {{ end }}
+                  {{ end }}
+                </nav>
+              {{ end }}
+              {{ with .quick_links }}
+                <div class="mt-8 pt-6 border-t border-gray-700">
+                  {{ with .title }}<h4 class="text-sm font-semibold text-white mb-4">{{ . }}</h4>{{ end }}
+                  <div class="space-y-2">
+                    {{ range .items }}
+                      {{ $label := .label | default .title | default .name }}
+                      {{ $href := .url | default .href | default "#" }}
+                      {{ if $label }}
+                        <a href="{{ $href }}" class="block text-sm text-gray-400 hover:text-white transition-colors duration-200">{{ $label }}</a>
+                      {{ end }}
+                    {{ end }}
+                  </div>
+                </div>
+              {{ end }}
+            </div>
+          </aside>
+        {{ end }}
+
+        <div id="content-area" class="lg:col-span-3">
+          {{ with $intro }}
+            <div id="content-intro" class="mb-16 scroll-mt-28 md:scroll-mt-32">
+              {{ with .text }}
+                <div class="text-xl text-gray-300 leading-relaxed">
+                  {{ . | markdownify }}
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ with $examples }}
+            <div id="vua-examples" class="mb-16 scroll-mt-28 md:scroll-mt-32">
+              {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">{{ . }}</h2>{{ end }}
+              {{ with .description }}<p class="text-lg text-gray-300 mb-8">{{ . | markdownify }}</p>{{ end }}
+              {{ with .cards }}
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                  {{ range . }}
+                    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 hover:border-verana/50 transition-all duration-300">
+                      <div class="w-12 h-12 {{ .icon_bg_class | default "bg-verana/20" }} rounded-xl flex items-center justify-center mb-4">
+                        {{ $icon := .icon }}
+                        {{ $iconColor := .icon_color_class | default "text-verana" }}
+                        {{ if $icon }}<i class="{{ $icon }} {{ $iconColor }} text-xl"></i>{{ end }}
+                      </div>
+                      {{ with .title }}<h3 class="text-lg font-semibold text-white mb-3">{{ . }}</h3>{{ end }}
+                      {{ with .text }}<p class="text-gray-300 text-sm">{{ . | markdownify }}</p>{{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+              {{ with .highlight }}
+                <div class="bg-verana/10 border border-verana/30 rounded-2xl p-8">
+                  <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    {{ $icon := .icon }}
+                    {{ $iconColor := .icon_color_class | default "text-verana" }}
+                    {{ if $icon }}<i class="{{ $icon }} {{ $iconColor }} mr-3"></i>{{ end }}
+                    {{ with .title }}<span>{{ . }}</span>{{ end }}
+                  </h3>
+                  {{ with .text }}<p class="text-lg text-gray-200 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ with $business }}
+            <div id="business-models" class="mb-16 scroll-mt-28 md:scroll-mt-32">
+              {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">{{ . }}</h2>{{ end }}
+              <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+                {{ with .intro }}<p class="text-lg text-gray-300 leading-relaxed mb-6">{{ . | markdownify }}</p>{{ end }}
+                {{ with .cards }}
+                  <div class="grid md:grid-cols-3 gap-6 mb-8">
+                  {{ range . }}
+                    <div class="bg-black border border-gray-600 rounded-xl p-6">
+                      <div class="w-12 h-12 {{ .icon_bg_class | default "bg-verana/20" }} rounded-xl flex items-center justify-center mb-4">
+                        {{ $icon := .icon }}
+                        {{ $iconColor := .icon_color_class | default "text-verana" }}
+                        {{ if $icon }}<i class="{{ $icon }} {{ $iconColor }}"></i>{{ end }}
+                      </div>
+                      {{ with .title }}<h4 class="text-white font-semibold mb-2">{{ . }}</h4>{{ end }}
+                      {{ with .text }}<p class="text-gray-300 text-sm">{{ . | markdownify }}</p>{{ end }}
+                    </div>
+                  {{ end }}
+                  </div>
+                {{ end }}
+                {{ with .highlight }}
+                  <div class="bg-verana/10 border border-verana/20 rounded-xl p-6">
+                    {{ with .text }}<p class="text-lg text-gray-200 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                  </div>
+                {{ end }}
+              </div>
+              {{ with .example }}
+                <div class="bg-gradient-to-r from-blue-900/20 to-purple-900/20 border border-blue-700/50 rounded-2xl p-8">
+                  {{ with .title }}<h3 class="text-2xl font-bold text-white mb-4 flex items-center"><i class="fa-solid fa-lightbulb text-yellow-400 mr-3"></i><span>{{ . }}</span></h3>{{ end }}
+                  {{ with .description }}<p class="text-lg text-gray-200 leading-relaxed mb-6">{{ . | markdownify }}</p>{{ end }}
+                  {{ with .options }}
+                    <div class="grid md:grid-cols-2 gap-6">
+                      {{ range . }}
+                        <div class="bg-black/50 rounded-xl p-6">
+                          <h4 class="text-white font-semibold mb-3 flex items-center">
+                            {{ $icon := .icon }}
+                            {{ $iconColor := .icon_color_class | default "text-verana" }}
+                            {{ if $icon }}<i class="{{ $icon }} {{ $iconColor }} mr-2"></i>{{ end }}
+                            {{ with .title }}<span>{{ . }}</span>{{ end }}
+                          </h4>
+                          {{ with .text }}<p class="text-gray-300">{{ . | markdownify }}</p>{{ end }}
+                        </div>
+                      {{ end }}
+                    </div>
+                  {{ end }}
+                  {{ with .conclusion }}
+                    <div class="mt-6 pt-6 border-t border-gray-600">
+                      <p class="text-lg text-gray-200 leading-relaxed">{{ . | markdownify }}</p>
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ with $how }}
+            <div id="how-vuas-work" class="mb-16 scroll-mt-28 md:scroll-mt-32">
+              {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">{{ . }}</h2>{{ end }}
+              <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+                {{ with .intro }}<p class="text-lg text-gray-300 leading-relaxed mb-6">{{ . | markdownify }}</p>{{ end }}
+                {{ with .steps }}
+                  <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    {{ range . }}
+                      <div class="bg-black border border-gray-600 rounded-xl p-6">
+                        <div class="w-12 h-12 {{ .icon_bg_class | default "bg-verana/20" }} rounded-xl flex items-center justify-center mb-4">
+                          {{ $icon := .icon }}
+                          {{ $iconColor := .icon_color_class | default "text-verana" }}
+                          {{ if $icon }}<i class="{{ $icon }} {{ $iconColor }}"></i>{{ end }}
+                        </div>
+                        {{ with .title }}<h4 class="text-white font-semibold mb-3">{{ . }}</h4>{{ end }}
+                        {{ with .text }}<p class="text-gray-300">{{ . | markdownify }}</p>{{ end }}
+                      </div>
+                    {{ end }}
+                  </div>
+                {{ end }}
+                {{ with .highlight }}
+                  <div class="bg-verana/10 border border-verana/20 rounded-xl p-6">
+                    {{ with .text }}<p class="text-lg text-gray-200 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                  </div>
+                {{ end }}
+              </div>
+              {{ with .discovery }}
+                <div class="bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-2xl p-8">
+                  {{ with .title }}<h3 class="text-2xl font-bold text-white mb-6">{{ . }}</h3>{{ end }}
+                  {{ with .intro }}<p class="text-lg text-gray-300 mb-6">{{ . | markdownify }}</p>{{ end }}
+                  {{ with .items }}
+                    <div class="space-y-6">
+                      {{ range . }}
+                        <div class="flex items-start space-x-4">
+                          <div class="w-8 h-8 {{ .icon_bg_class | default "bg-verana/20" }} rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                            {{ $icon := .icon }}
+                            {{ $iconColor := .icon_color_class | default "text-verana" }}
+                            {{ if $icon }}<i class="{{ $icon }} {{ $iconColor }} text-sm"></i>{{ end }}
+                          </div>
+                          <div>
+                            {{ with .title }}<h4 class="text-white font-semibold mb-2">{{ . }}</h4>{{ end }}
+                            {{ with .text }}<p class="text-gray-300">{{ . | markdownify }}</p>{{ end }}
+                          </div>
+                        </div>
+                      {{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ with $architecture }}
+            <div id="architecture-diagrams" class="mb-16 scroll-mt-28 md:scroll-mt-32">
+              {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">{{ . }}</h2>{{ end }}
+              <div class="grid md:grid-cols-2 gap-8 mb-12">
+                {{ with .instance }}
+                  <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                    {{ with .title }}<h3 class="text-xl font-semibold text-white mb-6">{{ . }}</h3>{{ end }}
+                    <div class="relative h-64 flex items-center justify-center">
+                      {{ with .agent }}
+                        <div class="w-48 h-32 bg-verana/20 border-2 border-verana rounded-2xl flex flex-col items-center justify-center relative">
+                          {{ with .title }}<h4 class="text-white font-bold mb-2">{{ . }}</h4>{{ end }}
+                          {{ with .features }}
+                            <div class="space-y-1 text-center">
+                              {{ range . }}
+                                <div class="text-gray-300 text-sm flex items-center justify-center">
+                                  {{ $icon := .icon }}
+                                  {{ $iconColor := .icon_color_class | default "text-verana" }}
+                                  {{ if $icon }}<i class="{{ $icon }} {{ $iconColor }} mr-2"></i>{{ end }}
+                                  <span>{{ .text }}</span>
+                                </div>
+                              {{ end }}
+                            </div>
+                          {{ end }}
+                        </div>
+                      {{ end }}
+                    </div>
+                  </div>
+                {{ end }}
+                {{ with .network }}
+                  <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                    {{ with .title }}<h3 class="text-xl font-semibold text-white mb-6">{{ . }}</h3>{{ end }}
+                    <div class="relative h-64">
+                      {{ with .center }}
+                        <div class="absolute top-4 left-1/2 transform -translate-x-1/2 w-32 h-12 {{ .badge_class | default "bg-verana/20 border border-verana text-verana" }} rounded-xl flex items-center justify-center">
+                          <span class="text-xs font-semibold">{{ .label | default "VPR" }}</span>
+                        </div>
+                      {{ end }}
+                      {{ with .services }}
+                        <div class="absolute left-4 top-20 w-24 h-32 border border-gray-600 rounded-xl p-2">
+                          {{ with .label }}<div class="text-gray-400 text-xs mb-2">{{ . }}</div>{{ end }}
+                          {{ with .nodes }}
+                            <div class="space-y-2">
+                              {{ range . }}
+                                <div class="w-full h-4 {{ .badge_class | default "bg-verana/20 border border-verana text-verana" }} rounded text-xs flex items-center justify-center">
+                                  <span class="text-xs">{{ .label }}</span>
+                                </div>
+                              {{ end }}
+                            </div>
+                          {{ end }}
+                        </div>
+                      {{ end }}
+                      {{ with .vua }}
+                        <div class="absolute right-4 top-20 w-24 h-32 border border-gray-600 rounded-xl p-2">
+                          {{ with .label }}<div class="text-gray-400 text-xs mb-2">{{ . }}</div>{{ end }}
+                          {{ with .nodes }}
+                            <div class="space-y-2">
+                              {{ range . }}
+                                <div class="w-full h-4 {{ .badge_class | default "bg-verana/20 border border-verana text-verana" }} rounded text-xs flex items-center justify-center">
+                                  <span class="text-xs">{{ .label }}</span>
+                                </div>
+                              {{ end }}
+                            </div>
+                          {{ end }}
+                        </div>
+                      {{ end }}
+                      <svg class="absolute inset-0 w-full h-full pointer-events-none">
+                        <line x1="50%" y1="60" x2="50%" y2="120" stroke="#9f7aea" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"></line>
+                        <line x1="100" y1="140" x2="140" y2="140" stroke="#3fbdb6" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"></line>
+                        <line x1="140" y1="160" x2="180" y2="160" stroke="#9f7aea" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"></line>
+                      </svg>
+                      <div class="absolute bottom-4 right-16 flex space-x-2">
+                        <div class="w-6 h-6 bg-gray-600 rounded-full flex items-center justify-center">
+                          <i class="fa-solid fa-user text-gray-400 text-xs"></i>
+                        </div>
+                        <div class="w-6 h-6 bg-gray-600 rounded-full flex items-center justify-center">
+                          <i class="fa-solid fa-user text-gray-400 text-xs"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+
+          {{ with $why }}
+            <div id="why-matters" class="mb-16 scroll-mt-28 md:scroll-mt-32">
+              {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">{{ . }}</h2>{{ end }}
+              <div class="grid md:grid-cols-2 gap-8 mb-8">
+                {{ with .old_model }}
+                  <div class="space-y-6">
+                    {{ with .title }}<h3 class="text-2xl font-bold text-red-400 mb-4">{{ . }}</h3>{{ end }}
+                    {{ with .items }}
+                      <div class="space-y-4">
+                        {{ range . }}
+                          <div class="bg-red-900/20 border border-red-700/50 rounded-xl p-4">
+                            <p class="text-gray-300">{{ . | markdownify }}</p>
+                          </div>
+                        {{ end }}
+                      </div>
+                    {{ end }}
+                  </div>
+                {{ end }}
+                {{ with .new_model }}
+                  <div class="space-y-6">
+                    {{ with .title }}<h3 class="text-2xl font-bold text-green-400 mb-4">{{ . }}</h3>{{ end }}
+                    {{ with .items }}
+                      <div class="space-y-4">
+                        {{ range . }}
+                          <div class="bg-green-900/20 border border-green-700/50 rounded-xl p-4">
+                            <p class="text-gray-300">{{ . | markdownify }}</p>
+                          </div>
+                        {{ end }}
+                      </div>
+                    {{ end }}
+                  </div>
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+
+          {{ with $real }}
+            <div id="real-example" class="mb-16 scroll-mt-28 md:scroll-mt-32">
+              {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">{{ . }}</h2>{{ end }}
+              <div class="bg-gradient-to-br from-purple-900/30 to-blue-900/30 border border-purple-700/50 rounded-2xl p-8">
+                {{ $hero := .hero }}
+                <div class="flex items-center space-x-4 mb-6">
+                  <div class="w-16 h-16 {{ $hero.icon_bg_class | default "bg-verana/20" }} rounded-2xl flex items-center justify-center">
+                    {{ $icon := $hero.icon }}
+                    {{ $iconColor := $hero.icon_color_class | default "text-verana" }}
+                    {{ if $icon }}<i class="{{ $icon }} {{ $iconColor }} text-2xl"></i>{{ end }}
+                  </div>
+                  <div>
+                    {{ with $hero.title }}<h3 class="text-2xl font-bold text-white">{{ . }}</h3>{{ end }}
+                    {{ with $hero.subtitle }}<p class="text-gray-300">{{ . }}</p>{{ end }}
+                  </div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                  <div>
+                    {{ with .description }}<p class="text-gray-300 leading-relaxed mb-6">{{ . | markdownify }}</p>{{ end }}
+                    {{ with .bullets }}
+                      <div class="space-y-3">
+                        {{ range . }}
+                          <div class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                            <span class="text-gray-300">{{ . | markdownify }}</span>
+                          </div>
+                        {{ end }}
+                      </div>
+                    {{ end }}
+                  </div>
+                  <div class="bg-black/50 rounded-xl p-6">
+                    {{ with .info_card.title }}<h4 class="text-white font-semibold mb-4 flex items-center"><i class="fa-solid fa-external-link text-purple-400 mr-2"></i><span>{{ . }}</span></h4>{{ end }}
+                    {{ with .info_card.text }}<p class="text-gray-300 mb-4">{{ . | markdownify }}</p>{{ end }}
+                    {{ with .info_card }}
+                      {{ $label := .cta_label | default .cta_text }}
+                      {{ $href := .cta_href | default "#" }}
+                      {{ if $label }}
+                        <a href="{{ $href }}" class="inline-flex items-center space-x-2 text-purple-400 hover:text-purple-300 font-medium">
+                          <span>{{ $label }}</span>
+                          <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </a>
+                      {{ end }}
+                    {{ end }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{ end }}
+
+          {{ with $cta }}
+            <div id="page-cta" class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-12 text-center scroll-mt-28 md:scroll-mt-32">
+              {{ with .title }}<h2 class="text-3xl font-bold text-white mb-4">{{ . }}</h2>{{ end }}
+              {{ with .text }}<p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">{{ . | markdownify }}</p>{{ end }}
+              {{ with .buttons }}
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                  {{ range . }}
+                    {{ $href := .href | default .url | default "#" }}
+                    <a href="{{ $href }}" class="{{ .class | default "bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105" }}">
+                      <span class="flex items-center justify-center space-x-2">
+                        {{ with .icon }}<i class="{{ . }}"></i>{{ end }}
+                        {{ with .text }}<span>{{ . }}</span>{{ end }}
+                      </span>
+                    </a>
+                  {{ end }}
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ with $related }}
+  <section id="related-content" class="bg-gray-900 py-20">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-12 text-center">{{ . }}</h2>{{ end }}
+        {{ with .items }}
+          <div class="grid md:grid-cols-3 gap-8">
+            {{ range . }}
+              <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300">
+                <div class="w-12 h-12 {{ .icon_bg_class | default "bg-verana/20" }} rounded-xl flex items-center justify-center mb-6">
+                  {{ $icon := .icon }}
+                  {{ $iconColor := .icon_color_class | default "text-verana" }}
+                  {{ if $icon }}<i class="{{ $icon }} {{ $iconColor }} text-xl"></i>{{ end }}
+                </div>
+                {{ with .title }}<h3 class="text-xl font-semibold text-white mb-4">{{ . }}</h3>{{ end }}
+                {{ with .text }}<p class="text-gray-300 mb-6 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                {{ $ctaLabel := .cta_label | default .ctaText | default .cta }}
+                {{ $ctaHref := .url | default .href | default "#" }}
+                {{ if $ctaLabel }}
+                  <a href="{{ $ctaHref }}" class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium">
+                    <span>{{ $ctaLabel }}</span>
+                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                  </a>
+                {{ end }}
+              </div>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = Array.from(document.querySelectorAll('#sidebar-nav a[href^="#"]'));
+    const sections = navLinks
+      .map((link) => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
+
+    const activateLink = (id) => {
+      navLinks.forEach((link) => {
+        const targetId = (link.getAttribute('href') || '').slice(1);
+        if (targetId === id) {
+          link.classList.add('text-verana', 'font-medium');
+          link.classList.remove('text-gray-400');
+        } else {
+          link.classList.remove('text-verana', 'font-medium');
+          if (!link.classList.contains('text-gray-400')) {
+            link.classList.add('text-gray-400');
+          }
+        }
+      });
+    };
+
+    const getHeaderOffset = () => {
+      const header = document.querySelector('header');
+      return header ? header.getBoundingClientRect().height + 24 : 96;
+    };
+
+    let headerOffset = getHeaderOffset();
+
+    const updateActiveLink = () => {
+      const scrollPosition = window.scrollY + headerOffset + 4;
+      let currentSection = sections[0];
+      for (const section of sections) {
+        if (section.offsetTop <= scrollPosition) {
+          currentSection = section;
+        } else {
+          break;
+        }
+      }
+      if (currentSection && currentSection.id) {
+        activateLink(currentSection.id);
+      }
+    };
+
+    sections.forEach((section) => {
+      if (!section.id) {
+        section.id = (section.textContent || '')
+          .trim()
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-');
+      }
+      section.classList.add('scroll-mt-28', 'md:scroll-mt-32');
+    });
+
+    const initialSectionId = window.location.hash ? window.location.hash.slice(1) : (sections[0] && sections[0].id);
+    if (initialSectionId) activateLink(initialSectionId);
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateActiveLink();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+      headerOffset = getHeaderOffset();
+      updateActiveLink();
+    });
+
+    navLinks.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const selector = link.getAttribute('href');
+        if (selector && selector.startsWith('#')) {
+          const target = document.querySelector(selector);
+          if (target) {
+            event.preventDefault();
+            headerOffset = getHeaderOffset();
+            const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            activateLink(target.id);
+            history.replaceState(null, '', selector);
+          }
+        }
+      });
+    });
+
+    const scrollToHashIfPresent = () => {
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+          headerOffset = getHeaderOffset();
+          const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+          window.scrollTo({ top: targetPosition });
+        }
+      }
+    };
+
+    window.addEventListener('hashchange', () => {
+      headerOffset = getHeaderOffset();
+      scrollToHashIfPresent();
+      updateActiveLink();
+    });
+
+    updateActiveLink();
+    setTimeout(scrollToHashIfPresent, 0);
+  });
+</script>
