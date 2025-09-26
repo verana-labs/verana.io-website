@@ -22,8 +22,8 @@ params:
     logo: "/images/purple/logo.svg"
     tagline: "The Open Trust Layer for the Internet"
     testnet:
-      label: "Testnet"
-      url: "https://app.testnet.verana.network/"
+      label: "Playground"
+      url: "/page/playground"
   footer:
     company: "Verana Foundation"
     description: "The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty."
