@@ -2,6 +2,8 @@
 title: Three Systemic Problems
 subtitle: "The internet faces fundamental challenges in trust, ownership, and discovery that affect billions of users and businesses worldwide."
 url: "/page/why-verana"
+meta_title: "Why Verana | Solving Trust, Ownership, and Discovery Online"
+meta_description: "Explore the three systemic problems Verana addresses—trust, ownership, and discovery—and how verifiable credentials rebuild a fair digital economy."
 hero_icon: "fa-solid fa-triangle-exclamation"
 disable_content_wrapper: true
 problems_overview:

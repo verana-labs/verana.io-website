@@ -1,6 +1,8 @@
 ---
 title: Playground
 url: "/page/playground"
+meta_title: "Verana Playground | Testnet Apps, Faucet, and Demo Tools"
+meta_description: "Access the Verana Playground to experiment with trust networks, testnet apps, and the VNA faucet while building verifiable credential workflows."
 ---
 ## Welcome to the Verana Playground
 

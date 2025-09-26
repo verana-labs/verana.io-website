@@ -2,6 +2,8 @@
 title: Trust Resolver
 subtitle: "A public, decentralized index where discovery is based on cryptographically verified credentials, not advertising budgets."
 url: "/page/trust-engine/trust-resolver"
+meta_title: "Verana Trust Resolver | Discover Verifiable Services and Credentials"
+meta_description: "See how the Verana Trust Resolver ranks services using verifiable credentials, enabling trustworthy search, advanced queries, and transparent discovery loops."
 hero_icon: "fa-solid fa-magnifying-glass"
 disable_content_wrapper: true
 sidebar:

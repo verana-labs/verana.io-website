@@ -1,10 +1,18 @@
 {{/* Open Graph and Twitter Card meta */}}
 {{ $siteTitle := .Site.Title }}
-{{ $title := $siteTitle }}
-{{ if .Title }}{{ $title = printf "%s | %s" .Title $siteTitle }}{{ end }}
+{{ $title := cond (isset .Params "meta_title") .Params.meta_title $siteTitle }}
+{{ if and (not (isset .Params "meta_title")) .Title }}{{ $title = printf "%s | %s" .Title $siteTitle }}{{ end }}
+{{ if not (strings.Contains (lower $title) "verana") }}
+  {{ $title = printf "%s | Verana Trust Layer" $title }}
+{{ end }}
 
-{{ $desc := "Verifiable trust for digital ecosystems" }}
-{{ with .Params.description }}{{ $desc = . }}{{ else }}{{ with .Site.Params.header.tagline }}{{ $desc = . }}{{ end }}{{ end }}
+{{ $baseDesc := "Verifiable trust for digital ecosystems" }}
+{{ with .Site.Params.header.tagline }}{{ $baseDesc = . }}{{ end }}
+{{ $desc := cond (isset .Params "meta_description") .Params.meta_description $baseDesc }}
+{{ if and (not (isset .Params "meta_description")) (.Params.description) }}{{ $desc = .Params.description }}{{ end }}
+{{ if not (strings.Contains (lower $desc) "verana") }}
+  {{ $desc = printf "%s | Verana trust layer, verifiable credentials, decentralized identity." $desc }}
+{{ end }}
 
 {{ $type := "website" }}
 {{ if .IsPage }}{{ $type = "article" }}{{ end }}

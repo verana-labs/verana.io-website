@@ -1,6 +1,8 @@
 ---
 title: 🇲🇽 Notaries & Power of Attorney
 url: "/page/industry-use-cases/notaries"
+meta_title: "Verana for Notaries | Verifiable Power of Attorney in Mexico"
+meta_description: "Digitalize Mexico’s power-of-attorney process with Verana by issuing verifiable credentials, accelerating revocations, and providing trustworthy notarized records."
 ---
 
 ## A Manual, Inefficient Process

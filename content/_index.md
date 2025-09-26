@@ -1,6 +1,8 @@
 ---
 title: "Verana"
 layout: "uxpilot"
+meta_title: "Verana | Open Trust Layer for Verifiable Digital Services"
+meta_description: "Discover Verana, the open trust layer that turns digital services into verifiable assets with decentralized identity, trust registries, and developer-first tools."
 bodyClass: "bg-black text-white overflow-x-hidden font-sans"
 hero:
   title_lines:

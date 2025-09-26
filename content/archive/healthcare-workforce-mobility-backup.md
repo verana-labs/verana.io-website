@@ -1,5 +1,7 @@
 ---
 title: Healthcare Workforce Mobility
+meta_title: "Healthcare Workforce Mobility | Verana Backup Use Case"
+meta_description: "Archived scenario showing how Verana streamlines clinician credentialing, compliance, and mobility through verifiable trust ecosystems."
 ---
 
 ## The Problem: Fragmented Verification

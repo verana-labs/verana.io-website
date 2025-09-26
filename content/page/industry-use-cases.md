@@ -2,6 +2,8 @@
 title: Industry Use Cases
 subtitle: "Explore how ecosystems across government, healthcare, hospitality, AI, and social platforms use Verana to deliver verifiable, privacy-first digital services."
 url: "/page/industry-use-cases"
+meta_title: "Verana Industry Use Cases | Government, Healthcare, AI and More"
+meta_description: "Browse Verana industry use cases showing how governments, hospitals, hotels, and AI platforms deploy verifiable credentials and trust networks."
 hero_icon: "fa-solid fa-industry"
 disable_content_wrapper: true
 sections:

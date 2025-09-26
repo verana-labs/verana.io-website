@@ -2,6 +2,8 @@
 title: Trust Networks
 subtitle: "Ecosystems use Verana to enforce the rules of their governance frameworks and exchange verifiable data with confidence."
 url: "/page/build/trust-networks"
+meta_title: "Verana Trust Networks | Govern Ecosystems with Verifiable Data"
+meta_description: "Learn how to design ecosystem governance frameworks and run trust networks on Verana to exchange verifiable credentials securely across institutions."
 hero_icon: "fa-solid fa-sitemap"
 disable_content_wrapper: true
 intro_section:

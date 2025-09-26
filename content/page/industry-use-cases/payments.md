@@ -1,6 +1,8 @@
 ---
 title: Banking and Direct Payments
 url: "/page/industry-use-cases/payments"
+meta_title: "Banking & Direct Payments | Verifiable Trust for Finance"
+meta_description: "Use Verana to streamline KYC, mandate management, and direct payment authorizations with verifiable credentials and interoperable trust registries."
 ---
 
 ## The Problem: Fragmented Verification

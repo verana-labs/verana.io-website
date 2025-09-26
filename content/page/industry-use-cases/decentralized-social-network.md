@@ -2,6 +2,8 @@
 title: Decentralized Social Networks
 subtitle: "Where creators own their channels, followers, and provenance. Discovery is based on credentials—not ads."
 url: "/page/industry-use-cases/decentralized-social-network"
+meta_title: "Decentralized Social Networks | Own Channels with Verana"
+meta_description: "Launch verifiable social channels on Verana to own follower relationships, prove content provenance, and enable trust-based discovery without ad algorithms."
 hero_icon: "fa-solid fa-users"
 disable_content_wrapper: true
 use_case_partial: "decentralized-social-network"

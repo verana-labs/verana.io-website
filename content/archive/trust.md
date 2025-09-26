@@ -1,5 +1,7 @@
 ---
 title: Making the Internet trustworthy
+meta_title: "Why Trust Matters | Verana's Approach to a Verifiable Internet"
+meta_description: "Explore the internet trust problem and how Verana delivers cryptographic guarantees, verifiable credentials, and ecosystem governance to fix it."
 ---
 
 ## The Trust Problem

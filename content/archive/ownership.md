@@ -1,5 +1,7 @@
 ---
 title: Service Ownership
+meta_title: "Service Ownership Problem | Why Platforms Keep Control"
+meta_description: "Archived explainer on the digital ownership crisis and how Verana's verifiable services restore sovereignty over content, audiences, and data."
 ---
 
 ## The No Ownership Problem

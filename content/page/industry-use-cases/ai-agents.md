@@ -2,6 +2,8 @@
 title: AI Agents
 subtitle: "Bind AI agents to real owners and policies so users know who's behind the bot, and what it is allowed to do."
 url: "/page/industry-use-cases/ai-agents"
+meta_title: "AI Agents | Verifiable Ownership and Policy Enforcement"
+meta_description: "Use Verana to bind AI agents to verified owners, enforce usage policies, log interactions, and deliver trusted conversational or autonomous experiences."
 hero_icon: "fa-solid fa-robot"
 disable_content_wrapper: true
 use_case_partial: "ai-agents"
