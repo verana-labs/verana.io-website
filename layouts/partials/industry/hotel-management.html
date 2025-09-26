@@ -85,6 +85,11 @@
                   {{ with .image }}
                     <img class="w-full h-96 object-cover rounded-2xl mb-8 {{ .class }}" src="{{ .src }}" alt="{{ .alt }}" loading="lazy" />
                   {{ end }}
+                  {{ with .diagram }}
+                    <div class="mb-8 rounded-2xl overflow-hidden">
+                      {{ $page.RenderString . }}
+                    </div>
+                  {{ end }}
                   {{ with .cards }}
                     <div class="grid md:grid-cols-{{ len . }} gap-6 mt-8">
                       {{ range . }}
