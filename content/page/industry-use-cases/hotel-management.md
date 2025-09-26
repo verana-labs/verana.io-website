@@ -400,19 +400,19 @@ related_use_cases:
       text: Issue privacy-preserving national IDs and let citizens prove attributes anywhere.
       url: "/page/industry-use-cases/government-id"
       cta_label: Learn More
-    - icon: fa-solid fa-user-md
-      icon_bg_class: bg-green-500/20
-      icon_color_class: text-green-400
-      title: Healthcare Workforce Mobility
-      text: Let clinicians carry verifiable credentials for instant onboarding and compliance.
-      url: "/page/industry-use-cases/healthcare-workforce-mobility"
-      cta_label: Explore
-    - icon: fa-solid fa-stamp
+    - icon: fa-solid fa-robot
       icon_bg_class: bg-purple-500/20
       icon_color_class: text-purple-400
-      title: Notaries & Power of Attorney
-      text: Turn paper-based powers into verifiable credentials with instant revocation.
-      url: "/page/industry-use-cases/notaries"
+      title: AI Agents
+      text: Verify the ownership and policies of autonomous agents before they act.
+      url: "/page/industry-use-cases/ai-agents"
+      cta_label: Explore
+    - icon: fa-solid fa-share-nodes
+      icon_bg_class: bg-green-500/20
+      icon_color_class: text-green-400
+      title: Decentralized Social Networks
+      text: Help creators own their channels and audiences with verifiable credentials.
+      url: "/page/industry-use-cases/decentralized-social-network"
       cta_label: Discover
 ---
 
