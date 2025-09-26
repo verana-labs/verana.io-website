@@ -1,5 +1,5 @@
 ---
-title: Personal AI Assistants
+title: AI Agents
 subtitle: "Bind AI agents to real owners and policies so users know who's behind the bot, and what it is allowed to do."
 url: "/page/industry-use-cases/ai-assistants"
 hero_icon: "fa-solid fa-robot"
@@ -23,17 +23,17 @@ sidebar:
       url: "#economics-section"
     - label: Case Study
       url: "#case-study-section"
-    - label: Call to Action
-      url: "#page-cta"
   quick_links:
     title: What you can verify
     items:
-      - label: Owner credential binding
-        url: "#binding-section"
-      - label: Policy-gated actions
-        url: "#policies-section"
-      - label: Audit-ready provenance
-        url: "#audit-section"
+      - label: Playground
+        url: "/page/playground"
+      - label: Documentation
+        url: "https://docs.verana.io"
+      - label: Discord
+        url: "https://discord.gg/edjaFn252q"
+      - label: Github
+        url: "https://github.com/verana-labs"
 problem:
   id: problem-section
   icon: "fa-solid fa-exclamation-triangle"

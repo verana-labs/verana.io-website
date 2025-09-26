@@ -77,11 +77,9 @@ params:
             url: "/page/trust-engine/trust-resolver"
           - title: "Trust Deposit & Reputation"
             url: "/page/trust-engine/trust-deposit"
-      - title: "Build"
+      - title: "Own the Rails"
         url: "/page/build"
         children:
-          - title: "Own the Rails"
-            url: "/page/build"
           - title: "Trust Networks"
             url: "/page/build/trust-networks"
           - title: "Verifiable Services"

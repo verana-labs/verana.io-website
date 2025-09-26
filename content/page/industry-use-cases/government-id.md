@@ -23,17 +23,17 @@ sidebar:
       url: "#verifiers-section"
     - label: Selective Disclosure
       url: "#disclosure-section"
-    - label: Call to Action
-      url: "#page-cta"
   quick_links:
     title: Quick Links
     items:
-      - label: Implementation Guide
-        url: "#page-cta"
-      - label: Credential Schemas
-        url: "#ecosystem-section"
-      - label: Governance Framework
-        url: "#ecosystem-section"
+      - label: Playground
+        url: "/page/playground"
+      - label: Documentation
+        url: "https://docs.verana.io"
+      - label: Discord
+        url: "https://discord.gg/edjaFn252q"
+      - label: Github
+        url: "https://github.com/verana-labs"
 intro:
   id: introduction-section
   text: |
