@@ -10,6 +10,70 @@
     {{ partial "head-fonts.html" . }}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     {{ partial "head-og.html" . }}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "Verana Foundation",
+            "url": "https://verana.io",
+            "sameAs": [
+              "https://verana.foundation",
+              "https://docs.verana.io",
+              "https://github.com/verana-labs",
+              "https://www.linkedin.com/company/verana-foundation",
+              "https://x.com/Verana_io"
+            ],
+            "logo": "https://verana.io/logo.svg"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "Verana Trust Resolver",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Cross-platform",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "url": "https://docs.verana.io",
+            "downloadUrl": "https://github.com/verana-labs",
+            "description": "Resolve DIDs, verify credentials, query and build trust registries, trust networks, digital ecosystems per the Verifiable Trust spec."
+          },
+          {
+            "@type": "TechArticle",
+            "headline": "Verifiable Trust Specification",
+            "url": "https://verana-labs.github.io/verifiable-trust-spec/",
+            "author": {
+              "@type": "Organization",
+              "name": "Verana Foundation"
+            },
+            "about": [
+              "Verifiable Credentials",
+              "Trust Registry",
+              "Decentralized Identity",
+              "Digital Trust Ecosystem"
+            ]
+          },
+          {
+            "@type": "TechArticle",
+            "headline": "Verifiable Public Registry Specification",
+            "url": "https://verana-labs.github.io/verifiable-trust-vpr-spec/",
+            "author": {
+              "@type": "Organization",
+              "name": "Verana Foundation"
+            },
+            "about": [
+              "Verifiable Credentials",
+              "Trust Registry",
+              "Decentralized Identity",
+              "Digital Trust Ecosystem"
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
   {{ $hero := .Params.hero }}
   <body class="bg-black text-white overflow-x-hidden font-sans">
