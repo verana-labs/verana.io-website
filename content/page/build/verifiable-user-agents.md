@@ -2,6 +2,8 @@
 title: Verifiable User Agents
 subtitle: "A new class of applications that aggregate and interact with decentralized Verifiable Services, making trust-based discovery automatic and verifiable."
 url: "/page/build/verifiable-user-agents"
+meta_title: "Verifiable User Agents | Discover Trusted Services on Verana"
+meta_description: "Design verifiable user agents that query the Verana Trust Resolver to aggregate decentralized services, enforce policies, and deliver trustworthy digital experiences."
 hero_icon: "fa-solid fa-users-gear"
 disable_content_wrapper: true
 sidebar:

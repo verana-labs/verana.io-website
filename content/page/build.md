@@ -2,6 +2,8 @@
 title: Own the Rails
 subtitle: "Verana is public digital infrastructure for trust online. Think of it like the roads, power grid, or the internet itself: open, shared, and not controlled by a single company."
 url: "/page/build"
+meta_title: "Build with Verana | Launch Trust Networks, Services, and User Agents"
+meta_description: "Explore how Verana helps teams build verifiable trust networks, portable services, and user agents with open standards, SDKs, and governance-ready tooling."
 hero_icon: "fa-solid fa-hammer"
 disable_content_wrapper: true
 build_sections:

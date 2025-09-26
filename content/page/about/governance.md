@@ -2,6 +2,8 @@
 title: Governance
 subtitle: "Verana's dual governance model balances network security with ecosystem growth through the Verana Council and Verana Foundation."
 url: "/page/about/governance"
+meta_title: "Verana Governance | Council and Foundation Model Explained"
+meta_description: "Explore how the Verana Council and Verana Foundation share responsibilities to secure the network, grow ecosystems, and enforce verifiable trust policies."
 disable_content_wrapper: true
 hero_icon: "fa-solid fa-scale-balanced"
 ---

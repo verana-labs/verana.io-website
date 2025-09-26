@@ -1,5 +1,7 @@
 ---
 title: 🏨 Decentralizing Hotel Management
+meta_title: "Decentralizing Hotel Management | Verana Hospitality Use Case"
+meta_description: "Archived analysis of how Verana helps hotels escape broker domination through verifiable credentials, direct discovery, and trust-based bookings."
 ---
 
 ## The Problem: Hotel Discovery & Broker Domination

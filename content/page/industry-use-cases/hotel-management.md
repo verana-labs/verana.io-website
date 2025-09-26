@@ -2,6 +2,8 @@
 title:  Hotel Discovery
 subtitle: "Breaking free from broker monopolies through verifiable hotel credentials and direct discovery."
 url: "/page/industry-use-cases/hotel-management"
+meta_title: "Hotel Discovery | Verana Credentials for Direct Bookings"
+meta_description: "See how hospitality providers use Verana to issue verifiable credentials, bypass broker monopolies, and connect directly with trusted travelers."
 hero_icon: "fa-solid fa-hotel"
 disable_content_wrapper: true
 use_case_partial: "hotel-management"

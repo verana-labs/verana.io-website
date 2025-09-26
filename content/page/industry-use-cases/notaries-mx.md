@@ -1,6 +1,8 @@
 ---
 title: 🖋️ Notarios y Poderes Notariales
 url: "/page/industry-use-cases/notaries-mx"
+meta_title: "Notarios y Poderes Notariales | Credenciales Verificables con Verana"
+meta_description: "Digitaliza los poderes notariales en México con Verana para emitir credenciales verificables, acelerar revocaciones y ofrecer transparencia legal en tiempo real."
 ---
 
 ## El Problema: Un Proceso Manual e Ineficiente

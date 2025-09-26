@@ -2,6 +2,8 @@
 title: Trust Deposit & Reputation
 subtitle: "A stake within the Verana Network that grows automatically as participants interact with ecosystems and builds transparent, verifiable reputation across decentralized trust networks."
 url: "/page/trust-engine/trust-deposit"
+meta_title: "Trust Deposit & Reputation | Incentives on the Verana Network"
+meta_description: "Understand Verana’s trust deposit model, reputation scoring, and slashing mechanics that reward verified participation across decentralized trust ecosystems."
 hero_icon: "fa-solid fa-piggy-bank"
 disable_content_wrapper: true
 sidebar:

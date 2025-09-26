@@ -1,5 +1,7 @@
 ---
 title: Service Discovery
+meta_title: "Service Discovery Problem | Why Verana Replaces Ad-Driven Platforms"
+meta_description: "Examine the legacy discovery problem and learn how Verana’s verifiable trust layer redistributes visibility based on proof rather than advertising budgets."
 ---
 
 ## Why Discoverability is Broken

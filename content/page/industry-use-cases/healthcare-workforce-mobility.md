@@ -2,6 +2,8 @@
 title: Healthcare Workforce Mobility
 subtitle: "Let clinicians carry verifiable licenses, training, and background checks, so onboarding takes minutes, not weeks."
 url: "/page/industry-use-cases/healthcare-workforce-mobility"
+meta_title: "Healthcare Workforce Mobility | Verifiable Clinician Credentials"
+meta_description: "Accelerate clinician onboarding with Verana by issuing portable verifiable credentials for licenses, training, and compliance across healthcare networks."
 hero_icon: "fa-solid fa-user-md"
 disable_content_wrapper: true
 use_case_partial: "healthcare-workforce-mobility"

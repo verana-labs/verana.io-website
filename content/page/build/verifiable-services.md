@@ -2,6 +2,8 @@
 title: Verifiable Services
 subtitle: "With Verana, organizations and creators can deploy self-sovereign verifiable services and stay in full control of identity, data, and distribution."
 url: "/page/build/verifiable-services"
+meta_title: "Verifiable Services | Own Digital Channels with Verana"
+meta_description: "Create portable, self-sovereign verifiable services on Verana to protect user data, prove authenticity, and distribute content without platform lock-in."
 hero_icon: "fa-solid fa-layer-group"
 disable_content_wrapper: true
 why_section:

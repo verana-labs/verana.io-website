@@ -1,6 +1,8 @@
 ---
 title: Trust Engine
 subtitle: "Verana is public digital infrastructure that delivers trust you can verify. Its Trust Engine powers fair, transparent, and decentralized interactions."
+meta_title: "Trust Engine Overview | Three Pillars of Verana Trust"
+meta_description: "Review the three pillars of the Verana Trust Engine—Resolver, Deposits, and Governance—and how they deliver fair, verifiable digital interactions."
 hero_icon: "fa-solid fa-gears"
 disable_content_wrapper: true
 components_section:

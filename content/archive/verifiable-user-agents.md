@@ -1,5 +1,7 @@
 ---
 title: Verifiable User Agents
+meta_title: "Verifiable User Agents | Aggregating Decentralized Services"
+meta_description: "Learn what verifiable user agents are, the business models they unlock, and how they use the Verana Trust Resolver to aggregate trustworthy services."
 ---
 
 Verifiable User Agents (VUAs) are a new category of applications that aggregate and interact with decentralized Verifiable Services (VSs). Instead of relying on centralized APIs or walled-garden platforms, these apps query the Verana Trust Resolver, making any compatible Verifiable Service instantly visible and usable.

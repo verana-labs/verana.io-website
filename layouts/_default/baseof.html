@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
-    <meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}Verifiable trust for digital ecosystems{{ end }}" />
+    <title>{{ with .Params.meta_title }}{{ . }}{{ else }}{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
+    <meta name="description" content="{{ with .Params.meta_description }}{{ . }}{{ else }}{{ with .Params.description }}{{ . }}{{ else }}Verifiable trust for digital ecosystems{{ end }}{{ end }}" />
     {{ $css := resources.Get "css/input.css" | postCSS (dict "config" "postcss.config.cjs") }}
     <link rel="stylesheet" href="{{ $css.RelPermalink }}" />
     {{ partial "head-fonts.html" . }}

@@ -2,6 +2,8 @@
 title: Trust Engine Overview
 subtitle: "Building a native trust layer for the internet through verifiable credentials and cryptographic proof of identity, authenticity, and ownership."
 url: "/page/trust-engine/overview"
+meta_title: "Verana Trust Engine | Verifiable Identity and Credential Flow"
+meta_description: "Dive into the Verana Trust Engine to see how verifiable credentials, trust registries, and decentralized governance create transparent digital trust flows."
 hero_icon: "fa-solid fa-shield-halved"
 disable_content_wrapper: true
 sidebar:

@@ -2,6 +2,8 @@
 title: Service Discovery
 subtitle: "Breaking free from centralized platforms that control visibility through advertising budgets and opaque algorithms."
 url: "/page/why-verana/discovery"
+meta_title: "Why Verana | Service Discovery Without Ad Monopolies"
+meta_description: "Understand how Verana replaces pay-to-play marketplaces with verifiable service discovery that rewards proof, provenance, and ecosystem governance."
 hero_icon: "fa-solid fa-compass"
 disable_content_wrapper: true
 sidebar:

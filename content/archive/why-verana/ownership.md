@@ -2,6 +2,8 @@
 title: Solving Ownership
 subtitle: "Own your digital services, your audience, and your data, not just rent them from centralized platforms."
 url: "/page/why-verana/ownership"
+meta_title: "Why Verana | Solve Digital Ownership with Verifiable Services"
+meta_description: "Discover how Verana empowers creators and organizations to own services, audiences, and data with verifiable credentials and portable trust infrastructure."
 hero_icon: "fa-solid fa-key"
 disable_content_wrapper: true
 sidebar:
