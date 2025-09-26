@@ -9,7 +9,7 @@ sections:
     background: bg-black
     image_position: left
     title: Government Verifiable Citizen ID
-    description: "Issue privacy-preserving national IDs and let citizens prove attributes anywhere—without centralizing their data."
+    description: "Issue privacy-preserving national IDs and let citizens prove attributes anywhere, with selective disclosure."
     bullets:
       - Privacy-preserving attribute verification
       - Decentralized identity management
@@ -42,7 +42,7 @@ sections:
   - id: hotels
     background: bg-black
     image_position: left
-    title: "Hotels: for PMS Providers"
+    title: "Hotel Discovery"
     description: "Break free from broker monopolies with verifiable hotel credentials, direct discovery, and trust-driven distribution."
     bullets:
       - Direct booking capabilities
@@ -59,7 +59,7 @@ sections:
   - id: ai-assistants
     background: bg-gray-900
     image_position: right
-    title: Personal AI Assistants
+    title: Ai Agents
     description: "Bind AI agents to real owners and policies so users know who is behind the bot and what it is allowed to do."
     bullets:
       - Verified AI agent ownership

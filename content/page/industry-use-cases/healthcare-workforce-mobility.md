@@ -340,19 +340,19 @@ related_use_cases:
       text: "Issue privacy-preserving national IDs and let citizens prove attributes anywhere—without centralising their data."
       url: "/page/industry-use-cases/government-id"
       cta_label: Learn More
-    - icon: "fa-solid fa-robot"
-      icon_bg_class: "bg-green-500/20"
-      icon_color_class: "text-green-400"
-      title: Verifiable AI Assistants
-      text: "Bind AI agents to real owners and policies so users know who's behind the bot—and what it's allowed to do."
-      url: "/page/industry-use-cases/ai-assistants"
+    - icon: "fa-solid fa-hotel"
+      icon_bg_class: "bg-orange-500/20"
+      icon_color_class: "text-orange-400"
+      title: Hotel Discovery
+      text: "Reduce broker fees by helping hotels prove their credentials directly to travelers."
+      url: "/page/industry-use-cases/hotel-management"
       cta_label: Explore
-    - icon: "fa-solid fa-file-contract"
+    - icon: "fa-solid fa-share-nodes"
       icon_bg_class: "bg-purple-500/20"
       icon_color_class: "text-purple-400"
-      title: Notaries & Power of Attorney
-      text: "Turn paper-based powers into verifiable credentials—issue, use, and revoke instantly across institutions."
-      url: "/page/industry-use-cases/notaries"
+      title: Decentralized Social Networks
+      text: "Give creators portable channels whose reach is grounded in verifiable credentials, not intermediaries."
+      url: "/page/industry-use-cases/decentralized-social-network"
       cta_label: Discover
 ---
 

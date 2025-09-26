@@ -267,18 +267,18 @@ related_use_cases:
       url: "/page/industry-use-cases/government-id"
       cta_label: Learn More
     - icon: "fa-solid fa-robot"
-      icon_bg_class: "bg-green-500/20"
-      icon_color_class: "text-green-400"
-      title: Verifiable AI Assistants
-      text: "Bind AI agents to real owners and policies so users know who's behind the bot."
-      url: "/page/industry-use-cases/ai-assistants"
-      cta_label: Explore
-    - icon: "fa-solid fa-user-md"
       icon_bg_class: "bg-purple-500/20"
       icon_color_class: "text-purple-400"
-      title: Healthcare Workforce
-      text: "Let clinicians carry verifiable licenses so onboarding takes minutes, not weeks."
-      url: "/page/industry-use-cases/healthcare-workforce-mobility"
+      title: AI Agents
+      text: "Bind AI agents to accountable owners and transparent operating policies."
+      url: "/page/industry-use-cases/ai-agents"
+      cta_label: Explore
+    - icon: "fa-solid fa-hotel"
+      icon_bg_class: "bg-green-500/20"
+      icon_color_class: "text-green-400"
+      title: Hotel Discovery
+      text: "Let hotels prove their credentials directly to travelers without broker lock-in."
+      url: "/page/industry-use-cases/hotel-management"
       cta_label: Discover
 ---
 

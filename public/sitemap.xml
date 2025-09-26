@@ -4,6 +4,8 @@
   <url>
     <loc>//localhost:1313/page/industry-use-cases/notaries/</loc>
   </url><url>
+    <loc>//localhost:1313/archive/hotels/</loc>
+  </url><url>
     <loc>//localhost:1313/page/industry-use-cases/ai-agents/</loc>
   </url><url>
     <loc>//localhost:1313/archive/</loc>
@@ -11,8 +13,6 @@
     <loc>//localhost:1313/page/industry-use-cases/payments/</loc>
   </url><url>
     <loc>//localhost:1313/page/industry-use-cases/decentralized-social-network/</loc>
-  </url><url>
-    <loc>//localhost:1313/page/industry-use-cases/hotel-management/</loc>
   </url><url>
     <loc>//localhost:1313/page/community/developers/</loc>
   </url><url>
@@ -23,6 +23,8 @@
     <loc>//localhost:1313/archive/healthcare-workforce-mobility-backup/</loc>
   </url><url>
     <loc>//localhost:1313/page/industry-use-cases/healthcare-workforce-mobility/</loc>
+  </url><url>
+    <loc>//localhost:1313/page/industry-use-cases/hotel-management/</loc>
   </url><url>
     <loc>//localhost:1313/page/identity/</loc>
   </url><url>

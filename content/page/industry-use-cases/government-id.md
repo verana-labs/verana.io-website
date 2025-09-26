@@ -196,18 +196,18 @@ related_use_cases:
     - icon: "fa-solid fa-robot"
       icon_bg_class: "bg-purple-500/20"
       icon_color_class: "text-purple-400"
-      title: Verifiable AI Assistants
+      title: AI Agents
       text: |
-        Bind AI agents to real owners and policies so users know who's behind the bot—and what it's allowed to do.
-      url: "/page/industry-use-cases/ai-assistants"
+        Bind AI agents to accountable owners and enforce policies with verifiable credentials.
+      url: "/page/industry-use-cases/ai-agents"
       cta_label: Explore
-    - icon: "fa-solid fa-file-contract"
+    - icon: "fa-solid fa-building"
       icon_bg_class: "bg-orange-500/20"
       icon_color_class: "text-orange-400"
-      title: Notaries & Power of Attorney
+      title: Hotel Discovery
       text: |
-        Turn paper-based powers into verifiable credentials—issue, use, and revoke instantly across institutions.
-      url: "/page/industry-use-cases/notaries"
+        Break free from broker monopolies by proving hotel credentials directly to travelers.
+      url: "/page/industry-use-cases/hotel-management"
       cta_label: Discover
 ---
 

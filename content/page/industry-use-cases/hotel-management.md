@@ -15,7 +15,7 @@ sidebar:
       url: "#hms-today"
     - label: Adoption Steps
       url: "#solution-section"
-    - label: Verana Ecosystem
+    - label: Credential Presentation
       url: "#new-architecture"
     - label: Benefits
       url: "#benefits-section"
@@ -54,9 +54,86 @@ problem:
       **If a hotel isn't listed on broker platforms, it effectively doesn't exist in the market.**
   ecosystem:
     title: Current Centralized Model
-    image:
-      src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/235432f8c8-c95def7f9acded1a1a65.png"
-      alt: "Modern illustration showing a traveler at a computer surrounded by broker logos with money flowing from hotels toward platforms"
+    diagram: |
+      {{< kroki _type="plantuml" >}}
+      @startuml
+      ' === Verana dark palette for PlantUML ===
+      !define BRAND_PURPLE #763EF0
+      !define BRAND_PURPLE_LIGHT #9F7AEA
+      !define ACCENT_BLUE #38BDF8
+      !define ACCENT_TEAL #2DD4BF
+      !define ACCENT_ORANGE #FBBF24
+      !define ACCENT_ORANGE_DARK #B45309
+      !define ACCENT_PINK #F472B6
+      !define BG_SURFACE #0B0F19
+      !define BG_PANEL #111826
+      !define TEXT_PRIMARY #F3F4F6
+      !define TEXT_SECONDARY #94A3B8
+
+      skinparam backgroundColor BG_SURFACE
+      skinparam Shadowing false
+      skinparam ArrowColor BRAND_PURPLE
+      skinparam defaultFontName Inter
+      skinparam defaultTextAlignment center
+
+      skinparam RectangleBorderColor TEXT_SECONDARY
+      skinparam RectangleFontColor TEXT_PRIMARY
+      skinparam RectangleFontSize 13
+      skinparam DatabaseBorderColor TEXT_SECONDARY
+      skinparam PackageBackgroundColor BG_PANEL
+      skinparam PackageBorderColor TEXT_SECONDARY
+      skinparam PackageFontColor TEXT_PRIMARY
+      skinparam NoteBackgroundColor BG_PANEL
+      skinparam NoteBorderColor BRAND_PURPLE_LIGHT
+      skinparam NoteFontColor TEXT_SECONDARY
+
+      skinparam rectangle {
+        BackgroundColor<<user>> #132845
+        BorderColor<<user>> ACCENT_BLUE
+        FontColor<<user>> TEXT_PRIMARY
+        BackgroundColor<<hotel>> #11342B
+        BorderColor<<hotel>> ACCENT_TEAL
+        FontColor<<hotel>> TEXT_PRIMARY
+        BackgroundColor<<broker>> #3B2410
+        BorderColor<<broker>> ACCENT_ORANGE
+        FontColor<<broker>> TEXT_PRIMARY
+        BackgroundColor<<broker-group>> #20140C
+        BorderColor<<broker-group>> ACCENT_ORANGE_DARK
+        FontColor<<broker-group>> TEXT_PRIMARY
+        BackgroundColor<<vpr>> #261134
+        BorderColor<<vpr>> ACCENT_PINK
+        FontColor<<vpr>> TEXT_PRIMARY
+        BackgroundColor<<idx>> #131D36
+        BorderColor<<idx>> ACCENT_BLUE
+        FontColor<<idx>> TEXT_PRIMARY
+        BackgroundColor<<box>> BG_PANEL
+        BorderColor<<box>> BRAND_PURPLE_LIGHT
+        FontColor<<box>> TEXT_PRIMARY
+      }
+      rectangle "Traveler" <<user>> as U
+      package "Centralized Brokers" <<broker-group>> {
+        rectangle "Booking.com" <<broker>> as B1
+        rectangle "Expedia" <<broker>> as B2
+        rectangle "Agoda" <<broker>> as B3
+        rectangle "Airbnb" <<broker>> as B4
+      }
+      rectangle "Hotel / Property" <<hotel>> as H
+
+      U -down-> B1 : Searches / Books
+      U -down-> B2
+      U -down-> B3
+      U -down-> B4
+
+      B1 -down-> H : High Commissions 💸
+      B2 -down-> H
+      B3 -down-> H
+      B4 -down-> H
+
+      note bottom of "Centralized Brokers"
+      Broker visibility lock-in + data capture
+      end note
+      @enduml
+      {{< /kroki >}}
     cards:
       - title: Travelers
         text: "Search and book through centralized platforms"
@@ -129,9 +206,6 @@ verana_path:
   title: "Enter Verana: Making Hotels Instantly Discoverable"
   highlight: |
     Verana changes the game by **removing dependency on centralized brokers**.
-  image:
-    src: "/images/purple/hotel2.webp"
-    alt: "Illustration of decentralized hotel discovery with glowing verification badges"
   steps:
     - number: "1"
       badge_bg_class: bg-blue-500/20
@@ -155,9 +229,9 @@ verana_path:
         - text: Act as a **broker competitor**—without extracting rents.
 ecosystem:
   id: new-architecture
-  title: The Verana Hotel Ecosystem
+  title: Hotels Attach Their Credentials
   image:
-    src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/07d52c5da7-feb2b17b5efe6ae6fc2c.png"
+    src: "/images/purple/hotel3.webp"
     alt: "Architecture diagram connecting trust layer, HMS providers, hotels, and travelers"
   cards:
     - title: Trust Layer
@@ -233,7 +307,7 @@ journey:
   id: user-journey
   title: The Verifiable Hotel Discovery Journey
   image:
-    src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/fd34117340-f46b634bf225e478d7f6.png"
+    src: "/images/purple/hotel4.webp"
     alt: "Step-by-step journey showing traveler using an HMS provider app to discover verified hotels"
   steps:
     - number: "1"
@@ -311,11 +385,11 @@ cta:
     Join the revolution in decentralized hotel discovery and take back control from centralized brokers.
   primary:
     label: Start Building
-    url: "#"
+    url: "/page/build"
     icon: fa-solid fa-hotel
   secondary:
     label: View Implementation Guide
-    url: "#"
+    url: "https://docs.verana.io"
 related_use_cases:
   title: Related Industry Use Cases
   items:
@@ -326,19 +400,19 @@ related_use_cases:
       text: Issue privacy-preserving national IDs and let citizens prove attributes anywhere.
       url: "/page/industry-use-cases/government-id"
       cta_label: Learn More
-    - icon: fa-solid fa-user-md
-      icon_bg_class: bg-green-500/20
-      icon_color_class: text-green-400
-      title: Healthcare Workforce Mobility
-      text: Let clinicians carry verifiable credentials for instant onboarding and compliance.
-      url: "/page/industry-use-cases/healthcare-workforce-mobility"
-      cta_label: Explore
-    - icon: fa-solid fa-stamp
+    - icon: fa-solid fa-robot
       icon_bg_class: bg-purple-500/20
       icon_color_class: text-purple-400
-      title: Notaries & Power of Attorney
-      text: Turn paper-based powers into verifiable credentials with instant revocation.
-      url: "/page/industry-use-cases/notaries"
+      title: AI Agents
+      text: Verify the ownership and policies of autonomous agents before they act.
+      url: "/page/industry-use-cases/ai-agents"
+      cta_label: Explore
+    - icon: fa-solid fa-share-nodes
+      icon_bg_class: bg-green-500/20
+      icon_color_class: text-green-400
+      title: Decentralized Social Networks
+      text: Help creators own their channels and audiences with verifiable credentials.
+      url: "/page/industry-use-cases/decentralized-social-network"
       cta_label: Discover
 ---
 
