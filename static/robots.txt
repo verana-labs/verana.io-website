@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://verana.io/sitemap.xml
+Sitemap: https://docs.verana.io/sitemap.xml
+Sitemap: https://verana.foundation/sitemap.xml
