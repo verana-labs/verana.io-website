@@ -1,17 +1,15 @@
 ---
-title: Solving Trust
+title: Trust Engine Overview
 subtitle: "Building a native trust layer for the internet through verifiable credentials and cryptographic proof of identity, authenticity, and ownership."
-url: "/page/why-verana/trust"
+url: "/page/trust-engine/overview"
 hero_icon: "fa-solid fa-shield-halved"
 disable_content_wrapper: true
 sidebar:
-  title: Why Verana
+  title: Trust Engine
   nav:
-    - label: The Trust Problem
-      url: "#trust-problem"
-      active: true
-    - label: How Verana Solves This
+    - label: How Verana Solves Trust
       url: "#verana-solution"
+      active: true
     - label: What Becomes Verifiable
       url: "#verifiable-examples"
     - label: How Trust Flows
@@ -27,35 +25,11 @@ sidebar:
         url: "https://discord.gg/edjaFn252q"
       - label: Github
         url: "https://github.com/verana-labs"
-trust_problem:
-  id: trust-problem
-  title: The Trust Problem
-  description: |
-    Today, the internet still lacks a native verifiable trust layer. Content, services, and users interact without cryptographic guarantees of who they are or what they represent. This fuels misinformation, fraud, opaque intermediaries, and a general erosion of trust online.
-  image:
-    src: "/images/purple/untrusted-photo.webp"
-    alt: "Illustration of the current internet trust problem with fragmented services, fake profiles, and warning indicators"
-  cards:
-    - icon: "fa-solid fa-exclamation-triangle"
-      icon_bg_class: "bg-red-500/20"
-      icon_color_class: "text-red-400"
-      title: No Identity Verification
-      text: "No cryptographic proof of who runs a service, owns content, or controls an account."
-    - icon: "fa-solid fa-mask"
-      icon_bg_class: "bg-orange-500/20"
-      icon_color_class: "text-orange-400"
-      title: Fake Identities & Fraud
-      text: "Brand impersonation, credential stuffing, phishing, and misinformation spread unchecked."
-    - icon: "fa-solid fa-eye-slash"
-      icon_bg_class: "bg-yellow-500/20"
-      icon_color_class: "text-yellow-400"
-      title: Opaque Intermediaries
-      text: "Users cannot reliably verify identity or authenticity of what they see and who they engage with."
 solution:
   id: verana-solution
-  title: How Verana Solves This
+  title: How Verana Solves Trust
   paragraphs:
-    - "Verana introduces a **public, permissionless trust infrastructure** that generalizes the use of verifiable credentials. Any ecosystem—governments, industries, communities—can use Verana to build sovereign trust networks."
+    - "Verana introduces a **public, permissionless trust infrastructure** that generalizes the use of verifiable credentials. Any ecosystem, governments, industries, communities... can use Verana to build sovereign trust networks."
     - "Within these networks, participants can issue, verify, and obtain credentials that certify claims of identity, authenticity, or authorization. Credential holders can attach these proofs to their digital assets, services, and channels, demonstrating ownership, provenance, or qualifications."
   highlight:
     icon: "fa-solid fa-lightbulb"

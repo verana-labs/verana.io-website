@@ -69,17 +69,14 @@ params:
   # Optional: override menu ordering using this list.
   nav:
     main:
-      - title: "Why Verana"
-        url: "/page/why-verana"
+      - title: "Trust Engine"
         children:
-          - title: "Three Systemic Problems"
-            url: "/page/why-verana"
-          - title: "Solving Trust"
-            url: "/page/why-verana/trust"
-          - title: "Solving Ownership"
-            url: "/page/why-verana/ownership"
-          - title: "Solving Discovery"
-            url: "/page/why-verana/discovery"
+          - title: "Overview"
+            url: "/page/trust-engine/overview"
+          - title: "Trust Resolver"
+            url: "/page/trust-engine/trust-resolver"
+          - title: "Trust Deposit & Reputation"
+            url: "/page/trust-engine/trust-deposit"
       - title: "Build"
         url: "/page/build"
         children:
@@ -87,16 +84,10 @@ params:
             url: "/page/build"
           - title: "Trust Networks"
             url: "/page/build/trust-networks"
-          - title: "Self Sovereign Services"
+          - title: "Verifiable Services"
             url: "/page/build/verifiable-services"
           - title: "Verifiable User Agents"
             url: "/page/build/verifiable-user-agents"
-      - title: "Trust Engine"
-        children:
-          - title: "Trust Resolver"
-            url: "/page/trust-engine/trust-resolver"
-          - title: "Trust Deposit & Reputation"
-            url: "/page/trust-engine/trust-deposit"
       - title: "Industry Use Cases"
         url: "/page/industry-use-cases"
         children:

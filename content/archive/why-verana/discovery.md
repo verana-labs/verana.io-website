@@ -301,7 +301,7 @@ related:
       text: "Know who to trust online with verifiable proof backed by cryptography."
       link:
         label: Explore
-        href: "/page/why-verana/trust"
+        href: "/page/trust-engine/overview"
     - icon: "fa-solid fa-magnifying-glass"
       icon_bg_class: "bg-purple-500/20"
       icon_color_class: "text-purple-400"

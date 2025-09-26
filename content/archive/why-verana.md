@@ -50,7 +50,7 @@ problem_sections:
       text: "We don't know who to trust online."
     cta:
       label: "Discover how Verana solves trust"
-      href: "/page/why-verana/trust"
+      href: "/page/trust-engine/overview"
     image_position: right
     image:
       src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/c2ef4f3170-f0e81811dab5a4c365c8.png"

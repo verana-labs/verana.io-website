@@ -1,6 +1,6 @@
 ---
 title: Healthcare Workforce Mobility
-subtitle: "Let clinicians carry verifiable licenses, training, and background checks—so onboarding takes minutes, not weeks."
+subtitle: "Let clinicians carry verifiable licenses, training, and background checks, so onboarding takes minutes, not weeks."
 url: "/page/industry-use-cases/healthcare-workforce-mobility"
 hero_icon: "fa-solid fa-user-md"
 disable_content_wrapper: true
@@ -44,7 +44,7 @@ problem_section:
   intro: |
     Healthcare workers are the backbone of public health systems. Yet, their mobility across hospitals, clinics, and cities is severely constrained by **duplicated, manual, and siloed verification processes**.
   image:
-    src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/76c2ae882a-623a34c6af0b0afd6425.png"
+    src: "/images/purple/doctor1.webp"
     alt: "Healthcare professional surrounded by paperwork while onboarding at different hospitals"
     wrapper_class: "bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-12"
     caption:
@@ -211,7 +211,7 @@ moderation:
     title: Instant Readiness
     text: "No paper-based checks, no duplicated verification, no delays."
   image:
-    src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/4a0bf0a1ec-4e1d3baf8ea7f56097fb.png"
+    src: "/images/purple/doctor.png"
     alt: "Hospital reception verifying clinician credentials on a tablet"
     wrapper_class: "bg-gray-900 border border-gray-700 rounded-2xl p-8 mt-8"
   bottom_line:
