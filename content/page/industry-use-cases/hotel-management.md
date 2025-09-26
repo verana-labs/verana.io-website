@@ -1,5 +1,5 @@
 ---
-title: Decentralizing Hotel Management
+title:  Hotel Discovery
 subtitle: "Breaking free from broker monopolies through verifiable hotel credentials and direct discovery."
 url: "/page/industry-use-cases/hotel-management"
 hero_icon: "fa-solid fa-hotel"
@@ -25,17 +25,17 @@ sidebar:
       url: "#why-matters"
     - label: Conclusion
       url: "#conclusion"
-    - label: Call to Action
-      url: "#page-cta"
   quick_links:
     title: Quick Links
     items:
-      - label: Implementation Guide
-        url: "#solution-section"
-      - label: Credential Schemas
-        url: "#new-architecture"
-      - label: Case Studies
-        url: "#why-matters"
+      - label: Playground
+        url: "/page/playground"
+      - label: Documentation
+        url: "https://docs.verana.io"
+      - label: Discord
+        url: "https://discord.gg/edjaFn252q"
+      - label: Github
+        url: "https://github.com/verana-labs"
 problem:
   id: problem-section
   title: "The Problem: Hotel Discovery & Broker Domination"
@@ -130,7 +130,7 @@ verana_path:
   highlight: |
     Verana changes the game by **removing dependency on centralized brokers**.
   image:
-    src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/039fae8a18-90db96fd7308034322d3.png"
+    src: "/images/purple/hotel2.webp"
     alt: "Illustration of decentralized hotel discovery with glowing verification badges"
   steps:
     - number: "1"

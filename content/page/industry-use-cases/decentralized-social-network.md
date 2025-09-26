@@ -25,17 +25,17 @@ sidebar:
       url: "#why-better"
     - label: Conclusion
       url: "#conclusion"
-    - label: Call to Action
-      url: "#page-cta"
   quick_links:
     title: Quick Links
     items:
-      - label: Architecture Guide
-        url: "#architecture"
-      - label: Identity Requirements
-        url: "#identity-trust"
-      - label: Business Model
-        url: "#economics"
+      - label: Playground
+        url: "/page/playground"
+      - label: Documentation
+        url: "https://docs.verana.io"
+      - label: Discord
+        url: "https://discord.gg/edjaFn252q"
+      - label: Github
+        url: "https://github.com/verana-labs"
 problem_section:
   title: "The Problem with Today's Social Networks"
   intro: |

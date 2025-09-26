@@ -25,17 +25,17 @@ sidebar:
       url: "#why-better"
     - label: Conclusion
       url: "#conclusion"
-    - label: Call to Action
-      url: "#page-cta"
   quick_links:
     title: Quick Links
     items:
-      - label: Implementation Guide
-        url: "#solution-section"
-      - label: Credential Schemas
-        url: "#ecosystem-components"
-      - label: Governance Framework
-        url: "#business-models"
+      - label: Playground
+        url: "/page/playground"
+      - label: Documentation
+        url: "https://docs.verana.io"
+      - label: Discord
+        url: "https://discord.gg/edjaFn252q"
+      - label: Github
+        url: "https://github.com/verana-labs"
 problem_section:
   id: problem-section
   icon: "fa-solid fa-exclamation-triangle"

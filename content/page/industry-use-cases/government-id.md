@@ -23,17 +23,17 @@ sidebar:
       url: "#verifiers-section"
     - label: Selective Disclosure
       url: "#disclosure-section"
-    - label: Call to Action
-      url: "#page-cta"
   quick_links:
     title: Quick Links
     items:
-      - label: Implementation Guide
-        url: "#page-cta"
-      - label: Credential Schemas
-        url: "#ecosystem-section"
-      - label: Governance Framework
-        url: "#ecosystem-section"
+      - label: Playground
+        url: "/page/playground"
+      - label: Documentation
+        url: "https://docs.verana.io"
+      - label: Discord
+        url: "https://discord.gg/edjaFn252q"
+      - label: Github
+        url: "https://github.com/verana-labs"
 intro:
   id: introduction-section
   text: |
@@ -102,7 +102,7 @@ onboarding:
   highlight:
     text: This ensures **official enrollment** into the state identity system.
   image:
-    src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/e0c0133aea-13d0b9681ac2e7de7f5f.png"
+    src: "/images/purple/civilreg1.webp"
     alt: "Citizen enrollment at civil registry capturing biometrics and issuing NFC-enabled ID card"
 issuing:
   id: issuing-section
@@ -124,10 +124,10 @@ issuing:
     - badge_number: "5"
       text: Upon success, a **Citizen ID Verifiable Credential** is issued directly to the digital wallet.
   image:
-    src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/a906916d75-acaf08f249d49d54abfc.png"
+    src: "/images/purple/civilreg5.webp"
     alt: "Citizen using mobile app to enroll ID card via NFC and biometric verification"
   highlight:
-    text: "👉 Any previously issued credential is **automatically revoked**, guaranteeing only **one valid credential** per citizen."
+    text: "Any previously issued credential is **automatically revoked**, guaranteeing only **one valid credential** per citizen."
 verifiers:
   id: verifiers-section
   icon: "fa-solid fa-shield-check"
@@ -169,7 +169,7 @@ disclosure:
       title: Privacy Protection
       text: Minimal disclosure reduces risks of data misuse across public and private services.
   image:
-    src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/6b57a02397-65f6b266a5d5d14c2652.png"
+    src: "/images/purple/civilreg4.webp"
     alt: "Visualization of selective disclosure protecting citizen data during verification"
 cta:
   title: Ready to Build Sovereign Digital Identity?
