@@ -149,14 +149,14 @@ impact:
         - "Trusted property registries"
         - "Direct booking credentials"
         - "Guest reputation portability"
-    - title: "Notaries & Legal"
-      description: "Prove documents, power of attorney, and notarizations instantly with machine-verifiable certificates."
-      image: "/images/uxpilot/impact-notaries.png"
-      icon: { name: "stamp", style: "solid", color: "text-indigo-400", bg: "bg-indigo-500/20" }
-      highlights:
-        - "Immutable signing evidence"
-        - "Credentialed professionals"
-        - "Lifecycle audit trail"
+#    - title: "Notaries & Legal"
+#      description: "Prove documents, power of attorney, and notarizations instantly with machine-verifiable certificates."
+#      image: "/images/uxpilot/impact-notaries.png"
+#      icon: { name: "stamp", style: "solid", color: "text-indigo-400", bg: "bg-indigo-500/20" }
+#      highlights:
+#        - "Immutable signing evidence"
+#        - "Credentialed professionals"
+#        - "Lifecycle audit trail"
 technical:
   heading: "Built on Open Standards"
   description: "Verana leverages cutting-edge cryptographic protocols and decentralized technologies to create a truly open and interoperable trust layer."
@@ -205,8 +205,8 @@ community:
     title: "Get Started Today"
     description: "Ready to build with Verana? Join our testnet and start experimenting with verifiable trust networks."
     primary:
-      label: "Join Testnet"
-      href: "https://app.testnet.verana.network"
+      label: "Playground"
+      href: "/page/playground"
       icon: "rocket"
       icon_style: "solid"
     secondary:
