@@ -1,5 +1,5 @@
 ---
-title: Decentralizing Hotel Management
+title:  Hotel Discovery
 subtitle: "Breaking free from broker monopolies through verifiable hotel credentials and direct discovery."
 url: "/page/industry-use-cases/hotel-management"
 hero_icon: "fa-solid fa-hotel"
@@ -130,7 +130,7 @@ verana_path:
   highlight: |
     Verana changes the game by **removing dependency on centralized brokers**.
   image:
-    src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/039fae8a18-90db96fd7308034322d3.png"
+    src: "/images/purple/hotel2.webp"
     alt: "Illustration of decentralized hotel discovery with glowing verification badges"
   steps:
     - number: "1"

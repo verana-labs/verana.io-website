@@ -4,6 +4,8 @@
   <url>
     <loc>//localhost:1313/page/industry-use-cases/notaries/</loc>
   </url><url>
+    <loc>//localhost:1313/page/industry-use-cases/ai-agents/</loc>
+  </url><url>
     <loc>//localhost:1313/archive/</loc>
   </url><url>
     <loc>//localhost:1313/page/industry-use-cases/payments/</loc>
@@ -35,8 +37,6 @@
     <loc>//localhost:1313/page/build/</loc>
   </url><url>
     <loc>//localhost:1313/page/</loc>
-  </url><url>
-    <loc>//localhost:1313/page/industry-use-cases/ai-assistants/</loc>
   </url><url>
     <loc>//localhost:1313/page/playground/</loc>
   </url><url>
