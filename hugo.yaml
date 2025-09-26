@@ -39,8 +39,6 @@ params:
     columns:
       - title: "Verana"
         items:
-          - label: "Principles"
-            url: "/page/principles"
           - label: "Foundation"
             url: "https://verana.foundation"
           - label: "Press"
