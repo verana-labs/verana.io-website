@@ -109,7 +109,7 @@ business_models:
     conclusion: "This creates sustainable, privacy-preserving business models while giving service owners full autonomy over visibility and monetization."
 how_it_works:
   title: How VUAs Work
-  intro: "A **Verifiable User Agent (VUA)** is software—such as a browser, wallet, or app—that connects to VSs and other VUAs. To establish connections, a VUA must:"
+  intro: "A **Verifiable User Agent (VUA)** is software, such as a browser, wallet, or app, that connects to VSs and other VUAs. To establish connections, a VUA must:"
   steps:
     - icon: "fa-solid fa-shield-check"
       icon_bg_class: "bg-verana/20"
@@ -162,7 +162,7 @@ architecture:
       label: VPR
       badge_class: "bg-pink-500/20 border border-pink-400 text-pink-400"
     services:
-      label: Services
+      label: Agents
       nodes:
         - label: VS1
           badge_class: "bg-teal-500/20 border border-teal-400 text-teal-400"

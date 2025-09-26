@@ -37,7 +37,7 @@ sections:
       icon: "fa-solid fa-arrow-right"
       class: "bg-verana hover:bg-verana-dark text-white"
     image:
-      src: "/images/purple/healthcare1.webp"
+      src: "/images/purple/healthcare3.webp"
       alt: "Healthcare professional reviewing verified credentials on a tablet inside a modern hospital"
   - id: hotels
     background: bg-black
@@ -88,7 +88,7 @@ sections:
       icon: "fa-solid fa-arrow-right"
       class: "bg-verana hover:bg-verana-dark text-white"
     image:
-      src: "/images/purple/social1.webp"
+      src: "/images/purple/social6.webp"
       alt: "Creators collaborating across decentralized social platforms with verification badges"
 overview:
   title: The Future of Trust-Based Industries

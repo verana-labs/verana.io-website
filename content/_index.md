@@ -65,7 +65,7 @@ feature_sections:
       - "Automated reputation with transparent governance."
     cta:
       label: "Learn About Trust"
-      href: "/page/why-verana/trust"
+      href: "/page/trust-engine/overview"
     image: "/images/purple/trust-photo.webp"
     image_alt: "Cryptographic trust handshake"
   - id: "ownership"
@@ -83,7 +83,7 @@ feature_sections:
       - "Developer tooling that keeps sovereignty with operators."
     cta:
       label: "Claim Ownership"
-      href: "/page/why-verana/ownership"
+      href: "/page/build/verifiable-services/"
     image: "/images/purple/ownership-photo.webp"
     image_alt: "Digital key unlocking"
     align: "left"
@@ -102,7 +102,7 @@ feature_sections:
       - "Transparent, verifiable reputation systems"
     cta:
       label: "Be Discoverable"
-      href: "/page/why-verana/discovery"
+      href: "/page/trust-engine/trust-resolver"
     image: "/images/purple/discovery-photo.jpg"
     image_alt: "Digital marketplace"
 impact:
@@ -119,7 +119,7 @@ impact:
         - "Selective disclosure proofs"
     - title: "Decentralized Social Networks"
       description: "Give creators portable audiences and verifiable provenance, while curators trust what flows through their feeds."
-      image: "/images/purple/social2.webp"
+      image: "/images/purple/social4.webp"
       icon: { name: "share-nodes", style: "solid", color: "text-purple-400", bg: "bg-purple-500/20" }
       highlights:
         - "Signed content provenance"
@@ -135,7 +135,7 @@ impact:
         - "Verifiable service providers"
     - title: "Healthcare Workforce Mobility"
       description: "Move clinicians across borders with verifiable licenses, training, and employment credentials."
-      image: "/images/purple/healthcare2.webp"
+      image: "/images/purple/healthcare3.webp"
       icon: { name: "user-doctor", style: "solid", color: "text-red-400", bg: "bg-red-500/20" }
       highlights:
         - "Cross-jurisdiction verification"
@@ -149,14 +149,14 @@ impact:
         - "Trusted property registries"
         - "Direct booking credentials"
         - "Guest reputation portability"
-    - title: "Notaries & Legal"
-      description: "Prove documents, power of attorney, and notarizations instantly with machine-verifiable certificates."
-      image: "/images/uxpilot/impact-notaries.png"
-      icon: { name: "stamp", style: "solid", color: "text-indigo-400", bg: "bg-indigo-500/20" }
-      highlights:
-        - "Immutable signing evidence"
-        - "Credentialed professionals"
-        - "Lifecycle audit trail"
+#    - title: "Notaries & Legal"
+#      description: "Prove documents, power of attorney, and notarizations instantly with machine-verifiable certificates."
+#      image: "/images/uxpilot/impact-notaries.png"
+#      icon: { name: "stamp", style: "solid", color: "text-indigo-400", bg: "bg-indigo-500/20" }
+#      highlights:
+#        - "Immutable signing evidence"
+#        - "Credentialed professionals"
+#        - "Lifecycle audit trail"
 technical:
   heading: "Built on Open Standards"
   description: "Verana leverages cutting-edge cryptographic protocols and decentralized technologies to create a truly open and interoperable trust layer."
@@ -205,8 +205,8 @@ community:
     title: "Get Started Today"
     description: "Ready to build with Verana? Join our testnet and start experimenting with verifiable trust networks."
     primary:
-      label: "Join Testnet"
-      href: "https://app.testnet.verana.network"
+      label: "Playground"
+      href: "/page/playground"
       icon: "rocket"
       icon_style: "solid"
     secondary:

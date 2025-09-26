@@ -1,5 +1,5 @@
 ---
-title: Self Sovereign Services
+title: Verifiable Services
 subtitle: "With Verana, organizations and creators can deploy self-sovereign verifiable services and stay in full control of identity, data, and distribution."
 url: "/page/build/verifiable-services"
 hero_icon: "fa-solid fa-layer-group"
@@ -19,7 +19,7 @@ why_section:
       - icon: "fa-solid fa-certificate"
         icon_class: "text-verana text-2xl"
         title: Proof of Authenticity
-        text: "Prove ownership of your service to your audience through cryptographic verification that can't be faked."
+        text: "Build trust with your audience by proving service ownership through verifiable credentials."
     - - icon: "fa-solid fa-signature"
         icon_class: "text-verana text-2xl"
         title: Signed Content
@@ -27,7 +27,7 @@ why_section:
       - icon: "fa-solid fa-server"
         icon_class: "text-verana text-2xl"
         title: Deployment Freedom
-        text: "Host anywhere—cloud or self-hosted—and migrate freely at any time. No vendor lock-in or platform dependencies."
+        text: "Fully decentralized and portable. Host in the cloud, on-premise, or self-hosted, and migrate anytime without vendor lock-in or platform dependencies."
 examples_section:
   title: Examples of Verifiable Services
   subtitle: "Discover the diverse applications and innovations possible with self-sovereign verifiable services"
@@ -63,7 +63,7 @@ examples_section:
       icon_bg: "bg-yellow-500/20"
       icon_class: "text-yellow-400 text-2xl"
       title: Decentralized Messaging & Chatbots
-      text: "A customer support chatbot for a mobile operator, verifiable and portable across different platforms."
+      text: "A customer support chatbot for a mobile operator, verifiable, and hosted on premise for customer data privacy."
       bullets:
         - Platform independence
         - Verifiable identity
@@ -97,7 +97,7 @@ technical_section:
     - icon: "fa-solid fa-certificate"
       icon_class: "text-verana text-2xl"
       title: Verifiable Credentials
-      text: "Services can issue and verify credentials, creating trustworthy interactions without intermediaries."
+      text: "Agents can issue and verify credentials, creating trustworthy interactions without intermediaries."
     - icon: "fa-solid fa-code-branch"
       icon_class: "text-verana text-2xl"
       title: Open Protocols

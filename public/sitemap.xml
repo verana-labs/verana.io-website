@@ -44,8 +44,6 @@
   </url><url>
     <loc>//localhost:1313/page/about/roadmap/</loc>
   </url><url>
-    <loc>//localhost:1313/page/build/verifiable-services/</loc>
-  </url><url>
     <loc>//localhost:1313/archive/discovery/</loc>
   </url><url>
     <loc>//localhost:1313/page/why-verana/discovery/</loc>
@@ -53,8 +51,6 @@
     <loc>//localhost:1313/archive/ownership/</loc>
   </url><url>
     <loc>//localhost:1313/page/why-verana/ownership/</loc>
-  </url><url>
-    <loc>//localhost:1313/page/why-verana/trust/</loc>
   </url><url>
     <loc>//localhost:1313/page/testnet/</loc>
   </url><url>
@@ -64,11 +60,15 @@
   </url><url>
     <loc>//localhost:1313/archive/trust-engine/</loc>
   </url><url>
+    <loc>//localhost:1313/page/trust-engine/overview/</loc>
+  </url><url>
     <loc>//localhost:1313/page/build/trust-networks/</loc>
   </url><url>
     <loc>//localhost:1313/page/trust-engine/trust-resolver/</loc>
   </url><url>
     <loc>//localhost:1313/</loc>
+  </url><url>
+    <loc>//localhost:1313/page/build/verifiable-services/</loc>
   </url><url>
     <loc>//localhost:1313/archive/verifiable-user-agents/</loc>
   </url><url>

@@ -33,7 +33,7 @@ intro:
       The internet today is built on **implicit trust**: users rely on search engines, platforms, and intermediaries to decide what is visible and who can be trusted. This model is opaque, advertising-driven, and often unsafe.
     - <br/><br/>
     - |
-      The **Verana Trust Resolver** offers a new approach: a **public, decentralized index of verifiable services**. Instead of paid rankings or hidden algorithms, discoverability is based solely on **cryptographically verified credentials** issued by trusted ecosystems.
+      The **Verana Trust Resolver** offers a new approach: a **public, decentralized index of services**. Instead of paid rankings or hidden algorithms, discoverability is based solely on **cryptographically verified credentials** issued by trusted ecosystems.
   highlight:
     icon: "fa-solid fa-lightbulb"
     title: In Short
@@ -42,7 +42,7 @@ intro:
 how_it_works:
   title: How It Works
   lead: |
-    Anyone can register a **Verifiable Service** in the **Verifiable Service Directory**. Once registered, services are automatically crawled, their credentials dereferenced and verified, and then indexed in the **Verana Trust Resolver**.
+    Anyone can register a **DID** (the identifier of a Verifiable Service) in the **DID Directory**. Once registered, services are automatically crawled, their credentials dereferenced and verified, and then indexed in the **Verana Trust Resolver**.
   note: |
     Think of it as the **yellow pages of verifiable data**, but cryptographically guaranteed.
   steps:
@@ -51,7 +51,7 @@ how_it_works:
       icon_color_class: "text-blue-400"
       title: Register
       description: |
-        Services register their DID in the Verifiable Service Directory.
+        Agents register their DID in the Verifiable Service Directory.
     - icon: "fa-solid fa-spider"
       icon_bg_class: "bg-green-500/20"
       icon_color_class: "text-green-400"
@@ -96,7 +96,7 @@ advanced_queries:
     - icon: "fa-solid fa-wrench"
       icon_bg_class: "bg-red-500/20"
       icon_color_class: "text-red-400"
-      title: Professional Services
+      title: Professional Agents
       text: |
         "Show certified plumbers AI assistants who hold a **Plumber Credential** from **Ecosystem Verified Workers** in **Bogotá**."
     - icon: "fa-solid fa-id-card"
@@ -152,7 +152,7 @@ examples:
               Proves that Alice is the owner of the AI Assistant.
           - icon: "fa-solid fa-cog"
             icon_color_class: "text-green-400"
-            label: Service Credential
+            label: Agent Credential
             text: |
               Contains the assistant's name and minimum age requirements.
           - icon: "fa-solid fa-message"
@@ -205,7 +205,7 @@ examples:
               Bob Kid Shoes Ltd is the official owner.
           - icon: "fa-solid fa-cog"
             icon_color_class: "text-green-400"
-            label: Service
+            label: Agent
             text: |
               Shop name and age requirements.
           - icon: "fa-solid fa-bag-shopping"
