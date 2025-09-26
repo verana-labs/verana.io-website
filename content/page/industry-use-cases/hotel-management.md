@@ -130,7 +130,7 @@ verana_path:
   highlight: |
     Verana changes the game by **removing dependency on centralized brokers**.
   image:
-    src: "/images/purple/hotel2.webp"
+    src: "/images/purple/hotel3.webp"
     alt: "Illustration of decentralized hotel discovery with glowing verification badges"
   steps:
     - number: "1"
