@@ -11,11 +11,11 @@ sections:
     background: bg-black
     image_position: left
     title: Government Verifiable Citizen ID
-    description: "Issue privacy-preserving national IDs and let citizens prove attributes anywhere, with selective disclosure."
+    description: "Issue verifiable digital IDs that let citizens prove who they are anywhere, without ever exposing more data than necessary."
     bullets:
-      - Privacy-preserving attribute verification
-      - Decentralized identity management
-      - Cross-border interoperability
+      - Control over issuers & verifiers
+      - Selective disclosure
+      - Privacy by design
     cta:
       label: Explore the use case
       href: "/page/industry-use-cases/government-id"
@@ -45,13 +45,13 @@ sections:
     background: bg-black
     image_position: left
     title: "Hotel Discovery"
-    description: "Break free from broker monopolies with verifiable hotel credentials, direct discovery, and trust-driven distribution."
+    description: "Turn PMS software into discoverable hotel services, powering booking engines with no intermediaries."
     bullets:
-      - Direct booking capabilities
-      - Verified property credentials
-      - Reduced middleman dependency
+      - Verifiable hotel profiles
+      - Direct booking
+      - Global discoverability
     cta:
-      label: Transform hotel operations
+      label: Transform hotel booking
       href: "/page/industry-use-cases/hotel-management"
       icon: "fa-solid fa-arrow-right"
       class: "bg-verana hover:bg-verana-dark text-white"
@@ -62,11 +62,11 @@ sections:
     background: bg-gray-900
     image_position: right
     title: Ai Agents
-    description: "Bind AI agents to real owners and policies so users know who is behind the bot and what it is allowed to do."
+    description: "AI agents carry verifiable identities and exchange credentials, ensuring clear ownership, accountable actions, and trusted agent-to-agent communication everywhere."
     bullets:
-      - Verified AI agent ownership
-      - Policy-bound operations
-      - Transparent AI interactions
+      - Verifiable agent ownership
+      - A2A credential exchange
+      - Trusted & accountable actions
     cta:
       label: Secure your AI agents
       href: "/page/industry-use-cases/ai-assistants"
@@ -78,12 +78,12 @@ sections:
   - id: social-networks
     background: bg-black
     image_position: left
-    title: Decentralized Social Networks
+    title: Verifiable Social Channels
     description: "Give creators full ownership of their channels and audiences while discovery runs on verifiable credentials—not ads."
     bullets:
-      - Creator-owned channels
-      - Credential-based discovery
-      - Platform-independent identity
+      - Proven channel authenticity
+      - Sovereign audiences
+      - Censorship-resilient discovery
     cta:
       label: Reimagine social platforms
       href: "/page/industry-use-cases/decentralized-social-network"
