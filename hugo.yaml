@@ -24,6 +24,8 @@ params:
     testnet:
       label: "Playground"
       url: "/page/playground"
+#      icon: "fa-solid fa-umbrella-beach"
+#      icon: "fa-solid fa-flask-vial"
   footer:
     company: "Verana Foundation"
     description: "The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty."
@@ -36,6 +38,13 @@ params:
         url: "https://www.linkedin.com/company/verana-foundation"
       - platform: "x"
         url: "https://x.com/Verana_io"
+    legal:
+      - label: "Privacy Policy"
+        url: "/page/privacy-policy"
+      - label: "Terms of Service"
+        url: "/page/terms-of-service"
+      - label: "Cookie Policy"
+        url: "/page/cookie-policy"
     columns:
       - title: "Verana"
         items:

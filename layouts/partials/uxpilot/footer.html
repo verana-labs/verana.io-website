@@ -122,6 +122,33 @@
 
 {{ $socials := $socialsScratch.Get "items" }}
 
+{{ $legalScratch := newScratch }}
+{{ $legalScratch.Set "links" (slice) }}
+
+{{ with $pageFooter.legal }}
+  {{ range . }}
+    {{ $label := or .label (or .title .name) }}
+    {{ $href := or .href .url }}
+    {{ if and $label $href }}
+      {{ $legalScratch.Add "links" (slice (dict "label" $label "href" $href)) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ if eq (len ($legalScratch.Get "links")) 0 }}
+  {{ with $siteFooter.legal }}
+    {{ range . }}
+      {{ $label := or .label (or .title .name) }}
+      {{ $href := or .href .url }}
+      {{ if and $label $href }}
+        {{ $legalScratch.Add "links" (slice (dict "label" $label "href" $href)) }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ $legalLinks := $legalScratch.Get "links" }}
+
 <footer id="footer" class="bg-gray-900 border-t border-gray-800 py-16">
   <div class="container mx-auto px-6">
     <div class="max-w-6xl mx-auto">
@@ -169,11 +196,15 @@
       <div class="border-t border-gray-800 pt-8">
         <div class="flex flex-col sm:flex-row justify-between items-center">
           <p class="text-gray-400 text-sm">&copy; {{ now.Year }} {{ $company }}. All rights reserved.</p>
-          <div class="flex space-x-6 mt-4 sm:mt-0">
-            <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Privacy Policy</span>
-            <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Terms of Service</span>
-            <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Cookie Policy</span>
-          </div>
+          {{ if gt (len $legalLinks) 0 }}
+            <div class="flex flex-wrap gap-4 sm:flex-nowrap sm:space-x-6 mt-4 sm:mt-0">
+              {{ range $link := $legalLinks }}
+                {{ $href := $link.href }}
+                {{ $isExternal := or (hasPrefix $href "http://") (hasPrefix $href "https://") }}
+                <a class="text-gray-400 hover:text-white text-sm transition-colors duration-200" href="{{ $href }}" {{ if $isExternal }}target="_blank" rel="noopener noreferrer"{{ end }}>{{ $link.label }}</a>
+              {{ end }}
+            </div>
+          {{ end }}
         </div>
       </div>
     </div>
