@@ -49,6 +49,10 @@ Repo:
 API:
 Deploy your own:
 
+## Ecosystems and Trust Networks
+
+
+
 ## Verifiable User Agent (VUA) demo
 
 - Hologram Messaging: get it from Apple Store, Google Play or Huawei App Gallery. It is used for the Verifiable Service demos below, and for interacting with the faucet.
