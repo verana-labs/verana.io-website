@@ -95,12 +95,12 @@ You've added [Verifiable Trust](https://verana-labs.github.io/verifiable-trust-s
 | Self-custody storage                 | User data (messages, credentials) stays only on the device, not on central servers. |
 | Verifiable Credential Wallet          | Store, collect, and present Verifiable Credentials (VCs) from trusted issuers. |
 | Secure, authenticated messaging       | Chat with verified identities using VCs; supports text, voice, photos, video, files. |
-| DIDComm-based communication           | Uses Decentralized Identifier Communication for secure, persistent connections. |
+| DIDComm-based communication           | Uses [Decentralized Identifier Communication](https://didcomm.org) for secure, persistent connections. |
 | Verifiable Service Integration        | Trusted chatbots and services can issue/request credentials and interact via chat. |
-| Proof of Trust                        | Lets users verify the authenticity of a service before interacting. |
+| Proof of Trust                        | Use the [Trust Resolver](/page/trust-engine/trust-resolver) to display data such as service owner, service name, etc |
 | Real-time audio & video               | Audio and video calls supported via WebRTC within secure identity context. |
 | Biometric verification                | Supports face/fingerprint matching and liveness checks for ID validation and KYC. |
-| Selective disclosure                  | Share only necessary parts of credentials using privacy-preserving proofs. |
+| Selective disclosure                  | Share only necessary parts of credentials using selective disclosure. |
 | Open source & extensibility           | Developers can build verifiable chatbots, services, or integrate agent logic. |
 
 Hologram Verifiable Service demos/templates:
