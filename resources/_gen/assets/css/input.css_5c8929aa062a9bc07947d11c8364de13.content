@@ -2966,6 +2966,12 @@ video {
     0%, 100% { opacity: 0.4; }
     50% { opacity: 0.8; }
   }
+.\[did\:web\] {
+  did: web;
+}
+.\[did\:webvh\] {
+  did: webvh;
+}
 
 /* Custom utilities or component styles */
 

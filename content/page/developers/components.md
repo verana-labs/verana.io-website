@@ -5,7 +5,7 @@ url: "/page/developers/components"
 meta_title: "Developers and Verana | Verana components and technical stack"
 meta_description: "Explore Verana components, learn about each component, how they are built, whith which technology, and where are the repos."
 hero_icon: "fa-solid fa-hammer"
-disable_content_wrapper: true
+disable_content_wrapper: false
 ---
 
 ## Overview of Verana components
