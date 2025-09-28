@@ -280,10 +280,10 @@ cta:
   buttons:
     - label: Start Building
       icon: "fa-solid fa-rocket"
-      href: "#"
+      href: "/page/build"
       class: "bg-verana hover:bg-verana-dark text-white"
-    - label: Learn More
-      href: "#"
+    - label: Documentation
+      href: "https://docs.verana.io"
       class: "border-2 border-gray-600 hover:border-verana text-white"
 related:
   title: Related Concepts
