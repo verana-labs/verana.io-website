@@ -326,12 +326,12 @@ cta:
   title: "Ready to Transform Healthcare Workforce Mobility?"
   body: "Start building verifiable healthcare ecosystems that put workers and patients first."
   primary:
-    label: Start Implementation
-    url: "#"
-    icon: "fa-solid fa-stethoscope"
+    label: Start Building
+    url: "/page/build"
+    icon: fa-solid fa-stethoscope
   secondary:
-    label: View Governance Framework
-    url: "#"
+    label: View Implementation Guide
+    url: "https://docs.verana.io"
 related_use_cases:
   title: Related Industry Use Cases
   items:

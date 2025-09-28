@@ -178,12 +178,12 @@ cta:
   text: |
     Start implementing privacy-preserving digital ID systems that empower citizens while maintaining national sovereignty.
   primary:
-    label: Start Implementation
-    url: "#"
-    icon: "fa-solid fa-id-card"
+    label: Start Building
+    url: "/page/build"
+    icon: fa-solid fa-id-card
   secondary:
-    label: View Technical Specs
-    url: "#"
+    label: View Implementation Guide
+    url: "https://docs.verana.io"
 related_use_cases:
   title: Related Industry Use Cases
   items:

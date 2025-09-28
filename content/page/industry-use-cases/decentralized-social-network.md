@@ -252,12 +252,12 @@ cta:
   title: "Ready to Build Decentralized Social?"
   body: "Start creating your own social channels and join the revolution in creator sovereignty."
   primary:
-    label: Deploy Your Channel
-    url: "#"
-    icon: "fa-solid fa-rocket"
+    label: Start Building
+    url: "/page/build"
+    icon: fa-solid fa-rocket
   secondary:
-    label: View Documentation
-    url: "#"
+    label: View Implementation Guide
+    url: "https://docs.verana.io"
 related_use_cases:
   title: Related Industry Use Cases
   items:

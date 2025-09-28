@@ -191,11 +191,11 @@ cta:
     Start creating AI agents with verifiable ownership, clear policies, and audit-ready accountability.
   primary:
     label: Start Building
-    url: "#"
+    url: "/page/build"
     icon: "fa-solid fa-rocket"
   secondary:
     label: View Documentation
-    url: "#"
+    url: "https://docs.verana.io"
 related_use_cases:
   title: Related Use Cases
   items:
