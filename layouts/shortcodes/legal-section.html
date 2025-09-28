@@ -1,0 +1,28 @@
+{{ $page := .Page }}
+{{ $raw := .Inner }}
+{{ $class := .Get "class" }}
+{{ $number := .Get "number" }}
+{{ $id := .Get "id" }}
+{{ $titleParam := .Get "title" }}
+
+{{ $title := $titleParam }}
+{{ if not $title }}
+  {{ $matches := findRE "(?m)^#{2,6}\\s+(.+)$" $raw }}
+  {{ if gt (len $matches) 0 }}
+    {{ $heading := index $matches 0 }}
+    {{ $title = replaceRE "(?m)^#{2,6}\\s+(.+)$" "$1" $heading }}
+  {{ end }}
+{{ end }}
+
+{{ if and (not $id) $title }}
+  {{ $id = anchorize $title }}
+{{ end }}
+
+{{ if and $page $title }}
+  {{ $entry := dict "id" $id "title" $title "number" $number }}
+  {{ $page.Scratch.Add "legal_toc" (slice $entry) }}
+{{ end }}
+
+<div class="legal-section{{ with $class }} {{ . }}{{ end }}"{{ if $id }} id="{{ $id }}"{{ end }}{{ if $number }} data-legal-number="{{ $number }}"{{ end }}>
+  {{ $raw | markdownify }}
+</div>

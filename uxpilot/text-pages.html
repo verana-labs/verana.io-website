@@ -1,0 +1,786 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions - Verana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "fontFamily": {
+        "inter": [
+          "Inter",
+          "sans-serif"
+        ]
+      },
+      "colors": {
+        "verana": "#763ef0",
+        "verana-light": "#9f7aea",
+        "verana-dark": "#553c9a"
+      },
+      "animation": {
+        "float": "float 6s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite alternate",
+        "network-pulse": "network-pulse 3s ease-in-out infinite",
+        "trust-flow": "trust-flow 4s ease-in-out infinite",
+        "reputation-glow": "reputation-glow 3s ease-in-out infinite alternate"
+      },
+      "keyframes": {
+        "float": {
+          "0%, 100%": {
+            "transform": "translateY(0px)"
+          },
+          "50%": {
+            "transform": "translateY(-20px)"
+          }
+        },
+        "pulse-glow": {
+          "0%": {
+            "boxShadow": "0 0 20px rgba(118, 62, 240, 0.3)"
+          },
+          "100%": {
+            "boxShadow": "0 0 40px rgba(118, 62, 240, 0.6)"
+          }
+        },
+        "network-pulse": {
+          "0%, 100%": {
+            "opacity": "0.4"
+          },
+          "50%": {
+            "opacity": "0.8"
+          }
+        },
+        "trust-flow": {
+          "0%": {
+            "transform": "translateX(-100px)",
+            "opacity": "0"
+          },
+          "50%": {
+            "transform": "translateX(0px)",
+            "opacity": "1"
+          },
+          "100%": {
+            "transform": "translateX(100px)",
+            "opacity": "0"
+          }
+        },
+        "reputation-glow": {
+          "0%": {
+            "boxShadow": "0 0 15px rgba(34, 197, 94, 0.3)"
+          },
+          "100%": {
+            "boxShadow": "0 0 30px rgba(34, 197, 94, 0.6)"
+          }
+        }
+      }
+    }
+  }
+};</script>
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        .gradient-mesh {
+            background: radial-gradient(circle at 20% 50%, rgba(118, 62, 240, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(118, 62, 240, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(118, 62, 240, 0.08) 0%, transparent 50%);
+        }
+        .network-bg {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(118, 62, 240, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(118, 62, 240, 0.08) 1px, transparent 1px);
+            background-size: 60px 60px, 40px 40px;
+            animation: network-pulse 4s ease-in-out infinite;
+        }
+        .legal-pattern {
+            background-image: 
+                linear-gradient(45deg, rgba(118, 62, 240, 0.03) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(118, 62, 240, 0.03) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(118, 62, 240, 0.03) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(118, 62, 240, 0.03) 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        }
+        .section-highlight {
+            background: linear-gradient(90deg, rgba(118, 62, 240, 0.1) 0%, transparent 100%);
+            border-left: 4px solid #763ef0;
+        }
+    </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-black text-white overflow-x-hidden font-custom">
+
+<!-- Header -->
+<header id="header" class="bg-black/95 backdrop-blur-sm border-b border-gray-800/50 sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <span class="flex items-center space-x-3 cursor-pointer">
+                    <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-white">Verana</span>
+                </span>
+            </div>
+            
+            <nav class="hidden lg:flex items-center space-x-8">
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Why Verana</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Build</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Trust Engine</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Industry Use Cases</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">Community</span>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">About</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <span class="bg-verana hover:bg-verana-dark text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer">
+                    Testnet
+                </span>
+                <button class="lg:hidden text-white">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Page Hero Section -->
+<section id="page-hero" class="relative bg-gray-900 py-16 lg:py-24 overflow-hidden h-[450px] flex items-center">
+    <div class="absolute inset-0 gradient-mesh opacity-50"></div>
+    <div class="absolute inset-0 network-bg opacity-20"></div>
+    <div class="absolute inset-0 legal-pattern opacity-10"></div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <nav class="flex items-center space-x-2 text-sm text-gray-400 mb-8">
+                <span class="hover:text-white cursor-pointer">Home</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="hover:text-white cursor-pointer">Legal</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="text-verana">Terms and Conditions</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4 mb-6">
+                <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center animate-pulse-glow">
+                    <i class="fa-solid fa-file-contract text-verana text-2xl"></i>
+                </div>
+                <h1 class="text-4xl lg:text-6xl font-bold leading-tight">
+                    <span class="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">Terms and Conditions</span>
+                </h1>
+            </div>
+            
+            <p class="text-xl lg:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+                Please read these terms and conditions carefully before using the Verana platform and infrastructure.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content Section -->
+<section id="main-content" class="bg-black py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12">
+                <!-- Sidebar Navigation -->
+                <aside id="sidebar-nav" class="lg:col-span-1">
+                    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky top-24">
+                        <h3 class="text-lg font-semibold text-white mb-6">Table of Contents</h3>
+                        <nav class="space-y-3">
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer cursor-pointer">1. Acceptance of Terms</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer cursor-pointer">2. Description of Service</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer cursor-pointer">3. User Accounts</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer cursor-pointer">4. Use of Platform</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer cursor-pointer">5. Trust Networks</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer cursor-pointer">6. Verifiable Services</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer cursor-pointer">7. Privacy &amp; Data</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer cursor-pointer">8. Intellectual Property</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer cursor-pointer">9. Disclaimers</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer cursor-pointer">10. Limitation of Liability</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer cursor-pointer">11. Termination</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer cursor-pointer">12. Governing Law</span>
+                        </nav>
+                        
+                        <div class="mt-8 pt-6 border-t border-gray-700">
+                            <h4 class="text-sm font-semibold text-white mb-4">Last Updated</h4>
+                            <p class="text-sm text-gray-400">January 15, 2025</p>
+                        </div>
+                    </div>
+                </aside>
+                
+                <!-- Content Area -->
+                <div id="content-area" class="lg:col-span-3">
+                    <!-- Effective Date -->
+                    <div id="effective-date" class="mb-12">
+                        <div class="bg-verana/10 border border-verana/30 rounded-xl p-6">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <i class="fa-solid fa-calendar-check text-verana text-lg"></i>
+                                <h3 class="text-lg font-semibold text-white">Effective Date</h3>
+                            </div>
+                            <p class="text-gray-200">
+                                These Terms and Conditions are effective as of January 15, 2025, and apply to all users of the Verana platform, infrastructure, and related services.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Section 1: Acceptance of Terms -->
+                    <section id="section-1" class="mb-12">
+                        <div class="section-highlight rounded-r-xl p-8 mb-8">
+                            <h2 class="text-3xl font-bold text-white mb-6 flex items-center space-x-3">
+                                <span class="text-verana">1.</span>
+                                <span>Acceptance of Terms</span>
+                            </h2>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">1.1 Agreement to Terms</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        By accessing or using the Verana platform, infrastructure, or any related services (collectively, the "Service"), you agree to be bound by these Terms and Conditions ("Terms"). If you disagree with any part of these terms, then you may not access the Service.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">1.2 Capacity to Accept</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        You represent that you are at least 18 years old and have the legal capacity to enter into this agreement. If you are using the Service on behalf of an organization, you represent that you have the authority to bind that organization to these Terms.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">1.3 Changes to Terms</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        We reserve the right to modify these Terms at any time. We will notify users of any material changes by posting the new Terms on our website. Your continued use of the Service after such modifications constitutes acceptance of the updated Terms.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Section 2: Description of Service -->
+                    <section id="section-2" class="mb-12">
+                        <div class="section-highlight rounded-r-xl p-8 mb-8">
+                            <h2 class="text-3xl font-bold text-white mb-6 flex items-center space-x-3">
+                                <span class="text-verana">2.</span>
+                                <span>Description of Service</span>
+                            </h2>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">2.1 Platform Overview</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        Verana provides public digital infrastructure for trust online, enabling the creation of decentralized trust networks, verifiable services, and verifiable user agents. The platform operates on open standards and is designed to be sovereign, neutral, and interoperable.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">2.2 Open Source Nature</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        Verana is free and open source software. The platform's code is publicly available and can be operated, extended, and governed by any organization. Users are not subscribing to a service but utilizing infrastructure they can own and control.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">2.3 Testnet Environment</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        The current Verana deployment may include testnet environments for development and testing purposes. Testnet services are provided for experimental use only and should not be used for production applications or storing valuable data.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Section 3: User Accounts -->
+                    <section id="section-3" class="mb-12">
+                        <div class="section-highlight rounded-r-xl p-8 mb-8">
+                            <h2 class="text-3xl font-bold text-white mb-6 flex items-center space-x-3">
+                                <span class="text-verana">3.</span>
+                                <span>User Accounts</span>
+                            </h2>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">3.1 Account Creation</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        To access certain features of the Service, you may need to create an account or establish a Decentralized Identifier (DID). You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">3.2 Account Security</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        You must immediately notify us of any unauthorized use of your account or any other breach of security. We will not be liable for any loss or damage arising from your failure to protect your account information.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">3.3 Account Accuracy</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        You agree to provide accurate, current, and complete information during the account creation process and to update such information to keep it accurate, current, and complete.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Section 4: Use of Platform -->
+                    <section id="section-4" class="mb-12">
+                        <div class="section-highlight rounded-r-xl p-8 mb-8">
+                            <h2 class="text-3xl font-bold text-white mb-6 flex items-center space-x-3">
+                                <span class="text-verana">4.</span>
+                                <span>Use of Platform</span>
+                            </h2>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">4.1 Permitted Use</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        You may use the Service for lawful purposes only and in accordance with these Terms. You agree not to use the Service in any way that violates applicable laws, regulations, or third-party rights.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">4.2 Prohibited Activities</h3>
+                                    <p class="text-gray-300 leading-relaxed mb-4">
+                                        You agree not to engage in any of the following prohibited activities:
+                                    </p>
+                                    <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+                                        <li>Attempting to gain unauthorized access to the Service or related systems</li>
+                                        <li>Transmitting viruses, malware, or other harmful code</li>
+                                        <li>Impersonating others or providing false information</li>
+                                        <li>Violating the intellectual property rights of others</li>
+                                        <li>Engaging in fraudulent or deceptive practices</li>
+                                        <li>Disrupting or interfering with the Service's operation</li>
+                                    </ul>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">4.3 Compliance with Laws</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        You are responsible for ensuring that your use of the Service complies with all applicable laws, regulations, and industry standards in your jurisdiction.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Section 5: Trust Networks -->
+                    <section id="section-5" class="mb-12">
+                        <div class="section-highlight rounded-r-xl p-8 mb-8">
+                            <h2 class="text-3xl font-bold text-white mb-6 flex items-center space-x-3">
+                                <span class="text-verana">5.</span>
+                                <span>Trust Networks</span>
+                            </h2>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">5.1 Trust Network Governance</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        Trust networks operate under their own governance rules and policies. Verana provides the infrastructure but does not control or govern individual trust networks. Each trust network is responsible for its own rules, credential issuance, and participant management.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">5.2 Credential Verification</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        While Verana provides cryptographic verification capabilities, we do not guarantee the accuracy, completeness, or validity of credentials issued by trust networks. Users should perform their own due diligence when relying on credentials.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">5.3 Trust Deposits and Reputation</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        Participation in trust networks may involve trust deposits and reputation systems. Users are responsible for understanding the rules and potential consequences, including slashing conditions, before participating in any trust network.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Section 6: Verifiable Services -->
+                    <section id="section-6" class="mb-12">
+                        <div class="section-highlight rounded-r-xl p-8 mb-8">
+                            <h2 class="text-3xl font-bold text-white mb-6 flex items-center space-x-3">
+                                <span class="text-verana">6.</span>
+                                <span>Verifiable Services</span>
+                            </h2>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">6.1 Service Registration</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        Users may register verifiable services in the Verifiable Service Directory. By registering a service, you represent that you have the authority to do so and that the service information is accurate and up-to-date.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">6.2 Service Content</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        You are solely responsible for the content and operation of your verifiable services. Verana does not monitor, control, or endorse the content of registered services and disclaims any responsibility for such content.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">6.3 Service Discovery</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        Registered services are indexed in the Trust Resolver for public discovery. While we strive to maintain accurate indexing, we do not guarantee the availability, accuracy, or completeness of search results.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Section 7: Privacy & Data -->
+                    <section id="section-7" class="mb-12">
+                        <div class="section-highlight rounded-r-xl p-8 mb-8">
+                            <h2 class="text-3xl font-bold text-white mb-6 flex items-center space-x-3">
+                                <span class="text-verana">7.</span>
+                                <span>Privacy &amp; Data</span>
+                            </h2>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">7.1 Data Processing</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        Our collection, use, and processing of personal data is governed by our Privacy Policy, which is incorporated into these Terms by reference. By using the Service, you consent to the data practices described in our Privacy Policy.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">7.2 Public Data</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        Certain information registered on the Verana network, including service registrations, credentials, and trust network activities, may be publicly accessible. Users should be aware of the public nature of blockchain-based data.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">7.3 Data Security</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        While we implement reasonable security measures, you acknowledge that no method of transmission or storage is completely secure. You are responsible for protecting your own data and credentials.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Section 8: Intellectual Property -->
+                    <section id="section-8" class="mb-12">
+                        <div class="section-highlight rounded-r-xl p-8 mb-8">
+                            <h2 class="text-3xl font-bold text-white mb-6 flex items-center space-x-3">
+                                <span class="text-verana">8.</span>
+                                <span>Intellectual Property</span>
+                            </h2>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">8.1 Open Source License</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        The Verana platform is released under open source licenses. Users may use, modify, and distribute the software in accordance with the applicable license terms, which are available in the project repositories.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">8.2 User Content</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        You retain ownership of any intellectual property rights in content you create or upload to the Service. By using the Service, you grant us a limited, non-exclusive license to use your content as necessary to provide the Service.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">8.3 Trademarks</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        "Verana" and related marks are trademarks of the Verana Foundation. You may not use these trademarks without prior written permission, except as permitted under fair use or other applicable laws.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Section 9: Disclaimers -->
+                    <section id="section-9" class="mb-12">
+                        <div class="section-highlight rounded-r-xl p-8 mb-8">
+                            <h2 class="text-3xl font-bold text-white mb-6 flex items-center space-x-3">
+                                <span class="text-verana">9.</span>
+                                <span>Disclaimers</span>
+                            </h2>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">9.1 Service Availability</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        The Service is provided on an "as is" and "as available" basis. We do not guarantee that the Service will be uninterrupted, error-free, or completely secure. Scheduled and unscheduled maintenance may affect service availability.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">9.2 No Warranties</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        To the fullest extent permitted by law, we disclaim all warranties, whether express or implied, including warranties of merchantability, fitness for a particular purpose, and non-infringement.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">9.3 Third-Party Services</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        The Service may integrate with or reference third-party services, trust networks, or content. We do not endorse or assume responsibility for any third-party services and disclaim any liability arising from your use of such services.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Section 10: Limitation of Liability -->
+                    <section id="section-10" class="mb-12">
+                        <div class="section-highlight rounded-r-xl p-8 mb-8">
+                            <h2 class="text-3xl font-bold text-white mb-6 flex items-center space-x-3">
+                                <span class="text-verana">10.</span>
+                                <span>Limitation of Liability</span>
+                            </h2>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">10.1 Damages Limitation</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        In no event shall Verana Foundation, its directors, employees, or affiliates be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">10.2 Liability Cap</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        Our total liability to you for all claims arising out of or relating to the Service shall not exceed the amount you paid to us for the Service in the twelve months preceding the claim, or $100 if no payment was made.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">10.3 User Responsibility</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        You acknowledge that you use the Service at your own risk and are responsible for your own actions and decisions when using the Service, including participation in trust networks and reliance on credentials.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Section 11: Termination -->
+                    <section id="section-11" class="mb-12">
+                        <div class="section-highlight rounded-r-xl p-8 mb-8">
+                            <h2 class="text-3xl font-bold text-white mb-6 flex items-center space-x-3">
+                                <span class="text-verana">11.</span>
+                                <span>Termination</span>
+                            </h2>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">11.1 Termination by User</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        You may stop using the Service at any time. Due to the decentralized nature of the platform, some data registered on the blockchain may persist even after you stop using the Service.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">11.2 Termination by Verana</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        We may terminate or suspend your access to the Service immediately, without prior notice, for conduct that we believe violates these Terms or is harmful to other users, the Service, or third parties.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">11.3 Effect of Termination</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        Upon termination, your right to use the Service will cease immediately. However, provisions regarding intellectual property, disclaimers, limitation of liability, and dispute resolution shall survive termination.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Section 12: Governing Law -->
+                    <section id="section-12" class="mb-12">
+                        <div class="section-highlight rounded-r-xl p-8 mb-8">
+                            <h2 class="text-3xl font-bold text-white mb-6 flex items-center space-x-3">
+                                <span class="text-verana">12.</span>
+                                <span>Governing Law</span>
+                            </h2>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">12.1 Applicable Law</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        These Terms shall be governed by and construed in accordance with the laws of [Jurisdiction], without regard to its conflict of law provisions. Any legal action or proceeding arising under these Terms will be brought exclusively in the courts of [Jurisdiction].
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">12.2 Dispute Resolution</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        Before filing any formal legal proceedings, parties agree to attempt to resolve disputes through good faith negotiation. If negotiation fails, disputes may be resolved through binding arbitration in accordance with the rules of [Arbitration Organization].
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-200 mb-4">12.3 Severability</h3>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        If any provision of these Terms is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law, and the remaining provisions will continue in full force and effect.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Contact Information -->
+                    <div id="contact-info" class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                        <h2 class="text-2xl font-bold text-white mb-6">Contact Information</h2>
+                        <p class="text-gray-300 leading-relaxed mb-6">
+                            If you have any questions about these Terms and Conditions, please contact us:
+                        </p>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="flex items-start space-x-3">
+                                <i class="fa-solid fa-envelope text-verana text-lg mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-white mb-2">Email</h4>
+                                    <p class="text-gray-300">legal@verana.io</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3">
+                                <i class="fa-solid fa-map-marker-alt text-verana text-lg mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-white mb-2">Address</h4>
+                                    <p class="text-gray-300">
+                                        Verana Foundation<br>
+                                        [Foundation Address]<br>
+                                        [City, State, Country]
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="bg-gray-900 border-t border-gray-800 py-16">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12 mb-12">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-white">Verana</span>
+                    </div>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty.
+                    </p>
+                    <div class="flex space-x-4">
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-github"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-discord"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Verana</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Principles</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Foundation</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Press</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Developers</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Docs</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">GitHub</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Specifications</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Trust Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Public Registry Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Trust Registry Query Protocol</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col sm:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">© 2025 Verana Foundation. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 sm:mt-0">
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Privacy Policy</span>
+                        <span class="text-verana text-sm font-medium">Terms of Service</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Cookie Policy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</body></html>

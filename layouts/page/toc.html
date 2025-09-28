@@ -1,0 +1,285 @@
+{{ define "head" }}
+  <style>
+    .legal-meta-card {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+      background: rgba(118, 62, 240, 0.12);
+      border: 1px solid rgba(118, 62, 240, 0.35);
+      border-radius: 1.25rem;
+      padding: 1.5rem 1.75rem;
+    }
+    .legal-meta-icon {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 1rem;
+      background: rgba(118, 62, 240, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #763EF0;
+      font-size: 1.25rem;
+    }
+    .legal-meta-content p {
+      color: rgba(209, 213, 219, 1);
+      margin: 0;
+      line-height: 1.65rem;
+    }
+    .legal-meta-content p + p {
+      margin-top: 0.35rem;
+    }
+    .legal-section {
+      position: relative;
+      background: linear-gradient(90deg, rgba(118, 62, 240, 0.14) 0%, rgba(17, 24, 39, 0.85) 55%, rgba(17, 24, 39, 0.65) 100%);
+      border: 1px solid rgba(118, 62, 240, 0.28);
+      border-left: 4px solid #763EF0;
+      border-radius: 0 1.25rem 1.25rem 0;
+      padding: 2rem 2.25rem;
+      margin-bottom: 2.5rem;
+    }
+    .legal-section[data-legal-number]::before {
+      content: attr(data-legal-number);
+      position: absolute;
+      top: 1.85rem;
+      left: -1.75rem;
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 0.85rem;
+      background: rgba(118, 62, 240, 0.9);
+      color: #fff;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    @media (max-width: 1023px) {
+      .legal-section[data-legal-number]::before {
+        left: 1.25rem;
+        top: 1.6rem;
+      }
+      .legal-section {
+        padding-left: 4rem;
+      }
+    }
+    .legal-section > h2 {
+      margin: 0 0 1.5rem;
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .legal-section h3 {
+      margin-top: 1.75rem;
+      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+      line-height: 1.85rem;
+      font-weight: 600;
+      color: rgba(229, 231, 235, 1);
+    }
+    .legal-section h4 {
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: rgba(229, 231, 235, 1);
+    }
+    .legal-section p {
+      color: rgba(209, 213, 219, 1);
+      line-height: 1.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .legal-section ul,
+    .legal-section ol {
+      color: rgba(209, 213, 219, 1);
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+    .legal-section ul {
+      list-style-type: disc;
+    }
+    .legal-section ol {
+      list-style-type: decimal;
+    }
+    .legal-section ul ul {
+      list-style-type: circle;
+    }
+    .legal-section ol ol {
+      list-style-type: lower-alpha;
+    }
+    .legal-section li {
+      margin-bottom: 0.5rem;
+    }
+    .legal-section a {
+      color: #763EF0;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+    }
+    .legal-section a:hover {
+      color: #9F7AEA;
+    }
+  </style>
+{{ end }}
+
+{{ define "main" }}
+  {{ partial "uxpilot/page-hero.html" . }}
+  {{ .Scratch.Delete "legal_toc" }}
+  {{ $content := .Content }}
+  {{ $toc := or (.Scratch.Get "legal_toc") (slice) }}
+  {{ $hasToc := gt (len $toc) 0 }}
+  <section class="bg-black text-white">
+    <div class="container mx-auto px-6 py-16 lg:py-24">
+      <div class="max-w-6xl mx-auto">
+        {{ if $hasToc }}
+          <div class="lg:hidden mb-12">
+            <details class="bg-gray-900 border border-gray-800 rounded-2xl p-6 shadow-[0_0_45px_-28px_rgba(118,62,240,0.55)]">
+              <summary class="text-sm font-semibold text-gray-300 uppercase tracking-[0.2em] cursor-pointer flex items-center justify-between">
+                On this page
+                <i class="fa-solid fa-chevron-down text-xs"></i>
+              </summary>
+              <div class="mt-6 space-y-3" data-legal-toc-mobile>
+                {{ range $toc }}
+                  <a class="block text-gray-400 hover:text-white transition-colors duration-200" href="#{{ .id }}">
+                    {{ with .number }}<span class="mr-2 font-semibold text-verana">{{ . }}.</span>{{ end }}{{ .title }}
+                  </a>
+                {{ end }}
+              </div>
+            </details>
+          </div>
+        {{ end }}
+        <div class="grid lg:grid-cols-4 gap-12">
+          {{ if $hasToc }}
+            <aside class="lg:col-span-1" aria-label="Page navigation">
+              <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 shadow-[0_0_45px_-28px_rgba(118,62,240,0.55)] lg:sticky" style="top: calc(var(--header-offset, 90px) + 1.5rem);">
+                <h3 class="text-lg font-semibold text-white mb-6">Table of Contents</h3>
+                <div class="space-y-3 text-sm" data-legal-toc-desktop>
+                  {{ range $toc }}
+                    <a class="block text-gray-400 hover:text-white transition-colors duration-200" href="#{{ .id }}">
+                      {{ with .number }}<span class="mr-2 font-semibold text-verana">{{ . }}.</span>{{ end }}{{ .title }}
+                    </a>
+                  {{ end }}
+                </div>
+              </div>
+            </aside>
+          {{ end }}
+          <div class="{{ if $hasToc }}lg:col-span-3{{ else }}lg:col-span-4{{ end }} space-y-12">
+            {{ $content }}
+            {{ with .Params.legal_cta }}
+              <div class="bg-gray-900 border border-gray-800 rounded-3xl p-8 lg:p-10 shadow-[0_0_60px_-30px_rgba(79,70,229,0.35)] flex flex-col lg:flex-row gap-6 lg:items-center">
+                <div class="flex-1">
+                  <h3 class="text-2xl font-semibold text-white mb-3">{{ .title }}</h3>
+                  <p class="text-gray-300 leading-relaxed">{{ .description }}</p>
+                </div>
+                <div class="flex flex-wrap gap-4">
+                  {{ with .primary }}
+                    <a href="{{ .href }}" class="px-6 py-3 rounded-xl bg-verana hover:bg-verana-dark text-white font-semibold transition">{{ .label }}</a>
+                  {{ end }}
+                  {{ with .secondary }}
+                    <a href="{{ .href }}" class="px-6 py-3 rounded-xl border border-gray-700 hover:border-verana text-white font-semibold transition">{{ .label }}</a>
+                  {{ end }}
+                </div>
+              </div>
+            {{ else }}
+              {{ with site.Params.legalCTA }}
+                <div class="bg-gray-900 border border-gray-800 rounded-3xl p-8 lg:p-10 shadow-[0_0_60px_-30px_rgba(79,70,229,0.35)] flex flex-col lg:flex-row gap-6 lg:items-center">
+                  <div class="flex-1">
+                    <h3 class="text-2xl font-semibold text-white mb-3">{{ .title }}</h3>
+                    <p class="text-gray-300 leading-relaxed">{{ .description }}</p>
+                  </div>
+                  <div class="flex flex-wrap gap-4">
+                    {{ with .primary }}
+                      <a href="{{ .href }}" class="px-6 py-3 rounded-xl bg-verana hover:bg-verana-dark text-white font-semibold transition">{{ .label }}</a>
+                    {{ end }}
+                    {{ with .secondary }}
+                      <a href="{{ .href }}" class="px-6 py-3 rounded-xl border border-gray-700 hover:border-verana text-white font-semibold transition">{{ .label }}</a>
+                    {{ end }}
+                  </div>
+                </div>
+              {{ end }}
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ if $hasToc }}
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const tocEntries = [
+          {{- range $toc }}
+            {{- if .id }}{ id: "{{ .id }}" },{{ end }}
+          {{- end }}
+        ];
+
+        if (!tocEntries.length) {
+          return;
+        }
+
+        const linkGroups = document.querySelectorAll('[data-legal-toc-desktop] a, [data-legal-toc-mobile] a');
+        const sectionMap = new Map();
+
+        linkGroups.forEach(link => {
+          const target = link.getAttribute('href');
+          if (!target || !target.startsWith('#')) {
+            return;
+          }
+          const id = decodeURIComponent(target.substring(1));
+          if (!sectionMap.has(id)) {
+            const sectionEl = document.getElementById(id);
+            if (!sectionEl) {
+              return;
+            }
+            sectionMap.set(id, { element: sectionEl, links: [] });
+          }
+          sectionMap.get(id).links.push(link);
+        });
+
+        const setActive = id => {
+          sectionMap.forEach((value, key) => {
+            value.links.forEach(link => {
+              if (key === id) {
+                link.classList.add('text-verana', 'font-semibold');
+                link.classList.remove('text-gray-400');
+                link.setAttribute('aria-current', 'true');
+              } else {
+                link.classList.remove('text-verana', 'font-semibold');
+                link.classList.add('text-gray-400');
+                link.removeAttribute('aria-current');
+              }
+            });
+          });
+        };
+
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              setActive(entry.target.id);
+            }
+          });
+        }, {
+          rootMargin: '-40% 0px -40% 0px',
+          threshold: [0, 1.0]
+        });
+
+        sectionMap.forEach(value => observer.observe(value.element));
+
+        linkGroups.forEach(link => {
+          link.addEventListener('click', event => {
+            const target = link.getAttribute('href');
+            if (!target || !target.startsWith('#')) {
+              return;
+            }
+            const el = document.getElementById(decodeURIComponent(target.substring(1)));
+            if (!el) {
+              return;
+            }
+            event.preventDefault();
+            const headerOffset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-offset'), 10) || 110;
+            const rect = el.getBoundingClientRect();
+            const offsetTop = window.pageYOffset + rect.top - headerOffset;
+            window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+          });
+        });
+      });
+    </script>
+  {{ end }}
+{{ end }}

@@ -22,7 +22,7 @@ sections:
       icon: "fa-solid fa-arrow-right"
       class: "bg-verana hover:bg-verana-dark text-white"
     image:
-      src: "/images/purple/civilreg2.webp"
+      src: "/images/purple/civilreg3.webp"
       alt: "Government official verifying a citizen's digital ID credential at a modern service desk"
   - id: healthcare
     background: bg-gray-900
