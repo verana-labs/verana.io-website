@@ -1,0 +1,9 @@
+{{ $icon := or (.Get "icon") "fa-solid fa-calendar-check" }}
+<div class="legal-meta-card">
+  <div class="legal-meta-icon">
+    <i class="{{ $icon }}"></i>
+  </div>
+  <div class="legal-meta-content">
+    {{ .Inner | markdownify }}
+  </div>
+</div>

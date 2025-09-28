@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Decentralizing Hotel Management | Verana</title>
-    <meta name="description" content="Verifiable trust for digital ecosystems" />
+    <title>Hotel Discovery | Verana Credentials for Direct Bookings</title>
+    <meta name="description" content="See how hospitality providers use Verana to issue verifiable credentials, bypass broker monopolies, and connect directly with trusted travelers." />
     
     <link rel="stylesheet" href="/css/input.css" />
     
@@ -48,16 +48,20 @@
 
 
 
+
+
+
+
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Verana">
-<meta property="og:title" content="Decentralizing Hotel Management | Verana">
-<meta property="og:description" content="The Open Trust Layer for the Internet">
+<meta property="og:title" content="Hotel Discovery | Verana Credentials for Direct Bookings">
+<meta property="og:description" content="See how hospitality providers use Verana to issue verifiable credentials, bypass broker monopolies, and connect directly with trusted travelers.">
 <meta property="og:url" content="/page/industry-use-cases/hotel-management/">
 <meta property="og:image" content="/images/verana-og.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Decentralizing Hotel Management | Verana">
-<meta name="twitter:description" content="The Open Trust Layer for the Internet">
+<meta name="twitter:title" content="Hotel Discovery | Verana Credentials for Direct Bookings">
+<meta name="twitter:description" content="See how hospitality providers use Verana to issue verifiable credentials, bypass broker monopolies, and connect directly with trusted travelers.">
 <meta name="twitter:image" content="/images/verana-og.jpg">
 
   </head>
@@ -98,15 +102,12 @@
           
         
       
-        
-        
-        
-          
-        
-      
     
     
 
+    
+      
+      
     
 
     
@@ -144,52 +145,9 @@
           
         
       
-        
-        
-        
-          
-        
-      
     
     
 
-    
-
-    
-    
-    
-    
-      
-    
-  
-    
-    
-
-    
-    
-
-    
-    
-    
-      
-        
-        
-        
-          
-        
-      
-        
-        
-        
-          
-        
-      
-    
-    
-
-    
-      
-      
     
 
     
@@ -347,122 +305,85 @@
 
 
 
-<header id="header" class="bg-black/75 backdrop-blur-lg border-b border-gray-800/50 sticky top-0 z-50">
-  <div class="container mx-auto px-6 py-4">
-    <div class="flex items-center justify-between">
-      <div class="flex items-center">
-        <a href="/" class="flex items-center space-x-3 cursor-pointer">
-          <img src="/images/purple/logo.svg" alt="Verana logo" class="h-10 w-auto" />
+<header id="header" data-collapse="false" class="bg-black/75 backdrop-blur-lg border-b border-gray-800/50 sticky top-0 z-50">
+  <style>
+    #header [data-header-row] {
+      grid-template-columns: auto minmax(0,1fr) auto;
+    }
+    #header[data-collapse="true"] [data-header-row] {
+      grid-template-columns: auto auto;
+    }
+    #header [data-header-right] {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    #header[data-collapse="true"] [data-header-right] {
+      gap: var(--header-gap);
+    }
+    @media (min-width: 1024px) {
+      #header[data-collapse="true"] nav[data-primary-nav] {
+        display: none !important;
+      }
+      #header[data-collapse="true"] [data-desktop-testnet] {
+        display: none !important;
+      }
+      #header[data-collapse="true"] #nav-toggle {
+        display: inline-flex !important;
+      }
+      #header[data-collapse="false"] #nav-toggle {
+        display: none !important;
+      }
+      #header[data-collapse="true"] [data-header-row] {
+        display: grid !important;
+        grid-template-columns: auto auto;
+        align-items: center;
+        gap: var(--header-gap);
+      }
+      #header[data-collapse="false"] [data-header-row] {
+        display: grid !important;
+        grid-template-columns: auto minmax(0,1fr) auto;
+        align-items: center;
+        gap: var(--header-gap);
+      }
+    }
+  </style>
+  <div class="w-full py-4" data-header-container>
+    <div class="grid grid-cols-[auto_auto_auto] items-center gap-[var(--header-gap)] px-[var(--header-gap)]" data-header-row style="--header-gap:clamp(2.25rem, 5vw, 3rem);">
+      <div class="flex items-center" data-header-left>
+        <a href="/" class="flex items-center space-x-4 cursor-pointer">
+          <span class="flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-verana to-verana-light shadow-lg shadow-verana/30">
+            <img src="/images/purple/logo.svg" alt="Verana logo" class="h-10 w-auto" />
+          </span>
           <span class="text-2xl font-bold text-white">Verana</span>
         </a>
       </div>
-      <nav class="hidden lg:flex items-center space-x-10">
+      <nav class="hidden lg:flex justify-self-center items-center justify-center gap-6 min-w-0" data-primary-nav>
         
           
-          <div class="relative group">
-            <a class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200" href="/page/why-verana">
-              <span>Why Verana</span>
-              
-                <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
-              
+          <div class="relative group flex-shrink-0">
+            <a class="text-gray-300 hover:text-verana whitespace-nowrap transition-colors duration-200" href="/page/trust-engine/overview">
+              Trust Engine
             </a>
             
-              <div class="absolute left-0 top-full mt-2 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
-                <span class="absolute inset-x-0 -top-2 h-2 bg-transparent"></span>
+              <div class="absolute left-0 top-full mt-3 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
+                <span class="absolute inset-x-0 -top-3 h-3 bg-transparent"></span>
                 <ul class="pt-2 pb-4">
                   
                     <li>
-                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/why-verana">
-                        Three Systemic Problems
+                      <a class="block px-5 py-2 text-gray-300 hover:text-verana hover:bg-verana/10 transition-colors duration-150" href="/page/trust-engine/overview">
+                        Overview
                       </a>
                     </li>
                   
                     <li>
-                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/why-verana/trust">
-                        Solving Trust
-                      </a>
-                    </li>
-                  
-                    <li>
-                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/why-verana/ownership">
-                        Solving Ownership
-                      </a>
-                    </li>
-                  
-                    <li>
-                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/why-verana/discovery">
-                        Solving Discovery
-                      </a>
-                    </li>
-                  
-                </ul>
-              </div>
-            
-          </div>
-        
-          
-          <div class="relative group">
-            <a class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200" href="/page/build">
-              <span>Build with Verana</span>
-              
-                <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
-              
-            </a>
-            
-              <div class="absolute left-0 top-full mt-2 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
-                <span class="absolute inset-x-0 -top-2 h-2 bg-transparent"></span>
-                <ul class="pt-2 pb-4">
-                  
-                    <li>
-                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/build">
-                        Own the Rails
-                      </a>
-                    </li>
-                  
-                    <li>
-                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/build/trust-networks">
-                        Trust Networks
-                      </a>
-                    </li>
-                  
-                    <li>
-                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/build/verifiable-services">
-                        Self Sovereign Services
-                      </a>
-                    </li>
-                  
-                    <li>
-                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/build/verifiable-user-agents">
-                        Verifiable User Agents
-                      </a>
-                    </li>
-                  
-                </ul>
-              </div>
-            
-          </div>
-        
-          
-          <div class="relative group">
-            <a class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200" href="/page/trust-engine/trust-resolver">
-              <span>Trust Engine</span>
-              
-                <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
-              
-            </a>
-            
-              <div class="absolute left-0 top-full mt-2 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
-                <span class="absolute inset-x-0 -top-2 h-2 bg-transparent"></span>
-                <ul class="pt-2 pb-4">
-                  
-                    <li>
-                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/trust-engine/trust-resolver">
+                      <a class="block px-5 py-2 text-gray-300 hover:text-verana hover:bg-verana/10 transition-colors duration-150" href="/page/trust-engine/trust-resolver">
                         Trust Resolver
                       </a>
                     </li>
                   
                     <li>
-                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/trust-engine/trust-deposit">
+                      <a class="block px-5 py-2 text-gray-300 hover:text-verana hover:bg-verana/10 transition-colors duration-150" href="/page/trust-engine/trust-deposit">
                         Trust Deposit &amp; Reputation
                       </a>
                     </li>
@@ -473,50 +394,80 @@
           </div>
         
           
-          <div class="relative group">
-            <a class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200" href="/page/industry-use-cases">
-              <span>Industry Use Cases</span>
-              
-                <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
-              
+          <div class="relative group flex-shrink-0">
+            <a class="text-gray-300 hover:text-verana whitespace-nowrap transition-colors duration-200" href="/page/build">
+              Own the Rails
             </a>
             
-              <div class="absolute left-0 top-full mt-2 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
-                <span class="absolute inset-x-0 -top-2 h-2 bg-transparent"></span>
+              <div class="absolute left-0 top-full mt-3 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
+                <span class="absolute inset-x-0 -top-3 h-3 bg-transparent"></span>
                 <ul class="pt-2 pb-4">
                   
                     <li>
-                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases">
+                      <a class="block px-5 py-2 text-gray-300 hover:text-verana hover:bg-verana/10 transition-colors duration-150" href="/page/build/trust-networks">
+                        Trust Networks
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-verana hover:bg-verana/10 transition-colors duration-150" href="/page/build/verifiable-services">
+                        Verifiable Services
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-verana hover:bg-verana/10 transition-colors duration-150" href="/page/build/verifiable-user-agents">
+                        Verifiable User Agents
+                      </a>
+                    </li>
+                  
+                </ul>
+              </div>
+            
+          </div>
+        
+          
+          <div class="relative group flex-shrink-0">
+            <a class="text-gray-300 hover:text-verana whitespace-nowrap transition-colors duration-200" href="/page/industry-use-cases">
+              Industry Use Cases
+            </a>
+            
+              <div class="absolute left-0 top-full mt-3 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
+                <span class="absolute inset-x-0 -top-3 h-3 bg-transparent"></span>
+                <ul class="pt-2 pb-4">
+                  
+                    <li>
+                      <a class="block px-5 py-2 text-gray-300 hover:text-verana hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases">
                         Overview
                       </a>
                     </li>
                   
                     <li>
-                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases/government-id">
+                      <a class="block px-5 py-2 text-gray-300 hover:text-verana hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases/government-id">
                         Government Verifiable Citizen ID
                       </a>
                     </li>
                   
                     <li>
-                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases/healthcare-workforce-mobility">
+                      <a class="block px-5 py-2 text-gray-300 hover:text-verana hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases/healthcare-workforce-mobility">
                         Healthcare Workforce Mobility
                       </a>
                     </li>
                   
                     <li>
-                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases/hotel-management">
-                        Hotels: for PMS Providers
+                      <a class="block px-5 py-2 text-gray-300 hover:text-verana hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases/hotel-management">
+                        Hotel Discovery
                       </a>
                     </li>
                   
                     <li>
-                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases/ai-assistants">
-                        Personal AI Assistants
+                      <a class="block px-5 py-2 text-gray-300 hover:text-verana hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases/ai-agents">
+                        AI Agents
                       </a>
                     </li>
                   
                     <li>
-                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases/decentralized-social-network">
+                      <a class="block px-5 py-2 text-gray-300 hover:text-verana hover:bg-verana/10 transition-colors duration-150" href="/page/industry-use-cases/decentralized-social-network">
                         Decentralized Social Networks
                       </a>
                     </li>
@@ -527,26 +478,23 @@
           </div>
         
           
-          <div class="relative group">
-            <a class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200" href="/page/community/developers">
-              <span>Community</span>
-              
-                <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
-              
+          <div class="relative group flex-shrink-0">
+            <a class="text-gray-300 hover:text-verana whitespace-nowrap transition-colors duration-200" href="/page/community/developers">
+              Community
             </a>
             
-              <div class="absolute left-0 top-full mt-2 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
-                <span class="absolute inset-x-0 -top-2 h-2 bg-transparent"></span>
+              <div class="absolute left-0 top-full mt-3 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
+                <span class="absolute inset-x-0 -top-3 h-3 bg-transparent"></span>
                 <ul class="pt-2 pb-4">
                   
                     <li>
-                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/community/developers">
+                      <a class="block px-5 py-2 text-gray-300 hover:text-verana hover:bg-verana/10 transition-colors duration-150" href="/page/community/developers">
                         Developer Hub
                       </a>
                     </li>
                   
                     <li>
-                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/community/integrators">
+                      <a class="block px-5 py-2 text-gray-300 hover:text-verana hover:bg-verana/10 transition-colors duration-150" href="/page/community/integrators">
                         Integrators
                       </a>
                     </li>
@@ -557,38 +505,35 @@
           </div>
         
           
-          <div class="relative group">
-            <a class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200" href="/page/about/team">
-              <span>About</span>
-              
-                <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
-              
+          <div class="relative group flex-shrink-0">
+            <a class="text-gray-300 hover:text-verana whitespace-nowrap transition-colors duration-200" href="/page/about/team">
+              About
             </a>
             
-              <div class="absolute left-0 top-full mt-2 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
-                <span class="absolute inset-x-0 -top-2 h-2 bg-transparent"></span>
+              <div class="absolute left-0 top-full mt-3 hidden min-w-[16rem] rounded-2xl border border-gray-800/80 bg-black/95 shadow-2xl group-hover:block group-focus-within:block">
+                <span class="absolute inset-x-0 -top-3 h-3 bg-transparent"></span>
                 <ul class="pt-2 pb-4">
                   
                     <li>
-                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/about/team">
+                      <a class="block px-5 py-2 text-gray-300 hover:text-verana hover:bg-verana/10 transition-colors duration-150" href="/page/about/team">
                         Team
                       </a>
                     </li>
                   
                     <li>
-                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/">
+                      <a class="block px-5 py-2 text-gray-300 hover:text-verana hover:bg-verana/10 transition-colors duration-150" href="/">
                         Whitepaper
                       </a>
                     </li>
                   
                     <li>
-                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/about/roadmap">
+                      <a class="block px-5 py-2 text-gray-300 hover:text-verana hover:bg-verana/10 transition-colors duration-150" href="/page/about/roadmap">
                         Roadmap
                       </a>
                     </li>
                   
                     <li>
-                      <a class="block px-5 py-2 text-gray-300 hover:text-white hover:bg-verana/10 transition-colors duration-150" href="/page/about/governance">
+                      <a class="block px-5 py-2 text-gray-300 hover:text-verana hover:bg-verana/10 transition-colors duration-150" href="/page/about/governance">
                         Governance
                       </a>
                     </li>
@@ -599,7 +544,12 @@
           </div>
         
       </nav>
-      <div class="flex items-center space-x-4">
+      <div class="flex items-center justify-self-end" data-header-right>
+        
+          <a href="/page/playground" data-desktop-testnet class="hidden md:inline-flex items-center gap-2 bg-verana hover:bg-verana-dark text-white px-5 py-2.5 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer whitespace-nowrap">
+            
+            <span>Playground</span>
+          </a>
         
         <button id="nav-toggle" class="lg:hidden text-white" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu-mobile">
           <i class="fa-solid fa-bars text-xl"></i>
@@ -607,22 +557,20 @@
       </div>
     </div>
   </div>
-  <div id="nav-menu-mobile" class="lg:hidden hidden border-t border-gray-800 bg-black/95" aria-hidden="true">
+  <div id="nav-menu-mobile" class="lg:hidden hidden border-t border-gray-800 bg-black/95 overflow-y-auto" aria-hidden="true" style="max-height:calc(100vh - var(--header-offset, 96px));">
     <nav class="container mx-auto px-6 py-4 space-y-4">
       
         
         <div>
-          <a class="block text-gray-200 font-medium hover:text-white transition-colors duration-200" href="/page/why-verana">Why Verana</a>
+          <a class="block text-gray-200 font-medium hover:text-verana transition-colors duration-200 whitespace-nowrap" href="/page/trust-engine/overview">Trust Engine</a>
           
             <ul class="mt-2 space-y-2 border-l border-gray-700/60 pl-4">
               
-                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/why-verana">Three Systemic Problems</a></li>
+                <li><a class="block text-gray-400 hover:text-verana transition-colors duration-150 whitespace-nowrap" href="/page/trust-engine/overview">Overview</a></li>
               
-                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/why-verana/trust">Solving Trust</a></li>
+                <li><a class="block text-gray-400 hover:text-verana transition-colors duration-150 whitespace-nowrap" href="/page/trust-engine/trust-resolver">Trust Resolver</a></li>
               
-                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/why-verana/ownership">Solving Ownership</a></li>
-              
-                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/why-verana/discovery">Solving Discovery</a></li>
+                <li><a class="block text-gray-400 hover:text-verana transition-colors duration-150 whitespace-nowrap" href="/page/trust-engine/trust-deposit">Trust Deposit &amp; Reputation</a></li>
               
             </ul>
           
@@ -630,17 +578,15 @@
       
         
         <div>
-          <a class="block text-gray-200 font-medium hover:text-white transition-colors duration-200" href="/page/build">Build with Verana</a>
+          <a class="block text-gray-200 font-medium hover:text-verana transition-colors duration-200 whitespace-nowrap" href="/page/build">Own the Rails</a>
           
             <ul class="mt-2 space-y-2 border-l border-gray-700/60 pl-4">
               
-                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/build">Own the Rails</a></li>
+                <li><a class="block text-gray-400 hover:text-verana transition-colors duration-150 whitespace-nowrap" href="/page/build/trust-networks">Trust Networks</a></li>
               
-                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/build/trust-networks">Trust Networks</a></li>
+                <li><a class="block text-gray-400 hover:text-verana transition-colors duration-150 whitespace-nowrap" href="/page/build/verifiable-services">Verifiable Services</a></li>
               
-                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/build/verifiable-services">Self Sovereign Services</a></li>
-              
-                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/build/verifiable-user-agents">Verifiable User Agents</a></li>
+                <li><a class="block text-gray-400 hover:text-verana transition-colors duration-150 whitespace-nowrap" href="/page/build/verifiable-user-agents">Verifiable User Agents</a></li>
               
             </ul>
           
@@ -648,13 +594,21 @@
       
         
         <div>
-          <a class="block text-gray-200 font-medium hover:text-white transition-colors duration-200" href="/page/trust-engine/trust-resolver">Trust Engine</a>
+          <a class="block text-gray-200 font-medium hover:text-verana transition-colors duration-200 whitespace-nowrap" href="/page/industry-use-cases">Industry Use Cases</a>
           
             <ul class="mt-2 space-y-2 border-l border-gray-700/60 pl-4">
               
-                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/trust-engine/trust-resolver">Trust Resolver</a></li>
+                <li><a class="block text-gray-400 hover:text-verana transition-colors duration-150 whitespace-nowrap" href="/page/industry-use-cases">Overview</a></li>
               
-                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/trust-engine/trust-deposit">Trust Deposit &amp; Reputation</a></li>
+                <li><a class="block text-gray-400 hover:text-verana transition-colors duration-150 whitespace-nowrap" href="/page/industry-use-cases/government-id">Government Verifiable Citizen ID</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-verana transition-colors duration-150 whitespace-nowrap" href="/page/industry-use-cases/healthcare-workforce-mobility">Healthcare Workforce Mobility</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-verana transition-colors duration-150 whitespace-nowrap" href="/page/industry-use-cases/hotel-management">Hotel Discovery</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-verana transition-colors duration-150 whitespace-nowrap" href="/page/industry-use-cases/ai-agents">AI Agents</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-verana transition-colors duration-150 whitespace-nowrap" href="/page/industry-use-cases/decentralized-social-network">Decentralized Social Networks</a></li>
               
             </ul>
           
@@ -662,21 +616,13 @@
       
         
         <div>
-          <a class="block text-gray-200 font-medium hover:text-white transition-colors duration-200" href="/page/industry-use-cases">Industry Use Cases</a>
+          <a class="block text-gray-200 font-medium hover:text-verana transition-colors duration-200 whitespace-nowrap" href="/page/community/developers">Community</a>
           
             <ul class="mt-2 space-y-2 border-l border-gray-700/60 pl-4">
               
-                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/industry-use-cases">Overview</a></li>
+                <li><a class="block text-gray-400 hover:text-verana transition-colors duration-150 whitespace-nowrap" href="/page/community/developers">Developer Hub</a></li>
               
-                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/industry-use-cases/government-id">Government Verifiable Citizen ID</a></li>
-              
-                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/industry-use-cases/healthcare-workforce-mobility">Healthcare Workforce Mobility</a></li>
-              
-                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/industry-use-cases/hotel-management">Hotels: for PMS Providers</a></li>
-              
-                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/industry-use-cases/ai-assistants">Personal AI Assistants</a></li>
-              
-                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/industry-use-cases/decentralized-social-network">Decentralized Social Networks</a></li>
+                <li><a class="block text-gray-400 hover:text-verana transition-colors duration-150 whitespace-nowrap" href="/page/community/integrators">Integrators</a></li>
               
             </ul>
           
@@ -684,36 +630,27 @@
       
         
         <div>
-          <a class="block text-gray-200 font-medium hover:text-white transition-colors duration-200" href="/page/community/developers">Community</a>
+          <a class="block text-gray-200 font-medium hover:text-verana transition-colors duration-200 whitespace-nowrap" href="/page/about/team">About</a>
           
             <ul class="mt-2 space-y-2 border-l border-gray-700/60 pl-4">
               
-                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/community/developers">Developer Hub</a></li>
+                <li><a class="block text-gray-400 hover:text-verana transition-colors duration-150 whitespace-nowrap" href="/page/about/team">Team</a></li>
               
-                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/community/integrators">Integrators</a></li>
+                <li><a class="block text-gray-400 hover:text-verana transition-colors duration-150 whitespace-nowrap" href="/">Whitepaper</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-verana transition-colors duration-150 whitespace-nowrap" href="/page/about/roadmap">Roadmap</a></li>
+              
+                <li><a class="block text-gray-400 hover:text-verana transition-colors duration-150 whitespace-nowrap" href="/page/about/governance">Governance</a></li>
               
             </ul>
           
         </div>
       
-        
-        <div>
-          <a class="block text-gray-200 font-medium hover:text-white transition-colors duration-200" href="/page/about/team">About</a>
-          
-            <ul class="mt-2 space-y-2 border-l border-gray-700/60 pl-4">
-              
-                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/about/team">Team</a></li>
-              
-                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/">Whitepaper</a></li>
-              
-                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/about/roadmap">Roadmap</a></li>
-              
-                <li><a class="block text-gray-400 hover:text-white transition-colors duration-150" href="/page/about/governance">Governance</a></li>
-              
-            </ul>
-          
-        </div>
       
+        <a href="/page/playground" class="flex items-center justify-center gap-2 bg-verana hover:bg-verana-dark text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-[1.02] whitespace-nowrap">
+          
+          <span>Playground</span>
+        </a>
       
     </nav>
   </div>
@@ -785,15 +722,15 @@
               <i class="fa-solid fa-chevron-right text-xs"></i>
             
             
-              <span class="text-verana">Decentralizing Hotel Management</span>
+              <span class="text-verana">Hotel Discovery</span>
             
           
         </nav>
-        <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-tight flex items-center flex-wrap gap-4">
+        <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-snug flex items-baseline flex-wrap gap-4 pb-2">
           
             <i class="fa-solid fa-hotel text-verana"></i>
           
-          <span class="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">Decentralizing Hotel Management</span>
+          <span class="block py-1 pb-2 bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">Hotel Discovery</span>
         </h1>
         
           <p class="text-xl lg:text-2xl text-gray-300 max-w-3xl leading-relaxed">Breaking free from broker monopolies through verifiable hotel credentials and direct discovery.</p>
@@ -856,7 +793,7 @@
                     
                     
                     
-                      <a href="#new-architecture" class="block text-gray-400 hover:text-white transition-colors duration-200">Verana Ecosystem</a>
+                      <a href="#new-architecture" class="block text-gray-400 hover:text-white transition-colors duration-200">Credential Presentation</a>
                     
                   
                     
@@ -887,13 +824,6 @@
                       <a href="#conclusion" class="block text-gray-400 hover:text-white transition-colors duration-200">Conclusion</a>
                     
                   
-                    
-                    
-                    
-                    
-                      <a href="#page-cta" class="block text-gray-400 hover:text-white transition-colors duration-200">Call to Action</a>
-                    
-                  
                 </nav>
               
               
@@ -904,19 +834,25 @@
                       
                       
                       
-                        <a href="#solution-section" class="block text-sm text-gray-400 hover:text-white transition-colors duration-200">Implementation Guide</a>
+                        <a href="/page/playground" class="block text-sm text-gray-400 hover:text-white transition-colors duration-200">Playground</a>
                       
                     
                       
                       
                       
-                        <a href="#new-architecture" class="block text-sm text-gray-400 hover:text-white transition-colors duration-200">Credential Schemas</a>
+                        <a href="https://docs.verana.io" class="block text-sm text-gray-400 hover:text-white transition-colors duration-200">Documentation</a>
                       
                     
                       
                       
                       
-                        <a href="#why-matters" class="block text-sm text-gray-400 hover:text-white transition-colors duration-200">Case Studies</a>
+                        <a href="https://discord.gg/edjaFn252q" class="block text-sm text-gray-400 hover:text-white transition-colors duration-200">Discord</a>
+                      
+                    
+                      
+                      
+                      
+                        <a href="https://github.com/verana-labs" class="block text-sm text-gray-400 hover:text-white transition-colors duration-200">Github</a>
                       
                     
                   </div>
@@ -959,7 +895,15 @@
                 <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
                   <h3 class="text-2xl font-semibold text-white mb-8 text-center">Current Centralized Model</h3>
                   
-                    <img class="w-full h-96 object-cover rounded-2xl mb-8 " src="https://storage.googleapis.com/uxpilot-auth.appspot.com/235432f8c8-c95def7f9acded1a1a65.png" alt="Modern illustration showing a traveler at a computer surrounded by broker logos with money flowing from hotels toward platforms" loading="lazy" />
+                  
+                    <div class="mb-8 rounded-2xl overflow-hidden">
+                      
+    
+    <svg class="kroki" contentStyleType="text/css" data-diagram-type="DESCRIPTION" preserveAspectRatio="xMidYMid meet" style=";;max-width:100%;height:auto;" version="1.1" viewBox="0 0 657 388" width="100%" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" zoomAndPan="magnify"><defs/><g><rect fill="#0B0F19" height="388" style="stroke:none;stroke-width:1;" width="657" x="0" y="0"/><!--cluster Centralized Brokers--><g class="cluster" data-entity="Centralized Brokers" data-source-line="55" data-uid="ent0003" id="cluster_Centralized Brokers"><path d="M136.16,128.27 L293.3133,128.27 A3.75,3.75 0 0 1 295.8133,130.77 L302.8133,150.5669 L648.16,150.5669 A2.5,2.5 0 0 1 650.66,153.0669 L650.66,259.03 A2.5,2.5 0 0 1 648.16,261.53 L136.16,261.53 A2.5,2.5 0 0 1 133.66,259.03 L133.66,130.77 A2.5,2.5 0 0 1 136.16,128.27" fill="#111826" style="stroke:#94A3B8;stroke-width:1.5;"/><line style="stroke:#94A3B8;stroke-width:1.5;" x1="133.66" x2="302.8133" y1="150.5669" y2="150.5669"/><text fill="#F3F4F6" font-family="Inter" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="156.1533" x="137.66" y="143.2651">Centralized Brokers</text><text fill="#F3F4F6" font-family="Inter" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="108.835" x="341.7425" y="165.562">&#171;broker-group&#187;</text></g><!--entity B1--><g class="entity" data-entity="B1" data-source-line="56" data-uid="ent0004" id="entity_B1"><rect fill="#3B2410" height="50.2656" rx="2.5" ry="2.5" style="stroke:#FBBF24;stroke-width:0.5;" width="104.354" x="177.48" y="187.27"/><text fill="#F3F4F6" font-family="Inter" font-size="13" font-style="italic" lengthAdjust="spacing" textLength="58.3286" x="200.4927" y="209.3369">&#171;broker&#187;</text><text fill="#F3F4F6" font-family="Inter" font-size="13" lengthAdjust="spacing" textLength="84.354" x="187.48" y="224.4697">Booking.com</text></g><!--entity B2--><g class="entity" data-entity="B2" data-source-line="57" data-uid="ent0005" id="entity_B2"><rect fill="#3B2410" height="50.2656" rx="2.5" ry="2.5" style="stroke:#FBBF24;stroke-width:0.5;" width="80.3286" x="316.5" y="187.27"/><text fill="#F3F4F6" font-family="Inter" font-size="13" font-style="italic" lengthAdjust="spacing" textLength="58.3286" x="327.5" y="209.3369">&#171;broker&#187;</text><text fill="#F3F4F6" font-family="Inter" font-size="13" lengthAdjust="spacing" textLength="51.9873" x="330.6707" y="224.4697">Expedia</text></g><!--entity B3--><g class="entity" data-entity="B3" data-source-line="58" data-uid="ent0006" id="entity_B3"><rect fill="#3B2410" height="50.2656" rx="2.5" ry="2.5" style="stroke:#FBBF24;stroke-width:0.5;" width="80.3286" x="431.5" y="187.27"/><text fill="#F3F4F6" font-family="Inter" font-size="13" font-style="italic" lengthAdjust="spacing" textLength="58.3286" x="442.5" y="209.3369">&#171;broker&#187;</text><text fill="#F3F4F6" font-family="Inter" font-size="13" lengthAdjust="spacing" textLength="41.3169" x="451.0059" y="224.4697">Agoda</text></g><!--entity B4--><g class="entity" data-entity="B4" data-source-line="59" data-uid="ent0007" id="entity_B4"><rect fill="#3B2410" height="50.2656" rx="2.5" ry="2.5" style="stroke:#FBBF24;stroke-width:0.5;" width="80.3286" x="546.5" y="187.27"/><text fill="#F3F4F6" font-family="Inter" font-size="13" font-style="italic" lengthAdjust="spacing" textLength="58.3286" x="557.5" y="209.3369">&#171;broker&#187;</text><text fill="#F3F4F6" font-family="Inter" font-size="13" lengthAdjust="spacing" textLength="42.5928" x="565.3679" y="224.4697">Airbnb</text></g><!--entity U--><g class="entity" data-entity="U" data-source-line="54" data-uid="ent0002" id="entity_U"><rect fill="#132845" height="50.2656" rx="2.5" ry="2.5" style="stroke:#38BDF8;stroke-width:0.5;" width="73.8979" x="396.71" y="7"/><text fill="#F3F4F6" font-family="Inter" font-size="13" font-style="italic" lengthAdjust="spacing" textLength="44.2622" x="411.5279" y="29.0669">&#171;user&#187;</text><text fill="#F3F4F6" font-family="Inter" font-size="13" lengthAdjust="spacing" textLength="53.8979" x="406.71" y="44.1997">Traveler</text></g><!--entity H--><g class="entity" data-entity="H" data-source-line="61" data-uid="ent0008" id="entity_H"><rect fill="#11342B" height="50.2656" rx="2.5" ry="2.5" style="stroke:#2DD4BF;stroke-width:0.5;" width="122.6035" x="372.36" y="332.53"/><text fill="#F3F4F6" font-family="Inter" font-size="13" font-style="italic" lengthAdjust="spacing" textLength="48.8071" x="409.2582" y="354.5969">&#171;hotel&#187;</text><text fill="#F3F4F6" font-family="Inter" font-size="13" lengthAdjust="spacing" textLength="102.6035" x="382.36" y="369.7297">Hotel / Property</text></g><g class="entity" data-entity="GMN17" data-source-line="74" data-uid="ent0018" id="entity_GMN17"><path d="M6,345.1 L6,370.2328 L277.3198,370.2328 L277.3198,355.1 L267.3198,345.1 L6,345.1" fill="#111826" style="stroke:#9F7AEA;stroke-width:0.5;"/><path d="M267.3198,345.1 L267.3198,355.1 L277.3198,355.1 L267.3198,345.1" fill="#111826" style="stroke:#9F7AEA;stroke-width:1;"/><text fill="#94A3B8" font-family="Inter" font-size="13" lengthAdjust="spacing" textLength="250.3198" x="12" y="362.1669">Broker visibility lock-in + data capture</text></g><!--link U to B1--><g class="link" data-entity-1="U" data-entity-2="B1" data-source-line="63" data-uid="lnk9" id="link_U_B1"><path d="M396.33,38.12 C363.03,44.35 314.86,58.01 283.66,87.27 C254.95,114.2 242.043,153.1845 235.613,180.9645" fill="none" id="U-to-B1" style="stroke:#763EF0;stroke-width:1;"/><polygon fill="#763EF0" points="234.26,186.81,240.1865,178.9438,235.3875,181.9388,232.3925,177.1398,234.26,186.81" style="stroke:#763EF0;stroke-width:1;"/><text fill="#000000" font-family="Inter" font-size="13" lengthAdjust="spacing" textLength="111.4902" x="284.66" y="100.3369">Searches / Books</text></g><!--link U to B2--><g class="link" data-entity-1="U" data-entity-2="B2" data-source-line="64" data-uid="lnk10" id="link_U_B2"><path d="M423.11,57.55 C408.41,91.59 384.2787,147.4517 369.5787,181.4917" fill="none" id="U-to-B2" style="stroke:#763EF0;stroke-width:1;"/><polygon fill="#763EF0" points="367.2,187,374.4403,180.3233,369.1823,182.4097,367.0959,177.1517,367.2,187" style="stroke:#763EF0;stroke-width:1;"/></g><!--link U to B3--><g class="link" data-entity-1="U" data-entity-2="B3" data-source-line="65" data-uid="lnk11" id="link_U_B3"><path d="M438.86,57.55 C446.12,91.59 457.9485,147.092 465.2085,181.132" fill="none" id="U-to-B3" style="stroke:#763EF0;stroke-width:1;"/><polygon fill="#763EF0" points="466.46,187,468.4947,177.3636,465.4171,182.11,460.6707,179.0323,466.46,187" style="stroke:#763EF0;stroke-width:1;"/></g><!--link U to B4--><g class="link" data-entity-1="U" data-entity-2="B4" data-source-line="66" data-uid="lnk12" id="link_U_B4"><path d="M469.2,57.55 C488.56,71.99 512.09,91.48 529.66,112.27 C549.14,135.32 562.977,160.534 573.127,181.614" fill="none" id="U-to-B4" style="stroke:#763EF0;stroke-width:1;"/><polygon fill="#763EF0" points="575.73,187.02,575.4295,177.1757,573.5609,182.515,568.2216,180.6464,575.73,187.02" style="stroke:#763EF0;stroke-width:1;"/></g><!--link B1 to H--><g class="link" data-entity-1="B1" data-entity-2="H" data-source-line="68" data-uid="lnk13" id="link_B1_H"><path d="M230.6,237.75 C232.66,257.69 238.66,285.34 255.66,302.53 C286.2,333.43 327.8563,345.9103 366.1363,351.6503" fill="none" id="B1-to-H" style="stroke:#763EF0;stroke-width:1;"/><polygon fill="#763EF0" points="372.07,352.54,363.7627,347.2496,367.1253,351.7986,362.5763,355.1612,372.07,352.54" style="stroke:#763EF0;stroke-width:1;"/><text fill="#000000" font-family="Inter" font-size="13" lengthAdjust="spacing" textLength="132.0376" x="256.66" y="298.5969">High Commissions &#128184;</text></g><!--link B2 to H--><g class="link" data-entity-1="B2" data-entity-2="H" data-source-line="69" data-uid="lnk14" id="link_B2_H"><path d="M369.9,238.03 C384.09,264.43 403.6286,300.7954 417.7586,327.0754" fill="none" id="B2-to-H" style="stroke:#763EF0;stroke-width:1;"/><polygon fill="#763EF0" points="420.6,332.36,419.861,322.5389,418.2322,327.9562,412.8149,326.3274,420.6,332.36" style="stroke:#763EF0;stroke-width:1;"/></g><!--link B3 to H--><g class="link" data-entity-1="B3" data-entity-2="H" data-source-line="70" data-uid="lnk15" id="link_B3_H"><path d="M465.13,238.03 C458.12,264.43 448.6181,300.2805 441.6481,326.5605" fill="none" id="B3-to-H" style="stroke:#763EF0;stroke-width:1;"/><polygon fill="#763EF0" points="440.11,332.36,446.2835,324.6862,441.3918,327.5271,438.5509,322.6353,440.11,332.36" style="stroke:#763EF0;stroke-width:1;"/></g><!--link B4 to H--><g class="link" data-entity-1="B4" data-entity-2="H" data-source-line="71" data-uid="lnk16" id="link_B4_H"><path d="M566.39,237.97 C555.86,250.26 542.53,265.13 529.66,277.53 C509.44,297.02 489.716,313.4107 470.556,328.4807" fill="none" id="B4-to-H" style="stroke:#763EF0;stroke-width:1;"/><polygon fill="#763EF0" points="465.84,332.19,475.3869,329.77,469.77,329.0989,470.4412,323.482,465.84,332.19" style="stroke:#763EF0;stroke-width:1;"/></g><!--link Centralized Brokers to GMN17--><g class="link" data-entity-1="Centralized Brokers" data-entity-2="GMN17" data-source-line="74" data-uid="lnk19" id="link_Centralized Brokers_GMN17"><path d="M141.66,261.9778 C141.66,262.193 141.66,262.4086 141.66,262.6244 C141.66,264.351 141.66,266.0969 141.66,267.8575 C141.66,296.0275 141.66,327.965 141.66,344.81" fill="none" id="Centralized Brokers-GMN17" style="stroke:#763EF0;stroke-width:1;stroke-dasharray:7.0,7.0;"/></g><!--SRC=[bPRRSjem48Rl_HJRSD6B3Yq-X40dwOo5xS2K48P3fxrY11P4Wv4yiiYXdRv4Nw2lqSVg8rJ6mSWs6T8xnFzf_zsLLl0Mhgwku0iHc648iLX3Z2CY9O4b5p2CC9FJctuA6Mz2igIC01gv0sysd8w6VHzg5qtR3nf7nLc_TzsTGAqTNBY-coDkf-CF9ZFKdwhjTWjvGQkiJNot3pNBynmKbBLRvN2jTWO81PPpN9rvxkWpr91pRZVQPMJO6oWjS2uir3paVJqRJqU1sr6H6wWHc6rT6he3NoLaccRBEkoP-5zLj57lnXrzKm7jm0bAujZlt0wydTnsN1kr32DPKnPZWJSmnulrIl0j2piyKiq-fA11upiSyWVALh34KK8qnHM2Fpplr9gk4IeJl8ram9aSu0s17fD4LFK9UPHkH5TiGvY41TbH6ZOY2udPAYA8Yv28pB9OtZ4wjTNOvpwzH8xfTmAchSaUbdYEazUv3bKlyOgWQajtHtU4_8-e9oiPSFaQwnsc-LPdfGINZ0yfQfpOTn5-602bB2uljmaHdpwfgsjRBUSy9Gu9vAesaOh8NNEzKFOHapkLQxHpCMt7GcMNlQmDTz5c3vpocGk-pignaUMOZR9HhXSUWw9NphpEh9v-5wUMLiDq6ftZbZbLVOMEkUVugHpkursrLZDjRDaw4xL7hMYLoQSSQFYONG_JivjbXqnyyNPayia-yfJAnw7SlqojJaAnRRpYzDCutFopYS3t92BY3F8xYnEO6d4sm73MKQ-Qm95wP490kpD8KhPq7Ea4QL4HvshCLkyNV7E0iz38BAB-Oqn2YYkOLSJS5G-ha5s2g9YpUOLoYYLtqvc13p0KF2P2FgNyVeuKtZMCATJLJmUhg_QQy17618l57KdKdhImHDSjVM7h2ySmrExziglYTEdg3Zfyiw59GZbBuE_lNtyCP1qW0zdwmj4M1bCfmfnBoJV0bySFniW-m3rDw9n6L3v1n1VhEcNmJlr7aHWME9PRGGp2GaWZ_WC0]--></g></svg>
+
+
+
+                    </div>
                   
                   
                     <div class="grid md:grid-cols-3 gap-6 mt-8">
@@ -1121,7 +1065,7 @@
             <div id="solution-section" class="mb-16 scroll-mt-28 md:scroll-mt-32">
               <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Enter Verana: Making Hotels Instantly Discoverable</h2>
               <div class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-8 mb-8"><p class="text-xl text-gray-200 leading-relaxed">Verana changes the game by <strong>removing dependency on centralized brokers</strong>.</p></div>
-              <img class="w-full h-96 object-cover rounded-2xl mb-8 " src="https://storage.googleapis.com/uxpilot-auth.appspot.com/039fae8a18-90db96fd7308034322d3.png" alt="Illustration of decentralized hotel discovery with glowing verification badges" loading="lazy" />
+              
               
                 <div class="space-y-8">
                   
@@ -1210,9 +1154,9 @@
 
           
             <div id="new-architecture" class="mb-16 scroll-mt-28 md:scroll-mt-32">
-              <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">The Verana Hotel Ecosystem</h2>
+              <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Hotels Attach Their Credentials</h2>
               <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
-                <img class="w-full h-96 object-cover rounded-2xl mb-8 " src="https://storage.googleapis.com/uxpilot-auth.appspot.com/07d52c5da7-feb2b17b5efe6ae6fc2c.png" alt="Architecture diagram connecting trust layer, HMS providers, hotels, and travelers" loading="lazy" />
+                <img class="w-full h-96 object-cover rounded-2xl mb-8 " src="/images/purple/hotel3.webp" alt="Architecture diagram connecting trust layer, HMS providers, hotels, and travelers" loading="lazy" />
                 
                   <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     
@@ -1372,7 +1316,7 @@
             <div id="user-journey" class="mb-16 scroll-mt-28 md:scroll-mt-32">
               <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">The Verifiable Hotel Discovery Journey</h2>
               <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
-                <img class="w-full h-80 object-cover rounded-2xl mb-8 " src="https://storage.googleapis.com/uxpilot-auth.appspot.com/fd34117340-f46b634bf225e478d7f6.png" alt="Step-by-step journey showing traveler using an HMS provider app to discover verified hotels" loading="lazy" />
+                <img class="w-full h-80 object-cover rounded-2xl mb-8 " src="/images/purple/hotel4.webp" alt="Step-by-step journey showing traveler using an HMS provider app to discover verified hotels" loading="lazy" />
                 
                   <div class="grid md:grid-cols-4 gap-6">
                     
@@ -1521,13 +1465,13 @@
               <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">Join the revolution in decentralized hotel discovery and take back control from centralized brokers.</p>
               <div class="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-4">
                 
-                  <a href="#" class="inline-flex items-center justify-center bg-orange-500 hover:bg-orange-400 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 hover:scale-105">
+                  <a href="/page/build" class="inline-flex items-center justify-center bg-orange-500 hover:bg-orange-400 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 hover:scale-105">
                     <i class="fa-solid fa-hotel mr-2"></i>
                     <span>Start Building</span>
                   </a>
                 
                 
-                  <a href="#" class="inline-flex items-center justify-center border border-orange-500/60 text-orange-300 hover:text-white px-6 py-3 rounded-xl font-semibold transition-colors duration-200">
+                  <a href="https://docs.verana.io" class="inline-flex items-center justify-center border border-orange-500/60 text-orange-300 hover:text-white px-6 py-3 rounded-xl font-semibold transition-colors duration-200">
                     
                     <span>View Implementation Guide</span>
                   </a>
@@ -1564,28 +1508,28 @@
               </div>
             
               <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
-                <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-6">
+                <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-6">
                   
                   
-                  <i class="fa-solid fa-user-md text-green-400 text-xl"></i>
+                  <i class="fa-solid fa-robot text-purple-400 text-xl"></i>
                 </div>
-                <h3 class="text-xl font-semibold text-white mb-4">Healthcare Workforce Mobility</h3>
-                <p class="text-gray-300 mb-6 leading-relaxed">Let clinicians carry verifiable credentials for instant onboarding and compliance.</p>
-                <a href="/page/industry-use-cases/healthcare-workforce-mobility" class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200">
+                <h3 class="text-xl font-semibold text-white mb-4">AI Agents</h3>
+                <p class="text-gray-300 mb-6 leading-relaxed">Verify the ownership and policies of autonomous agents before they act.</p>
+                <a href="/page/industry-use-cases/ai-agents" class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200">
                   <span>Explore</span>
                   <i class="fa-solid fa-arrow-right text-sm"></i>
                 </a>
               </div>
             
               <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
-                <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-6">
+                <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-6">
                   
                   
-                  <i class="fa-solid fa-stamp text-purple-400 text-xl"></i>
+                  <i class="fa-solid fa-share-nodes text-green-400 text-xl"></i>
                 </div>
-                <h3 class="text-xl font-semibold text-white mb-4">Notaries &amp; Power of Attorney</h3>
-                <p class="text-gray-300 mb-6 leading-relaxed">Turn paper-based powers into verifiable credentials with instant revocation.</p>
-                <a href="/page/industry-use-cases/notaries" class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200">
+                <h3 class="text-xl font-semibold text-white mb-4">Decentralized Social Networks</h3>
+                <p class="text-gray-300 mb-6 leading-relaxed">Help creators own their channels and audiences with verifiable credentials.</p>
+                <a href="/page/industry-use-cases/decentralized-social-network" class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200">
                   <span>Discover</span>
                   <i class="fa-solid fa-arrow-right text-sm"></i>
                 </a>
@@ -1756,12 +1700,6 @@
           
         
       
-        
-        
-        
-          
-        
-      
       
       
         
@@ -1823,6 +1761,16 @@
 
   
 
+
+
+
+
+
+
+  
+
+
+  
 
 
 
@@ -1884,13 +1832,46 @@
 
 
 
+
+
+
+
+
+
+  
+    
+      
+      
+      
+        
+      
+    
+      
+      
+      
+        
+      
+    
+      
+      
+      
+        
+      
+    
+  
+
+
+
+
 <footer id="footer" class="bg-gray-900 border-t border-gray-800 py-16">
   <div class="container mx-auto px-6">
     <div class="max-w-6xl mx-auto">
       <div class="grid lg:grid-cols-4 gap-12 mb-12">
         <div class="lg:col-span-1">
-          <div class="flex items-center space-x-3 mb-6">
-            <img src="/images/purple/logo.svg" alt="Verana logo" class="h-10 w-auto" />
+          <div class="flex items-center space-x-4 mb-6">
+            <span class="flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-verana to-verana-light shadow-lg shadow-verana/30">
+              <img src="/images/purple/logo.svg" alt="Verana logo" class="h-10 w-auto" />
+            </span>
             <span class="text-2xl font-bold text-white">Verana</span>
           </div>
           <p class="text-gray-400 mb-8 leading-relaxed">The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty.</p>
@@ -1937,8 +1918,6 @@
             <h4 class="text-lg font-semibold text-white mb-6">Verana</h4>
             <ul class="space-y-4">
               
-                <li><a class="text-gray-400 hover:text-white transition-colors duration-200" href="/page/principles">Principles</a></li>
-              
                 <li><a class="text-gray-400 hover:text-white transition-colors duration-200" href="https://verana.foundation">Foundation</a></li>
               
                 <li><a class="text-gray-400 hover:text-white transition-colors duration-200" href="/page/press">Press</a></li>
@@ -1976,11 +1955,23 @@
       <div class="border-t border-gray-800 pt-8">
         <div class="flex flex-col sm:flex-row justify-between items-center">
           <p class="text-gray-400 text-sm">&copy; 2025 Verana Foundation. All rights reserved.</p>
-          <div class="flex space-x-6 mt-4 sm:mt-0">
-            <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Privacy Policy</span>
-            <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Terms of Service</span>
-            <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Cookie Policy</span>
-          </div>
+          
+            <div class="flex flex-wrap gap-4 sm:flex-nowrap sm:space-x-6 mt-4 sm:mt-0">
+              
+                
+                
+                <a class="text-gray-400 hover:text-white text-sm transition-colors duration-200" href="/page/privacy-policy" >Privacy Policy</a>
+              
+                
+                
+                <a class="text-gray-400 hover:text-white text-sm transition-colors duration-200" href="/page/terms-of-service" >Terms of Service</a>
+              
+                
+                
+                <a class="text-gray-400 hover:text-white text-sm transition-colors duration-200" href="/page/cookie-policy" >Cookie Policy</a>
+              
+            </div>
+          
         </div>
       </div>
     </div>
@@ -2008,6 +1999,84 @@
           } else {
             initNavToggle();
           }
+        })();
+        (function(){
+          const header = document.getElementById('header');
+          if (!header) return;
+          const row = header.querySelector('[data-header-row]');
+          const nav = header.querySelector('nav[data-primary-nav]');
+          const left = header.querySelector('[data-header-left]');
+          const right = header.querySelector('[data-header-right]');
+          const testnetBtn = header.querySelector('[data-desktop-testnet]');
+
+          if (!row || !nav || !left || !right) return;
+
+          const baseNavGap = (() => {
+            const styles = getComputedStyle(nav);
+            const gap = parseFloat(styles.columnGap || styles.gap || '0');
+            return !isNaN(gap) && gap > 0 ? gap : 24;
+          })();
+
+          const setGap = (value) => {
+            if (!isFinite(value) || value <= 0) return;
+            row.style.setProperty('--header-gap', value + 'px');
+          };
+
+          const hideDesktopCta = () => {
+            if (!testnetBtn) return;
+            testnetBtn.setAttribute('tabindex', '-1');
+            testnetBtn.setAttribute('aria-hidden', 'true');
+          };
+
+          const showDesktopCta = () => {
+            if (!testnetBtn) return;
+            testnetBtn.removeAttribute('tabindex');
+            testnetBtn.removeAttribute('aria-hidden');
+          };
+
+          const collapse = () => {
+            header.dataset.collapse = 'true';
+            hideDesktopCta();
+          };
+
+          const expand = () => {
+            header.dataset.collapse = 'false';
+            showDesktopCta();
+          };
+
+          const collapsedGap = baseNavGap * 1.5;
+
+          const updateLayout = () => {
+            const rowRect = row.getBoundingClientRect();
+            const leftRect = left.getBoundingClientRect();
+            const rightRect = right.getBoundingClientRect();
+            const navRect = nav.getBoundingClientRect();
+
+            const available = rowRect.width - leftRect.width - navRect.width - rightRect.width;
+            const desiredGap = available / 4;
+
+            if (window.innerWidth < 1024 || desiredGap <= collapsedGap) {
+              setGap(collapsedGap);
+              collapse();
+              return;
+            }
+
+            setGap(desiredGap);
+            expand();
+          };
+
+          const debounced = (() => {
+            let frame;
+            return () => {
+              if (frame) cancelAnimationFrame(frame);
+              frame = requestAnimationFrame(updateLayout);
+            };
+          })();
+
+          window.addEventListener('resize', debounced);
+          window.addEventListener('orientationchange', debounced);
+          document.addEventListener('DOMContentLoaded', updateLayout, { once: true });
+          debounced();
         })();
         (function(){
           function slugify(text){
