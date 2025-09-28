@@ -16,14 +16,22 @@ disable_content_wrapper: false
 
 #### Verana Node
 
-A layer-1 chain based on [cosmos sdk](https://github.com/cosmos/cosmos-sdk).
+A layer-1 [cosmos sdk](https://github.com/cosmos/cosmos-sdk) based implementation of the [verifiable public registry spec](https://verana-labs.github.io/verifiable-trust-vpr-spec/).
+
+Verana is a registry of trust registries, where any ecosystem can create and self-govern its trust network.
+
+Governance of the chain is managed by a [council](/page/about/governance).
+
+[Github repository)(https://github.com/verana-labs/verana)
 
 #### Indexer
 
-An Horoscope v2 fork. The purpose of the Verana indexer is to build a local database by executing the transaction of each block from first block, to be able to:
+A fork of [Horoscope v2](https://github.com/aura-nw/horoscope-v2), the indexer of the [Aura Network](https://aura.network/). The purpose of the Verana indexer is to build a local database by executing the transaction of each block of the verana network from first block, to be able to:
 
 - perform advanced queries that cannot be done with the ledger API;
 - maintain state change history, to get access to information that is not visible in current ledger state.
+
+[Github repository)(https://github.com/verana-labs/verana-indexer) 
 
 #### Resolver
 
@@ -34,9 +42,13 @@ The purpose of the Verana resolver is to build and maintain up to date a local d
 
 For a better understanding, you should [learn about the trust engine](http://localhost:1313/page/trust-engine/trust-resolver/#how-it-works)
 
+[Github repository)(https://github.com/verana-labs/verre)
+
 #### Search Engine
 
 Fancy prompt to query the resolver, see [trust engine examples here](/page/trust-engine/trust-resolver/#advanced-queries)
+
+[Github repository)(https://github.com/verana-labs/search-engine) 
 
 #### Visualizer
 
@@ -46,6 +58,8 @@ A dashboard for:
 - viewing ecosystem trust deposit size, number of issued / verified credentials, deposit slashs, etc...
 - more generally, providing network statistics.
 
+[Github repository)(https://github.com/verana-labs/verana-visualizer) 
+
 #### (+) Your Fancy new App here
 
 You've created a new network component? Just [fork this repo](https://github.com/verana-labs/verana.io-website) and add it here!
@@ -54,7 +68,7 @@ You've created a new network component? Just [fork this repo](https://github.com
 
 Here is the list of open source software that you can use to build your verifiable services.
 
-> Note: Verana is DID method agnostic. You can use any DID method for your verifiable services. However, make sure that the [trust resolver](#resolver) knows how to resolve your favorite DID method, else your verifiable services won't be resolvable, their verifiable data won't be indexed, and thus they would not appear in the search results.
+> Note: Verana is DID method agnostic. You can use any DID method for your verifiable services. However, make sure that the [trust resolver](#resolver) knows how to resolve your favorite DID method (add the plugin of your favorite DID method if not already available), else your verifiable services won't be resolvable, their verifiable data won't be indexed, and thus they would not appear in the search results.
 
 #### Credo Verifiable Service Agent
 
@@ -63,19 +77,11 @@ An agent for building Verifiable Services, based on Openwallet Foundation [credo
 - use as a container or npm package
 - issue and verify credentials
 - publish credentials to your DID Document
-- [Github repo](https://github.com/2060-io/vs-agent)
+- Supports at least the following credo DID methods: did:peer, [did:web](https://w3c-ccg.github.io/did-method-web/), Stephen Curran's [did:webvh](https://identity.foundation/didwebvh/next/), did:cheqd
+- Supports issuing [w3c v1.1](https://www.w3.org/TR/vc-data-model-1.1/) and [anoncreds](https://hyperledger.github.io/anoncreds-spec/) credentials.
+- Supports DIDComm and OpenID4VC / OpenID4VP
 
-Supports at least the following credo DID methods:
-
-- did:peer
-- [did:web](https://w3c-ccg.github.io/did-method-web/)
-- Stephen Curran's [did:webvh](https://identity.foundation/didwebvh/next/)
-- did:cheqd
-
-
-Supports issuing [w3c v1.1](https://www.w3.org/TR/vc-data-model-1.1/) and [anoncreds](https://hyperledger.github.io/anoncreds-spec/) credentials.
-
-Supports DIDComm and OpenID4VC / OpenID4VP
+[Github repository)(https://github.com/2060-io/vs-agent)
 
 #### (+) Your Verifiable Service Agent here
 
@@ -83,12 +89,16 @@ You've added [Verifiable Trust](https://verana-labs.github.io/verifiable-trust-s
 
 ### Verifiable User Agent Components
 
-## Decentralized Open Source Apps
+To be added
+
+## Open Source Verifiable User Agents and Services
+
 
 ### Hologram Messaging
 
-[Website](https://hologram.zone) 
-[Github Repo](https://github.com/2060-io/hologram-app)
+[Website](https://hologram.zone)
+
+[Github Repository](https://github.com/2060-io/hologram-app)
 
 | **Feature**                          | **Description** |
 |--------------------------------------|-----------------|
