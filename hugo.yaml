@@ -87,7 +87,7 @@ params:
       - title: "Own the Rails"
         url: "/page/build"
         children:
-          - title: "Trust Networks"
+          - title: "Ecosystems & Trust Networks"
             url: "/page/build/trust-networks"
           - title: "Verifiable Services"
             url: "/page/build/verifiable-services"
