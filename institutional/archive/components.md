@@ -5,7 +5,7 @@ url: "/page/developers/components"
 meta_title: "Developers and Verana | Verana components and technical stack"
 meta_description: "Explore Verana components, learn about each component, how they are built, whith which technology, and where are the repos."
 hero_icon: "fa-solid fa-hammer"
-disable_content_wrapper: true
+disable_content_wrapper: false
 ---
 
 ## Overview of Verana components
@@ -90,3 +90,41 @@ You've added [Verifiable Trust](https://verana-labs.github.io/verifiable-trust-s
 ### Verifiable User Agent Components
 
 To be added
+
+## Open Source Verifiable User Agents and Services
+
+
+### Hologram Messaging
+
+[Website](https://hologram.zone)
+
+[Github Repository](https://github.com/2060-io/hologram-app)
+
+| **Feature**                          | **Description** |
+|--------------------------------------|-----------------|
+| Self-custody storage                 | User data (messages, credentials) stays only on the device, not on central servers. |
+| Verifiable Credential Wallet          | Store, collect, and present Verifiable Credentials (VCs) from trusted issuers. |
+| Secure, authenticated messaging       | Chat with verified identities using VCs; supports text, voice, photos, video, files. |
+| DIDComm-based communication           | Uses [Decentralized Identifier Communication](https://didcomm.org) for secure, persistent connections. |
+| Verifiable Service Integration        | Trusted chatbots and services can issue/request credentials and interact via chat. |
+| Proof of Trust                        | Use the [Trust Resolver](/page/trust-engine/trust-resolver) to display data such as service owner, service name, etc |
+| Real-time audio & video               | Audio and video calls supported via WebRTC within secure identity context. |
+| Biometric verification                | Supports face/fingerprint matching and liveness checks for ID validation and KYC. |
+| Selective disclosure                  | Share only necessary parts of credentials using selective disclosure. |
+| Open source & extensibility           | Developers can build verifiable chatbots, services, or integrate agent logic. |
+
+Hologram Verifiable Service demos/templates:
+
+#### GovID Issuer VS
+
+A government demo service for issuing a verifiable credential by reading the NFC of a passport, extracting the photo, and performing a face matching against the user that is manipulating the handset.
+
+
+- [GovID Issuer VS (typescript)](https://github.com/2060-io/hologram-gov-id-issuer-vs)
+- [AI Agent demo VS (typescript)](https://github.com/2060-io/hologram-welcome-ai-agent-vs)
+- [AI Agent demo VS (java)](https://github.com/2060-io/aifriends-hologram-chatbot)
+- [Generic Verifier VS (typescript)](https://github.com/2060-io/hologram-generic-verifier-vs)
+
+### (+) Add your App here
+
+You've added [Verifiable Trust](https://verana-labs.github.io/verifiable-trust-spec/) support to some software?  Just [fork this repo](https://github.com/verana-labs/verana.io-website) and add it here!
