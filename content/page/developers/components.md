@@ -15,7 +15,7 @@ sidebar:
       href: "#network-components"
     - label: Verifiable Service Components
       href: "#verifiable-service-components"
-    - label: Verifiable User Agents
+    - label: Verifiable User Agent Components
       href: "#verifiable-user-agent-components"
   quick_links:
     - label: GitHub
@@ -43,25 +43,25 @@ overview:
         skinparam defaultFontName "Inter"
         skinparam defaultFontColor #E2E8F0
         skinparam DefaultTextAlignment center
-        skinparam ArrowColor #9F7AEA
-        skinparam ArrowHeadColor #9F7AEA
+        skinparam ArrowColor #E2E8F0
+        skinparam ArrowHeadColor #E2E8F0
         skinparam ArrowFontColor #E2E8F0
         skinparam ArrowThickness 2
         skinparam Padding 14
         skinparam dpi 160
         skinparam rectangle {
           BackgroundColor #111827
-          BorderColor #4338CA
+          BorderColor #444444
           FontColor #E2E8F0
           RoundCorner 16
         }
 
-        rectangle "Verana Node" as vpr1 #763EF0
-        rectangle "Indexer" as idx1 #2563EB
-        rectangle "Resolver" as rslv1 #22C55E
-        rectangle "Frontend" as frontend1 #0EA5E9
-        rectangle "Visualizer" as vis1 #A855F7
-        rectangle "Search Engine" as search1 #F97316
+        rectangle "Verana Node" as vpr1 #1E3456
+        rectangle "Indexer" as idx1 #1B4239
+        rectangle "Resolver" as rslv1 #1B4239
+        rectangle "Frontend" as frontend1 #382F5A
+        rectangle "Visualizer" as vis1 #382F5A
+        rectangle "Search Engine" as search1 #382F5A
 
         idx1 --> vpr1
         frontend1 --> idx1
@@ -78,13 +78,13 @@ overview:
         icon_bg: "bg-blue-500/20"
         icon_color: "text-blue-400"
         title: Network Layer
-        description: "Core blockchain infrastructure and indexing services"
+        description: "Ledger infrastructure"
         animation_delay: "0s"
       - icon: "fa-solid fa-cogs"
         icon_bg: "bg-green-500/20"
         icon_color: "text-green-400"
         title: Service Layer
-        description: "Verifiable services and agent implementations"
+        description: "Indexing services"
         animation_delay: "0.5s"
       - icon: "fa-solid fa-mobile-alt"
         icon_bg: "bg-purple-500/20"
@@ -126,7 +126,7 @@ component_groups:
         media:
           placement: right
           image:
-            src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/fe1025525e-b87c3acf7cc9ca570bd8.png"
+            src: "/images/purple/network.png"
             alt: "Futuristic blockchain network nodes connected in cosmic space"
       - name: Indexer
         icon:
@@ -153,15 +153,11 @@ component_groups:
           - Perform advanced queries that the base ledger API cannot satisfy.
           - Maintain a full state change history so past data remains queryable.
         media:
-          placement: gallery
-          items:
-            - src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/7ca420c44f-440635eefec4a2e65da6.png"
-              alt: "Digital database with glowing green server racks"
-            - src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/c3d4e5f6a7-8b9c0d1e2f3a4b5c6d7e.png"
-              alt: "Blockchain transaction flow visualization with green data streams"
-            - src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/9f8e7d6c5b-4a3b2c1d0e9f8g7h6i5j.png"
-              alt: "Advanced query interface with holographic data displays"
-      - name: Resolver
+          placement: full
+          image:
+            src: "/images/purple/datacenter.png"
+            alt: "Digital database with glowing green server racks"
+      - name: Trust Resolver
         icon:
           name: "fa-solid fa-search"
           bg: "bg-green-500/20"
@@ -181,21 +177,17 @@ component_groups:
             icon: "fa-brands fa-github"
             class: "bg-gray-800 hover:bg-verana text-white"
         summary: |
-          Keeps a synchronized data store by subscribing to indexer updates and DID directory events. The resolver crawls verifiable services, dereferences their credentials, and normalizes data for querying.
+          Keeps a synchronized data store by subscribing to indexer updates and DID directory events.
         bullets:
           - Crawl verifiable services, dereference credentials, and organize the resulting data.
           - Offer a universal query API for Verifiable User Agents and trust-aware search experiences.
-        callout:
-          text: "For a better understanding, you should **learn about the trust engine**."
-          class: "bg-green-900/20 border border-green-700/30"
-          text_class: "text-green-200 text-sm"
         links:
           - label: Learn about the Trust Resolver
             href: "/page/trust-engine/trust-resolver#how-it-works"
         media:
           placement: right
           image:
-            src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/3826adee5c-4f073ce64afaa20d350d.png"
+            src: "/images/purple/green-check.webp"
             alt: "Search interface with interconnected trust networks in a futuristic landscape"
       - name: Front End
         icon:
@@ -203,6 +195,8 @@ component_groups:
           bg: "bg-purple-500/20"
           color: "text-purple-400"
         badges:
+          - label: Ledger Interface
+            class: "bg-purple-500/20 text-purple-400"
           - label: Frontend
             class: "bg-gray-700 text-gray-300"
         actions:
@@ -215,14 +209,14 @@ component_groups:
             icon: "fa-brands fa-github"
             class: "bg-gray-800 hover:bg-verana text-white"
         summary: |
-          A prompt-driven interface that brings resolver data to life for end users and dashboards alike.
+          Main application for managing resources and executing transaction in the ledger. 
         bullets:
-          - Crawl verifiable services, dereference credentials, and organize data.
-          - Provide a universal query API to Verifiable User Agents and discovery interfaces.
+          - Create or join ecosystems, manage trust registries, credential schemas, issuers, verifiers,...
+          - Add or remove DIDs from the DID directory.
         media:
           placement: right
           image:
-            src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/def83d1844-4439013d109c507ac622.png"
+            src: "/images/purple/verana-front.webp"
             alt: "Modern search interface with vibrant query prompts"
       - name: Search Engine
         icon:
@@ -244,18 +238,18 @@ component_groups:
             icon: "fa-brands fa-github"
             class: "bg-gray-800 hover:bg-verana text-white"
         summary: |
-          A prompt-driven interface for exploring resolver data. Use the Trust Engine examples to discover how natural language queries surface verifiable results.
+          A prompt-driven interface for exploring resolver verifiable data. The Trust Resolver ensures search results are based solely on verifiable data contained in verifiable credentials, not arbitrary or opaque ranking algorithms.
         links:
           - label: Trust Engine query examples
             href: "/page/trust-engine/trust-resolver#advanced-queries"
         media:
           placement: right
           image:
-            src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/def83d1844-4439013d109c507ac622.png"
+            src: "/images/purple/search.png"
             alt: "Modern search interface with orange accents and floating prompts"
       - name: Visualizer
         icon:
-          name: "fa-solid fa-chart-network"
+          name: "fa-solid fa-expand"
           bg: "bg-purple-500/20"
           color: "text-purple-400"
         badges:
@@ -281,33 +275,14 @@ component_groups:
         media:
           placement: right
           image:
-            src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/102435a500-8bc42da6b68ba409a3b1.png"
+            src: "/images/purple/visualizer.png"
             alt: "Analytics dashboard with glowing charts and ecosystem graphs"
-      - type: cta
-        title: Your Fancy New App Here
-        description: "Built something that should live alongside the core components? Fork the website and add your project to the list."
-        icon:
-          name: "fa-solid fa-plus"
-          bg: "bg-verana/20"
-          color: "text-verana"
-        action:
-          label: Fork Repository
-          href: "https://github.com/verana-labs/verana.io-website"
-          icon: "fa-brands fa-github"
-        action_class: "bg-verana hover:bg-verana-dark text-white"
-        media:
-          placement: right
-          image:
-            src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/ffbf3183e6-47f2144824c6af01065b.png"
-            alt: "Abstract purple plus symbol representing open source contributions"
   - id: verifiable-service-components
     title: Verifiable Service Components
     icon:
       name: "fa-solid fa-server"
       bg: "bg-green-500/20"
       color: "text-green-400"
-    note: |
-      **Note:** Verana is DID method agnostic. Use any DID method for your verifiable services, but ensure the Trust Resolver can dereference it. If a plugin is missing, add it so your services remain discoverable.
     intro: "Open-source building blocks for verifiable services."
     components:
       - name: Credo Verifiable Service Agent
@@ -356,23 +331,30 @@ component_groups:
                     class: "bg-purple-500/20 text-purple-400"
                   - label: AnonCreds
                     class: "bg-purple-500/20 text-purple-400"
+#        media:
+#          placement: gallery
+#          items:
+#            - src: "/images/purple/ow.svg"
+#              alt: "Openwallet Foundation"
+#            - src: "/images/purple/credo-logo.png"
+#              alt: "Credo Logo"
         media:
           placement: full
           image:
-            src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/d56d8832cd-53927369c9e8258da11f.png"
+            src: "/images/purple/credo-logo.png"
             alt: "Futuristic AI agent robot with glowing circuits and credentials"
-      - type: cta
-        title: Your Verifiable Service Agent Here
-        description: "Added Verifiable Trust support to another wallet or agent? Fork the website and showcase it here."
-        icon:
-          name: "fa-solid fa-plus"
-          bg: "bg-green-500/20"
-          color: "text-green-400"
-        action:
-          label: Fork Repository
-          href: "https://github.com/verana-labs/verana.io-website"
-          icon: "fa-brands fa-github"
-        action_class: "bg-green-600 hover:bg-green-700 text-white"
+#      - type: cta
+#        title: Your Verifiable Service Component Here
+#        description: "Added Verifiable Trust support to another wallet or agent? Fork the website and showcase it here."
+#        icon:
+#          name: "fa-solid fa-plus"
+#          bg: "bg-green-500/20"
+#          color: "text-green-400"
+#       action:
+#          label: Fork Repository
+#          href: "https://github.com/verana-labs/verana.io-website"
+#          icon: "fa-brands fa-github"
+#        action_class: "bg-green-600 hover:bg-green-700 text-white"
   - id: verifiable-user-agent-components
     title: Verifiable User Agent Components
     icon:
@@ -386,6 +368,18 @@ component_groups:
           color: "text-yellow-400"
         title: Coming Soon
         description: "Verifiable User Agent components are currently under development. Join the community to get involved or follow progress."
+#      - type: cta
+#        title: Your Verifiable User Agent Component Here
+#        description: "Added Verifiable Trust support to another wallet or agent? Fork the website and showcase it here."
+#        icon:
+#          name: "fa-solid fa-plus"
+#          bg: "bg-purple-500/20"
+#          color: "text-purple-400"
+#        action:
+#          label: Fork Repository
+#          href: "https://github.com/verana-labs/verana.io-website"
+#          icon: "fa-brands fa-github"
+#        action_class: "bg-purple-600 hover:bg-purple-700 text-white"
 cta:
   id: build-with-verana
   title: Ready to Build with Verana?
