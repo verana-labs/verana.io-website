@@ -2632,6 +2632,12 @@ video {
   font-size: 3.75rem;
   line-height: 1;
 }
+.text-\[10px\] {
+  font-size: 10px;
+}
+.text-\[9px\] {
+  font-size: 9px;
+}
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -3095,6 +3101,10 @@ video {
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.hover\:underline:hover {
+  text-decoration-line: underline;
 }
 
 .hover\:shadow-\[0_0_45px_-25px_rgba\(79\2c 70\2c 229\2c 0\.55\)\]:hover {
