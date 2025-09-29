@@ -38,7 +38,11 @@
 {{ $groups := $page.Params.component_groups }}
 {{ $cta := $page.Params.cta }}
 {{ $resources := $page.Params.resources }}
-{{ $spotlightTitle := $page.Params.component_spotlight_title }}
+{{ $scratch := newScratch }}
+{{ with $overview }}
+  {{ with .architecture }}{{ $scratch.Set "architecture" . }}{{ end }}
+  {{ with .lead }}{{ $scratch.Set "overview_lead" . }}{{ end }}
+{{ end }}
 
 {{ with $hero }}
   <section id="page-hero" class="relative bg-gray-900 py-16 lg:py-24 overflow-hidden">
@@ -91,7 +95,7 @@
       <div class="grid lg:grid-cols-4 gap-12">
         {{ with $sidebar }}
           <aside class="lg:col-span-1" data-components-sidebar>
-            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky top-24">
+            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky" data-sidebar-sticky>
               {{ with .title }}<h3 class="text-lg font-semibold text-white mb-6">{{ . }}</h3>{{ end }}
               {{ with .nav }}
                 <nav class="space-y-3">
@@ -120,44 +124,11 @@
             {{ $sectionID := .id | default "overview" }}
             <section id="{{ $sectionID }}" class="space-y-8 scroll-mt-40">
               {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white">{{ . }}</h2>{{ end }}
-              {{ with .lead }}
-                <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
-                  <p class="text-xl text-gray-300 leading-relaxed">{{ . | markdownify }}</p>
-                </div>
-              {{ end }}
-              {{ with .architecture }}
-                <div class="bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-2xl p-12">
-                  <div class="relative component-pattern opacity-20 absolute inset-0 rounded-2xl"></div>
-                  <div class="relative z-10 space-y-8">
-                    {{ with .title }}<h3 class="text-2xl font-semibold text-white text-center">{{ . }}</h3>{{ end }}
-                    {{ with .image }}
-                      <div class="w-full h-96 overflow-hidden rounded-xl">
-                        <img src="{{ .src }}" alt="{{ .alt }}" class="w-full h-full object-cover" loading="lazy" />
-                      </div>
-                    {{ end }}
-                    {{ with .highlights }}
-                      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {{ range . }}
-                          {{ $iconColor := .icon_color | default "text-verana" }}
-                          <div class="text-center">
-                            <div class="w-20 h-20 {{ .icon_bg | default "bg-verana/20" }} rounded-2xl flex items-center justify-center mx-auto mb-4 animate-float"{{ with .animation_delay }} style="animation-delay: {{ . }};"{{ end }}>
-                              {{ with .icon }}<i class="{{ . }} {{ $iconColor }} text-2xl"></i>{{ end }}
-                            </div>
-                            {{ with .title }}<h4 class="text-lg font-semibold text-white mb-2">{{ . }}</h4>{{ end }}
-                            {{ with .description }}<p class="text-gray-400">{{ . | markdownify }}</p>{{ end }}
-                          </div>
-                        {{ end }}
-                      </div>
-                    {{ end }}
-                  </div>
-                </div>
-              {{ end }}
             </section>
           {{ end }}
 
-          {{ if or $spotlightTitle $groups }}
+          {{ if $groups }}
             <section id="component-spotlight" class="space-y-12">
-              {{ with $spotlightTitle }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">{{ . }}</h2>{{ end }}
               {{ range $groupIndex, $group := $groups }}
                 {{ $groupID := $group.id | default (printf "group-%d" $groupIndex) }}
                 <section id="{{ $groupID }}" class="scroll-mt-40">
@@ -170,6 +141,53 @@
                     {{ end }}
                     {{ with $group.title }}<h3 class="text-2xl font-bold text-white">{{ . }}</h3>{{ end }}
                   </div>
+                  {{ $overviewLead := $scratch.Get "overview_lead" }}
+                  {{ if and $overviewLead (eq $groupID "network-components") }}
+                    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-6">
+                      <p class="text-xl text-gray-300 leading-relaxed">{{ $overviewLead | markdownify }}</p>
+                    </div>
+                    {{ $scratch.Delete "overview_lead" }}
+                  {{ end }}
+                  {{ $architecture := $scratch.Get "architecture" }}
+                  {{ if and $architecture (eq $groupID "network-components") }}
+                    {{ with $architecture }}
+                      <div class="bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-2xl p-12 mb-8">
+                        <div class="relative component-pattern opacity-20 absolute inset-0 rounded-2xl"></div>
+                        <div class="relative z-10 space-y-8">
+                          {{ with .title }}<h3 class="text-2xl font-semibold text-white text-center">{{ . }}</h3>{{ end }}
+                          {{ with .image }}
+                            {{ $diagram := .diagram }}
+                            {{ if $diagram }}
+                              <div class="w-full rounded-xl border border-gray-700/60 bg-black/40 p-4">
+                                <div class="kroki-diagram w-full" role="img"{{ with .alt }} aria-label="{{ . }}"{{ end }}>
+                                  {{ $page.RenderString $diagram }}
+                                </div>
+                              </div>
+                            {{ else if .src }}
+                              <div class="w-full h-96 overflow-hidden rounded-xl">
+                                <img src="{{ .src }}" alt="{{ .alt }}" class="w-full h-full object-cover" loading="lazy" />
+                              </div>
+                            {{ end }}
+                          {{ end }}
+                          {{ with .highlights }}
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                              {{ range . }}
+                                {{ $iconColor := .icon_color | default "text-verana" }}
+                                <div class="text-center">
+                                  <div class="w-20 h-20 {{ .icon_bg | default "bg-verana/20" }} rounded-2xl flex items-center justify-center mx-auto mb-4 animate-float"{{ with .animation_delay }} style="animation-delay: {{ . }};"{{ end }}>
+                                    {{ with .icon }}<i class="{{ . }} {{ $iconColor }} text-2xl"></i>{{ end }}
+                                  </div>
+                                  {{ with .title }}<h4 class="text-lg font-semibold text-white mb-2">{{ . }}</h4>{{ end }}
+                                  {{ with .description }}<p class="text-gray-400">{{ . | markdownify }}</p>{{ end }}
+                                </div>
+                              {{ end }}
+                            </div>
+                          {{ end }}
+                        </div>
+                      </div>
+                    {{ end }}
+                    {{ $scratch.Delete "architecture" }}
+                  {{ end }}
                   {{ with $group.note }}
                     <div class="bg-blue-900/20 border border-blue-700/30 rounded-2xl p-6 mb-6">
                       <div class="flex items-start space-x-3">

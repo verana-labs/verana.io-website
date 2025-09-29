@@ -30,10 +30,49 @@ overview:
   lead: |
     Verana's architecture is built on modular, open-source components that work together to create a decentralized trust infrastructure. Each component serves a specific purpose and can be deployed independently or as part of the complete Verana ecosystem.
   architecture:
-    title: Component Architecture
+    title: Network Component Dependencies
     image:
-      src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/d56d8832cd-53927369c9e8258da11f.png"
-      alt: "Futuristic visualization of the Verana component architecture"
+      alt: "Diagram showing data flow between Verana components"
+      diagram: |
+        {{< kroki _type="plantuml" >}}
+        @startuml
+        left to right direction
+
+        skinparam backgroundColor transparent
+        skinparam Shadowing false
+        skinparam defaultFontName "Inter"
+        skinparam defaultFontColor #E2E8F0
+        skinparam DefaultTextAlignment center
+        skinparam ArrowColor #9F7AEA
+        skinparam ArrowHeadColor #9F7AEA
+        skinparam ArrowFontColor #E2E8F0
+        skinparam ArrowThickness 2
+        skinparam Padding 14
+        skinparam dpi 160
+        skinparam rectangle {
+          BackgroundColor #111827
+          BorderColor #4338CA
+          FontColor #E2E8F0
+          RoundCorner 16
+        }
+
+        rectangle "Verana Node" as vpr1 #763EF0
+        rectangle "Indexer" as idx1 #2563EB
+        rectangle "Resolver" as rslv1 #22C55E
+        rectangle "Frontend" as frontend1 #0EA5E9
+        rectangle "Visualizer" as vis1 #A855F7
+        rectangle "Search Engine" as search1 #F97316
+
+        idx1 --> vpr1
+        frontend1 --> idx1
+        frontend1 --> rslv1
+        frontend1 --> vpr1
+        rslv1 --> idx1
+        vis1 --> idx1
+        vis1 --> rslv1
+        search1 --> rslv1
+        @enduml
+        {{< /kroki >}}
     highlights:
       - icon: "fa-solid fa-server"
         icon_bg: "bg-blue-500/20"
@@ -53,7 +92,6 @@ overview:
         title: User Layer
         description: "Applications and user-facing interfaces"
         animation_delay: "1s"
-component_spotlight_title: Component Spotlight
 component_groups:
   - id: network-components
     title: Network Components
@@ -344,7 +382,7 @@ component_groups:
     components:
       - type: info
         icon:
-          name: "fa-solid fa-construction"
+          name: "fa-solid fa-toolbox"
           color: "text-yellow-400"
         title: Coming Soon
         description: "Verifiable User Agent components are currently under development. Join the community to get involved or follow progress."
@@ -392,5 +430,6 @@ resources:
         label: Join Discord
         href: "https://discord.gg/edjaFn252q"
 ---
+
 
 {{< developers-components >}}

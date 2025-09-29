@@ -2075,6 +2075,9 @@ video {
 .bg-black\/20 {
   background-color: rgb(0 0 0 / 0.2);
 }
+.bg-black\/40 {
+  background-color: rgb(0 0 0 / 0.4);
+}
 .bg-black\/50 {
   background-color: rgb(0 0 0 / 0.5);
 }
@@ -2922,6 +2925,9 @@ video {
 @keyframes network-pulse {
     0%, 100% { opacity: 0.4; }
     50% { opacity: 0.8; }
+  }
+[data-sidebar-sticky] {
+    top: calc(var(--header-offset, 104px));
   }
 
 /* Custom utilities or component styles */
