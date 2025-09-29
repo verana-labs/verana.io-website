@@ -2,30 +2,6 @@
 {{ $scratch := $page.Scratch }}
 {{ if not ($scratch.Get "trust_concept_styles_injected") }}
   <style>
-    .trust-concept-section .code-block {
-      position: relative;
-      background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
-      border: 1px solid #333;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    .trust-concept-section .code-block::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 40px;
-      background: linear-gradient(90deg, #333 0%, #444 50%, #333 100%);
-      border-bottom: 1px solid #555;
-    }
-    .trust-concept-section .code-block pre {
-      margin: 0;
-      padding: 56px 24px 24px;
-      font-family: "Fira Code", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      overflow-x: auto;
-      white-space: pre-wrap;
-    }
     @keyframes credential-flow {
       0% { transform: translateY(0px); opacity: 0.7; }
       25% { transform: translateY(-4px); opacity: 1; }
@@ -50,7 +26,7 @@
 <section id="main-content" class="trust-concept-section bg-black py-20 lg:py-32">
   <div class="container mx-auto px-6">
     <div class="max-w-6xl mx-auto">
-      <div class="grid lg:grid-cols-4 gap-12">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
         {{ with $sidebar }}
           <aside id="sidebar-nav" class="lg:col-span-1">
             <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky" data-sidebar-sticky>
@@ -101,7 +77,7 @@
               {{ end }}
 
               {{ with .columns }}
-                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                   {{ range . }}
                     {{ $icon := .icon }}
                     {{ $iconBg := .icon_bg | default "bg-verana/20" }}
@@ -131,7 +107,7 @@
               {{ with .benefits }}
                 <div class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-8">
                   {{ with .title }}<h4 class="text-2xl font-semibold text-white mb-8 text-center">{{ . }}</h4>{{ end }}
-                  <div class="grid md:grid-cols-2 gap-12">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                     {{ $columns := slice .ledger .did_vc }}
                     {{ range $columns }}
                       {{ if . }}
@@ -210,12 +186,12 @@
                                 {{ range . }}
                                   {{ $lineColor := .color | default $iconColor }}
                                   {{ if and .label .value }}
-                                    <div class="flex justify-between">
-                                      <span class="text-gray-400">{{ .label }}:</span>
-                                      <span class="{{ $lineColor }} truncate">{{ .value }}</span>
+                                    <div class="flex justify-between items-start gap-3 min-w-0">
+                                      <span class="text-gray-400 flex-shrink-0">{{ .label }}:</span>
+                                      <span class="truncate {{ $lineColor }} text-right flex-1">{{ .value }}</span>
                                     </div>
                                   {{ else if .text }}
-                                    <div class="{{ $lineColor }}">{{ .text }}</div>
+                                    <div class="{{ $lineColor }} break-all">{{ .text }}</div>
                                   {{ end }}
                                 {{ end }}
                               </div>
@@ -264,14 +240,29 @@
               </div>
 
              {{ with .code_blocks }}
-               <div class="grid gap-8 lg:grid-cols-2">
+               <div class="space-y-10">
                  {{ range . }}
-                   <div class="code-block">
-                      <pre><code class="text-sm leading-relaxed text-gray-200">{{ (delimit (.lines | default (slice)) "\n") | htmlEscape }}</code></pre>
-                    </div>
-                  {{ end }}
-                </div>
-              {{ end }}
+                   <div>
+                     {{ with .title }}<h3 class="text-2xl font-semibold text-white mb-4">{{ . }}</h3>{{ end }}
+                     {{ $intro := .intro | default .description }}
+                     {{ with $intro }}<p class="text-gray-300 mb-6 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                     {{ $filename := .filename | default (printf "%s.json" (anchorize (.title | default "snippet"))) }}
+                     {{ $code := delimit (.lines | default (slice)) "\n" }}
+                     <div class="bg-black border border-gray-700 rounded-xl p-6">
+                       <div class="flex items-center justify-between mb-4">
+                         <span class="text-gray-400 text-sm">{{ $filename }}</span>
+                         <div class="flex space-x-1">
+                           <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                           <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                           <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                         </div>
+                       </div>
+                       <pre class="w-full text-green-400 text-xs sm:text-sm overflow-x-auto whitespace-pre font-mono"><code class="block w-full">{{ $code | safeHTML }}</code></pre>
+                     </div>
+                   </div>
+                 {{ end }}
+               </div>
+             {{ end }}
             </div>
           {{ end }}
 
@@ -282,7 +273,7 @@
 
               {{ with .highlights }}
                 <div class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-8 mb-8">
-                  <div class="grid md:grid-cols-3 gap-6">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {{ range . }}
                       {{ $icon := .icon }}
                       {{ $iconBg := .icon_bg | default "bg-verana/20" }}
@@ -303,9 +294,9 @@
                 {{ $maxHeight := .max_height | default .height | default "24rem" }}
                 {{ $explicitHeight := .height }}
                 <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
-                  <h3 class="text-2xl font-semibold text-white mb-6">Visual Trust Credentials Flow</h3>
+                  <h3 class="text-2xl font-semibold text-white mb-6">{{ .title | default "Visual Trust Credentials Flow" }}</h3>
                   <div class="flex justify-center">
-                    <div class="rounded-xl overflow-hidden w-full" style="width: min(100%, {{ $maxWidth }}); max-width: {{ $maxWidth }};">
+                    <div class="rounded-xl overflow-hidden w-full" style="width: 100%; max-width: {{ $maxWidth }};">
                       <img class="w-full h-auto object-contain" style="max-height: {{ $maxHeight }};{{ if $explicitHeight }} height: {{ $explicitHeight }};{{ end }}" src="{{ .src }}" alt="{{ .alt }}">
                     </div>
                   </div>
@@ -321,7 +312,7 @@
               {{ with .intro }}<p class="text-lg text-gray-300 leading-relaxed mb-8">{{ . | markdownify }}</p>{{ end }}
 
               {{ with .steps }}
-                <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
                   {{ range . }}
                     {{ $icon := .icon }}
                     {{ $iconBg := .icon_bg | default "bg-verana/20" }}
@@ -461,7 +452,7 @@
       <div class="max-w-6xl mx-auto">
         {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-12 text-center">{{ . }}</h2>{{ end }}
         {{ with .cards }}
-          <div class="grid md:grid-cols-3 gap-8">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             {{ range . }}
               {{ $icon := .icon }}
               {{ $iconBg := .icon_bg | default "bg-verana/20" }}

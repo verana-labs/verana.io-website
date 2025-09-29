@@ -1895,6 +1895,9 @@ video {
 .whitespace-pre {
   white-space: pre;
 }
+.break-all {
+  word-break: break-all;
+}
 .rounded {
   border-radius: 0.25rem;
 }

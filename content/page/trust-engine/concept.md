@@ -56,7 +56,7 @@ hybrid_section:
         - References to on-chain data
         - Verifiable authenticity
   benefits:
-    title: Benefits Comparison
+    title: Benefits
     ledger:
       icon: fa-solid fa-link
       icon_bg: bg-blue-500/20
@@ -69,17 +69,17 @@ hybrid_section:
           icon_color: text-blue-400
           icon_bg: bg-blue-500/20
           title: Public, transparent information
-          text: All ecosystem rules visible to everyone
+#          text: All ecosystem rules visible to everyone
         - icon: fa-solid fa-lock
           icon_color: text-blue-400
           icon_bg: bg-blue-500/20
           title: Immutable history
-          text: Tamper-proof record of all changes
+#          text: Tamper-proof record of all changes
         - icon: fa-solid fa-coins
           icon_color: text-blue-400
           icon_bg: bg-blue-500/20
           title: Token-based business models
-          text: Enable new economic incentives
+#          text: Enable new economic incentives
     did_vc:
       icon: fa-solid fa-id-card
       icon_bg: bg-green-500/20
@@ -92,17 +92,17 @@ hybrid_section:
           icon_color: text-green-400
           icon_bg: bg-green-500/20
           title: Data doesn't have to be public
-          text: Privacy-preserving by design
+#          text: Privacy-preserving by design
         - icon: fa-solid fa-database
           icon_color: text-green-400
           icon_bg: bg-green-500/20
           title: No personal data stored on-chain
-          text: Sensitive information remains off-ledger
-        - icon: fa-solid fa-shield-check
+#          text: Sensitive information remains off-ledger
+        - icon: fa-solid fa-shield
           icon_color: text-green-400
           icon_bg: bg-green-500/20
-          title: Verify authenticity by ecosystem DID
-          text: Cryptographic proof of legitimacy
+          title: DID verification is straightforward
+#          text: Cryptographic proof of legitimacy
     combined_banner:
       label_left: Combined Power
       label_right: Hybrid Trust Model
@@ -151,7 +151,9 @@ example_section:
       - title: DID Document References
         text: "Service entries link to trust registries and verifiable presentations, proving control of on-chain resources."
   code_blocks:
-    - title: Json Schema Credential
+    - title: Ecosystem DID Self-Issues Verifiable Credential
+      filename: json-schema-credential.json
+      intro: "Ecosystem DID will self-issue a Verifiable Credential to prove control over the on-chain credential schema:"
       lines:
         - '{'
         - '  "@context": ['
@@ -175,7 +177,9 @@ example_section:
         - '    "digestSRI": "sha384-ABCSGyugst67rs67rdbugsy0RDdx0YbeV7shwhCS88G8SCXeFq82PafhCeZ"'
         - '  }'
         - '}'
-    - title: DID Document Service Entries
+    - title: Ecosystem DID Document Service Entries
+      filename: did-document.json
+      intro: "Ecosystem DID Document will contain references to the verifiable presentations and trust registries:"
       lines:
         - '"service": ['
         - '  {'
@@ -189,6 +193,7 @@ example_section:
         - '    "version": "1.0",'
         - '    "serviceEndpoint": ["vpr:verana:mainnet"]'
         - '  }'
+        - '  ...'
         - ']'
 proof_section:
   id: proof-of-trust
@@ -211,6 +216,7 @@ proof_section:
     src: "/images/purple/vt-creds-explained.png"
     alt: "Futuristic diagram showing multiple colorful credential badges connecting to a central service icon"
     caption: "Proof-of-Trust"
+    title: "Visual Trust Credentials Flow"
     max_width: "90%"
     max_height: "48rem"
 did_directory_section:
@@ -260,10 +266,10 @@ related_section:
     - icon: fa-solid fa-shield-halved
       icon_bg: bg-purple-500/20
       icon_color: text-purple-400
-      title: Trust Registries
+      title: Trust Networks
       description: "Ecosystem-governed lists of trusted issuers and credential schemas."
       label: Discover
-      href: /page/trust-engine/trust-registries
+      href: /page/build/trust-networks
 ---
 
 {{< trust-concept >}}
