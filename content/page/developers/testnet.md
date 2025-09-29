@@ -5,7 +5,7 @@ url: "/page/developers/testnet"
 meta_title: "Developers and Verana | Verana layer-1 network testnet apps and dashboards"
 meta_description: "Explore Verana applications, interfaces, block explorers, visualizers, faucet, get URLs of deployed applications and deploy your own instances, and learn how to create or join ecosystems within the network."
 hero_icon: "fa-solid fa-hammer"
-disable_content_wrapper: true
+disable_content_wrapper: false
 ---
 
 ## Getting started with the Testnet

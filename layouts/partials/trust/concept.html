@@ -1,0 +1,479 @@
+{{ $page := . }}
+{{ $scratch := $page.Scratch }}
+{{ if not ($scratch.Get "trust_concept_styles_injected") }}
+  <style>
+    .trust-concept-section .code-block {
+      position: relative;
+      background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+      border: 1px solid #333;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .trust-concept-section .code-block::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: linear-gradient(90deg, #333 0%, #444 50%, #333 100%);
+      border-bottom: 1px solid #555;
+    }
+    .trust-concept-section .code-block pre {
+      margin: 0;
+      padding: 56px 24px 24px;
+      font-family: "Fira Code", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    @keyframes credential-flow {
+      0% { transform: translateY(0px); opacity: 0.7; }
+      25% { transform: translateY(-4px); opacity: 1; }
+      50% { transform: translateY(0px); opacity: 0.7; }
+      75% { transform: translateY(4px); opacity: 0.6; }
+      100% { transform: translateY(0px); opacity: 0.7; }
+    }
+    .trust-concept-section .animate-credential-flow {
+      animation: credential-flow 6s ease-in-out infinite;
+    }
+  </style>
+  {{ $scratch.Set "trust_concept_styles_injected" true }}
+{{ end }}
+
+{{ $sidebar := $page.Params.sidebar }}
+{{ $hybrid := $page.Params.hybrid_section }}
+{{ $example := $page.Params.example_section }}
+{{ $proof := $page.Params.proof_section }}
+{{ $directory := $page.Params.did_directory_section }}
+{{ $related := $page.Params.related_section }}
+
+<section id="main-content" class="trust-concept-section bg-black py-20 lg:py-32">
+  <div class="container mx-auto px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-4 gap-12">
+        {{ with $sidebar }}
+          <aside id="sidebar-nav" class="lg:col-span-1">
+            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky top-24" data-sidebar-sticky>
+              {{ with .title }}<h3 class="text-lg font-semibold text-white mb-6">{{ . }}</h3>{{ end }}
+              {{ with .nav }}
+                <nav class="space-y-3">
+                  {{ range . }}
+                    {{ $label := .label | default .title | default .name }}
+                    {{ $href := .url | default .href | default "#" }}
+                    {{ if $label }}
+                      {{ $isActive := .active | default false }}
+                      <a class="sidebar-link block transition-colors duration-200 {{ if $isActive }}text-verana font-medium{{ else }}text-gray-400 hover:text-white{{ end }}" href="{{ $href }}">{{ $label }}</a>
+                    {{ end }}
+                  {{ end }}
+                </nav>
+              {{ end }}
+              {{ with .quick_links }}
+                {{ $items := .items | default (slice) }}
+                {{ if gt (len $items) 0 }}
+                  <div class="mt-8 pt-6 border-t border-gray-700">
+                    {{ with .title }}<h4 class="text-sm font-semibold text-white mb-4">{{ . }}</h4>{{ else }}<h4 class="text-sm font-semibold text-white mb-4">Quick Links</h4>{{ end }}
+                    <div class="space-y-2">
+                      {{ range $items }}
+                        {{ $label := .label | default .title | default .name }}
+                        {{ $href := .url | default .href | default "#" }}
+                        {{ if $label }}
+                          <a class="block text-sm text-gray-400 hover:text-white transition-colors duration-200" href="{{ $href }}" {{ if .external }}target="_blank" rel="noopener"{{ end }}>{{ $label }}</a>
+                        {{ end }}
+                      {{ end }}
+                    </div>
+                  </div>
+                {{ end }}
+              {{ end }}
+            </div>
+          </aside>
+        {{ end }}
+
+        <div id="content-area" class="lg:col-span-3 space-y-16">
+          {{ with $hybrid }}
+            <div id="{{ .id | default "hybrid-trust-model" }}" class="scroll-mt-40">
+              {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">{{ . }}</h2>{{ end }}
+
+              {{ with .concept }}
+                <div class="bg-verana/10 border border-verana/30 rounded-2xl p-8 mb-8">
+                  {{ with .title }}<h3 class="text-2xl font-bold text-white mb-6">{{ . }}</h3>{{ end }}
+                  {{ with .text }}<p class="text-lg text-gray-300 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                </div>
+              {{ end }}
+
+              {{ with .columns }}
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                  {{ range . }}
+                    {{ $icon := .icon }}
+                    {{ $iconBg := .icon_bg | default "bg-verana/20" }}
+                    {{ $iconColor := .icon_color | default "text-verana" }}
+                    {{ $bulletColor := replace $iconColor "text-" "bg-" 1 }}
+                    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                      <div class="w-12 h-12 {{ $iconBg }} rounded-xl flex items-center justify-center mb-6">
+                        {{ if $icon }}<i class="{{ $icon }} {{ $iconColor }} text-xl"></i>{{ end }}
+                      </div>
+                      {{ with .title }}<h3 class="text-xl font-semibold text-white mb-4">{{ . }}</h3>{{ end }}
+                      {{ with .description }}<p class="text-gray-300 leading-relaxed mb-6">{{ . | markdownify }}</p>{{ end }}
+                      {{ with .bullets }}
+                        <div class="space-y-2">
+                          {{ range . }}
+                            <div class="flex items-center space-x-3">
+                              <div class="w-2 h-2 {{ $bulletColor }} rounded-full"></div>
+                              <span class="text-gray-400">{{ . | markdownify }}</span>
+                            </div>
+                          {{ end }}
+                        </div>
+                      {{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+
+              {{ with .benefits }}
+                <div class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-8">
+                  {{ with .title }}<h4 class="text-2xl font-semibold text-white mb-8 text-center">{{ . }}</h4>{{ end }}
+                  <div class="grid md:grid-cols-2 gap-12">
+                    {{ $columns := slice .ledger .did_vc }}
+                    {{ range $columns }}
+                      {{ if . }}
+                        {{ $gradient := .gradient | default "from-verana/20 to-verana/10" }}
+                        {{ $border := .border | default "border-verana/30" }}
+                        {{ $colIcon := .icon }}
+                        {{ $colIconBg := .icon_bg | default "bg-verana/20" }}
+                        {{ $colIconColor := .icon_color | default "text-verana" }}
+                        <div class="bg-gradient-to-br {{ $gradient }} border {{ $border }} rounded-2xl p-8">
+                          <div class="flex items-center space-x-4 mb-6">
+                            <div class="w-16 h-16 {{ $colIconBg }} rounded-2xl flex items-center justify-center">
+                              {{ if $colIcon }}<i class="{{ $colIcon }} {{ $colIconColor }} text-2xl"></i>{{ end }}
+                            </div>
+                            {{ with .title }}<h5 class="text-2xl font-bold text-white">{{ . }}</h5>{{ end }}
+                          </div>
+                          {{ with .items }}
+                            <div class="space-y-4">
+                              {{ range . }}
+                                {{ $itemIcon := .icon }}
+                                {{ $itemColor := .icon_color | default $colIconColor }}
+                                {{ $itemBg := .icon_bg | default (replace $itemColor "text-" "bg-" 1) }}
+                                <div class="bg-black/30 border border-white/10 rounded-xl p-4 flex items-center space-x-4">
+                                  <div class="w-10 h-10 {{ $itemBg }} rounded-lg flex items-center justify-center flex-shrink-0">
+                                    {{ if $itemIcon }}<i class="{{ $itemIcon }} {{ $itemColor }}"></i>{{ end }}
+                                  </div>
+                                  <div>
+                                    {{ with .title }}<h6 class="text-white font-medium">{{ . }}</h6>{{ end }}
+                                    {{ with .text }}<p class="text-gray-200 text-sm">{{ . | markdownify }}</p>{{ end }}
+                                  </div>
+                                </div>
+                              {{ end }}
+                            </div>
+                          {{ end }}
+                        </div>
+                      {{ end }}
+                    {{ end }}
+                  </div>
+                  {{ $banner := .combined_banner | default (dict "label_left" "Combined Power" "label_right" "Hybrid Trust Model") }}
+                  <div class="mt-8 flex justify-center">
+                    <div class="bg-verana/20 border border-verana/40 rounded-xl px-6 py-3 flex items-center space-x-3">
+                      <i class="fa-solid fa-plus text-verana text-xl"></i>
+                      <span class="text-white font-medium">{{ index $banner "label_left" }}</span>
+                      <i class="fa-solid fa-equals text-verana text-xl"></i>
+                      <span class="text-verana font-bold">{{ index $banner "label_right" }}</span>
+                    </div>
+                  </div>
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ with $example }}
+            <div id="{{ .id | default "example-section" }}" class="scroll-mt-40">
+              {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">{{ . }}</h2>{{ end }}
+              {{ with .intro }}<p class="text-lg text-gray-300 mb-8 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+
+              <div class="bg-gray-900 border border-gray-700 rounded-2xl p-12 mb-12">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+                  {{ with .on_chain }}
+                    <div class="flex-1 space-y-6">
+                      {{ with .title }}<h3 class="text-xl font-semibold text-white text-center lg:text-left">{{ . }}</h3>{{ end }}
+                      {{ with .cards }}
+                        {{ range . }}
+                          {{ $icon := .icon }}
+                          {{ $iconBg := .icon_bg | default "bg-verana/20" }}
+                          {{ $iconColor := .icon_color | default "text-verana" }}
+                          <div class="bg-blue-900/10 border border-gray-700 rounded-2xl p-6 {{ .border_class }} animate-credential-flow">
+                            <div class="flex items-center space-x-3 mb-4">
+                              <div class="w-10 h-10 {{ $iconBg }} rounded-xl flex items-center justify-center">
+                                {{ if $icon }}<i class="{{ $icon }} {{ $iconColor }}"></i>{{ end }}
+                              </div>
+                              <h4 class="text-lg font-semibold text-white">{{ .title }}</h4>
+                            </div>
+                            {{ with .details }}
+                              <div class="space-y-2 text-sm">
+                                {{ range . }}
+                                  {{ $lineColor := .color | default $iconColor }}
+                                  {{ if and .label .value }}
+                                    <div class="flex justify-between">
+                                      <span class="text-gray-400">{{ .label }}:</span>
+                                      <span class="{{ $lineColor }} truncate">{{ .value }}</span>
+                                    </div>
+                                  {{ else if .text }}
+                                    <div class="{{ $lineColor }}">{{ .text }}</div>
+                                  {{ end }}
+                                {{ end }}
+                              </div>
+                            {{ end }}
+                          </div>
+                        {{ end }}
+                      {{ end }}
+                    </div>
+                  {{ end }}
+
+                  <div class="flex-shrink-0">
+                    <div class="w-16 h-16 bg-verana/20 rounded-full flex items-center justify-center">
+                      <i class="fa-solid fa-arrow-right text-verana text-2xl hidden lg:block"></i>
+                      <i class="fa-solid fa-arrow-down text-verana text-2xl lg:hidden"></i>
+                    </div>
+                  </div>
+
+                  {{ with .off_chain }}
+                    <div class="flex-1">
+                      {{ with .title }}<h3 class="text-xl font-semibold text-white text-center lg:text-left mb-6">{{ . }}</h3>{{ end }}
+                      {{ $icon := .icon }}
+                      {{ $iconBg := .icon_bg | default "bg-verana/20" }}
+                      {{ $iconColor := .icon_color | default "text-verana" }}
+                      <div class="bg-verana/20 border-2 border-verana/50 rounded-xl p-6 animate-credential-flow" style="animation-delay: 4s;">
+                        <div class="flex items-center space-x-3 mb-4">
+                          <div class="w-10 h-10 {{ $iconBg }} rounded-xl flex items-center justify-center">
+                            {{ if $icon }}<i class="{{ $icon }} {{ $iconColor }}"></i>{{ end }}
+                          </div>
+                          <h4 class="text-lg font-semibold text-white">{{ .title }}</h4>
+                        </div>
+                        {{ with .description }}<p class="text-gray-300 leading-relaxed mb-6">{{ . | markdownify }}</p>{{ end }}
+                        {{ with .points }}
+                          <div class="space-y-4">
+                            {{ range . }}
+                              <div class="bg-black border border-gray-700 rounded-xl p-4">
+                                {{ with .title }}<h5 class="text-sm font-semibold text-white mb-2">{{ . }}</h5>{{ end }}
+                                {{ with .text }}<div class="text-gray-300 text-sm leading-relaxed">{{ . | markdownify }}</div>{{ end }}
+                              </div>
+                            {{ end }}
+                          </div>
+                        {{ end }}
+                      </div>
+                    </div>
+                  {{ end }}
+                </div>
+              </div>
+
+             {{ with .code_blocks }}
+               <div class="grid gap-8 lg:grid-cols-2">
+                 {{ range . }}
+                   <div class="code-block">
+                      <pre><code class="text-sm leading-relaxed text-gray-200">{{ (delimit (.lines | default (slice)) "\n") | htmlEscape }}</code></pre>
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ with $proof }}
+            <div id="{{ .id | default "proof-of-trust" }}" class="scroll-mt-40">
+              {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">{{ . }}</h2>{{ end }}
+              {{ with .intro }}<p class="text-lg text-gray-300 leading-relaxed mb-8">{{ . | markdownify }}</p>{{ end }}
+
+              {{ with .highlights }}
+                <div class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-8 mb-8">
+                  <div class="grid md:grid-cols-3 gap-6">
+                    {{ range . }}
+                      {{ $icon := .icon }}
+                      {{ $iconBg := .icon_bg | default "bg-verana/20" }}
+                      {{ $iconColor := .icon_color | default "text-verana" }}
+                      <div class="text-center">
+                        <div class="w-16 h-16 {{ $iconBg }} rounded-2xl flex items-center justify-center mx-auto mb-4">
+                          {{ if $icon }}<i class="{{ $icon }} {{ $iconColor }} text-2xl"></i>{{ end }}
+                        </div>
+                        {{ with .text }}<p class="text-gray-200">{{ . | markdownify }}</p>{{ end }}
+                      </div>
+                    {{ end }}
+                  </div>
+                </div>
+              {{ end }}
+
+              {{ with .image }}
+                <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                  <h3 class="text-2xl font-semibold text-white mb-6">Visual Trust Credentials Flow</h3>
+                  <div class="flex justify-center">
+                    <img class="w-full max-w-4xl h-96 object-contain rounded-xl" src="{{ .src }}" alt="{{ .alt }}">
+                  </div>
+                  {{ with .caption }}<p class="text-center text-gray-400 mt-4 italic">{{ . }}</p>{{ end }}
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ with $directory }}
+            <div id="{{ .id | default "did-directory" }}" class="scroll-mt-40">
+              {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">{{ . }}</h2>{{ end }}
+              {{ with .intro }}<p class="text-lg text-gray-300 leading-relaxed mb-8">{{ . | markdownify }}</p>{{ end }}
+
+              {{ with .steps }}
+                <div class="grid md:grid-cols-3 gap-6 mb-12">
+                  {{ range . }}
+                    {{ $icon := .icon }}
+                    {{ $iconBg := .icon_bg | default "bg-verana/20" }}
+                    {{ $iconColor := .icon_color | default "text-verana" }}
+                    <div class="bg-black border border-gray-600 rounded-xl p-6 text-center">
+                      <div class="w-12 h-12 {{ $iconBg }} rounded-xl flex items-center justify-center mx-auto mb-4">
+                        {{ if $icon }}<i class="{{ $icon }} {{ $iconColor }} text-xl"></i>{{ end }}
+                      </div>
+                      {{ with .title }}<h4 class="text-lg font-semibold text-white mb-3">{{ . }}</h4>{{ end }}
+                      {{ with .text }}<p class="text-gray-300 text-sm">{{ . | markdownify }}</p>{{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+
+              {{ with .cta }}
+                <div class="bg-verana/10 border border-verana/30 rounded-2xl p-8 text-center">
+                  {{ with .title }}<h3 class="text-2xl font-bold text-white mb-4">{{ . }}</h3>{{ end }}
+                  {{ with .text }}<p class="text-lg text-gray-300 mb-6">{{ . | markdownify }}</p>{{ end }}
+                  {{ with .button }}
+                    {{ $href := .href | default "#" }}
+                    <a class="inline-flex items-center space-x-2 bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105" href="{{ $href }}">
+                      {{ with .label }}<span>{{ . }}</span>{{ end }}
+                      <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                  {{ end }}
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const nav = document.querySelector('#sidebar-nav');
+      if (!nav) { return; }
+      const navLinks = Array.from(nav.querySelectorAll('nav a[href^="#"]'));
+      if (!navLinks.length) { return; }
+
+      const sections = navLinks
+        .map((link) => {
+          const selector = link.getAttribute('href');
+          if (!selector || selector === '#') { return null; }
+          try {
+            return document.querySelector(selector);
+          } catch (error) {
+            return null;
+          }
+        })
+        .filter(Boolean);
+
+      if (!sections.length) { return; }
+
+      const activateLink = (id) => {
+        navLinks.forEach((link) => {
+          const targetId = link.getAttribute('href').slice(1);
+          if (targetId === id) {
+            link.classList.add('text-verana', 'font-medium');
+            link.classList.remove('text-gray-400');
+          } else {
+            link.classList.remove('text-verana', 'font-medium');
+            if (!link.classList.contains('text-gray-400')) {
+              link.classList.add('text-gray-400');
+            }
+          }
+        });
+      };
+
+      const getHeaderOffset = () => {
+        const header = document.querySelector('header');
+        return header ? header.getBoundingClientRect().height + 24 : 96;
+      };
+
+      let headerOffset = getHeaderOffset();
+
+      const updateActiveLink = () => {
+        const scrollPosition = window.scrollY + headerOffset + 4;
+        let currentSection = sections[0];
+        for (const section of sections) {
+          if (section.offsetTop <= scrollPosition) {
+            currentSection = section;
+          } else {
+            break;
+          }
+        }
+        if (currentSection) {
+          activateLink(currentSection.id);
+        }
+      };
+
+      const initialSectionId = window.location.hash ? window.location.hash.slice(1) : (sections[0] ? sections[0].id : null);
+      if (initialSectionId) {
+        activateLink(initialSectionId);
+      }
+
+      window.addEventListener('scroll', () => {
+        window.requestAnimationFrame(updateActiveLink);
+      }, { passive: true });
+
+      window.addEventListener('resize', () => {
+        headerOffset = getHeaderOffset();
+        updateActiveLink();
+      });
+
+      navLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+          const selector = link.getAttribute('href');
+          if (selector && selector.startsWith('#')) {
+            const target = document.querySelector(selector);
+            if (target) {
+              event.preventDefault();
+              const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+              window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+              activateLink(target.id);
+              history.replaceState(null, '', selector);
+            }
+          }
+        });
+      });
+
+      updateActiveLink();
+    });
+  </script>
+</section>
+
+{{ with $related }}
+  <section id="{{ .id | default "related-content" }}" class="bg-gray-900 py-20">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-12 text-center">{{ . }}</h2>{{ end }}
+        {{ with .cards }}
+          <div class="grid md:grid-cols-3 gap-8">
+            {{ range . }}
+              {{ $icon := .icon }}
+              {{ $iconBg := .icon_bg | default "bg-verana/20" }}
+              {{ $iconColor := .icon_color | default "text-verana" }}
+              <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                <div class="w-12 h-12 {{ $iconBg }} rounded-xl flex items-center justify-center mb-6">
+                  {{ if $icon }}<i class="{{ $icon }} {{ $iconColor }} text-xl"></i>{{ end }}
+                </div>
+                {{ with .title }}<h3 class="text-xl font-semibold text-white mb-4">{{ . }}</h3>{{ end }}
+                {{ with .description }}<p class="text-gray-300 mb-6 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                {{ $href := .href | default "#" }}
+                {{ with .label }}
+                  <a class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200" href="{{ $href }}">
+                    <span>{{ . }}</span>
+                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                  </a>
+                {{ end }}
+              </div>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}
