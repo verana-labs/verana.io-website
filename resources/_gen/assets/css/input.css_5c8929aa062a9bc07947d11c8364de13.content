@@ -1884,19 +1884,11 @@ video {
 .overflow-x-hidden {
   overflow-x: hidden;
 }
-.truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
 .whitespace-nowrap {
   white-space: nowrap;
 }
 .whitespace-pre {
   white-space: pre;
-}
-.break-all {
-  word-break: break-all;
 }
 .rounded {
   border-radius: 0.25rem;
@@ -2030,9 +2022,6 @@ video {
 .border-pink-400 {
   --tw-border-opacity: 1;
   border-color: rgb(244 114 182 / var(--tw-border-opacity, 1));
-}
-.border-purple-500\/50 {
-  border-color: rgb(168 85 247 / 0.5);
 }
 .border-purple-700\/30 {
   border-color: rgb(126 34 206 / 0.3);
@@ -3465,10 +3454,6 @@ video {
 
   .lg\:pb-2 {
     padding-bottom: 0.5rem;
-  }
-
-  .lg\:text-left {
-    text-align: left;
   }
 
   .lg\:text-2xl {

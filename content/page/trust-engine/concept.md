@@ -110,46 +110,41 @@ example_section:
   id: example-section
   title: Example
   intro: "Ecosystem `did:example:ecosystem` created a trust registry and a credential schema on-chain. To prove ownership, they will refer to the trust registry and attach a verifiable credential to their DID Document."
-  on_chain:
-    title: On-Chain Components
-    cards:
-      - title: Ecosystem Trust Registry
-        icon: fa-solid fa-database
-        icon_bg: bg-blue-500/20
-        icon_color: text-blue-400
-        border_class: border-2 border-blue-500/50
-        details:
-          - label: id
-            value: "1234"
-            color: text-blue-400
-          - label: ecosystem did
-            value: did:example:ecosystem
-            color: text-blue-400
-      - title: CredentialSchema
-        icon: fa-solid fa-file-code
-        icon_bg: bg-purple-500/20
-        icon_color: text-purple-400
-        border_class: border-2 border-purple-500/50
-        details:
-          - label: id
-            value: "12345678"
-            color: text-purple-400
-          - text: 'json_schema: { "$id": ... "title": "ExampleCredential" }'
-            color: text-purple-400
-  off_chain:
-    title: Off-Chain Verification
-    icon: fa-solid fa-shield-halved
-    icon_bg: bg-verana/20
-    icon_color: text-verana
-    description: |
-      **issuer:** `did:example:ecosystem`
+  diagram:
+    alt: "Diagram showing how on-chain registries relate to off-chain credentials"
+    diagram: |
+      {{< kroki _type="plantuml" >}}
+      @startuml
+      
+      skinparam backgroundColor transparent
+      skinparam Shadowing false
+      skinparam ObjectBorderColor #1F2937
+      skinparam ObjectFontColor #E2E8F0
+      skinparam ObjectFontName "Inter"
+      skinparam ArrowColor #E2E8F0
+      skinparam ArrowFontColor #E2E8F0
+      skinparam ArrowThickness 1
+      skinparam Padding 3
 
-      **jsonSchema:** `vpr:verana:mainnet/cs/v1/js/12345678`
-    points:
-      - title: JsonSchemaCredential
-        text: "Off-chain credential issued by the ecosystem, referencing the on-chain schema."
-      - title: DID Document References
-        text: "Service entries link to trust registries and verifiable presentations, proving control of on-chain resources."
+      object "Ecosystem Trust Registry (on-chain)" as es #1F3456 {
+        id: 1234
+        ecosystem did: did:example:ecosystem
+      }
+      object "CredentialSchema (on-chain)" as cs #1F3456 {
+        id: 12345678
+        json_schema: { "$id": ... "title": "ExampleCredential"}
+      }
+      object "Verifiable Trust Json Schema Credential (off-chain)" as jsc #1B423A {
+        id: https://ecosystem/shemas-example-jsc.json
+        issuer: did:example:ecosystem
+        jsonSchema: vpr:verana:mainnet/cs/v1/js/12345678
+      }
+
+      es --> cs : creates a CredentialSchema (on-chain)
+      cs --> jsc : ecosystem DID issues a JsonSchemaCredential (off-chain)\n based on json_schema located on-chain
+
+      @enduml
+      {{< /kroki >}}
   code_blocks:
     - title: Ecosystem DID Self-Issues Verifiable Credential
       filename: json-schema-credential.json
