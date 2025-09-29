@@ -46,3 +46,9 @@
     50% { opacity: 0.8; }
   }
 }
+
+@layer utilities {
+  [data-sidebar-sticky] {
+    top: calc(var(--header-offset, 104px));
+  }
+}

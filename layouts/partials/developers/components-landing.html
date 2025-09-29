@@ -1,0 +1,579 @@
+{{ define "developers_component_summary" }}
+  {{ $component := .component }}
+  {{ with $component.summary }}<div class="space-y-4">{{ . | markdownify }}</div>{{ end }}
+  {{ with $component.bullets }}
+    <ul class="space-y-2 mt-2">
+      {{ range . }}
+        <li class="flex items-start space-x-2">
+          <i class="fa-solid fa-check text-green-400 mt-1 text-sm"></i>
+          <span>{{ . | markdownify }}</span>
+        </li>
+      {{ end }}
+    </ul>
+  {{ end }}
+  {{ with $component.callout }}
+    <div class="rounded-xl p-4 {{ .class | default "bg-verana/10 border border-verana/30" }}">
+      <p class="{{ .text_class | default "text-green-200 text-sm" }}">{{ .text | markdownify }}</p>
+    </div>
+  {{ end }}
+  {{ with $component.links }}
+    <div class="flex flex-wrap gap-4 mt-4">
+      {{ range . }}
+        {{ $href := .href | default .url }}
+        {{ if $href }}
+          <a href="{{ $href }}" class="text-verana hover:text-verana-light font-medium inline-flex items-center space-x-2" target="{{ if strings.HasPrefix $href "http" }}_blank{{ end }}" rel="{{ if strings.HasPrefix $href "http" }}noopener noreferrer{{ end }}">
+            <span>{{ .label | default "Learn more" }}</span>
+            <i class="fa-solid fa-arrow-right text-sm"></i>
+          </a>
+        {{ end }}
+      {{ end }}
+    </div>
+  {{ end }}
+{{ end }}
+
+{{ $page := . }}
+{{ $hero := $page.Params.hero }}
+{{ $sidebar := $page.Params.sidebar }}
+{{ $overview := $page.Params.overview }}
+{{ $groups := $page.Params.component_groups }}
+{{ $cta := $page.Params.cta }}
+{{ $resources := $page.Params.resources }}
+{{ $scratch := newScratch }}
+{{ with $overview }}
+  {{ with .architecture }}{{ $scratch.Set "architecture" . }}{{ end }}
+  {{ with .lead }}{{ $scratch.Set "overview_lead" . }}{{ end }}
+{{ end }}
+
+{{ with $hero }}
+  <section id="page-hero" class="relative bg-gray-900 py-16 lg:py-24 overflow-hidden">
+    <div class="absolute inset-0 gradient-mesh opacity-40"></div>
+    <div class="absolute inset-0 network-bg opacity-10"></div>
+    <div class="absolute inset-0 code-pattern opacity-10"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="max-w-4xl mx-auto">
+        {{ with .breadcrumbs }}
+          {{ $lastIndex := sub (len .) 1 }}
+          <nav class="flex items-center space-x-2 text-sm text-gray-400 mb-8">
+            {{ range $index, $crumb := . }}
+              {{ $label := $crumb.label | default $crumb.title | default "" }}
+              {{ $href := $crumb.href | default $crumb.url }}
+              {{ $isLast := eq $index $lastIndex }}
+              {{ if and $href (not $isLast) }}
+                <a href="{{ $href }}" class="hover:text-white transition-colors duration-200">{{ $label }}</a>
+              {{ else }}
+                <span class="{{ if $isLast }}text-verana{{ else }}hover:text-white transition-colors duration-200 cursor-pointer{{ end }}">{{ $label }}</span>
+              {{ end }}
+              {{ if lt $index $lastIndex }}
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+              {{ end }}
+            {{ end }}
+          </nav>
+        {{ end }}
+        <div class="flex items-center space-x-4 mb-6">
+          {{ with .icon }}
+            {{ $iconColor := .color | default "text-green-400" }}
+            <div class="w-16 h-16 {{ .bg | default "bg-green-500/20" }} rounded-2xl flex items-center justify-center">
+              {{ with .name }}<i class="{{ . }} {{ $iconColor }} text-2xl"></i>{{ end }}
+            </div>
+          {{ end }}
+          <div>
+            {{ with .title }}<h1 class="text-4xl lg:text-6xl font-bold leading-tight text-white">{{ . }}</h1>{{ end }}
+            {{ with .subtitle }}<p class="text-lg text-gray-400 mt-2">{{ . }}</p>{{ end }}
+          </div>
+        </div>
+        {{ with .description }}
+          <p class="text-xl lg:text-2xl text-gray-300 leading-relaxed">{{ . }}</p>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}
+
+<section id="components-content" class="bg-black py-20 lg:py-32">
+  <div class="container mx-auto px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-4 gap-12">
+        {{ with $sidebar }}
+          <aside class="lg:col-span-1" data-components-sidebar>
+            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky" data-sidebar-sticky>
+              {{ with .title }}<h3 class="text-lg font-semibold text-white mb-6">{{ . }}</h3>{{ end }}
+              {{ with .nav }}
+                <nav class="space-y-3">
+                  {{ range . }}
+                    {{ $href := .href | default .url | default "#" }}
+                    <a href="{{ $href }}" class="block transition-colors duration-200 text-gray-400 hover:text-white" data-nav-link>{{ .label }}</a>
+                  {{ end }}
+                </nav>
+              {{ end }}
+              {{ with .quick_links }}
+                <div class="mt-8 pt-6 border-t border-gray-700">
+                  <h4 class="text-sm font-semibold text-white mb-4">Quick Access</h4>
+                  <div class="space-y-2">
+                    {{ range . }}
+                      {{ $href := .href | default .url | default "#" }}
+                      <a href="{{ $href }}" class="block text-sm text-gray-400 hover:text-white transition-colors duration-200" target="{{ if strings.HasPrefix $href "http" }}_blank{{ end }}" rel="{{ if strings.HasPrefix $href "http" }}noopener noreferrer{{ end }}">{{ .label }}</a>
+                    {{ end }}
+                  </div>
+                </div>
+              {{ end }}
+            </div>
+          </aside>
+        {{ end }}
+        <div class="lg:col-span-3 space-y-16">
+          {{ with $overview }}
+            {{ $sectionID := .id | default "overview" }}
+            <section id="{{ $sectionID }}" class="space-y-8 scroll-mt-40">
+              {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white">{{ . }}</h2>{{ end }}
+            </section>
+          {{ end }}
+
+          {{ if $groups }}
+            <section id="component-spotlight" class="space-y-12">
+              {{ range $groupIndex, $group := $groups }}
+                {{ $groupID := $group.id | default (printf "group-%d" $groupIndex) }}
+                <section id="{{ $groupID }}" class="scroll-mt-40">
+                  <div class="flex items-center space-x-4 mb-8">
+                    {{ with $group.icon }}
+                      {{ $iconColor := .color | default "text-verana" }}
+                      <div class="w-12 h-12 {{ .bg | default "bg-verana/20" }} rounded-xl flex items-center justify-center">
+                        {{ with .name }}<i class="{{ . }} {{ $iconColor }} text-xl"></i>{{ end }}
+                      </div>
+                    {{ end }}
+                    {{ with $group.title }}<h3 class="text-2xl font-bold text-white">{{ . }}</h3>{{ end }}
+                  </div>
+                  {{ $overviewLead := $scratch.Get "overview_lead" }}
+                  {{ if and $overviewLead (eq $groupID "network-components") }}
+                    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-6">
+                      <p class="text-xl text-gray-300 leading-relaxed">{{ $overviewLead | markdownify }}</p>
+                    </div>
+                    {{ $scratch.Delete "overview_lead" }}
+                  {{ end }}
+                  {{ $architecture := $scratch.Get "architecture" }}
+                  {{ if and $architecture (eq $groupID "network-components") }}
+                    {{ with $architecture }}
+                      <div class="bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-2xl p-12 mb-8">
+                        <div class="relative component-pattern opacity-20 absolute inset-0 rounded-2xl"></div>
+                        <div class="relative z-10 space-y-8">
+                          {{ with .title }}<h3 class="text-2xl font-semibold text-white text-center">{{ . }}</h3>{{ end }}
+                          {{ with .image }}
+                            {{ $diagram := .diagram }}
+                            {{ if $diagram }}
+                              <div class="w-full rounded-xl border border-gray-700/60 bg-black/40 p-4">
+                                <div class="kroki-diagram w-full" role="img"{{ with .alt }} aria-label="{{ . }}"{{ end }}>
+                                  {{ $page.RenderString $diagram }}
+                                </div>
+                              </div>
+                            {{ else if .src }}
+                              <div class="w-full h-96 overflow-hidden rounded-xl">
+                                <img src="{{ .src }}" alt="{{ .alt }}" class="w-full h-full object-cover" loading="lazy" />
+                              </div>
+                            {{ end }}
+                          {{ end }}
+                          {{ with .highlights }}
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                              {{ range . }}
+                                {{ $iconColor := .icon_color | default "text-verana" }}
+                                <div class="text-center">
+                                  <div class="w-20 h-20 {{ .icon_bg | default "bg-verana/20" }} rounded-2xl flex items-center justify-center mx-auto mb-4 animate-float"{{ with .animation_delay }} style="animation-delay: {{ . }};"{{ end }}>
+                                    {{ with .icon }}<i class="{{ . }} {{ $iconColor }} text-2xl"></i>{{ end }}
+                                  </div>
+                                  {{ with .title }}<h4 class="text-lg font-semibold text-white mb-2">{{ . }}</h4>{{ end }}
+                                  {{ with .description }}<p class="text-gray-400">{{ . | markdownify }}</p>{{ end }}
+                                </div>
+                              {{ end }}
+                            </div>
+                          {{ end }}
+                        </div>
+                      </div>
+                    {{ end }}
+                    {{ $scratch.Delete "architecture" }}
+                  {{ end }}
+                  {{ with $group.note }}
+                    <div class="bg-blue-900/20 border border-blue-700/30 rounded-2xl p-6 mb-6">
+                      <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-info-circle text-blue-400 text-lg mt-1"></i>
+                        <div class="text-blue-200 leading-relaxed">{{ . | markdownify }}</div>
+                      </div>
+                    </div>
+                  {{ end }}
+                  {{ with $group.intro }}
+                    <p class="text-lg text-gray-300 leading-relaxed mb-8">{{ . | markdownify }}</p>
+                  {{ end }}
+
+                  {{ range $componentIndex, $component := $group.components }}
+                    {{ $type := $component.type | default "card" }}
+                    {{ if eq $type "cta" }}
+                      <div class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-8 mb-8">
+                        {{ $ctaMedia := $component.media }}
+                        {{ $hasImage := and $ctaMedia $ctaMedia.image }}
+                        <div class="grid gap-6 {{ if $hasImage }}lg:grid-cols-3 items-center{{ end }}">
+                          <div class="{{ if $hasImage }}lg:col-span-2{{ end }}">
+                            <div class="flex items-center space-x-4 mb-4">
+                              {{ with $component.icon }}
+                                {{ $ctaIconColor := .color | default "text-verana" }}
+                                <div class="w-12 h-12 {{ .bg | default "bg-verana/20" }} rounded-xl flex items-center justify-center">
+                                  {{ with .name }}<i class="{{ . }} {{ $ctaIconColor }} text-xl"></i>{{ end }}
+                                </div>
+                              {{ end }}
+                              {{ with $component.title }}<h4 class="text-xl font-semibold text-white">{{ . }}</h4>{{ end }}
+                            </div>
+                            {{ with $component.description }}<p class="text-gray-300 mb-4">{{ . | markdownify }}</p>{{ end }}
+                            {{ with $component.action }}
+                              {{ $href := .href | default .url }}
+                              {{ if $href }}
+                                <a href="{{ $href }}" class="inline-flex items-center space-x-2 px-6 py-3 rounded-xl font-medium transition-all duration-200 hover:scale-105 {{ $component.action_class | default "bg-verana hover:bg-verana-dark text-white" }}">
+                                  {{ with .icon }}<i class="{{ . }}"></i>{{ end }}
+                                  <span>{{ .label | default "Learn more" }}</span>
+                                </a>
+                              {{ end }}
+                            {{ end }}
+                          </div>
+                          {{ if $hasImage }}
+                            {{ with $ctaMedia.image }}
+                              <div class="lg:col-span-1">
+                                <img src="{{ .src }}" alt="{{ .alt }}" class="w-full h-48 object-cover rounded-xl" loading="lazy" />
+                              </div>
+                            {{ end }}
+                          {{ end }}
+                        </div>
+                      </div>
+                    {{ else if eq $type "info" }}
+                      <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 text-center mb-8">
+                    {{ with $component.icon }}
+                      {{ $infoColor := .color | default "text-yellow-400" }}
+                      {{ with .name }}<i class="{{ . }} {{ $infoColor }} text-4xl mb-4"></i>{{ end }}
+                    {{ end }}
+                        {{ with $component.title }}<h4 class="text-xl font-semibold text-white mb-2">{{ . }}</h4>{{ end }}
+                        {{ with $component.description }}<p class="text-gray-400">{{ . | markdownify }}</p>{{ end }}
+                      </div>
+                    {{ else }}
+                      {{ $media := $component.media }}
+                      {{ $placement := "" }}
+                      {{ if $media }}{{ $placement = lower ($media.placement | default "right") }}{{ end }}
+                      {{ $featureGroups := $component.feature_groups }}
+                      <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8 transition-all duration-300 hover:border-verana/40">
+                        <div class="flex flex-col gap-6">
+                          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+                            <div class="flex items-center space-x-4">
+                              {{ with $component.icon }}
+                                {{ $compIconColor := .color | default "text-verana" }}
+                                <div class="w-14 h-14 {{ .bg | default "bg-verana/20" }} rounded-xl flex items-center justify-center">
+                                  {{ with .name }}<i class="{{ . }} {{ $compIconColor }} text-xl"></i>{{ end }}
+                                </div>
+                              {{ end }}
+                              <div>
+                                {{ with $component.name }}<h4 class="text-xl font-semibold text-white mb-2">{{ . }}</h4>{{ end }}
+                                {{ with $component.badges }}
+                                  <div class="flex flex-wrap items-center gap-2">
+                                    {{ range . }}
+                                      <span class="px-3 py-1 rounded-full text-xs {{ .class | default "bg-verana/20 text-verana" }}">{{ .label | default . }}</span>
+                                    {{ end }}
+                                  </div>
+                                {{ end }}
+                              </div>
+                            </div>
+                            {{ with $component.actions }}
+                              <div class="flex flex-wrap items-center gap-3">
+                                {{ range . }}
+                                  {{ $href := .href | default .url }}
+                                  {{ if $href }}
+                                    <a href="{{ $href }}" class="inline-flex items-center space-x-2 px-4 py-2 rounded-lg text-sm transition-all duration-200 {{ .class | default "bg-gray-800 hover:bg-verana text-white" }}" target="{{ if strings.HasPrefix $href "http" }}_blank{{ end }}" rel="{{ if strings.HasPrefix $href "http" }}noopener noreferrer{{ end }}">
+                                      {{ with .icon }}<i class="{{ . }}"></i>{{ end }}
+                                      <span>{{ .label | default "Learn more" }}</span>
+                                    </a>
+                                  {{ end }}
+                                {{ end }}
+                              </div>
+                            {{ end }}
+                          </div>
+
+                          {{ if eq $placement "gallery" }}
+                            <div class="space-y-4 text-gray-300 leading-relaxed">
+                              {{ template "developers_component_summary" (dict "component" $component) }}
+                            </div>
+                            {{ with $media.items }}
+                              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                {{ range . }}
+                                  <div class="w-full h-32 overflow-hidden rounded-xl">
+                                    <img src="{{ .src }}" alt="{{ .alt }}" class="w-full h-full object-cover" loading="lazy" />
+                                  </div>
+                                {{ end }}
+                              </div>
+                            {{ end }}
+                          {{ else if eq $placement "full" }}
+                            <div class="space-y-4 text-gray-300 leading-relaxed">
+                              {{ template "developers_component_summary" (dict "component" $component) }}
+                            </div>
+                            {{ if $featureGroups }}
+                              {{ $featureCount := len $featureGroups }}
+                              {{ $cols := "md:grid-cols-1" }}
+                              {{ if ge $featureCount 3 }}{{ $cols = "md:grid-cols-3" }}{{ else if eq $featureCount 2 }}{{ $cols = "md:grid-cols-2" }}{{ end }}
+                              <div class="grid gap-6 {{ $cols }}">
+                                {{ range $featureGroups }}
+                                  {{ $featureType := .type | default "list" }}
+                                  <div>
+                                    {{ with .title }}<h5 class="text-lg font-semibold text-white mb-3">{{ . }}</h5>{{ end }}
+                                    {{ if eq $featureType "tags" }}
+                                      <div class="flex flex-wrap gap-2">
+                                        {{ range .items }}
+                                          {{ $item := . }}
+                                          {{ $label := $item.label | default $item }}
+                                          {{ $class := $item.class | default "bg-blue-500/20 text-blue-400" }}
+                                          <span class="px-2 py-1 rounded text-xs {{ $class }}">{{ $label }}</span>
+                                        {{ end }}
+                                      </div>
+                                    {{ else if eq $featureType "standards" }}
+                                      <div class="space-y-3">
+                                        {{ range .sections }}
+                                          {{ with .heading }}<h6 class="text-sm font-medium text-gray-300">{{ . }}</h6>{{ end }}
+                                          {{ with .tags }}
+                                            <div class="flex flex-wrap gap-1">
+                                              {{ range . }}
+                                                {{ $tag := . }}
+                                                {{ $label := $tag.label | default $tag }}
+                                                {{ $class := $tag.class | default "bg-blue-500/20 text-blue-400" }}
+                                                <span class="px-2 py-1 rounded text-xs {{ $class }}">{{ $label }}</span>
+                                              {{ end }}
+                                            </div>
+                                          {{ end }}
+                                        {{ end }}
+                                      </div>
+                                    {{ else }}
+                                      <ul class="space-y-2">
+                                        {{ range .items }}
+                                          <li class="flex items-start space-x-2">
+                                            <i class="fa-solid fa-check text-green-400 mt-1 text-sm"></i>
+                                            <span class="text-gray-300 text-sm">{{ . | markdownify }}</span>
+                                          </li>
+                                        {{ end }}
+                                      </ul>
+                                    {{ end }}
+                                  </div>
+                                {{ end }}
+                              </div>
+                            {{ end }}
+                            {{ with $media.image }}
+                              <div class="w-full h-48 overflow-hidden rounded-xl">
+                                <img src="{{ .src }}" alt="{{ .alt }}" class="w-full h-full object-cover" loading="lazy" />
+                              </div>
+                            {{ end }}
+                          {{ else if and $media (eq $placement "right") }}
+                            <div class="grid lg:grid-cols-3 gap-6">
+                              <div class="lg:col-span-2 space-y-4 text-gray-300 leading-relaxed">
+                                {{ template "developers_component_summary" (dict "component" $component) }}
+                              </div>
+                              {{ with $media.image }}
+                                <div class="lg:col-span-1">
+                                  <img src="{{ .src }}" alt="{{ .alt }}" class="w-full h-48 object-cover rounded-xl" loading="lazy" />
+                                </div>
+                              {{ end }}
+                            </div>
+                          {{ else }}
+                            <div class="space-y-4 text-gray-300 leading-relaxed">
+                              {{ template "developers_component_summary" (dict "component" $component) }}
+                            </div>
+                          {{ end }}
+
+                          {{ if and $featureGroups (ne $placement "full") }}
+                            {{ $featureCount := len $featureGroups }}
+                            {{ $cols := "md:grid-cols-1" }}
+                            {{ if ge $featureCount 3 }}{{ $cols = "md:grid-cols-3" }}{{ else if eq $featureCount 2 }}{{ $cols = "md:grid-cols-2" }}{{ end }}
+                            <div class="grid gap-6 {{ $cols }}">
+                              {{ range $featureGroups }}
+                                {{ $featureType := .type | default "list" }}
+                                <div>
+                                  {{ with .title }}<h5 class="text-lg font-semibold text-white mb-3">{{ . }}</h5>{{ end }}
+                                  {{ if eq $featureType "tags" }}
+                                    <div class="flex flex-wrap gap-2">
+                                      {{ range .items }}
+                                        {{ $item := . }}
+                                        {{ $label := $item.label | default $item }}
+                                        {{ $class := $item.class | default "bg-blue-500/20 text-blue-400" }}
+                                        <span class="px-2 py-1 rounded text-xs {{ $class }}">{{ $label }}</span>
+                                      {{ end }}
+                                    </div>
+                                  {{ else if eq $featureType "standards" }}
+                                    <div class="space-y-3">
+                                      {{ range .sections }}
+                                        {{ with .heading }}<h6 class="text-sm font-medium text-gray-300">{{ . }}</h6>{{ end }}
+                                        {{ with .tags }}
+                                          <div class="flex flex-wrap gap-1">
+                                            {{ range . }}
+                                              {{ $tag := . }}
+                                              {{ $label := $tag.label | default $tag }}
+                                              {{ $class := $tag.class | default "bg-blue-500/20 text-blue-400" }}
+                                              <span class="px-2 py-1 rounded text-xs {{ $class }}">{{ $label }}</span>
+                                            {{ end }}
+                                          </div>
+                                        {{ end }}
+                                      {{ end }}
+                                    </div>
+                                  {{ else }}
+                                    <ul class="space-y-2">
+                                      {{ range .items }}
+                                        <li class="flex items-start space-x-2">
+                                          <i class="fa-solid fa-check text-green-400 mt-1 text-sm"></i>
+                                          <span class="text-gray-300 text-sm">{{ . | markdownify }}</span>
+                                        </li>
+                                      {{ end }}
+                                    </ul>
+                                  {{ end }}
+                                </div>
+                              {{ end }}
+                            </div>
+                          {{ end }}
+                        </div>
+                      </div>
+                    {{ end }}
+                  {{ end }}
+                </section>
+              {{ end }}
+            </section>
+          {{ end }}
+
+          {{ with $cta }}
+            <section id="{{ .id | default "call-to-action" }}" class="scroll-mt-40">
+              <div class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-12 text-center">
+                {{ with .title }}<h2 class="text-3xl font-bold text-white mb-4">{{ . }}</h2>{{ end }}
+                {{ with .text }}<p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">{{ . | markdownify }}</p>{{ end }}
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                  {{ with .primary }}
+                    {{ $href := .href | default .url }}
+                    {{ if $href }}
+                      <a href="{{ $href }}" class="inline-flex items-center space-x-2 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 {{ .class | default "bg-verana hover:bg-verana-dark text-white" }}" target="{{ if strings.HasPrefix $href "http" }}_blank{{ end }}" rel="{{ if strings.HasPrefix $href "http" }}noopener noreferrer{{ end }}">
+                        {{ with .icon }}<i class="{{ . }}"></i>{{ end }}
+                        <span>{{ .label | default "Get started" }}</span>
+                      </a>
+                    {{ end }}
+                  {{ end }}
+                  {{ with .secondary }}
+                    {{ $href := .href | default .url }}
+                    {{ if $href }}
+                      <a href="{{ $href }}" class="px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 {{ .class | default "border-2 border-gray-600 hover:border-verana text-white" }}" target="{{ if strings.HasPrefix $href "http" }}_blank{{ end }}" rel="{{ if strings.HasPrefix $href "http" }}noopener noreferrer{{ end }}">
+                        <span>{{ .label | default "Learn more" }}</span>
+                      </a>
+                    {{ end }}
+                  {{ end }}
+                </div>
+              </div>
+            </section>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+{{ with $resources }}
+  <section id="developer-resources" class="bg-gray-900 py-20">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-12 text-center">{{ . }}</h2>{{ end }}
+        {{ with .cards }}
+          <div class="grid md:grid-cols-3 gap-8">
+            {{ range . }}
+              <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                {{ with .icon }}
+                  {{ $cardIconColor := .color | default "text-verana" }}
+                  <div class="w-12 h-12 {{ .bg | default "bg-verana/20" }} rounded-xl flex items-center justify-center mb-6">
+                    {{ with .name }}<i class="{{ . }} {{ $cardIconColor }} text-xl"></i>{{ end }}
+                  </div>
+                {{ end }}
+                {{ with .title }}<h3 class="text-xl font-semibold text-white mb-4">{{ . }}</h3>{{ end }}
+                {{ with .text }}<p class="text-gray-300 mb-6 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                {{ with .link }}
+                  {{ $href := .href | default .url }}
+                  {{ if $href }}
+                    <a href="{{ $href }}" class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200" target="{{ if strings.HasPrefix $href "http" }}_blank{{ end }}" rel="{{ if strings.HasPrefix $href "http" }}noopener noreferrer{{ end }}">
+                      <span>{{ .label | default "Learn more" }}</span>
+                      <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </a>
+                  {{ end }}
+                {{ end }}
+              </div>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const sidebar = document.querySelector('[data-components-sidebar]');
+    if (!sidebar) return;
+
+    const links = Array.from(sidebar.querySelectorAll('[data-nav-link]'));
+    if (!links.length) return;
+
+    const sectionMap = new Map();
+
+    links.forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      const id = decodeURIComponent(href.slice(1));
+      const section = document.getElementById(id);
+      if (!section) return;
+      if (!sectionMap.has(id)) {
+        sectionMap.set(id, { element: section, links: [] });
+      }
+      sectionMap.get(id).links.push(link);
+    });
+
+    if (!sectionMap.size) return;
+
+    const setActive = id => {
+      sectionMap.forEach((value, key) => {
+        value.links.forEach(link => {
+          if (key === id) {
+            link.classList.add('text-verana', 'font-semibold');
+            link.classList.remove('text-gray-400');
+            link.setAttribute('aria-current', 'true');
+          } else {
+            link.classList.remove('text-verana', 'font-semibold');
+            link.classList.add('text-gray-400');
+            link.removeAttribute('aria-current');
+          }
+        });
+      });
+    };
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActive(entry.target.id);
+        }
+      });
+    }, {
+      rootMargin: '-40% 0px -40% 0px',
+      threshold: [0, 1]
+    });
+
+    sectionMap.forEach(value => observer.observe(value.element));
+
+    const headerOffset = () => {
+      const header = document.querySelector('header');
+      return header ? header.offsetHeight + 24 : 120;
+    };
+
+    links.forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      link.addEventListener('click', event => {
+        const id = decodeURIComponent(href.slice(1));
+        const target = document.getElementById(id);
+        if (!target) return;
+        event.preventDefault();
+        const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: elementPosition - headerOffset(), behavior: 'smooth' });
+        history.replaceState(null, '', `#${id}`);
+        setActive(id);
+      });
+    });
+
+    const firstEntry = sectionMap.keys().next();
+    if (!firstEntry.done) {
+      setActive(firstEntry.value);
+    }
+  });
+</script>

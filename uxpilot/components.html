@@ -1,0 +1,931 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verana Components - Developers - Verana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "fontFamily": {
+        "inter": [
+          "Inter",
+          "sans-serif"
+        ]
+      },
+      "colors": {
+        "verana": "#763ef0",
+        "verana-light": "#9f7aea",
+        "verana-dark": "#553c9a"
+      },
+      "animation": {
+        "float": "float 6s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite alternate",
+        "network-pulse": "network-pulse 3s ease-in-out infinite",
+        "code-flow": "code-flow 4s ease-in-out infinite",
+        "component-glow": "component-glow 3s ease-in-out infinite alternate"
+      },
+      "keyframes": {
+        "float": {
+          "0%, 100%": {
+            "transform": "translateY(0px)"
+          },
+          "50%": {
+            "transform": "translateY(-20px)"
+          }
+        },
+        "pulse-glow": {
+          "0%": {
+            "boxShadow": "0 0 20px rgba(118, 62, 240, 0.3)"
+          },
+          "100%": {
+            "boxShadow": "0 0 40px rgba(118, 62, 240, 0.6)"
+          }
+        },
+        "network-pulse": {
+          "0%, 100%": {
+            "opacity": "0.4"
+          },
+          "50%": {
+            "opacity": "0.8"
+          }
+        },
+        "code-flow": {
+          "0%": {
+            "transform": "translateX(-100px)",
+            "opacity": "0"
+          },
+          "50%": {
+            "transform": "translateX(0px)",
+            "opacity": "1"
+          },
+          "100%": {
+            "transform": "translateX(100px)",
+            "opacity": "0"
+          }
+        },
+        "component-glow": {
+          "0%": {
+            "boxShadow": "0 0 15px rgba(34, 197, 94, 0.3)"
+          },
+          "100%": {
+            "boxShadow": "0 0 30px rgba(34, 197, 94, 0.6)"
+          }
+        }
+      }
+    }
+  }
+};</script>
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        .gradient-mesh {
+            background: radial-gradient(circle at 20% 50%, rgba(118, 62, 240, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(118, 62, 240, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(118, 62, 240, 0.08) 0%, transparent 50%);
+        }
+        .network-bg {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(118, 62, 240, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(118, 62, 240, 0.08) 1px, transparent 1px);
+            background-size: 60px 60px, 40px 40px;
+            animation: network-pulse 4s ease-in-out infinite;
+        }
+        .code-pattern {
+            background-image: 
+                linear-gradient(45deg, rgba(34, 197, 94, 0.05) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(34, 197, 94, 0.05) 25%, transparent 25%);
+            background-size: 30px 30px;
+        }
+        .component-pattern {
+            background-image: 
+                radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.08) 2px, transparent 2px),
+                radial-gradient(circle at 70% 60%, rgba(34, 197, 94, 0.06) 1px, transparent 1px);
+            background-size: 40px 40px, 25px 25px;
+        }
+    </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-black text-white overflow-x-hidden font-custom">
+
+<!-- Header -->
+<header id="header" class="bg-black/95 backdrop-blur-sm border-b border-gray-800/50 sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <span class="flex items-center space-x-3 cursor-pointer">
+                    <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-white">Verana</span>
+                </span>
+            </div>
+            
+            <nav class="hidden lg:flex items-center space-x-8">
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Why Verana</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Build</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Trust Engine</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Industry Use Cases</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">Community</span>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">About</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <span class="bg-verana hover:bg-verana-dark text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer">
+                    Testnet
+                </span>
+                <button class="lg:hidden text-white">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Page Hero Section -->
+<section id="page-hero" class="relative bg-gray-900 py-16 lg:py-24 overflow-hidden h-[450px] flex items-center">
+    <div class="absolute inset-0 gradient-mesh opacity-50"></div>
+    <div class="absolute inset-0 network-bg opacity-20"></div>
+    <div class="absolute inset-0 code-pattern opacity-10"></div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <nav class="flex items-center space-x-2 text-sm text-gray-400 mb-8">
+                <span class="hover:text-white cursor-pointer">Home</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="hover:text-white cursor-pointer">Developers</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="text-verana">Components</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4 mb-6">
+                <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center animate-component-glow">
+                    <i class="fa-solid fa-cubes text-green-400 text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-4xl lg:text-6xl font-bold leading-tight">
+                        <span class="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">Verana Components</span>
+                    </h1>
+                    <p class="text-lg text-gray-400 mt-2">Verana's tech stack.</p>
+                </div>
+            </div>
+            
+            <p class="text-xl lg:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+                Explore Verana components, learn about each component, how they are built, with which technology, and where are the repos.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content Section -->
+<section id="main-content" class="bg-black py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12">
+                <!-- Sidebar Navigation -->
+                <aside id="sidebar-nav" class="lg:col-span-1">
+                    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky" data-sidebar-sticky>
+                        <h3 class="text-lg font-semibold text-white mb-6">Developers</h3>
+                        <nav class="space-y-3">
+                            <span class="block text-verana cursor-pointer">Components</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Getting Started</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">API Reference</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">SDKs</span>
+                        </nav>
+                        
+                        <div class="mt-8 pt-6 border-t border-gray-700">
+                            <h4 class="text-sm font-semibold text-white mb-4">Quick Access</h4>
+                            <div class="space-y-2">
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">GitHub</span>
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Documentation</span>
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Community</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                
+                <!-- Content Area -->
+                <div id="content-area" class="lg:col-span-3">
+                    <!-- Overview Section -->
+                    <div id="overview-section" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Overview of Verana Components</h2>
+                        
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+                            <p class="text-xl text-gray-300 leading-relaxed">
+                                Verana's architecture is built on modular, open-source components that work together to create a decentralized trust infrastructure. Each component serves a specific purpose and can be deployed independently or as part of the complete Verana ecosystem.
+                            </p>
+                        </div>
+                        
+                        <!-- Component Architecture Diagram -->
+                        <div class="bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-2xl p-12 mb-8">
+                            <div class="relative component-pattern opacity-20 absolute inset-0 rounded-2xl"></div>
+                            <div class="relative z-10">
+                                <h3 class="text-2xl font-semibold text-white mb-8 text-center">Component Architecture</h3>
+                                
+                                <!-- Wide Illustration -->
+                             <br/>
+
+                            <div class="w-full h-96 overflow-hidden rounded-xl">
+                                <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/d56d8832cd-53927369c9e8258da11f.png" alt="futuristic AI agent robot with green glowing circuits, digital credentials floating around, verifiable service architecture, cyberpunk style with green and blue accents">
+                            </div>
+                                <br/>
+                                <br/>
+                                
+
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                    <div class="text-center">
+                                        <div class="w-20 h-20 bg-blue-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4 animate-float">
+                                            <i class="fa-solid fa-server text-blue-400 text-2xl"></i>
+                                        </div>
+                                        <h4 class="text-lg font-semibold text-white mb-2">Network Layer</h4>
+                                        <p class="text-gray-400">Core blockchain infrastructure and indexing services</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="w-20 h-20 bg-green-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4 animate-float" style="animation-delay: 0.5s;">
+                                            <i class="fa-solid fa-cogs text-green-400 text-2xl"></i>
+                                        </div>
+                                        <h4 class="text-lg font-semibold text-white mb-2">Service Layer</h4>
+                                        <p class="text-gray-400">Verifiable services and agent implementations</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="w-20 h-20 bg-purple-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4 animate-float" style="animation-delay: 1s;">
+                                            <i class="fa-solid fa-mobile-alt text-purple-400 text-2xl"></i>
+                                        </div>
+                                        <h4 class="text-lg font-semibold text-white mb-2">User Layer</h4>
+                                        <p class="text-gray-400">Applications and user-facing interfaces</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <!-- Component Spotlight Section -->
+                    <div id="component-spotlight" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-12">Component Spotlight</h2>
+                        
+                        <!-- Network Components -->
+                        <div id="network-components" class="mb-12">
+                            <div class="flex items-center space-x-4 mb-8">
+                                <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                                    <i class="fa-solid fa-network-wired text-blue-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-white">Network Components</h3>
+                            </div>
+                            
+                            <!-- Verana Node -->
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8 hover:border-blue-500/50 transition-all duration-300">
+                                <div class="flex items-start justify-between mb-6">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                                            <i class="fa-solid fa-cube text-blue-400 text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-xl font-semibold text-white mb-2">Verana Node</h4>
+                                            <div class="flex items-center space-x-2">
+                                                <span class="px-3 py-1 bg-blue-500/20 text-blue-400 text-xs rounded-full">Cosmos SDK</span>
+                                                <span class="px-3 py-1 bg-gray-700 text-gray-300 text-xs rounded-full">Layer-1</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <span class="inline-flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm transition-all duration-200 cursor-pointer">
+                                            <i class="fa-solid fa-flask"></i>
+                                            <span>Testnet</span>
+                                        </span>
+                                        <span class="inline-flex items-center space-x-2 bg-gray-800 hover:bg-verana text-white px-4 py-2 rounded-lg text-sm transition-all duration-200 cursor-pointer">
+                                            <i class="fa-brands fa-github"></i>
+                                            <span>Repository</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="grid lg:grid-cols-3 gap-6 mb-6">
+                                    <div class="lg:col-span-2">
+                                        <p class="text-gray-300 leading-relaxed mb-4">
+                                            A layer-1 <strong>Cosmos SDK</strong> based implementation of the <strong>verifiable public registry spec</strong>. Verana is a registry of trust registries, where any ecosystem can create and self-govern its trust network.
+                                        </p>
+                                        <p class="text-gray-300 leading-relaxed">
+                                            Governance of the chain is managed by a <strong>council</strong>.
+                                        </p>
+                                    </div>
+                                    <div class="lg:col-span-1">
+                                        <div class="w-full h-48 overflow-hidden rounded-xl">
+                                            <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/fe1025525e-b87c3acf7cc9ca570bd8.png" alt="futuristic blockchain network nodes connected in a cosmic space, glowing blue connections, layer-1 architecture visualization, digital art style">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Indexer -->
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8 hover:border-blue-500/50 transition-all duration-300">
+                                <div class="flex items-start justify-between mb-6">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="w-14 h-14 bg-green-500/20 rounded-xl flex items-center justify-center">
+                                            <i class="fa-solid fa-database text-green-400 text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-xl font-semibold text-white mb-2">Indexer</h4>
+                                            <div class="flex items-center space-x-2">
+                                                <span class="px-3 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">Horoscope v2 Fork</span>
+                                                <span class="px-3 py-1 bg-gray-700 text-gray-300 text-xs rounded-full">Database</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <span class="inline-flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm transition-all duration-200 cursor-pointer">
+                                            <i class="fa-solid fa-flask"></i>
+                                            <span>Testnet</span>
+                                        </span>
+                                        <span class="inline-flex items-center space-x-2 bg-gray-800 hover:bg-verana text-white px-4 py-2 rounded-lg text-sm transition-all duration-200 cursor-pointer">
+                                            <i class="fa-brands fa-github"></i>
+                                            <span>Repository</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="mb-6">
+                                    <p class="text-gray-300 leading-relaxed mb-4">
+                                        A fork of <strong>Horoscope v2</strong>, the indexer of the Aura Network. The purpose of the Verana indexer is to build a local database by executing the transaction of each block of the verana network from first block, to be able to:
+                                    </p>
+                                    <ul class="text-gray-300 space-y-2 ml-4">
+                                        <li class="flex items-start space-x-2">
+                                            <i class="fa-solid fa-check text-green-400 mt-1 text-sm"></i>
+                                            <span>Perform advanced queries that cannot be done with the ledger API</span>
+                                        </li>
+                                        <li class="flex items-start space-x-2">
+                                            <i class="fa-solid fa-check text-green-400 mt-1 text-sm"></i>
+                                            <span>Maintain state change history, to get access to information that is not visible in current ledger state</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="grid grid-cols-3 gap-4">
+                                    <div class="w-full h-32 overflow-hidden rounded-xl">
+                                        <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/7ca420c44f-440635eefec4a2e65da6.png" alt="digital database with flowing data streams, green glowing server racks, blockchain indexing visualization, cyberpunk style">
+                                    </div>
+                                    <div class="w-full h-32 overflow-hidden rounded-xl">
+                                        <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/c3d4e5f6a7-8b9c0d1e2f3a4b5c6d7e.png" alt="blockchain transaction flow visualization, green matrix-style data streams, database synchronization process, futuristic interface">
+                                    </div>
+                                    <div class="w-full h-32 overflow-hidden rounded-xl">
+                                        <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/9f8e7d6c5b-4a3b2c1d0e9f8g7h6i5j.png" alt="advanced query interface with holographic data displays, green glowing analytics dashboard, real-time blockchain state monitoring">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Resolver -->
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8 hover:border-blue-500/50 transition-all duration-300">
+                                <div class="flex items-start justify-between mb-6">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="w-14 h-14 bg-green-500/20 rounded-xl flex items-center justify-center">
+                                            <i class="fa-solid fa-search text-green-400 text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-xl font-semibold text-white mb-2">Resolver</h4>
+                                            <div class="flex items-center space-x-2">
+                                                <span class="px-3 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">Trust Engine</span>
+                                                <span class="px-3 py-1 bg-gray-700 text-gray-300 text-xs rounded-full">Query API</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <span class="inline-flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm transition-all duration-200 cursor-pointer">
+                                            <i class="fa-solid fa-flask"></i>
+                                            <span>Testnet</span>
+                                        </span>
+                                        <span class="inline-flex items-center space-x-2 bg-gray-800 hover:bg-verana text-white px-4 py-2 rounded-lg text-sm transition-all duration-200 cursor-pointer">
+                                            <i class="fa-brands fa-github"></i>
+                                            <span>Repository</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="grid lg:grid-cols-3 gap-6 mb-6">
+                                    <div class="lg:col-span-2">
+                                        <p class="text-gray-300 leading-relaxed mb-4">
+                                            The purpose of the Verana resolver is to build and maintain up to date a local database, by querying the indexer and subscribe to change events of the DID Directory, to be able to:
+                                        </p>
+                                        <ul class="text-gray-300 space-y-2 ml-4 mb-4">
+                                            <li class="flex items-start space-x-2">
+                                                <i class="fa-solid fa-check text-green-400 mt-1 text-sm"></i>
+                                                <span>Crawl verifiable services, dereferences their credential, and organize data</span>
+                                            </li>
+                                            <li class="flex items-start space-x-2">
+                                                <i class="fa-solid fa-check text-green-400 mt-1 text-sm"></i>
+                                                <span>Provide a universal query API to Verifiable User Agents and to search engine, for searching verifiable data</span>
+                                            </li>
+                                        </ul>
+                                        <div class="bg-green-900/20 border border-green-700/30 rounded-xl p-4">
+                                            <p class="text-green-200 text-sm">
+                                                For a better understanding, you should <strong>learn about the trust engine</strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-1">
+                                        <div class="w-full h-48 overflow-hidden rounded-xl">
+                                            <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/3826adee5c-4f073ce64afaa20d350d.png" alt="purple glowing search interface with interconnected trust networks, AI-powered resolution system, futuristic digital landscape">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Front End -->
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8 hover:border-purple-500/50 transition-all duration-300">
+                                <div class="flex items-start justify-between mb-6">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                                            <i class="fa-solid fa-magnifying-glass text-purple-400 text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-xl font-semibold text-white mb-2">Front End</h4>
+                                            <div class="flex items-center space-x-2">
+                                                <span class="px-3 py-1 bg-gray-700 text-gray-300 text-xs rounded-full">Frontend</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <span class="inline-flex items-center space-x-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm transition-all duration-200 cursor-pointer">
+                                            <i class="fa-solid fa-flask"></i>
+                                            <span>Testnet</span>
+                                        </span>
+                                        <span class="inline-flex items-center space-x-2 bg-gray-800 hover:bg-verana text-white px-4 py-2 rounded-lg text-sm transition-all duration-200 cursor-pointer">
+                                            <i class="fa-brands fa-github"></i>
+                                            <span>Repository</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="grid lg:grid-cols-3 gap-6">
+                                    <div class="lg:col-span-2">
+                                        <p class="text-gray-300 leading-relaxed mb-4">
+                                            Fancy prompt to query the resolver, see <strong>trust engine examples here</strong>
+                                        </p>
+                                        <ul class="text-gray-300 space-y-2 ml-4 mb-4">
+                                            <li class="flex items-start space-x-2">
+                                                <i class="fa-solid fa-check text-green-400 mt-1 text-sm"></i>
+                                                <span>Crawl verifiable services, dereferences their credential, and organize data</span>
+                                            </li>
+                                            <li class="flex items-start space-x-2">
+                                                <i class="fa-solid fa-check text-green-400 mt-1 text-sm"></i>
+                                                <span>Provide a universal query API to Verifiable User Agents and to search engine, for searching verifiable data</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="lg:col-span-1">
+                                        <div class="w-full h-48 overflow-hidden rounded-xl">
+                                            <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/def83d1844-4439013d109c507ac622.png" alt="modern search interface with orange accent colors, query prompts floating in digital space, sleek UI design">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Search Engine -->
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8 hover:border-blue-500/50 transition-all duration-300">
+                                <div class="flex items-start justify-between mb-6">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                                            <i class="fa-solid fa-magnifying-glass text-purple-400 text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-xl font-semibold text-white mb-2">Search Engine</h4>
+                                            <div class="flex items-center space-x-2">
+                                                <span class="px-3 py-1 bg-purple-500/20 text-purple-400 text-xs rounded-full">Query Interface</span>
+                                                <span class="px-3 py-1 bg-gray-700 text-gray-300 text-xs rounded-full">Frontend</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <span class="inline-flex items-center space-x-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm transition-all duration-200 cursor-pointer">
+                                            <i class="fa-solid fa-flask"></i>
+                                            <span>Testnet</span>
+                                        </span>
+                                        <span class="inline-flex items-center space-x-2 bg-gray-800 hover:bg-verana text-white px-4 py-2 rounded-lg text-sm transition-all duration-200 cursor-pointer">
+                                            <i class="fa-brands fa-github"></i>
+                                            <span>Repository</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="grid lg:grid-cols-3 gap-6">
+                                    <div class="lg:col-span-2">
+                                        <p class="text-gray-300 leading-relaxed">
+                                            Fancy prompt to query the resolver, see <strong>trust engine examples here</strong>
+                                        </p>
+                                    </div>
+                                    <div class="lg:col-span-1">
+                                        <div class="w-full h-48 overflow-hidden rounded-xl">
+                                            <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/def83d1844-4439013d109c507ac622.png" alt="modern search interface with orange accent colors, query prompts floating in digital space, sleek UI design">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Visualizer -->
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8 hover:border-blue-500/50 transition-all duration-300">
+                                <div class="flex items-start justify-between mb-6">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                                            <i class="fa-solid fa-chart-network text-purple-400 text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-xl font-semibold text-white mb-2">Visualizer</h4>
+                                            <div class="flex items-center space-x-2">
+                                                <span class="px-3 py-1 bg-purple-500/20 text-purple-400 text-xs rounded-full">Dashboard</span>
+                                                <span class="px-3 py-1 bg-gray-700 text-gray-300 text-xs rounded-full">Analytics</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <span class="inline-flex items-center space-x-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm transition-all duration-200 cursor-pointer">
+                                            <i class="fa-solid fa-flask"></i>
+                                            <span>Testnet</span>
+                                        </span>
+                                        <span class="inline-flex items-center space-x-2 bg-gray-800 hover:bg-verana text-white px-4 py-2 rounded-lg text-sm transition-all duration-200 cursor-pointer">
+                                            <i class="fa-brands fa-github"></i>
+                                            <span>Repository</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="grid lg:grid-cols-3 gap-6">
+                                    <div class="lg:col-span-2">
+                                        <p class="text-gray-300 leading-relaxed mb-4">A dashboard for:</p>
+                                        <ul class="text-gray-300 space-y-2 ml-4">
+                                            <li class="flex items-start space-x-2">
+                                                <i class="fa-solid fa-check text-green-400 mt-1 text-sm"></i>
+                                                <span>Providing a visual and interactive map of ecosystems and how they interact</span>
+                                            </li>
+                                            <li class="flex items-start space-x-2">
+                                                <i class="fa-solid fa-check text-green-400 mt-1 text-sm"></i>
+                                                <span>Viewing ecosystem trust deposit size, number of issued / verified credentials, deposit slashes, etc.</span>
+                                            </li>
+                                            <li class="flex items-start space-x-2">
+                                                <i class="fa-solid fa-check text-green-400 mt-1 text-sm"></i>
+                                                <span>More generally, providing network statistics</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="lg:col-span-1">
+                                        <div class="w-full h-48 overflow-hidden rounded-xl">
+                                            <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/102435a500-8bc42da6b68ba409a3b1.png" alt="interactive dashboard with cyan glowing charts and network graphs, ecosystem visualization, analytics interface, holographic display">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Add Your Component -->
+                            <div class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-8 mb-8">
+                                <div class="grid lg:grid-cols-3 gap-6">
+                                    <div class="lg:col-span-2">
+                                        <div class="flex items-center space-x-4 mb-4">
+                                            <div class="w-12 h-12 bg-verana/20 rounded-xl flex items-center justify-center">
+                                                <i class="fa-solid fa-plus text-verana text-xl"></i>
+                                            </div>
+                                            <h4 class="text-xl font-semibold text-white">Your Fancy New App Here</h4>
+                                        </div>
+                                        <p class="text-gray-300 mb-4">
+                                            You've created a new network component? Just <strong>fork this repo</strong> and add it here!
+                                        </p>
+                                        <span class="inline-flex items-center space-x-2 bg-verana hover:bg-verana-dark text-white px-6 py-3 rounded-xl font-medium transition-all duration-200 hover:scale-105 cursor-pointer">
+                                            <i class="fa-brands fa-github"></i>
+                                            <span>Fork Repository</span>
+                                        </span>
+                                    </div>
+                                    <div class="lg:col-span-1">
+                                        <div class="w-full h-48 overflow-hidden rounded-xl">
+                                            <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/ffbf3183e6-47f2144824c6af01065b.png" alt="abstract plus symbol glowing in purple space, open source contribution concept, developer collaboration, digital innovation">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Verifiable Service Components -->
+                        <div id="verifiable-service-components" class="mb-12">
+    <div class="flex items-center space-x-4 mb-8">
+        <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
+            <i class="fa-solid fa-server text-green-400 text-xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-white">Verifiable Service Components</h3>
+    </div>
+    
+    <div class="bg-blue-900/20 border border-blue-700/30 rounded-2xl p-6 mb-8">
+        <div class="flex items-start space-x-3">
+            <i class="fa-solid fa-info-circle text-blue-400 text-lg mt-1"></i>
+            <div>
+                <p class="text-blue-200 leading-relaxed">
+                    <strong>Note:</strong> Verana is DID method agnostic. You can use any DID method for your verifiable services. However, make sure that the <strong>trust resolver</strong> knows how to resolve your favorite DID method (add the plugin of your favorite DID method if not already available), else your verifiable services won't be resolvable, their verifiable data won't be indexed, and thus they would not appear in the search results.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <p class="text-xl text-gray-300 leading-relaxed mb-8">
+        Here is the list of open source software that you can use to build your verifiable services.
+    </p>
+    
+    <!-- Credo Verifiable Service Agent -->
+    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8 hover:border-green-500/50 transition-all duration-300">
+        <div class="flex items-start justify-between mb-6">
+            <div class="flex items-center space-x-4">
+                <div class="w-14 h-14 bg-green-500/20 rounded-xl flex items-center justify-center">
+                    <i class="fa-solid fa-robot text-green-400 text-xl"></i>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold text-white mb-2">Credo Verifiable Service Agent</h4>
+                    <div class="flex items-center space-x-2">
+                        <span class="px-3 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">Credo-TS</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-400 text-xs rounded-full">OpenWallet</span>
+                        <span class="px-3 py-1 bg-gray-700 text-gray-300 text-xs rounded-full">Agent</span>
+                    </div>
+                </div>
+            </div>
+            <span class="inline-flex items-center space-x-2 bg-gray-800 hover:bg-verana text-white px-4 py-2 rounded-lg text-sm transition-all duration-200 cursor-pointer">
+                <i class="fa-brands fa-github"></i>
+                <span>Repository</span>
+            </span>
+        </div>
+        <p class="text-gray-300 leading-relaxed mb-6">
+            An agent for building Verifiable Services, based on OpenWallet Foundation <strong>credo-ts</strong>:
+        </p>
+        
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+                <h5 class="text-lg font-semibold text-white mb-3">Features</h5>
+                <ul class="space-y-2">
+                    <li class="flex items-start space-x-2">
+                        <i class="fa-solid fa-check text-green-400 mt-1 text-sm"></i>
+                        <span class="text-gray-300 text-sm">Use as a container or npm package</span>
+                    </li>
+                    <li class="flex items-start space-x-2">
+                        <i class="fa-solid fa-check text-green-400 mt-1 text-sm"></i>
+                        <span class="text-gray-300 text-sm">Issue and verify credentials</span>
+                    </li>
+                    <li class="flex items-start space-x-2">
+                        <i class="fa-solid fa-check text-green-400 mt-1 text-sm"></i>
+                        <span class="text-gray-300 text-sm">Publish credentials to your DID Document</span>
+                    </li>
+                    <li class="flex items-start space-x-2">
+                        <i class="fa-solid fa-check text-green-400 mt-1 text-sm"></i>
+                        <span class="text-gray-300 text-sm">Supports DIDComm and OpenID4VC / OpenID4VP</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-lg font-semibold text-white mb-3">Supported Standards</h5>
+                <div class="space-y-3">
+                    <div>
+                        <h6 class="text-sm font-medium text-gray-300 mb-2">DID Methods:</h6>
+                        <div class="flex flex-wrap gap-1">
+                            <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded">did:peer</span>
+                            <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded">did:web</span>
+                            <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded">did:webvh</span>
+                            <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded">did:cheqd</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h6 class="text-sm font-medium text-gray-300 mb-2">Credential Types:</h6>
+                        <div class="flex flex-wrap gap-1">
+                            <span class="px-2 py-1 bg-purple-500/20 text-purple-400 text-xs rounded">W3C v1.1</span>
+                            <span class="px-2 py-1 bg-purple-500/20 text-purple-400 text-xs rounded">AnonCreds</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Wide Illustration -->
+        <div class="w-full h-48 overflow-hidden rounded-xl">
+            <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/d56d8832cd-53927369c9e8258da11f.png" alt="futuristic AI agent robot with green glowing circuits, digital credentials floating around, verifiable service architecture, cyberpunk style with green and blue accents">
+        </div>
+    </div>
+    
+    <!-- Add Your VS Agent -->
+    <div class="bg-gradient-to-r from-green-900/20 to-blue-900/20 border border-green-700/30 rounded-2xl p-8 mb-8">
+        <div class="flex items-center space-x-4 mb-4">
+            <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
+                <i class="fa-solid fa-plus text-green-400 text-xl"></i>
+            </div>
+            <h4 class="text-xl font-semibold text-white">Your Verifiable Service Agent Here</h4>
+        </div>
+        <p class="text-gray-300 mb-4">
+            You've added <strong>Verifiable Trust</strong> support to other wallet software? Just <strong>fork this repo</strong> and add it here!
+        </p>
+        <span class="inline-flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl font-medium transition-all duration-200 hover:scale-105 cursor-pointer">
+            <i class="fa-brands fa-github"></i>
+            <span>Fork Repository</span>
+        </span>
+    </div>
+</div>
+                        
+                        <!-- Verifiable User Agent Components -->
+                        <div id="verifiable-user-agent-components" class="mb-12">
+                            <div class="flex items-center space-x-4 mb-8">
+                                <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                                    <i class="fa-solid fa-user-gear text-purple-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-white">Verifiable User Agent Components</h3>
+                            </div>
+                            
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 text-center">
+                                <i class="fa-solid fa-construction text-yellow-400 text-4xl mb-4"></i>
+                                <h4 class="text-xl font-semibold text-white mb-2">Coming Soon</h4>
+                                <p class="text-gray-400">Verifiable User Agent components are currently under development.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <!-- Call to Action -->
+                    <div id="page-cta" class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-12 text-center">
+                        <h2 class="text-3xl font-bold text-white mb-4">Ready to Build with Verana?</h2>
+                        <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                            Explore our components, contribute to the ecosystem, and build the future of decentralized trust.
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                            <span class="bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2 cursor-pointer">
+                                <i class="fa-solid fa-code"></i>
+                                <span>Start Developing</span>
+                            </span>
+                            <span class="border-2 border-gray-600 hover:border-verana text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 cursor-pointer">
+                                View All Repositories
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Content Section -->
+<section id="related-content" class="bg-gray-900 py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-12 text-center">Developer Resources</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-book text-blue-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Documentation</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Complete guides, API references, and tutorials to get you started with Verana development.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Read Docs</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+                
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-brands fa-github text-green-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">GitHub Organization</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Access all Verana repositories, contribute to the codebase, and collaborate with the community.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>View GitHub</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+                
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-brands fa-discord text-purple-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Developer Community</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Join our Discord server to connect with other developers, get help, and share your projects.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Join Discord</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="bg-gray-900 border-t border-gray-800 py-16">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12 mb-12">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-white">Verana</span>
+                    </div>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty.
+                    </p>
+                    <div class="flex space-x-4">
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-github"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-discord"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Verana</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Principles</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Foundation</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Press</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Developers</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Docs</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">GitHub</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Specifications</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Trust Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Public Registry Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Trust Registry Query Protocol</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col sm:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">© 2025 Verana Foundation. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 sm:mt-0">
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Privacy Policy</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Terms of Service</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Cookie Policy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</body></html>
