@@ -109,7 +109,7 @@ hybrid_section:
 example_section:
   id: example-section
   title: Example
-  intro: "Ecosystem `did:example:ecosystem` created a trust registry and a credential schema on-chain. To prove ownership, they will refer to the trust registry and attach a verifiable credential to their DID Document."
+  intro: "Ecosystem <code class=\"bg-gray-800 px-2 py-1 rounded text-green-400\">did:example:ecosystem</code> created a trust registry and a credential schema on-chain. To prove ownership, they will refer to the trust registry and attach a verifiable credential to their DID Document."
   diagram:
     alt: "Diagram showing how on-chain registries relate to off-chain credentials"
     diagram: |
