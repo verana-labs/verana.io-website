@@ -46,7 +46,7 @@ hybrid_section:
         - Public and auditable
         - Tamper-resistant
         - Transparent governance
-    - icon: fa-solid fa-shield-halved
+    - icon: fa-solid fa-shield
       icon_bg: bg-green-500/20
       icon_color: text-green-400
       title: Off-Chain Proofs
@@ -81,14 +81,14 @@ hybrid_section:
           title: Token-based business models
           text: Enable new economic incentives
     did_vc:
-      icon: fa-solid fa-user-shield
+      icon: fa-solid fa-id-card
       icon_bg: bg-green-500/20
       icon_color: text-green-400
       gradient: from-green-900/30 to-green-800/20
       border: border-green-500/30
       title: DID + VC Benefits
       items:
-        - icon: fa-solid fa-user-shield
+        - icon: fa-solid fa-user-lock
           icon_color: text-green-400
           icon_bg: bg-green-500/20
           title: Data doesn't have to be public
@@ -98,7 +98,7 @@ hybrid_section:
           icon_bg: bg-green-500/20
           title: No personal data stored on-chain
           text: Sensitive information remains off-ledger
-        - icon: fa-solid fa-fingerprint
+        - icon: fa-solid fa-shield-check
           icon_color: text-green-400
           icon_bg: bg-green-500/20
           title: Verify authenticity by ecosystem DID
@@ -211,6 +211,8 @@ proof_section:
     src: "/images/purple/vt-creds-explained.png"
     alt: "Futuristic diagram showing multiple colorful credential badges connecting to a central service icon"
     caption: "Proof-of-Trust"
+    max_width: "90%"
+    max_height: "48rem"
 did_directory_section:
   id: did-directory
   title: DID Directory

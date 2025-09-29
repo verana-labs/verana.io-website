@@ -2958,7 +2958,7 @@ video {
     50% { opacity: 0.8; }
   }
 [data-sidebar-sticky] {
-    top: calc(var(--header-offset, 104px));
+    top: calc(var(--header-offset, 104px) + 1rem);
   }
 
 /* Custom utilities or component styles */

@@ -53,7 +53,7 @@
       <div class="grid lg:grid-cols-4 gap-12">
         {{ with $sidebar }}
           <aside id="sidebar-nav" class="lg:col-span-1">
-            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky top-24" data-sidebar-sticky>
+            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky" data-sidebar-sticky>
               {{ with .title }}<h3 class="text-lg font-semibold text-white mb-6">{{ . }}</h3>{{ end }}
               {{ with .nav }}
                 <nav class="space-y-3">
@@ -299,10 +299,15 @@
               {{ end }}
 
               {{ with .image }}
+                {{ $maxWidth := .max_width | default "100%" }}
+                {{ $maxHeight := .max_height | default .height | default "24rem" }}
+                {{ $explicitHeight := .height }}
                 <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
                   <h3 class="text-2xl font-semibold text-white mb-6">Visual Trust Credentials Flow</h3>
                   <div class="flex justify-center">
-                    <img class="w-full max-w-4xl h-96 object-contain rounded-xl" src="{{ .src }}" alt="{{ .alt }}">
+                    <div class="rounded-xl overflow-hidden w-full" style="width: min(100%, {{ $maxWidth }}); max-width: {{ $maxWidth }};">
+                      <img class="w-full h-auto object-contain" style="max-height: {{ $maxHeight }};{{ if $explicitHeight }} height: {{ $explicitHeight }};{{ end }}" src="{{ .src }}" alt="{{ .alt }}">
+                    </div>
                   </div>
                   {{ with .caption }}<p class="text-center text-gray-400 mt-4 italic">{{ . }}</p>{{ end }}
                 </div>
@@ -389,8 +394,13 @@
       };
 
       const getHeaderOffset = () => {
+        const rootStyles = getComputedStyle(document.documentElement);
+        const cssOffset = parseInt(rootStyles.getPropertyValue('--header-offset'), 10);
+        if (!Number.isNaN(cssOffset)) {
+          return cssOffset + 16;
+        }
         const header = document.querySelector('header');
-        return header ? header.getBoundingClientRect().height + 24 : 96;
+        return (header ? header.getBoundingClientRect().height : 80) + 16;
       };
 
       let headerOffset = getHeaderOffset();

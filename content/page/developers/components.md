@@ -30,7 +30,7 @@ overview:
   lead: |
     Verana's architecture is built on modular, open-source components that work together to create a decentralized trust infrastructure. Each component serves a specific purpose and can be deployed independently or as part of the complete Verana ecosystem.
   architecture:
-    title: Network Component Dependencies
+    title: Component Architecture
     image:
       alt: "Diagram showing data flow between Verana components"
       diagram: |
@@ -43,25 +43,27 @@ overview:
         skinparam defaultFontName "Inter"
         skinparam defaultFontColor #E2E8F0
         skinparam DefaultTextAlignment center
-        skinparam ArrowColor #E2E8F0
-        skinparam ArrowHeadColor #E2E8F0
+        skinparam ArrowColor #94A3B8
+        skinparam ArrowHeadColor #94A3B8
         skinparam ArrowFontColor #E2E8F0
         skinparam ArrowThickness 2
-        skinparam Padding 14
-        skinparam dpi 160
+        skinparam Padding 24
+        skinparam dpi 180
+        skinparam nodesep 60
+        skinparam ranksep 80
         skinparam rectangle {
           BackgroundColor #111827
-          BorderColor #444444
+          BorderColor #1F2937
           FontColor #E2E8F0
           RoundCorner 16
         }
 
-        rectangle "Verana Node" as vpr1 #1E3456
-        rectangle "Indexer" as idx1 #1B4239
-        rectangle "Resolver" as rslv1 #1B4239
-        rectangle "Frontend" as frontend1 #382F5A
-        rectangle "Visualizer" as vis1 #382F5A
-        rectangle "Search Engine" as search1 #382F5A
+        rectangle "Verana Node" as vpr1 #1D4ED8
+        rectangle "Indexer" as idx1 #059669
+        rectangle "Resolver" as rslv1 #059669
+        rectangle "Frontend" as frontend1 #7C3AED
+        rectangle "Visualizer" as vis1 #7C3AED
+        rectangle "Search Engine" as search1 #7C3AED
 
         idx1 --> vpr1
         frontend1 --> idx1
