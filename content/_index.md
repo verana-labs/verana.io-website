@@ -25,12 +25,12 @@ discover:
   heading: "Discover Verana"
   subheading: "Reclaiming Your Digital World"
   features:
-    - title: "Platform Dependency"
-      description: "Platforms make you rent content and connections, keeping you dependent on their rules and algorithms."
-      icon: "times"
+    - title: "Trusted Interactions"
+      description: "Every digital interaction is verifiable, authentic, and privacy-preserving, so you can engage with confidence, without intermediaries."
+      icon: "shield"
       icon_style: "solid"
-      icon_color: "text-red-400"
-      icon_bg: "bg-red-500/20"
+      icon_color: "text-verana"
+      icon_bg: "bg-verana/20"
     - title: "Digital Sovereignty"
       description: "Verana enables true digital ownership through autonomous trust networks and self-sovereign verifiable services."
       icon: "check"
@@ -51,62 +51,176 @@ discover:
     badge_text: "Watch Demo Video"
     title: "Interactive Notebook Slides"
     description: "Explore how Verana transforms digital interactions through verifiable trust networks."
-feature_sections:
-  - id: "trust"
-    eyebrow: "Trust"
-    icon:
-      name: "shield-halved"
-      style: "solid"
-      color: "text-verana"
-      bg: "bg-verana/20"
-    title: "Don't trust. Verify."
-    description: "Communities and institutions create and join decentralized and self-governed ecosystems, to exchange verifiable data with confidence and transparency."
-    bullets:
-      - "Enforce rules with ecosystem governance frameworks."
-      - "Issue and verify credentials across sectors."
-      - "Fair, privacy-preserving business models."
-    cta:
-      label: "Learn About Trust"
-      href: "/page/build/trust-networks/"
-    image: "/images/purple/trust-photo.webp"
-    image_alt: "Cryptographic trust handshake"
-  - id: "ownership"
-    eyebrow: "Ownership"
-    icon:
-      name: "key"
-      style: "solid"
-      color: "text-verana"
-      bg: "bg-verana/20"
-    title: "Own Your Services."
-    description: "Build a new generation of verifiable digital services you fully control, with data, audience, and trust sovereignty."
-    bullets:
-      - "Own your data and connections."
-      - "Prove ownership over your services."
-      - "Host anywhere, without lock-in."
-    cta:
-      label: "Claim Ownership"
-      href: "/page/build/verifiable-services/"
-    image: "/images/purple/ownership-photo.webp"
-    image_alt: "Digital key unlocking"
-    align: "left"
-  - id: "discovery"
-    eyebrow: "Discovery"
-    icon:
-      name: "compass"
-      style: "solid"
-      color: "text-verana"
-      bg: "bg-verana/20"
-    title: "Be found for what you prove, not for what you pay."
-    description: "Merit-based discovery that rewards authentic value and verifiable credentials over advertising spend and algorithmic manipulation."
-    bullets:
-      - "Credential-based ranking and discovery"
-      - "Fair competition regardless of budget"
-      - "Transparent, verifiable reputation systems"
-    cta:
-      label: "Be Discoverable"
-      href: "/page/trust-engine/trust-resolver"
-    image: "/images/purple/discovery-photo.jpg"
-    image_alt: "Digital marketplace"
+core_pillars:
+  id: core-pillars-section
+  title: "The Three Pillars of **Digital Freedom**"
+  subtitle: "Transform how you interact with the digital world through verifiable trust, true ownership, and merit-based discovery."
+  pillars:
+    - id: trust-pillar
+      label: Trust
+      icon:
+        name: fa-solid fa-shield-halved
+        color: text-verana text-xl
+        bg: bg-verana/20
+      title: "Don't Trust. Verify."
+      description: "Build confidence in digital interactions through cryptographic verification and transparent trust networks that anyone can validate."
+      highlights:
+        - "Cryptographic proof of identity"
+        - "Transparent verification"
+        - "Decentralized trust networks"
+      image:
+        src: "/images/purple/trust-photo.webp"
+        alt: "Futuristic digital handshake symbolizing cryptographic trust"
+      cta:
+        label: Learn About Trust
+        href: "/page/build/trust-networks/"
+    - id: ownership-pillar
+      label: Ownership
+      icon:
+        name: fa-solid fa-key
+        color: text-verana text-xl
+        bg: bg-verana/20
+      title: "Own Your Services."
+      description: "Take control of your digital assets with verifiable ownership that can't be revoked or manipulated by platform gatekeepers."
+      highlights:
+        - "True data sovereignty and portability"
+        - "Self-custody of digital credentials and assets"
+        - "Platform-independent digital identity"
+      image:
+        src: "/images/purple/ownership-photo.webp"
+        alt: "Digital key unlocking a glowing portal"
+      cta:
+        label: Claim Ownership
+        href: "/page/build/verifiable-services/"
+    - id: discovery-pillar
+      label: Discovery
+      icon:
+        name: fa-solid fa-compass
+        color: text-verana text-xl
+        bg: bg-verana/20
+      title: "Be found for what you prove, not for what you pay."
+      description: "Merit-based discovery that rewards authentic value and verifiable credentials over advertising spend and algorithmic manipulation."
+      highlights:
+        - "Credential-based ranking and discovery"
+        - "Fair competition regardless of budget"
+        - "Transparent, verifiable reputation systems"
+      image:
+        src: "/images/purple/discovery-photo.jpg"
+        alt: "Digital marketplace with verifiable credentials"
+      cta:
+        label: Be Discoverable
+        href: "/page/trust-engine/trust-resolver"
+examples:
+  id: systemic-problems
+  title: "...in Response to the **Three Systemic Problems**"
+  subtitle: "The internet struggles with trust, ownership, and discovery because it was never designed with verifiable identity, self-sovereignty, or fair visibility."
+  merge_impact_cards: true
+  cards:
+    - id: trust-crisis
+      title: "Trust Crisis"
+      description: "We don't know who to trust online because the internet lacks built-in cryptographic proof of identity."
+      base_class: "bg-red-900/10 border border-red-700/30"
+      hover_class: "hover:border-red-500/50"
+      icon:
+        name: fa-solid fa-shield-halved
+        color: text-red-400 text-2xl
+        bg: bg-red-500/20
+        extra_class: "group-hover:scale-110 transition-transform duration-300"
+      highlights:
+        - "No built-in identity assurance"
+        - "Costly manual verification"
+        - "Fraud & impersonation everywhere"
+      image:
+        src: "/images/purple/no-trust1.webp"
+        alt: "Abstract visualization of digital trust"
+        max_height: "10em"
+    - id: ownership-illusion
+      title: "Ownership Illusion"
+      description: "You don't own your digital services or audience: you just rent space from centralized platforms."
+      base_class: "bg-orange-900/10 border border-orange-700/30"
+      hover_class: "hover:border-orange-500/50"
+      icon:
+        name: fa-solid fa-lock
+        color: text-orange-400 text-2xl
+        bg: bg-orange-500/20
+        extra_class: "group-hover:scale-110 transition-transform duration-300"
+      highlights:
+        - "Platform lock-in and rent extraction"
+        - "Accounts can vanish overnight"
+        - "Data custody outside your control"
+      image:
+        src: "/images/purple/no-ownership1.webp"
+        alt: "Representation of digital ownership"
+        max_height: "10em"
+    - id: discovery-monopoly
+      title: "Discovery Monopoly"
+      description: "Giant platforms control visibility through opaque algorithms and expensive advertising."
+      base_class: "bg-yellow-900/10 border border-yellow-700/30"
+      hover_class: "hover:border-yellow-500/50"
+      icon:
+        name: fa-solid fa-magnifying-glass
+        color: text-yellow-400 text-2xl
+        bg: bg-yellow-500/20
+        extra_class: "group-hover:scale-110 transition-transform duration-300"
+      highlights:
+        - "Pay-to-play visibility"
+        - "Opaque, shifting algorithms"
+        - "Merit drowned by ad spend"
+      image:
+        src: "/images/purple/digital-monopoly1.webp"
+        alt: "Futuristic discovery landscape"
+        max_height: "10em"
+impact_stats:
+  id: impact-stats
+  title: "The Scale of the Problem"
+  cards:
+    - class: "bg-red-900/10 border border-red-700/30"
+      icon:
+        name: fa-solid fa-exclamation-triangle
+        color: text-red-400 text-2xl
+        bg: bg-red-500/20
+      value: "$43B"
+      text: "Annual losses to online fraud and cybercrime globally"
+    - class: "bg-orange-900/10 border border-orange-700/30"
+      icon:
+        name: fa-solid fa-building
+        color: text-orange-400 text-2xl
+        bg: bg-orange-500/20
+      value: "5"
+      text: "Tech giants control most of the internet's infrastructure and data"
+    - class: "bg-yellow-900/10 border border-yellow-700/30"
+      icon:
+        name: fa-solid fa-dollar-sign
+        color: text-yellow-400 text-2xl
+        bg: bg-yellow-500/20
+      value: "$700B"
+      text: "Global digital advertising market dominated by few platforms"
+solution_preview:
+  id: solution-preview
+  title: "Verana Solves All Three Problems"
+  subtitle: "An open trust layer that empowers verifiable services, true ownership, and fair discovery grounded in cryptographic proof."
+  icon:
+    logo: "/images/purple/logo.svg"
+    alt: "Verana logo"
+  features:
+    - title: "Cryptographic Trust"
+      description: "Built-in verification of identity and credentials."
+      icon:
+        name: fa-solid fa-shield
+        color: text-blue-400 text-xl
+        bg: bg-blue-500/20
+    - title: "True Ownership"
+      description: "Keep control of your data, audience, and digital services."
+      icon:
+        name: fa-solid fa-key
+        color: text-purple-400 text-xl
+        bg: bg-purple-500/20
+    - title: "Fair Discovery"
+      description: "Merit-based visibility powered by verifiable credentials."
+      icon:
+        name: fa-solid fa-balance-scale
+        color: text-green-400 text-xl
+        bg: bg-green-500/20
 impact:
   heading: "Exploring Real-World Impact"
   description: "Understand how ecosystems across sectors, from finance to telecom, from AI to government digital ID, can use Verana to build trustworthy, interoperable, and privacy-first digital networks and services."
@@ -166,7 +280,7 @@ impact:
 #        - "Lifecycle audit trail"
 technical:
   heading: "Built on Open Standards"
-  description: "Verana leverages cutting-edge cryptographic protocols and decentralized technologies to create a truly open and interoperable trust layer."
+  description: "Verana leverages cutting-edge cryptographic protocols and decentralized technologies that combines on-chain and off-chain anchors to create a truly open and interoperable verifiable trust layer."
   pillars:
     - title: "Verifiable Credentials"
       description: "W3C standard implementation for issuing, holding, and verifying digital credentials with cryptographic proof."
@@ -174,8 +288,8 @@ technical:
     - title: "Decentralized Identity"
       description: "Self-sovereign identity management using DIDs for true ownership and control."
       icon: { name: "fingerprint", style: "solid", color: "text-verana", bg: "bg-verana/20" }
-    - title: "Trust Networks"
-      description: "Interconnected webs of verified relationships and credentials that create transparent trust ecosystems."
+    - title: "Trust Registries"
+      description: "A decentralized, permissionless public registry, built on cosmos-sdk."
       icon: { name: "network-wired", style: "solid", color: "text-verana", bg: "bg-verana/20" }
   developer:
     title: "Developer-First Approach"
@@ -210,7 +324,7 @@ community:
       href: "https://x.com/Verana_io"
   cta:
     title: "Get Started Today"
-    description: "Ready to build with Verana? Join our testnet and start experimenting with verifiable trust networks."
+    description: "Ready to build with Verana? Join the community and start experimenting with verifiable trust networks."
     primary:
       label: "Build"
       href: "/page/build"

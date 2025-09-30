@@ -1,0 +1,61 @@
+{{ $section := .Params.core_pillars }}
+{{ if $section }}
+  {{ $sectionID := $section.id | default "core-pillars-section" }}
+  <section id="{{ $sectionID }}" class="bg-black py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          {{ with $section.title }}
+            {{ $title := . | replaceRE "\\*\\*(.+?)\\*\\*" "<span class=\"bg-gradient-to-r from-verana to-verana-light bg-clip-text text-transparent\">$1</span>" }}
+            <h2 class="text-5xl lg:text-6xl font-bold text-white mb-8">{{ $title | safeHTML }}</h2>
+          {{ end }}
+          {{ with $section.subtitle }}<p class="text-xl text-gray-300 max-w-3xl mx-auto">{{ . | markdownify }}</p>{{ end }}
+        </div>
+        {{ with $section.pillars }}
+          <div class="grid lg:grid-cols-3 gap-12">
+            {{ range . }}
+              <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group flex flex-col h-full">
+                <div class="flex-1 flex flex-col">
+                  {{ with .image }}
+                    <div class="mb-8">
+                      <img class="w-full h-64 object-cover rounded-xl" src="{{ .src }}" alt="{{ .alt }}" loading="lazy" />
+                    </div>
+                  {{ end }}
+                  <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-12 h-12 {{ .icon.bg | default "bg-verana/20" }} rounded-xl flex items-center justify-center">
+                      {{ $iconName := .icon.name | default "fa-solid fa-star" }}
+                      {{ $iconClasses := .icon.color | default "text-verana text-xl" }}
+                      <i class="{{ $iconName }} {{ $iconClasses }}"></i>
+                    </div>
+                    {{ with .label }}<span class="text-verana font-semibold uppercase tracking-wide">{{ . }}</span>{{ end }}
+                  </div>
+                  {{ with .title }}<h3 class="text-2xl lg:text-3xl font-bold text-white mb-6 leading-tight">{{ . | markdownify }}</h3>{{ end }}
+                  {{ with .description }}<p class="text-gray-300 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                  {{ with .highlights }}
+                    <div class="space-y-3 mt-8">
+                      {{ range . }}
+                        <div class="flex items-center space-x-3">
+                          <i class="fa-solid fa-check-circle text-verana text-sm"></i>
+                          <span class="text-gray-300 text-sm">{{ . | markdownify }}</span>
+                        </div>
+                      {{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+                {{ with .cta }}
+                  {{ $ctaHref := .href | default "#" }}
+                  <div class="mt-auto pt-6 flex justify-end">
+                    <a href="{{ $ctaHref }}" class="inline-flex items-center space-x-2 bg-verana hover:bg-verana-dark text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 group-hover:scale-105 ml-auto">
+                      <span>{{ .label | default "Learn More" }}</span>
+                      <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </a>
+                  </div>
+                {{ end }}
+              </div>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}

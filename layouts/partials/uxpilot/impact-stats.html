@@ -1,0 +1,29 @@
+{{ $section := .Params.impact_stats }}
+{{ if $section }}
+  {{ $sectionID := $section.id | default "impact-stats" }}
+  <section id="{{ $sectionID }}" class="{{ $section.wrapper_class | default "bg-black py-20" }}">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto text-center">
+        {{ with $section.title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-16">{{ . | markdownify }}</h2>{{ end }}
+        {{ with $section.description }}<p class="text-lg text-gray-300 max-w-3xl mx-auto mb-16 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+        {{ if not $.Params.examples.merge_impact_cards }}
+          {{ with $section.cards }}
+            <div class="grid md:grid-cols-3 gap-12">
+              {{ range . }}
+                <div class="rounded-2xl p-8 {{ .class | default "bg-black/50 border border-gray-700" }}">
+                  {{ with .icon }}
+                    <div class="w-16 h-16 {{ .bg | default "bg-verana/20" }} rounded-2xl flex items-center justify-center mx-auto mb-6">
+                      <i class="{{ .name | default "fa-solid fa-star" }} {{ .color | default "text-verana text-2xl" }}"></i>
+                    </div>
+                  {{ end }}
+                  {{ with .value }}<div class="text-4xl font-bold text-white mb-4">{{ . | markdownify }}</div>{{ end }}
+                  {{ with .text }}<p class="text-gray-300 text-lg">{{ . | markdownify }}</p>{{ end }}
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}

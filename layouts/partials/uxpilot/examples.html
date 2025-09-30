@@ -1,0 +1,102 @@
+{{ $section := .Params.examples }}
+{{ if $section }}
+  {{ $sectionID := $section.id | default "examples" }}
+  {{ $scratch := newScratch }}
+  {{ if and $section.merge_impact_cards $.Params.impact_stats }}
+    {{ $scratch.Set "impactCards" $.Params.impact_stats.cards }}
+  {{ end }}
+  {{ $scratch.Set "cardCount" (len $section.cards) }}
+  <section id="{{ $sectionID }}" class="{{ $section.wrapper_class | default "bg-gray-900 py-20" }}">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          {{ with $section.title }}
+            {{ $title := . | replaceRE "\\*\\*(.+?)\\*\\*" "<span class=\"bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent\">$1</span>" }}
+            <h2 class="text-4xl lg:text-5xl font-bold text-white mb-8">{{ $title | safeHTML }}</h2>
+          {{ end }}
+          {{ with $section.subtitle }}<p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+        </div>
+        {{ $impactCards := $scratch.Get "impactCards" }}
+        {{ with $section.cards }}
+          <div class="grid lg:grid-cols-3 gap-12">
+            {{ range $index, $card := . }}
+              {{ $cardID := $card.id | default (printf "example-%d" (add $index 1)) }}
+              {{ $baseClass := $card.base_class | default "bg-black/60 border border-gray-700" }}
+              {{ $hoverClass := $card.hover_class | default "hover:border-verana/50" }}
+              {{ $iconColor := "text-verana" }}
+              <div id="{{ $cardID }}" class="rounded-3xl p-8 transition-all duration-300 group {{ $baseClass }} {{ $hoverClass }} flex flex-col">
+                {{ with $card.icon }}
+                  {{ $iconBg := .bg | default "bg-verana/20" }}
+                  {{ $iconExtra := .extra_class | default "" }}
+                  <div class="w-16 h-16 {{ $iconBg }} rounded-2xl flex items-center justify-center mb-6 {{ $iconExtra }}">
+                    <i class="{{ .name | default "fa-solid fa-circle" }} {{ .color | default "text-verana text-2xl" }}"></i>
+                  </div>
+                  {{ $iconColorSplit := split (.color | default "text-verana text-xl") " " }}
+                  {{ if gt (len $iconColorSplit) 0 }}
+                    {{ $iconColor = index $iconColorSplit 0 }}
+                  {{ else }}
+                    {{ $iconColor = "text-verana" }}
+                  {{ end }}
+                {{ end }}
+                {{ with $card.title }}<h3 class="text-2xl font-bold text-white mb-4">{{ . | markdownify }}</h3>{{ end }}
+                {{ with $card.description }}<p class="text-gray-300 leading-relaxed mb-6">{{ . | markdownify }}</p>{{ end }}
+                {{ with $card.highlights }}
+                  <ul class="space-y-2 text-gray-300 text-sm">
+                    {{ range . }}
+                      <li class="flex items-start space-x-2">
+                        <i class="fa-solid fa-check-circle {{ $iconColor }} text-sm mt-0.5"></i>
+                        <span>{{ . | markdownify }}</span>
+                      </li>
+                    {{ end }}
+                  </ul>
+                {{ end }}
+                {{ with $card.image }}
+                  {{ $maxHeight := .max_height | default "160px" }}
+                  <div class="mt-auto pt-8">
+                    <div class="w-full overflow-hidden rounded-xl" style="height: {{ $maxHeight }};">
+                      <img src="{{ .src }}" alt="{{ .alt | default "" }}" class="w-full h-full object-cover" />
+                    </div>
+                  </div>
+                {{ end }}
+                {{ if and $impactCards (gt (len $impactCards) $index) }}
+                  {{ $stat := index $impactCards $index }}
+                  {{ with $stat }}
+                    {{ $statClass := .class | default "bg-verana/10 border border-verana/30" }}
+                    <div class="mt-8 p-6 rounded-2xl text-center {{ $statClass }}">
+                      {{ with .value }}<div class="text-3xl font-bold text-white">{{ . | markdownify }}</div>{{ end }}
+                      {{ with .text }}<p class="mt-2 text-sm text-gray-200">{{ . | markdownify }}</p>{{ end }}
+                    </div>
+                  {{ end }}
+                {{ end }}
+              </div>
+            {{ end }}
+          </div>
+        {{ end }}
+
+        {{ if and $section.merge_impact_cards $impactCards }}
+          {{ $cardCount := $scratch.Get "cardCount" }}
+          {{ if gt (len $impactCards) $cardCount }}
+            <div class="mt-16">
+              <div class="grid md:grid-cols-3 gap-8">
+                {{ range $i, $stat := $impactCards }}
+                  {{ if ge $i $cardCount }}
+                    {{ $cardClass := $stat.class | default "bg-black/60 border border-gray-700" }}
+                    <div class="rounded-3xl p-8 transition-all duration-300 text-center {{ $cardClass }}">
+                      {{ with $stat.icon }}
+                        <div class="w-16 h-16 {{ .bg | default "bg-verana/20" }} rounded-2xl flex items-center justify-center mb-6">
+                          <i class="{{ .name | default "fa-solid fa-circle" }} {{ .color | default "text-verana text-2xl" }}"></i>
+                        </div>
+                      {{ end }}
+                      {{ with $stat.value }}<div class="text-4xl font-bold text-white mb-4">{{ . | markdownify }}</div>{{ end }}
+                      {{ with $stat.text }}<p class="text-gray-300 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                    </div>
+                  {{ end }}
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}
