@@ -1,8 +1,8 @@
 ---
 title: Government Digital ID
-subtitle: "Issue privacy-preserving national IDs and let citizens prove attributes anywhere—without centralizing their data."
+subtitle: "Issue privacy-preserving national IDs and let citizens prove attributes anywhere, without centralizing their data."
 url: "/page/industry-use-cases/government-id"
-meta_title: "Government Digital ID | Verana Verifiable Citizen Credentials"
+meta_title: "Government Digital ID | Verana - Build your Trust Networks"
 meta_description: "Modernize national ID programs with Verana to issue verifiable credentials, enable selective disclosure, and deliver privacy-preserving citizen services."
 hero_icon: "fa-solid fa-id-card"
 disable_content_wrapper: true

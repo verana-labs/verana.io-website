@@ -122,8 +122,8 @@ params:
             url: "/page/developers"
           - title: "Components"
             url: "/page/developers/components"
-#          - title: "Testnet"
-#            url: "/page/developers/testnet"
+          - title: "Testnet"
+            url: "/page/developers/testnet"
 #      - title: "Community"
 #        children:
 #          - title: "Integrators"

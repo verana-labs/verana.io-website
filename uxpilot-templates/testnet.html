@@ -1,0 +1,842 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testnet - Verana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "fontFamily": {
+        "inter": [
+          "Inter",
+          "sans-serif"
+        ]
+      },
+      "colors": {
+        "verana": "#763ef0",
+        "verana-light": "#9f7aea",
+        "verana-dark": "#553c9a"
+      },
+      "animation": {
+        "float": "float 6s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite alternate",
+        "network-pulse": "network-pulse 3s ease-in-out infinite",
+        "search-pulse": "search-pulse 2s ease-in-out infinite",
+        "trust-flow": "trust-flow 4s ease-in-out infinite"
+      },
+      "keyframes": {
+        "float": {
+          "0%, 100%": {
+            "transform": "translateY(0px)"
+          },
+          "50%": {
+            "transform": "translateY(-20px)"
+          }
+        },
+        "pulse-glow": {
+          "0%": {
+            "boxShadow": "0 0 20px rgba(118, 62, 240, 0.3)"
+          },
+          "100%": {
+            "boxShadow": "0 0 40px rgba(118, 62, 240, 0.6)"
+          }
+        },
+        "network-pulse": {
+          "0%, 100%": {
+            "opacity": "0.4"
+          },
+          "50%": {
+            "opacity": "0.8"
+          }
+        },
+        "search-pulse": {
+          "0%, 100%": {
+            "transform": "scale(1)",
+            "opacity": "0.7"
+          },
+          "50%": {
+            "transform": "scale(1.05)",
+            "opacity": "1"
+          }
+        },
+        "trust-flow": {
+          "0%": {
+            "transform": "translateX(-100px)",
+            "opacity": "0"
+          },
+          "50%": {
+            "transform": "translateX(0px)",
+            "opacity": "1"
+          },
+          "100%": {
+            "transform": "translateX(100px)",
+            "opacity": "0"
+          }
+        }
+      }
+    }
+  }
+};</script>
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        .gradient-mesh {
+            background: radial-gradient(circle at 20% 50%, rgba(118, 62, 240, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(118, 62, 240, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(118, 62, 240, 0.08) 0%, transparent 50%);
+        }
+        .network-bg {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(118, 62, 240, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(118, 62, 240, 0.08) 1px, transparent 1px);
+            background-size: 60px 60px, 40px 40px;
+            animation: network-pulse 4s ease-in-out infinite;
+        }
+        .trust-pattern {
+            background-image: 
+                linear-gradient(45deg, rgba(118, 62, 240, 0.05) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(118, 62, 240, 0.05) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(118, 62, 240, 0.05) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(118, 62, 240, 0.05) 75%);
+            background-size: 40px 40px;
+            background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+        }
+    </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-black text-white overflow-x-hidden font-custom">
+
+<!-- Header -->
+<header id="header" class="bg-black/95 backdrop-blur-sm border-b border-gray-800/50 sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <span class="flex items-center space-x-3 cursor-pointer">
+                    <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-white">Verana</span>
+                </span>
+            </div>
+            
+            <nav class="hidden lg:flex items-center space-x-8">
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Why Verana</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Build</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Trust Engine</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Industry Use Cases</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">Community</span>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">About</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <span class="bg-verana hover:bg-verana-dark text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer">
+                    Testnet
+                </span>
+                <button class="lg:hidden text-white">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Page Hero Section -->
+<section id="page-hero" class="relative bg-gray-900 py-16 lg:py-24 overflow-hidden h-[450px] flex items-center">
+    <div class="absolute inset-0 gradient-mesh opacity-50"></div>
+    <div class="absolute inset-0 network-bg opacity-20"></div>
+    <div class="absolute inset-0 trust-pattern opacity-10"></div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <!-- Breadcrumb -->
+            <nav class="flex items-center space-x-2 text-sm text-gray-400 mb-8">
+                <span class="hover:text-white cursor-pointer">Home</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="hover:text-white cursor-pointer">Developers</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="text-verana">Testnet</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4 mb-6">
+                <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center animate-pulse-glow">
+                    <i class="fa-solid fa-hammer text-verana text-2xl"></i>
+                </div>
+                <h1 class="text-4xl lg:text-6xl font-bold leading-tight">
+                    <span class="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">Testnet</span>
+                </h1>
+            </div>
+            
+            <p class="text-xl lg:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+                How to use the testnet. Explore Verana applications, interfaces, block explorers, and learn how to create or join ecosystems within the network.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content Section -->
+<section id="main-content" class="bg-black py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12">
+                <!-- Sidebar Navigation -->
+                <aside id="sidebar-nav" class="lg:col-span-1">
+                    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky top-24">
+                        <h3 class="text-lg font-semibold text-white mb-6">Developers</h3>
+                        <nav class="space-y-3">
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Getting Started</span>
+                            <span class="block text-verana font-medium cursor-pointer">Testnet</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">API Reference</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">SDK Documentation</span>
+                        </nav>
+                        
+                        <div class="mt-8 pt-6 border-t border-gray-700">
+                            <h4 class="text-sm font-semibold text-white mb-4">Quick Links</h4>
+                            <div class="space-y-2">
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">GitHub Repository</span>
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Discord Community</span>
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Developer Forum</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                
+                <!-- Content Area -->
+                <div id="content-area" class="lg:col-span-3">
+                    <!-- Getting Started Section -->
+                    <div id="getting-started" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Getting Started with the Testnet</h2>
+                        
+                        <!-- Step 1: Install Wallet -->
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+                            <div class="flex items-start space-x-4 mb-6">
+                                <div class="w-8 h-8 bg-verana rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">1</div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-white mb-4">Install a Cosmos SDK Wallet</h3>
+                                    <p class="text-gray-300 mb-6">
+                                        Install a cosmos SDK wallet, such as Keplr, Leap, or any interchain-ts compatible wallet.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="grid md:grid-cols-3 gap-6 mb-6">
+                                <div class="bg-black border border-gray-600 rounded-xl p-6 text-center hover:border-verana/50 transition-all duration-300">
+                                    <img class="w-16 h-16 rounded-xl mx-auto mb-4" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/a2fe833548-92c81730287ad25c5668.png" alt="Keplr wallet logo on dark background, cryptocurrency wallet interface, modern design">
+                                    <h4 class="text-lg font-semibold text-white mb-3">Keplr</h4>
+                                    <div class="space-y-3">
+                                        <span class="w-full bg-verana hover:bg-verana-dark text-white py-2 px-4 rounded-lg font-medium transition-all duration-200 cursor-pointer block">
+                                            Download
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-black border border-gray-600 rounded-xl p-6 text-center hover:border-verana/50 transition-all duration-300">
+                                    <img class="w-16 h-16 rounded-xl mx-auto mb-4" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/3d930ef1bc-f76e92a482596dd36898.png" alt="Leap wallet logo on dark background, cryptocurrency wallet interface, modern design">
+                                    <h4 class="text-lg font-semibold text-white mb-3">Leap</h4>
+                                    <div class="space-y-3">
+                                        <span class="w-full bg-verana hover:bg-verana-dark text-white py-2 px-4 rounded-lg font-medium transition-all duration-200 cursor-pointer block">
+                                            Download
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-black border border-gray-600 rounded-xl p-6 text-center hover:border-verana/50 transition-all duration-300">
+                                    <img class="w-16 h-16 rounded-xl mx-auto mb-4" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/ae7ccd0ddc-d164acd2fe837f42ab4d.png" alt="Multiple cryptocurrency wallet icons on dark background, interchain compatibility, modern design">
+                                    <h4 class="text-lg font-semibold text-white mb-3">Other Wallets</h4>
+                                    <div class="space-y-3">
+                                        <span class="w-full border border-gray-600 hover:border-verana text-white py-2 px-4 rounded-lg font-medium transition-all duration-200 cursor-pointer block">
+                                            View Full List
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 2: Access Frontend -->
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+                            <div class="flex items-start space-x-4 mb-6">
+                                <div class="w-8 h-8 bg-verana rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">2</div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-white mb-4">Access the Frontend</h3>
+                                    <p class="text-gray-300 mb-6">
+                                        Access the frontend, connect your wallet to obtain your Verana address. You can copy the address by clicking the copy button on the top right corner.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-black rounded-xl p-6 border border-gray-600">
+                                <img class="w-full h-64 rounded-lg" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/b83ce183f9-047769569a07ba601db7.png" alt="Verana frontend interface showing wallet connection and address copy button, dark theme, modern UI design">
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: Download Hologram Messaging -->
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+                            <div class="flex items-start space-x-4 mb-6">
+                                <div class="w-8 h-8 bg-verana rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">3</div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-white mb-4">Download Hologram Messaging</h3>
+                                    <p class="text-gray-300 mb-6">
+                                        Download Hologram Messaging with your cellphone to interact with verifiable services.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-center space-x-8">
+                                <div class="bg-black rounded-xl p-6 border border-gray-600">
+                                    <img class="w-48 h-72 rounded-lg" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/3b6e6d2121-f6a824fd1e4ebbbedc5d.png" alt="Mobile app interface for Hologram Messaging, dark theme, modern messaging app design, smartphone mockup">
+                                </div>
+                                <div class="text-center">
+                                    <span class="bg-verana hover:bg-verana-dark text-white py-3 px-8 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 cursor-pointer block">
+                                        <i class="fa-solid fa-download mr-2"></i>
+                                        Download Hologram
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 4: Connect to Faucet -->
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+                            <div class="flex items-start space-x-4 mb-6">
+                                <div class="w-8 h-8 bg-verana rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">4</div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-white mb-4">Connect to the Faucet</h3>
+                                    <p class="text-gray-300 mb-6">
+                                        Connect to the faucet. When connected to the faucet service, just write <code class="bg-black px-2 py-1 rounded text-verana">/to &lt;your verana address&gt;</code> to get 100 VNA.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="grid md:grid-cols-2 gap-8 items-center">
+                                <div class="bg-black rounded-xl p-6 border border-gray-600">
+                                    <img class="w-full h-80 rounded-lg" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/6e076a40ac-d6694d54be2429763f29.png" alt="Chatbot interface for cryptocurrency faucet, dark theme, messaging interface with VNA token requests">
+                                </div>
+                                <div class="text-center space-y-6">
+                                    <div class="bg-black rounded-xl p-6 border border-gray-600">
+                                        <img class="w-32 h-32 mx-auto rounded-lg" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/b1aa8a2db3-e7acb7c901e37576a25e.png" alt="QR code for faucet connection, black and white, square format">
+                                        <p class="text-gray-400 text-sm mt-4">Scan to connect to faucet</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 5: Interact with Frontend -->
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+                            <div class="flex items-start space-x-4 mb-6">
+                                <div class="w-8 h-8 bg-verana rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">5</div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-white mb-4">Execute Transactions</h3>
+                                    <p class="text-gray-300 mb-6">
+                                        You can now interact with the frontend and execute transactions on the Verana network.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-black rounded-xl p-6 border border-gray-600">
+                                <img class="w-full h-64 rounded-lg" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/e5538b4edf-191102d2a187587451d1.png" alt="Verana frontend transaction interface, blockchain transaction execution, dark theme, modern UI with transaction history">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Component Deployments Section -->
+                    <div id="component-deployments" class="mb-16">
+    <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Component Deployments</h2>
+    <p class="text-lg text-gray-300 mb-12">
+        Here is a list of known deployments for all components. You can either use these deployments, or deploy your own instances.
+    </p>
+    
+    <!-- Frontend Component -->
+    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <h3 class="text-2xl font-bold text-white mb-2">Frontend</h3>
+                <p class="text-gray-300">
+                    <strong>Purpose:</strong> to create, manage and join Ecosystem Trust Networks.
+                </p>
+            </div>
+            <span class="w-12 h-12 bg-verana/20 rounded-lg flex items-center justify-center text-verana hover:bg-verana hover:text-white transition-all duration-200 cursor-pointer">
+                <i class="fa-brands fa-github text-xl"></i>
+            </span>
+        </div>
+        
+        <h4 class="text-lg font-semibold text-white mb-4">Deployments:</h4>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-black border border-gray-600 rounded-xl overflow-hidden hover:border-verana/50 transition-all duration-300">
+                <div class="aspect-[3/2] bg-gradient-to-br from-verana/20 to-verana-light/10 p-6 flex items-center justify-center">
+                    <img class="w-full h-full object-cover rounded-lg" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/384e0b1d16-f1646ccd9d9126f64403.png" alt="Modern web application dashboard interface, dark theme UI with purple accents, frontend development">
+                </div>
+                <div class="p-6">
+                    <h5 class="text-white font-medium mb-2">Verana Foundation Frontend</h5>
+                    <p class="text-gray-400 text-sm mb-4">Official hosted instance for ecosystem management</p>
+                    <span class="w-full bg-verana hover:bg-verana-dark text-white py-2 px-4 rounded-lg font-medium transition-all duration-200 cursor-pointer text-center block">
+                        Launch
+                    </span>
+                </div>
+            </div>
+            
+            <div class="bg-black border border-gray-600 rounded-xl overflow-hidden hover:border-verana/50 transition-all duration-300">
+                <div class="aspect-[3/2] bg-gray-800 p-6 flex items-center justify-center">
+                    <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center">
+                        <i class="fa-solid fa-plus text-verana text-3xl"></i>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h5 class="text-white font-medium mb-2">Deploy Your Own</h5>
+                    <p class="text-gray-400 text-sm mb-4">Self-hosted frontend instance</p>
+                    <span class="w-full border border-gray-600 hover:border-verana text-white py-2 px-4 rounded-lg font-medium transition-all duration-200 cursor-pointer text-center block">
+                        Launch
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Faucet Component -->
+    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <h3 class="text-2xl font-bold text-white mb-2">Faucet</h3>
+                <p class="text-gray-300">
+                    <strong>Purpose:</strong> to get airdropped VNA tokens for interacting with the testnet.
+                </p>
+            </div>
+            <span class="w-12 h-12 bg-verana/20 rounded-lg flex items-center justify-center text-verana hover:bg-verana hover:text-white transition-all duration-200 cursor-pointer">
+                <i class="fa-brands fa-github text-xl"></i>
+            </span>
+        </div>
+        
+        <h4 class="text-lg font-semibold text-white mb-4">Deployments:</h4>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-black border border-gray-600 rounded-xl overflow-hidden hover:border-verana/50 transition-all duration-300">
+                <div class="aspect-[3/2] bg-gradient-to-br from-blue-500/20 to-cyan-400/10 p-6 flex items-center justify-center">
+                    <img class="w-full h-full object-cover rounded-lg" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/8e27c51852-75033ad4bc526609eb0b.png" alt="Cryptocurrency faucet interface, token distribution system, water drop with digital coins, modern UI">
+                </div>
+                <div class="p-6">
+                    <h5 class="text-white font-medium mb-2">Verana Foundation Faucet</h5>
+                    <p class="text-gray-400 text-sm mb-4">Official hosted faucet for testnet tokens</p>
+                    <span class="w-full bg-verana hover:bg-verana-dark text-white py-2 px-4 rounded-lg font-medium transition-all duration-200 cursor-pointer text-center block">
+                        Launch
+                    </span>
+                </div>
+            </div>
+            
+            <div class="bg-black border border-gray-600 rounded-xl overflow-hidden hover:border-verana/50 transition-all duration-300">
+                <div class="aspect-[3/2] bg-gray-800 p-6 flex items-center justify-center">
+                    <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center">
+                        <i class="fa-solid fa-plus text-verana text-3xl"></i>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h5 class="text-white font-medium mb-2">Deploy Your Own</h5>
+                    <p class="text-gray-400 text-sm mb-4">Self-hosted faucet instance</p>
+                    <span class="w-full border border-gray-600 hover:border-verana text-white py-2 px-4 rounded-lg font-medium transition-all duration-200 cursor-pointer text-center block">
+                        Launch
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Explorer Component -->
+    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <h3 class="text-2xl font-bold text-white mb-2">Explorer</h3>
+                <p class="text-gray-300">
+                    <strong>Purpose:</strong> Block explorer
+                </p>
+            </div>
+            <span class="w-12 h-12 bg-verana/20 rounded-lg flex items-center justify-center text-verana hover:bg-verana hover:text-white transition-all duration-200 cursor-pointer">
+                <i class="fa-brands fa-github text-xl"></i>
+            </span>
+        </div>
+        
+        <h4 class="text-lg font-semibold text-white mb-4">Deployments:</h4>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-black border border-gray-600 rounded-xl overflow-hidden hover:border-verana/50 transition-all duration-300">
+                <div class="aspect-[3/2] bg-gradient-to-br from-green-500/20 to-emerald-400/10 p-6 flex items-center justify-center">
+                    <img class="w-full h-full object-cover rounded-lg" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/4f1fa6a279-adc3e9090a90d9c4229f.png" alt="Blockchain explorer interface showing transaction blocks, search functionality, dark theme with data visualization">
+                </div>
+                <div class="p-6">
+                    <h5 class="text-white font-medium mb-2">Verana Foundation Explorer</h5>
+                    <p class="text-gray-400 text-sm mb-4">Official block explorer for network data</p>
+                    <span class="w-full bg-verana hover:bg-verana-dark text-white py-2 px-4 rounded-lg font-medium transition-all duration-200 cursor-pointer text-center block">
+                        Launch
+                    </span>
+                </div>
+            </div>
+            
+            <div class="bg-black border border-gray-600 rounded-xl overflow-hidden hover:border-verana/50 transition-all duration-300">
+                <div class="aspect-[3/2] bg-gray-800 p-6 flex items-center justify-center">
+                    <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center">
+                        <i class="fa-solid fa-plus text-verana text-3xl"></i>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h5 class="text-white font-medium mb-2">Deploy Your Own</h5>
+                    <p class="text-gray-400 text-sm mb-4">Self-hosted explorer instance</p>
+                    <span class="w-full border border-gray-600 hover:border-verana text-white py-2 px-4 rounded-lg font-medium transition-all duration-200 cursor-pointer text-center block">
+                        Launch
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Indexer Component -->
+    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <h3 class="text-2xl font-bold text-white mb-2">Indexer</h3>
+                <p class="text-gray-300">
+                    <strong>Purpose:</strong> Produce an index of the ledger, for advanced query capabilities
+                </p>
+            </div>
+            <span class="w-12 h-12 bg-verana/20 rounded-lg flex items-center justify-center text-verana hover:bg-verana hover:text-white transition-all duration-200 cursor-pointer">
+                <i class="fa-brands fa-github text-xl"></i>
+            </span>
+        </div>
+        
+        <h4 class="text-lg font-semibold text-white mb-4">Deployments:</h4>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-black border border-gray-600 rounded-xl overflow-hidden hover:border-verana/50 transition-all duration-300">
+                <div class="aspect-[3/2] bg-gradient-to-br from-orange-500/20 to-amber-400/10 p-6 flex items-center justify-center">
+                    <img class="w-full h-full object-cover rounded-lg" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/ea4f78575b-cc8ccee761aafb674c42.png" alt="Database indexing interface, data organization system, query optimization dashboard, modern tech UI">
+                </div>
+                <div class="p-6">
+                    <h5 class="text-white font-medium mb-2">Verana Foundation Indexer</h5>
+                    <p class="text-gray-400 text-sm mb-4">Official hosted indexer for queries</p>
+                    <span class="w-full bg-verana hover:bg-verana-dark text-white py-2 px-4 rounded-lg font-medium transition-all duration-200 cursor-pointer text-center block">
+                        Launch
+                    </span>
+                </div>
+            </div>
+            
+            <div class="bg-black border border-gray-600 rounded-xl overflow-hidden hover:border-verana/50 transition-all duration-300">
+                <div class="aspect-[3/2] bg-gray-800 p-6 flex items-center justify-center">
+                    <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center">
+                        <i class="fa-solid fa-plus text-verana text-3xl"></i>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h5 class="text-white font-medium mb-2">Deploy Your Own</h5>
+                    <p class="text-gray-400 text-sm mb-4">Self-hosted indexer instance</p>
+                    <span class="w-full border border-gray-600 hover:border-verana text-white py-2 px-4 rounded-lg font-medium transition-all duration-200 cursor-pointer text-center block">
+                        Launch
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Trust Resolver Component -->
+    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <h3 class="text-2xl font-bold text-white mb-2">Trust Resolver</h3>
+                <p class="text-gray-300">
+                    <strong>Purpose:</strong> index verifiable services by crawling their credentials
+                </p>
+            </div>
+            <span class="w-12 h-12 bg-verana/20 rounded-lg flex items-center justify-center text-verana hover:bg-verana hover:text-white transition-all duration-200 cursor-pointer">
+                <i class="fa-brands fa-github text-xl"></i>
+            </span>
+        </div>
+        
+        <h4 class="text-lg font-semibold text-white mb-4">Deployments:</h4>
+        <div class="grid md:grid-cols-1 gap-6">
+            <div class="bg-black border border-gray-600 rounded-xl overflow-hidden opacity-50">
+                <div class="aspect-[3/2] bg-gray-800 p-6 flex items-center justify-center">
+                    <div class="w-16 h-16 bg-gray-600 rounded-2xl flex items-center justify-center">
+                        <i class="fa-solid fa-clock text-gray-400 text-3xl"></i>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h5 class="text-gray-400 font-medium mb-2">Soon</h5>
+                    <p class="text-gray-500 text-sm mb-4">Coming soon to testnet</p>
+                    <span class="w-full border border-gray-600 text-gray-400 py-2 px-4 rounded-lg font-medium text-center block cursor-not-allowed">
+                        Launch
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Visualizer Component -->
+    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <h3 class="text-2xl font-bold text-white mb-2">Visualizer</h3>
+                <p class="text-gray-300">
+                    <strong>Purpose:</strong> dashboard for browsing ecosystem map and get usage statistics
+                </p>
+            </div>
+            <span class="w-12 h-12 bg-verana/20 rounded-lg flex items-center justify-center text-verana hover:bg-verana hover:text-white transition-all duration-200 cursor-pointer">
+                <i class="fa-brands fa-github text-xl"></i>
+            </span>
+        </div>
+        
+        <h4 class="text-lg font-semibold text-white mb-4">Deployments:</h4>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-black border border-gray-600 rounded-xl overflow-hidden hover:border-verana/50 transition-all duration-300">
+                <div class="aspect-[3/2] bg-gradient-to-br from-purple-500/20 to-pink-400/10 p-6 flex items-center justify-center">
+                    <img class="w-full h-full object-cover rounded-lg" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/ee421133c0-511d5f5c124adb3ba6c4.png" alt="Data visualization dashboard with charts, graphs, network maps, ecosystem analytics, modern dark UI">
+                </div>
+                <div class="p-6">
+                    <h5 class="text-white font-medium mb-2">Verana Foundation Visualizer</h5>
+                    <p class="text-gray-400 text-sm mb-4">Official hosted visualizer dashboard</p>
+                    <span class="w-full bg-verana hover:bg-verana-dark text-white py-2 px-4 rounded-lg font-medium transition-all duration-200 cursor-pointer text-center block">
+                        Launch
+                    </span>
+                </div>
+            </div>
+            
+            <div class="bg-black border border-gray-600 rounded-xl overflow-hidden hover:border-verana/50 transition-all duration-300">
+                <div class="aspect-[3/2] bg-gray-800 p-6 flex items-center justify-center">
+                    <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center">
+                        <i class="fa-solid fa-plus text-verana text-3xl"></i>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h5 class="text-white font-medium mb-2">Deploy Your Own</h5>
+                    <p class="text-gray-400 text-sm mb-4">Self-hosted visualizer instance</p>
+                    <span class="w-full border border-gray-600 hover:border-verana text-white py-2 px-4 rounded-lg font-medium transition-all duration-200 cursor-pointer text-center block">
+                        Launch
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Search Engine Component -->
+    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <h3 class="text-2xl font-bold text-white mb-2">Search Engine</h3>
+                <p class="text-gray-300">
+                    <strong>Purpose:</strong> fancy prompt for querying the trust resolver
+                </p>
+            </div>
+            <span class="w-12 h-12 bg-verana/20 rounded-lg flex items-center justify-center text-verana hover:bg-verana hover:text-white transition-all duration-200 cursor-pointer">
+                <i class="fa-brands fa-github text-xl"></i>
+            </span>
+        </div>
+        
+        <h4 class="text-lg font-semibold text-white mb-4">Deployments:</h4>
+        <div class="grid md:grid-cols-1 gap-6">
+            <div class="bg-black border border-gray-600 rounded-xl overflow-hidden opacity-50">
+                <div class="aspect-[3/2] bg-gray-800 p-6 flex items-center justify-center">
+                    <div class="w-16 h-16 bg-gray-600 rounded-2xl flex items-center justify-center">
+                        <i class="fa-solid fa-clock text-gray-400 text-3xl"></i>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h5 class="text-gray-400 font-medium mb-2">Soon</h5>
+                    <p class="text-gray-500 text-sm mb-4">Coming soon to testnet</p>
+                    <span class="w-full border border-gray-600 text-gray-400 py-2 px-4 rounded-lg font-medium text-center block cursor-not-allowed">
+                        Launch
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                    
+                    <!-- Call to Action -->
+                    <div id="page-cta" class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-12 text-center">
+                        <h2 class="text-3xl font-bold text-white mb-4">Ready to Start Building?</h2>
+                        <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                            Join the Verana testnet and start building the future of decentralized trust.
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                            <span class="bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2 cursor-pointer">
+                                <i class="fa-solid fa-rocket"></i>
+                                <span>Access Frontend</span>
+                            </span>
+                            <span class="border-2 border-gray-600 hover:border-verana text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 cursor-pointer">
+                                Join Discord
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Content Section -->
+<section id="related-content" class="bg-gray-900 py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-12 text-center">Developer Resources</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-book text-blue-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">API Documentation</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Complete API reference and integration guides for building on Verana.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Read Docs</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+                
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-brands fa-github text-green-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">GitHub Repository</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Access the complete source code and contribute to the Verana ecosystem.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>View Code</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+                
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-brands fa-discord text-purple-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Developer Community</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Connect with other developers and get support from the Verana team.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Join Discord</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="bg-gray-900 border-t border-gray-800 py-16">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12 mb-12">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-white">Verana</span>
+                    </div>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty.
+                    </p>
+                    <div class="flex space-x-4">
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-github"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-discord"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Verana</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Principles</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Foundation</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Press</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Developers</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Docs</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">GitHub</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Specifications</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Trust Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Public Registry Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Trust Registry Query Protocol</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col sm:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">© 2025 Verana Foundation. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 sm:mt-0">
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Privacy Policy</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Terms of Service</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Cookie Policy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</body></html>
