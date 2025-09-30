@@ -138,12 +138,12 @@ examples:
     - id: discovery-monopoly
       title: "Discovery Monopoly"
       description: "Giant platforms control discoverability through opaque algorithms and expensive advertising."
-      base_class: "bg-green-900/10 border border-green-700/30"
-      hover_class: "hover:border-green-500/50"
+      base_class: "bg-yellow-900/10 border border-yellow-700/30"
+      hover_class: "hover:border-yellow-500/50"
       icon:
         name: fa-solid fa-magnifying-glass
-        color: text-green-400 text-2xl
-        bg: bg-green-500/20
+        color: text-yellow-400 text-2xl
+        bg: bg-yellow-500/20
         extra_class: "group-hover:scale-110 transition-transform duration-300"
 impact_stats:
   id: impact-stats
@@ -163,11 +163,11 @@ impact_stats:
         bg: bg-orange-500/20
       value: "5"
       text: "Tech giants control most of the internet's infrastructure and data"
-    - class: "bg-green-900/10 border border-green-700/30"
+    - class: "bg-yellow-900/10 border border-yellow-700/30"
       icon:
         name: fa-solid fa-dollar-sign
-        color: text-green-400 text-2xl
-        bg: bg-green-500/20
+        color: text-yellow-400 text-2xl
+        bg: bg-yellow-500/20
       value: "$700B"
       text: "Global digital advertising market dominated by few platforms"
 solution_preview:
