@@ -110,6 +110,44 @@ core_pillars:
       cta:
         label: Be Discoverable
         href: "/page/trust-engine/trust-resolver"
+examples:
+  id: examples
+  title: "Three Systemic Problems"
+  subtitle: "The internet faces fundamental challenges in trust, ownership, and discovery that affect billions of users and businesses worldwide."
+  cards:
+    - id: social-channels
+      title: "Trust Crisis"
+      description: "We don't know who to trust online because the internet lacks built-in cryptographic proof of identity."
+      icon:
+        name: fa-solid fa-broadcast-tower
+        color: text-purple-400 text-2xl
+        bg: bg-purple-500/20
+      highlights:
+        - "Direct audience ownership"
+        - "Algorithm-free distribution"
+        - "Portable across platforms"
+    - id: ai-agents
+      title: "Ownership Illusion"
+      description: "You don't own your digital services or audience: you just rent space from centralized platforms."
+      icon:
+        name: fa-solid fa-robot
+        color: text-green-400 text-2xl
+        bg: bg-green-500/20
+      highlights:
+        - "Privacy-preserving operation"
+        - "Verifiable ownership"
+        - "Transparent policies"
+    - id: agent-communication
+      title: "Discovery Monopoly"
+      description: "Giant platforms control discoverability through opaque algorithms and expensive advertising."
+      icon:
+        name: fa-solid fa-handshake
+        color: text-blue-400 text-2xl
+        bg: bg-blue-500/20
+      highlights:
+        - "Autonomous negotiation"
+        - "Credential exchange"
+        - "Cryptographic security"
 impact_stats:
   id: impact-stats
   title: "The Scale of the Problem"

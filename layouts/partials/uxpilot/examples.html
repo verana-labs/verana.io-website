@@ -1,0 +1,40 @@
+{{ $section := .Params.examples }}
+{{ if $section }}
+  {{ $sectionID := $section.id | default "examples" }}
+  <section id="{{ $sectionID }}" class="{{ $section.wrapper_class | default "bg-gray-900 py-20" }}">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          {{ with $section.title }}<h2 class="text-4xl lg:text-5xl font-bold text-white mb-8">{{ . | markdownify }}</h2>{{ end }}
+          {{ with $section.subtitle }}<p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+        </div>
+        {{ with $section.cards }}
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {{ range $index, $card := . }}
+              {{ $cardID := $card.id | default (printf "example-%d" (add $index 1)) }}
+              <div id="{{ $cardID }}" class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                {{ with $card.icon }}
+                  <div class="w-16 h-16 {{ .bg | default "bg-verana/20" }} rounded-2xl flex items-center justify-center mb-6">
+                    <i class="{{ .name | default "fa-solid fa-circle" }} {{ .color | default "text-verana text-2xl" }}"></i>
+                  </div>
+                {{ end }}
+                {{ with $card.title }}<h3 class="text-2xl font-semibold text-white mb-4">{{ . | markdownify }}</h3>{{ end }}
+                {{ with $card.description }}<p class="text-gray-300 mb-6 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                {{ with $card.highlights }}
+                  <div class="space-y-2">
+                    {{ range . }}
+                      <div class="flex items-center space-x-2 text-sm text-gray-400">
+                        <i class="fa-solid fa-check text-verana text-xs"></i>
+                        <span>{{ . | markdownify }}</span>
+                      </div>
+                    {{ end }}
+                  </div>
+                {{ end }}
+              </div>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}
