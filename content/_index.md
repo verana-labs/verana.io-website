@@ -289,7 +289,7 @@ technical:
       description: "Self-sovereign identity management using DIDs for true ownership and control."
       icon: { name: "fingerprint", style: "solid", color: "text-verana", bg: "bg-verana/20" }
     - title: "Trust Registries"
-      description: "A decentralized, permissionless public registry, built on cosmos-sdk."
+      description: "Governance-backed, cryptographically verifiable source of truth for “who is trusted to issue or verify what”"
       icon: { name: "network-wired", style: "solid", color: "text-verana", bg: "bg-verana/20" }
   developer:
     title: "Developer-First Approach"
