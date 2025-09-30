@@ -66,7 +66,7 @@ getting_started:
         - src: "/images/purple/front-connected.png"
           alt: "Verana frontend interface showing wallet connection and address copy button, dark theme, modern UI design"
           wrapper_class: "bg-black rounded-xl p-6 border border-gray-600"
-          img_class: "w-full h-64 rounded-lg object-cover"
+          img_class: "h-full h-64 rounded-lg object-cover"
     - number: 3
       title: "Download Hologram Messaging"
       description: "Download Hologram Messaging with your cellphone to interact with verifiable services."
@@ -74,10 +74,10 @@ getting_started:
         layout: horizontal
         items:
           - type: image
-            src: "/images/purple/hologram5.png"
+            src: "/images/purple/hologram6.png"
             alt: "Mobile app interface for Hologram Messaging, dark theme, modern messaging app design, smartphone mockup"
             wrapper_class: "bg-black rounded-xl p-6 border border-gray-600"
-            img_class: "w-48 h-72 rounded-lg object-cover"
+            img_class: "h-full w-48 h-72 rounded-lg object-cover"
           - type: actions
             wrapper_class: "text-center"
             actions:
@@ -88,30 +88,29 @@ getting_started:
     - number: 4
       title: "Connect to the Faucet"
       description: |
-        Connect to the faucet. When connected to the faucet service, just write `/to \u003cyour verana address\u003e` to get 100 VNA.
+        Scan the QR with Hologram to connect to the faucet. When connected to the faucet service, just write: <br/><br/> `   /to <your verana address>` <br/><br/>to get airdropped **VNAs**.
       media_group:
         layout: grid
         columns: 2
         items:
           - type: image
-            src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/6e076a40ac-d6694d54be2429763f29.png"
-            alt: "Chatbot interface for cryptocurrency faucet, dark theme, messaging interface with VNA token requests"
+            src: "https://faucet-vs.testnet.verana.network/qr"
+            alt: "QR for connecting to faucet"
             wrapper_class: "bg-black rounded-xl p-6 border border-gray-600"
-            img_class: "w-full h-80 rounded-lg object-cover"
+            img_class: "h-full w-40 h-80 rounded-lg "
           - type: image
-            src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/b1aa8a2db3-e7acb7c901e37576a25e.png"
-            alt: "QR code for faucet connection, black and white, square format"
+            src: "/images/purple/faucet-chatbot.jpeg"
+            alt: "bot interface"
             wrapper_class: "bg-black rounded-xl p-6 border border-gray-600 text-center"
-            img_class: "w-32 h-32 mx-auto rounded-lg object-cover"
-            caption: "Scan to connect to faucet"
+            img_class: "h-full h-32 mx-auto rounded-lg object-cover"
     - number: 5
       title: "Execute Transactions"
       description: "You can now interact with the frontend and execute transactions on the Verana network."
       media:
-        - src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/e5538b4edf-191102d2a187587451d1.png"
+        - src: "/images/purple/front-trxs.png"
           alt: "Verana frontend transaction interface, blockchain transaction execution, dark theme, modern UI with transaction history"
           wrapper_class: "bg-black rounded-xl p-6 border border-gray-600"
-          img_class: "w-full h-64 rounded-lg object-cover"
+          img_class: "h-full h-64 rounded-lg object-cover"
 component_deployments:
   id: component-deployments
   title: "Component Deployments"
