@@ -280,7 +280,7 @@ impact:
 #        - "Lifecycle audit trail"
 technical:
   heading: "Built on Open Standards"
-  description: "Verana leverages cutting-edge cryptographic protocols and decentralized technologies to create a truly open and interoperable trust layer."
+  description: "Verana leverages cutting-edge cryptographic protocols and decentralized technologies that combines on-chain and off-chain anchors to create a truly open and interoperable verifiable trust layer."
   pillars:
     - title: "Verifiable Credentials"
       description: "W3C standard implementation for issuing, holding, and verifying digital credentials with cryptographic proof."
@@ -288,8 +288,8 @@ technical:
     - title: "Decentralized Identity"
       description: "Self-sovereign identity management using DIDs for true ownership and control."
       icon: { name: "fingerprint", style: "solid", color: "text-verana", bg: "bg-verana/20" }
-    - title: "Trust Networks"
-      description: "Interconnected webs of verified relationships and credentials that create transparent trust ecosystems."
+    - title: "Trust Registries"
+      description: "A decentralized, permissionless public registry, built on cosmos-sdk."
       icon: { name: "network-wired", style: "solid", color: "text-verana", bg: "bg-verana/20" }
   developer:
     title: "Developer-First Approach"
