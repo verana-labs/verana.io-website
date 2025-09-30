@@ -151,12 +151,21 @@
             });
             h.appendChild(btn);
           });
+          function syncSidebarTop(off){
+            const stickyNodes = document.querySelectorAll('[data-sidebar-sticky]');
+            if (!stickyNodes.length) return;
+            const topValue = Math.max(0, off + 16);
+            stickyNodes.forEach(node => {
+              node.style.top = topValue + 'px';
+            });
+          }
           function updateHeaderOffset(){
             const header = document.querySelector('header');
             if (!header) return parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-offset')) || 72;
             const extra = 8;
             const off = header.offsetHeight + extra;
             document.documentElement.style.setProperty('--header-offset', off + 'px');
+            syncSidebarTop(off);
             return off;
           }
           function scrollToHash(hash){
@@ -168,12 +177,25 @@
             const top = el.getBoundingClientRect().top + window.scrollY - off;
             window.scrollTo({ top, behavior: 'instant' in window ? 'instant' : 'auto' });
           }
+          const debouncedUpdate = (() => {
+            let frame;
+            return () => {
+              if (frame) cancelAnimationFrame(frame);
+              frame = requestAnimationFrame(() => {
+                updateHeaderOffset();
+                frame = null;
+              });
+            };
+          })();
           document.addEventListener('DOMContentLoaded', () => {
             updateHeaderOffset();
             if (location.hash) {
               setTimeout(() => scrollToHash(location.hash), 0);
             }
           });
+          window.addEventListener('load', updateHeaderOffset, { once: true });
+          window.addEventListener('resize', debouncedUpdate);
+          window.addEventListener('orientationchange', debouncedUpdate);
           window.addEventListener('hashchange', () => scrollToHash(location.hash));
         })();
     </script>
