@@ -114,7 +114,7 @@ component_groups:
             class: "bg-gray-700 text-gray-300"
         actions:
           - label: Testnet
-            href: "/page/developers/testnet"
+#           href: "/page/developers/testnet"
             icon: "fa-solid fa-flask"
             class: "bg-blue-600 hover:bg-blue-700 text-white"
           - label: Repository
@@ -142,7 +142,7 @@ component_groups:
             class: "bg-gray-700 text-gray-300"
         actions:
           - label: Testnet
-            href: "/page/developers/testnet"
+#            href: "/page/developers/testnet"
             icon: "fa-solid fa-flask"
             class: "bg-green-600 hover:bg-green-700 text-white"
           - label: Repository
@@ -171,7 +171,7 @@ component_groups:
             class: "bg-gray-700 text-gray-300"
         actions:
           - label: Testnet
-            href: "/page/developers/testnet"
+#           href: "/page/developers/testnet"
             icon: "fa-solid fa-flask"
             class: "bg-green-600 hover:bg-green-700 text-white"
           - label: Repository
@@ -203,7 +203,7 @@ component_groups:
             class: "bg-gray-700 text-gray-300"
         actions:
           - label: Testnet
-            href: "/page/developers/testnet"
+#            href: "/page/developers/testnet"
             icon: "fa-solid fa-flask"
             class: "bg-purple-600 hover:bg-purple-700 text-white"
           - label: Repository
@@ -232,7 +232,7 @@ component_groups:
             class: "bg-gray-700 text-gray-300"
         actions:
           - label: Testnet
-            href: "/page/developers/testnet"
+#            href: "/page/developers/testnet"
             icon: "fa-solid fa-flask"
             class: "bg-purple-600 hover:bg-purple-700 text-white"
           - label: Repository
@@ -261,7 +261,7 @@ component_groups:
             class: "bg-gray-700 text-gray-300"
         actions:
           - label: Testnet
-            href: "/page/developers/testnet"
+#            href: "/page/developers/testnet"
             icon: "fa-solid fa-flask"
             class: "bg-purple-600 hover:bg-purple-700 text-white"
           - label: Repository
