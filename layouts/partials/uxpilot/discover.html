@@ -12,7 +12,8 @@
 {{ $videoSrc := $videoScratch.Get "src" }}
 {{/* We intentionally avoid setting a poster so browsers show the video's first frame */}}
 {{ $sectionID := or $discover.id "discover-verana" }}
-<section id="{{ $sectionID }}" class="bg-gray-900 py-20 lg:py-32">
+{{ $wrapperClass := or $discover.wrapper_class "bg-gray-900 py-20 lg:py-32" }}
+<section id="{{ $sectionID }}" class="{{ $wrapperClass }}">
   <div class="container mx-auto px-6">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16">
