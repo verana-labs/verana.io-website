@@ -112,7 +112,7 @@ core_pillars:
         href: "/page/trust-engine/trust-resolver"
 examples:
   id: systemic-problems
-  title: "In Response to the **Three Systemic Problems**"
+  title: "...in Response to the **Three Systemic Problems**"
   subtitle: "The internet struggles with trust, ownership, and discovery because it was never designed with verifiable identity, self-sovereignty, or fair visibility."
   merge_impact_cards: true
   cards:
