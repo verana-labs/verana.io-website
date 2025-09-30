@@ -114,7 +114,7 @@ component_groups:
             class: "bg-gray-700 text-gray-300"
         actions:
           - label: Testnet
-#           href: "/page/developers/testnet"
+            href: "/page/developers/testnet"
             icon: "fa-solid fa-flask"
             class: "bg-blue-600 hover:bg-blue-700 text-white"
           - label: Repository
@@ -142,7 +142,7 @@ component_groups:
             class: "bg-gray-700 text-gray-300"
         actions:
           - label: Testnet
-#            href: "/page/developers/testnet"
+            href: "/page/developers/testnet"
             icon: "fa-solid fa-flask"
             class: "bg-green-600 hover:bg-green-700 text-white"
           - label: Repository
@@ -171,7 +171,7 @@ component_groups:
             class: "bg-gray-700 text-gray-300"
         actions:
           - label: Testnet
-#           href: "/page/developers/testnet"
+            href: "/page/developers/testnet"
             icon: "fa-solid fa-flask"
             class: "bg-green-600 hover:bg-green-700 text-white"
           - label: Repository
@@ -191,6 +191,33 @@ component_groups:
           image:
             src: "/images/purple/green-check.webp"
             alt: "Search interface with interconnected trust networks in a futuristic landscape"
+      - name: Faucet
+        icon:
+          name: "fa-solid fa-search"
+          bg: "bg-green-500/20"
+          color: "text-green-400"
+        badges:
+          - label: Faucet
+            class: "bg-green-500/20 text-green-400"
+        actions:
+          - label: Testnet
+            href: "/page/developers/testnet"
+            icon: "fa-solid fa-flask"
+            class: "bg-green-600 hover:bg-green-700 text-white"
+          - label: Repository
+            href: "https://github.com/verana-labs/verana-faucet-hologram-chatbot"
+            icon: "fa-brands fa-github"
+            class: "bg-gray-800 hover:bg-verana text-white"
+        summary: |
+          Get airdropped free VNA tokens for executing transactions on the testnet.
+        bullets:
+          - Provided as an Hologram Messaging verifiable service chatbot.
+          - just write /to \<your verana address\> to get started
+        media:
+          placement: right
+          image:
+            src: "/images/purple/verana-token1.webp"
+            alt: "Search interface with interconnected trust networks in a futuristic landscape"
       - name: Front End
         icon:
           name: "fa-solid fa-magnifying-glass"
@@ -203,7 +230,7 @@ component_groups:
             class: "bg-gray-700 text-gray-300"
         actions:
           - label: Testnet
-#            href: "/page/developers/testnet"
+            href: "/page/developers/testnet"
             icon: "fa-solid fa-flask"
             class: "bg-purple-600 hover:bg-purple-700 text-white"
           - label: Repository
@@ -232,7 +259,7 @@ component_groups:
             class: "bg-gray-700 text-gray-300"
         actions:
           - label: Testnet
-#            href: "/page/developers/testnet"
+            href: "/page/developers/testnet"
             icon: "fa-solid fa-flask"
             class: "bg-purple-600 hover:bg-purple-700 text-white"
           - label: Repository
@@ -261,7 +288,7 @@ component_groups:
             class: "bg-gray-700 text-gray-300"
         actions:
           - label: Testnet
-#            href: "/page/developers/testnet"
+            href: "/page/developers/testnet"
             icon: "fa-solid fa-flask"
             class: "bg-purple-600 hover:bg-purple-700 text-white"
           - label: Repository

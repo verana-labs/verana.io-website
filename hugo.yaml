@@ -15,19 +15,19 @@ markup:
       unsafe: true
 
 params:
-#  eventArea: "📍 Meet us at TOKEN2049 and discover how Verana is combining Web3, DIDs and Verifiable Credentials to build the Open Trust Layer"
-#  eventAreaLink: "https://www.token2049.com/"
+  eventArea: "📍 Meet us at TOKEN2049 and discover how Verana is combining Web3, DIDs and Verifiable Credentials to build the Open Trust Layer"
+  eventAreaLink: "https://www.token2049.com/"
   kroki:
     enable: true
     server: "https://kroki.testnet.verana.network/"
   header:
     logo: "/images/purple/logo.svg"
     tagline: "The Open Trust Layer for the Internet"
-#    testnet:
-#      label: "Playground"
-#      url: "/page/playground"
+    testnet:
+      label: "Testnet"
+      url: "/page/developers/testnet"
 #      icon: "fa-solid fa-umbrella-beach"
-#      icon: "fa-solid fa-flask-vial"
+      icon: "fa-solid fa-flask-vial"
   footer:
     company: "Verana Foundation"
     description: "The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty."
@@ -118,12 +118,12 @@ params:
             url: "/page/industry-use-cases/decentralized-social-network"
       - title: "Developers"
         children:
-          - title: "Getting Started"
-            url: "/page/developers"
           - title: "Components"
             url: "/page/developers/components"
-#          - title: "Testnet"
-#            url: "/page/developers/testnet"
+          - title: "Testnet"
+            url: "/page/developers/testnet"
+          
+          
 #      - title: "Community"
 #        children:
 #          - title: "Integrators"

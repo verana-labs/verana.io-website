@@ -1,0 +1,444 @@
+{{- define "developers_testnet_cta" -}}
+  {{- $cta := .cta -}}
+  {{- if not $cta }}{{- return -}}{{- end -}}
+  {{- $style := $cta.style | default "primary" -}}
+  {{- $classes := dict
+    "primary" "w-full bg-verana hover:bg-verana-dark text-white py-2 px-4 rounded-lg font-medium transition-all duration-200 cursor-pointer block text-center"
+    "secondary" "w-full border border-gray-600 hover:border-verana text-white py-2 px-4 rounded-lg font-medium transition-all duration-200 cursor-pointer block text-center"
+    "outline" "w-full border border-gray-600 hover:border-verana text-white py-2 px-4 rounded-lg font-medium transition-all duration-200 cursor-pointer block text-center"
+    "disabled" "w-full border border-gray-600 text-gray-400 py-2 px-4 rounded-lg font-medium text-center block cursor-not-allowed"
+    "primary-large" "bg-verana hover:bg-verana-dark text-white py-3 px-8 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 inline-flex items-center justify-center space-x-2 cursor-pointer"
+    "primary-xl" "bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center justify-center gap-2 cursor-pointer"
+    "outline-xl" "border-2 border-gray-600 hover:border-verana text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 inline-flex items-center justify-center cursor-pointer"
+    "link" "inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium transition-all duration-200 cursor-pointer"
+  -}}
+  {{- $base := default "bg-verana hover:bg-verana-dark text-white py-2 px-4 rounded-lg font-medium transition-all duration-200 cursor-pointer inline-flex items-center justify-center" (index $classes $style) -}}
+  {{- $extra := .class | default "" -}}
+  {{- $class := strings.TrimSpace (printf "%s %s" $base $extra) -}}
+  {{- $isDisabled := or (eq $style "disabled") (not $cta.href) -}}
+  {{- $tag := "a" -}}
+  {{- if $isDisabled }}{{- $tag = "span" -}}{{- end -}}
+  {{- $attrs := printf "class=\"%s\"" $class -}}
+  {{- if and (not $isDisabled) $cta.href -}}
+    {{- $attrs = printf "%s href=\"%s\"" $attrs $cta.href -}}
+    {{- if strings.HasPrefix $cta.href "http" -}}
+      {{- $attrs = printf "%s target=\"_blank\" rel=\"noopener noreferrer\"" $attrs -}}
+    {{- end -}}
+  {{- else -}}
+    {{- $attrs = printf "%s role=\"button\" aria-disabled=\"true\"" $attrs -}}
+  {{- end -}}
+  {{- $attrsStr := $attrs -}}
+  {{- $icon := "" -}}
+  {{- with $cta.icon }}
+    {{- $iconClass := . -}}
+    {{- if or (eq $style "primary-large") (eq $style "primary-xl") -}}
+      {{- $iconClass = printf "%s text-base" $iconClass -}}
+    {{- end -}}
+    {{- $icon = printf "<i class=\"%s\"></i>" $iconClass -}}
+  {{- end -}}
+  {{- $label := $cta.label | default "" -}}
+  {{- $content := $label -}}
+  {{- if $icon -}}
+    {{- $content = printf "%s<span>%s</span>" $icon $label -}}
+  {{- end -}}
+  {{- $html := printf "<%s %s>%s</%s>" $tag $attrsStr $content $tag -}}
+  {{- $html | safeHTML -}}
+{{- end -}}
+
+{{- $page := . -}}
+{{- $sidebar := $page.Params.sidebar -}}
+{{- $getting := $page.Params.getting_started -}}
+{{- $deployments := $page.Params.component_deployments -}}
+{{- $cta := $page.Params.page_cta -}}
+{{- $resources := $page.Params.related_resources -}}
+
+<section id="testnet-content" class="bg-black py-20 lg:py-32">
+  <div class="container mx-auto px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-4 gap-12">
+        {{- with $sidebar -}}
+          <aside class="lg:col-span-1" data-testnet-sidebar>
+            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky" data-sidebar-sticky>
+              {{- with .title }}<h3 class="text-lg font-semibold text-white mb-6">{{ . }}</h3>{{ end -}}
+              {{- with .nav }}
+                <nav class="space-y-3">
+                  {{- range . }}
+                    {{- $href := .href | default .url | default "#" -}}
+                    <a href="{{ $href }}" class="block text-gray-400 hover:text-white transition-colors duration-200" data-nav-link>{{ .label }}</a>
+                  {{- end -}}
+                </nav>
+              {{- end -}}
+              {{- with .quick_links }}
+                <div class="mt-8 pt-6 border-t border-gray-700">
+                  <h4 class="text-sm font-semibold text-white mb-4">Quick Links</h4>
+                  <div class="space-y-2">
+                    {{- range . }}
+                      {{- $href := .href | default .url -}}
+                      {{- if $href -}}
+                        <a href="{{ $href }}" class="block text-sm text-gray-400 hover:text-white transition-colors duration-200"{{ if strings.HasPrefix $href "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .label }}</a>
+                      {{- else -}}
+                        <span class="block text-sm text-gray-400">{{ .label }}</span>
+                      {{- end -}}
+                    {{- end -}}
+                  </div>
+                </div>
+              {{- end -}}
+            </div>
+          </aside>
+        {{- end -}}
+
+        <div class="lg:col-span-3 space-y-16">
+          {{- with $getting -}}
+            <section id="{{ .id | default "getting-started" }}" class="space-y-8">
+              {{- with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white">{{ . }}</h2>{{ end -}}
+              {{- with .steps }}
+                {{- range $index, $step := . }}
+                  <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                    <div class="flex items-start space-x-4 mb-6">
+                      <div class="w-8 h-8 bg-verana rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">{{ or $step.number (add $index 1) }}</div>
+                      <div>
+                        {{- with $step.title }}<h3 class="text-xl font-semibold text-white mb-4">{{ . }}</h3>{{ end -}}
+                        {{- with $step.description }}<p class="text-gray-300 mb-6">{{ . | markdownify }}</p>{{ end -}}
+                      </div>
+                    </div>
+
+                    {{- with $step.cards }}
+                      {{- $columns := .columns | default 3 -}}
+                      <div class="grid gap-6 mb-6 {{ printf "md:grid-cols-%d" $columns }}">
+                        {{- range .items }}
+                          <div class="bg-black border border-gray-600 rounded-xl p-6 text-center hover:border-verana/50 transition-all duration-300">
+                            {{- with .image }}
+                              <img src="{{ .src }}" alt="{{ .alt }}" class="{{ .class | default "w-16 h-16 rounded-xl mx-auto mb-4" }}" loading="lazy" />
+                            {{- end -}}
+                            {{- with .title }}<h4 class="text-lg font-semibold text-white mb-3">{{ . }}</h4>{{ end -}}
+                            {{- with .description }}<p class="text-sm text-gray-400 mb-4">{{ . | markdownify }}</p>{{ end -}}
+                            {{- with .ctas }}
+                              <div class="space-y-3">
+                                {{- range . }}
+                                  {{- template "developers_testnet_cta" (dict "cta" .) -}}
+                                {{- end -}}
+                              </div>
+                            {{- end -}}
+                          </div>
+                        {{- end -}}
+                      </div>
+                    {{- end -}}
+
+                    {{- with $step.media }}
+                      <div class="space-y-6">
+                        {{- range . }}
+                          {{- $wrapper := .wrapper_class | default "bg-black rounded-xl p-6 border border-gray-600" -}}
+                          <div class="{{ $wrapper }}">
+                            <img src="{{ .src }}" alt="{{ .alt }}" class="{{ .img_class | default "w-full rounded-lg object-cover" }}" loading="lazy" />
+                            {{- with .caption }}<p class="text-gray-400 text-sm mt-4">{{ . }}</p>{{ end -}}
+                          </div>
+                        {{- end -}}
+                      </div>
+                    {{- end -}}
+
+                    {{- with $step.media_group }}
+                      {{- $layout := .layout | default "grid" -}}
+                      {{- $columns := .columns | default 2 -}}
+                      {{- if eq $layout "horizontal" -}}
+                        <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8">
+                          {{- range .items }}
+                            {{- $type := .type | default "image" -}}
+                            {{- if eq $type "actions" -}}
+                              <div class="{{ .wrapper_class | default "text-center" }}">
+                                <div class="space-y-4">
+                                  {{- range .actions }}
+                                    {{- template "developers_testnet_cta" (dict "cta" .) -}}
+                                  {{- end -}}
+                                </div>
+                              </div>
+                            {{- else -}}
+                              <div class="{{ .wrapper_class | default "bg-black rounded-xl p-6 border border-gray-600" }}">
+                                <img src="{{ .src }}" alt="{{ .alt }}" class="{{ .img_class | default "w-full rounded-lg object-cover" }}" loading="lazy" />
+                                {{- with .caption }}<p class="text-gray-400 text-sm mt-4">{{ . }}</p>{{ end -}}
+                              </div>
+                            {{- end -}}
+                          {{- end -}}
+                        </div>
+                      {{- else -}}
+                        <div class="grid gap-8 items-center {{ printf "md:grid-cols-%d" $columns }}">
+                          {{- range .items }}
+                            {{- $type := .type | default "image" -}}
+                            {{- if eq $type "actions" -}}
+                              <div class="{{ .wrapper_class | default "text-center" }}">
+                                <div class="space-y-4">
+                                  {{- range .actions }}
+                                    {{- template "developers_testnet_cta" (dict "cta" .) -}}
+                                  {{- end -}}
+                                </div>
+                              </div>
+                            {{- else -}}
+                              {{- $item := . -}}
+                              {{- $wrapper := $item.wrapper_class | default "bg-black rounded-xl p-6 border border-gray-600" -}}
+                              <div class="{{ $wrapper }}">
+                                {{- with $item.content }}
+                                  {{- $content := . -}}
+                                  {{- $contentClass := $content.class | default "text-gray-300 leading-relaxed" -}}
+                                  {{- with $content.items }}
+                                    {{- $iconData := $content.icon -}}
+                                    {{- $iconName := "fa-solid fa-check-circle" -}}
+                                    {{- $iconColor := "text-green-400" -}}
+                                    {{- with $iconData }}
+                                      {{- with .name }}{{ $iconName = . }}{{ end -}}
+                                      {{- with .color }}{{ $iconColor = . }}{{ end -}}
+                                    {{- end -}}
+                                    <div class="{{ $contentClass }} space-y-3">
+                                      {{- range . }}
+                                        <div class="flex items-start space-x-3">
+                                          <i class="{{ $iconName }} {{ $iconColor }} text-sm mt-1"></i>
+                                          <span class="text-gray-300">{{ . | markdownify }}</span>
+                                        </div>
+                                      {{- end -}}
+                                    </div>
+                                  {{- else -}}
+                                    <div class="{{ $contentClass }}">{{ $content.value | default $content | markdownify }}</div>
+                                  {{- end -}}
+                                {{- end -}}
+                                {{- $imageInfo := dict "src" $item.src "alt" $item.alt "img_class" $item.img_class "wrapper" "" "caption" $item.caption -}}
+                                {{- with $item.image -}}
+                                  {{- $currentCaption := index $imageInfo "caption" -}}
+                                  {{- $imageInfo = merge $imageInfo (dict
+                                    "src" (or .src .url)
+                                    "alt" (or .alt .description)
+                                    "img_class" (or .img_class .class)
+                                    "wrapper" (.wrapper_class | default "")
+                                    "caption" (or .caption $currentCaption)
+                                  ) -}}
+                                {{- end -}}
+                                {{- $imgSrc := index $imageInfo "src" -}}
+                                {{- if $imgSrc -}}
+                                  {{- $imgWrapper := index $imageInfo "wrapper" -}}
+                                  {{- $imgClass := index $imageInfo "img_class" | default "w-full rounded-lg object-cover" -}}
+                                  {{- $imgCaption := index $imageInfo "caption" -}}
+                                  {{- if $imgWrapper -}}
+                                    <div class="{{ $imgWrapper }}">
+                                      <img src="{{ $imgSrc }}" alt="{{ index $imageInfo "alt" }}" class="{{ $imgClass }}" loading="lazy" />
+                                      {{- with $imgCaption }}<div class="text-gray-400 text-sm mt-4">{{ . | markdownify }}</div>{{ end -}}
+                                    </div>
+                                  {{- else -}}
+                                    <img src="{{ $imgSrc }}" alt="{{ index $imageInfo "alt" }}" class="{{ $imgClass }}" loading="lazy" />
+                                    {{- with $imgCaption }}<div class="text-gray-400 text-sm mt-4">{{ . | markdownify }}</div>{{ end -}}
+                                  {{- end -}}
+                                {{- end -}}
+                              </div>
+                            {{- end -}}
+                          {{- end -}}
+                        </div>
+                      {{- end -}}
+                    {{- end -}}
+                  </div>
+                {{- end -}}
+              {{- end -}}
+            </section>
+          {{- end -}}
+
+          {{- with $deployments -}}
+            <section id="{{ .id | default "component-deployments" }}" class="space-y-12">
+              {{- with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white">{{ . }}</h2>{{ end -}}
+              {{- with .description }}<p class="text-lg text-gray-300 mb-4">{{ . | markdownify }}</p>{{ end -}}
+              {{- with .components }}
+                {{- range . }}
+                  <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                    <div class="flex items-center justify-between mb-6">
+                      <div>
+                        {{- with .name }}<h3 class="text-2xl font-bold text-white mb-2">{{ . }}</h3>{{ end -}}
+                        {{- with .purpose }}<p class="text-gray-300"><strong>Purpose:</strong> {{ . | markdownify }}</p>{{ end -}}
+                      </div>
+                      {{- with .github }}
+                        {{- $href := .href | default .url -}}
+                        {{- if $href -}}
+                          <a href="{{ $href }}" class="w-12 h-12 bg-verana/20 rounded-lg flex items-center justify-center text-verana hover:bg-verana hover:text-white transition-all duration-200" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-github text-xl"></i>
+                          </a>
+                        {{- else -}}
+                          <span class="w-12 h-12 bg-verana/20 rounded-lg flex items-center justify-center text-verana">
+                            <i class="fa-brands fa-github text-xl"></i>
+                          </span>
+                        {{- end -}}
+                      {{- end -}}
+                    </div>
+                    {{- with .deployments }}
+                      <h4 class="text-lg font-semibold text-white mb-4">Deployments:</h4>
+                      <div class="grid gap-6 {{ if gt (len .) 1 }}md:grid-cols-2{{ end }}">
+                        {{- range . }}
+                          {{- $type := .type | default "default" -}}
+                          {{- $cardClasses := "bg-black border border-gray-600 rounded-xl overflow-hidden hover:border-verana/50 transition-all duration-300" -}}
+                          {{- if eq $type "soon" -}}
+                            {{- $cardClasses = "bg-black border border-gray-600 rounded-xl overflow-hidden opacity-50" -}}
+                          {{- end -}}
+                          <div class="{{ $cardClasses }} flex flex-col">
+                            {{- $media := .media -}}
+                            {{- if $media }}
+                              {{- $mediaWrapper := $media.wrapper_class -}}
+                              {{- if not $mediaWrapper -}}
+                                {{- $mediaWrapper = printf "aspect-[3/2] %s p-6 flex items-center justify-center" ($media.bg | default "bg-gray-800") -}}
+                              {{- end -}}
+                              <div class="{{ $mediaWrapper }}">
+                                {{- if $media.src -}}
+                                  <img src="{{ $media.src }}" alt="{{ $media.alt }}" class="{{ $media.img_class | default "w-full h-full object-cover rounded-lg" }}" loading="lazy" />
+                                {{- else if $media.icon -}}
+                                  {{- $iconWrapper := $media.icon_wrapper_class | default "w-16 h-16 bg-black/20 rounded-2xl flex items-center justify-center" -}}
+                                  <div class="{{ $iconWrapper }}">
+                                    <i class="{{ $media.icon.name }} {{ $media.icon.color | default "text-verana text-3xl" }}"></i>
+                                  </div>
+                                {{- end -}}
+                              </div>
+                            {{- end -}}
+                            <div class="p-6 flex flex-col h-full">
+                              {{- with .title }}<h5 class="text-white font-medium mb-2">{{ . }}</h5>{{ end -}}
+                              {{- with .description }}
+                                <div class="text-gray-400 text-sm mb-4 flex-1">
+                                  {{ . | markdownify }}
+                                </div>
+                              {{- end -}}
+                              {{- with .action }}
+                                <div class="mt-auto">
+                                  {{- template "developers_testnet_cta" (dict "cta" .) -}}
+                                </div>
+                              {{- end -}}
+                            </div>
+                          </div>
+                        {{- end -}}
+                      </div>
+                    {{- end -}}
+                  </div>
+                {{- end -}}
+              {{- end -}}
+            </section>
+          {{- end -}}
+
+          {{- with $cta -}}
+            <section id="{{ .id | default "page-cta" }}" class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-12 text-center">
+              {{- with .title }}<h2 class="text-3xl font-bold text-white mb-4">{{ . }}</h2>{{ end -}}
+              {{- with .description }}<p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">{{ . | markdownify }}</p>{{ end -}}
+              <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                {{- with .primary }}{{ template "developers_testnet_cta" (dict "cta" . "class" "shadow-lg") }}{{ end -}}
+                {{- with .secondary }}{{ template "developers_testnet_cta" (dict "cta" .) }}{{ end -}}
+              </div>
+            </section>
+          {{- end -}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{- with $resources -}}
+  <section id="{{ .id | default "developer-resources" }}" class="bg-gray-900 py-20">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        {{- with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-12 text-center">{{ . }}</h2>{{ end -}}
+        {{- with .items }}
+          <div class="grid md:grid-cols-3 gap-8">
+            {{- range . }}
+              <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                {{- with .icon }}
+                  <div class="w-12 h-12 {{ .bg | default "bg-verana/20" }} rounded-xl flex items-center justify-center mb-6">
+                    <i class="{{ .name }} {{ .color | default "text-verana" }} text-xl"></i>
+                  </div>
+                {{- end -}}
+                {{- with .title }}<h3 class="text-xl font-semibold text-white mb-4">{{ . }}</h3>{{ end -}}
+                {{- with .description }}<p class="text-gray-300 mb-6 leading-relaxed">{{ . | markdownify }}</p>{{ end -}}
+                {{- with .cta }}
+                  <a href="{{ .href }}" class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200"{{ if strings.HasPrefix .href "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
+                    <span>{{ .label }}</span>
+                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                  </a>
+                {{- end -}}
+              </div>
+            {{- end -}}
+          </div>
+        {{- end -}}
+      </div>
+    </div>
+  </section>
+{{- end -}}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const sidebar = document.querySelector('[data-testnet-sidebar]');
+    if (!sidebar) return;
+
+    const links = Array.from(sidebar.querySelectorAll('[data-nav-link]'));
+    if (!links.length) return;
+
+    const sectionMap = new Map();
+
+    links.forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      const id = decodeURIComponent(href.slice(1));
+      const section = document.getElementById(id);
+      if (!section) return;
+      if (!sectionMap.has(id)) {
+        sectionMap.set(id, { element: section, links: [] });
+      }
+      sectionMap.get(id).links.push(link);
+    });
+
+    if (!sectionMap.size) return;
+
+    const setActive = id => {
+      sectionMap.forEach((value, key) => {
+        value.links.forEach(link => {
+          if (key === id) {
+            link.classList.add('text-verana', 'font-semibold');
+            link.classList.remove('text-gray-400');
+            link.setAttribute('aria-current', 'true');
+          } else {
+            link.classList.remove('text-verana', 'font-semibold');
+            link.classList.add('text-gray-400');
+            link.removeAttribute('aria-current');
+          }
+        });
+      });
+    };
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActive(entry.target.id);
+        }
+      });
+    }, {
+      rootMargin: '-40% 0px -40% 0px',
+      threshold: [0, 1]
+    });
+
+    sectionMap.forEach(value => observer.observe(value.element));
+
+    const headerOffset = () => {
+      const header = document.querySelector('header');
+      return header ? header.offsetHeight + 24 : 120;
+    };
+
+    links.forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      link.addEventListener('click', event => {
+        const id = decodeURIComponent(href.slice(1));
+        const target = document.getElementById(id);
+        if (!target) return;
+        event.preventDefault();
+        const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: elementPosition - headerOffset(), behavior: 'smooth' });
+        history.replaceState(null, '', `#${id}`);
+        setActive(id);
+      });
+    });
+
+    const initialId = location.hash ? decodeURIComponent(location.hash.slice(1)) : null;
+    if (initialId && sectionMap.has(initialId)) {
+      setActive(initialId);
+    } else {
+      const firstEntry = sectionMap.keys().next();
+      if (!firstEntry.done) {
+        setActive(firstEntry.value);
+      }
+    }
+  });
+</script>
