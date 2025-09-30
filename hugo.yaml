@@ -15,8 +15,8 @@ markup:
       unsafe: true
 
 params:
-  eventArea: "📍 Meet us at TOKEN2049 and discover how Verana is building the trust layer for Web3"
-  eventAreaLink: "https://www.token2049.com/"
+#  eventArea: "📍 Meet us at TOKEN2049 and discover how Verana is combining Web3, DIDs and Verifiable Credentials to build the Open Trust Layer"
+#  eventAreaLink: "https://www.token2049.com/"
   kroki:
     enable: true
     server: "https://kroki.testnet.verana.network/"

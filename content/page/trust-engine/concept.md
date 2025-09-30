@@ -22,7 +22,7 @@ sidebar:
       url: "#related-content"
   quick_links:
     items:
-      - label: API Documentation
+      - label: Documentation
         url: "https://docs.verana.io"
         external: true
       - label: Implementation Guide
