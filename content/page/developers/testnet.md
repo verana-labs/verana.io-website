@@ -4,7 +4,7 @@ subtitle: "How to use the testnet."
 url: "/page/developers/testnet"
 meta_title: "Verana Testnet | Join the Open Trust Sandbox"
 meta_description: "Learn how to access the Verana testnet, request VNA tokens with the faucet, and start to create trust registries, credential schemas, and onboard issuers, verifier, and trust registry operators."
-hero_icon: "fa-solid fa-hammer"
+hero_icon: "fa-solid fa-flask-vial"
 disable_content_wrapper: true
 sidebar:
   title: Developers
