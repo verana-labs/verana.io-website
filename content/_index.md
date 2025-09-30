@@ -324,7 +324,7 @@ community:
       href: "https://x.com/Verana_io"
   cta:
     title: "Get Started Today"
-    description: "Ready to build with Verana? Join our testnet and start experimenting with verifiable trust networks."
+    description: "Ready to build with Verana? Join the community and start experimenting with verifiable trust networks."
     primary:
       label: "Build"
       href: "/page/build"
