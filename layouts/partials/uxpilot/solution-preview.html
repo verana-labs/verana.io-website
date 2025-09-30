@@ -1,0 +1,52 @@
+{{ $section := .Params.solution_preview }}
+{{ if $section }}
+  {{ $sectionID := $section.id | default "solution-preview" }}
+  <section id="{{ $sectionID }}" class="relative overflow-hidden {{ $section.wrapper_class | default "bg-gradient-to-br from-verana/10 to-verana-light/5 py-24" }}">
+    <div class="absolute inset-0 network-bg opacity-20"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        {{ with $section.icon }}
+          <div class="w-20 h-20 {{ .bg | default "bg-verana/20" }} rounded-3xl flex items-center justify-center mx-auto mb-8 animate-pulse-glow">
+            <i class="{{ .name | default "fa-solid fa-network-wired" }} {{ .color | default "text-verana text-3xl" }}"></i>
+          </div>
+        {{ end }}
+        {{ with $section.title }}<h2 class="text-4xl lg:text-5xl font-bold text-white mb-8">{{ . | markdownify }}</h2>{{ end }}
+        {{ with $section.subtitle }}<p class="text-xl text-gray-300 leading-relaxed mb-12">{{ . | markdownify }}</p>{{ end }}
+        {{ with $section.features }}
+          <div class="grid md:grid-cols-3 gap-8 mb-12">
+            {{ range . }}
+              <div class="rounded-2xl p-6 {{ .class | default "bg-black/50 border border-verana/30" }}">
+                {{ with .icon }}
+                  <div class="w-12 h-12 {{ .bg | default "bg-verana/20" }} rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <i class="{{ .name | default "fa-solid fa-circle" }} {{ .color | default "text-verana text-xl" }}"></i>
+                  </div>
+                {{ end }}
+                {{ with .title }}<h3 class="text-lg font-semibold text-white mb-3">{{ . | markdownify }}</h3>{{ end }}
+                {{ with .description }}<p class="text-gray-300 text-sm">{{ . | markdownify }}</p>{{ end }}
+              </div>
+            {{ end }}
+          </div>
+        {{ end }}
+        {{ $primary := $section.primary_cta }}
+        {{ $secondary := $section.secondary_cta }}
+        {{ if or $primary $secondary }}
+          <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+            {{ with $primary }}
+              {{ $href := .href | default "#" }}
+              <a href="{{ $href }}" class="inline-flex items-center space-x-3 bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105">
+                {{ with .icon }}<i class="{{ . }}"></i>{{ end }}
+                <span>{{ .label | default "Learn More" }}</span>
+              </a>
+            {{ end }}
+            {{ with $secondary }}
+              {{ $href := .href | default "#" }}
+              <a href="{{ $href }}" class="border-2 border-verana hover:bg-verana hover:text-white text-verana px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105">
+                <span>{{ .label | default "Get Started" }}</span>
+              </a>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}

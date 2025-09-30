@@ -110,62 +110,58 @@ core_pillars:
       cta:
         label: Be Discoverable
         href: "/page/trust-engine/trust-resolver"
-feature_sections:
-  - id: "trust"
-    eyebrow: "Trust"
-    icon:
-      name: "shield-halved"
-      style: "solid"
-      color: "text-verana"
-      bg: "bg-verana/20"
-    title: "Don't trust. Verify."
-    description: "Communities and institutions create and join decentralized and self-governed ecosystems, to exchange verifiable data with confidence and transparency."
-    bullets:
-      - "Enforce rules with ecosystem governance frameworks."
-      - "Issue and verify credentials across sectors."
-      - "Fair, privacy-preserving business models."
-    cta:
-      label: "Learn About Trust"
-      href: "/page/build/trust-networks/"
-    image: "/images/purple/trust-photo.webp"
-    image_alt: "Cryptographic trust handshake"
-  - id: "ownership"
-    eyebrow: "Ownership"
-    icon:
-      name: "key"
-      style: "solid"
-      color: "text-verana"
-      bg: "bg-verana/20"
-    title: "Own Your Services."
-    description: "Build a new generation of verifiable digital services you fully control, with data, audience, and trust sovereignty."
-    bullets:
-      - "Own your data and connections."
-      - "Prove ownership over your services."
-      - "Host anywhere, without lock-in."
-    cta:
-      label: "Claim Ownership"
-      href: "/page/build/verifiable-services/"
-    image: "/images/purple/ownership-photo.webp"
-    image_alt: "Digital key unlocking"
-    align: "left"
-  - id: "discovery"
-    eyebrow: "Discovery"
-    icon:
-      name: "compass"
-      style: "solid"
-      color: "text-verana"
-      bg: "bg-verana/20"
-    title: "Be found for what you prove, not for what you pay."
-    description: "Merit-based discovery that rewards authentic value and verifiable credentials over advertising spend and algorithmic manipulation."
-    bullets:
-      - "Credential-based ranking and discovery"
-      - "Fair competition regardless of budget"
-      - "Transparent, verifiable reputation systems"
-    cta:
-      label: "Be Discoverable"
-      href: "/page/trust-engine/trust-resolver"
-    image: "/images/purple/discovery-photo.jpg"
-    image_alt: "Digital marketplace"
+impact_stats:
+  id: impact-stats
+  title: "The Scale of the Problem"
+  cards:
+    - class: "bg-red-900/10 border border-red-700/30"
+      icon:
+        name: fa-solid fa-exclamation-triangle
+        color: text-red-400 text-2xl
+        bg: bg-red-500/20
+      value: "$43B"
+      text: "Annual losses to online fraud and cybercrime globally"
+    - class: "bg-orange-900/10 border border-orange-700/30"
+      icon:
+        name: fa-solid fa-building
+        color: text-orange-400 text-2xl
+        bg: bg-orange-500/20
+      value: "5"
+      text: "Tech giants control most of the internet's infrastructure and data"
+    - class: "bg-green-900/10 border border-green-700/30"
+      icon:
+        name: fa-solid fa-dollar-sign
+        color: text-green-400 text-2xl
+        bg: bg-green-500/20
+      value: "$700B"
+      text: "Global digital advertising market dominated by few platforms"
+solution_preview:
+  id: solution-preview
+  title: "Verana Solves All Three Problems"
+  subtitle: "An open trust layer that empowers verifiable services, true ownership, and fair discovery grounded in cryptographic proof."
+  icon:
+    name: fa-solid fa-network-wired
+    color: text-verana text-3xl
+    bg: bg-verana/20
+  features:
+    - title: "Cryptographic Trust"
+      description: "Built-in verification of identity and credentials."
+      icon:
+        name: fa-solid fa-shield-check
+        color: text-blue-400 text-xl
+        bg: bg-blue-500/20
+    - title: "True Ownership"
+      description: "Keep control of your data, audience, and digital services."
+      icon:
+        name: fa-solid fa-key
+        color: text-purple-400 text-xl
+        bg: bg-purple-500/20
+    - title: "Fair Discovery"
+      description: "Merit-based visibility powered by verifiable credentials."
+      icon:
+        name: fa-solid fa-balance-scale
+        color: text-green-400 text-xl
+        bg: bg-green-500/20
 impact:
   heading: "Exploring Real-World Impact"
   description: "Understand how ecosystems across sectors, from finance to telecom, from AI to government digital ID, can use Verana to build trustworthy, interoperable, and privacy-first digital networks and services."
