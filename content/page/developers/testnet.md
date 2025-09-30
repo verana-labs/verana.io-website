@@ -139,9 +139,9 @@ component_deployments:
             style: primary
           media:
             bg: "bg-gradient-to-br from-verana/20 to-verana-light/10"
-            src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/384e0b1d16-f1646ccd9d9126f64403.png"
+            src: "/images/purple/front-connected5.png"
             alt: "Modern web application dashboard interface, dark theme UI with purple accents, frontend development"
-            img_class: "w-full h-full object-cover"
+            img_class: " h-full object-cover"
         - title: Deploy Your Own
           description: "Self-hosted frontend instance"
           action:
