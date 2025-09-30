@@ -35,7 +35,7 @@ hybrid_section:
   title: On-chain rules, off-chain proofs
   concept:
     title: Concept
-    text: "The Verifiable Trust concept relies on a hybrid trust model, combining **web3 + DIDs + Verifiable Credentials**:"
+    text: "The Verifiable Trust concept relies on a hybrid trust model, combining **web3, DIDs and Verifiable Credentials**."
   columns:
     - icon: fa-solid fa-link
       icon_bg: bg-blue-500/20
