@@ -114,6 +114,7 @@ examples:
   id: systemic-problems
   title: "In Response to the **Three Systemic Problems**"
   subtitle: "The internet struggles with trust, ownership, and discovery because it was never designed with verifiable identity, self-sovereignty, or fair visibility."
+  merge_impact_cards: true
   cards:
     - id: trust-crisis
       title: "Trust Crisis"
@@ -153,7 +154,7 @@ examples:
         max_height: "10em"
     - id: discovery-monopoly
       title: "Discovery Monopoly"
-      description: "Giant platforms control discoverability through opaque algorithms and expensive advertising."
+      description: "Giant platforms control visibility through opaque algorithms and expensive advertising."
       base_class: "bg-yellow-900/10 border border-yellow-700/30"
       hover_class: "hover:border-yellow-500/50"
       icon:

@@ -17,6 +17,7 @@
               {{ $cardID := $card.id | default (printf "example-%d" (add $index 1)) }}
               {{ $baseClass := $card.base_class | default "bg-black/60 border border-gray-700" }}
               {{ $hoverClass := $card.hover_class | default "hover:border-verana/50" }}
+              {{ $iconColor := "text-verana" }}
               <div id="{{ $cardID }}" class="rounded-3xl p-8 transition-all duration-300 group {{ $baseClass }} {{ $hoverClass }} flex flex-col">
                 {{ with $card.icon }}
                   {{ $iconBg := .bg | default "bg-verana/20" }}
@@ -24,14 +25,15 @@
                   <div class="w-16 h-16 {{ $iconBg }} rounded-2xl flex items-center justify-center mb-6 {{ $iconExtra }}">
                     <i class="{{ .name | default "fa-solid fa-circle" }} {{ .color | default "text-verana text-2xl" }}"></i>
                   </div>
+                  {{ $iconColor = .color | default "text-verana" }}
                 {{ end }}
                 {{ with $card.title }}<h3 class="text-2xl font-bold text-white mb-4">{{ . | markdownify }}</h3>{{ end }}
                 {{ with $card.description }}<p class="text-gray-300 leading-relaxed mb-6">{{ . | markdownify }}</p>{{ end }}
                 {{ with $card.highlights }}
-                  <ul class="space-y-2 text-gray-400 text-sm">
+                  <ul class="space-y-2 text-gray-300 text-sm">
                     {{ range . }}
                       <li class="flex items-start space-x-2">
-                        <i class="fa-solid fa-check text-verana text-xs mt-0.5"></i>
+                        <i class="fa-solid fa-check-circle {{ $iconColor }} text-sm mt-0.5"></i>
                         <span>{{ . | markdownify }}</span>
                       </li>
                     {{ end }}
@@ -48,6 +50,28 @@
               </div>
             {{ end }}
           </div>
+        {{ end }}
+
+        {{ if and $section.merge_impact_cards $.Params.impact_stats }}
+          {{ $impact := $.Params.impact_stats }}
+          {{ with $impact.cards }}
+            <div class="mt-16">
+              <div class="grid md:grid-cols-3 gap-8">
+                {{ range . }}
+                  {{ $cardClass := .class | default "bg-black/60 border border-gray-700" }}
+                  <div class="rounded-3xl p-8 transition-all duration-300 {{ $cardClass }}">
+                    {{ with .icon }}
+                      <div class="w-16 h-16 {{ .bg | default "bg-verana/20" }} rounded-2xl flex items-center justify-center mb-6">
+                        <i class="{{ .name | default "fa-solid fa-circle" }} {{ .color | default "text-verana text-2xl" }}"></i>
+                      </div>
+                    {{ end }}
+                    {{ with .value }}<div class="text-4xl font-bold text-white mb-4">{{ . | markdownify }}</div>{{ end }}
+                    {{ with .text }}<p class="text-gray-300 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                  </div>
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
         {{ end }}
       </div>
     </div>
