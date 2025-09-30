@@ -77,7 +77,7 @@ feature_sections:
       style: "solid"
       color: "text-verana"
       bg: "bg-verana/20"
-    title: "True Digital Ownership"
+    title: "Own Your Services."
     description: "Build a new generation of verifiable digital services you fully control, with data, audience, and trust sovereignty."
     bullets:
       - "Own your data and connections."
