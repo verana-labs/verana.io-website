@@ -211,7 +211,7 @@ proof_section:
     src: "/images/purple/vt-creds-explained.png"
     alt: "Futuristic diagram showing multiple colorful credential badges connecting to a central service icon"
     caption: "Proof-of-Trust"
-    title: "Visual Trust Credentials Flow"
+    title: "Proof-of-Trust"
     max_width: "90%"
     max_height: "48rem"
 did_directory_section:
