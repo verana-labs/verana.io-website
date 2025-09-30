@@ -59,7 +59,7 @@ feature_sections:
       style: "solid"
       color: "text-verana"
       bg: "bg-verana/20"
-    title: "Enter the era of decentralized trust networks"
+    title: "Don't trust. Verify."
     description: "Communities and institutions create and join decentralized and self-governed ecosystems, to exchange verifiable data with confidence and transparency."
     bullets:
       - "Enforce rules with ecosystem governance frameworks."
@@ -77,7 +77,7 @@ feature_sections:
       style: "solid"
       color: "text-verana"
       bg: "bg-verana/20"
-    title: "True Digital Ownership"
+    title: "Own Your Services."
     description: "Build a new generation of verifiable digital services you fully control, with data, audience, and trust sovereignty."
     bullets:
       - "Own your data and connections."
@@ -96,7 +96,7 @@ feature_sections:
       style: "solid"
       color: "text-verana"
       bg: "bg-verana/20"
-    title: "Be discovered for what you truly prove, not for what you pay."
+    title: "Be found for what you prove, not for what you pay."
     description: "Merit-based discovery that rewards authentic value and verifiable credentials over advertising spend and algorithmic manipulation."
     bullets:
       - "Credential-based ranking and discovery"
