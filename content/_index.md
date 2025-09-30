@@ -51,6 +51,65 @@ discover:
     badge_text: "Watch Demo Video"
     title: "Interactive Notebook Slides"
     description: "Explore how Verana transforms digital interactions through verifiable trust networks."
+core_pillars:
+  id: core-pillars-section
+  title: "The Three Pillars of **Digital Freedom**"
+  subtitle: "Transform how you interact with the digital world through verifiable trust, true ownership, and merit-based discovery."
+  pillars:
+    - id: trust-pillar
+      label: Trust
+      icon:
+        name: fa-solid fa-shield-halved
+        color: text-verana text-xl
+        bg: bg-verana/20
+      title: "Don't Trust. Verify."
+      description: "Build confidence in digital interactions through cryptographic verification and transparent trust networks that anyone can validate."
+      highlights:
+        - "Cryptographic proof of identity"
+        - "Transparent verification"
+        - "Decentralized trust networks"
+      image:
+        src: "/images/purple/trust-photo.webp"
+        alt: "Futuristic digital handshake symbolizing cryptographic trust"
+      cta:
+        label: Learn About Trust
+        href: "/page/build/trust-networks/"
+    - id: ownership-pillar
+      label: Ownership
+      icon:
+        name: fa-solid fa-key
+        color: text-verana text-xl
+        bg: bg-verana/20
+      title: "Own Your Services."
+      description: "Take control of your digital assets with verifiable ownership that can't be revoked or manipulated by platform gatekeepers."
+      highlights:
+        - "True data sovereignty and portability"
+        - "Self-custody of digital credentials and assets"
+        - "Platform-independent digital identity"
+      image:
+        src: "/images/purple/ownership-photo.webp"
+        alt: "Digital key unlocking a glowing portal"
+      cta:
+        label: Claim Ownership
+        href: "/page/build/verifiable-services/"
+    - id: discovery-pillar
+      label: Discovery
+      icon:
+        name: fa-solid fa-compass
+        color: text-verana text-xl
+        bg: bg-verana/20
+      title: "Be found for what you prove, not for what you pay."
+      description: "Merit-based discovery that rewards authentic value and verifiable credentials over advertising spend and algorithmic manipulation."
+      highlights:
+        - "Credential-based ranking and discovery"
+        - "Fair competition regardless of budget"
+        - "Transparent, verifiable reputation systems"
+      image:
+        src: "/images/purple/discovery-photo.jpg"
+        alt: "Digital marketplace with verifiable credentials"
+      cta:
+        label: Be Discoverable
+        href: "/page/trust-engine/trust-resolver"
 feature_sections:
   - id: "trust"
     eyebrow: "Trust"
