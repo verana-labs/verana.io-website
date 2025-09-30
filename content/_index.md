@@ -111,43 +111,40 @@ core_pillars:
         label: Be Discoverable
         href: "/page/trust-engine/trust-resolver"
 examples:
-  id: examples
-  title: "Three Systemic Problems"
-  subtitle: "The internet faces fundamental challenges in trust, ownership, and discovery that affect billions of users and businesses worldwide."
+  id: systemic-problems
+  title: "In Response to the **Three Systemic Problems**"
+  subtitle: "The internet struggles with trust, ownership, and discovery because it was never designed with verifiable identity, self-sovereignty, or fair visibility."
   cards:
-    - id: social-channels
+    - id: trust-crisis
       title: "Trust Crisis"
       description: "We don't know who to trust online because the internet lacks built-in cryptographic proof of identity."
+      base_class: "bg-red-900/10 border border-red-700/30"
+      hover_class: "hover:border-red-500/50"
       icon:
-        name: fa-solid fa-broadcast-tower
-        color: text-purple-400 text-2xl
-        bg: bg-purple-500/20
-      highlights:
-        - "Direct audience ownership"
-        - "Algorithm-free distribution"
-        - "Portable across platforms"
-    - id: ai-agents
+        name: fa-solid fa-shield-halved
+        color: text-red-400 text-2xl
+        bg: bg-red-500/20
+        extra_class: "group-hover:scale-110 transition-transform duration-300"
+    - id: ownership-illusion
       title: "Ownership Illusion"
-      description: "You don't own your digital services or audience: you just rent space from centralized platforms."
+      description: "You don't own your digital services or audience — you just rent space from centralized platforms."
+      base_class: "bg-orange-900/10 border border-orange-700/30"
+      hover_class: "hover:border-orange-500/50"
       icon:
-        name: fa-solid fa-robot
-        color: text-green-400 text-2xl
-        bg: bg-green-500/20
-      highlights:
-        - "Privacy-preserving operation"
-        - "Verifiable ownership"
-        - "Transparent policies"
-    - id: agent-communication
+        name: fa-solid fa-lock
+        color: text-orange-400 text-2xl
+        bg: bg-orange-500/20
+        extra_class: "group-hover:scale-110 transition-transform duration-300"
+    - id: discovery-monopoly
       title: "Discovery Monopoly"
       description: "Giant platforms control discoverability through opaque algorithms and expensive advertising."
+      base_class: "bg-green-900/10 border border-green-700/30"
+      hover_class: "hover:border-green-500/50"
       icon:
-        name: fa-solid fa-handshake
-        color: text-blue-400 text-2xl
-        bg: bg-blue-500/20
-      highlights:
-        - "Autonomous negotiation"
-        - "Credential exchange"
-        - "Cryptographic security"
+        name: fa-solid fa-magnifying-glass
+        color: text-green-400 text-2xl
+        bg: bg-green-500/20
+        extra_class: "group-hover:scale-110 transition-transform duration-300"
 impact_stats:
   id: impact-stats
   title: "The Scale of the Problem"
