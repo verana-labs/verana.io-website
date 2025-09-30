@@ -25,12 +25,12 @@ discover:
   heading: "Discover Verana"
   subheading: "Reclaiming Your Digital World"
   features:
-    - title: "Platform Dependency"
-      description: "Platforms make you rent content and connections, keeping you dependent on their rules and algorithms."
-      icon: "times"
+    - title: "Trusted Interactions"
+      description: "Every digital interaction is verifiable, authentic, and privacy-preserving, so you can engage with confidence, without intermediaries."
+      icon: "shield"
       icon_style: "solid"
-      icon_color: "text-red-400"
-      icon_bg: "bg-red-500/20"
+      icon_color: "text-verana"
+      icon_bg: "bg-verana/20"
     - title: "Digital Sovereignty"
       description: "Verana enables true digital ownership through autonomous trust networks and self-sovereign verifiable services."
       icon: "check"
@@ -206,7 +206,7 @@ solution_preview:
     - title: "Cryptographic Trust"
       description: "Built-in verification of identity and credentials."
       icon:
-        name: fa-solid fa-shield-check
+        name: fa-solid fa-shield
         color: text-blue-400 text-xl
         bg: bg-blue-500/20
     - title: "True Ownership"

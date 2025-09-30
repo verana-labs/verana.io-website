@@ -119,8 +119,7 @@
     {{ partial "uxpilot/discover.html" . }}
     {{ partial "uxpilot/core-pillars.html" . }}
     {{ partial "uxpilot/examples.html" . }}
-    {{ $discoverCopy := merge .Params.discover (dict "id" "discover-verana-secondary" "wrapper_class" "bg-black py-20 lg:py-32") }}
-    {{ partial "uxpilot/discover.html" (dict "Params" (dict "discover" $discoverCopy) "Site" .Site) }}
+    {{ partial "uxpilot/solution-preview.html" . }}
     {{ partial "uxpilot/feature-sections.html" . }}
     {{ partial "uxpilot/impact.html" . }}
     {{ partial "uxpilot/technical.html" . }}
