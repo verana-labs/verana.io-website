@@ -1,6 +1,6 @@
 ---
 title: Testnet
-subtitle: "Get started with the Verana testnet: claim VNA tokens from the faucet, create your first trust registries and credential schemas, and onboard issuers, verifiers, and registry operators."
+subtitle: "Get started with the testnet: claim VNA tokens from the faucet, create your first trust registries and credential schemas, and onboard issuers, verifiers, and registry operators."
 url: "/page/developers/testnet"
 meta_title: "Verana Testnet | Join the Open Trust Sandbox"
 meta_description: "Get started with the Verana testnet: claim VNA tokens from the faucet, create your first trust registries and credential schemas, and onboard issuers, verifiers, and registry operators."
