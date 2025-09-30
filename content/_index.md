@@ -125,6 +125,14 @@ examples:
         color: text-red-400 text-2xl
         bg: bg-red-500/20
         extra_class: "group-hover:scale-110 transition-transform duration-300"
+      highlights:
+        - "No built-in identity assurance"
+        - "Costly manual verification"
+        - "Fraud & impersonation everywhere"
+      image:
+        src: "/images/purple/no-trust1.webp"
+        alt: "Abstract visualization of digital trust"
+        max_height: "10em"
     - id: ownership-illusion
       title: "Ownership Illusion"
       description: "You don't own your digital services or audience: you just rent space from centralized platforms."
@@ -135,6 +143,14 @@ examples:
         color: text-orange-400 text-2xl
         bg: bg-orange-500/20
         extra_class: "group-hover:scale-110 transition-transform duration-300"
+      highlights:
+        - "Platform lock-in and rent extraction"
+        - "Accounts can vanish overnight"
+        - "Data custody outside your control"
+      image:
+        src: "/images/purple/no-ownership1.webp"
+        alt: "Representation of digital ownership"
+        max_height: "10em"
     - id: discovery-monopoly
       title: "Discovery Monopoly"
       description: "Giant platforms control discoverability through opaque algorithms and expensive advertising."
@@ -145,6 +161,14 @@ examples:
         color: text-yellow-400 text-2xl
         bg: bg-yellow-500/20
         extra_class: "group-hover:scale-110 transition-transform duration-300"
+      highlights:
+        - "Pay-to-play visibility"
+        - "Opaque, shifting algorithms"
+        - "Merit drowned by ad spend"
+      image:
+        src: "/images/purple/digital-monopoly1.webp"
+        alt: "Futuristic discovery landscape"
+        max_height: "10em"
 impact_stats:
   id: impact-stats
   title: "The Scale of the Problem"
@@ -175,9 +199,8 @@ solution_preview:
   title: "Verana Solves All Three Problems"
   subtitle: "An open trust layer that empowers verifiable services, true ownership, and fair discovery grounded in cryptographic proof."
   icon:
-    name: fa-solid fa-network-wired
-    color: text-verana text-3xl
-    bg: bg-verana/20
+    logo: "/images/purple/logo.svg"
+    alt: "Verana logo"
   features:
     - title: "Cryptographic Trust"
       description: "Built-in verification of identity and credentials."

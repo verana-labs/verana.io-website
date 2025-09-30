@@ -6,8 +6,10 @@
     <div class="container mx-auto px-6 relative z-10">
       <div class="max-w-4xl mx-auto text-center">
         {{ with $section.icon }}
-          <div class="w-20 h-20 {{ .bg | default "bg-verana/20" }} rounded-3xl flex items-center justify-center mx-auto mb-8 animate-pulse-glow">
-            <i class="{{ .name | default "fa-solid fa-network-wired" }} {{ .color | default "text-verana text-3xl" }}"></i>
+          {{ $logo := .logo | default (or $.Site.Params.header.logo "/images/purple/logo.svg") }}
+          {{ $bgClass := .bg | default "bg-gradient-to-br from-verana to-verana-light" }}
+          <div class="w-20 h-20 {{ $bgClass }} rounded-xl flex items-center justify-center mx-auto mb-8 animate-pulse-glow shadow-lg shadow-verana/30">
+            <img src="{{ $logo }}" alt="{{ .alt | default "Verana logo" }}" class="h-10 w-auto" />
           </div>
         {{ end }}
         {{ with $section.title }}
