@@ -124,6 +124,8 @@
 
 {{ $navItems := $navScratch.Get "items" }}
 {{ $logo := or .Params.header.logo .Site.Params.header.logo "/images/purple/logo.svg" }}
+{{ $eventText := .Site.Params.eventArea }}
+{{ $eventLink := .Site.Params.eventAreaLink }}
 <header id="header" data-collapse="false" class="bg-black/75 backdrop-blur-lg border-b border-gray-800/50 sticky top-0 z-50">
   <style>
     #header [data-header-row] {
@@ -167,6 +169,20 @@
       }
     }
   </style>
+  {{ if $eventText }}
+    <div class="bg-verana text-white text-[10px] py-1">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {{ if $eventLink }}
+          <a href="{{ $eventLink }}" class="inline-flex items-center justify-center gap-1 hover:underline" target="_blank" rel="noopener noreferrer">
+            {{ $eventText }}
+            <span aria-hidden="true" class="text-[9px]">↗</span>
+          </a>
+        {{ else }}
+          <span>{{ $eventText }}</span>
+        {{ end }}
+      </div>
+    </div>
+  {{ end }}
   <div class="w-full py-4" data-header-container>
     <div class="grid grid-cols-[auto_auto_auto] items-center gap-[var(--header-gap)] px-[var(--header-gap)]" data-header-row style="--header-gap:clamp(2.25rem, 5vw, 3rem);">
       <div class="flex items-center" data-header-left>

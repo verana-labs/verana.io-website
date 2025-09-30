@@ -49,6 +49,6 @@
 
 @layer utilities {
   [data-sidebar-sticky] {
-    top: calc(var(--header-offset, 104px));
+    top: calc(var(--header-offset, 104px) + 1rem);
   }
 }

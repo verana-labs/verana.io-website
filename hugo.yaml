@@ -15,6 +15,8 @@ markup:
       unsafe: true
 
 params:
+#  eventArea: "📍 Meet us at TOKEN2049 and discover how Verana is combining Web3, DIDs and Verifiable Credentials to build the Open Trust Layer"
+#  eventAreaLink: "https://www.token2049.com/"
   kroki:
     enable: true
     server: "https://kroki.testnet.verana.network/"
@@ -78,8 +80,8 @@ params:
     main:
       - title: "Trust Engine"
         children:
-          - title: "Overview"
-            url: "/page/trust-engine/overview"
+          - title: "Concept"
+            url: "/page/trust-engine/concept"
           - title: "Trust Resolver"
             url: "/page/trust-engine/trust-resolver"
           - title: "Trust Deposit & Reputation"
@@ -114,14 +116,14 @@ params:
 #            url: "/page/industry-use-cases/sc-rwa"
           - title: "Decentralized Social Networks"
             url: "/page/industry-use-cases/decentralized-social-network"
-#      - title: "Developers"
-#        children:
-#          - title: "Getting Started"
-#            url: "/page/developers"
-#          - title: "Components"
-#            url: "/page/developers/components"
-#          - title: "Testnet"
-#            url: "/page/developers/testnet"
+      - title: "Developers"
+        children:
+          - title: "Getting Started"
+            url: "/page/developers"
+          - title: "Components"
+            url: "/page/developers/components"
+          - title: "Testnet"
+            url: "/page/developers/testnet"
       - title: "Community"
         children:
           - title: "Integrators"
