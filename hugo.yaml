@@ -23,11 +23,11 @@ params:
   header:
     logo: "/images/purple/logo.svg"
     tagline: "The Open Trust Layer for the Internet"
-#    testnet:
-#      label: "Playground"
-#      url: "/page/playground"
+    testnet:
+      label: "Testnet"
+      url: "/page/developers/testnet"
 #      icon: "fa-solid fa-umbrella-beach"
-#      icon: "fa-solid fa-flask-vial"
+      icon: "fa-solid fa-flask-vial"
   footer:
     company: "Verana Foundation"
     description: "The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty."
@@ -118,12 +118,12 @@ params:
             url: "/page/industry-use-cases/decentralized-social-network"
       - title: "Developers"
         children:
-          - title: "Getting Started"
-            url: "/page/developers"
           - title: "Components"
             url: "/page/developers/components"
           - title: "Testnet"
             url: "/page/developers/testnet"
+          
+          
 #      - title: "Community"
 #        children:
 #          - title: "Integrators"

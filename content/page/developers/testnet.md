@@ -1,9 +1,9 @@
 ---
 title: Testnet
-subtitle: "How to use the testnet."
+subtitle: "Get started with the Verana testnet: claim VNA tokens from the faucet, create your first trust registries and credential schemas, and onboard issuers, verifiers, and registry operators."
 url: "/page/developers/testnet"
 meta_title: "Verana Testnet | Join the Open Trust Sandbox"
-meta_description: "Learn how to access the Verana testnet, request VNA tokens with the faucet, and start to create trust registries, credential schemas, and onboard issuers, verifier, and trust registry operators."
+meta_description: "Get started with the Verana testnet: claim VNA tokens from the faucet, create your first trust registries and credential schemas, and onboard issuers, verifiers, and registry operators."
 hero_icon: "fa-solid fa-flask-vial"
 disable_content_wrapper: true
 sidebar:
@@ -141,6 +141,7 @@ component_deployments:
             bg: "bg-gradient-to-br from-verana/20 to-verana-light/10"
             src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/384e0b1d16-f1646ccd9d9126f64403.png"
             alt: "Modern web application dashboard interface, dark theme UI with purple accents, frontend development"
+            img_class: "w-full h-full object-cover"
         - title: Deploy Your Own
           description: "Self-hosted frontend instance"
           action:
@@ -164,9 +165,10 @@ component_deployments:
             href: "https://faucet-vs.testnet.verana.network/invitation"
             style: primary
           media:
-            bg: "bg-gradient-to-br from-blue-500/20 to-cyan-400/10"
-            src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/8e27c51852-75033ad4bc526609eb0b.png"
-            alt: "Cryptocurrency faucet interface, token distribution system, water drop with digital coins, modern UI"
+            bg: "bg-gray-800"
+            src: "/images/purple/verana-token1.webp"
+            alt: "Faucet"
+            img_class: "h-48 object-cover"
         - title: Deploy Your Own
           description: "Self-hosted faucet instance"
           action:
@@ -183,16 +185,17 @@ component_deployments:
       github:
         href: "https://github.com/verana-labs/pingpub-explorer"
       deployments:
-        - title: Verana Foundation Explorer
-          description: "Official block explorer for network data"
+        - title: Verana Foundation hosted Explorer
+          description: "ping.pub explorer"
           action:
             label: Launch
             href: "https://explorer.testnet.verana.network"
             style: primary
           media:
-            bg: "bg-gradient-to-br from-green-500/20 to-emerald-400/10"
-            src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/4f1fa6a279-adc3e9090a90d9c4229f.png"
-            alt: "Blockchain explorer interface showing transaction blocks, search functionality, dark theme with data visualization"
+            bg: "bg-gradient-to-br from-blue-500/20 to-emerald-400/10"
+            src: "/images/purple/pingpub.svg"
+            img_class: "h-32 object-cover"
+            alt: "Pingpub explorer"
         - title: Deploy Your Own
           description: "Self-hosted explorer instance"
           action:
@@ -216,8 +219,8 @@ component_deployments:
             href: "https://idx.testnet.verana.network"
             style: primary
           media:
-            bg: "bg-gradient-to-br from-orange-500/20 to-amber-400/10"
-            src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/ea4f78575b-cc8ccee761aafb674c42.png"
+            bg: "bg-gradient-to-br from-green-500/20 to-green-400/10"
+            src: "/images/purple/green-check.webp"
             alt: "Database indexing interface, data organization system, query optimization dashboard, modern tech UI"
         - title: Deploy Your Own
           description: "Self-hosted indexer instance"
@@ -246,6 +249,17 @@ component_deployments:
             icon:
               name: "fa-solid fa-clock"
               color: "text-gray-400 text-3xl"
+        - title: Deploy Your Own
+          description: "Self-hosted indexer instance"
+          action:
+            label: Launch
+            href: "https://github.com/verana-labs/verre"
+            style: outline
+          media:
+            bg: "bg-gray-800"
+            icon:
+              name: "fa-solid fa-plus"
+              color: "text-verana text-3xl"
     - name: Visualizer
       purpose: "dashboard for browsing ecosystem map and get usage statistics"
       github:
@@ -259,7 +273,7 @@ component_deployments:
             style: primary
           media:
             bg: "bg-gradient-to-br from-purple-500/20 to-pink-400/10"
-            src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/ee421133c0-511d5f5c124adb3ba6c4.png"
+            src: "/images/purple/visualizer2.png"
             alt: "Data visualization dashboard with charts, graphs, network maps, ecosystem analytics, modern dark UI"
         - title: Deploy Your Own
           description: "Self-hosted visualizer instance"
@@ -288,6 +302,17 @@ component_deployments:
             icon:
               name: "fa-solid fa-clock"
               color: "text-gray-400 text-3xl"
+        - title: Deploy Your Own
+          description: "Self-hosted indexer instance"
+          action:
+            label: Launch
+            href: "https://github.com/verana-labs/sesarch-engine"
+            style: outline
+          media:
+            bg: "bg-gray-800"
+            icon:
+              name: "fa-solid fa-plus"
+              color: "text-verana text-3xl"
 page_cta:
   id: page-cta
   title: "Ready to Start Building?"

@@ -273,11 +273,16 @@
                           <div class="{{ $cardClasses }} flex flex-col">
                             {{- $media := .media -}}
                             {{- if $media }}
-                              <div class="aspect-[3/2] {{ $media.bg | default "bg-gray-800" }} p-6 flex items-center justify-center">
+                              {{- $mediaWrapper := $media.wrapper_class -}}
+                              {{- if not $mediaWrapper -}}
+                                {{- $mediaWrapper = printf "aspect-[3/2] %s p-6 flex items-center justify-center" ($media.bg | default "bg-gray-800") -}}
+                              {{- end -}}
+                              <div class="{{ $mediaWrapper }}">
                                 {{- if $media.src -}}
-                                  <img src="{{ $media.src }}" alt="{{ $media.alt }}" class="w-full h-full object-cover rounded-lg" loading="lazy" />
+                                  <img src="{{ $media.src }}" alt="{{ $media.alt }}" class="{{ $media.img_class | default "w-full h-full object-cover rounded-lg" }}" loading="lazy" />
                                 {{- else if $media.icon -}}
-                                  <div class="w-16 h-16 bg-black/20 rounded-2xl flex items-center justify-center">
+                                  {{- $iconWrapper := $media.icon_wrapper_class | default "w-16 h-16 bg-black/20 rounded-2xl flex items-center justify-center" -}}
+                                  <div class="{{ $iconWrapper }}">
                                     <i class="{{ $media.icon.name }} {{ $media.icon.color | default "text-verana text-3xl" }}"></i>
                                   </div>
                                 {{- end -}}
