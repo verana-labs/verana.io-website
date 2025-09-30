@@ -172,9 +172,38 @@
                                 </div>
                               </div>
                             {{- else -}}
-                              <div class="{{ .wrapper_class | default "bg-black rounded-xl p-6 border border-gray-600" }}">
-                                <img src="{{ .src }}" alt="{{ .alt }}" class="{{ .img_class | default "w-full rounded-lg object-cover" }}" loading="lazy" />
-                                {{- with .caption }}<p class="text-gray-400 text-sm mt-4">{{ . }}</p>{{ end -}}
+                              {{- $item := . -}}
+                              {{- $wrapper := $item.wrapper_class | default "bg-black rounded-xl p-6 border border-gray-600" -}}
+                              <div class="{{ $wrapper }}">
+                                {{- with $item.content }}
+                                  <div class="{{ .class | default "text-gray-300 leading-relaxed" }}">{{ .value | default . | markdownify }}</div>
+                                {{- end -}}
+                                {{- $imageInfo := dict "src" $item.src "alt" $item.alt "img_class" $item.img_class "wrapper" "" "caption" $item.caption -}}
+                                {{- with $item.image -}}
+                                  {{- $currentCaption := index $imageInfo "caption" -}}
+                                  {{- $imageInfo = merge $imageInfo (dict
+                                    "src" (or .src .url)
+                                    "alt" (or .alt .description)
+                                    "img_class" (or .img_class .class)
+                                    "wrapper" (.wrapper_class | default "")
+                                    "caption" (or .caption $currentCaption)
+                                  ) -}}
+                                {{- end -}}
+                                {{- $imgSrc := index $imageInfo "src" -}}
+                                {{- if $imgSrc -}}
+                                  {{- $imgWrapper := index $imageInfo "wrapper" -}}
+                                  {{- $imgClass := index $imageInfo "img_class" | default "w-full rounded-lg object-cover" -}}
+                                  {{- $imgCaption := index $imageInfo "caption" -}}
+                                  {{- if $imgWrapper -}}
+                                    <div class="{{ $imgWrapper }}">
+                                      <img src="{{ $imgSrc }}" alt="{{ index $imageInfo "alt" }}" class="{{ $imgClass }}" loading="lazy" />
+                                      {{- with $imgCaption }}<div class="text-gray-400 text-sm mt-4">{{ . | markdownify }}</div>{{ end -}}
+                                    </div>
+                                  {{- else -}}
+                                    <img src="{{ $imgSrc }}" alt="{{ index $imageInfo "alt" }}" class="{{ $imgClass }}" loading="lazy" />
+                                    {{- with $imgCaption }}<div class="text-gray-400 text-sm mt-4">{{ . | markdownify }}</div>{{ end -}}
+                                  {{- end -}}
+                                {{- end -}}
                               </div>
                             {{- end -}}
                           {{- end -}}

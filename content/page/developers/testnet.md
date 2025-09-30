@@ -87,30 +87,34 @@ getting_started:
                 style: primary-large
     - number: 4
       title: "Connect to the Faucet"
-      description: |
-        Scan the QR with Hologram to connect to the faucet. When connected to the faucet service, just write: <br/><br/> `   /to <your verana address>` <br/><br/>to get airdropped **VNAs**.
       media_group:
         layout: grid
         columns: 2
         items:
-          - type: image
-            src: "https://faucet-vs.testnet.verana.network/qr"
-            alt: "QR for connecting to faucet"
-            wrapper_class: "bg-black rounded-xl p-6 border border-gray-600"
-            img_class: "h-full w-40 h-80 rounded-lg "
+          - type: content
+            wrapper_class: "space-y-6"
+            content:
+              value: |
+                Scan the QR with Hologram to connect to the faucet. When connected to the faucet service, just write `/to \u003cyour verana address\u003e` to get airdropped **VNA** tokens.
+              class: "text-gray-300 leading-relaxed"
+            image:
+              wrapper_class: "bg-black rounded-xl p-3 border border-gray-600 flex flex-col items-center"
+              src: "https://faucet-vs.testnet.verana.network/qr"
+              alt: "QR code to connect to the Verana faucet"
+              img_class: "h-full h-80 object-cover"
           - type: image
             src: "/images/purple/faucet-chatbot.jpeg"
-            alt: "bot interface"
-            wrapper_class: "bg-black rounded-xl p-6 border border-gray-600 text-center"
-            img_class: "h-full h-32 mx-auto rounded-lg object-cover"
+            alt: "Chat interface showing the Verana faucet chatbot"
+            wrapper_class: "bg-black rounded-xl p-1 border border-gray-600"
+            img_class: "h-full h-80 rounded-lg object-cover"
     - number: 5
       title: "Execute Transactions"
       description: "You can now interact with the frontend and execute transactions on the Verana network."
       media:
         - src: "/images/purple/front-trxs.png"
           alt: "Verana frontend transaction interface, blockchain transaction execution, dark theme, modern UI with transaction history"
-          wrapper_class: "bg-black rounded-xl p-6 border border-gray-600"
-          img_class: "h-full h-64 rounded-lg object-cover"
+          wrapper_class: "rounded-xl border border-gray-600"
+          img_class: "h-full h-64 object-cover"
 component_deployments:
   id: component-deployments
   title: "Component Deployments"
