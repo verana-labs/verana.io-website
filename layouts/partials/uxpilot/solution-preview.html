@@ -10,7 +10,10 @@
             <i class="{{ .name | default "fa-solid fa-network-wired" }} {{ .color | default "text-verana text-3xl" }}"></i>
           </div>
         {{ end }}
-        {{ with $section.title }}<h2 class="text-4xl lg:text-5xl font-bold text-white mb-8">{{ . | markdownify }}</h2>{{ end }}
+        {{ with $section.title }}
+          {{ $title := . | replaceRE "\\*\\*(.+?)\\*\\*" "<span class=\"bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent\">$1</span>" }}
+          <h2 class="text-4xl lg:text-5xl font-bold text-white mb-8">{{ $title | safeHTML }}</h2>
+        {{ end }}
         {{ with $section.subtitle }}<p class="text-xl text-gray-300 leading-relaxed mb-12">{{ . | markdownify }}</p>{{ end }}
         {{ with $section.features }}
           <div class="grid md:grid-cols-3 gap-8 mb-12">

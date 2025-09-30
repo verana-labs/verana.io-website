@@ -127,7 +127,7 @@ examples:
         extra_class: "group-hover:scale-110 transition-transform duration-300"
     - id: ownership-illusion
       title: "Ownership Illusion"
-      description: "You don't own your digital services or audience — you just rent space from centralized platforms."
+      description: "You don't own your digital services or audience: you just rent space from centralized platforms."
       base_class: "bg-orange-900/10 border border-orange-700/30"
       hover_class: "hover:border-orange-500/50"
       icon:

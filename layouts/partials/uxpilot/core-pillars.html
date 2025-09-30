@@ -5,7 +5,10 @@
     <div class="container mx-auto px-6">
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16">
-          {{ with $section.title }}<h2 class="text-5xl lg:text-6xl font-bold text-white mb-8">{{ . | markdownify }}</h2>{{ end }}
+          {{ with $section.title }}
+            {{ $title := . | replaceRE "\\*\\*(.+?)\\*\\*" "<span class=\"bg-gradient-to-r from-verana to-verana-light bg-clip-text text-transparent\">$1</span>" }}
+            <h2 class="text-5xl lg:text-6xl font-bold text-white mb-8">{{ $title | safeHTML }}</h2>
+          {{ end }}
           {{ with $section.subtitle }}<p class="text-xl text-gray-300 max-w-3xl mx-auto">{{ . | markdownify }}</p>{{ end }}
         </div>
         {{ with $section.pillars }}
