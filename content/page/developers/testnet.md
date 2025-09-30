@@ -63,9 +63,9 @@ getting_started:
       title: "Access the Frontend"
       description: "Access the frontend, connect your wallet to obtain your Verana address. You can copy the address by clicking the copy button on the top right corner."
       media:
-        - src: "/images/purple/front-connected.png"
+        - src: "/images/purple/front-connected2.png"
           alt: "Verana frontend interface showing wallet connection and address copy button, dark theme, modern UI design"
-          wrapper_class: "bg-black rounded-xl p-6 border border-gray-600"
+          wrapper_class: "bg-black rounded-xl p-1 border border-gray-600"
           img_class: "h-full h-64 rounded-lg object-cover"
     - number: 3
       title: "Download Hologram Messaging"
@@ -94,18 +94,24 @@ getting_started:
           - type: content
             wrapper_class: "space-y-6"
             content:
-              value: |
-                Scan the QR with Hologram to connect to the faucet. When connected to the faucet service, just write `/to \u003cyour verana address\u003e` to get airdropped **VNA** tokens.
               class: "text-gray-300 leading-relaxed"
+              icon:
+                name: "fa-solid fa-check-circle"
+                color: "text-green-400"
+              items:
+                - "Scan the QR with **Hologram** to connect to the faucet."
+                - "Once connected, send <code class=\"bg-gray-800 px-2 py-1 rounded text-green-400\">/to &lt;your verana address&gt;</code> to request tokens."
+                - "Open the frontend and confirm your **VNA** balance reflects the faucet drop."
             image:
-              wrapper_class: "bg-black rounded-xl p-3 border border-gray-600 flex flex-col items-center"
+              wrapper_class: "bg-black rounded-xl p-6 border border-gray-600 flex flex-col items-center"
               src: "https://faucet-vs.testnet.verana.network/qr"
               alt: "QR code to connect to the Verana faucet"
-              img_class: "h-full h-80 object-cover"
+              img_class: "w-full rounded-lg object-cover"
+              caption: "Scan to connect to faucet"
           - type: image
             src: "/images/purple/faucet-chatbot.jpeg"
             alt: "Chat interface showing the Verana faucet chatbot"
-            wrapper_class: "bg-black rounded-xl p-1 border border-gray-600"
+            wrapper_class: "bg-black rounded-xl p-6 border border-gray-600"
             img_class: "h-full h-80 rounded-lg object-cover"
     - number: 5
       title: "Execute Transactions"

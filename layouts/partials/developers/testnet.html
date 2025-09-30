@@ -176,7 +176,27 @@
                               {{- $wrapper := $item.wrapper_class | default "bg-black rounded-xl p-6 border border-gray-600" -}}
                               <div class="{{ $wrapper }}">
                                 {{- with $item.content }}
-                                  <div class="{{ .class | default "text-gray-300 leading-relaxed" }}">{{ .value | default . | markdownify }}</div>
+                                  {{- $content := . -}}
+                                  {{- $contentClass := $content.class | default "text-gray-300 leading-relaxed" -}}
+                                  {{- with $content.items }}
+                                    {{- $iconData := $content.icon -}}
+                                    {{- $iconName := "fa-solid fa-check-circle" -}}
+                                    {{- $iconColor := "text-green-400" -}}
+                                    {{- with $iconData }}
+                                      {{- with .name }}{{ $iconName = . }}{{ end -}}
+                                      {{- with .color }}{{ $iconColor = . }}{{ end -}}
+                                    {{- end -}}
+                                    <div class="{{ $contentClass }} space-y-3">
+                                      {{- range . }}
+                                        <div class="flex items-start space-x-3">
+                                          <i class="{{ $iconName }} {{ $iconColor }} text-sm mt-1"></i>
+                                          <span class="text-gray-300">{{ . | markdownify }}</span>
+                                        </div>
+                                      {{- end -}}
+                                    </div>
+                                  {{- else -}}
+                                    <div class="{{ $contentClass }}">{{ $content.value | default $content | markdownify }}</div>
+                                  {{- end -}}
                                 {{- end -}}
                                 {{- $imageInfo := dict "src" $item.src "alt" $item.alt "img_class" $item.img_class "wrapper" "" "caption" $item.caption -}}
                                 {{- with $item.image -}}
