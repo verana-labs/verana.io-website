@@ -111,8 +111,8 @@ getting_started:
           - type: image
             src: "/images/purple/faucet-chatbot.jpeg"
             alt: "Chat interface showing the Verana faucet chatbot"
-            wrapper_class: "bg-black rounded-xl p-6 border border-gray-600"
-            img_class: "h-full h-80 rounded-lg object-cover"
+            wrapper_class: "bg-black rounded-xl p-2 border border-gray-600"
+            img_class: "h-full h-80  object-cover"
     - number: 5
       title: "Execute Transactions"
       description: "You can now interact with the frontend and execute transactions on the Verana network."
@@ -120,7 +120,7 @@ getting_started:
         - src: "/images/purple/front-trxs.png"
           alt: "Verana frontend transaction interface, blockchain transaction execution, dark theme, modern UI with transaction history"
           wrapper_class: "rounded-xl border border-gray-600"
-          img_class: "h-full h-64 object-cover"
+          img_class: "h-full rounded-lg  h-64 object-cover"
 component_deployments:
   id: component-deployments
   title: "Component Deployments"
