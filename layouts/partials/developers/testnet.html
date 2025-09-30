@@ -12,34 +12,37 @@
     "outline-xl" "border-2 border-gray-600 hover:border-verana text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 inline-flex items-center justify-center cursor-pointer"
     "link" "inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium transition-all duration-200 cursor-pointer"
   -}}
-  {{- $base := index $classes $style -}}
-  {{- if not $base -}}
-    {{- $base = "bg-verana hover:bg-verana-dark text-white py-2 px-4 rounded-lg font-medium transition-all duration-200 cursor-pointer inline-flex items-center justify-center" -}}
-  {{- end -}}
+  {{- $base := default "bg-verana hover:bg-verana-dark text-white py-2 px-4 rounded-lg font-medium transition-all duration-200 cursor-pointer inline-flex items-center justify-center" (index $classes $style) -}}
   {{- $extra := .class | default "" -}}
   {{- $class := strings.TrimSpace (printf "%s %s" $base $extra) -}}
   {{- $isDisabled := or (eq $style "disabled") (not $cta.href) -}}
   {{- $tag := "a" -}}
   {{- if $isDisabled }}{{- $tag = "span" -}}{{- end -}}
-  {{- $attrs := slice (printf "class=\"%s\"" $class) -}}
+  {{- $attrs := printf "class=\"%s\"" $class -}}
   {{- if and (not $isDisabled) $cta.href -}}
-    {{- $attrs = $attrs | append (printf "href=\"%s\"" $cta.href) -}}
+    {{- $attrs = printf "%s href=\"%s\"" $attrs $cta.href -}}
     {{- if strings.HasPrefix $cta.href "http" -}}
-      {{- $attrs = $attrs | append "target=\"_blank\"" "rel=\"noopener noreferrer\"" -}}
+      {{- $attrs = printf "%s target=\"_blank\" rel=\"noopener noreferrer\"" $attrs -}}
     {{- end -}}
   {{- else -}}
-    {{- $attrs = $attrs | append "role=\"button\"" "aria-disabled=\"true\"" -}}
+    {{- $attrs = printf "%s role=\"button\" aria-disabled=\"true\"" $attrs -}}
   {{- end -}}
-  <{{ $tag }} {{ delimit $attrs " " }}>
-    {{- with $cta.icon }}<i class="{{ . }}{{ if or (eq $style "primary-large") (eq $style "primary-xl") }} text-base{{ end }}"></i>{{ end -}}
-    {{- if and $cta.icon (ne $style "link") -}}
-      <span>{{ $cta.label }}</span>
-    {{- else -}}
-      {{- if $cta.icon }}<span>{{ end -}}
-      {{- $cta.label -}}
-      {{- if $cta.icon }}</span>{{ end -}}
+  {{- $attrsStr := $attrs -}}
+  {{- $icon := "" -}}
+  {{- with $cta.icon }}
+    {{- $iconClass := . -}}
+    {{- if or (eq $style "primary-large") (eq $style "primary-xl") -}}
+      {{- $iconClass = printf "%s text-base" $iconClass -}}
     {{- end -}}
-  </{{ $tag }}>
+    {{- $icon = printf "<i class=\"%s\"></i>" $iconClass -}}
+  {{- end -}}
+  {{- $label := $cta.label | default "" -}}
+  {{- $content := $label -}}
+  {{- if $icon -}}
+    {{- $content = printf "%s<span>%s</span>" $icon $label -}}
+  {{- end -}}
+  {{- $html := printf "<%s %s>%s</%s>" $tag $attrsStr $content $tag -}}
+  {{- $html | safeHTML -}}
 {{- end -}}
 
 {{- $page := . -}}
@@ -218,7 +221,7 @@
                           {{- if eq $type "soon" -}}
                             {{- $cardClasses = "bg-black border border-gray-600 rounded-xl overflow-hidden opacity-50" -}}
                           {{- end -}}
-                          <div class="{{ $cardClasses }}">
+                          <div class="{{ $cardClasses }} flex flex-col">
                             {{- $media := .media -}}
                             {{- if $media }}
                               <div class="aspect-[3/2] {{ $media.bg | default "bg-gray-800" }} p-6 flex items-center justify-center">
@@ -231,11 +234,17 @@
                                 {{- end -}}
                               </div>
                             {{- end -}}
-                            <div class="p-6">
+                            <div class="p-6 flex flex-col h-full">
                               {{- with .title }}<h5 class="text-white font-medium mb-2">{{ . }}</h5>{{ end -}}
-                              {{- with .description }}<p class="text-gray-400 text-sm mb-4">{{ . | markdownify }}</p>{{ end -}}
+                              {{- with .description }}
+                                <div class="text-gray-400 text-sm mb-4 flex-1">
+                                  {{ . | markdownify }}
+                                </div>
+                              {{- end -}}
                               {{- with .action }}
-                                {{- template "developers_testnet_cta" (dict "cta" .) -}}
+                                <div class="mt-auto">
+                                  {{- template "developers_testnet_cta" (dict "cta" .) -}}
+                                </div>
                               {{- end -}}
                             </div>
                           </div>

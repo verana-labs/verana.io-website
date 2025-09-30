@@ -34,36 +34,36 @@ getting_started:
         items:
           - title: Keplr
             image:
-              src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/a2fe833548-92c81730287ad25c5668.png"
+              src: "/images/purple/keplr-logo-icon.svg"
               alt: "Keplr wallet logo on dark background, cryptocurrency wallet interface, modern design"
-              class: "w-16 h-16 rounded-xl mx-auto mb-4"
+              class: "h-32 rounded-xl mx-auto mb-4"
             ctas:
               - label: Download
                 href: "https://www.keplr.app/"
                 style: primary
           - title: Leap
             image:
-              src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/3d930ef1bc-f76e92a482596dd36898.png"
+              src: "/images/purple/leap.svg"
               alt: "Leap wallet logo on dark background, cryptocurrency wallet interface, modern design"
-              class: "w-16 h-16 rounded-xl mx-auto mb-4"
+              class: "h-32 rounded-xl mx-auto mb-4"
             ctas:
               - label: Download
                 href: "https://www.leapwallet.io/"
                 style: primary
           - title: Other Wallets
             image:
-              src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/ae7ccd0ddc-d164acd2fe837f42ab4d.png"
+              src: "/images/purple/interchain.svg"
               alt: "Multiple cryptocurrency wallet icons on dark background, interchain compatibility, modern design"
-              class: "w-16 h-16 rounded-xl mx-auto mb-4"
+              class: "h-32 rounded-xl mx-auto mb-4"
             ctas:
               - label: View Full List
-                href: "https://github.com/hyperweb-io/interchain-kit"
+                href: "https://github.com/hyperweb-io/interchain-kit/tree/main/wallets"
                 style: secondary
     - number: 2
       title: "Access the Frontend"
       description: "Access the frontend, connect your wallet to obtain your Verana address. You can copy the address by clicking the copy button on the top right corner."
       media:
-        - src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/b83ce183f9-047769569a07ba601db7.png"
+        - src: "/images/purple/front-connected.png"
           alt: "Verana frontend interface showing wallet connection and address copy button, dark theme, modern UI design"
           wrapper_class: "bg-black rounded-xl p-6 border border-gray-600"
           img_class: "w-full h-64 rounded-lg object-cover"
@@ -74,7 +74,7 @@ getting_started:
         layout: horizontal
         items:
           - type: image
-            src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/3b6e6d2121-f6a824fd1e4ebbbedc5d.png"
+            src: "/images/purple/hologram5.png"
             alt: "Mobile app interface for Hologram Messaging, dark theme, modern messaging app design, smartphone mockup"
             wrapper_class: "bg-black rounded-xl p-6 border border-gray-600"
             img_class: "w-48 h-72 rounded-lg object-cover"
