@@ -85,11 +85,7 @@ solution:
           - icon: "fa-solid fa-file-contract"
             text: "Establishes the **Power of Attorney Credential Schema**."
           - icon: "fa-solid fa-users"
-            text: |
-              Outlines procedures for onboarding participants:
-              • The **Colegio Nacional** selects **Colegios Estatales**.
-              • **Colegios Estatales** appoint the participating **Notarios**.
-              • Verifiers such as banks, telecoms, and other institutions receive self-onboarding access.
+            text: "Outlines procedures for onboarding participants"
       - number: "2"
         title: "Designs the Credential & Permission Tree"
         bullets:

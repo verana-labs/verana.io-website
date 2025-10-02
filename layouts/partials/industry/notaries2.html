@@ -103,14 +103,6 @@
                       </div>
                     {{ end }}
                   </div>
-                  {{ with $problem.friction_callout }}
-                    <div class="mt-8 p-6 bg-red-500/10 border border-red-500/30 rounded-xl">
-                      <p class="text-red-200 leading-relaxed">
-                        <i class="fa-solid fa-exclamation-circle text-red-400 mr-2"></i>
-                        {{ . | markdownify }}
-                      </p>
-                    </div>
-                  {{ end }}
                 </div>
               {{ end }}
 
@@ -119,6 +111,15 @@
                 {{ $imgClass := .img_class | default "w-full max-w-lg rounded-xl" }}
                 <div class="{{ $wrapperClass }}">
                   <img class="{{ $imgClass }}" src="{{ .src }}" alt="{{ .alt }}" loading="lazy"{{ with .width }} width="{{ . }}"{{ end }}{{ with .height }} height="{{ . }}"{{ end }} />
+                </div>
+              {{ end }}
+
+              {{ with $problem.friction_callout }}
+                <div class="mt-6 p-6 bg-red-500/10 border border-red-500/30 rounded-xl">
+                  <p class="text-red-200 leading-relaxed">
+                    <i class="fa-solid fa-exclamation-circle text-red-400 mr-2"></i>
+                    {{ . | markdownify }}
+                  </p>
                 </div>
               {{ end }}
             </div>
@@ -135,7 +136,7 @@
               {{ with .digital_ecosystem }}
                 <div id="digital-ecosystem" class="mb-12">
                   {{ with .title }}<h3 class="text-2xl font-semibold text-white mb-6 flex items-center">
-                    <i class="fa-solid fa-network-wired text-verana mr-3"></i>
+                    <i class="fa-solid fa-diagram-project text-verana mr-3"></i>
                     <span>{{ . | markdownify }}</span>
                   </h3>{{ end }}
                   {{ with .intro }}<p class="text-lg text-gray-300 leading-relaxed mb-8">{{ . | markdownify }}</p>{{ end }}
@@ -149,7 +150,7 @@
                         <div class="space-y-4 ml-11">
                           {{ range .bullets }}
                             <div class="flex items-start space-x-3">
-                              <i class="{{ .icon | default "fa-solid fa-check" }} text-verana mt-1"></i>
+                              <div class="w-2 h-2 bg-verana rounded-full mt-2"></div>
                               <p class="text-gray-300">{{ .text | markdownify }}</p>
                             </div>
                           {{ end }}
