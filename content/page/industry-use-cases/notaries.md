@@ -171,7 +171,7 @@ solution:
       - icon: "fa-solid fa-crown"
         icon_bg: "bg-verana/20"
         icon_color: "text-verana"
-        title: "Colegio Nacional de Notarios"
+        title: "Colegio Nacional"
       - icon: "fa-solid fa-building"
         icon_bg: "bg-blue-500/20"
         icon_color: "text-blue-400"
@@ -225,9 +225,9 @@ workflows:
     image:
       src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/185dee47dd-0cc8a7d84d00eae73068.png"
       alt: "Bank interface instantly verifying power of attorney credential"
-  verification_illustration:
-    src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/f47161f64f-0d5f71e7e45dae5d0e57.png"
-    alt: "Modern bank interface showing instant digital verification of power of attorney credentials"
+#  verification_illustration:
+#    src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/f47161f64f-0d5f71e7e45dae5d0e57.png"
+#    alt: "Modern bank interface showing instant digital verification of power of attorney credentials"
 business_models:
   title: "Privacy Preserving Business Models"
   intro: "Verifiers such as banks or telecoms can pay a small micropayment per verification—so all ecosystem participants receive their commission."
