@@ -1,0 +1,480 @@
+{{ $page := . }}
+{{ $params := $page.Params }}
+{{ $sidebar := $params.sidebar }}
+{{ $problem := $params.problem_section }}
+{{ $solution := $params.solution_section }}
+{{ $workflows := $params.workflows }}
+{{ $benefits := $params.benefits_section }}
+{{ $cta := $params.cta }}
+{{ $related := $params.related_use_cases }}
+
+<section id="main-content" class="bg-black py-20 lg:py-32">
+  <div class="container mx-auto px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-4 gap-12">
+        {{ with $sidebar }}
+          <aside id="sidebar-nav" class="lg:col-span-1">
+            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky" data-sidebar-sticky>
+              {{ with .title }}<h3 class="text-lg font-semibold text-white mb-6">{{ . }}</h3>{{ end }}
+              {{ with .nav }}
+                <nav class="space-y-3">
+                  {{ range . }}
+                    {{ $label := .label | default .title | default .name }}
+                    {{ $href := .url | default .href | default "#" }}
+                    {{ $active := cond (isset . "active") (.active) false }}
+                    {{ if $label }}
+                      <a href="{{ $href }}" class="block {{ if $active }}text-verana font-semibold{{ else }}text-gray-400 hover:text-white transition-colors duration-200{{ end }}" data-nav-link>{{ $label }}</a>
+                    {{ end }}
+                  {{ end }}
+                </nav>
+              {{ end }}
+              {{ with .quick_links }}
+                <div class="mt-8 pt-6 border-t border-gray-700">
+                  {{ with .title }}<h4 class="text-sm font-semibold text-white mb-4">{{ . }}</h4>{{ end }}
+                  <div class="space-y-2">
+                    {{ range .items }}
+                      {{ $label := .label | default .title | default .name }}
+                      {{ $href := .url | default .href | default "#" }}
+                      {{ if $label }}
+                        <a href="{{ $href }}" class="block text-sm text-gray-400 hover:text-white transition-colors duration-200"{{ if strings.HasPrefix $href "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ $label }}</a>
+                      {{ end }}
+                    {{ end }}
+                  </div>
+                </div>
+              {{ end }}
+            </div>
+          </aside>
+        {{ end }}
+
+        <div id="content-area" class="lg:col-span-3">
+          {{ with $problem }}
+            <div id="{{ .id | default "problem-section" }}" class="mb-16 scroll-mt-32">
+              {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">{{ . | markdownify }}</h2>{{ end }}
+              {{ with .intro }}
+                <div class="prose prose-invert max-w-none mb-12">
+                  <p class="text-xl text-gray-300 leading-relaxed">{{ . | markdownify }}</p>
+                </div>
+              {{ end }}
+              {{ with .cards }}
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                  {{ range . }}
+                    {{ $icon := .icon }}
+                    {{ $iconName := cond (and $icon (isset $icon "name")) $icon.name "fa-solid fa-circle" }}
+                    {{ $iconColor := cond (and $icon (isset $icon "color")) $icon.color "text-verana text-xl" }}
+                    {{ $iconBg := cond (and $icon (isset $icon "bg")) $icon.bg "bg-verana/20" }}
+                    <div class="{{ .wrapper_class | default "bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300" }}">
+                      <div class="w-12 h-12 {{ $iconBg }} rounded-xl flex items-center justify-center mb-6">
+                        <i class="{{ $iconName }} {{ $iconColor }}"></i>
+                      </div>
+                      {{ with .title }}<h3 class="text-xl font-semibold text-white mb-4">{{ . | markdownify }}</h3>{{ end }}
+                      {{ with .bullets }}
+                        <ul class="text-gray-300 space-y-3 text-sm leading-relaxed">
+                          {{ range . }}<li>{{ . | markdownify }}</li>{{ end }}
+                        </ul>
+                      {{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+              {{ with .process_illustration }}
+                <div class="bg-gradient-to-r from-red-900/20 to-orange-900/20 border border-red-700/50 rounded-2xl p-12 mb-8">
+                  {{ with .image }}<div class="text-center mb-8"><img class="w-full h-64 object-cover rounded-xl" src="{{ .src }}" alt="{{ .alt }}" loading="lazy" /></div>{{ end }}
+                  {{ with .text }}<p class="text-lg text-center text-gray-200">{{ . | markdownify }}</p>{{ end }}
+                </div>
+              {{ end }}
+              {{ with .bank_illustration }}
+                <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                  {{ with .image }}<div class="text-center mb-6"><img class="w-full h-48 object-cover rounded-xl" src="{{ .src }}" alt="{{ .alt }}" loading="lazy" /></div>{{ end }}
+                  {{ with .text }}<p class="text-center text-gray-300">{{ . | markdownify }}</p>{{ end }}
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ with $solution }}
+            <div id="{{ .id | default "solution-section" }}" class="mb-16 scroll-mt-32">
+              {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">{{ . | markdownify }}</h2>{{ end }}
+              {{ with .intro }}
+                <div class="prose prose-invert max-w-none mb-8">
+                  <p class="text-xl text-gray-300 leading-relaxed">{{ . | markdownify }}</p>
+                </div>
+              {{ end }}
+              {{ with .hierarchy }}
+                <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 mb-12">
+                  {{ if .diagram }}
+                    <div class="text-center mb-8">
+                      <div class="w-full rounded-xl border border-gray-700/60 bg-black/40 p-2">
+                        {{ $page.RenderString .diagram }}
+                      </div>
+                    </div>
+                  {{ else if .image }}
+                    <div class="text-center mb-8">
+                      <img class="w-full h-64 object-cover rounded-xl" src="{{ .image.src }}" alt="{{ .image.alt }}" loading="lazy" />
+                    </div>
+                  {{ end }}
+                  {{ with .cards }}
+                    <div class="grid md:grid-cols-3 gap-6 mt-8">
+                      {{ range . }}
+                        {{ $icon := .icon }}
+                        {{ $iconName := cond (and $icon (isset $icon "name")) $icon.name "fa-solid fa-circle" }}
+                        {{ $iconColor := cond (and $icon (isset $icon "color")) $icon.color "text-verana text-2xl" }}
+                        {{ $iconBg := cond (and $icon (isset $icon "bg")) $icon.bg "bg-verana/20" }}
+                        <div class="text-center">
+                          <div class="w-16 h-16 {{ $iconBg }} rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <i class="{{ $iconName }} {{ $iconColor }}"></i>
+                          </div>
+                          {{ with .title }}<h4 class="text-lg font-semibold text-white mb-2">{{ . | markdownify }}</h4>{{ end }}
+                          {{ with .text }}<p class="text-gray-400 text-sm">{{ . | markdownify }}</p>{{ end }}
+                        </div>
+                      {{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+              {{ with (index . "digital_ecosystem") }}
+                <div id="{{ .id | default "digital-ecosystem" }}" class="mb-12 scroll-mt-32">
+                  {{ with .title }}<h3 class="text-2xl font-semibold text-white mb-6">{{ . | markdownify }}</h3>{{ end }}
+                  <div class="bg-gradient-to-br from-verana/10 to-blue-900/10 border border-verana/30 rounded-2xl p-10 mb-8">
+                    {{ with .intro }}<p class="text-lg text-gray-200 leading-relaxed mb-6">{{ . | markdownify }}</p>{{ end }}
+                    {{ with .steps }}
+                      <div class="space-y-6">
+                        {{ range . }}
+                          <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-verana rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                              <span class="text-white font-bold text-sm">{{ .number }}</span>
+                            </div>
+                            <div>
+                              {{ with .title }}<h4 class="text-lg font-semibold text-white mb-3">{{ . | markdownify }}</h4>{{ end }}
+                              {{ with .bullets }}
+                                <ul class="text-gray-300 space-y-2">
+                                  {{ range . }}<li>{{ . | markdownify }}</li>{{ end }}
+                                </ul>
+                              {{ end }}
+                            </div>
+                          </div>
+                        {{ end }}
+                      </div>
+                    {{ end }}
+                  </div>
+                  {{ with .credential_visual }}
+                    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+                      {{ with .image }}<div class="text-center mb-6"><img class="w-full h-56 object-cover rounded-xl" src="{{ .src }}" alt="{{ .alt }}" loading="lazy" /></div>{{ end }}
+                      {{ with .caption }}<p class="text-center text-gray-300">{{ . | markdownify }}</p>{{ end }}
+                    </div>
+                  {{ end }}
+                  {{ with .implementation_diagram }}
+                    <div id="implementation-diagram" class="mb-8">
+                      {{ with .title }}<h4 class="text-xl font-semibold text-white mb-6">{{ . | markdownify }}</h4>{{ end }}
+                      <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6">
+                        {{ if .diagram }}
+                          <div class="text-center mb-6">
+                            <div class="w-full rounded-xl border border-gray-700/60 bg-black/40 p-2">
+                              {{ $page.RenderString .diagram }}
+                            </div>
+                          </div>
+                        {{ else if .image }}
+                          <div class="text-center mb-6">
+                            <img class="w-full h-80 object-cover rounded-xl" src="{{ .image.src }}" alt="{{ .image.alt }}" loading="lazy" />
+                          </div>
+                        {{ end }}
+                        {{ with .caption }}<p class="text-center text-gray-300">{{ . | markdownify }}</p>{{ end }}
+                        {{ with .cards }}
+                          <div class="grid md:grid-cols-3 gap-6 mt-6">
+                            {{ range . }}
+                              {{ $icon := .icon }}
+                              {{ $iconName := cond (and $icon (isset $icon "name")) $icon.name "fa-solid fa-circle" }}
+                              {{ $iconColor := cond (and $icon (isset $icon "color")) $icon.color "text-verana text-xl" }}
+                              {{ $iconBg := cond (and $icon (isset $icon "bg")) $icon.bg "bg-verana/20" }}
+                              <div class="text-center">
+                                <div class="w-16 h-16 {{ $iconBg }} rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                  <i class="{{ $iconName }} {{ $iconColor }}"></i>
+                                </div>
+                                {{ with .title }}<h4 class="text-lg font-semibold text-white mb-2">{{ . | markdownify }}</h4>{{ end }}
+                                {{ with .text }}<p class="text-gray-400 text-sm">{{ . | markdownify }}</p>{{ end }}
+                              </div>
+                            {{ end }}
+                          </div>
+                        {{ end }}
+                      </div>
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ with $workflows }}
+            <div id="{{ .id | default "new-workflows" }}" class="mb-16 scroll-mt-32">
+              {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">{{ . | markdownify }}</h2>{{ end }}
+              {{ $issuing := .issuing }}
+              {{ $revoking := .revoking }}
+              {{ $using := .using }}
+              {{ $business := .business_models }}
+              {{ with $issuing }}
+                <div class="mb-12">
+                  {{ with .title }}<h3 class="text-2xl font-semibold text-white mb-6">{{ . | markdownify }}</h3>{{ end }}
+                  <div class="bg-gradient-to-r from-green-900/20 to-blue-900/20 border border-green-700/50 rounded-2xl p-10">
+                    <div class="grid md:grid-cols-2 gap-8 items-center mb-8">
+                      <div>
+                        {{ with .intro }}<p class="text-lg text-gray-200 leading-relaxed mb-6">{{ . | markdownify }}</p>{{ end }}
+                        {{ with .bullets }}
+                          <ul class="text-gray-300 space-y-3">
+                            {{ range . }}
+                              {{ $icon := or .icon "fa-solid fa-check" }}
+                              {{ $color := or .color "text-green-400" }}
+                              <li class="flex items-start space-x-3">
+                                <i class="{{ $icon }} {{ $color }} mt-1"></i>
+                                <span class="text-gray-300">{{ .text | markdownify }}</span>
+                              </li>
+                            {{ end }}
+                          </ul>
+                        {{ end }}
+                      </div>
+                      {{ with .image }}<div class="text-center"><img class="w-full h-64 object-cover rounded-xl" src="{{ .src }}" alt="{{ .alt }}" loading="lazy" /></div>{{ end }}
+                    </div>
+                  </div>
+                </div>
+              {{ end }}
+              {{ with $revoking }}
+                <div class="mb-12">
+                  {{ with .title }}<h3 class="text-2xl font-semibold text-white mb-6">{{ . | markdownify }}</h3>{{ end }}
+                  <div class="bg-gradient-to-r from-orange-900/20 to-red-900/20 border border-orange-700/50 rounded-2xl p-10">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                      {{ with .image }}<div class="text-center"><img class="w-full h-64 object-cover rounded-xl" src="{{ .src }}" alt="{{ .alt }}" loading="lazy" /></div>{{ end }}
+                      <div>
+                        {{ with .bullets }}
+                          <ul class="text-gray-300 space-y-4">
+                            {{ range . }}
+                              {{ $icon := or .icon "fa-solid fa-check" }}
+                              {{ $color := or .color "text-orange-400" }}
+                              <li class="flex items-start space-x-3">
+                                <i class="{{ $icon }} {{ $color }} mt-1"></i>
+                                <span>{{ .text | markdownify }}</span>
+                              </li>
+                            {{ end }}
+                          </ul>
+                        {{ end }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {{ end }}
+              {{ with $using }}
+                <div class="mb-12">
+                  {{ with .title }}<h3 class="text-2xl font-semibold text-white mb-6">{{ . | markdownify }}</h3>{{ end }}
+                  <div class="bg-gradient-to-r from-blue-900/20 to-purple-900/20 border border-blue-700/50 rounded-2xl p-10">
+                    <div class="grid md:grid-cols-2 gap-8 items-center mb-8">
+                      <div>
+                        {{ with .intro }}<p class="text-lg text-gray-200 leading-relaxed mb-6">{{ . | markdownify }}</p>{{ end }}
+                        {{ with .bullets }}
+                          <ul class="text-gray-300 space-y-3">
+                            {{ range . }}
+                              {{ $icon := or .icon "fa-solid fa-check" }}
+                              {{ $color := or .color "text-blue-400" }}
+                              <li class="flex items-start space-x-3">
+                                <i class="{{ $icon }} {{ $color }} mt-1"></i>
+                                <span>{{ .text | markdownify }}</span>
+                              </li>
+                            {{ end }}
+                          </ul>
+                        {{ end }}
+                      </div>
+                      {{ with .image }}<div class="text-center"><img class="w-full h-64 object-cover rounded-xl" src="{{ .src }}" alt="{{ .alt }}" loading="lazy" /></div>{{ end }}
+                    </div>
+                  </div>
+                </div>
+              {{ end }}
+              {{ with $business }}
+                <div id="business-models" class="mb-12">
+                  {{ with .title }}<h3 class="text-2xl font-semibold text-white mb-6">{{ . | markdownify }}</h3>{{ end }}
+                  {{ $icon := .icon | default "fa-solid fa-coins" }}
+                  {{ $iconBg := .icon_bg_class | default "bg-green-500/20" }}
+                  {{ $iconColor := .icon_color_class | default "text-green-400 text-xl" }}
+                  <div class="bg-gradient-to-r from-verana/10 to-green-900/10 border border-verana/30 rounded-2xl p-10">
+                    <div class="flex items-start space-x-4">
+                      <div class="w-12 h-12 {{ $iconBg }} rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="{{ $icon }} {{ $iconColor }}"></i>
+                      </div>
+                      {{ with .text }}<p class="text-lg text-gray-200 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                    </div>
+                  </div>
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ with $benefits }}
+            <div id="{{ .id | default "benefits-section" }}" class="mb-16 scroll-mt-32">
+              {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">{{ . | markdownify }}</h2>{{ end }}
+              {{ with .intro }}
+                <div class="prose prose-invert max-w-none mb-8">
+                  <p class="text-xl text-gray-300 leading-relaxed">{{ . | markdownify }}</p>
+                </div>
+              {{ end }}
+              {{ with .cards }}
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                  {{ range . }}
+                    {{ $icon := .icon }}
+                    {{ $iconName := cond (and $icon (isset $icon "name")) $icon.name "fa-solid fa-circle" }}
+                    {{ $iconColor := cond (and $icon (isset $icon "color")) $icon.color "text-verana text-xl" }}
+                    {{ $iconBg := cond (and $icon (isset $icon "bg")) $icon.bg "bg-verana/20" }}
+                    <div class="bg-transparent border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300">
+                      <div class="w-12 h-12 {{ $iconBg }} rounded-xl flex items-center justify-center mb-6">
+                        <i class="{{ $iconName }} {{ $iconColor }}"></i>
+                      </div>
+                      {{ with .title }}<h3 class="text-lg font-semibold text-white mb-4">{{ . | markdownify }}</h3>{{ end }}
+                      {{ with .text }}<p class="text-gray-300 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+              {{ with .callout }}
+                <div class="bg-gradient-to-r from-verana/10 to-blue-900/10 border border-verana/30 rounded-2xl p-12 text-center">
+                  {{ with .title }}<h3 class="text-2xl font-bold text-white mb-4">{{ . | markdownify }}</h3>{{ end }}
+                  {{ with .text }}<p class="text-xl text-gray-200 leading-relaxed max-w-4xl mx-auto">{{ . | markdownify }}</p>{{ end }}
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ with $cta }}
+            <div id="{{ .id | default "page-cta" }}" class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-12 text-center">
+              {{ with .title }}<h2 class="text-3xl font-bold text-white mb-4">{{ . | markdownify }}</h2>{{ end }}
+              {{ with .text }}<p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">{{ . | markdownify }}</p>{{ end }}
+              <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                {{ with .primary }}
+                  {{ $href := .url | default "#" }}
+                  <a href="{{ $href }}" class="bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2"{{ if strings.HasPrefix $href "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
+                    {{ with .icon }}<i class="{{ . }}"></i>{{ end }}
+                    <span>{{ .label | default "Get Started" }}</span>
+                  </a>
+                {{ end }}
+                {{ with .secondary }}
+                  {{ $href := .url | default "#" }}
+                  <a href="{{ $href }}" class="border-2 border-gray-600 hover:border-verana text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105"{{ if strings.HasPrefix $href "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .label | default "Learn More" }}</a>
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ with $related }}
+  <section id="related-use-cases" class="bg-gray-900 py-20">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        {{ with .title }}<h2 class="text-3xl lg:text-4xl font-bold text-white mb-12 text-center">{{ . | markdownify }}</h2>{{ end }}
+        {{ with .items }}
+          <div class="grid md:grid-cols-3 gap-8">
+            {{ range . }}
+              {{ $icon := .icon }}
+              {{ $iconName := cond (and $icon (isset $icon "name")) $icon.name "fa-solid fa-circle" }}
+              {{ $iconColor := cond (and $icon (isset $icon "color")) $icon.color "text-verana text-xl" }}
+              {{ $iconBg := cond (and $icon (isset $icon "bg")) $icon.bg "bg-verana/20" }}
+              {{ $href := .url | default .href | default "#" }}
+              <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                <div class="w-12 h-12 {{ $iconBg }} rounded-xl flex items-center justify-center mb-6">
+                  <i class="{{ $iconName }} {{ $iconColor }}"></i>
+                </div>
+                {{ with .title }}<h3 class="text-xl font-semibold text-white mb-4">{{ . | markdownify }}</h3>{{ end }}
+                {{ with .text }}<p class="text-gray-300 mb-6 leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+                <a href="{{ $href }}" class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200"{{ if strings.HasPrefix $href "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
+                  <span>{{ .cta_label | default "Learn More" }}</span>
+                  <i class="fa-solid fa-arrow-right text-sm"></i>
+                </a>
+              </div>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const sidebar = document.querySelector('[data-sidebar-sticky]');
+    if (!sidebar) return;
+
+    const links = Array.from(sidebar.querySelectorAll('[data-nav-link]'));
+    if (!links.length) return;
+
+    const sectionMap = new Map();
+
+    links.forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      const id = decodeURIComponent(href.slice(1));
+      const section = document.getElementById(id);
+      if (!section) return;
+      if (!sectionMap.has(id)) {
+        sectionMap.set(id, { element: section, links: [] });
+      }
+      sectionMap.get(id).links.push(link);
+    });
+
+    if (!sectionMap.size) return;
+
+    const setActive = id => {
+      sectionMap.forEach((value, key) => {
+        value.links.forEach(link => {
+          if (key === id) {
+            link.classList.add('text-verana', 'font-semibold');
+            link.classList.remove('text-gray-400');
+            link.setAttribute('aria-current', 'true');
+          } else {
+            link.classList.remove('text-verana', 'font-semibold');
+            link.classList.add('text-gray-400');
+            link.removeAttribute('aria-current');
+          }
+        });
+      });
+    };
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActive(entry.target.id);
+        }
+      });
+    }, {
+      rootMargin: '-40% 0px -40% 0px',
+      threshold: [0, 1]
+    });
+
+    sectionMap.forEach(value => observer.observe(value.element));
+
+    const headerOffset = () => {
+      const header = document.querySelector('header');
+      return header ? header.offsetHeight + 24 : 120;
+    };
+
+    links.forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      link.addEventListener('click', event => {
+        const id = decodeURIComponent(href.slice(1));
+        const target = document.getElementById(id);
+        if (!target) return;
+        event.preventDefault();
+        const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: elementPosition - headerOffset(), behavior: 'smooth' });
+        history.replaceState(null, '', `#${id}`);
+        setActive(id);
+      });
+    });
+
+    const initialId = location.hash ? decodeURIComponent(location.hash.slice(1)) : null;
+    if (initialId && sectionMap.has(initialId)) {
+      setActive(initialId);
+    } else {
+      const firstEntry = sectionMap.keys().next();
+      if (!firstEntry.done) {
+        setActive(firstEntry.value);
+      }
+    }
+  });
+</script>

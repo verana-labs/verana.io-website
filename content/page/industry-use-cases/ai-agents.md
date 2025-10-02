@@ -28,8 +28,6 @@ sidebar:
   quick_links:
     title: What you can verify
     items:
-      - label: Playground
-        url: "/page/playground"
       - label: Documentation
         url: "https://docs.verana.io"
       - label: Discord

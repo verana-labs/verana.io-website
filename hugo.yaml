@@ -15,8 +15,8 @@ markup:
       unsafe: true
 
 params:
-  eventArea: "📍 Meet us at TOKEN2049 and discover how Verana is combining Web3, DIDs and Verifiable Credentials to build the Open Trust Layer"
-  eventAreaLink: "https://www.linkedin.com/posts/verana-foundation_token2049-token2049-token2049sg-activity-7378930606291984384-Rv9y?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAA-4igBOrk0YI7gLaRquPdIH4JmobiuEzo"
+#  eventArea: "📍 Meet us at TOKEN2049 and discover how Verana is combining Web3, DIDs and Verifiable Credentials to build the Open Trust Layer"
+#  eventAreaLink: "https://www.linkedin.com/posts/verana-foundation_token2049-token2049-token2049sg-activity-7378930606291984384-Rv9y?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAA-4igBOrk0YI7gLaRquPdIH4JmobiuEzo"
   kroki:
     enable: true
     server: "https://kroki.testnet.verana.network/"
@@ -104,8 +104,6 @@ params:
             url: "/page/industry-use-cases/government-id"
           - title: "Healthcare Workforce Mobility"
             url: "/page/industry-use-cases/healthcare-workforce-mobility"
-#          - title: "Notaries: Power of Attorney"
-#            url: "/page/industry-use-cases/notaries"
 #          - title: "SEPA Direct Debit payments"
 #            url: "/page/industry-use-cases/payments"
           - title: "Hotel Discovery"
@@ -116,6 +114,9 @@ params:
 #            url: "/page/industry-use-cases/sc-rwa"
           - title: "Decentralized Social Networks"
             url: "/page/industry-use-cases/decentralized-social-network"
+          - title: "Notaries & Powers of Attorney"
+            url: "/page/industry-use-cases/notaries"
+
       - title: "Developers"
         children:
           - title: "Components"

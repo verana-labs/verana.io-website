@@ -270,6 +270,15 @@ impact:
         - "Direct booking"
         - "Global discoverability"
       href: "/page/industry-use-cases/hotel-management"
+    - title: "Notaries and Powers of Attorney"
+      description: "Transform paper-based power-of-attorney process into a verifiable, efficient, and fraud-resistant digital credential system."
+      image: "/images/purple/bank3.png"
+      icon: { name: "stamp", style: "solid", color: "text-blue-400", bg: "bg-blue-500/20" }
+      highlights:
+        - "Simplify processes"
+        - "Preserve privacy"
+        - "Enable business models"
+      href: "/page/industry-use-cases/hotel-management"
 #    - title: "Notaries & Legal"
 #      description: "Prove documents, power of attorney, and notarizations instantly with machine-verifiable certificates."
 #      image: "/images/uxpilot/impact-notaries.png"

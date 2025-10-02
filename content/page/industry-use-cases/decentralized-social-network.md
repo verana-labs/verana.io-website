@@ -30,8 +30,6 @@ sidebar:
   quick_links:
     title: Quick Links
     items:
-      - label: Playground
-        url: "/page/playground"
       - label: Documentation
         url: "https://docs.verana.io"
       - label: Discord
