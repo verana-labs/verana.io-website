@@ -165,9 +165,36 @@
                   {{ with .implementation_diagram }}
                     <div id="implementation-diagram" class="mb-8">
                       {{ with .title }}<h4 class="text-xl font-semibold text-white mb-6">{{ . | markdownify }}</h4>{{ end }}
-                      <div class="bg-gray-900 border border-gray-700 rounded-2xl p-12">
-                        {{ with .image }}<div class="text-center mb-8"><img class="w-full h-80 object-cover rounded-xl" src="{{ .src }}" alt="{{ .alt }}" loading="lazy" /></div>{{ end }}
+                      <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6">
+                        {{ if .diagram }}
+                          <div class="text-center mb-6">
+                            <div class="w-full rounded-xl border border-gray-700/60 bg-black/40 p-2">
+                              {{ $page.RenderString .diagram }}
+                            </div>
+                          </div>
+                        {{ else if .image }}
+                          <div class="text-center mb-6">
+                            <img class="w-full h-80 object-cover rounded-xl" src="{{ .image.src }}" alt="{{ .image.alt }}" loading="lazy" />
+                          </div>
+                        {{ end }}
                         {{ with .caption }}<p class="text-center text-gray-300">{{ . | markdownify }}</p>{{ end }}
+                        {{ with .cards }}
+                          <div class="grid md:grid-cols-3 gap-6 mt-6">
+                            {{ range . }}
+                              {{ $icon := .icon }}
+                              {{ $iconName := cond (and $icon (isset $icon "name")) $icon.name "fa-solid fa-circle" }}
+                              {{ $iconColor := cond (and $icon (isset $icon "color")) $icon.color "text-verana text-xl" }}
+                              {{ $iconBg := cond (and $icon (isset $icon "bg")) $icon.bg "bg-verana/20" }}
+                              <div class="text-center">
+                                <div class="w-16 h-16 {{ $iconBg }} rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                  <i class="{{ $iconName }} {{ $iconColor }}"></i>
+                                </div>
+                                {{ with .title }}<h4 class="text-lg font-semibold text-white mb-2">{{ . | markdownify }}</h4>{{ end }}
+                                {{ with .text }}<p class="text-gray-400 text-sm">{{ . | markdownify }}</p>{{ end }}
+                              </div>
+                            {{ end }}
+                          </div>
+                        {{ end }}
                       </div>
                     </div>
                   {{ end }}

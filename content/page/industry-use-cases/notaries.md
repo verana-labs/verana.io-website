@@ -68,9 +68,9 @@ problem_section:
         - "Must contact **all notaries** to check revocation"
         - "Creates a repetitive verification process"
   process_illustration:
-    image:
-      src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/a28a15b1f0-4169ac2433c1b26a67b5.png"
-      alt: "Illustration of manual paper-based power of attorney workflow with multiple notaries, phone calls, and paperwork"
+#    image:
+#      src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/a28a15b1f0-4169ac2433c1b26a67b5.png"
+#      alt: "Illustration of manual paper-based power of attorney workflow with multiple notaries, phone calls, and paperwork"
     text: "This system creates **unnecessary friction and cost** for notaries, grantees, and verifiers like banks who manage repetitive checks."
   bank_illustration:
     image:
@@ -81,77 +81,6 @@ solution_section:
   id: solution-section
   title: "The Solution: A National Trust Ecosystem for Notaries"
   intro: "In Mexico, the notary system relies on a hierarchy of the **Colegio Nacional**, **Colegios Estatales**, and individual **Notarios**. Verana digitizes this structure with verifiable credentials."
-  hierarchy:
-    diagram: |
-      {{< kroki _type="plantuml" >}}
-      @startuml
-      skinparam backgroundColor transparent
-      skinparam DefaultTextAlignment center
-      skinparam defaultFontName "Inter"
-      skinparam defaultFontColor #E2E8F0
-      skinparam ArrowColor #94A3B8
-      skinparam ArrowThickness 2
-      skinparam ObjectBorderColor #1F2937
-      skinparam ObjectFontColor #E2E8F0
-      skinparam ObjectFontName "Inter"
-      package "Power of Attorney Credential Schema Permission Tree" as cs {
-          object "Colegio Nacional" as tr #1F3457 {
-              permissionType: ECOSYSTEM (Root)
-              did:example:colegio-nacional
-          }
-          object "Colegio Estatal #1" as ig1 #1B423A {
-              permissionType: ISSUER_GRANTOR
-              did:example:colegio-estatal1
-          }
-          object "Colegio Estatal #2" as ig2 #1B423A {
-              permissionType: ISSUER_GRANTOR
-              did:example:colegio-estatal2
-          }
-          
-          object "Notario 13" as issuer13 #382F5B {
-              permissionType: ISSUER
-              did:example:notario13
-          }
-          object "Notario 24" as issuer24 #382F5B {
-              permissionType: ISSUER
-              did:example:notario24
-          }
-          object "Notario 25" as issuer25 #382F5B {
-              permissionType: ISSUER
-              did:example:notario25
-          }
-          object "Notario 26" as issuer26 #382F5B {
-              permissionType: ISSUER
-              did:example:notario26
-          }
-      }
-      tr --> ig1
-      tr --> ig2
-      ig1 --> issuer13
-      ig2 --> issuer24
-      ig2 --> issuer25
-      ig2 --> issuer26
-      @enduml
-      {{< /kroki >}}
-    cards:
-      - title: "Colegio Nacional de Notarios"
-        text: "The highest-level governing body"
-        icon:
-          name: "fa-solid fa-crown"
-          color: "text-blue-400"
-          bg: "bg-blue-500/20"
-      - title: "Colegios Estatales"
-        text: "State-level associations"
-        icon:
-          name: "fa-solid fa-map"
-          color: "text-green-400"
-          bg: "bg-green-500/20"
-      - title: "Notarios"
-        text: "Individual notary offices"
-        icon:
-          name: "fa-solid fa-stamp"
-          color: "text-purple-400"
-          bg: "bg-purple-500/20"
   digital_ecosystem:
     id: digital-ecosystem
     title: "Establishing a Digital Ecosystem"
@@ -175,17 +104,79 @@ solution_section:
           - "Implements EGF rules and credential schemas"
           - "Maintains authorized issuers, verifiers, and registry grantors"
           - "Enforces revocation and validity checks across the ecosystem"
-    credential_visual:
-      image:
-        src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/5a6a861792-816281808d3a3e3197f6.png"
-        alt: "Digital power of attorney credential card with key fields and security elements"
-      caption: "Power of Attorney Credential containing all necessary information and cryptographic proof"
     implementation_diagram:
       title: "Implementation Diagram"
-      image:
-        src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/d56e047bb4-b7e8529eb1c56b73335d.png"
-        alt: "Permission tree showing Colegio Nacional, Colegios Estatales, and Notarios"
+      diagram: |
+        {{< kroki _type="plantuml" >}}
+        @startuml
+        scale max 800 width
+        skinparam backgroundColor transparent
+        skinparam DefaultTextAlignment center
+        skinparam defaultFontName "Inter"
+        skinparam defaultFontColor #E2E8F0
+        skinparam ArrowColor #94A3B8
+        skinparam ArrowThickness 2
+        skinparam ObjectBorderColor #1F2937
+        skinparam ObjectFontColor #E2E8F0
+        skinparam ObjectFontName "Inter"
+        package "Power of Attorney Credential Schema Permission Tree" as cs {
+            object "Colegio Nacional" as tr #1F3457 {
+                permissionType: ECOSYSTEM (Root)
+                did:example:colegio-nacional
+            }
+            object "Colegio Estatal #1" as ig1 #1C433A {
+                permissionType: ISSUER_GRANTOR
+                did:example:colegio-estatal1
+            }
+            object "Colegio Estatal #2" as ig2 #1C433A {
+                permissionType: ISSUER_GRANTOR
+                did:example:colegio-estatal2
+            }
+            object "Notario 13" as issuer13 #382F5A {
+                permissionType: ISSUER
+                did:example:notario13
+            }
+            object "Notario 24" as issuer24 #382F5A {
+                permissionType: ISSUER
+                did:example:notario24
+            }
+            object "Notario 25" as issuer25 #382F5A {
+                permissionType: ISSUER
+                did:example:notario25
+            }
+            object "Notario 26" as issuer26 #382F5A {
+                permissionType: ISSUER
+                did:example:notario26
+            }
+        }
+        tr --> ig1
+        tr --> ig2
+        ig1 --> issuer13
+        ig2 --> issuer24
+        ig2 --> issuer25
+        ig2 --> issuer26
+        @enduml
+        {{< /kroki >}}
       caption: "Power of Attorney Credential Schema Permission Tree showing hierarchical permissions"
+      cards:
+        - title: "Colegio Nacional de Notarios"
+          text: "The highest-level governing body"
+          icon:
+            name: "fa-solid fa-crown"
+            color: "text-blue-400"
+            bg: "bg-blue-500/20"
+        - title: "Colegios Estatales"
+          text: "State-level associations"
+          icon:
+            name: "fa-solid fa-map"
+            color: "text-green-400"
+            bg: "bg-green-500/20"
+        - title: "Notarios"
+          text: "Individual notary offices"
+          icon:
+            name: "fa-solid fa-stamp"
+            color: "text-purple-400"
+            bg: "bg-purple-500/20"
 workflows:
   id: new-workflows
   title: "Streamlined Digital Workflows"

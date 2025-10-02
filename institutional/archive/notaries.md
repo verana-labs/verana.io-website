@@ -13,6 +13,8 @@ In Mexico, granting and using a **Power of Attorney** is a **paper-based, fragme
 - The signed document is physically delivered to both the grantor and the grantee.
 - There is **no central database** of powers of attorney in Mexico.
 
+> uxpilot ai: add an illustration here
+
 ### Revoking a Power of Attorney
 
 - The grantor or grantee can go to **any notary office** (not necessarily the one that issued it).
@@ -28,6 +30,8 @@ Example, at the bank:
 - Banks and other verifiers often repeat this process periodically, “just in case” a power was revoked after issuance.
 
 This system creates **unnecessary friction and cost** for notaries, grantees, and especially verifiers like banks, who face a repetitive and burdensome verification process.
+
+> uxpilot ai: add an illustration here
 
 ## The Solution: A National Trust Ecosystem for Notaries
 
@@ -150,7 +154,11 @@ When the grantee presents the power to a verifier (e.g., a bank):
 - If the credential is active (not revoked), the power is valid: no further manual checks are needed.
 - Banks and other verifiers can **periodically check credential revocation status automatically**, eliminating repetitive phone calls to notaries.
 
-> Note: If the **Colegio Nacional del Notariado Mexicano** decides, economic models can be activated so that those verifying powers of attorney (the verifiers, including banks, telecom providers...) make a small micropayment for each verification. This way, all participants in the ecosystem receive their corresponding commission.
+> uxpilot ai: add an illustration here
+
+### Privacy Preserving Business models
+
+Economic models can be activated so that those verifying powers of attorney (the verifiers, including banks, telecom providers...) make a small micropayment for each verification. This way, all participants in the ecosystem receive their corresponding commission.
 
 ## Conclusion: Saving Time, Reducing Costs
 
