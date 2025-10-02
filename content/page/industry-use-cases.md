@@ -92,6 +92,23 @@ sections:
     image:
       src: "/images/purple/social6.webp"
       alt: "Creators collaborating across decentralized social platforms with verification badges"
+  - id: poa
+    background: bg-gray-900
+    image_position: right
+    title: Notaries and Powers of Attorney
+    description: "Transform paper-based power-of-attorney process into a verifiable, efficient, and fraud-resistant digital credential system."
+    bullets:
+      - Simplify processes
+      - Preserve privacy 
+      - Enable business models
+    cta:
+      label: Digitalize PoAs 
+      href: "/page/industry-use-cases/notaries"
+      icon: "fa-solid fa-arrow-right"
+      class: "bg-verana hover:bg-verana-dark text-white"
+    image:
+      src: "/images/purple/bank3.png"
+      alt: "Creators collaborating across decentralized social platforms with verification badges"
 overview:
   title: The Future of Trust-Based Industries
   description: "Across every industry, Verana enables ecosystems to build trust networks where verification replaces reputation, credentials replace claims, and transparency replaces opacity."

@@ -257,11 +257,11 @@
                     {{ with .intro }}<p class="text-lg text-gray-300 leading-relaxed mb-8">{{ . | markdownify }}</p>{{ end }}
                     <div class="space-y-6">
                       {{ range .bullets }}
-                        <div class="flex items-start space-x-4">
+                        <div class="flex items-center space-x-4">
                           <div class="w-8 h-8 bg-green-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
                             <i class="{{ .icon | default "fa-solid fa-check" }} text-green-400 text-sm"></i>
                           </div>
-                          <p class="text-gray-300">{{ .text | markdownify }}</p>
+                          <p class="text-gray-300 leading-relaxed">{{ .text | markdownify }}</p>
                         </div>
                       {{ end }}
                     </div>
@@ -285,11 +285,11 @@
                   <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
                     <div class="space-y-6">
                       {{ range .bullets }}
-                        <div class="flex items-start space-x-4">
+                        <div class="flex items-center space-x-4">
                           <div class="w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
                             <i class="{{ .icon | default "fa-solid fa-check" }} text-red-400 text-sm"></i>
                           </div>
-                          <p class="text-gray-300">{{ .text | markdownify }}</p>
+                          <p class="text-gray-300 leading-relaxed">{{ .text | markdownify }}</p>
                         </div>
                       {{ end }}
                     </div>
@@ -314,11 +314,11 @@
                     {{ with .intro }}<p class="text-lg text-gray-300 leading-relaxed mb-8">{{ . | markdownify }}</p>{{ end }}
                     <div class="space-y-6">
                       {{ range .bullets }}
-                        <div class="flex items-start space-x-4">
+                        <div class="flex items-center space-x-4">
                           <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
                             <i class="{{ .icon | default "fa-solid fa-check" }} text-blue-400 text-sm"></i>
                           </div>
-                          <p class="text-gray-300">{{ .text | markdownify }}</p>
+                          <p class="text-gray-300 leading-relaxed">{{ .text | markdownify }}</p>
                         </div>
                       {{ end }}
                     </div>

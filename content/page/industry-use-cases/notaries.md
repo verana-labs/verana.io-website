@@ -1,9 +1,9 @@
 ---
 title: Notaries & Power of Attorney
-subtitle: "Transform Mexico's paper-based power-of-attorney process into a verifiable, efficient, and fraud-resistant digital credential system."
+subtitle: "Transform paper-based power-of-attorney process into a verifiable, efficient, and fraud-resistant digital credential system."
 url: "/page/industry-use-cases/notaries"
 meta_title: "Verana for Notaries | Verifiable Power of Attorney in Mexico"
-meta_description: "Digitalize Mexico’s power-of-attorney process with Verana by issuing verifiable credentials, accelerating revocations, and delivering trustworthy notarized records."
+meta_description: "Digitalize power-of-attorney process with Verana by issuing verifiable credentials, accelerating revocations, and delivering trustworthy notarized records."
 hero_icon: "fa-solid fa-stamp"
 disable_content_wrapper: true
 use_case_partial: "notaries2"
@@ -33,7 +33,7 @@ sidebar:
 problem:
   id: problem-statement
   title: "A Manual, Inefficient Process"
-  intro: "In Mexico, granting and using a **Power of Attorney** is a **paper-based, fragmented, and costly process**."
+  intro: "In many countries, granting and using a **Power of Attorney** is a **paper-based, fragmented, and costly process**."
   issuing:
     title: "Issuing a Power of Attorney"
     bullets:
@@ -42,7 +42,7 @@ problem:
       - icon: "fa-solid fa-signature"
         text: "The notary drafts the power, signs it with the grantor, and keeps a physical copy."
       - icon: "fa-solid fa-envelope"
-        text: "Copies are delivered to both parties with no central database to reference."
+        text: "Copies are delivered to both parties, often with no central database to reference."
   revoking:
     title: "Revoking a Power of Attorney"
     bullets:
@@ -72,10 +72,10 @@ problem:
 solution:
   id: solution-section
   title: "The Solution: A National Trust Ecosystem for Notaries"
-  intro: "Mexico's notary system relies on the **Colegio Nacional**, **Colegios Estatales**, and individual **Notarios**. Verana digitizes this structure with verifiable credentials."
+  intro: "In Utopia Country, notary system relies on the **National Notaries Association**, **District Notaries Association**, and individual **Notaries**. Verana digitizes this structure with verifiable credentials."
   digital_ecosystem:
     title: "Establishing a Digital Ecosystem"
-    intro: "The **Colegio Nacional** launches a **Notarial Trust Ecosystem** on Verana to digitize and streamline the power-of-attorney process."
+    intro: "The **National Notaries Association** launches a **Notarial Trust Ecosystem** on Verana to digitize and streamline the power-of-attorney process."
     steps:
       - number: "1"
         title: "Publishes an Ecosystem Governance Framework (EGF)"
@@ -90,7 +90,7 @@ solution:
         title: "Designs the Credential & Permission Tree"
         bullets:
           - icon: "fa-solid fa-network-wired"
-            text: "Maps roles and permissions from Colegio Nacional down to authorized notaries."
+            text: "Maps roles and permissions from National Notaries Association down to authorized notaries."
           - icon: "fa-solid fa-diagram-project"
             text: "Publishes the credential schema and trust registry policies in Verana."
       - number: "3"
@@ -119,33 +119,33 @@ solution:
       skinparam ObjectFontColor #E2E8F0
       skinparam ObjectFontName "Inter"
       package "Power of Attorney Credential Schema Permission Tree" as cs {
-          object "Colegio Nacional" as tr #382F5A {
+          object "National Notaries Association" as tr #382F5A {
               permissionType: ECOSYSTEM (Root)
-              did:example:colegio-nacional
+              did:example:national-association
           }
-          object "Colegio Estatal #1" as ig1 #1F3457 {
+          object "District Notaries Association #1" as ig1 #1F3457 {
               permissionType: ISSUER_GRANTOR
-              did:example:colegio-estatal1
+              did:example:district-association1
           }
-          object "Colegio Estatal #2" as ig2 #1F3457 {
+          object "District Notaries Association #2" as ig2 #1F3457 {
               permissionType: ISSUER_GRANTOR
-              did:example:colegio-estatal2
+              did:example:district-association2
           }
-          object "Notario 13" as issuer13 #1C423A {
+          object "Notary 13" as issuer13 #1C423A {
               permissionType: ISSUER
-              did:example:notario13
+              did:example:notary13
           }
-          object "Notario 24" as issuer24 #1C423A {
+          object "Notary 24" as issuer24 #1C423A {
               permissionType: ISSUER
-              did:example:notario24
+              did:example:notary24
           }
-          object "Notario 25" as issuer25 #1C423A {
+          object "Notary 25" as issuer25 #1C423A {
               permissionType: ISSUER
-              did:example:notario25
+              did:example:notary25
           }
-          object "Notario 26" as issuer26 #1C423A {
+          object "Notary 26" as issuer26 #1C423A {
               permissionType: ISSUER
-              did:example:notario26
+              did:example:notary26
           }
       }
       tr --> ig1
@@ -160,15 +160,15 @@ solution:
       - icon: "fa-solid fa-crown"
         icon_bg: "bg-verana/20"
         icon_color: "text-verana"
-        title: "Colegio Nacional"
+        title: "National Notaries Association"
       - icon: "fa-solid fa-building"
         icon_bg: "bg-blue-500/20"
         icon_color: "text-blue-400"
-        title: "Colegios Estatales"
+        title: "District Notaries Association"
       - icon: "fa-solid fa-stamp"
         icon_bg: "bg-green-500/20"
         icon_color: "text-green-400"
-        title: "Notarios"
+        title: "Notaries"
 workflows:
   id: new-workflows
   title: "Streamlined Digital Workflows"
@@ -214,14 +214,14 @@ workflows:
         text: "Banks can check revocation status automatically, eliminating phone calls."
     image:
       img_class: "w-full h-96 object-cover"
-      src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/185dee47dd-0cc8a7d84d00eae73068.png"
+      src: "/images/purple/bank3.png"
       alt: "Bank interface instantly verifying power of attorney credential"
 #  verification_illustration:
 #    src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/f47161f64f-0d5f71e7e45dae5d0e57.png"
 #    alt: "Modern bank interface showing instant digital verification of power of attorney credentials"
 business_models:
   title: "Privacy Preserving Business Models"
-  intro: "Verifiers such as banks or telecoms can pay a small micropayment per verification—so all ecosystem participants receive their commission."
+  intro: "Verifiers such as banks or telecoms can pay a small micropayment per verification, so all ecosystem participants receive their commission."
   cards:
     - icon: "fa-solid fa-university"
       icon_bg: "bg-green-500/20"
@@ -258,7 +258,7 @@ conclusion:
     - icon: "fa-solid fa-crown"
       icon_bg: "bg-verana/20"
       icon_color: "text-verana"
-      text: "**Colegio Nacional** reinforces its authority and delivers digital infrastructure that benefits all participants."
+      text: "**National Notaries Association** reinforces its authority and delivers digital infrastructure that benefits all participants."
   callout: "Verana transforms the **power of attorney** from a costly, paper-based process into a **verifiable, efficient, and fraud-resistant digital credential system**."
 cta:
   id: page-cta
