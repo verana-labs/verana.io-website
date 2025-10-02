@@ -190,7 +190,7 @@ workflows:
         text: "The credential includes a **hash of the digital copy** to guarantee authenticity."
     image:
       img_class: "w-full h-96 object-cover"
-      src: "/images/purple/notary.webp"
+      src: "/images/purple/notary2.webp"
       alt: "Notary issuing both physical and digital power of attorney documents"
   revoking:
     title: "Revoking a Power of Attorney - with Verifiable Credential"
@@ -217,6 +217,7 @@ workflows:
       - icon: "fa-solid fa-sync-alt"
         text: "Banks can check revocation status automatically, eliminating phone calls."
     image:
+      img_class: "w-full h-96 object-cover"
       src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/185dee47dd-0cc8a7d84d00eae73068.png"
       alt: "Bank interface instantly verifying power of attorney credential"
 #  verification_illustration:
