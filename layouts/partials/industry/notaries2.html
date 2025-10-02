@@ -64,7 +64,7 @@
                     {{ range .bullets }}
                       <div class="flex items-start space-x-4">
                         <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                          <i class="{{ .icon | default "fa-solid fa-circle" }} text-blue-400 text-sm"></i>
+                          <i class="fa-solid fa-circle-check text-blue-400 text-sm"></i>
                         </div>
                         <p class="text-gray-300">{{ .text | markdownify }}</p>
                       </div>
@@ -83,7 +83,7 @@
                     {{ range .bullets }}
                       <div class="flex items-start space-x-4">
                         <div class="w-8 h-8 bg-orange-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                          <i class="{{ .icon | default "fa-solid fa-circle" }} text-orange-400 text-sm"></i>
+                          <i class="fa-solid fa-ban text-orange-400 text-sm"></i>
                         </div>
                         <p class="text-gray-300">{{ .text | markdownify }}</p>
                       </div>
@@ -103,7 +103,7 @@
                     {{ range .bullets }}
                       <div class="flex items-start space-x-4">
                         <div class="w-8 h-8 bg-green-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                          <i class="{{ .icon | default "fa-solid fa-circle" }} text-green-400 text-sm"></i>
+                          <i class="fa-solid fa-shield-check text-green-400 text-sm"></i>
                         </div>
                         <p class="text-gray-300">{{ .text | markdownify }}</p>
                       </div>
