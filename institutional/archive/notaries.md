@@ -1,8 +1,5 @@
 ---
 title: Notaries & Power of Attorney
-url: "/page/industry-use-cases/notaries"
-meta_title: "Verana for Notaries | Verifiable Power of Attorney in Mexico"
-meta_description: "Digitalize Mexico’s power-of-attorney process with Verana by issuing verifiable credentials, accelerating revocations, and providing trustworthy notarized records."
 ---
 
 ## A Manual, Inefficient Process
@@ -15,8 +12,6 @@ In Mexico, granting and using a **Power of Attorney** is a **paper-based, fragme
 - The notary drafts the power, signs it together with the grantor, and keeps a physical copy in their files.
 - The signed document is physically delivered to both the grantor and the grantee.
 - There is **no central database** of powers of attorney in Mexico.
-
-> uxpilot prompt: add an illustration here
 
 ### Revoking a Power of Attorney
 
@@ -32,8 +27,6 @@ Example, at the bank:
 - The bank should also **contact all notaries in Mexico** to ensure the power has not been revoked by another office.
 - Banks and other verifiers often repeat this process periodically, “just in case” a power was revoked after issuance.
 
-> uxpilot prompt: add an illustration here
-
 This system creates **unnecessary friction and cost** for notaries, grantees, and especially verifiers like banks, who face a repetitive and burdensome verification process.
 
 ## The Solution: A National Trust Ecosystem for Notaries
@@ -43,9 +36,6 @@ In Mexico, the notary system is structured as follows:
 - **Colegio Nacional de Notarios** – the highest-level body.
 - **Colegios Estatales** – state-level associations.
 - **Notarios** – individual notary offices.
-
-> uxpilot prompt: show a tree with the different levels
-
 
 ### Establishing a Digital Ecosystem
 
@@ -61,9 +51,6 @@ The **Colegio Nacional** creates a **Notarial Trust Ecosystem** on Verana to dig
   - **Colegios Estatales** are in charge of selecting **Notaries**
   - Notaries (Issuers): they issue the PoAs.
   - Verifiers, such as Banks, telcos, and other institutions, are granted self-onboarding.
-
-> uxpilot prompt: add an illustration here, of a PoA credential
-
 
 2. **Implementation Diagram**
 
@@ -126,9 +113,6 @@ ig2 --> issuer26
 
 ```
 
-> uxpilot prompt: add an illustration of the diagram here
-
-
 3. **Creates a Trust Registry in Verana**
 
 - Implements the rules and schemas defined in the EGF.
@@ -149,9 +133,6 @@ When a notary issues a new power of attorney:
   - ...
   - A **hash of the digital copy** to guarantee authenticity.
 
-> uxpilot prompt: add an illustration here
-
-
 ### Revoking a Power of Attorney - with Verifiable Credential
 
 - The grantor or grantee presents the credential at any notary office.
@@ -169,11 +150,7 @@ When the grantee presents the power to a verifier (e.g., a bank):
 - If the credential is active (not revoked), the power is valid: no further manual checks are needed.
 - Banks and other verifiers can **periodically check credential revocation status automatically**, eliminating repetitive phone calls to notaries.
 
-> uxpilot prompt: add an illustration here
-
-### Business MOdels
-
-Economic models can be activated so that those verifying powers of attorney (the verifiers, including banks, telecom providers...) make a small micropayment for each verification. This way, all participants in the ecosystem receive their corresponding commission.
+> Note: If the **Colegio Nacional del Notariado Mexicano** decides, economic models can be activated so that those verifying powers of attorney (the verifiers, including banks, telecom providers...) make a small micropayment for each verification. This way, all participants in the ecosystem receive their corresponding commission.
 
 ## Conclusion: Saving Time, Reducing Costs
 

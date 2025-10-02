@@ -1,0 +1,793 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notaries &amp; Power of Attorney - Verana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "fontFamily": {
+        "inter": [
+          "Inter",
+          "sans-serif"
+        ]
+      },
+      "colors": {
+        "verana": "#763ef0",
+        "verana-light": "#9f7aea",
+        "verana-dark": "#553c9a"
+      },
+      "animation": {
+        "float": "float 6s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite alternate",
+        "network-pulse": "network-pulse 3s ease-in-out infinite",
+        "trust-flow": "trust-flow 4s ease-in-out infinite",
+        "document-flow": "document-flow 3s ease-in-out infinite",
+        "verification-pulse": "verification-pulse 2s ease-in-out infinite"
+      },
+      "keyframes": {
+        "float": {
+          "0%, 100%": {
+            "transform": "translateY(0px)"
+          },
+          "50%": {
+            "transform": "translateY(-20px)"
+          }
+        },
+        "pulse-glow": {
+          "0%": {
+            "boxShadow": "0 0 20px rgba(118, 62, 240, 0.3)"
+          },
+          "100%": {
+            "boxShadow": "0 0 40px rgba(118, 62, 240, 0.6)"
+          }
+        },
+        "network-pulse": {
+          "0%, 100%": {
+            "opacity": "0.4"
+          },
+          "50%": {
+            "opacity": "0.8"
+          }
+        },
+        "trust-flow": {
+          "0%": {
+            "transform": "translateX(-100px)",
+            "opacity": "0"
+          },
+          "50%": {
+            "transform": "translateX(0px)",
+            "opacity": "1"
+          },
+          "100%": {
+            "transform": "translateX(100px)",
+            "opacity": "0"
+          }
+        },
+        "document-flow": {
+          "0%": {
+            "transform": "translateY(20px)",
+            "opacity": "0"
+          },
+          "50%": {
+            "transform": "translateY(0px)",
+            "opacity": "1"
+          },
+          "100%": {
+            "transform": "translateY(-20px)",
+            "opacity": "0"
+          }
+        },
+        "verification-pulse": {
+          "0%": {
+            "transform": "scale(1)",
+            "boxShadow": "0 0 0 0 rgba(34, 197, 94, 0.4)"
+          },
+          "50%": {
+            "transform": "scale(1.05)",
+            "boxShadow": "0 0 0 10px rgba(34, 197, 94, 0)"
+          },
+          "100%": {
+            "transform": "scale(1)",
+            "boxShadow": "0 0 0 0 rgba(34, 197, 94, 0)"
+          }
+        }
+      }
+    }
+  }
+};</script>
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        .gradient-mesh {
+            background: radial-gradient(circle at 20% 50%, rgba(118, 62, 240, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(118, 62, 240, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(118, 62, 240, 0.08) 0%, transparent 50%);
+        }
+        .network-bg {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(118, 62, 240, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(118, 62, 240, 0.08) 1px, transparent 1px);
+            background-size: 60px 60px, 40px 40px;
+            animation: network-pulse 4s ease-in-out infinite;
+        }
+        .notary-pattern {
+            background-image: 
+                linear-gradient(45deg, rgba(168, 85, 247, 0.05) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(168, 85, 247, 0.05) 25%, transparent 25%);
+            background-size: 30px 30px;
+        }
+    </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-black text-white overflow-x-hidden font-custom">
+
+<!-- Header -->
+<header id="header" class="bg-black/95 backdrop-blur-sm border-b border-gray-800/50 sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <span class="flex items-center space-x-3 cursor-pointer">
+                    <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-white">Verana</span>
+                </span>
+            </div>
+            
+            <nav class="hidden lg:flex items-center space-x-8">
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Why Verana</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Build</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-300 hover:text-white flex items-center space-x-1 transition-colors duration-200">
+                        <span>Trust Engine</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-verana flex items-center space-x-1 transition-colors duration-200">
+                        <span>Industry Use Cases</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">Community</span>
+                <span class="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">About</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <span class="bg-verana hover:bg-verana-dark text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer">
+                    Testnet
+                </span>
+                <button class="lg:hidden text-white">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Page Hero Section -->
+<section id="page-hero" class="relative bg-gray-900 py-16 lg:py-24 overflow-hidden h-[450px] flex items-center">
+    <div class="absolute inset-0 gradient-mesh opacity-50"></div>
+    <div class="absolute inset-0 network-bg opacity-20"></div>
+    <div class="absolute inset-0 notary-pattern opacity-10"></div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <nav class="flex items-center space-x-2 text-sm text-gray-400 mb-8">
+                <span class="hover:text-white cursor-pointer">Home</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="hover:text-white cursor-pointer">Industry Use Cases</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="text-verana">Notaries &amp; Power of Attorney</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4 mb-6">
+                <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center animate-pulse-glow">
+                    <i class="fa-solid fa-stamp text-purple-400 text-2xl"></i>
+                </div>
+                <h1 class="text-4xl lg:text-6xl font-bold leading-tight">
+                    <span class="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">Notaries &amp; Power of Attorney</span>
+                </h1>
+            </div>
+            
+            <p class="text-xl lg:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+                Transform Mexico's paper-based power-of-attorney process into a verifiable, efficient, and fraud-resistant digital credential system.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content Section -->
+<section id="main-content" class="bg-black py-20 lg:py-32">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12">
+                <!-- Sidebar Navigation -->
+                <aside id="sidebar-nav" class="lg:col-span-1">
+                    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky top-24">
+                        <h3 class="text-lg font-semibold text-white mb-6">Industry Use Cases</h3>
+                        <nav class="space-y-3">
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Government Digital ID</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Decentralized Social Networks</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable AI Assistants</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Healthcare Workforce</span>
+                            <span class="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Hotel Discovery</span>
+                            <span class="block text-verana font-medium cursor-pointer">Notaries &amp; Power of Attorney</span>
+                        </nav>
+                        
+                        <div class="mt-8 pt-6 border-t border-gray-700">
+                            <h4 class="text-sm font-semibold text-white mb-4">Quick Links</h4>
+                            <div class="space-y-2">
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Implementation Guide</span>
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Technical Specs</span>
+                                <span class="block text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Case Studies</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                
+                <!-- Content Area -->
+                <div id="content-area" class="lg:col-span-3">
+                    <!-- Problem Statement -->
+                    <div id="problem-statement" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">A Manual, Inefficient Process</h2>
+                        
+                        <div class="prose prose-invert max-w-none mb-12">
+                            <p class="text-xl text-gray-300 leading-relaxed">
+                                In Mexico, granting and using a <strong>Power of Attorney</strong> is a <strong>paper-based, fragmented, and costly process</strong>.
+                            </p>
+                        </div>
+                        
+                        <!-- Current Process Steps -->
+                        <div class="grid md:grid-cols-3 gap-8 mb-12">
+                            <!-- Issuing -->
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-red-500/50 transition-all duration-300">
+                                <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center mb-6">
+                                    <i class="fa-solid fa-file-signature text-red-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-white mb-4">Issuing a Power of Attorney</h3>
+                                <ul class="text-gray-300 space-y-3 text-sm leading-relaxed">
+                                    <li>• Grantor visits notary and proves legal representation</li>
+                                    <li>• Notary drafts, signs, and keeps physical copy</li>
+                                    <li>• Document physically delivered to both parties</li>
+                                    <li>• <strong>No central database</strong> exists in Mexico</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Revoking -->
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-orange-500/50 transition-all duration-300">
+                                <div class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center mb-6">
+                                    <i class="fa-solid fa-ban text-orange-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-white mb-4">Revoking a Power of Attorney</h3>
+                                <ul class="text-gray-300 space-y-3 text-sm leading-relaxed">
+                                    <li>• Can go to <strong>any notary office</strong></li>
+                                    <li>• New notary must contact original notary</li>
+                                    <li>• Must obtain document to proceed</li>
+                                    <li>• Complex inter-notary coordination required</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Using -->
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 hover:border-yellow-500/50 transition-all duration-300">
+                                <div class="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center mb-6">
+                                    <i class="fa-solid fa-building-columns text-yellow-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-white mb-4">Using at Banks</h3>
+                                <ul class="text-gray-300 space-y-3 text-sm leading-relaxed">
+                                    <li>• Present <strong>physical copy</strong></li>
+                                    <li>• Bank calls issuing notary for confirmation</li>
+                                    <li>• Must contact <strong>all notaries</strong> to check revocation</li>
+                                    <li>• Repetitive verification process</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Process Illustration -->
+                        <div class="bg-gradient-to-r from-red-900/20 to-orange-900/20 border border-red-700/50 rounded-2xl p-12 mb-8">
+                            <div class="text-center mb-8">
+                                <img class="w-full h-64 object-cover rounded-xl" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/a28a15b1f0-4169ac2433c1b26a67b5.png" alt="Illustration of chaotic paper-based power of attorney process in Mexico showing multiple notary offices, physical documents being passed around, phone calls between banks and notaries, and frustrated people waiting in lines, depicting inefficiency and manual processes">
+                            </div>
+                            <p class="text-lg text-center text-gray-200">
+                                This system creates <strong>unnecessary friction and cost</strong> for notaries, grantees, and especially verifiers like banks, who face a repetitive and burdensome verification process.
+                            </p>
+                        </div>
+                        
+                        <!-- Bank Verification Illustration -->
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                            <div class="text-center mb-6">
+                                <img class="w-full h-48 object-cover rounded-xl" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/b912c046ac-d35159a7ee8e41209da3.png" alt="Bank teller making multiple phone calls to different notary offices across Mexico while a customer waits, showing stacks of paper documents and a frustrated banking environment representing the current verification process">
+                            </div>
+                            <p class="text-center text-gray-300">
+                                Banks must contact multiple notaries for each verification, creating delays and operational costs.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Solution Section -->
+                    <div id="solution-section" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">The Solution: A National Trust Ecosystem for Notaries</h2>
+                        
+                        <div class="prose prose-invert max-w-none mb-8">
+                            <p class="text-xl text-gray-300 leading-relaxed">
+                                In Mexico, the notary system is structured as follows:
+                            </p>
+                        </div>
+                        
+                        <!-- Hierarchy Structure -->
+                        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-12 mb-12">
+                            <div class="text-center mb-8">
+                                <img class="w-full h-64 object-cover rounded-xl" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/3bd7cea0da-e03882ff00c54465a883.png" alt="Organizational tree diagram showing Mexican notary hierarchy with Colegio Nacional de Notarios at the top, Colegios Estatales in the middle tier, and individual Notarios at the bottom level, displayed as a clean hierarchical structure">
+                            </div>
+                            <div class="grid md:grid-cols-3 gap-6 mt-8">
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                        <i class="fa-solid fa-crown text-blue-400 text-2xl"></i>
+                                    </div>
+                                    <h4 class="text-lg font-semibold text-white mb-2">Colegio Nacional de Notarios</h4>
+                                    <p class="text-gray-400 text-sm">The highest-level body</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                        <i class="fa-solid fa-map text-green-400 text-2xl"></i>
+                                    </div>
+                                    <h4 class="text-lg font-semibold text-white mb-2">Colegios Estatales</h4>
+                                    <p class="text-gray-400 text-sm">State-level associations</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                        <i class="fa-solid fa-stamp text-purple-400 text-2xl"></i>
+                                    </div>
+                                    <h4 class="text-lg font-semibold text-white mb-2">Notarios</h4>
+                                    <p class="text-gray-400 text-sm">Individual notary offices</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Digital Ecosystem Setup -->
+                        <div id="digital-ecosystem" class="mb-12">
+                            <h3 class="text-2xl font-semibold text-white mb-6">Establishing a Digital Ecosystem</h3>
+                            
+                            <div class="bg-gradient-to-br from-verana/10 to-blue-900/10 border border-verana/30 rounded-2xl p-10 mb-8">
+                                <p class="text-lg text-gray-200 leading-relaxed mb-6">
+                                    The <strong>Colegio Nacional</strong> creates a <strong>Notarial Trust Ecosystem</strong> on Verana to digitize and streamline the power of attorney process.
+                                </p>
+                                
+                                <div class="space-y-6">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-8 h-8 bg-verana rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                            <span class="text-white font-bold text-sm">1</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-lg font-semibold text-white mb-3">Publishes an Ecosystem Governance Framework (EGF)</h4>
+                                            <ul class="text-gray-300 space-y-2">
+                                                <li>• Defines rules for issuance, verification, revocation, and compliance</li>
+                                                <li>• Establishes the <strong>Power of Attorney Credential Schema</strong></li>
+                                                <li>• Outlines procedures for onboarding participants</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- PoA Credential Illustration -->
+                            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 mb-8">
+                                <div class="text-center mb-6">
+                                    <img class="w-full h-56 object-cover rounded-xl" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/5a6a861792-816281808d3a3e3197f6.png" alt="Modern digital credential card design showing a Power of Attorney credential with company name, grantor name, grantee name, validity period, and cryptographic elements, displayed as a sleek digital certificate with security features">
+                                </div>
+                                <p class="text-center text-gray-300">
+                                    Power of Attorney Credential containing all necessary information and cryptographic proof
+                                </p>
+                            </div>
+                            
+                            <!-- Implementation Diagram -->
+                            <div id="implementation-diagram" class="mb-8">
+                                <h4 class="text-xl font-semibold text-white mb-6">Implementation Diagram</h4>
+                                
+                                <div class="bg-gray-900 border border-gray-700 rounded-2xl p-12">
+                                    <div class="text-center mb-8">
+                                        <img class="w-full h-80 object-cover rounded-xl" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/d56e047bb4-b7e8529eb1c56b73335d.png" alt="Technical diagram showing Power of Attorney Credential Schema Permission Tree with Colegio Nacional at the root, Colegios Estatales as issuer grantors, and individual Notarios as issuers, displayed as a hierarchical permission structure with connecting lines and DID identifiers">
+                                    </div>
+                                    <p class="text-center text-gray-300">
+                                        Power of Attorney Credential Schema Permission Tree showing the hierarchical structure and permissions
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Trust Registry -->
+                            <div class="flex items-start space-x-4 bg-blue-900/20 border border-blue-700/50 rounded-2xl p-8">
+                                <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="text-white font-bold text-sm">3</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-white mb-3">Creates a Trust Registry in Verana</h4>
+                                    <ul class="text-gray-300 space-y-2">
+                                        <li>• Implements the rules and schemas defined in the EGF</li>
+                                        <li>• Maintains the list of authorized issuers, verifiers, and registry grantors</li>
+                                        <li>• Enforces revocation and validity checks across the ecosystem</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- New Process Workflows -->
+                    <div id="new-workflows" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Streamlined Digital Workflows</h2>
+                        
+                        <!-- Issuing Process -->
+                        <div id="issuing-process" class="mb-12">
+                            <h3 class="text-2xl font-semibold text-white mb-6">Issuing a Power of Attorney - with Verifiable Credential</h3>
+                            
+                            <div class="bg-gradient-to-r from-green-900/20 to-blue-900/20 border border-green-700/50 rounded-2xl p-10">
+                                <div class="grid md:grid-cols-2 gap-8 items-center mb-8">
+                                    <div>
+                                        <p class="text-lg text-gray-200 leading-relaxed mb-6">
+                                            When a notary issues a new power of attorney:
+                                        </p>
+                                        <ul class="text-gray-300 space-y-3">
+                                            <li class="flex items-start space-x-3">
+                                                <i class="fa-solid fa-check text-green-400 mt-1"></i>
+                                                <span>The notary drafts and signs the physical document as usual</span>
+                                            </li>
+                                            <li class="flex items-start space-x-3">
+                                                <i class="fa-solid fa-check text-green-400 mt-1"></i>
+                                                <span>The notary provides a <strong>digital copy</strong> to both parties</span>
+                                            </li>
+                                            <li class="flex items-start space-x-3">
+                                                <i class="fa-solid fa-check text-green-400 mt-1"></i>
+                                                <span>The notary issues a <strong>Power of Attorney Credential</strong></span>
+                                            </li>
+                                            <li class="flex items-start space-x-3">
+                                                <i class="fa-solid fa-check text-green-400 mt-1"></i>
+                                                <span>Contains a <strong>hash of the digital copy</strong> for authenticity</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="text-center">
+                                        <img class="w-full h-64 object-cover rounded-xl" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/53fefbbaa3-161e3509f9fd0804f712.png" alt="Modern notary office with digital workflow showing a notary issuing both physical and digital power of attorney documents, with verifiable credentials being generated on a computer screen, representing the new streamlined process">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Revoking Process -->
+                        <div id="revoking-process" class="mb-12">
+                            <h3 class="text-2xl font-semibold text-white mb-6">Revoking a Power of Attorney - with Verifiable Credential</h3>
+                            
+                            <div class="bg-gradient-to-r from-orange-900/20 to-red-900/20 border border-orange-700/50 rounded-2xl p-10">
+                                <div class="grid md:grid-cols-2 gap-8 items-center">
+                                    <div class="text-center">
+                                        <img class="w-full h-64 object-cover rounded-xl" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/d3071f775f-6ac81e638ab4163a57fd.png" alt="Streamlined revocation process showing a person at any notary office using digital credentials, with instant communication between notaries through Verana">
+                                    </div>
+                                    <div>
+                                        <ul class="text-gray-300 space-y-4">
+                                            <li class="flex items-start space-x-3">
+                                                <i class="fa-solid fa-user text-orange-400 mt-1"></i>
+                                                <span>Grantor or grantee presents credential at <strong>any notary office</strong></span>
+                                            </li>
+                                            <li class="flex items-start space-x-3">
+                                                <i class="fa-solid fa-phone text-orange-400 mt-1"></i>
+                                                <span>New notary can call issuing notary to request revocation</span>
+                                            </li>
+                                            <li class="flex items-start space-x-3">
+                                                <i class="fa-solid fa-globe text-orange-400 mt-1"></i>
+                                                <span>Or use the <strong>ecosystem's web service</strong> to revoke directly</span>
+                                            </li>
+                                            <li class="flex items-start space-x-3">
+                                                <i class="fa-solid fa-ban text-red-400 mt-1"></i>
+                                                <span>Once revoked, credential becomes <strong>invalid across the entire ecosystem</strong></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Using Process -->
+                        <div id="using-process" class="mb-12">
+                            <h3 class="text-2xl font-semibold text-white mb-6">Using a Power of Attorney - with Verifiable Credential</h3>
+                            
+                            <div class="bg-gradient-to-r from-blue-900/20 to-purple-900/20 border border-blue-700/50 rounded-2xl p-10">
+                                <div class="grid md:grid-cols-2 gap-8 items-center mb-8">
+                                    <div>
+                                        <p class="text-lg text-gray-200 leading-relaxed mb-6">
+                                            When the grantee presents the power to a verifier (e.g., a bank):
+                                        </p>
+                                        <ul class="text-gray-300 space-y-3">
+                                            <li class="flex items-start space-x-3">
+                                                <i class="fa-solid fa-file-alt text-blue-400 mt-1"></i>
+                                                <span>Grantee provides <strong>digital copy</strong> and <strong>verifiable credential</strong></span>
+                                            </li>
+                                            <li class="flex items-start space-x-3">
+                                                <i class="fa-solid fa-shield-alt text-blue-400 mt-1"></i>
+                                                <span>Bank verifies authenticity of credential and document <strong>instantly</strong></span>
+                                            </li>
+                                            <li class="flex items-start space-x-3">
+                                                <i class="fa-solid fa-check-circle text-green-400 mt-1"></i>
+                                                <span>If credential is active, power is valid: <strong>no manual checks needed</strong></span>
+                                            </li>
+                                            <li class="flex items-start space-x-3">
+                                                <i class="fa-solid fa-sync text-blue-400 mt-1"></i>
+                                                <span>Banks can check revocation status <strong>automatically</strong></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="text-center">
+                                        <img class="w-full h-64 object-cover rounded-xl" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/185dee47dd-0cc8a7d84d00eae73068.png" alt="Modern bank interface showing instant verification of power of attorney credentials, with a satisfied customer and bank teller using digital verification system, displaying green checkmarks and verification status on screen">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Business Models -->
+                        <div id="business-models" class="mb-12">
+                            <h3 class="text-2xl font-semibold text-white mb-6">Business Models</h3>
+                            
+                            <div class="bg-gradient-to-r from-verana/10 to-green-900/10 border border-verana/30 rounded-2xl p-10">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-coins text-green-400 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-lg text-gray-200 leading-relaxed">
+                                            Economic models can be activated so that those verifying powers of attorney (the verifiers, including banks, telecom providers...) make a small micropayment for each verification. This way, all participants in the ecosystem receive their corresponding commission.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Benefits Section -->
+                    <div id="benefits-section" class="mb-16">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-8">Conclusion: Saving Time, Reducing Costs</h2>
+                        
+                        <div class="prose prose-invert max-w-none mb-8">
+                            <p class="text-xl text-gray-300 leading-relaxed">
+                                By digitizing the power of attorney process:
+                            </p>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-8 mb-12">
+                            <div class="bg-green-900/20 border border-green-700/50 rounded-2xl p-8 hover:border-green-500/50 transition-all duration-300">
+                                <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-6">
+                                    <i class="fa-solid fa-building-columns text-green-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold text-white mb-4">Banks and Businesses</h3>
+                                <p class="text-gray-300 leading-relaxed">
+                                    Save significant time and money by eliminating manual verification with hundreds of notaries.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-blue-900/20 border border-blue-700/50 rounded-2xl p-8 hover:border-blue-500/50 transition-all duration-300">
+                                <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6">
+                                    <i class="fa-solid fa-users text-blue-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold text-white mb-4">Grantors and Grantees</h3>
+                                <p class="text-gray-300 leading-relaxed">
+                                    Gain confidence that their powers are instantly verifiable and securely revocable.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-purple-900/20 border border-purple-700/50 rounded-2xl p-8 hover:border-purple-500/50 transition-all duration-300">
+                                <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-6">
+                                    <i class="fa-solid fa-stamp text-purple-400 text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold text-white mb-4">Notaries</h3>
+                                <p class="text-gray-300 leading-relaxed">
+                                    Maintain their traditional role while becoming part of a modern, national trust ecosystem.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-verana/20 border border-verana/50 rounded-2xl p-8 hover:border-verana transition-all duration-300">
+                                <div class="w-12 h-12 bg-verana/30 rounded-xl flex items-center justify-center mb-6">
+                                    <i class="fa-solid fa-crown text-verana text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold text-white mb-4">The Colegio Nacional</h3>
+                                <p class="text-gray-300 leading-relaxed">
+                                    Reinforces its authority and provides digital infrastructure that benefits all participants.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Final Statement -->
+                        <div class="bg-gradient-to-r from-verana/10 to-blue-900/10 border border-verana/30 rounded-2xl p-12 text-center">
+                            <h3 class="text-2xl font-bold text-white mb-4">Transform the Power of Attorney Process</h3>
+                            <p class="text-xl text-gray-200 leading-relaxed max-w-4xl mx-auto">
+                                Verana transforms the <strong>power of attorney</strong> from a costly, paper-based process into a <strong>verifiable, efficient, and fraud-resistant digital credential system</strong>.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Call to Action -->
+                    <div id="page-cta" class="bg-gradient-to-r from-verana/10 to-verana-light/10 border border-verana/30 rounded-2xl p-12 text-center">
+                        <h2 class="text-3xl font-bold text-white mb-4">Ready to Digitize Your Notary Process?</h2>
+                        <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                            Learn how Verana can help transform your notarial ecosystem with verifiable credentials.
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                            <span class="bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2 cursor-pointer">
+                                <i class="fa-solid fa-rocket"></i>
+                                <span>Get Started</span>
+                            </span>
+                            <span class="border-2 border-gray-600 hover:border-verana text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 cursor-pointer">
+                                View Technical Specs
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Use Cases Section -->
+<section id="related-use-cases" class="bg-gray-900 py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-12 text-center">Explore Other Industry Use Cases</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-id-card text-blue-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Government Digital ID</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Issue privacy-preserving national IDs and let citizens prove attributes anywhere—without centralizing their data.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Learn More</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+                
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-user-md text-green-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Healthcare Workforce</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Let clinicians carry verifiable licenses, training, and background checks—so onboarding takes minutes, not weeks.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Explore</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+                
+                <div class="bg-black border border-gray-700 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-robot text-purple-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Verifiable AI Assistants</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Bind AI agents to real owners and policies so users know who's behind the bot—and what it's allowed to do.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Discover</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="bg-gray-900 border-t border-gray-800 py-16">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12 mb-12">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-white">Verana</span>
+                    </div>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty.
+                    </p>
+                    <div class="flex space-x-4">
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-github"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-discord"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Verana</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Principles</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Foundation</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Press</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Developers</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Docs</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">GitHub</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Specifications</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Trust Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Public Registry Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Trust Registry Query Protocol</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col sm:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">© 2025 Verana Foundation. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 sm:mt-0">
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Privacy Policy</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Terms of Service</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Cookie Policy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</body></html>
