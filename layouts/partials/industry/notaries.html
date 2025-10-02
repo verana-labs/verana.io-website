@@ -101,7 +101,17 @@
               {{ end }}
               {{ with .hierarchy }}
                 <div class="bg-gray-900 border border-gray-700 rounded-2xl p-12 mb-12">
-                  {{ with .image }}<div class="text-center mb-8"><img class="w-full h-64 object-cover rounded-xl" src="{{ .src }}" alt="{{ .alt }}" loading="lazy" /></div>{{ end }}
+                  {{ if .diagram }}
+                    <div class="text-center mb-8">
+                      <div class="w-full rounded-xl border border-gray-700/60 bg-black/40 p-4">
+                        {{ $page.RenderString .diagram }}
+                      </div>
+                    </div>
+                  {{ else if .image }}
+                    <div class="text-center mb-8">
+                      <img class="w-full h-64 object-cover rounded-xl" src="{{ .image.src }}" alt="{{ .image.alt }}" loading="lazy" />
+                    </div>
+                  {{ end }}
                   {{ with .cards }}
                     <div class="grid md:grid-cols-3 gap-6 mt-8">
                       {{ range . }}

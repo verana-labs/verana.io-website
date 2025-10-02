@@ -82,9 +82,62 @@ solution_section:
   title: "The Solution: A National Trust Ecosystem for Notaries"
   intro: "In Mexico, the notary system relies on a hierarchy of the **Colegio Nacional**, **Colegios Estatales**, and individual **Notarios**. Verana digitizes this structure with verifiable credentials."
   hierarchy:
-    image:
-      src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/3bd7cea0da-e03882ff00c54465a883.png"
-      alt: "Hierarchy diagram showing Colegio Nacional, Colegios Estatales, and individual Notarios"
+    diagram: |
+      {{< kroki _type="plantuml" >}}
+      @startuml
+      scale max 800 width
+      skinparam backgroundColor transparent
+      skinparam DefaultTextAlignment center
+      skinparam defaultFontName "Inter"
+      skinparam defaultFontColor #E2E8F0
+      skinparam ArrowColor #94A3B8
+      skinparam ArrowThickness 2
+      skinparam ObjectBorderColor #1F2937
+      skinparam ObjectFontColor #E2E8F0
+      skinparam ObjectFontName "Inter"
+      package "Power of Attorney Credential Schema Permission Tree" as cs {
+          object "Colegio Nacional" as tr #3B82F6 {
+              permissionType: ECOSYSTEM (Root)
+              did:example:colegio-nacional
+          }
+          object "Colegios Estatal #1" as ig1 #22C55E {
+              permissionType: ISSUER_GRANTOR
+              did:example:colegio-estatal1
+          }
+          object "Colegios Estatal #2" as ig2 #22C55E {
+              permissionType: ISSUER_GRANTOR
+              did:example:colegio-estatal2
+          }
+          object "Notario 12" as issuer12 #A855F7 {
+              permissionType: ISSUER
+              did:example:notario12
+          }
+          object "Notario 13" as issuer13 #A855F7 {
+              permissionType: ISSUER
+              did:example:notario13
+          }
+          object "Notario 24" as issuer24 #A855F7 {
+              permissionType: ISSUER
+              did:example:notario24
+          }
+          object "Notario 25" as issuer25 #A855F7 {
+              permissionType: ISSUER
+              did:example:notario25
+          }
+          object "Notario 26" as issuer26 #A855F7 {
+              permissionType: ISSUER
+              did:example:notario26
+          }
+      }
+      tr --> ig1
+      tr --> ig2
+      ig1 --> issuer12
+      ig1 --> issuer13
+      ig2 --> issuer24
+      ig2 --> issuer25
+      ig2 --> issuer26
+      @enduml
+      {{< /kroki >}}
     cards:
       - title: "Colegio Nacional de Notarios"
         text: "The highest-level governing body"
