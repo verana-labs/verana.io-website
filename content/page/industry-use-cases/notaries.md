@@ -189,7 +189,8 @@ workflows:
       - icon: "fa-solid fa-hashtag"
         text: "The credential includes a **hash of the digital copy** to guarantee authenticity."
     image:
-      src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/53fefbbaa3-161e3509f9fd0804f712.png"
+      img_class: "w-full h-96 object-cover"
+      src: "/images/purple/notary.webp"
       alt: "Notary issuing both physical and digital power of attorney documents"
   revoking:
     title: "Revoking a Power of Attorney - with Verifiable Credential"
