@@ -85,7 +85,6 @@ solution_section:
     diagram: |
       {{< kroki _type="plantuml" >}}
       @startuml
-      scale max 800 width
       skinparam backgroundColor transparent
       skinparam DefaultTextAlignment center
       skinparam defaultFontName "Inter"
