@@ -23,8 +23,7 @@
                     {{ $label := .label | default .title | default .name }}
                     {{ $href := .url | default .href | default "#" }}
                     {{ $isActive := cond (isset . "active") (.active) false }}
-                    <a href="{{ $href }}" class="block {{ if $isActive }}text-verana font-medium{{ else }}text-gray-400 hover:text-white transition-colors duration-200{{ end }} flex items-center space-x-2" data-nav-link>
-                      {{ with .icon }}<i class="{{ . }} text-xs"></i>{{ end }}
+                    <a href="{{ $href }}" class="block {{ if $isActive }}text-verana font-medium{{ else }}text-gray-400 hover:text-white transition-colors duration-200{{ end }}" data-nav-link>
                       <span>{{ $label }}</span>
                     </a>
                   {{ end }}
@@ -122,8 +121,10 @@
               {{ end }}
 
               {{ with $problem.illustration }}
-                <div class="flex items-center justify-center bg-gray-900 border border-gray-700 rounded-2xl p-8">
-                  <img class="w-full max-w-lg rounded-xl" src="{{ .src }}" alt="{{ .alt }}" loading="lazy" />
+                {{ $wrapperClass := .wrapper_class | default "flex items-center justify-center bg-gray-900 border border-gray-700 rounded-2xl p-8" }}
+                {{ $imgClass := .img_class | default "w-full max-w-lg rounded-xl" }}
+                <div class="{{ $wrapperClass }}">
+                  <img class="{{ $imgClass }}" src="{{ .src }}" alt="{{ .alt }}" loading="lazy"{{ with .width }} width="{{ . }}"{{ end }}{{ with .height }} height="{{ . }}"{{ end }} />
                 </div>
               {{ end }}
             </div>
@@ -448,6 +449,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     const sidebar = document.querySelector('[data-sidebar-sticky]');
     if (!sidebar) return;
+
     const updateTop = () => {
       const header = document.getElementById('header');
       const offset = header ? header.getBoundingClientRect().height : 0;
@@ -455,5 +457,83 @@
     };
     updateTop();
     window.addEventListener('resize', updateTop);
+
+    const links = Array.from(sidebar.querySelectorAll('[data-nav-link]'));
+    if (!links.length) return;
+
+    const sectionMap = new Map();
+
+    links.forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      const id = decodeURIComponent(href.slice(1));
+      const section = document.getElementById(id);
+      if (!section) return;
+      if (!sectionMap.has(id)) {
+        sectionMap.set(id, { element: section, links: [] });
+      }
+      sectionMap.get(id).links.push(link);
+    });
+
+    if (!sectionMap.size) return;
+
+    const setActive = id => {
+      sectionMap.forEach((value, key) => {
+        value.links.forEach(link => {
+          if (key === id) {
+            link.classList.add('text-verana', 'font-medium');
+            link.classList.remove('text-gray-400');
+            link.setAttribute('aria-current', 'true');
+          } else {
+            link.classList.remove('text-verana', 'font-medium');
+            link.classList.add('text-gray-400');
+            link.removeAttribute('aria-current');
+          }
+        });
+      });
+    };
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActive(entry.target.id);
+        }
+      });
+    }, {
+      rootMargin: '-40% 0px -40% 0px',
+      threshold: [0, 1]
+    });
+
+    sectionMap.forEach(value => observer.observe(value.element));
+
+    const headerOffset = () => {
+      const header = document.getElementById('header') || document.querySelector('header');
+      return header ? header.offsetHeight + 24 : 120;
+    };
+
+    links.forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      link.addEventListener('click', event => {
+        const id = decodeURIComponent(href.slice(1));
+        const target = document.getElementById(id);
+        if (!target) return;
+        event.preventDefault();
+        const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: elementPosition - headerOffset(), behavior: 'smooth' });
+        history.replaceState(null, '', `#${id}`);
+        setActive(id);
+      });
+    });
+
+    const initialId = location.hash ? decodeURIComponent(location.hash.slice(1)) : null;
+    if (initialId && sectionMap.has(initialId)) {
+      setActive(initialId);
+    } else {
+      const firstEntry = sectionMap.keys().next();
+      if (!firstEntry.done) {
+        setActive(firstEntry.value);
+      }
+    }
   });
 </script>

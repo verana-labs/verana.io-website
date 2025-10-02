@@ -13,19 +13,14 @@ sidebar:
     - label: Overview
       url: "#problem-statement"
       active: true
-      icon: "fa-solid fa-circle"
     - label: National Trust Ecosystem
       url: "#solution-section"
-      icon: "fa-solid fa-network-wired"
     - label: Digital Ecosystem Setup
       url: "#digital-ecosystem"
-      icon: "fa-solid fa-diagram-project"
     - label: Streamlined Workflows
       url: "#new-workflows"
-      icon: "fa-solid fa-bolt"
     - label: Benefits
       url: "#conclusion"
-      icon: "fa-solid fa-trophy"
   quick_links:
     title: Quick Links
     items:
@@ -71,7 +66,8 @@ problem:
         text: "Many institutions repeat the process periodically, just in case the power was revoked."
   friction_callout: "This system creates **unnecessary friction and cost** for notaries, grantees, and verifiers like banks who manage repetitive checks."
   illustration:
-    src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/b912c046ac-d35159a7ee8e41209da3.png"
+    img_class: "w-full h-96 object-cover"
+    src: "/images/purple/bank-mess3.webp"
     alt: "Bank teller contacting several notary offices surrounded by stacks of documents"
 solution:
   id: solution-section
@@ -204,9 +200,9 @@ workflows:
         text: "The receiving notary can contact the issuer to revoke or use the **ecosystem's web service** to revoke instantly."
       - icon: "fa-solid fa-shield-halved"
         text: "Once revoked, the credential becomes invalid across the entire ecosystem."
-    image:
-      src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/d3071f775f-6ac81e638ab4163a57fd.png"
-      alt: "Citizen revoking a power of attorney using verifiable credentials at any notary"
+#    image:
+#      src: "https://storage.googleapis.com/uxpilot-auth.appspot.com/d3071f775f-6ac81e638ab4163a57fd.png"
+#      alt: "Citizen revoking a power of attorney using verifiable credentials at any notary"
   using:
     title: "Using a Power of Attorney - with Verifiable Credential"
     intro: "When the grantee presents the power to a verifier (e.g., a bank):"
