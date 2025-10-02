@@ -26,9 +26,6 @@ sidebar:
     - label: Benefits
       url: "#conclusion"
       icon: "fa-solid fa-trophy"
-    - label: Call to Action
-      url: "#page-cta"
-      icon: "fa-solid fa-rocket"
   quick_links:
     title: Quick Links
     items:
