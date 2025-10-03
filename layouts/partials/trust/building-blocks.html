@@ -43,6 +43,27 @@
                   </div>
                 {{ end }}
               {{ end }}
+              {{ with .downloads }}
+                {{ $items := .items | default (slice) }}
+                {{ if gt (len $items) 0 }}
+                  <div class="mt-8 pt-6 border-t border-gray-700">
+                    {{ with .title }}<h4 class="text-sm font-semibold text-white mb-4">{{ . }}</h4>{{ else }}<h4 class="text-sm font-semibold text-white mb-4">Download</h4>{{ end }}
+                    <div class="space-y-2">
+                      {{ range $items }}
+                        {{ $label := .label | default .title | default .name }}
+                        {{ if $label }}
+                          {{ $href := .url | default .href | default "#" }}
+                          {{ $icon := .icon | default "fa-solid fa-file-pdf" }}
+                          <a href="{{ $href }}" class="flex items-center space-x-2 text-sm text-gray-400 hover:text-white transition-colors duration-200"{{ if strings.HasPrefix $href "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
+                            <i class="{{ $icon }} text-verana text-sm"></i>
+                            <span>{{ $label }}</span>
+                          </a>
+                        {{ end }}
+                      {{ end }}
+                    </div>
+                  </div>
+                {{ end }}
+              {{ end }}
             </div>
           </aside>
         {{ end }}

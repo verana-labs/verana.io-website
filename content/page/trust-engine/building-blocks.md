@@ -1,6 +1,6 @@
 ---
-title: The Building Blocks of Decentralized Trust
-subtitle: "DIDs, Verifiable Credentials, and Decentralized Trust Networks"
+title: The Building Blocks
+subtitle: "Learn the foundations we used to build Verana: DIDs, Verifiable Credentials, and Trust Registries."
 url: "/page/trust-engine/building-blocks"
 meta_title: "Verana Building Blocks | DIDs, Verifiable Credentials, and Decentralized Trust Networks"
 meta_description: "Paper for newcomers with strong technical backgrounds (developers, architects, security engineers, data scientists) who want a practical, conceptual, and implementation-oriented introduction to the technologies Verana builds on."
@@ -26,6 +26,12 @@ sidebar:
       - text: "Understanding DIDs and DID Documents"
       - text: "How Verifiable Credentials work"
       - text: "Trust registries and decentralized trust networks"
+  downloads:
+    title: Download
+    items:
+      - label: Download full paper
+        url: "/pdf/building-blocks.pdf"
+        icon: fa-solid fa-file-pdf
 problem_statement:
   id: problem-statement
   title: "Problem Statement: Trust at Internet Scale"
