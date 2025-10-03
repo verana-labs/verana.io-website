@@ -5,7 +5,9 @@ meta_title: "Verana Building Blocks | DIDs, Verifiable Credentials, and Decentra
 meta_description: "Paper for newcomers with strong technical backgrounds (developers, architects, security engineers, data scientists) who want a practical, conceptual, and implementation‑oriented introduction to the technologies Verana builds on."
 ---
 
-**Author:** [Fabrice Rochette](https://www.linkedin.com/in/fabricerochette/[), [Verana Foundation](https://verana.io)
+![Verana](https://verana.io/logo.svg)
+
+**Author:** [Fabrice Rochette](https://www.linkedin.com/in/fabricerochette/), [Verana Foundation](https://verana.io)
 
 **Audience:** Newcomers with strong technical backgrounds (developers, architects, security engineers, data scientists) who want a practical, conceptual, and implementation‑oriented introduction to the technologies Verana builds on.
 
