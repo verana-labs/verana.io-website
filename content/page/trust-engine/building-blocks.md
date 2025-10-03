@@ -302,29 +302,30 @@ conclusion_section:
     label: Technical Documentation
     url: "https://docs.verana.io"
 related_papers:
-  title: Related Technical Papers
+  title: Related Trust Engine Components
   cards:
+    - icon: fa-solid fa-shield-halved
+      icon_color: text-purple-400
+      icon_bg: bg-purple-900/30
+      title: Verifiable Trust Concept
+      text: "Dive into the hybrid trust model that powers DIDs, VCs, and on-chain governance in Verana."
+      label: Learn More
+      url: "/page/trust-engine/concept"
     - icon: fa-solid fa-search
       icon_color: text-blue-400
       icon_bg: bg-blue-900/30
-      title: Trust Resolver Architecture
-      text: "Deep dive into the technical architecture of Verana's decentralized trust resolution system."
-      label: Read Paper
+      title: Trust Resolver
+      text: "Explore the resolver service that validates credentials and trust registries at runtime."
+      label: Explore
       url: "/page/trust-engine/trust-resolver"
-    - icon: fa-solid fa-shield-alt
+    - icon: fa-solid fa-scale-balanced
       icon_color: text-green-400
       icon_bg: bg-green-900/30
-      title: Privacy-Preserving Verification
-      text: "Technical implementation of selective disclosure and zero-knowledge proofs in Verana ecosystems."
-      label: Explore
-      url: "/page/trust-engine"
-    - icon: fa-solid fa-cogs
-      icon_color: text-purple-400
-      icon_bg: bg-purple-900/30
-      title: Implementation Guide
-      text: "Step-by-step guide to implementing DIDs, VCs, and trust registries in your applications."
-      label: Get Started
-      url: "https://docs.verana.io/implementation-guide"
+      title: Trust Deposit & Reputation
+      text: "See how deposits and verifiable reputation reinforce accountability inside ecosystems."
+      label: Discover
+      url: "/page/trust-engine/trust-deposit"
+
 ---
 
 {{< trust-building-blocks >}}
