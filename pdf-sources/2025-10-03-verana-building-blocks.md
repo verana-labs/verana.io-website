@@ -216,7 +216,7 @@ A **decentralized trust network** is a federation of agents, wallets, services, 
 
 - W3C DID Core: https://www.w3.org/TR/did-core/
 - did:web method: https://w3c-ccg.github.io/did-method-web/
-- did:webvh background: https://keri.one/ (KERI key event logs)
+- did:webvh background: https://identity.foundation/didwebvh/next/
 - did:webs spec: https://keri.one/did-webs
 - EBSI DID methods: https://ec.europa.eu/digital-strategy/our-policies/european-blockchain-services-infrastructure
 - W3C Verifiable Credentials Data Model 2.0: https://www.w3.org/TR/vc-data-model-2.0/
