@@ -80,7 +80,9 @@ params:
     main:
       - title: "Trust Engine"
         children:
-          - title: "Concept"
+          - title: "Building Blocks"
+            url: "/page/trust-engine/building-blocks"
+          - title: "Verifiable Trust Concept"
             url: "/page/trust-engine/concept"
           - title: "Trust Resolver"
             url: "/page/trust-engine/trust-resolver"
