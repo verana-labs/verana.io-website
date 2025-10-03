@@ -5,6 +5,7 @@ url: "/page/trust-engine/building-blocks"
 meta_title: "Verana Building Blocks | DIDs, Verifiable Credentials, and Decentralized Trust Networks"
 meta_description: "Paper for newcomers with strong technical backgrounds (developers, architects, security engineers, data scientists) who want a practical, conceptual, and implementation-oriented introduction to the technologies Verana builds on."
 disable_content_wrapper: true
+hero_icon: "fa-solid fa-file-alt"
 sidebar:
   title: Contents
   nav:
