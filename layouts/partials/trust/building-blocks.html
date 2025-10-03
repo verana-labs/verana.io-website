@@ -13,7 +13,7 @@
       <div class="grid lg:grid-cols-4 gap-12">
         {{ with $sidebar }}
           <aside id="sidebar-nav" class="lg:col-span-1">
-            <div class="bg-gray-800 border border-gray-700 rounded-2xl p-6 sticky top-24" data-sidebar-sticky>
+            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 sticky" data-sidebar-sticky>
               {{ with .title }}<h3 class="text-lg font-semibold text-white mb-6">{{ . }}</h3>{{ end }}
               {{ with .nav }}
                 <nav class="space-y-3">
@@ -22,7 +22,7 @@
                     {{ if $label }}
                       {{ $href := .url | default .href | default "#" }}
                       {{ $isActive := .active | default false }}
-                      <a href="{{ $href }}" class="block text-sm transition-colors duration-200 {{ if $isActive }}text-verana font-semibold{{ else }}text-gray-400 hover:text-white{{ end }}" data-nav-link>{{ $label }}</a>
+                      <a href="{{ $href }}" class="sidebar-link block transition-colors duration-200 {{ if $isActive }}text-verana font-semibold{{ else }}text-gray-400 hover:text-white{{ end }}" data-nav-link>{{ $label }}</a>
                     {{ end }}
                   {{ end }}
                 </nav>
@@ -32,11 +32,11 @@
                 {{ if gt (len $items) 0 }}
                   <div class="mt-8 pt-6 border-t border-gray-700">
                     {{ with .title }}<h4 class="text-sm font-semibold text-white mb-4">{{ . }}</h4>{{ else }}<h4 class="text-sm font-semibold text-white mb-4">Learning Goals</h4>{{ end }}
-                    <div class="space-y-2 text-xs text-gray-400">
+                    <div class="space-y-2">
                       {{ range $items }}
                         <div class="flex items-start space-x-2">
                           <i class="fa-solid fa-check-circle text-green-400 mt-0.5 flex-shrink-0"></i>
-                          <span>{{ .text | markdownify }}</span>
+                          <span class="text-sm text-gray-400">{{ .text | markdownify }}</span>
                         </div>
                       {{ end }}
                     </div>
