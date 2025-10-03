@@ -166,6 +166,13 @@ vcs_section:
       }
   triangle:
     title: "3.2 The Trust Triangle"
+    image:
+      src: "https://trustoverip.github.io/WP0010-toip-foundation-whitepaper/images/vcred_trust_triangle.png"
+      alt: "Diagram illustrating the issuer-holder-verifier trust triangle"
+      wrapper_class: "flex items-center justify-center bg-gray-900 border border-gray-700 rounded-2xl p-8"
+      img_class: "w-full max-w-2xl rounded-xl"
+      width: 1200
+      height: 675
     cards:
       - title: Issuer
         text: "(e.g., a company, university) signs a VC."
