@@ -58,7 +58,7 @@ Resolving a DID returns a **DID Document**—a small JSON object describing publ
 
 > **Note:** Anti‑correlation best practice is to use **pairwise DIDs** (a distinct DID per relationship) where appropriate.
 
-## 2) DID Methods You’ll Meet in Verana Ecosystems
+## 2) Examples of DID Methods You’ll Meet in Verana Ecosystems
 
 A DID’s first path segment is its **method** (e.g., `did:web:…`). Methods define how DIDs are created, resolved, and updated.
 
@@ -125,7 +125,7 @@ A **Verifiable Credential** is a tamper‑evident package of claims that an **is
 - **Holder** (person, org, service, or AI agent) stores it in a wallet/agent and creates a VP when needed.
 - **Verifier** checks the cryptographic proof, the credential’s schema, its status, and whether the issuer is **authorized** for that schema in the relevant **trust registry**.
 
-![Trust Triangle](https://trustoverip.github.io/WP0010-toip-foundation-whitepaper/images/vcred_trust_triangle.png)
+![Trust Triangle](https://verana.io/images/purple/vcred_trust_triangle.webp)
 
 ### 3.3 Why VCs enable privacy‑preserving data sharing
 
