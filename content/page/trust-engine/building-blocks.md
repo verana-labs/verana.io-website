@@ -30,7 +30,7 @@ sidebar:
     title: Download
     items:
       - label: Download full paper
-        url: "/pdf/building-blocks.pdf"
+        url: "/pdf/2025-10-03-verana-building-blocks.pdf"
         icon: fa-solid fa-file-pdf
 problem_statement:
   id: problem-statement
