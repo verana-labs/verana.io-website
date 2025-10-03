@@ -82,7 +82,7 @@ dids_section:
     icon_color: text-green-400
     text: "**Takeaway:** `did:web` is the easiest on-ramp; `did:webvh`/`did:webs` add **provable key history** and stronger assurances; `did:ebsi` aligns you with EU trust frameworks."
   methods:
-    title: "2) DID Methods You'll Meet in Verana Ecosystems"
+    title: "2) Examples of DID Methods You'll Meet in Verana Ecosystems"
     intro: "A DID's first path segment is its **method** (e.g., `did:web:…`). Methods define how DIDs are created, resolved, and updated."
     items:
       - title: "2.1 `did:web` — leverage DNS + HTTPS"
@@ -173,7 +173,7 @@ vcs_section:
   triangle:
     title: "3.2 The Trust Triangle"
     image:
-      src: "https://trustoverip.github.io/WP0010-toip-foundation-whitepaper/images/vcred_trust_triangle.png"
+      src: "/images/purple/vcred_trust_triangle.webp"
       alt: "Diagram illustrating the issuer-holder-verifier trust triangle"
       wrapper_class: "flex items-center justify-center bg-gray-900 border border-gray-700 rounded-2xl p-8"
       img_class: "w-full max-w-2xl rounded-xl"
