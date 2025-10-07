@@ -40,7 +40,7 @@ problem_statement:
   wrapper_bg: bg-red-900/20
   border: border-red-700/50
   paragraphs:
-    - "We want **portable, verifiable trust** between parties that don't share a database or a single identity provider. The Web's default identifier (the URL) ties trust to DNS, certificate authorities, and domain control—great for content addressing, fragile for **entity** addressing (people, orgs, services, agents)."
+    - "We want **portable, verifiable trust** between parties that don't share a database or a single identity provider. The Web's default identifier (the URL) ties trust to DNS, certificate authorities, and domain control: great for content addressing, fragile for **entity** addressing (people, orgs, services, agents)."
     - "We need identifiers that are **cryptographically bound to controllers**, interoperable across ecosystems, and work offline. We need a way to attach **verifiable claims** to those identifiers, prove them selectively, and check who's authorized to issue/verify them. That's what **DIDs + VCs + Trust Registries** provide."
 dids_section:
   id: decentralized-identifiers
@@ -49,7 +49,7 @@ dids_section:
   code_example: "did:web:example.com"
   did_document:
     title: "1.1 DID Document (the metadata for a DID)"
-    description: "Resolving a DID returns a **DID Document**—a small JSON object describing public keys, verification relationships, and service endpoints controlled by the DID's controller."
+    description: "Resolving a DID returns a **DID Document**: a small JSON object describing public keys, verification relationships, and service endpoints controlled by the DID's controller."
     json: |
       {
         "id": "did:example:123",
@@ -104,7 +104,7 @@ dids_section:
         columns:
           - heading: "Idea:"
             heading_class: text-white
-            text: "Keep the operational convenience of `did:web` but add a **verifiable key/event history** (e.g., KERI-style key event logs) so resolvers can audit control changes over time."
+            text: "Keep the operational convenience of `did:web` but add a **verifiable key/event history** so resolvers can audit control changes over time."
           - heading: "Pros:"
             heading_class: text-green-400
             text: "Mitigates `did:web`'s weakest point (unverifiable history & compromises) while keeping compatibility with web tooling."
@@ -119,7 +119,7 @@ dids_section:
         columns:
           - heading: "Idea:"
             heading_class: text-white
-            text: "A web-discoverable DID whose **trust is rooted in cryptographic key events** (not DNS/CA). Often built on **KERI** event receipts."
+            text: "A web-discoverable DID whose **trust is rooted in cryptographic key events** (not DNS/CA). Built on **KERI** event receipts."
           - heading: "Pros:"
             heading_class: text-green-400
             text: "Stronger independence from DNS/CA operators; verifiable key rotation history."
@@ -147,7 +147,7 @@ dids_section:
           text: "**When to use:** Interop with EU public-sector and EBSI-compliant ecosystems."
 vcs_section:
   id: verifiable-credentials
-  title: "3) W3C Verifiable Credentials (VCs)"
+  title: "3) W3C and Anoncreds Verifiable Credentials (VCs)"
   intro: "A **Verifiable Credential** is a tamper-evident package of claims that an **issuer** makes about a **subject** (identified by a DID or another identifier). A **Verifiable Presentation (VP)** is a holder-curated bundle of one or more credentials/derived proofs presented to a verifier."
   anatomy:
     title: "3.1 Anatomy (minimal JSON example)"
@@ -206,10 +206,10 @@ vcs_section:
     items:
       - icon: fa-solid fa-eye-slash
         title: "Selective disclosure:"
-        text: "Share **only** the claims necessary (e.g., *age over 18*) using cryptosuites like **BBS+** or formats like **SD-JWT VC**."
+        text: "Share **only** the claims necessary (e.g., *age over 18*) using cryptosuites like **BBS+** or formats like **SD-JWT VC**, or using Anoncreds."
       - icon: fa-solid fa-unlink
         title: "Unlinkability:"
-        text: "Derived proofs prevent verifiers from correlating different presentations."
+        text: "Derived proofs prevent verifiers from correlating different presentations (Anoncreds)."
       - icon: fa-solid fa-user-friends
         title: "Pairwise identifiers:"
         text: "Use different DIDs per verifier to avoid cross-domain correlation."
@@ -284,7 +284,7 @@ trust_registries_section:
         icon_color: text-green-400
         icon_bg: bg-green-900/30
         title: ToIP
-        text: "Defines a **Trust Registry Query Protocol (TRQP)**—a simple, DNS-like API to ask: \"Does entity X hold authorization Y under governance Z?\""
+        text: "Defines a **Trust Registry Query Protocol (TRQP)**: a simple, DNS-like API to ask: \"Does entity X hold authorization Y under governance Z?\""
       - icon: fa-solid fa-building-columns
         icon_color: text-purple-400
         icon_bg: bg-purple-900/30
