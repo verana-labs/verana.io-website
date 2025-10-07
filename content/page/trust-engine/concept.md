@@ -181,7 +181,7 @@ example_section:
         - '    "id": "did:example:ecosystem#vpr-schemas-example-jsc-vp",'
         - '    "type": "LinkedVerifiablePresentation",'
         - '    "serviceEndpoint": ["https://ecosystem/schemas-example-jsc-vp.json"]'
-        - '  }',
+        - '  },'
         - '  ...'
         - ']'
 proof_section:
