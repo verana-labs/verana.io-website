@@ -181,13 +181,7 @@ example_section:
         - '    "id": "did:example:ecosystem#vpr-schemas-example-jsc-vp",'
         - '    "type": "LinkedVerifiablePresentation",'
         - '    "serviceEndpoint": ["https://ecosystem/schemas-example-jsc-vp.json"]'
-        - '  },'
-        - '  {'
-        - '    "id": "did:example:trust-registry#vpr-schemas-trust-registry-1234",'
-        - '    "type": "VerifiablePublicRegistry",'
-        - '    "version": "1.0",'
-        - '    "serviceEndpoint": ["vpr:verana:mainnet"]'
-        - '  }'
+        - '  }',
         - '  ...'
         - ']'
 proof_section:
