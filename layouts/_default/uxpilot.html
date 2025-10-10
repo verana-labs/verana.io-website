@@ -94,7 +94,7 @@
             {{ $lines := $hero.title_lines }}
             {{ range $index, $line := $lines }}
               {{ $variant := default "light" $line.variant }}
-              {{ $classes := cond (eq $variant "brand") "bg-gradient-to-r from-verana to-verana-light bg-clip-text text-transparent" "bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent" }}
+              {{ $classes := cond (eq $variant "brand") "text-slate-900 dark:bg-gradient-to-r dark:from-verana dark:to-verana-light dark:bg-clip-text dark:text-transparent" "text-slate-900 dark:bg-gradient-to-r dark:from-white dark:to-gray-200 dark:bg-clip-text dark:text-transparent" }}
               <span class="{{ $classes }}">{{ $line.text }}</span>{{ if lt (add $index 1) (len $lines) }}<br />{{ end }}
             {{ end }}
           </h1>
