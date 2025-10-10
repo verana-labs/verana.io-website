@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Building Blocks of Decentralized Trust - Verana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'verana': '#763ef0',
+                        'verana-light': '#9f7aea',
+                        'verana-dark': '#553c9a'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        .gradient-mesh {
+            background: radial-gradient(circle at 20% 50%, rgba(118, 62, 240, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(118, 62, 240, 0.06) 0%, transparent 50%);
+        }
+    </style>
+</head>
+<body class="font-inter bg-white text-gray-900 overflow-x-hidden">
+
+<!-- Header -->
+<header id="header" class="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <span class="flex items-center space-x-3 cursor-pointer">
+                    <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-gray-900">Verana</span>
+                </span>
+            </div>
+            
+            <nav class="hidden lg:flex items-center space-x-8">
+                <div class="relative group">
+                    <button class="text-gray-600 hover:text-gray-900 flex items-center space-x-1 transition-colors duration-200">
+                        <span>Why Verana</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-600 hover:text-gray-900 flex items-center space-x-1 transition-colors duration-200">
+                        <span>Build</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-600 hover:text-gray-900 flex items-center space-x-1 transition-colors duration-200">
+                        <span>Trust Engine</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-600 hover:text-gray-900 flex items-center space-x-1 transition-colors duration-200">
+                        <span>Industry Use Cases</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <span class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">Community</span>
+                <span class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">About</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <span class="bg-verana hover:bg-verana-dark text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer">
+                    Testnet
+                </span>
+                <button class="lg:hidden text-gray-900">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Page Hero Section -->
+<section id="page-hero" class="relative bg-gray-50 py-16 lg:py-20 overflow-hidden h-[380px] flex items-center">
+    <div class="absolute inset-0 gradient-mesh opacity-50"></div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-5xl mx-auto">
+            <nav class="flex items-center space-x-2 text-sm text-gray-500 mb-8">
+                <span class="hover:text-gray-900 cursor-pointer">Home</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="text-verana">Verana Foundations</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4 mb-6">
+                <div class="w-16 h-16 bg-verana/10 rounded-2xl flex items-center justify-center">
+                    <i class="fa-solid fa-file-alt text-verana text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-4xl lg:text-5xl font-bold leading-tight text-gray-900">
+                        The Building Blocks of Decentralized Trust
+                    </h1>
+                </div>
+            </div>
+            
+            <p class="text-xl text-gray-600 max-w-4xl leading-relaxed mb-6">
+                DIDs, Verifiable Credentials, and Decentralized Trust Networks
+            </p>
+            
+            <div class="flex items-center space-x-6 text-sm text-gray-500">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-user text-verana"></i>
+                    <span>Fabrice Rochette, Verana Foundation</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-users text-verana"></i>
+                    <span>For Technical Professionals</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-clock text-verana"></i>
+                    <span>15 min read</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content Section -->
+<section id="main-content" class="bg-white py-16 lg:py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12">
+                <!-- Sidebar Navigation -->
+                <aside id="sidebar-nav" class="lg:col-span-1">
+                    <div class="bg-gray-50 border border-gray-200 rounded-2xl p-6 sticky top-24">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-6">Contents</h3>
+                        <nav class="space-y-3">
+                            <span class="block text-gray-600 hover:text-verana transition-colors duration-200 cursor-pointer text-sm cursor-pointer">Problem Statement</span>
+                            <span class="block text-gray-600 hover:text-verana transition-colors duration-200 cursor-pointer text-sm cursor-pointer">Decentralized Identifiers</span>
+                            <span class="block text-gray-600 hover:text-verana transition-colors duration-200 cursor-pointer text-sm cursor-pointer">DID Methods</span>
+                            <span class="block text-gray-600 hover:text-verana transition-colors duration-200 cursor-pointer text-sm cursor-pointer">Verifiable Credentials</span>
+                            <span class="block text-gray-600 hover:text-verana transition-colors duration-200 cursor-pointer text-sm cursor-pointer">Trust Registries</span>
+                        </nav>
+                        
+                        <div class="mt-8 pt-6 border-t border-gray-200">
+                            <h4 class="text-sm font-semibold text-gray-900 mb-4">Learning Goals</h4>
+                            <div class="space-y-2 text-xs text-gray-600">
+                                <div class="flex items-start space-x-2">
+                                    <i class="fa-solid fa-check-circle text-green-500 mt-0.5 flex-shrink-0"></i>
+                                    <span>Understanding DIDs and DID Documents</span>
+                                </div>
+                                <div class="flex items-start space-x-2">
+                                    <i class="fa-solid fa-check-circle text-green-500 mt-0.5 flex-shrink-0"></i>
+                                    <span>How Verifiable Credentials work</span>
+                                </div>
+                                <div class="flex items-start space-x-2">
+                                    <i class="fa-solid fa-check-circle text-green-500 mt-0.5 flex-shrink-0"></i>
+                                    <span>Trust registries and networks</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                
+                <!-- Content Area -->
+                <div id="content-area" class="lg:col-span-3">
+                    <!-- Problem Statement -->
+                    <section id="problem-statement" class="mb-16">
+                        <div class="bg-red-50 border border-red-200 rounded-2xl p-8 mb-8">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-exclamation-triangle text-red-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Problem Statement: Trust at Internet Scale</h2>
+                                    <div class="prose prose-gray max-w-none">
+                                        <p class="text-gray-700 leading-relaxed mb-4">
+                                            We want <strong>portable, verifiable trust</strong> between parties that don't share a database or a single identity provider. The Web's default identifier (the URL) ties trust to DNS, certificate authorities, and domain control—great for content addressing, fragile for <strong>entity</strong> addressing (people, orgs, services, agents).
+                                        </p>
+                                        <p class="text-gray-700 leading-relaxed">
+                                            We need identifiers that are <strong>cryptographically bound to controllers</strong>, interoperable across ecosystems, and work offline. We need a way to attach <strong>verifiable claims</strong> to those identifiers, prove them selectively, and check who's authorized to issue/verify them. That's what <strong>DIDs + VCs + Trust Registries</strong> provide.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Decentralized Identifiers -->
+                    <section id="decentralized-identifiers" class="mb-16">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-8">1) Decentralized Identifiers (DIDs)</h2>
+                        
+                        <div class="prose prose-gray max-w-none mb-8">
+                            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                                A <strong>DID</strong> is a globally unique identifier (URI) whose <strong>ownership is proven cryptographically</strong>, not by a central registry. Example:
+                            </p>
+                        </div>
+                        
+                        <div class="bg-gray-900 rounded-xl p-6 mb-8">
+                            <code class="text-green-400 text-lg font-mono">did:web:example.com</code>
+                        </div>
+                        
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">1.1 DID Document (the metadata for a DID)</h3>
+                        
+                        <p class="text-gray-700 leading-relaxed mb-6">
+                            Resolving a DID returns a <strong>DID Document</strong>—a small JSON object describing public keys, verification relationships, and endpoints controlled by the DID's controller.
+                        </p>
+                        
+                        <div class="bg-gray-900 rounded-xl p-6 mb-8 overflow-x-auto">
+                            <pre class="text-sm text-gray-300"><code>{
+  "id": "did:example:123",
+  "verificationMethod": [
+    {
+      "id": "#keys-1",
+      "type": "JsonWebKey2020",
+      "controller": "did:example:123",
+      "publicKeyJwk": { "kty": "EC", "crv": "P-256", "x": "...", "y": "..." }
+    }
+  ],
+  "authentication": ["#keys-1"],
+  "assertionMethod": ["#keys-1"],
+  "service": [
+    { 
+      "id": "#agent", 
+      "type": "DIDCommMessaging", 
+      "serviceEndpoint": "https://agent.example.com" 
+    }
+  ]
+}</code></pre>
+                        </div>
+                        
+                        <div class="bg-blue-50 border border-blue-200 rounded-xl p-8">
+                            <h4 class="text-xl font-semibold text-gray-900 mb-4">Why DIDs > URLs for identifying entities:</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start space-x-3">
+                                    <i class="fa-solid fa-shield-alt text-blue-600 mt-1 flex-shrink-0"></i>
+                                    <div>
+                                        <strong class="text-gray-900">Self-certifying control:</strong>
+                                        <span class="text-gray-700"> Proof of control comes from possession of the private key corresponding to keys in the DID Document, not just control of a domain or account.</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-start space-x-3">
+                                    <i class="fa-solid fa-key text-blue-600 mt-1 flex-shrink-0"></i>
+                                    <div>
+                                        <strong class="text-gray-900">Key agility:</strong>
+                                        <span class="text-gray-700"> Rotate keys and add multiple keys/relations without changing the DID.</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-start space-x-3">
+                                    <i class="fa-solid fa-wifi text-blue-600 mt-1 flex-shrink-0"></i>
+                                    <div>
+                                        <strong class="text-gray-900">Transport agnostic:</strong>
+                                        <span class="text-gray-700"> Works online/offline and across transports (HTTP, DIDComm, Bluetooth, QR, NFC).</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-start space-x-3">
+                                    <i class="fa-solid fa-cogs text-blue-600 mt-1 flex-shrink-0"></i>
+                                    <div>
+                                        <strong class="text-gray-900">Method choice:</strong>
+                                        <span class="text-gray-700"> Different <strong>DID methods</strong> offer different root-of-trust models (web, logs, ledgers, etc.).</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-6 mt-6">
+                            <div class="flex items-start space-x-3">
+                                <i class="fa-solid fa-lightbulb text-yellow-600 mt-1"></i>
+                                <p class="text-gray-700">
+                                    <strong>Note:</strong> Anti-correlation best practice is to use <strong>pairwise DIDs</strong> (a distinct DID per relationship) where appropriate.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- DID Methods -->
+                    <section id="did-methods" class="mb-16">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-8">2) DID Methods You'll Meet in Verana Ecosystems</h2>
+                        
+                        <p class="text-lg text-gray-700 leading-relaxed mb-8">
+                            A DID's first path segment is its <strong>method</strong> (e.g., <code class="bg-gray-100 px-2 py-1 rounded text-sm">did:web:…</code>). Methods define how DIDs are created, resolved, and updated.
+                        </p>
+                        
+                        <div class="space-y-8">
+                            <!-- did:web -->
+                            <div class="border border-gray-200 rounded-xl p-8">
+                                <h3 class="text-2xl font-semibold text-gray-900 mb-4">
+                                    2.1 <code class="bg-gray-100 px-2 py-1 rounded text-lg">did:web</code> — leverage DNS + HTTPS
+                                </h3>
+                                
+                                <div class="grid md:grid-cols-3 gap-6 mb-6">
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-2">How it works:</h4>
+                                        <p class="text-gray-700 text-sm">Host a DID Document under a domain you control (e.g., <code class="bg-gray-100 px-1 py-0.5 rounded text-xs">https://example.com/.well-known/did.json</code>).</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-green-700 mb-2">Pros:</h4>
+                                        <p class="text-gray-700 text-sm">Simple, deployable today, integrates well with existing web ops; good for organizations and services.</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-red-700 mb-2">Cons:</h4>
+                                        <p class="text-gray-700 text-sm">Trust ultimately rooted in DNS and Web PKI; no built-in verifiable key history.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                    <strong class="text-gray-900">When to use:</strong>
+                                    <span class="text-gray-700"> Public-facing services, developer portals, early integrations, discovery via the web.</span>
+                                </div>
+                            </div>
+                            
+                            <!-- did:webvh -->
+                            <div class="border border-gray-200 rounded-xl p-8">
+                                <h3 class="text-2xl font-semibold text-gray-900 mb-4">
+                                    2.2 <code class="bg-gray-100 px-2 py-1 rounded text-lg">did:webvh</code> — did:web + verifiable history
+                                </h3>
+                                
+                                <div class="grid md:grid-cols-3 gap-6 mb-6">
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-2">Idea:</h4>
+                                        <p class="text-gray-700 text-sm">Keep the operational convenience of <code class="bg-gray-100 px-1 py-0.5 rounded text-xs">did:web</code> but add a <strong>verifiable key/event history</strong> (e.g., using KERI-style key event logs) so resolvers can audit control changes over time.</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-green-700 mb-2">Pros:</h4>
+                                        <p class="text-gray-700 text-sm">Mitigates <code class="bg-gray-100 px-1 py-0.5 rounded text-xs">did:web</code>'s weakest point: unverifiable history and key compromises; maintains compatibility with web tooling.</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-red-700 mb-2">Cons:</h4>
+                                        <p class="text-gray-700 text-sm">More moving parts than plain <code class="bg-gray-100 px-1 py-0.5 rounded text-xs">did:web</code>.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                    <strong class="text-gray-900">When to use:</strong>
+                                    <span class="text-gray-700"> Enterprises and ecosystems needing web-based identifiers <strong>with</strong> historical accountability and stronger assurance.</span>
+                                </div>
+                            </div>
+                            
+                            <!-- did:webs -->
+                            <div class="border border-gray-200 rounded-xl p-8">
+                                <h3 class="text-2xl font-semibold text-gray-900 mb-4">
+                                    2.3 <code class="bg-gray-100 px-2 py-1 rounded text-lg">did:webs</code> — web-anchored, cryptographically secured by event logs
+                                </h3>
+                                
+                                <div class="grid md:grid-cols-3 gap-6 mb-6">
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-2">Idea:</h4>
+                                        <p class="text-gray-700 text-sm">A web-discoverable DID whose <strong>trust is rooted in cryptographic key events</strong> (not DNS/CA). Typically built on <strong>KERI</strong> key event receipts.</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-green-700 mb-2">Pros:</h4>
+                                        <p class="text-gray-700 text-sm">Stronger independence from DNS/CA operators; verifiable key rotation history.</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-red-700 mb-2">Cons:</h4>
+                                        <p class="text-gray-700 text-sm">Newer method; requires event-log infra.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                    <strong class="text-gray-900">When to use:</strong>
+                                    <span class="text-gray-700"> High-assurance use cases that still want web discovery.</span>
+                                </div>
+                            </div>
+                            
+                            <!-- did:ebsi -->
+                            <div class="border border-gray-200 rounded-xl p-8">
+                                <h3 class="text-2xl font-semibold text-gray-900 mb-4">
+                                    2.4 <code class="bg-gray-100 px-2 py-1 rounded text-lg">did:ebsi</code> — DIDs in the European EBSI ecosystem
+                                </h3>
+                                
+                                <div class="grid md:grid-cols-3 gap-6 mb-6">
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-2">Idea:</h4>
+                                        <p class="text-gray-700 text-sm">EBSI provides DID methods and registries for EU trust ecosystems (e.g., legal entities). DID Documents are registered and governed per EU rules.</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-green-700 mb-2">Pros:</h4>
+                                        <p class="text-gray-700 text-sm">Alignment with EU trust lists, accreditation, and conformance tooling; clear governance.</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-red-700 mb-2">Cons:</h4>
+                                        <p class="text-gray-700 text-sm">Tied to EU frameworks and onboarding processes.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                    <strong class="text-gray-900">When to use:</strong>
+                                    <span class="text-gray-700"> Interop with EU public-sector and EBSI-compliant ecosystems.</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-green-50 border border-green-200 rounded-xl p-6 mt-8">
+                            <div class="flex items-start space-x-3">
+                                <i class="fa-solid fa-key text-green-600 mt-1"></i>
+                                <p class="text-gray-700">
+                                    <strong>Takeaway:</strong> <code class="bg-gray-100 px-1 py-0.5 rounded text-sm">did:web</code> is the easiest on-ramp; <code class="bg-gray-100 px-1 py-0.5 rounded text-sm">did:webvh</code>/<code class="bg-gray-100 px-1 py-0.5 rounded text-sm">did:webs</code> add <strong>provable key history</strong> and stronger assurances; <code class="bg-gray-100 px-1 py-0.5 rounded text-sm">did:ebsi</code> aligns you with EU trust frameworks.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Verifiable Credentials -->
+                    <section id="verifiable-credentials" class="mb-16">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-8">3) W3C Verifiable Credentials (VCs)</h2>
+                        
+                        <p class="text-lg text-gray-700 leading-relaxed mb-8">
+                            A <strong>Verifiable Credential</strong> is a tamper-evident package of claims that an <strong>issuer</strong> makes about a <strong>subject</strong> (identified by a DID or other identifier). A <strong>Verifiable Presentation (VP)</strong> is a holder-curated bundle of one or more credentials/derived proofs presented to a verifier.
+                        </p>
+                        
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">3.1 Anatomy (minimal JSON example)</h3>
+                        
+                        <div class="bg-gray-900 rounded-xl p-6 mb-8 overflow-x-auto">
+                            <pre class="text-sm text-gray-300"><code>{
+  "@context": ["https://www.w3.org/ns/credentials/v2"],
+  "type": ["VerifiableCredential", "EmployeeCredential"],
+  "issuer": "did:web:acme.example",
+  "credentialSubject": {
+    "id": "did:web:alice.example",
+    "employeeId": "E-12345",
+    "role": "Engineer"
+  },
+  "validFrom": "2025-01-01T00:00:00Z",
+  "credentialStatus": {
+    "type": "StatusList2021Entry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "4242",
+    "statusListCredential": "https://acme.example/status/employee-2025.json"
+  },
+  "proof": { /* Data Integrity or JOSE/COSE proof */ }
+}</code></pre>
+                        </div>
+                        
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">3.2 The Trust Triangle</h3>
+                        
+                        <div class="grid md:grid-cols-3 gap-6 mb-8">
+                            <div class="bg-blue-50 border border-blue-200 rounded-xl p-6 text-center">
+                                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fa-solid fa-certificate text-blue-600 text-2xl"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-gray-900 mb-2">Issuer</h4>
+                                <p class="text-gray-700 text-sm">(e.g., a company, university) signs a VC.</p>
+                            </div>
+                            
+                            <div class="bg-green-50 border border-green-200 rounded-xl p-6 text-center">
+                                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fa-solid fa-wallet text-green-600 text-2xl"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-gray-900 mb-2">Holder</h4>
+                                <p class="text-gray-700 text-sm">(person, org, service, or AI agent) stores it in a wallet/agent and creates a VP when needed.</p>
+                            </div>
+                            
+                            <div class="bg-purple-50 border border-purple-200 rounded-xl p-6 text-center">
+                                <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fa-solid fa-search text-purple-600 text-2xl"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-gray-900 mb-2">Verifier</h4>
+                                <p class="text-gray-700 text-sm">checks the cryptographic proof, the credential's schema, its status, and whether the issuer is <strong>authorized</strong> for that schema in the relevant <strong>trust registry</strong>.</p>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">3.3 Why VCs enable privacy-preserving data sharing</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-8">
+                            <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                                <div class="flex items-start space-x-3">
+                                    <i class="fa-solid fa-eye-slash text-verana mt-1 flex-shrink-0"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-2">Selective disclosure:</h4>
+                                        <p class="text-gray-700 text-sm">Share <strong>only</strong> the claims necessary (e.g., "age over 18") using cryptosuites like <strong>BBS+</strong> or formats like <strong>SD-JWT VC</strong>.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                                <div class="flex items-start space-x-3">
+                                    <i class="fa-solid fa-unlink text-verana mt-1 flex-shrink-0"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-2">Unlinkability:</h4>
+                                        <p class="text-gray-700 text-sm">Derived proofs prevent verifiers from correlating different presentations.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                                <div class="flex items-start space-x-3">
+                                    <i class="fa-solid fa-user-friends text-verana mt-1 flex-shrink-0"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-2">Pairwise identifiers:</h4>
+                                        <p class="text-gray-700 text-sm">Use different DIDs per verifier to avoid cross-domain correlation.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                                <div class="flex items-start space-x-3">
+                                    <i class="fa-solid fa-ban text-verana mt-1 flex-shrink-0"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-2">Revocation at scale:</h4>
+                                        <p class="text-gray-700 text-sm"><strong>Status List</strong> credentials enable privacy-preserving revocation checks without calling home on each presentation.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">3.4 Crypto options you'll see</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                                <i class="fa-solid fa-code text-blue-600 mt-1"></i>
+                                <div>
+                                    <strong class="text-gray-900">Data Integrity</strong> proofs (JSON-LD; pluggable cryptosuites like <strong>BBS+</strong> for selective disclosure and predicates).
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                                <i class="fa-solid fa-key text-green-600 mt-1"></i>
+                                <div>
+                                    <strong class="text-gray-900">JOSE/COSE</strong> proofs (JWT/JWS, SD-JWT, COSE) for familiar JOSE/CBOR stacks.
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Trust Registries -->
+                    <section id="trust-registries" class="mb-16">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-8">4) Trust Registries and Decentralized Trust Networks</h2>
+                        
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">4.1 What is a Trust Registry?</h3>
+                        
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                            A <strong>Trust Registry</strong> (aka "trust list") publishes <strong>authoritative mappings</strong> like:
+                        </p>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-8">
+                            <div class="bg-blue-50 border border-blue-200 rounded-xl p-6">
+                                <div class="flex items-start space-x-3">
+                                    <i class="fa-solid fa-file-code text-blue-600 mt-1 flex-shrink-0"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-2">Schemas:</h4>
+                                        <p class="text-gray-700 text-sm">machine-readable definitions of credential types.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-green-50 border border-green-200 rounded-xl p-6">
+                                <div class="flex items-start space-x-3">
+                                    <i class="fa-solid fa-certificate text-green-600 mt-1 flex-shrink-0"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-2">Issuers:</h4>
+                                        <p class="text-gray-700 text-sm">who is authorized to issue which schemas (under what accreditation).</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-purple-50 border border-purple-200 rounded-xl p-6">
+                                <div class="flex items-start space-x-3">
+                                    <i class="fa-solid fa-search text-purple-600 mt-1 flex-shrink-0"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-2">Verifiers:</h4>
+                                        <p class="text-gray-700 text-sm">who is authorized to request/verify which schemas (and for what purpose).</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-orange-50 border border-orange-200 rounded-xl p-6">
+                                <div class="flex items-start space-x-3">
+                                    <i class="fa-solid fa-gavel text-orange-600 mt-1 flex-shrink-0"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-2">Policies & governance:</h4>
+                                        <p class="text-gray-700 text-sm">links to the <strong>Ecosystem Governance Framework (EGF)</strong> that defines rules, evidence, liability, and audit.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">4.2 Why registries are necessary</h3>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl">
+                                <i class="fa-solid fa-robot text-verana text-xl mt-1 flex-shrink-0"></i>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">Automatable trust decisions:</h4>
+                                    <p class="text-gray-700">Verifiers need to know, <em>programmatically</em>, whether an issuer is legitimate for a credential type.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl">
+                                <i class="fa-solid fa-plug text-verana text-xl mt-1 flex-shrink-0"></i>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">Interoperability:</h4>
+                                    <p class="text-gray-700">Common schemas + canonical issuer lists enable multi-vendor, multi-jurisdiction networks.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl">
+                                <i class="fa-solid fa-eye-slash text-verana text-xl mt-1 flex-shrink-0"></i>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">Privacy-preserving business models:</h4>
+                                    <p class="text-gray-700">Authorization checks occur against <strong>ecosystem policy</strong>—not by centralizing user data. Users disclose <strong>minimal</strong> claims; verifiers check issuer authorization against the registry.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">4.3 Examples and patterns</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="border border-gray-200 rounded-xl p-6">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-flag text-blue-600 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-gray-900 mb-2">EU/EBSI</h4>
+                                        <p class="text-gray-700">maintains <strong>Trusted Issuers</strong> and <strong>Trusted Schemas</strong> registries; credentials reference status lists and schema URIs.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-xl p-6">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-network-wired text-green-600 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-gray-900 mb-2">ToIP</h4>
+                                        <p class="text-gray-700">defines a <strong>Trust Registry Query Protocol (TRQP)</strong>—a simple, DNS-like query API to ask: "Does entity X hold authorization Y under governance Z?"</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Conclusion -->
+                    <div id="paper-conclusion" class="bg-verana/5 border border-verana/20 rounded-2xl p-12 text-center">
+                        <div class="w-20 h-20 bg-verana/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fa-solid fa-graduation-cap text-verana text-3xl"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Ready to Build with Decentralized Trust?</h2>
+                        <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                            Now that you understand the building blocks, explore how Verana implements these technologies to create the open trust layer for the internet.
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                            <span class="bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2 cursor-pointer">
+                                <i class="fa-solid fa-rocket"></i>
+                                <span>Explore Verana</span>
+                            </span>
+                            <span class="border-2 border-gray-300 hover:border-verana text-gray-900 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 cursor-pointer">
+                                Technical Documentation
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Papers Section -->
+<section id="related-papers" class="bg-gray-50 py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-12 text-center">Related Technical Papers</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white border border-gray-200 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-search text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Trust Resolver Architecture</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Deep dive into the technical architecture of Verana's decentralized trust resolution system.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Read Paper</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-shield-alt text-green-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Privacy-Preserving Verification</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Technical implementation of selective disclosure and zero-knowledge proofs in Verana ecosystems.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Explore</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-2xl p-8 hover:border-verana/50 transition-all duration-300 hover:scale-105 group">
+                    <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-cogs text-purple-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Implementation Guide</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Step-by-step guide to implementing DIDs, VCs, and trust registries in your applications.
+                    </p>
+                    <span class="inline-flex items-center space-x-2 text-verana hover:text-verana-light font-medium group-hover:translate-x-1 transition-all duration-200 cursor-pointer">
+                        <span>Get Started</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="bg-gray-900 border-t border-gray-800 py-16">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12 mb-12">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-white">Verana</span>
+                    </div>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty.
+                    </p>
+                    <div class="flex space-x-4">
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-github"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-discord"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Verana</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Principles</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Foundation</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Press</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Developers</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Docs</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">GitHub</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Specifications</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Trust Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Public Registry Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Trust Registry Query Protocol</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col sm:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">© 2025 Verana Foundation. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 sm:mt-0">
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Privacy Policy</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Terms of Service</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Cookie Policy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
