@@ -61,54 +61,58 @@ logos:
       text: Do not recolor, skew, or apply effects
 colors:
   title: Colors
-  intro: "Verana’s color system blends innovation and credibility — purple as the anchor hue, set against a dark foundation."
+  intro: "Verana’s color system blends innovation and credibility — purple anchors the palette, supported by neutral and accent tones used across the product and brand."
   swatches:
     - role: Primary
       name: Verana Purple
       hex: "#6B4EFF"
-      usage: Buttons, links, highlights
-      bg_class: bg-verana
+      usage: Buttons, key highlights, active states
+      text_class: text-white
+    - role: Primary Light
+      name: Verana Light
+      hex: "#9F7AEA"
+      usage: Gradients, hover states, backgrounds
+      text_class: text-white
+    - role: Primary Dark
+      name: Verana Dark
+      hex: "#553C9A"
+      usage: Outline accents, gradients, typography emphasis
       text_class: text-white
     - role: Background
       name: Ink Black
       hex: "#0B0B12"
       usage: Page backgrounds
-      bg_class: bg-ink-black
       text_class: text-white
     - role: Surface
       name: Graphite
       hex: "#151824"
-      usage: Panels, cards
-      bg_class: bg-graphite
+      usage: Cards, panels, overlays
       text_class: text-white
     - role: Accent
       name: Electric Blue
       hex: "#2E6BE6"
-      usage: Secondary CTAs
-      bg_class: bg-electric-blue
+      usage: Secondary CTAs, links
       text_class: text-white
     - role: Success
       name: Signal Green
       hex: "#29C68C"
-      usage: Verified states
-      bg_class: bg-signal-green
+      usage: Verification states, positive alerts
       text_class: text-white
     - role: Neutral
       name: Slate 70
       hex: "#8B94A5"
-      usage: Secondary text
-      bg_class: bg-slate-70
+      usage: Secondary text, dividers
       text_class: text-white
     - role: Neutral
       name: Slate 20
       hex: "#D7DBE2"
-      usage: Borders
+      usage: Borders, subtle surfaces
       text_class: text-gray-900
       border_class: border border-gray-300
     - role: Base
       name: White
       hex: "#FFFFFF"
-      usage: Text and highlights
+      usage: Text on dark backgrounds, highlights
       text_class: text-gray-900
       border_class: border border-gray-300
   note: "These colors are tokenized in CSS variables used across verana.io and documentation."
@@ -180,17 +184,22 @@ developer_tokens:
   code: |
     :root {
       --color-primary: #6B4EFF;
+      --color-primary-light: #9F7AEA;
+      --color-primary-dark: #553C9A;
+      --color-accent: #2E6BE6;
+      --color-success: #29C68C;
       --color-bg: #0B0B12;
       --color-surface: #151824;
-      --color-success: #29C68C;
-      --color-accent: #2E6BE6;
+      --color-surface-muted: #1F2331;
+      --color-neutral-70: #8B94A5;
+      --color-neutral-20: #D7DBE2;
       --color-text: #FFFFFF;
-      --color-muted: #8B94A5;
+      --color-text-muted: #8B94A5;
       --color-border: #D7DBE2;
       --radius-lg: 16px;
       --radius-md: 12px;
       --radius-sm: 8px;
-      --focus-ring: 0 0 0 3px color-mix(in srgb, var(--color-primary) 40%, transparent);
+      --focus-ring: 0 0 0 3px color-mix(in srgb, var(--color-primary) 35%, transparent);
     }
 related:
   download_title: Download Press Kit
