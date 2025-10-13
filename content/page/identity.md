@@ -5,21 +5,7 @@ url: "/page/identity"
 meta_title: "Verana Visual Identity | Logos, Fonts, and Brand Guidelines"
 meta_description: "Official Verana brand assets, colors, typography, and logo downloads. Access the Verana Press Kit for partners, media, and developers."
 disable_content_wrapper: true
-hero:
-  icon: fa-solid fa-palette
-  title: Visual Identity
-  subtitle: "Official Verana brand assets, colors, typography, and logo downloads."
-  breadcrumbs:
-    - label: Home
-      url: "/"
-    - label: Visual Identity
-  highlights:
-    - icon: fa-solid fa-download
-      text: Press Kit Available
-    - icon: fa-solid fa-code
-      text: Developer Tokens Included
-    - icon: fa-solid fa-shield-alt
-      text: Usage Guidelines
+hero_icon: "fa-solid fa-palette"
 brand_overview:
   title: Brand Overview
   intro: "Verana's visual identity communicates **trust, openness, and sovereignty** — the core values behind the Open Trust Layer for the Internet."
@@ -41,10 +27,10 @@ brand_overview:
       text: Empower ecosystems to build sovereign, verifiable trust networks they fully control
   info_banner:
     icon: fa-solid fa-info-circle
-    text: "For press or media inquiries, visit the [Press Room](/page/press)."
+    text: "For press or media inquiries, send email to press at verana dot io or reach our <span class=\"text-verana font-medium inline-flex items-center space-x-2\"><i class=\"fa-brands fa-linkedin\"></i><a href=\"https://www.linkedin.com/company/verana-foundation/\" class=\"hover:text-verana-light\">LinkedIn</a></span>"
 logos:
   title: Logos
-  intro: "The Verana logo represents **verified connections** — decentralized trust registries forming a cohesive network. Use only the approved assets provided below."
+  intro: "The Verana logo was a furious red bull charged with five silver stars"
   assets:
     - style: icon
       icon: fa-solid fa-network-wired
@@ -113,14 +99,14 @@ colors:
       name: Slate 20
       hex: "#D7DBE2"
       usage: Borders
-      bg_class: bg-slate-20
       text_class: text-gray-900
+      border_class: border border-gray-300
     - role: Base
       name: White
       hex: "#FFFFFF"
       usage: Text and highlights
-      bg_class: bg-white
       text_class: text-gray-900
+      border_class: border border-gray-300
   note: "These colors are tokenized in CSS variables used across verana.io and documentation."
 typography:
   title: Typography
