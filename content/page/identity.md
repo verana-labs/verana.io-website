@@ -5,21 +5,7 @@ url: "/page/identity"
 meta_title: "Verana Visual Identity | Logos, Fonts, and Brand Guidelines"
 meta_description: "Official Verana brand assets, colors, typography, and logo downloads. Access the Verana Press Kit for partners, media, and developers."
 disable_content_wrapper: true
-hero:
-  icon: fa-solid fa-palette
-  title: Visual Identity
-  subtitle: "Official Verana brand assets, colors, typography, and logo downloads."
-  breadcrumbs:
-    - label: Home
-      url: "/"
-    - label: Visual Identity
-  highlights:
-    - icon: fa-solid fa-download
-      text: Press Kit Available
-    - icon: fa-solid fa-code
-      text: Developer Tokens Included
-    - icon: fa-solid fa-shield-alt
-      text: Usage Guidelines
+hero_icon: "fa-solid fa-palette"
 brand_overview:
   title: Brand Overview
   intro: "Verana's visual identity communicates **trust, openness, and sovereignty** — the core values behind the Open Trust Layer for the Internet."
@@ -41,20 +27,24 @@ brand_overview:
       text: Empower ecosystems to build sovereign, verifiable trust networks they fully control
   info_banner:
     icon: fa-solid fa-info-circle
-    text: "For press or media inquiries, visit the [Press Room](/page/press)."
+    text: "For press or media inquiries, send email to press at verana dot io or reach our <span class=\"text-verana font-medium inline-flex items-center space-x-2\"><i class=\"fa-brands fa-linkedin\"></i><a href=\"https://www.linkedin.com/company/verana-foundation/\" class=\"hover:text-verana-light\">LinkedIn</a></span>"
 logos:
   title: Logos
-  intro: "The Verana logo represents **verified connections** — decentralized trust registries forming a cohesive network. Use only the approved assets provided below."
+  intro: "The “V” can be seen as the horns of a bull: two strong, symmetrical lines rising upward from a shared base, embodying power, balance, and determination."
   assets:
-    - style: icon
-      icon: fa-solid fa-network-wired
+    - image:
+        src: "/logo.svg"
+        alt: "Verana primary logo"
+        class: "h-20"
       title: Primary Logo
       description: Full wordmark with icon
       button_label: Download SVG
       button_url: "/logo.svg"
-    - style: text
-      text_logo: V
-      title: "V" Only Logo
+    - image:
+        src: "/images/purple/logo.svg"
+        alt: 'Verana "V" icon logo'
+        class: "h-20"
+      title: '"V" Only Logo'
       description: Icon mark for compact usage
       button_label: Download SVG
       button_url: "/images/purple/logo.svg"
@@ -71,91 +61,95 @@ logos:
       text: Do not recolor, skew, or apply effects
 colors:
   title: Colors
-  intro: "Verana’s color system blends innovation and credibility — purple as the anchor hue, set against a dark foundation."
+  intro: "Verana’s color system blends innovation and credibility — purple anchors the palette, supported by neutral and accent tones used across the product and brand."
   swatches:
     - role: Primary
       name: Verana Purple
       hex: "#6B4EFF"
-      usage: Buttons, links, highlights
-      bg_class: bg-verana
+      usage: Buttons, key highlights, active states
+      text_class: text-white
+    - role: Primary Light
+      name: Verana Light
+      hex: "#9F7AEA"
+      usage: Gradients, hover states, backgrounds
+      text_class: text-white
+    - role: Primary Dark
+      name: Verana Dark
+      hex: "#553C9A"
+      usage: Outline accents, gradients, typography emphasis
       text_class: text-white
     - role: Background
       name: Ink Black
       hex: "#0B0B12"
       usage: Page backgrounds
-      bg_class: bg-ink-black
       text_class: text-white
     - role: Surface
       name: Graphite
       hex: "#151824"
-      usage: Panels, cards
-      bg_class: bg-graphite
+      usage: Cards, panels, overlays
       text_class: text-white
     - role: Accent
       name: Electric Blue
       hex: "#2E6BE6"
-      usage: Secondary CTAs
-      bg_class: bg-electric-blue
+      usage: Secondary CTAs, links
       text_class: text-white
     - role: Success
       name: Signal Green
       hex: "#29C68C"
-      usage: Verified states
-      bg_class: bg-signal-green
+      usage: Verification states, positive alerts
       text_class: text-white
     - role: Neutral
       name: Slate 70
       hex: "#8B94A5"
-      usage: Secondary text
-      bg_class: bg-slate-70
+      usage: Secondary text, dividers
       text_class: text-white
     - role: Neutral
       name: Slate 20
       hex: "#D7DBE2"
-      usage: Borders
-      bg_class: bg-slate-20
+      usage: Borders, subtle surfaces
       text_class: text-gray-900
+      border_class: border border-gray-300
     - role: Base
       name: White
       hex: "#FFFFFF"
-      usage: Text and highlights
-      bg_class: bg-white
+      usage: Text on dark backgrounds, highlights
       text_class: text-gray-900
+      border_class: border border-gray-300
   note: "These colors are tokenized in CSS variables used across verana.io and documentation."
 typography:
   title: Typography
-  intro: "Verana uses open, legible typefaces designed for clarity and credibility."
+  intro: "Inter powers our headlines, UI, and body copy, while IBM Plex Mono supports code and structured data."
   families:
     - sample: Aa
-      family: Space Grotesk
-      usage: Headlines / Display
-      weights: "700, 600"
-      css_class: font-space-grotesk
+      family: Inter
+      usage: Headlines & interface copy
+      weights: "500, 600, 700"
+      css_class: font-semibold
     - sample: Aa
       family: Inter
-      usage: Body / UI
-      weights: "400, 500, 600"
-      css_class: font-inter
+      usage: Body text & long-form content
+      weights: "400"
+      css_class: font-normal
     - sample: Aa
       family: IBM Plex Mono
-      usage: Code / Numbers
+      usage: Code snippets & tabular data
       weights: "400, 500"
-      css_class: font-ibm-plex-mono
+      css_class: font-mono
   guidelines:
-    - title: Hierarchy
+    - title: Headings & Body
       items:
-        - label: H1
-          description: Space Grotesk Semibold
-        - label: H2
-          description: Space Grotesk Semibold
-        - label: H3
-          description: Inter Semibold
-    - title: Body & UI
-      items:
+        - label: Headings
+          description: Inter Semibold 24–48 px
         - label: Body
-          description: Inter 16–18 px, 1.6 line height
-        - label: UI
+          description: Inter Regular 16–18 px, 1.6 line height
+        - label: UI Labels
           description: Inter Medium 14 px
+    - title: Code & Data
+      items:
+        - label: Code Snippets
+          description: IBM Plex Mono 14–16 px
+        - label: Numeric Data
+          description: IBM Plex Mono Medium 14 px
 iconography:
   title: Iconography
   intro: "Verana’s icons are **minimal, outlined, and geometric**, symbolizing trust and transparency."
@@ -190,36 +184,37 @@ developer_tokens:
   code: |
     :root {
       --color-primary: #6B4EFF;
+      --color-primary-light: #9F7AEA;
+      --color-primary-dark: #553C9A;
+      --color-accent: #2E6BE6;
+      --color-success: #29C68C;
       --color-bg: #0B0B12;
       --color-surface: #151824;
-      --color-success: #29C68C;
-      --color-accent: #2E6BE6;
+      --color-surface-muted: #1F2331;
+      --color-neutral-70: #8B94A5;
+      --color-neutral-20: #D7DBE2;
       --color-text: #FFFFFF;
-      --color-muted: #8B94A5;
+      --color-text-muted: #8B94A5;
       --color-border: #D7DBE2;
       --radius-lg: 16px;
       --radius-md: 12px;
       --radius-sm: 8px;
-      --focus-ring: 0 0 0 3px color-mix(in srgb, var(--color-primary) 40%, transparent);
+      --focus-ring: 0 0 0 3px color-mix(in srgb, var(--color-primary) 35%, transparent);
     }
 related:
   download_title: Download Press Kit
   description: "Get the complete Verana brand package including logos, colors, typography specimens, and usage guidelines."
   primary_button:
     label: Download Press Kit
-    url: "/pdf/verana-press-kit.pdf"
+    url: "/verana-press-kit.zip"
     icon: fa-solid fa-download
-    badge: 12.4 MB
-  secondary_button:
-    label: View Guidelines
-    url: "/page/brand-guidelines"
-    icon: fa-solid fa-external-link-alt
+    badge: 4.5 kB
   stats:
-    - value: "15+"
+    - value: "2"
       label: Logo Variations
-    - value: "8"
+    - value: "10"
       label: Brand Colors
-    - value: "3"
+    - value: "2"
       label: Typography Systems
 ---
 
