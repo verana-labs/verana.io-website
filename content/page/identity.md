@@ -54,7 +54,7 @@ logos:
       button_url: "/logo.svg"
     - style: text
       text_logo: V
-      title: "V" Only Logo
+      title: '"V" Only Logo'
       description: Icon mark for compact usage
       button_label: Download SVG
       button_url: "/images/purple/logo.svg"
@@ -130,17 +130,17 @@ typography:
       family: Space Grotesk
       usage: Headlines / Display
       weights: "700, 600"
-      css_class: font-space-grotesk
+      css_class: font-semibold
     - sample: Aa
       family: Inter
       usage: Body / UI
       weights: "400, 500, 600"
-      css_class: font-inter
+      css_class: font-normal
     - sample: Aa
       family: IBM Plex Mono
       usage: Code / Numbers
       weights: "400, 500"
-      css_class: font-ibm-plex-mono
+      css_class: font-mono
   guidelines:
     - title: Hierarchy
       items:
