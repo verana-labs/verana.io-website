@@ -1,8 +1,226 @@
 ---
-title: Identity
+title: Visual Identity
+subtitle: "Official Verana brand assets, guidelines, and developer tokens"
 url: "/page/identity"
-meta_title: "Verana Identity | Decentralized Identity and Credentialing"
-meta_description: "Understand how Verana enables decentralized identity, verifiable credentials, and interoperable trust registries for secure digital interactions."
+meta_title: "Verana Visual Identity | Logos, Fonts, and Brand Guidelines"
+meta_description: "Official Verana brand assets, colors, typography, and logo downloads. Access the Verana Press Kit for partners, media, and developers."
+disable_content_wrapper: true
+hero:
+  icon: fa-solid fa-palette
+  title: Visual Identity
+  subtitle: "Official Verana brand assets, colors, typography, and logo downloads."
+  breadcrumbs:
+    - label: Home
+      url: "/"
+    - label: Visual Identity
+  highlights:
+    - icon: fa-solid fa-download
+      text: Press Kit Available
+    - icon: fa-solid fa-code
+      text: Developer Tokens Included
+    - icon: fa-solid fa-shield-alt
+      text: Usage Guidelines
+brand_overview:
+  title: Brand Overview
+  intro: "Verana's visual identity communicates **trust, openness, and sovereignty** — the core values behind the Open Trust Layer for the Internet."
+  cards:
+    - icon: fa-solid fa-signature
+      icon_bg: bg-verana/20
+      icon_color: text-verana
+      title: Name
+      text: Verana
+    - icon: fa-solid fa-tag
+      icon_bg: bg-verana/20
+      icon_color: text-verana
+      title: Descriptor
+      text: The Open Trust Layer for the Internet
+    - icon: fa-solid fa-bullseye
+      icon_bg: bg-verana/20
+      icon_color: text-verana
+      title: Purpose
+      text: Empower ecosystems to build sovereign, verifiable trust networks they fully control
+  info_banner:
+    icon: fa-solid fa-info-circle
+    text: "For press or media inquiries, visit the [Press Room](/page/press)."
+logos:
+  title: Logos
+  intro: "The Verana logo represents **verified connections** — decentralized trust registries forming a cohesive network. Use only the approved assets provided below."
+  assets:
+    - style: icon
+      icon: fa-solid fa-network-wired
+      title: Primary Logo
+      description: Full wordmark with icon
+      button_label: Download SVG
+      button_url: "/logo.svg"
+    - style: text
+      text_logo: V
+      title: "V" Only Logo
+      description: Icon mark for compact usage
+      button_label: Download SVG
+      button_url: "/images/purple/logo.svg"
+  usage_rules:
+    - icon: fa-solid fa-expand-arrows-alt
+      title: Clear Space
+      text: Maintain clear space equal to the height of the “V” mark
+    - icon: fa-solid fa-ruler
+      title: Minimum Size
+      text: 24px (digital), 8mm (print)
+    - icon: fa-solid fa-ban
+      icon_color: text-red-400
+      title: Restrictions
+      text: Do not recolor, skew, or apply effects
+colors:
+  title: Colors
+  intro: "Verana’s color system blends innovation and credibility — purple as the anchor hue, set against a dark foundation."
+  swatches:
+    - role: Primary
+      name: Verana Purple
+      hex: "#6B4EFF"
+      usage: Buttons, links, highlights
+      bg_class: bg-verana
+      text_class: text-white
+    - role: Background
+      name: Ink Black
+      hex: "#0B0B12"
+      usage: Page backgrounds
+      bg_class: bg-ink-black
+      text_class: text-white
+    - role: Surface
+      name: Graphite
+      hex: "#151824"
+      usage: Panels, cards
+      bg_class: bg-graphite
+      text_class: text-white
+    - role: Accent
+      name: Electric Blue
+      hex: "#2E6BE6"
+      usage: Secondary CTAs
+      bg_class: bg-electric-blue
+      text_class: text-white
+    - role: Success
+      name: Signal Green
+      hex: "#29C68C"
+      usage: Verified states
+      bg_class: bg-signal-green
+      text_class: text-white
+    - role: Neutral
+      name: Slate 70
+      hex: "#8B94A5"
+      usage: Secondary text
+      bg_class: bg-slate-70
+      text_class: text-white
+    - role: Neutral
+      name: Slate 20
+      hex: "#D7DBE2"
+      usage: Borders
+      bg_class: bg-slate-20
+      text_class: text-gray-900
+    - role: Base
+      name: White
+      hex: "#FFFFFF"
+      usage: Text and highlights
+      bg_class: bg-white
+      text_class: text-gray-900
+  note: "These colors are tokenized in CSS variables used across verana.io and documentation."
+typography:
+  title: Typography
+  intro: "Verana uses open, legible typefaces designed for clarity and credibility."
+  families:
+    - sample: Aa
+      family: Space Grotesk
+      usage: Headlines / Display
+      weights: "700, 600"
+      css_class: font-space-grotesk
+    - sample: Aa
+      family: Inter
+      usage: Body / UI
+      weights: "400, 500, 600"
+      css_class: font-inter
+    - sample: Aa
+      family: IBM Plex Mono
+      usage: Code / Numbers
+      weights: "400, 500"
+      css_class: font-ibm-plex-mono
+  guidelines:
+    - title: Hierarchy
+      items:
+        - label: H1
+          description: Space Grotesk Semibold
+        - label: H2
+          description: Space Grotesk Semibold
+        - label: H3
+          description: Inter Semibold
+    - title: Body & UI
+      items:
+        - label: Body
+          description: Inter 16–18 px, 1.6 line height
+        - label: UI
+          description: Inter Medium 14 px
+iconography:
+  title: Iconography
+  intro: "Verana’s icons are **minimal, outlined, and geometric**, symbolizing trust and transparency."
+  highlights:
+    - icon: fa-solid fa-shield-alt
+      text: Trust & Security
+    - icon: fa-solid fa-network-wired
+      text: Networks
+    - icon: fa-solid fa-certificate
+      text: Credentials
+    - icon: fa-solid fa-check
+      icon_color: text-verana
+      border_color: border-verana
+      text: Active State
+  guidelines:
+    - icon: fa-solid fa-circle
+      title: Style
+      text: Rounded corners and consistent stroke weight
+    - icon: fa-solid fa-palette
+      title: Colors
+      text: Neutral by default; Verana Purple for active states
+    - icon: fa-solid fa-ban
+      icon_color: text-red-400
+      title: Avoid
+      text: Gradients, drop shadows, or dense fills
+developer_tokens:
+  title: Developer Tokens
+  intro: "CSS variables for consistent implementation across Verana projects and partner integrations."
+  code_title: CSS Custom Properties
+  code_button_label: Copy
+  code_button_icon: fa-solid fa-copy
+  code: |
+    :root {
+      --color-primary: #6B4EFF;
+      --color-bg: #0B0B12;
+      --color-surface: #151824;
+      --color-success: #29C68C;
+      --color-accent: #2E6BE6;
+      --color-text: #FFFFFF;
+      --color-muted: #8B94A5;
+      --color-border: #D7DBE2;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --focus-ring: 0 0 0 3px color-mix(in srgb, var(--color-primary) 40%, transparent);
+    }
+related:
+  download_title: Download Press Kit
+  description: "Get the complete Verana brand package including logos, colors, typography specimens, and usage guidelines."
+  primary_button:
+    label: Download Press Kit
+    url: "/pdf/verana-press-kit.pdf"
+    icon: fa-solid fa-download
+    badge: 12.4 MB
+  secondary_button:
+    label: View Guidelines
+    url: "/page/brand-guidelines"
+    icon: fa-solid fa-external-link-alt
+  stats:
+    - value: "15+"
+      label: Logo Variations
+    - value: "8"
+      label: Brand Colors
+    - value: "3"
+      label: Typography Systems
 ---
 
-## Identity
+{{< identity-page >}}

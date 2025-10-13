@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Identity - Verana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'space-grotesk': ['Space Grotesk', 'sans-serif'],
+                        'ibm-plex-mono': ['IBM Plex Mono', 'monospace'],
+                    },
+                    colors: {
+                        'verana': '#6B4EFF',
+                        'verana-light': '#9f7aea',
+                        'verana-dark': '#553c9a',
+                        'ink-black': '#0B0B12',
+                        'graphite': '#151824',
+                        'electric-blue': '#2E6BE6',
+                        'signal-green': '#29C68C',
+                        'slate-70': '#8B94A5',
+                        'slate-20': '#D7DBE2'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        .gradient-mesh {
+            background: radial-gradient(circle at 20% 50%, rgba(107, 78, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(107, 78, 255, 0.12) 0%, transparent 50%);
+        }
+        .color-swatch {
+            position: relative;
+            overflow: hidden;
+        }
+        .color-swatch::after {
+            content: attr(data-hex);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 12px;
+            font-size: 12px;
+            font-family: 'IBM Plex Mono', monospace;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        .color-swatch:hover::after {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-inter bg-gray-900 text-gray-100 overflow-x-hidden">
+
+<!-- Header -->
+<header id="header" class="bg-gray-900/95 backdrop-blur-sm border-b border-gray-800 sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <span class="flex items-center space-x-3 cursor-pointer">
+                    <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-white">Verana</span>
+                </span>
+            </div>
+            
+            <nav class="hidden lg:flex items-center space-x-8">
+                <div class="relative group">
+                    <button class="text-gray-400 hover:text-gray-100 flex items-center space-x-1 transition-colors duration-200">
+                        <span>Why Verana</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-400 hover:text-gray-100 flex items-center space-x-1 transition-colors duration-200">
+                        <span>Build</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-400 hover:text-gray-100 flex items-center space-x-1 transition-colors duration-200">
+                        <span>Trust Engine</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <button class="text-gray-400 hover:text-gray-100 flex items-center space-x-1 transition-colors duration-200">
+                        <span>Industry Use Cases</span>
+                        <i class="fa-solid fa-chevron-down text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                </div>
+                <span class="text-gray-400 hover:text-gray-100 transition-colors duration-200 cursor-pointer">Community</span>
+                <span class="text-gray-400 hover:text-gray-100 transition-colors duration-200 cursor-pointer">About</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <span class="bg-verana hover:bg-verana-dark text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer">
+                    Testnet
+                </span>
+                <button class="lg:hidden text-white">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Page Hero Section -->
+<section id="page-hero" class="relative bg-gray-800 py-16 lg:py-20 overflow-hidden h-[380px] flex items-center">
+    <div class="absolute inset-0 gradient-mesh opacity-50"></div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-5xl mx-auto">
+            <nav class="flex items-center space-x-2 text-sm text-gray-400 mb-8">
+                <span class="hover:text-gray-100 cursor-pointer">Home</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+                <span class="text-verana">Visual Identity</span>
+            </nav>
+            
+            <div class="flex items-center space-x-4 mb-6">
+                <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center">
+                    <i class="fa-solid fa-palette text-verana text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-4xl lg:text-5xl font-bold leading-tight text-white font-space-grotesk">
+                        Visual Identity
+                    </h1>
+                </div>
+            </div>
+            
+            <p class="text-xl text-gray-300 max-w-4xl leading-relaxed mb-6">
+                Official Verana brand assets, colors, typography, and logo downloads. Access the Verana Press Kit for partners, media, and developers.
+            </p>
+            
+            <div class="flex items-center space-x-6 text-sm text-gray-400">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-download text-verana"></i>
+                    <span>Press Kit Available</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-code text-verana"></i>
+                    <span>Developer Tokens Included</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-shield-alt text-verana"></i>
+                    <span>Usage Guidelines</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Brand Overview Section -->
+<section id="brand-overview" class="bg-gray-900 py-16 lg:py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6 font-space-grotesk">Brand Overview</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                    Verana's visual identity communicates <strong>trust, openness, and sovereignty</strong> — the core values behind the Open Trust Layer for the Internet.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8 mb-12">
+                <div class="bg-gray-800 border border-gray-700 rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-signature text-verana text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Name</h3>
+                    <p class="text-gray-300">Verana</p>
+                </div>
+                
+                <div class="bg-gray-800 border border-gray-700 rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-tag text-verana text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Descriptor</h3>
+                    <p class="text-gray-300">The Open Trust Layer for the Internet</p>
+                </div>
+                
+                <div class="bg-gray-800 border border-gray-700 rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-verana/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-bullseye text-verana text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Purpose</h3>
+                    <p class="text-gray-300">Empower ecosystems to build sovereign, verifiable trust networks they fully control</p>
+                </div>
+            </div>
+            
+            <div class="bg-blue-900/20 border border-blue-700/50 rounded-xl p-6">
+                <div class="flex items-start space-x-3">
+                    <i class="fa-solid fa-info-circle text-blue-400 mt-1"></i>
+                    <div>
+                        <p class="text-gray-300">
+                            For press or media inquiries, visit the <span class="text-verana hover:text-verana-light cursor-pointer font-medium">Press Room</span>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Logos Section -->
+<section id="logos" class="bg-gray-800 py-16 lg:py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6 font-space-grotesk">Logos</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                    The Verana logo represents <strong>verified connections</strong> — decentralized trust registries forming a cohesive network. Use only the approved assets provided below.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 mb-16">
+                <div class="bg-white rounded-2xl p-12 text-center">
+                    <div class="w-32 h-32 bg-gradient-to-br from-verana to-verana-light rounded-2xl flex items-center justify-center mx-auto mb-8">
+                        <i class="fa-solid fa-network-wired text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Primary Logo</h3>
+                    <p class="text-gray-600 mb-6">Full wordmark with icon</p>
+                    <button class="bg-verana hover:bg-verana-dark text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-105 flex items-center space-x-2 mx-auto">
+                        <i class="fa-solid fa-download"></i>
+                        <span>Download SVG</span>
+                    </button>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-12 text-center">
+                    <div class="w-32 h-32 bg-gradient-to-br from-verana to-verana-light rounded-2xl flex items-center justify-center mx-auto mb-8">
+                        <span class="text-white text-5xl font-bold">V</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">"V" Only Logo</h3>
+                    <p class="text-gray-600 mb-6">Icon mark for compact usage</p>
+                    <button class="bg-verana hover:bg-verana-dark text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-105 flex items-center space-x-2 mx-auto">
+                        <i class="fa-solid fa-download"></i>
+                        <span>Download SVG</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                <h3 class="text-2xl font-semibold text-white mb-6">Usage Rules</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-expand-arrows-alt text-verana mt-1 flex-shrink-0"></i>
+                        <div>
+                            <h4 class="font-semibold text-white mb-2">Clear Space</h4>
+                            <p class="text-gray-300 text-sm">Maintain clear space equal to the height of the "V" mark</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-ruler text-verana mt-1 flex-shrink-0"></i>
+                        <div>
+                            <h4 class="font-semibold text-white mb-2">Minimum Size</h4>
+                            <p class="text-gray-300 text-sm">24px (digital), 8mm (print)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-ban text-red-400 mt-1 flex-shrink-0"></i>
+                        <div>
+                            <h4 class="font-semibold text-white mb-2">Restrictions</h4>
+                            <p class="text-gray-300 text-sm">Do not recolor, skew, or apply effects</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Colors Section -->
+<section id="colors" class="bg-gray-900 py-16 lg:py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6 font-space-grotesk">Colors</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                    Verana's color system blends innovation and credibility — purple as the anchor hue, set against a dark foundation.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-verana h-32 rounded-xl color-swatch cursor-pointer" data-hex="#6B4EFF">
+                    <div class="p-4 h-full flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-semibold text-white text-sm">Primary</h4>
+                            <p class="text-white/80 text-xs">Verana Purple</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-ink-black h-32 rounded-xl color-swatch cursor-pointer border border-gray-700" data-hex="#0B0B12">
+                    <div class="p-4 h-full flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-semibold text-white text-sm">Background</h4>
+                            <p class="text-white/80 text-xs">Ink Black</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-graphite h-32 rounded-xl color-swatch cursor-pointer" data-hex="#151824">
+                    <div class="p-4 h-full flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-semibold text-white text-sm">Surface</h4>
+                            <p class="text-white/80 text-xs">Graphite</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-electric-blue h-32 rounded-xl color-swatch cursor-pointer" data-hex="#2E6BE6">
+                    <div class="p-4 h-full flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-semibold text-white text-sm">Accent</h4>
+                            <p class="text-white/80 text-xs">Electric Blue</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-signal-green h-32 rounded-xl color-swatch cursor-pointer" data-hex="#29C68C">
+                    <div class="p-4 h-full flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-semibold text-white text-sm">Success</h4>
+                            <p class="text-white/80 text-xs">Signal Green</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-slate-70 h-32 rounded-xl color-swatch cursor-pointer" data-hex="#8B94A5">
+                    <div class="p-4 h-full flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-semibold text-white text-sm">Neutral</h4>
+                            <p class="text-white/80 text-xs">Slate 70</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-slate-20 h-32 rounded-xl color-swatch cursor-pointer" data-hex="#D7DBE2">
+                    <div class="p-4 h-full flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-semibold text-gray-900 text-sm">Neutral</h4>
+                            <p class="text-gray-700 text-xs">Slate 20</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white h-32 rounded-xl color-swatch cursor-pointer border border-gray-300" data-hex="#FFFFFF">
+                    <div class="p-4 h-full flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-semibold text-gray-900 text-sm">Base</h4>
+                            <p class="text-gray-700 text-xs">White</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gray-800 border border-gray-700 rounded-2xl p-8">
+                <h3 class="text-xl font-semibold text-white mb-6">Color Usage</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="border-b border-gray-700">
+                                <th class="text-left py-3 px-4 text-white font-medium">Role</th>
+                                <th class="text-left py-3 px-4 text-white font-medium">Name</th>
+                                <th class="text-left py-3 px-4 text-white font-medium">HEX</th>
+                                <th class="text-left py-3 px-4 text-white font-medium">Usage</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-300">
+                            <tr class="border-b border-gray-700/50">
+                                <td class="py-3 px-4">Primary</td>
+                                <td class="py-3 px-4">Verana Purple</td>
+                                <td class="py-3 px-4 font-ibm-plex-mono">#6B4EFF</td>
+                                <td class="py-3 px-4">Buttons, links, highlights</td>
+                            </tr>
+                            <tr class="border-b border-gray-700/50">
+                                <td class="py-3 px-4">Background</td>
+                                <td class="py-3 px-4">Ink Black</td>
+                                <td class="py-3 px-4 font-ibm-plex-mono">#0B0B12</td>
+                                <td class="py-3 px-4">Page backgrounds</td>
+                            </tr>
+                            <tr class="border-b border-gray-700/50">
+                                <td class="py-3 px-4">Surface</td>
+                                <td class="py-3 px-4">Graphite</td>
+                                <td class="py-3 px-4 font-ibm-plex-mono">#151824</td>
+                                <td class="py-3 px-4">Panels, cards</td>
+                            </tr>
+                            <tr class="border-b border-gray-700/50">
+                                <td class="py-3 px-4">Accent</td>
+                                <td class="py-3 px-4">Electric Blue</td>
+                                <td class="py-3 px-4 font-ibm-plex-mono">#2E6BE6</td>
+                                <td class="py-3 px-4">Secondary CTAs</td>
+                            </tr>
+                            <tr class="border-b border-gray-700/50">
+                                <td class="py-3 px-4">Success</td>
+                                <td class="py-3 px-4">Signal Green</td>
+                                <td class="py-3 px-4 font-ibm-plex-mono">#29C68C</td>
+                                <td class="py-3 px-4">Verified states</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Typography Section -->
+<section id="typography" class="bg-gray-800 py-16 lg:py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6 font-space-grotesk">Typography</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                    Verana uses open, legible typefaces designed for clarity and credibility.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8 mb-12">
+                <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                    <div class="mb-8">
+                        <h3 class="text-4xl font-bold text-white mb-4 font-space-grotesk">Aa</h3>
+                        <h4 class="text-xl font-semibold text-white mb-2">Space Grotesk</h4>
+                        <p class="text-gray-400 text-sm mb-4">Headlines / Display</p>
+                        <p class="text-gray-300 text-sm">Weights: 700, 600</p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-3xl font-bold text-white font-space-grotesk">Bold 700</p>
+                        <p class="text-2xl font-semibold text-white font-space-grotesk">Semibold 600</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                    <div class="mb-8">
+                        <h3 class="text-4xl font-semibold text-white mb-4">Aa</h3>
+                        <h4 class="text-xl font-semibold text-white mb-2">Inter</h4>
+                        <p class="text-gray-400 text-sm mb-4">Body / UI</p>
+                        <p class="text-gray-300 text-sm">Weights: 400, 500, 600</p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-lg font-semibold text-white">Semibold 600</p>
+                        <p class="text-lg font-medium text-white">Medium 500</p>
+                        <p class="text-lg text-white">Regular 400</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                    <div class="mb-8">
+                        <h3 class="text-4xl font-medium text-white mb-4 font-ibm-plex-mono">Aa</h3>
+                        <h4 class="text-xl font-semibold text-white mb-2">IBM Plex Mono</h4>
+                        <p class="text-gray-400 text-sm mb-4">Code / Numbers</p>
+                        <p class="text-gray-300 text-sm">Weights: 400, 500</p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-lg font-medium text-white font-ibm-plex-mono">Medium 500</p>
+                        <p class="text-lg text-white font-ibm-plex-mono">Regular 400</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                <h3 class="text-2xl font-semibold text-white mb-6">Usage Guidelines</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-semibold text-white mb-4">Hierarchy</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-4xl font-semibold text-white font-space-grotesk">H1</span>
+                                <span class="text-gray-400 text-sm">Space Grotesk Semibold</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-3xl font-semibold text-white font-space-grotesk">H2</span>
+                                <span class="text-gray-400 text-sm">Space Grotesk Semibold</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-semibold text-white">H3</span>
+                                <span class="text-gray-400 text-sm">Inter Semibold</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-lg text-white">Body</span>
+                                <span class="text-gray-400 text-sm">Inter Regular</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold text-white mb-4">Body Text Guidelines</h4>
+                        <div class="space-y-3 text-gray-300">
+                            <p><strong>Size:</strong> 16–18px</p>
+                            <p><strong>Line Height:</strong> 1.6</p>
+                            <p><strong>Font Weight:</strong> 400 (Regular)</p>
+                            <p><strong>Color:</strong> #FFFFFF on dark backgrounds</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Iconography Section -->
+<section id="iconography" class="bg-gray-900 py-16 lg:py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6 font-space-grotesk">Iconography</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                    Verana's icons are <strong>minimal, outlined, and geometric</strong>, symbolizing trust and transparency.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div class="bg-gray-800 border border-gray-700 rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 border-2 border-gray-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fa-solid fa-shield-alt text-gray-400 text-2xl"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm">Trust & Security</p>
+                </div>
+                
+                <div class="bg-gray-800 border border-gray-700 rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 border-2 border-gray-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fa-solid fa-network-wired text-gray-400 text-2xl"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm">Networks</p>
+                </div>
+                
+                <div class="bg-gray-800 border border-gray-700 rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 border-2 border-gray-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fa-solid fa-certificate text-gray-400 text-2xl"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm">Credentials</p>
+                </div>
+                
+                <div class="bg-gray-800 border border-gray-700 rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 border-2 border-verana rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fa-solid fa-check text-verana text-2xl"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm">Active State</p>
+                </div>
+            </div>
+            
+            <div class="bg-gray-800 border border-gray-700 rounded-2xl p-8">
+                <h3 class="text-2xl font-semibold text-white mb-6">Icon Guidelines</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-circle text-verana mt-1 flex-shrink-0"></i>
+                        <div>
+                            <h4 class="font-semibold text-white mb-2">Style</h4>
+                            <p class="text-gray-300 text-sm">Rounded corners and consistent stroke weight</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-palette text-verana mt-1 flex-shrink-0"></i>
+                        <div>
+                            <h4 class="font-semibold text-white mb-2">Colors</h4>
+                            <p class="text-gray-300 text-sm">Neutral color by default; Verana Purple for active states</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-ban text-red-400 mt-1 flex-shrink-0"></i>
+                        <div>
+                            <h4 class="font-semibold text-white mb-2">Avoid</h4>
+                            <p class="text-gray-300 text-sm">Gradients, drop shadows, or dense fills</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Developer Tokens Section -->
+<section id="developer-tokens" class="bg-gray-800 py-16 lg:py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6 font-space-grotesk">Developer Tokens</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                    CSS variables for consistent implementation across Verana projects and partner integrations.
+                </p>
+            </div>
+            
+            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-semibold text-white">CSS Custom Properties</h3>
+                    <button class="bg-verana hover:bg-verana-dark text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 flex items-center space-x-2">
+                        <i class="fa-solid fa-copy"></i>
+                        <span>Copy</span>
+                    </button>
+                </div>
+                
+                <div class="bg-ink-black rounded-xl p-6 overflow-x-auto">
+                    <pre class="text-sm text-gray-300 font-ibm-plex-mono"><code>:root {
+  --color-primary: #6B4EFF;
+  --color-bg: #0B0B12;
+  --color-surface: #151824;
+  --color-success: #29C68C;
+  --color-accent: #2E6BE6;
+  --color-text: #FFFFFF;
+  --color-muted: #8B94A5;
+  --color-border: #D7DBE2;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --focus-ring: 0 0 0 3px color-mix(in srgb, var(--color-primary) 40%, transparent);
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Press Kit Download Section -->
+<section id="press-kit" class="bg-verana/10 py-16 lg:py-20">
+    <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="w-20 h-20 bg-verana/20 rounded-full flex items-center justify-center mx-auto mb-8">
+                <i class="fa-solid fa-download text-verana text-3xl"></i>
+            </div>
+            
+            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6 font-space-grotesk">Download Press Kit</h2>
+            <p class="text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+                Get the complete Verana brand package including logos, colors, typography specimens, and usage guidelines.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                <button class="bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-3">
+                    <i class="fa-solid fa-download"></i>
+                    <span>Download Press Kit</span>
+                    <span class="bg-white/20 px-2 py-1 rounded text-sm">12.4 MB</span>
+                </button>
+                
+                <button class="border-2 border-gray-600 hover:border-verana text-gray-100 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2">
+                    <i class="fa-solid fa-external-link-alt"></i>
+                    <span>View Guidelines</span>
+                </button>
+            </div>
+            
+            <div class="mt-12 grid md:grid-cols-3 gap-6 text-center">
+                <div>
+                    <div class="text-2xl font-bold text-white mb-2">15+</div>
+                    <div class="text-gray-400">Logo Variations</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold text-white mb-2">8</div>
+                    <div class="text-gray-400">Brand Colors</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold text-white mb-2">3</div>
+                    <div class="text-gray-400">Typography Systems</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="bg-black border-t border-gray-800 py-16">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12 mb-12">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-verana to-verana-light rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-white">Verana</span>
+                    </div>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        The open trust layer for the internet, enabling verifiable digital services and true digital sovereignty.
+                    </p>
+                    <div class="flex space-x-4">
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-github"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-discord"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </span>
+                        <span class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-verana transition-all duration-200 cursor-pointer">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Verana</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Principles</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Foundation</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Press</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Developers</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Docs</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">GitHub</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Specifications</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Trust Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Verifiable Public Registry Spec</span></li>
+                        <li><span class="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Trust Registry Query Protocol</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col sm:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">© 2025 Verana Foundation. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 sm:mt-0">
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Privacy Policy</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Terms of Service</span>
+                        <span class="text-gray-400 hover:text-white text-sm transition-colors duration-200 cursor-pointer">Cookie Policy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
