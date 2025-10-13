@@ -118,38 +118,38 @@ colors:
   note: "These colors are tokenized in CSS variables used across verana.io and documentation."
 typography:
   title: Typography
-  intro: "Verana uses open, legible typefaces designed for clarity and credibility."
+  intro: "Inter powers our headlines, UI, and body copy, while IBM Plex Mono supports code and structured data."
   families:
     - sample: Aa
-      family: Space Grotesk
-      usage: Headlines / Display
-      weights: "700, 600"
+      family: Inter
+      usage: Headlines & interface copy
+      weights: "500, 600, 700"
       css_class: font-semibold
     - sample: Aa
       family: Inter
-      usage: Body / UI
-      weights: "400, 500, 600"
+      usage: Body text & long-form content
+      weights: "400"
       css_class: font-normal
     - sample: Aa
       family: IBM Plex Mono
-      usage: Code / Numbers
+      usage: Code snippets & tabular data
       weights: "400, 500"
       css_class: font-mono
   guidelines:
-    - title: Hierarchy
+    - title: Headings & Body
       items:
-        - label: H1
-          description: Space Grotesk Semibold
-        - label: H2
-          description: Space Grotesk Semibold
-        - label: H3
-          description: Inter Semibold
-    - title: Body & UI
-      items:
+        - label: Headings
+          description: Inter Semibold 24–48 px
         - label: Body
-          description: Inter 16–18 px, 1.6 line height
-        - label: UI
+          description: Inter Regular 16–18 px, 1.6 line height
+        - label: UI Labels
           description: Inter Medium 14 px
+    - title: Code & Data
+      items:
+        - label: Code Snippets
+          description: IBM Plex Mono 14–16 px
+        - label: Numeric Data
+          description: IBM Plex Mono Medium 14 px
 iconography:
   title: Iconography
   intro: "Verana’s icons are **minimal, outlined, and geometric**, symbolizing trust and transparency."
