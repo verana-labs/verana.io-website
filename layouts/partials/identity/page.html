@@ -84,16 +84,19 @@
       {{ with .assets }}
         <div class="grid lg:grid-cols-2 gap-12 mb-16">
           {{ range . }}
-            <div class="bg-white rounded-2xl p-12 text-center shadow-lg shadow-verana/5">
-              <div class="w-32 h-32 bg-gradient-to-br from-verana to-verana-light rounded-2xl flex items-center justify-center mx-auto mb-8">
-                {{ if eq .style "text" }}
-                  <span class="text-white text-5xl font-bold">{{ .text_logo | default "V" }}</span>
-                {{ else }}
+            <div class="bg-gray-900 border border-gray-700 rounded-2xl p-12 text-center">
+              {{ if .image }}
+                {{ $image := .image }}
+                <div class="w-full flex items-center justify-center mb-8">
+                  <img src="{{ $image.src }}" alt="{{ $image.alt }}" class="{{ $image.class | default "h-20" }} object-contain" loading="lazy" />
+                </div>
+              {{ else }}
+                <div class="w-32 h-32 bg-gradient-to-br from-verana to-verana-light rounded-2xl flex items-center justify-center mx-auto mb-8">
                   {{ with .icon }}<i class="{{ . }} text-white text-4xl"></i>{{ end }}
-                {{ end }}
-              </div>
-              {{ with .title }}<h3 class="text-xl font-semibold text-gray-900 mb-4">{{ . | markdownify }}</h3>{{ end }}
-              {{ with .description }}<p class="text-gray-600 mb-6">{{ . | markdownify }}</p>{{ end }}
+                </div>
+              {{ end }}
+              {{ with .title }}<h3 class="text-xl font-semibold text-white mb-4">{{ . | markdownify }}</h3>{{ end }}
+              {{ with .description }}<p class="text-gray-300 mb-6">{{ . | markdownify }}</p>{{ end }}
               {{ $href := .button_url | default "#" }}
               {{ with .button_label }}
                 <a href="{{ $href }}" class="bg-verana hover:bg-verana-dark text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-105 flex items-center space-x-2 mx-auto w-max">

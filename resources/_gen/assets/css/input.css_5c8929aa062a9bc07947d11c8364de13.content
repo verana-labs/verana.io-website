@@ -2901,10 +2901,6 @@ video {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity, 1));
 }
-.text-gray-600 {
-  --tw-text-opacity: 1;
-  color: rgb(75 85 99 / var(--tw-text-opacity, 1));
-}
 .text-gray-900 {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity, 1));
@@ -3063,10 +3059,6 @@ video {
 }
 .shadow-verana\/30 {
   --tw-shadow-color: rgb(118 62 240 / 0.3);
-  --tw-shadow: var(--tw-shadow-colored);
-}
-.shadow-verana\/5 {
-  --tw-shadow-color: rgb(118 62 240 / 0.05);
   --tw-shadow: var(--tw-shadow-colored);
 }
 .outline {

@@ -30,16 +30,20 @@ brand_overview:
     text: "For press or media inquiries, send email to press at verana dot io or reach our <span class=\"text-verana font-medium inline-flex items-center space-x-2\"><i class=\"fa-brands fa-linkedin\"></i><a href=\"https://www.linkedin.com/company/verana-foundation/\" class=\"hover:text-verana-light\">LinkedIn</a></span>"
 logos:
   title: Logos
-  intro: "The Verana logo was a furious red bull charged with five silver stars"
+  intro: "The “V” can be seen as the horns of a bull: two strong, symmetrical lines rising upward from a shared base, embodying power, balance, and determination."
   assets:
-    - style: icon
-      icon: fa-solid fa-network-wired
+    - image:
+        src: "/logo.svg"
+        alt: "Verana primary logo"
+        class: "h-20"
       title: Primary Logo
       description: Full wordmark with icon
       button_label: Download SVG
       button_url: "/logo.svg"
-    - style: text
-      text_logo: V
+    - image:
+        src: "/images/purple/logo.svg"
+        alt: 'Verana "V" icon logo'
+        class: "h-20"
       title: '"V" Only Logo'
       description: Icon mark for compact usage
       button_label: Download SVG
