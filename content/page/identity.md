@@ -206,19 +206,15 @@ related:
   description: "Get the complete Verana brand package including logos, colors, typography specimens, and usage guidelines."
   primary_button:
     label: Download Press Kit
-    url: "/pdf/verana-press-kit.pdf"
+    url: "/verana-press-kit.zip"
     icon: fa-solid fa-download
-    badge: 12.4 MB
-  secondary_button:
-    label: View Guidelines
-    url: "/page/brand-guidelines"
-    icon: fa-solid fa-external-link-alt
+    badge: 4.5 kB
   stats:
-    - value: "15+"
+    - value: "2"
       label: Logo Variations
-    - value: "8"
+    - value: "10"
       label: Brand Colors
-    - value: "3"
+    - value: "2"
       label: Typography Systems
 ---
 
