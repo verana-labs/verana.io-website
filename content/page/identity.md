@@ -65,7 +65,7 @@ colors:
   swatches:
     - role: Primary
       name: Verana Purple
-      hex: "#6B4EFF"
+      hex: "#763EF0"
       usage: Buttons, key highlights, active states
       text_class: text-white
     - role: Primary Light
@@ -183,7 +183,7 @@ developer_tokens:
   code_button_icon: fa-solid fa-copy
   code: |
     :root {
-      --color-primary: #6B4EFF;
+      --color-primary: #763EF0;
       --color-primary-light: #9F7AEA;
       --color-primary-dark: #553C9A;
       --color-accent: #2E6BE6;
