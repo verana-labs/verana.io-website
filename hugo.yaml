@@ -57,7 +57,7 @@ params:
             url: "/page/identity"
       - title: "Developers"
         items:
-          - label: "Docs"
+          - label: "Documentation"
             url: "https://docs.verana.io"
           - label: "Github"
             url: "https://github.com/verana-labs/"
