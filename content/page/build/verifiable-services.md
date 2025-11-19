@@ -3,7 +3,7 @@ title: Verifiable Services
 subtitle: "With Verana, organizations and creators can deploy self-sovereign verifiable services and stay in full control of identity, data, and distribution."
 url: "/page/build/verifiable-services"
 meta_title: "Verifiable Services | Own Digital Channels with Verana"
-meta_description: "Create portable, self-sovereign verifiable services on Verana to protect user data, prove authenticity, and distribute content without platform lock-in."
+meta_description: "Create portable, self-sovereign verifiable services on Verana to protect user data, prove authenticity, and distribute content without platform lock-in. Issue and verify verifiable credentials, w3c and anoncreds."
 hero_icon: "fa-solid fa-layer-group"
 disable_content_wrapper: true
 why_section:
@@ -30,10 +30,33 @@ why_section:
         icon_class: "text-verana text-2xl"
         title: Deployment Freedom
         text: "Fully decentralized and portable. Host in the cloud, on-premise, or self-hosted, and migrate anytime without vendor lock-in or platform dependencies."
+      - icon: "fa-solid fa-id-badge"
+        icon_class: "text-verana text-2xl"
+        title: Issue and Verify Credentials
+        text: "Issue w3c or anoncreds verifiable credentials, and request presentations of credentials to other services, AI agents, things or user wallets."
+        
 examples_section:
   title: Examples of Verifiable Services
   subtitle: "Discover the diverse applications and innovations possible with self-sovereign verifiable services"
   cards:
+    - icon: "fa-solid fa-id-card"
+      icon_bg: "bg-blue-500/20"
+      icon_class: "text-blue-400 text-2xl"
+      title: Reusable KyC Credential Issuer
+      text: "A simple service that performs a user KyC and issue a verifiable credential to user."
+      bullets:
+        - User scans its NFC passport
+        - Face matching with liveness detection
+        - Credential sent to user and stored to mobile wallet
+    - icon: "fa-solid fa-id-card"
+      icon_bg: "bg-green-500/20"
+      icon_class: "text-green-400 text-2xl"
+      title: Reusable KyC Credential Verifier
+      text: "A simple service that requests a KyC credential to user."
+      bullets:
+        - User scans a QR code
+        - Is prompted for credential
+        - Present the credential to service
     - icon: "fa-solid fa-broadcast-tower"
       icon_bg: "bg-purple-500/20"
       icon_class: "text-purple-400 text-2xl"
@@ -61,15 +84,6 @@ examples_section:
         - Autonomous negotiation
         - Credential exchange
         - Cryptographic security
-    - icon: "fa-solid fa-comments"
-      icon_bg: "bg-yellow-500/20"
-      icon_class: "text-yellow-400 text-2xl"
-      title: Decentralized Messaging & Chatbots
-      text: "A customer support chatbot for a mobile operator, verifiable, and hosted on premise for customer data privacy."
-      bullets:
-        - Platform independence
-        - Verifiable identity
-        - Seamless migration
     - icon: "fa-solid fa-film"
       icon_bg: "bg-red-500/20"
       icon_class: "text-red-400 text-2xl"
@@ -79,6 +93,15 @@ examples_section:
         - Direct publisher control
         - Guaranteed provenance
         - No intermediary fees
+    - icon: "fa-solid fa-comments"
+      icon_bg: "bg-yellow-500/20"
+      icon_class: "text-yellow-400 text-2xl"
+      title: Decentralized Messaging & Chatbots
+      text: "A customer support chatbot for a mobile operator, verifiable, and hosted on premise for customer data privacy."
+      bullets:
+        - Platform independence
+        - Verifiable identity
+        - Seamless migration
     - icon: "fa-solid fa-lightbulb"
       icon_bg: "bg-verana/20"
       icon_class: "text-verana text-2xl"
@@ -111,8 +134,10 @@ cta_section:
     - text: Start Building
       icon: "fa-solid fa-rocket"
       class: "bg-verana hover:bg-verana-dark text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105 flex items-center space-x-2"
+      href: "https://docs.verana.io"
     - text: View Documentation
       class: "border-2 border-gray-600 hover:border-verana text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105"
+      href: "https://docs.verana.io"
   footer:
     cards:
       - icon: "fa-solid fa-book"
