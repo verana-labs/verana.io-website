@@ -278,7 +278,7 @@ impact:
         - "Simplify processes"
         - "Preserve privacy"
         - "Enable business models"
-      href: "/page/industry-use-cases/hotel-management"
+      href: "/page/industry-use-cases/notaries"
 #    - title: "Notaries & Legal"
 #      description: "Prove documents, power of attorney, and notarizations instantly with machine-verifiable certificates."
 #      image: "/images/uxpilot/impact-notaries.png"
