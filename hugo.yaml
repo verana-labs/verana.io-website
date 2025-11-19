@@ -51,8 +51,8 @@ params:
     columns:
       - title: "Verana"
         items:
-          - label: "Foundation"
-            url: "https://verana.foundation"
+          - label: "About"
+            url: "/page/about/team"
           - label: "Visual Identity & Press"
             url: "/page/identity"
       - title: "Developers"
