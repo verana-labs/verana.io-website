@@ -1,7 +1,7 @@
 {{ $discover := .Params.discover }}
 {{ $media := $discover.media }}
 {{ $videoScratch := newScratch }}
-{{ $videoScratch.Set "src" "/videos/notebook-slides.mp4" }}
+{{ $videoScratch.Set "src" "/videos/verana.mp4" }}
 {{ with $media }}
   {{ if .video }}
     {{ $videoScratch.Set "src" .video }}
