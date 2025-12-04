@@ -45,12 +45,12 @@ discover:
       icon_bg: "bg-verana/20"
   media:
     image: "/images/uxpilot/discovery-marketplace.png"
-    alt: "Interactive notebook slides"
+    alt: "Verana explained"
     badge_icon: "play"
     badge_icon_style: "solid"
     badge_text: "Watch Demo Video"
-    title: "Interactive Notebook Slides"
-    description: "Explore how Verana transforms digital interactions through verifiable trust networks."
+    title: "Verana explained"
+    description: "Explore how Verana transforms digital interactions through verifiable decentralized trust networks."
 core_pillars:
   id: core-pillars-section
   title: "The Three Pillars of **Digital Freedom**"
