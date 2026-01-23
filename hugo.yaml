@@ -38,7 +38,7 @@ params:
       - platform: "discord"
         url: "https://discord.gg/edjaFn252q"
       - platform: "linkedin"
-        url: "https://www.linkedin.com/company/verana-foundation"
+        url: "https://www.linkedin.com/company/verana-foundation/"
       - platform: "x"
         url: "https://x.com/Verana_io"
     legal:
