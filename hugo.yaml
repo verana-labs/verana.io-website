@@ -25,8 +25,9 @@ params:
     logo: "/images/purple/logo.svg"
     tagline: "The Open Trust Layer for the Internet"
     testnet:
-      label: "Testnet"
-      url: "/page/developers/testnet"
+      label: "Playground"
+      url: "https://playground.main.demos.testnet.verana.network/"
+#      url: "/page/developers/testnet"
 #      icon: "fa-solid fa-umbrella-beach"
       icon: "fa-solid fa-flask-vial"
   footer:
