@@ -63,7 +63,7 @@ getting_started:
       title: "Access the Frontend"
       description: "Access the frontend, connect your wallet to obtain your Verana address. You can copy the address by clicking the copy button on the top right corner."
       media:
-        - src: "/images/purple/front-connected2.png"
+        - src: "/images/purple/ecosystems.png"
           alt: "Verana frontend interface showing wallet connection and address copy button, dark theme, modern UI design"
           wrapper_class: "bg-black rounded-xl p-1 border border-gray-600"
           img_class: "h-full h-64 rounded-lg object-cover"
@@ -117,7 +117,7 @@ getting_started:
       title: "Execute Transactions"
       description: "You can now interact with the frontend and execute transactions on the Verana network."
       media:
-        - src: "/images/purple/front-trxs.png"
+        - src: "/images/purple/trans-vna.png"
           alt: "Verana frontend transaction interface, blockchain transaction execution, dark theme, modern UI with transaction history"
           wrapper_class: "rounded-xl border border-gray-600"
           img_class: "h-full rounded-lg  h-64 object-cover"
@@ -139,7 +139,7 @@ component_deployments:
             style: primary
           media:
             bg: "bg-gradient-to-br from-verana/20 to-verana-light/10"
-            src: "/images/purple/front-connected5.png"
+            src: "/images/purple/tr.png"
             alt: "Modern web application dashboard interface, dark theme UI with purple accents, frontend development"
             img_class: " h-full object-cover"
         - title: Deploy Your Own
@@ -236,24 +236,23 @@ component_deployments:
     - name: Trust Resolver
       purpose: "index verifiable services by crawling their credentials"
       github:
-        href: "https://github.com/verana-labs/verre"
+        href: "https://github.com/verana-labs/verana-resolver"
       deployments:
-        - title: Soon
-          description: "Coming soon to testnet"
-          type: soon
+        - title: Verana Foundation Resolver
+          description: "Offical Resolver Instance"
           action:
             label: Launch
-            style: disabled
+            href: "https://resolver.testnet.verana.network/docs/"
+            style: primary
           media:
-            bg: "bg-gray-800"
-            icon:
-              name: "fa-solid fa-clock"
-              color: "text-gray-400 text-3xl"
+            bg: "bg-gradient-to-br from-green-500/20 to-green-400/10"
+            src: "/images/purple/green-check.webp"
+            alt: "Trust Resolver API, data organization system, query optimization dashboard, modern tech UI"
         - title: Deploy Your Own
           description: "Self-hosted indexer instance"
           action:
             label: Launch
-            href: "https://github.com/verana-labs/verre"
+            href: "https://github.com/verana-labs/verana-resolver"
             style: outline
           media:
             bg: "bg-gray-800"
