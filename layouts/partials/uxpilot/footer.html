@@ -195,7 +195,7 @@
       </div>
       <div class="border-t border-gray-800 pt-8">
         <div class="flex flex-col sm:flex-row justify-between items-center">
-          <p class="text-gray-400 text-sm">&copy; {{ now.Year }} {{ $company }}. All rights reserved.</p>
+          <p class="text-gray-400 text-sm">&copy; {{ now.Year }} <a class="hover:text-white transition-colors duration-200" href="https://veranafoundation.org" target="_blank" rel="noopener noreferrer">{{ $company }}</a>. All rights reserved.</p>
           {{ if gt (len $legalLinks) 0 }}
             <div class="flex flex-wrap gap-4 sm:flex-nowrap sm:space-x-6 mt-4 sm:mt-0">
               {{ range $link := $legalLinks }}
