@@ -145,6 +145,10 @@ params:
 #            url: "/page/about/roadmap"
           - title: "Governance"
             url: "/page/about/governance"
+          - title: "Verana Foundation"
+            url: "https://veranafoundation.org"
+          - title: "Verana Council"
+            url: "https://veranacouncil.org"
 #      - title: "Testnet"
 #        children:
 #          - title: "App"
