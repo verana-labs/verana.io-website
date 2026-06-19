@@ -1,8 +1,8 @@
 ---
 title: "Verana"
 layout: "uxpilot"
-meta_title: "Verana | Open Trust Layer for Verifiable Digital Services"
-meta_description: "Discover Verana, the open trust layer that turns digital services into verifiable assets with decentralized identity, trust registries, and developer-first tools."
+meta_title: "Verana | The Open Trust Layer for the Agentic Web"
+meta_description: "Verana is the open trust layer for the agentic web — verifiable trust for humans, services, and AI agents, so anyone (and any agent) can prove who they are and act under verifiable authority. Built on verifiable credentials, decentralized identifiers, and trust registries."
 bodyClass: "bg-black text-white overflow-x-hidden font-sans"
 hero:
   title_lines:
@@ -10,9 +10,9 @@ hero:
       variant: "light"
     - text: "Trust Layer"
       variant: "brand"
-    - text: "for the Internet"
+    - text: "for the Agentic Web"
       variant: "light"
-  description: "Turn digital services into verifiable assets that anyone can find and trust."
+  description: "Verifiable trust for humans, services, and AI agents — so anyone, and any agent, can prove who they are and act under verifiable authority."
   primary_cta:
     label: "Start Building"
     href: "/page/build"
@@ -22,24 +22,24 @@ hero:
     label: "Explore Documentation"
     href: "https://docs.verana.io"
 discover:
-  heading: "Discover Verana"
-  subheading: "Reclaiming Your Digital World"
+  heading: "Trust for the Agentic Web"
+  subheading: "AI agents are already acting online — Verana lets them prove it"
   features:
-    - title: "Trusted Interactions"
-      description: "Every digital interaction is verifiable, authentic, and privacy-preserving, so you can engage with confidence, without intermediaries."
-      icon: "shield"
+    - title: "Agents that prove who they represent"
+      description: "An AI agent can present verifiable credentials proving it acts for a real organization — not an anonymous bot, but an accountable party you can check cryptographically."
+      icon: "id-badge"
       icon_style: "solid"
       icon_color: "text-verana"
       icon_bg: "bg-verana/20"
-    - title: "Digital Sovereignty"
-      description: "Verana enables true digital ownership through autonomous trust networks and self-sovereign verifiable services."
-      icon: "check"
+    - title: "Verify before you transact"
+      description: "Before an agent talks to another agent or pays a service, it can verify the counterparty's identity and trust status — agent-to-agent credential exchange over DIDComm, grounded in trust registries."
+      icon: "handshake"
       icon_style: "solid"
       icon_color: "text-verana"
       icon_bg: "bg-verana/20"
-    - title: "Fair Discovery"
-      description: "Be discovered based on what you actually provide, not what you pay for in advertising."
-      icon: "search"
+    - title: "Act under verifiable authority"
+      description: "Delegated authority becomes provable: an agent can demonstrate exactly what it is authorized to do, and on whose behalf, with credentials that can't be forged or silently revoked."
+      icon: "key"
       icon_style: "solid"
       icon_color: "text-verana"
       icon_bg: "bg-verana/20"
@@ -50,11 +50,11 @@ discover:
     badge_icon_style: "solid"
     badge_text: "Watch Demo Video"
     title: "Verana explained"
-    description: "Explore how Verana transforms digital interactions through verifiable decentralized trust networks."
+    description: "See how Verana gives humans, services, and AI agents a shared, verifiable way to prove identity and authority."
 core_pillars:
   id: core-pillars-section
-  title: "The Three Pillars of **Digital Freedom**"
-  subtitle: "Transform how you interact with the digital world through verifiable trust, true ownership, and merit-based discovery."
+  title: "Three Pillars for a **Trustworthy Agentic Web**"
+  subtitle: "The same foundations that fix the internet for people also let services and AI agents transact safely: verifiable trust, true ownership, and merit-based discovery."
   pillars:
     - id: trust-pillar
       label: Trust
@@ -63,10 +63,10 @@ core_pillars:
         color: text-verana text-xl
         bg: bg-verana/20
       title: "Don't Trust. Verify."
-      description: "Build confidence in digital interactions through cryptographic verification and transparent trust networks that anyone can validate."
+      description: "Build confidence in every interaction through cryptographic verification and transparent trust networks that anyone can validate. Before an agent acts on another agent or service, it can verify the counterparty first."
       highlights:
         - "Cryptographic proof of identity"
-        - "Transparent verification"
+        - "Verify a counterparty before transacting"
         - "Decentralized trust networks"
       image:
         src: "/images/purple/trust-photo.webp"
@@ -80,12 +80,12 @@ core_pillars:
         name: fa-solid fa-key
         color: text-verana text-xl
         bg: bg-verana/20
-      title: "Own Your Services."
-      description: "Take control of your digital assets with verifiable ownership that can't be revoked or manipulated by platform gatekeepers."
+      title: "Act Under Verifiable Authority."
+      description: "Take control of your digital assets and credentials with verifiable ownership that can't be revoked or manipulated by platform gatekeepers — and let agents prove exactly what they're authorized to do, and on whose behalf."
       highlights:
         - "True data sovereignty and portability"
-        - "Self-custody of digital credentials and assets"
-        - "Platform-independent digital identity"
+        - "Self-custody of credentials and digital assets"
+        - "Provable delegated authority for agents"
       image:
         src: "/images/purple/ownership-photo.webp"
         alt: "Digital key unlocking a glowing portal"
@@ -99,11 +99,11 @@ core_pillars:
         color: text-verana text-xl
         bg: bg-verana/20
       title: "Be found for what you prove, not for what you pay."
-      description: "Merit-based discovery that rewards authentic value and verifiable credentials over advertising spend and algorithmic manipulation."
+      description: "Merit-based discovery that rewards authentic value and verifiable credentials over advertising spend and algorithmic manipulation — so agents and people can find trustworthy services through the Trust Resolver."
       highlights:
         - "Credential-based ranking and discovery"
         - "Fair competition regardless of budget"
-        - "Transparent, verifiable reputation systems"
+        - "Agents discover verifiable services"
       image:
         src: "/images/purple/discovery-photo.jpg"
         alt: "Digital marketplace with verifiable credentials"
@@ -113,7 +113,7 @@ core_pillars:
 examples:
   id: systemic-problems
   title: "...in Response to the **Three Systemic Problems**"
-  subtitle: "The internet struggles with trust, ownership, and discovery because it was never designed with verifiable identity, self-sovereignty, or fair visibility."
+  subtitle: "The internet was never designed with verifiable identity, self-sovereignty, or fair visibility — so it struggles with trust, ownership, and discovery. Now AI agents are transacting online too, and the cracks become impossible to ignore."
   merge_impact_cards: true
   cards:
     - id: trust-crisis
@@ -198,7 +198,7 @@ impact_stats:
 solution_preview:
   id: solution-preview
   title: "Verana Solves All Three Problems"
-  subtitle: "An open trust layer that empowers verifiable services, true ownership, and fair discovery grounded in cryptographic proof."
+  subtitle: "An open trust layer that gives humans, services, and AI agents verifiable identity, true ownership, and fair discovery — all grounded in cryptographic proof."
   icon:
     logo: "/images/purple/logo.svg"
     alt: "Verana logo"
@@ -223,8 +223,17 @@ solution_preview:
         bg: bg-green-500/20
 impact:
   heading: "Exploring Real-World Impact"
-  description: "Understand how ecosystems across sectors, from finance to telecom, from AI to government digital ID, can use Verana to build trustworthy, interoperable, and privacy-first digital networks and services."
+  description: "It starts with AI agents — but the same trust layer works across sectors, from government digital ID to healthcare, social, and beyond. Ecosystems everywhere can use Verana to build trustworthy, interoperable, and privacy-first digital networks and services."
   cards:
+    - title: "Verifiable AI Agents"
+      description: "AI agents prove who they represent, verify counterparties before transacting, and act under verifiable, delegated authority — with trusted agent-to-agent credential exchange over DIDComm."
+      image: "/images/purple/medit1.webp"
+      icon: { name: "robot", style: "solid", color: "text-green-400", bg: "bg-green-500/20" }
+      highlights:
+        - "Prove the organization an agent represents"
+        - "Verify a counterparty before transacting"
+        - "A2A credential exchange over DIDComm"
+      href: "/page/industry-use-cases/ai-agents"
     - title: "Government Digital ID"
       description: "Issue verifiable digital IDs that let citizens prove who they are anywhere, without ever exposing more data than necessary."
       image: "/images/purple/civilreg2.webp"
@@ -243,15 +252,6 @@ impact:
         - "Sovereign audiences"
         - "Censorship-resilient discovery"
       href: "/page/industry-use-cases/decentralized-social-network"
-    - title: "Verifiable AI Agents"
-      description: "AI agents carry verifiable identities and exchange credentials, ensuring clear ownership, accountable actions, and trusted agent-to-agent communication everywhere."
-      image: "/images/purple/medit1.webp"
-      icon: { name: "robot", style: "solid", color: "text-green-400", bg: "bg-green-500/20" }
-      highlights:
-        - "Verifiable agent ownership"
-        - "A2A credential exchange"
-        - "Trusted & accountable actions"
-      href: "/page/industry-use-cases/ai-agents"
     - title: "Healthcare Workforce Mobility"
       description: "Move clinicians across borders with verifiable licenses, training, and employment credentials."
       image: "/images/purple/healthcare3.webp"
