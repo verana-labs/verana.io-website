@@ -12,7 +12,7 @@ hero:
       variant: "brand"
     - text: "for the Agentic Web"
       variant: "light"
-  description: "Verifiable trust for humans, services, and AI agents — so anyone, and any agent, can prove who they are and act under verifiable authority."
+  description: "Turn digital services into verifiable assets that anyone can find and trust."
   primary_cta:
     label: "Start Building"
     href: "/page/build"
@@ -23,16 +23,16 @@ hero:
     href: "https://docs.verana.io"
 discover:
   heading: "Trust for the Agentic Web"
-  subheading: "AI agents are already acting online — Verana lets them prove it"
+  subheading: "AI agents are already acting online. Verana lets them prove it"
   features:
     - title: "Agents that prove who they represent"
-      description: "An AI agent can present verifiable credentials proving it acts for a real organization — not an anonymous bot, but an accountable party you can check cryptographically."
+      description: "An AI agent can present verifiable credentials proving it acts for a real organization: not an anonymous bot, but an accountable party you can check cryptographically."
       icon: "id-badge"
       icon_style: "solid"
       icon_color: "text-verana"
       icon_bg: "bg-verana/20"
     - title: "Verify before you transact"
-      description: "Before an agent talks to another agent or pays a service, it can verify the counterparty's identity and trust status — agent-to-agent credential exchange over DIDComm, grounded in trust registries."
+      description: "Before an agent talks to another agent or pays a service, it can verify the counterparty's identity and trust status."
       icon: "handshake"
       icon_style: "solid"
       icon_color: "text-verana"
@@ -113,7 +113,7 @@ core_pillars:
 examples:
   id: systemic-problems
   title: "...in Response to the **Three Systemic Problems**"
-  subtitle: "The internet was never designed with verifiable identity, self-sovereignty, or fair visibility — so it struggles with trust, ownership, and discovery. Now AI agents are transacting online too, and the cracks become impossible to ignore."
+  subtitle: "The internet was never designed with verifiable identity, self-sovereignty, or fair visibility: so it struggles with trust, ownership, and discovery. Now AI agents are transacting online too, and the cracks become impossible to ignore."
   merge_impact_cards: true
   cards:
     - id: trust-crisis
@@ -223,7 +223,7 @@ solution_preview:
         bg: bg-green-500/20
 impact:
   heading: "Exploring Real-World Impact"
-  description: "It starts with AI agents — but the same trust layer works across sectors, from government digital ID to healthcare, social, and beyond. Ecosystems everywhere can use Verana to build trustworthy, interoperable, and privacy-first digital networks and services."
+  description: "Understand how ecosystems across sectors, from finance to telecom, from AI to government digital ID, can use Verana to build trustworthy, interoperable, and privacy-first digital networks and services."
   cards:
     - title: "Verifiable AI Agents"
       description: "AI agents prove who they represent, verify counterparties before transacting, and act under verifiable, delegated authority — with trusted agent-to-agent credential exchange over DIDComm."
@@ -326,11 +326,11 @@ community:
       icon: { name: "linkedin", style: "brands", color: "text-blue-400", bg: "bg-blue-500/20" }
       cta_label: "Connect on LinkedIn"
       href: "https://www.linkedin.com/company/verana-verifiable-trust-network"
-    - title: "X (Twitter)"
-      description: "Latest news and announcements"
-      icon: { name: "x-twitter", style: "brands", color: "text-white", bg: "bg-black/20", border: "border border-gray-600" }
-      cta_label: "Follow us on X"
-      href: "https://x.com/Verana_io"
+    - title: "Verana Foundation"
+      description: "The non-profit stewarding the ecosystem"
+      icon: { name: "building-columns", style: "solid", color: "text-verana", bg: "bg-verana/20" }
+      cta_label: "Visit the Foundation"
+      href: "https://veranafoundation.org"
   cta:
     title: "Get Started Today"
     description: "Ready to build with Verana? Join the community and start experimenting with verifiable trust networks."
