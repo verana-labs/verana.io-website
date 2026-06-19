@@ -214,6 +214,13 @@ hero_icon: "fa-solid fa-scale-balanced"
       </div>
     </div>
   </div>
+
+  <div class="mt-12 text-center">
+    <a href="https://veranacouncil.org" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-verana hover:text-verana-light font-semibold transition-colors">
+      Visit the Verana Council website
+      <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+    </a>
+  </div>
 {{< /gov-section >}}
 
 {{< gov-section
@@ -312,6 +319,13 @@ hero_icon: "fa-solid fa-scale-balanced"
       class="mt-32 bg-green-900/10 border border-green-500/30 rounded-2xl p-8 text-center"
       description_class="text-lg text-gray-300 max-w-3xl mx-auto"
   >}}
+
+  <div class="mt-12 text-center">
+    <a href="https://veranafoundation.org" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-verana hover:text-verana-light font-semibold transition-colors">
+      Visit the Verana Foundation website
+      <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+    </a>
+  </div>
 {{< /gov-section >}}
 
 {{< gov-cta

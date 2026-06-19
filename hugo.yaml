@@ -54,6 +54,10 @@ params:
         items:
           - label: "About"
             url: "/page/about/team"
+          - label: "Verana Foundation"
+            url: "https://veranafoundation.org"
+          - label: "Verana Council"
+            url: "https://veranacouncil.org"
           - label: "Visual Identity & Press"
             url: "/page/identity"
       - title: "Developers"
