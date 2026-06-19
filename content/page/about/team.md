@@ -32,15 +32,6 @@ disable_content_wrapper: true
 >}}
 
 {{< team-member
-    name="Mathieu Gauthron"
-    position="Head of Network"
-    bio="Technology leader with deep expertise in distributed systems, overseeing the development of the Verana Network to ensure scalability, reliability, and long-term resilience."
-    linkedin="https://www.linkedin.com/in/mathieugauthron/"
-    github="https://github.com/matlux"
-    photo="/images/team/mathieu.jpeg"
->}}
-
-{{< team-member
     name="Philip A. Bildner"
     position="Strategic Advisor"
     bio="Advisor with a background spanning law, finance, and blockchain governance, guiding Verana’s strategic direction, ecosystem partnerships, and capital strategy."
@@ -121,7 +112,7 @@ Development of the first Verifiable User Agent, the [Hologram Messaging App](htt
     icon="fa-solid fa-network-wired"
     side="left"
 >}}
-Mathieu Gauthron joins to lead the first decentralized, blockchain-based Verifiable Public Registry (VPR) implementation.
+The team begins the first decentralized, blockchain-based Verifiable Public Registry (VPR) implementation.
 
 {{< team-chronology-highlight
     align="right"
