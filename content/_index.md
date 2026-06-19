@@ -328,7 +328,7 @@ community:
       href: "https://www.linkedin.com/company/verana-verifiable-trust-network"
     - title: "Verana Foundation"
       description: "The non-profit stewarding the ecosystem"
-      icon: { name: "building-columns", style: "solid", color: "text-verana", bg: "bg-verana/20" }
+      icon: { image: "/images/verana-foundation-icon.svg", alt: "Verana Foundation", bg: "bg-verana/20" }
       cta_label: "Visit the Foundation"
       href: "https://veranafoundation.org"
   cta:
