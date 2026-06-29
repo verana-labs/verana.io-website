@@ -4,6 +4,7 @@ import { Container, Section, SectionHeading, Button } from "../components/ui";
 import PageHero from "../components/PageHero";
 import ArchitectureDiagram from "../components/ArchitectureDiagram";
 import Mermaid from "../components/Mermaid";
+import TrustGraphExamples from "../components/TrustGraphExamples";
 import { LINKS } from "../lib/site";
 
 export const metadata: Metadata = {
@@ -213,7 +214,12 @@ export default function HowItWorks() {
               registry can be indexed into a trust-typed graph: find services and
               ecosystems by the credentials they hold, scope to an ecosystem, and
               rank by trust signals. A first-class surface for AI-agent discovery.
+              Every result carries verifiable provenance, so you can check it
+              before you act on it. A few example queries:
             </p>
+            <div className="mt-8">
+              <TrustGraphExamples />
+            </div>
           </div>
 
           {/* VPR */}
