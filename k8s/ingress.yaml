@@ -1,0 +1,37 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: verana-io-website
+  namespace: web
+  labels:
+    app.kubernetes.io/name: verana-io-website
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - verana.io
+        - www.verana.io
+      secretName: verana-io-website-tls
+  rules:
+    - host: verana.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: verana-io-website
+                port:
+                  number: 80
+    - host: www.verana.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: verana-io-website
+                port:
+                  number: 80

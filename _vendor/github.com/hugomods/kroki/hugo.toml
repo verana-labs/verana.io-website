@@ -1,6 +1,0 @@
-[module.hugoVersion]
-min = "0.141.0"
-
-[params.kroki]
-endpoint = "https://kroki.io/"
-output = "inline"
