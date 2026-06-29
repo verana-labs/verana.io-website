@@ -27,7 +27,8 @@ const FLOW_VUA_VS = `sequenceDiagram
   VUA->>VS: open DIDComm session
   VS->>VUA: request ECS-UserAgent
   VUA-->>VS: present ECS-UserAgent (+ optional ECS-Badge)
-  VS->>VS: verify genuine VUA
+  VS->>VPR: verify ECS-UserAgent issuer accredited
+  VPR-->>VS: verified, genuine VUA
   VUA->>VS: bootstrap AG-UI session over DIDComm`;
 
 // 2. A Verifiable Service connects to another Verifiable Service.
@@ -51,12 +52,17 @@ const FLOW_VS_VS = `sequenceDiagram
 const FLOW_VUA_VUA = `sequenceDiagram
   participant Alice as Alice's VUA
   participant Bob as Bob's VUA
+  participant VPR as Public Registry
   Alice->>Bob: show QR, out-of-band DIDComm invitation
   Bob->>Alice: scan, establish DIDComm connection
   Alice->>Bob: request ECS-UserAgent
   Bob-->>Alice: present ECS-UserAgent
+  Alice->>VPR: verify ECS-UserAgent issuer accredited
+  VPR-->>Alice: verified
   Bob->>Alice: request ECS-UserAgent
   Alice-->>Bob: present ECS-UserAgent
+  Bob->>VPR: verify ECS-UserAgent issuer accredited
+  VPR-->>Bob: verified
   Note over Alice,Bob: both verified as genuine VUAs
   Alice->>Bob: optionally share more credentials, then chat`;
 
@@ -187,8 +193,10 @@ export default function HowItWorks() {
                   Agent) and want a private peer-to-peer DIDComm connection. Alice
                   shows a QR code, an out-of-band DIDComm invitation, that Bob
                   scans. Once connected, both agents present an ECS-UserAgent
-                  credential so each knows the other is a legitimate user agent.
-                  They can then optionally share more credentials over the channel.
+                  credential, and each verifies through the public registry that
+                  the credential&apos;s issuer is accredited, so each knows the
+                  other is a legitimate user agent. They can then optionally share
+                  more credentials over the channel.
                 </p>
                 <div className="mt-5">
                   <Mermaid chart={FLOW_VUA_VUA} />
