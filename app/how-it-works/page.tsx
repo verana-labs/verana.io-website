@@ -114,7 +114,7 @@ export default function HowItWorks() {
               verifiers, who in turn issue to holders. Permission modes range from
               fully open to fully governed.
             </p>
-            <div className="mt-6 grid gap-6 lg:grid-cols-2">
+            <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_1.1fr]">
               <div className="card p-6">
                 <span className="eyebrow">Participant tree</span>
                 <div className="mt-3">
@@ -122,17 +122,73 @@ export default function HowItWorks() {
                 </div>
               </div>
               <div className="card p-6">
-                <span className="eyebrow">Built-in business model</span>
-                <p className="mt-3 text-sm text-muted">
-                  Each participant in the tree can set fees: pay-per-issuance,
-                  pay-per-verification, or validation subscriptions. Participation
-                  is backed by a{" "}
-                  <strong className="text-ink">trust deposit</strong>, a
-                  refundable, slashable stake, so good actors earn and bad actors
-                  are economically accountable. Fees flow up the tree to the
-                  accrediting participants.
+                <span className="eyebrow">What an ecosystem holds</span>
+                <ul className="mt-3 space-y-2 text-sm text-muted">
+                  <li>A governance framework (the EGF) and its versions.</li>
+                  <li>One or more credential schemas (the credentials it issues).</li>
+                  <li>An accreditation tree of grantors, issuers, verifiers, holders.</li>
+                  <li>A built-in business model (fees and trust deposits).</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* business models */}
+            <span className="eyebrow mt-10 block">Business models</span>
+            <p className="mt-2 max-w-3xl text-sm text-muted">
+              Each participant in the tree can charge fees, paid in the network
+              token and distributed up the tree to the accrediting participants:
+            </p>
+            <div className="mt-4 grid gap-4 sm:grid-cols-3">
+              <div className="card p-5">
+                <h5 className="font-semibold text-ink">Onboarding and accreditation</h5>
+                <p className="mt-1 text-sm text-muted">
+                  An applicant pays a validation fee, held in escrow, to be
+                  accredited as an issuer, verifier, or grantor. Renewable each
+                  validity period.
                 </p>
               </div>
+              <div className="card p-5">
+                <h5 className="font-semibold text-ink">Pay-per-issuance</h5>
+                <p className="mt-1 text-sm text-muted">
+                  An issuer pays a fee each time it issues a credential of a
+                  schema.
+                </p>
+              </div>
+              <div className="card p-5">
+                <h5 className="font-semibold text-ink">Pay-per-verification</h5>
+                <p className="mt-1 text-sm text-muted">
+                  A verifier pays a fee each time it verifies a credential, shared
+                  with the issuer and the rest of the tree.
+                </p>
+              </div>
+            </div>
+            <p className="mt-3 text-xs text-muted">
+              Schemas can also be fully open, with no fees.
+            </p>
+
+            {/* trust score */}
+            <div className="mt-8 card p-6">
+              <span className="eyebrow">Trust score</span>
+              <h5 className="display mt-2 text-lg text-ink">
+                Skin in the game, earned not bought
+              </h5>
+              <p className="mt-3 text-muted">
+                A fraction of every paid trust operation is committed to the
+                participant&apos;s trust deposit as Trust Units (TU): a
+                non-transferable, non-refundable, fiat-pegged measure of trust. The
+                deposit balance is the participant&apos;s{" "}
+                <strong className="text-ink">trust score</strong>, so it reflects
+                cumulative real usage, not market timing or capital.
+              </p>
+              <p className="mt-3 text-muted">
+                Misbehavior is met with{" "}
+                <strong className="text-ink">slashing</strong>: a network or
+                ecosystem authority destroys Trust Units, lowering the score, and
+                while a slash is unrepaid the participant&apos;s permissions are
+                non-trustable. Because trust cannot be transferred or sold, only
+                earned, relying parties and the Trust Graph can rank and filter by
+                trust score and slashing history to favor accountable parties.
+              </p>
             </div>
 
             {/* b. Corporations join and build */}
