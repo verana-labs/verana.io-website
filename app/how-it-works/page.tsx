@@ -80,9 +80,10 @@ const TREE_CHART = `flowchart TD
 const CORP_CHART = `flowchart LR
   C["Corporation X"]
   C -->|controls| EA["Ecosystem A"]
-  C -->|issuer| EB["Ecosystem B"]
-  C -->|verifier| EC["Ecosystem C"]
-  C -->|holder| ED["Ecosystem D"]`;
+  C -->|controls| EB["Ecosystem B"]
+  C -->|issuer| EC["Ecosystem C"]
+  C -->|verifier| ED["Ecosystem D"]
+  C -->|holder| EE["Ecosystem E"]`;
 
 export default function HowItWorks() {
   return (
@@ -198,10 +199,11 @@ export default function HowItWorks() {
             <p className="mt-3 max-w-3xl text-muted">
               A corporation registers itself in Verana (its own DID and governance
               framework), then relates to the registry in two complementary ways,
-              and most do both: <strong className="text-ink">join</strong> one or
-              several ecosystems as an accredited issuer, verifier, or holder, and{" "}
-              <strong className="text-ink">control</strong> its own ecosystem. The
-              same corporation can own one ecosystem while participating in others.
+              and most do both: <strong className="text-ink">join</strong> any
+              number of ecosystems as an accredited issuer, verifier, or holder,
+              and <strong className="text-ink">control</strong> any number of its
+              own. A corporation can own and join an unlimited number of
+              ecosystems, in any combination.
             </p>
             <div className="mt-6 card p-6">
               <Mermaid chart={CORP_CHART} />
