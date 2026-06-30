@@ -298,7 +298,7 @@ export default function HowItWorks() {
               <div className="card p-6 sm:p-8">
                 <span className="eyebrow">Verifiable User Agent to Verifiable Service</span>
                 <h4 className="display mt-2 text-lg text-ink">
-                  1. A person connects to an enterprise AI agent
+                  1. A person connects to a service
                 </h4>
                 <p className="mt-3 text-sm text-muted">
                   An AG-UI compatible frontend (a Verifiable User Agent) connects
@@ -319,7 +319,7 @@ export default function HowItWorks() {
               <div className="card p-6 sm:p-8">
                 <span className="eyebrow">Verifiable Service to Verifiable Service</span>
                 <h4 className="display mt-2 text-lg text-ink">
-                  2. An AI agent connects to another AI agent
+                  2. A service connects to another service
                 </h4>
                 <p className="mt-3 text-sm text-muted">
                   An AI agent from Company A connects to an AI agent from Company B
