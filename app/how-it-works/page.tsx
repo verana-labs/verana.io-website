@@ -120,7 +120,7 @@ export default function HowItWorks() {
       <PageHero
         eyebrow="How it works"
         title="Verana, in three parts"
-        intro="Trust Ecosystems, then Verifiable Trust, then the Trust Graph, with the registry that anchors them underneath. Concepts at adoption altitude; every deep detail links to the specs and docs."
+        intro="Sovereign ecosystems, verifiable identity, and discovery. Verana's three parts are Trust Ecosystems, Verifiable Trust, and the Trust Graph, with the registry that anchors them underneath. Every deep detail links to the specs and docs."
       />
 
       <Section>
@@ -128,7 +128,7 @@ export default function HowItWorks() {
           {/* Trust Ecosystems: what / corporations / ECS ecosystem */}
           <div>
             <SectionHeading
-              eyebrow="Trust Ecosystems, join or build"
+              eyebrow="Sovereign ecosystems"
               title="Join or build an ecosystem"
             />
 
@@ -283,7 +283,7 @@ export default function HowItWorks() {
           {/* Verifiable Trust + the three connection flows */}
           <div>
             <SectionHeading
-              eyebrow="Verifiable Trust"
+              eyebrow="Verifiable identity"
               title="Verify first, then connect"
             />
             <p className="mt-4 max-w-3xl text-muted">
@@ -361,7 +361,7 @@ export default function HowItWorks() {
 
           {/* Trust Graph */}
           <div>
-            <SectionHeading eyebrow="The Trust Graph" title="Discover who you can trust" />
+            <SectionHeading eyebrow="Discovery" title="Discover who you can trust" />
             <p className="mt-4 max-w-3xl text-muted">
               Because public credentials are published in DID Documents, the
               registry can be indexed into a trust-typed graph: find services and

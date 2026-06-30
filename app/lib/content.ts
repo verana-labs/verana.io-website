@@ -11,6 +11,7 @@ export const HERO = {
 
 export type ThreePart = {
   name: string;
+  label: string;
   tone: "primary" | "accent" | "success";
   layer: string;
   body: string;
@@ -21,6 +22,7 @@ export type ThreePart = {
 export const THREE_PARTS: ThreePart[] = [
   {
     name: "Trust Ecosystems",
+    label: "Sovereign ecosystems",
     tone: "primary",
     layer: "the VPR / credential layer",
     body: "Join or build ecosystems that issue and verify any credential. Each ecosystem self-defines its schemas, governance framework, participants (issuers, verifiers, holders), and business model.",
@@ -28,6 +30,7 @@ export const THREE_PARTS: ThreePart[] = [
   },
   {
     name: "Verifiable Trust",
+    label: "Verifiable identity",
     tone: "accent",
     layer: "the protocol",
     body: "Identify any service and the organization or person that controls it, and verify it before you connect.",
@@ -36,6 +39,7 @@ export const THREE_PARTS: ThreePart[] = [
   },
   {
     name: "The Trust Graph",
+    label: "Discovery",
     tone: "success",
     layer: "discovery",
     body: "Discover services and ecosystems by the credentials they hold, ranked by trust. A first-class surface for AI-agent discovery.",

@@ -60,7 +60,7 @@ export default function Home() {
                     style={{ background: toneColor(p.tone) }}
                     aria-hidden
                   />
-                  <span className="eyebrow">{p.layer}</span>
+                  <span className="eyebrow">{p.label}</span>
                 </div>
                 <h3 className="display mt-3 text-xl text-ink">{p.name}</h3>
                 <p className="mt-3 flex-1 text-muted">{p.body}</p>
