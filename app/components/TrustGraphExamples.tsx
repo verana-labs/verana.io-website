@@ -101,7 +101,7 @@ const EXAMPLES: GraphExample[] = [
         verified: true,
         trustScore: 4.5,
         deposit: "120,000 TU",
-        tags: ["jurisdiction: FR", "3 accredited issuers"],
+        tags: ["jurisdiction: FR", "3 accredited issuers", "35 accredited verifiers"],
       },
       {
         name: "AFNOR Certification",
