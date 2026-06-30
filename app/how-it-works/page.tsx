@@ -167,8 +167,8 @@ export default function HowItWorks() {
             {/* business models */}
             <span className="eyebrow mt-10 block">Business models</span>
             <p className="mt-2 max-w-3xl text-sm text-muted">
-              Each participant in the tree can charge fees, paid in the network
-              token and distributed up the tree to the accrediting participants:
+              Each participant in the tree can charge fees, paid using the
+              network and distributed up the tree to the accrediting participants:
             </p>
             <div className="mt-4 grid gap-4 sm:grid-cols-3">
               <div className="card p-5">
