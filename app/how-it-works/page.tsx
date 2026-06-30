@@ -257,8 +257,9 @@ export default function HowItWorks() {
                 Verana Council
               </a>
               , a neutral, non-profit Swiss association that governs and secures
-              the live network. On top of this baseline, each ecosystem defines its
-              own domain credentials (govID, diploma, reusable KYC, machine
+              the live network, and the ECS Ecosystem. On top of this baseline,
+              each Ecosystem defines its own domain credentials (govID, diploma,
+              reusable KYC, machine
               certificate, and more).
             </p>
             <p className="mt-4 max-w-3xl text-sm text-muted">
