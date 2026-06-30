@@ -131,7 +131,7 @@ export default function HowItWorks() {
       <PageHero
         eyebrow="How it works"
         title="Verana, in three parts"
-        intro="Sovereign ecosystems, verifiable identity, and discovery. Verana's three parts are Trust Ecosystems, Verifiable Trust, and the Trust Graph, with the registry that anchors them underneath. Every deep detail links to the specs and docs."
+        intro="Sovereign ecosystems (Trust Ecosystems), verifiable identity (Verifiable Trust), and discovery (the Trust Graph), with the registry that anchors them underneath. Every deep detail links to the specs and docs."
       />
 
       <Section>
