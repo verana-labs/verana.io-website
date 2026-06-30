@@ -172,9 +172,8 @@ export default function HowItWorks() {
               <div className="card p-5">
                 <h5 className="font-semibold text-ink">Onboarding and accreditation</h5>
                 <p className="mt-1 text-sm text-muted">
-                  An applicant pays a validation fee, held in escrow, to be
-                  accredited as an issuer, verifier, or grantor. Renewable each
-                  validity period.
+                  An applicant pays a validation fee to be accredited as an
+                  issuer, verifier, or grantor. Renewable each validity period.
                 </p>
               </div>
               <div className="card p-5">
