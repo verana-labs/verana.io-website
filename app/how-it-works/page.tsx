@@ -105,7 +105,7 @@ const ECS = [
   {
     name: "ECS-Badge",
     role: "Actor",
-    body: "Identifies a human actor. Held by a person and issued by a verifiable service, it carries the human's identity and attributes.",
+    body: "Identifies a human actor. Held by a person and issued by a verifiable service, it carries the human's identity and attributes. The holder usually represents an employee of the organization that issued it.",
   },
   {
     name: "ECS-UserAgent",
