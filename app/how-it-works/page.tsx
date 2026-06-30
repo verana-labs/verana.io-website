@@ -85,6 +85,35 @@ const CORP_CHART = `flowchart LR
   C -->|verifier| ED["Ecosystem D"]
   C -->|holder| EE["Ecosystem E"]`;
 
+// The Essential Credential Schemas, grouped by the role they identify.
+const ECS = [
+  {
+    name: "ECS-Organization",
+    role: "Owner / operator",
+    body: "Identifies a legal organization that operates one or more verifiable services.",
+  },
+  {
+    name: "ECS-Persona",
+    role: "Owner / operator",
+    body: "Identifies an individual, a human-controlled avatar, that operates one or more verifiable services.",
+  },
+  {
+    name: "ECS-Service",
+    role: "Actor",
+    body: "Identifies a service or AI agent: the actor that acts on the network.",
+  },
+  {
+    name: "ECS-Badge",
+    role: "Actor",
+    body: "Identifies a human actor. Held by a person and issued by a verifiable service, it carries the human's identity and attributes.",
+  },
+  {
+    name: "ECS-UserAgent",
+    role: "User-agent software",
+    body: "Identifies the software a person operates (app, wallet, or browser). Its controller, the software product line, is the issuer of the credential.",
+  },
+];
+
 export default function HowItWorks() {
   return (
     <>
@@ -214,16 +243,10 @@ export default function HowItWorks() {
               The ECS Ecosystem, the identity baseline
             </h4>
             <p className="mt-3 max-w-3xl text-muted">
-              One special ecosystem publishes the four Essential Credential
-              Schemas: <strong className="text-ink">Service</strong> (any service,
-              including an AI agent),{" "}
-              <strong className="text-ink">Organization</strong> and{" "}
-              <strong className="text-ink">Persona</strong> (the org or individual
-              that operates a service), and{" "}
-              <strong className="text-ink">UserAgent</strong> (the app, wallet, or
-              browser a person connects with), plus a future Badge for a human
-              end-user. These make every ecosystem mutually verifiable, and are
-              governed by the{" "}
+              The ECS Ecosystem is the shared identity baseline of Verana. It
+              publishes the Essential Credential Schemas (ECS), the small set of
+              credentials that every other ecosystem relies on to identify and
+              mutually verify the parties of an interaction. It is governed by the{" "}
               <a
                 href={LINKS.council}
                 target="_blank"
@@ -232,10 +255,27 @@ export default function HowItWorks() {
               >
                 Verana Council
               </a>
-              . On top of this baseline, each ecosystem defines its own domain
-              credentials (govID, diploma, reusable KYC, machine certificate, and
-              more).
+              , a neutral, non-profit Swiss association that governs and secures
+              the live network. On top of this baseline, each ecosystem defines its
+              own domain credentials (govID, diploma, reusable KYC, machine
+              certificate, and more).
             </p>
+            <p className="mt-4 max-w-3xl text-sm text-muted">
+              The five ECS cover three roles: the owner or operator behind a
+              service, the actor itself, and the user-agent software a person
+              connects with.
+            </p>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {ECS.map((e) => (
+                <div key={e.name} className="card p-5">
+                  <span className="eyebrow">{e.role}</span>
+                  <h5 className="mt-2 font-mono text-sm font-medium text-ink">
+                    {e.name}
+                  </h5>
+                  <p className="mt-2 text-sm text-muted">{e.body}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Verifiable Trust + the three connection flows */}
