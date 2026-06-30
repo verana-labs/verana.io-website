@@ -3,6 +3,7 @@ import { Search } from "lucide-react";
 type GraphResult = {
   name: string;
   kind: string;
+  did: string;
   detail: string;
   signals: string[];
 };
@@ -15,18 +16,21 @@ const EXAMPLES: GraphExample[] = [
       {
         name: "Customer Support Agent",
         kind: "AI agent",
+        did: "did:webvh:QmRhJB7x2...8Kpr:support.vs.company-b.example",
         detail: "agentic support over MCP and DIDComm",
         signals: ["ECS-Service", "ECS-Org: Company B"],
       },
       {
         name: "company-b.example",
         kind: "Website",
+        did: "did:webvh:Qm9fK2aZ...3Lmn:www.vs.company-b.example",
         detail: "public website service endpoint",
         signals: ["ECS-Service", "ECS-Org: Company B"],
       },
       {
         name: "Employee Assistant",
         kind: "AI agent",
+        did: "did:webvh:QmT4pL8wq...QrZ2:hr.vs.company-b.example",
         detail: "internal employee-facing agent",
         signals: ["ECS-Service", "ECS-Org: Company B"],
       },
@@ -38,12 +42,14 @@ const EXAMPLES: GraphExample[] = [
       {
         name: "zapaticos.example",
         kind: "Ecommerce",
+        did: "did:webvh:QmZ7nB4d...kP9x:shop.vs.zapaticos.example",
         detail: "handmade baby shoes",
         signals: ["Made in Colombia", "Delivers: Bogotá", "high trust deposit"],
       },
       {
         name: "andesbaby.example",
         kind: "Ecommerce",
+        did: "did:webvh:QmA3vC9h...mN4t:store.vs.andesbaby.example",
         detail: "baby footwear",
         signals: ["Made in Colombia", "Delivers: Bogotá", "KYB verified"],
       },
@@ -55,12 +61,14 @@ const EXAMPLES: GraphExample[] = [
       {
         name: "EU AI Trust Ecosystem",
         kind: "Ecosystem",
+        did: "did:webvh:QmEu42aT...001a:ecosystem.eu-ai-trust.example",
         detail: "ISO 42001 AI-management credential schema",
         signals: ["jurisdiction: FR", "3 accredited issuers"],
       },
       {
         name: "AFNOR Certification",
         kind: "Ecosystem",
+        did: "did:webvh:QmAf42cR...77fr:ecosystem.afnor.example",
         detail: "ISO 42001 issuer ecosystem",
         signals: ["jurisdiction: FR", "accredited issuer"],
       },
@@ -81,7 +89,7 @@ export default function TrustGraphExamples() {
             {ex.results.map((r) => (
               <li
                 key={r.name}
-                className="flex flex-col gap-2 px-4 py-3 sm:flex-row sm:items-center sm:justify-between"
+                className="flex flex-col gap-2 px-4 py-3 sm:flex-row sm:items-start sm:justify-between"
               >
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
@@ -91,8 +99,11 @@ export default function TrustGraphExamples() {
                     </span>
                   </div>
                   <p className="text-sm text-muted">{r.detail}</p>
+                  <p className="mt-0.5 break-all font-mono text-[11px] text-muted opacity-70">
+                    {r.did}
+                  </p>
                 </div>
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-1.5 sm:pt-0.5">
                   {r.signals.map((s) => (
                     <span
                       key={s}
