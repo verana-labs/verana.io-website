@@ -67,6 +67,23 @@ const FLOW_VUA_VUA = `sequenceDiagram
   Note over Alice,Bob: both verified as genuine VUAs
   Alice->>Bob: optionally share more credentials, then chat`;
 
+// Participant (permission) tree of a credential schema.
+const TREE_CHART = `flowchart TD
+  E["Ecosystem (root)"]
+  E --> IG["Issuer Grantor"]
+  E --> VG["Verifier Grantor"]
+  IG --> I["Issuer"]
+  VG --> V["Verifier"]
+  I --> H["Holder"]`;
+
+// A corporation participates in several ecosystems and controls its own.
+const CORP_CHART = `flowchart LR
+  C["Corporation X"]
+  C -->|controls| EA["Ecosystem A"]
+  C -->|issuer| EB["Ecosystem B"]
+  C -->|verifier| EC["Ecosystem C"]
+  C -->|holder| ED["Ecosystem D"]`;
+
 export default function HowItWorks() {
   return (
     <>
@@ -78,52 +95,88 @@ export default function HowItWorks() {
 
       <Section>
         <Container className="space-y-12">
-          {/* Trust Ecosystems */}
+          {/* Trust Ecosystems: what / corporations / ECS ecosystem */}
           <div>
             <SectionHeading
               eyebrow="Trust Ecosystems, join or build"
               title="Join or build an ecosystem"
             />
-            <p className="mt-4 max-w-3xl text-muted">
-              Every participant relates to the registry in one of two
-              complementary ways, and most do both.{" "}
-              <strong className="text-ink">Join (participate):</strong> search
-              existing ecosystems and onboard as an accredited issuer, verifier,
-              or holder in someone else&apos;s, usually the faster path to
-              production.{" "}
-              <strong className="text-ink">Build (control):</strong> create your
-              own ecosystem, publish a governance framework, define credential
-              schemas, and set who is accredited to issue and verify, with
-              permission modes from fully open to fully governed.
-            </p>
-          </div>
 
-          {/* Two layers of credentials */}
-          <div className="card p-6">
-            <h3 className="display text-xl text-ink">Two layers of credentials</h3>
-            <p className="mt-3 text-muted">
-              <strong className="text-ink">The identity baseline,</strong> the
-              four Essential Credential Schemas (ECS): Service (any service,
-              including an AI agent), Organization and Persona (the org or
-              individual that operates a service), and UserAgent (the app, wallet,
-              or browser a person connects with), plus a future Badge for a human
-              end-user&apos;s identity.{" "}
-              <strong className="text-ink">Your own domain credentials,</strong>{" "}
-              govID, diploma, reusable KYC, employee badge, machine certificate,
-              defined per ecosystem as custom schemas. The ECS make everything
-              mutually verifiable; the domain schemas are what each ecosystem
-              actually issues.
+            {/* a. What is an ecosystem */}
+            <h4 className="display mt-6 text-lg text-ink">What is an ecosystem?</h4>
+            <p className="mt-3 max-w-3xl text-muted">
+              An ecosystem is a governed list of recognized participants
+              authorized to issue, verify, or hold certain credentials. It
+              publishes a governance framework, defines its credential schemas,
+              and sets who is accredited through a{" "}
+              <strong className="text-ink">participant tree</strong>: the ecosystem
+              is the root and delegates to grantors, who accredit issuers and
+              verifiers, who in turn issue to holders. Permission modes range from
+              fully open to fully governed.
             </p>
-          </div>
+            <div className="mt-6 grid gap-6 lg:grid-cols-2">
+              <div className="card p-6">
+                <span className="eyebrow">Participant tree</span>
+                <div className="mt-3">
+                  <Mermaid chart={TREE_CHART} />
+                </div>
+              </div>
+              <div className="card p-6">
+                <span className="eyebrow">Built-in business model</span>
+                <p className="mt-3 text-sm text-muted">
+                  Each participant in the tree can set fees: pay-per-issuance,
+                  pay-per-verification, or validation subscriptions. Participation
+                  is backed by a{" "}
+                  <strong className="text-ink">trust deposit</strong>, a
+                  refundable, slashable stake, so good actors earn and bad actors
+                  are economically accountable. Fees flow up the tree to the
+                  accrediting participants.
+                </p>
+              </div>
+            </div>
 
-          {/* Business model */}
-          <div className="card p-6">
-            <h3 className="display text-xl text-ink">A built-in business model</h3>
-            <p className="mt-3 text-muted">
-              Ecosystems can charge for issuance, verification, and accreditation.
-              Participation is backed by a trust deposit (a refundable, slashable
-              stake), so good actors earn and bad actors are economically
-              accountable.
+            {/* b. Corporations join and build */}
+            <h4 className="display mt-12 text-lg text-ink">
+              Corporations join, and build
+            </h4>
+            <p className="mt-3 max-w-3xl text-muted">
+              A corporation registers itself in Verana (its own DID and governance
+              framework), then relates to the registry in two complementary ways,
+              and most do both: <strong className="text-ink">join</strong> one or
+              several ecosystems as an accredited issuer, verifier, or holder, and{" "}
+              <strong className="text-ink">control</strong> its own ecosystem. The
+              same corporation can own one ecosystem while participating in others.
+            </p>
+            <div className="mt-6 card p-6">
+              <Mermaid chart={CORP_CHART} />
+            </div>
+
+            {/* c. ECS ecosystem */}
+            <h4 className="display mt-12 text-lg text-ink">
+              The ECS Ecosystem, the identity baseline
+            </h4>
+            <p className="mt-3 max-w-3xl text-muted">
+              One special ecosystem publishes the four Essential Credential
+              Schemas: <strong className="text-ink">Service</strong> (any service,
+              including an AI agent),{" "}
+              <strong className="text-ink">Organization</strong> and{" "}
+              <strong className="text-ink">Persona</strong> (the org or individual
+              that operates a service), and{" "}
+              <strong className="text-ink">UserAgent</strong> (the app, wallet, or
+              browser a person connects with), plus a future Badge for a human
+              end-user. These make every ecosystem mutually verifiable, and are
+              governed by the{" "}
+              <a
+                href={LINKS.council}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent hover:underline"
+              >
+                Verana Council
+              </a>
+              . On top of this baseline, each ecosystem defines its own domain
+              credentials (govID, diploma, reusable KYC, machine certificate, and
+              more).
             </p>
           </div>
 
