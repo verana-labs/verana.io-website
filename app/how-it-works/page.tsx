@@ -301,7 +301,8 @@ export default function HowItWorks() {
               Verana inverts &quot;connect first, verify later&quot;. A Verifiable
               Service is identified by a resolvable DID, not an opaque URL. Its DID
               Document exposes a DIDComm bootstrap endpoint and, optionally, MCP,
-              A2A, or website endpoints. Peers trust-resolve each other,
+              A2A, AG-UI, website, or any other service it chooses to expose
+              through its DID Document. Peers trust-resolve each other,
               recursively to the ecosystem root, and display a Proof-of-Trust
               before the first interaction. The same model covers three connection
               types.
