@@ -100,7 +100,7 @@ const ECS = [
   {
     name: "ECS-Service",
     role: "Actor",
-    body: "Identifies a service or AI agent: the actor that acts on the network.",
+    body: "Identifies a service or AI agent: the actor that acts on the network. The service's controller is the issuer of the credential.",
   },
   {
     name: "ECS-Badge",
