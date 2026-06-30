@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container, Section, SectionHeading, Button } from "../components/ui";
 import PageHero from "../components/PageHero";
-import ArchitectureDiagram from "../components/ArchitectureDiagram";
 import Mermaid from "../components/Mermaid";
 import TrustGraphExamples from "../components/TrustGraphExamples";
 import { LINKS } from "../lib/site";
@@ -388,29 +387,6 @@ export default function HowItWorks() {
             <p className="mt-8 max-w-3xl text-sm text-muted">A few example queries:</p>
             <div className="mt-4">
               <TrustGraphExamples />
-            </div>
-          </div>
-
-          {/* VPR */}
-          <div>
-            <SectionHeading
-              eyebrow="The layer underneath"
-              title="The Verifiable Public Registry"
-            />
-            <p className="mt-4 max-w-3xl text-muted">
-              The neutral Layer-1 &quot;registry of registries&quot; that anchors
-              ecosystems, schemas, accreditations, and DIDs, and exposes a
-              standardized query API (TRQP) for real-time trust resolution. The
-              network is secured by the Council&apos;s validators; everything that
-              only reads the ledger (resolver, graph, indexers) is permissionless.
-            </p>
-          </div>
-
-          {/* Architecture diagram */}
-          <div>
-            <SectionHeading eyebrow="Architecture" title="The whole picture" />
-            <div className="mt-8">
-              <ArchitectureDiagram />
             </div>
           </div>
 
