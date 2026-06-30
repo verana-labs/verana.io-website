@@ -132,7 +132,7 @@ function Stars({ score }: { score: number }) {
   return (
     <div
       className="flex items-center gap-0.5"
-      style={{ color: "var(--color-primary)" }}
+      style={{ color: "#f5b942" }}
       aria-label={`Trust score ${score} of 5`}
     >
       {stars}
