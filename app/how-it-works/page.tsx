@@ -85,6 +85,17 @@ const CORP_CHART = `flowchart LR
   C -->|verifier| ED["Ecosystem D"]
   C -->|holder| EE["Ecosystem E"]`;
 
+// How the Trust Graph is built and queried (indexing pipeline).
+const GRAPH_PIPELINE = `flowchart LR
+  DID["DID Documents (Linked VPs)"] --> IDX["Indexer / crawler"]
+  VPR["Public Registry (schemas, accreditations, deposits)"] --> IDX
+  IDX --> G["Trust Graph (trust-typed index)"]
+  G --> Q["Query: API / MCP"]
+  Q --> AG["AI agents"]
+  Q --> BR["Browsers / VUAs"]
+  Q --> SE["Search engines"]
+  Q --> AU["Auditors"]`;
+
 // The Essential Credential Schemas, grouped by the role they identify.
 const ECS = [
   {
@@ -368,9 +379,13 @@ export default function HowItWorks() {
               ecosystems by the credentials they hold, scope to an ecosystem, and
               rank by trust signals. A first-class surface for AI-agent discovery.
               Every result carries verifiable provenance, so you can check it
-              before you act on it. A few example queries:
+              before you act on it.
             </p>
-            <div className="mt-8">
+            <div className="mt-8 card p-6">
+              <Mermaid chart={GRAPH_PIPELINE} />
+            </div>
+            <p className="mt-8 max-w-3xl text-sm text-muted">A few example queries:</p>
+            <div className="mt-4">
               <TrustGraphExamples />
             </div>
           </div>
