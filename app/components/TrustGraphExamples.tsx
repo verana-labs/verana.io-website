@@ -29,7 +29,7 @@ const EXAMPLES: GraphExample[] = [
         verified: true,
         trustScore: 4.5,
         deposit: "18,200 TU",
-        protocols: ["MCP", "A2A", "AG-UI"],
+        protocols: ["MCP", "A2A", "Website"],
       },
       {
         name: "company-b.example",
@@ -53,7 +53,7 @@ const EXAMPLES: GraphExample[] = [
         verified: true,
         trustScore: 3.5,
         deposit: "4,100 TU",
-        protocols: ["AG-UI", "MCP"],
+        protocols: ["AG-UI"],
       },
     ],
   },
