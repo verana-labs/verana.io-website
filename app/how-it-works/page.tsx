@@ -135,8 +135,10 @@ export default function HowItWorks() {
             {/* a. What is an ecosystem */}
             <h4 className="display mt-6 text-lg text-ink">What is an ecosystem?</h4>
             <p className="mt-3 max-w-3xl text-muted">
-              An ecosystem is a governed list of recognized participants
-              authorized to issue, verify, or hold certain credentials. It
+              Verana is public, permissionless infrastructure: anyone can create
+              their own ecosystem, or join the ecosystems they want. An ecosystem
+              is a governed list of recognized participants authorized to issue,
+              verify, or hold certain credentials. It
               publishes a governance framework, defines its credential schemas,
               and sets who is accredited through a{" "}
               <strong className="text-ink">participant tree</strong>: the ecosystem
