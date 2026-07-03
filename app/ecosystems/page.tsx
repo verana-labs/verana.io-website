@@ -453,7 +453,7 @@ const HOLDS = [
     ink: "var(--color-primary)",
     title: "Accreditation tree",
     tag: "who may act",
-    body: "Grantors, issuers, verifiers and holders: exactly the tree above, recorded on the public registry.",
+    body: "Grantors, issuers, verifiers and holders: exactly the tree below, recorded on the public registry.",
   },
   {
     icon: faCoins,
@@ -492,7 +492,32 @@ export default function Ecosystems() {
               issuers and verifiers, who in turn issue to holders. Permission
               modes range from fully open to fully governed.
             </p>
-            <div className="card reveal mt-6 overflow-hidden">
+            <span className="eyebrow reveal mt-6 block">
+              What an ecosystem holds
+            </span>
+            <div className="reveal-stagger mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {HOLDS.map((h) => (
+                <div key={h.title} className="card p-5">
+                  <div
+                    className="grid h-9 w-9 place-items-center rounded-lg"
+                    style={{
+                      background: `color-mix(in srgb, ${h.role} 12%, transparent)`,
+                    }}
+                  >
+                    <FontAwesomeIcon
+                      icon={h.icon}
+                      className="h-4 w-4"
+                      style={{ color: h.ink }}
+                    />
+                  </div>
+                  <h3 className="mt-3 font-semibold text-ink">{h.title}</h3>
+                  <p className="mt-1 font-mono text-[11px] text-muted">{h.tag}</p>
+                  <p className="mt-1 text-sm text-muted">{h.body}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="card reveal mt-8 overflow-hidden">
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-rule bg-surface-2 px-4 py-3">
                 <span className="eyebrow flex items-center gap-2">
                   <FontAwesomeIcon icon={faSitemap} className="h-3 w-3" />
@@ -539,31 +564,6 @@ export default function Ecosystems() {
                   fees flow up
                 </span>
               </div>
-            </div>
-
-            <span className="eyebrow reveal mt-8 block">
-              What an ecosystem holds
-            </span>
-            <div className="reveal-stagger mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {HOLDS.map((h) => (
-                <div key={h.title} className="card p-5">
-                  <div
-                    className="grid h-9 w-9 place-items-center rounded-lg"
-                    style={{
-                      background: `color-mix(in srgb, ${h.role} 12%, transparent)`,
-                    }}
-                  >
-                    <FontAwesomeIcon
-                      icon={h.icon}
-                      className="h-4 w-4"
-                      style={{ color: h.ink }}
-                    />
-                  </div>
-                  <h3 className="mt-3 font-semibold text-ink">{h.title}</h3>
-                  <p className="mt-1 font-mono text-[11px] text-muted">{h.tag}</p>
-                  <p className="mt-1 text-sm text-muted">{h.body}</p>
-                </div>
-              ))}
             </div>
           </div>
 
@@ -683,7 +683,7 @@ export default function Ecosystems() {
               <strong className="text-ink">control</strong> any number of its
               own. Explore both patterns: Acme Corp joins the ECS identity
               baseline and an ISO certification ecosystem; the Republic of
-              Andora builds a GovID ecosystem of its own.
+              Utopia builds a GovID ecosystem of its own.
             </p>
             <div className="reveal mt-6">
               <EcosystemExplorer />

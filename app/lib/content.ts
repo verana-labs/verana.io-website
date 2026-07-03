@@ -138,13 +138,13 @@ export type UseCase = {
 export const USE_CASES: UseCase[] = [
   {
     name: "Governments",
-    actors: "The Republic of Andora, its Interior Ministry, civil registries, banks, telcos, and citizens.",
+    actors: "The Republic of Utopia, its Interior Ministry, civil registries, banks, telcos, and citizens.",
     pain: "National identity is siloed: every bank and agency re-verifies people from scratch, and the state has no neutral rail to let the private sector rely on its credentials.",
     story: [
-      "Andora creates its own GovID Ecosystem on the public registry: it publishes its governance framework, defines the GovID credential schema, and accredits participants.",
+      "Utopia creates its own GovID Ecosystem on the public registry: it publishes its governance framework, defines the GovID credential schema, and accredits participants.",
       "The Interior Ministry, as issuer grantor, accredits the regional civil registries. They issue GovID credentials to citizens, who hold them in their own wallets.",
       "A citizen opens a bank account in minutes: the bank, an accredited verifier, checks the GovID against the registry in real time and pays a verification fee that flows up the accreditation tree.",
-      "Everything runs on sovereign infrastructure Andora hosts in its own jurisdiction: no SaaS, no vendor lock-in, and MOSIP-based national ID systems plug in directly.",
+      "Everything runs on sovereign infrastructure Utopia hosts in its own jurisdiction: no SaaS, no vendor lock-in, and MOSIP-based national ID systems plug in directly.",
     ],
     mechanics: [
       { label: "How ecosystems work", href: "/ecosystems" },

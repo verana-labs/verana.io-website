@@ -1,6 +1,6 @@
 // Fixture data for the ecosystem explorer (spec-v2 §3.2): two worked
 // examples. "Acme Corp" joins ecosystems (the ECS identity baseline plus an
-// ISO certification ecosystem); the "Republic of Andora" builds its own
+// ISO certification ecosystem); the "Republic of Utopia" builds its own
 // (a GovID domain ecosystem with an accreditation tree and business model).
 
 export type NodeKind = "ecosystem" | "service" | "agent" | "people" | "issuer";
@@ -286,9 +286,9 @@ export const ACME: ExplorerFixture = {
   ],
 };
 
-export const ANDORA: ExplorerFixture = {
-  id: "andora",
-  name: "Republic of Andora",
+export const UTOPIA: ExplorerFixture = {
+  id: "utopia",
+  name: "Republic of Utopia",
   intro:
     "A government that builds its own ecosystem: it publishes a governance framework, defines a GovID credential schema, and accredits who may issue and verify it.",
   nodes: [
@@ -300,12 +300,12 @@ export const ANDORA: ExplorerFixture = {
       x: 130,
       y: 80,
       detail: [
-        "The shared identity baseline. Andora's registry service holds ECS-Organization and ECS-Service credentials, like any other participant.",
+        "The shared identity baseline. Utopia's registry service holds ECS-Organization and ECS-Service credentials, like any other participant.",
       ],
     },
     {
-      id: "andora",
-      label: "Andora registry service",
+      id: "utopia",
+      label: "Utopia registry service",
       sub: "controls the ecosystem",
       kind: "service",
       x: 130,
@@ -313,12 +313,12 @@ export const ANDORA: ExplorerFixture = {
       detail: [
         "The government's own verifiable service.",
         "Holder of ECS-Organization and ECS-Service (from the ECS Ecosystem).",
-        "Controls the Andora GovID Ecosystem: publishes its governance framework and its credential schema.",
+        "Controls the Utopia GovID Ecosystem: publishes its governance framework and its credential schema.",
       ],
     },
     {
       id: "goveco",
-      label: "Andora GovID Ecosystem",
+      label: "Utopia GovID Ecosystem",
       sub: "domain ecosystem",
       kind: "ecosystem",
       x: 460,
@@ -395,22 +395,22 @@ export const ANDORA: ExplorerFixture = {
   ],
   edges: [
     {
-      id: "a-ecs-andora",
+      id: "a-ecs-utopia",
       from: "ecs",
-      to: "andora",
+      to: "utopia",
       role: "holder",
       label: "ECS-Org + ECS-Service",
       caption:
-        "Andora's registry service is itself identified through the ECS Ecosystem: the two credential layers work together.",
+        "Utopia's registry service is itself identified through the ECS Ecosystem: the two credential layers work together.",
     },
     {
-      id: "a-andora-goveco",
-      from: "andora",
+      id: "a-utopia-goveco",
+      from: "utopia",
       to: "goveco",
       role: "controls",
       label: "controls",
       caption:
-        "Andora controls its own ecosystem: it publishes the governance framework and defines the GovID credential schema.",
+        "Utopia controls its own ecosystem: it publishes the governance framework and defines the GovID credential schema.",
     },
     {
       id: "a-goveco-ministry",
@@ -489,14 +489,14 @@ export const ANDORA: ExplorerFixture = {
   ],
   steps: [
     {
-      focus: ["ecs", "andora", "a-ecs-andora"],
+      focus: ["ecs", "utopia", "a-ecs-utopia"],
       caption:
-        "Andora starts as a participant like any other: its registry service holds ECS-Organization and ECS-Service credentials from the identity baseline.",
+        "Utopia starts as a participant like any other: its registry service holds ECS-Organization and ECS-Service credentials from the identity baseline.",
     },
     {
-      focus: ["andora", "goveco", "a-andora-goveco"],
+      focus: ["utopia", "goveco", "a-utopia-goveco"],
       caption:
-        "Then it builds: Andora creates the GovID Ecosystem, publishing its governance framework and defining the GovID credential schema.",
+        "Then it builds: Utopia creates the GovID Ecosystem, publishing its governance framework and defining the GovID credential schema.",
     },
     {
       focus: ["goveco", "ministry", "a-goveco-ministry"],
@@ -521,9 +521,9 @@ export const ANDORA: ExplorerFixture = {
     {
       focus: ["bank", "citizens", "a-bank-citizens"],
       caption:
-        "A citizen opens a bank account: the bank verifies the GovID against the registry in real time. Identity from the ECS layer, the domain claim from Andora's own schema.",
+        "A citizen opens a bank account: the bank verifies the GovID against the registry in real time. Identity from the ECS layer, the domain claim from Utopia's own schema.",
     },
   ],
 };
 
-export const EXPLORER_FIXTURES = [ACME, ANDORA];
+export const EXPLORER_FIXTURES = [ACME, UTOPIA];
