@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Container, Section, SectionHeading, Button } from "../components/ui";
 import PageHero from "../components/PageHero";
 import ResolveDid from "../components/ResolveDid";
-import FlowPlayer from "../components/FlowPlayer";
+import FlowDiagram from "../components/FlowDiagram";
 import ConceptPager from "../components/ConceptPager";
 import { FLOWS } from "../lib/flows";
 import { LINKS } from "../lib/site";
@@ -56,7 +56,7 @@ export default function Identity() {
             <SectionHeading
               eyebrow="The three connection flows"
               title="One model, three connection types"
-              intro="Step through each flow: every message has a plain-language explanation. Trust is mutual in all three, with no client/server asymmetry."
+              intro="Trust is mutual in all three, with no client/server asymmetry."
             />
             <div className="mt-8 space-y-10">
               {FLOWS.map((flow) => (
@@ -65,7 +65,7 @@ export default function Identity() {
                   <h3 className="display mt-2 text-xl text-ink">{flow.title}</h3>
                   <p className="mt-2 max-w-3xl text-sm text-muted">{flow.intro}</p>
                   <div className="mt-4">
-                    <FlowPlayer flow={flow} />
+                    <FlowDiagram flow={flow} />
                   </div>
                 </div>
               ))}
