@@ -1,9 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import "./globals.css";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import AnnouncementBar from "./components/AnnouncementBar";
+import Reveal from "./components/Reveal";
+
+// Font Awesome: CSS is imported above, stop the runtime from re-injecting it.
+config.autoAddCss = false;
 import {
   SITE_URL,
   SITE_NAME,
@@ -100,6 +106,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="bg-bg text-ink min-h-screen flex flex-col">
+        <Reveal />
         <AnnouncementBar />
         <Nav />
         <main className="flex-1">{children}</main>

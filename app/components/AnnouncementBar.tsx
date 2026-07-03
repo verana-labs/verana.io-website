@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import { X } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export default function AnnouncementBar() {
   const [dismissed, setDismissed] = useState(true);
@@ -21,10 +21,7 @@ export default function AnnouncementBar() {
     <div className="border-b border-rule bg-surface text-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-center gap-3 px-6 py-2 text-muted">
         <span className="text-center">
-          Verana testnet is live. Mainnet targeted Q1 2027.{" "}
-          <Link href="/network" className="text-accent hover:underline">
-            Network status
-          </Link>
+          Verana testnet is live. Mainnet targeted Q1 2027.
         </span>
         <button
           type="button"
@@ -39,7 +36,7 @@ export default function AnnouncementBar() {
           }}
           className="ml-auto shrink-0 text-muted hover:text-ink"
         >
-          <X size={15} aria-hidden />
+          <FontAwesomeIcon icon={faXmark} className="h-3.5 w-3.5" aria-hidden />
         </button>
       </div>
     </div>

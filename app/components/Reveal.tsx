@@ -1,39 +1,54 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
-/** Lightweight reveal-on-scroll wrapper (respects prefers-reduced-motion). */
-export default function Reveal({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const [visible, setVisible] = useState(false);
+/**
+ * Progressive enhancement: reveals elements with the `.reveal` or
+ * `.reveal-stagger` class as they scroll into view (same pattern as the
+ * sister sites). Mounted once in the layout; re-runs on every route change so
+ * client-side navigations still observe the new page's elements.
+ *
+ * No-op (content stays visible) when IntersectionObserver is unavailable or
+ * the user prefers reduced motion.
+ */
+export default function Reveal() {
+  const pathname = usePathname();
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+    const els = Array.from(
+      document.querySelectorAll<HTMLElement>(".reveal, .reveal-stagger")
+    );
+    if (els.length === 0) return;
+
+    const reduce = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (reduce || !("IntersectionObserver" in window)) {
+      els.forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
+
     const io = new IntersectionObserver(
       (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            setVisible(true);
-            io.disconnect();
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
           }
-        });
+        }
       },
-      { threshold: 0.12 }
+      { rootMargin: "0px 0px -10% 0px", threshold: 0.05 }
     );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
 
-  return (
-    <div ref={ref} className={`reveal ${visible ? "is-visible" : ""} ${className}`}>
-      {children}
-    </div>
-  );
+    els.forEach((el) => {
+      // Re-arm any element that a previous route left marked visible.
+      el.classList.remove("is-visible");
+      io.observe(el);
+    });
+
+    return () => io.disconnect();
+  }, [pathname]);
+
+  return null;
 }

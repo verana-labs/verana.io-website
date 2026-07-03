@@ -6,18 +6,16 @@ const COLUMNS: { title: string; links: { label: string; href: string; ext?: bool
   {
     title: "Explore",
     links: [
-      { label: "How it works", href: "/how-it-works" },
-      { label: "Software", href: "/software" },
+      { label: "Sovereign ecosystems", href: "/ecosystems" },
+      { label: "Verifiable identity", href: "/identity" },
+      { label: "Discovery", href: "/discovery" },
       { label: "Use cases", href: "/use-cases" },
-      { label: "Playground", href: "/playground" },
       { label: "Build", href: "/build" },
     ],
   },
   {
     title: "Ecosystem",
     links: [
-      { label: "Network status", href: "/network" },
-      { label: "Integrators", href: "/integrators" },
       { label: "Brand", href: "/brand" },
       { label: "Contact", href: "/contact" },
     ],

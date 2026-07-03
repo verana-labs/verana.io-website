@@ -12,6 +12,17 @@ const nextConfig: NextConfig = {
   // Lint and type-check run separately in CI; do not fail the container build.
   eslint: { ignoreDuringBuilds: true },
 
+  // Old v1 routes: permanent redirects to their spec-v2 homes.
+  async redirects() {
+    return [
+      { source: "/how-it-works", destination: "/ecosystems", permanent: true },
+      { source: "/software", destination: "/build", permanent: true },
+      { source: "/playground", destination: "/identity", permanent: true },
+      { source: "/network", destination: "/", permanent: true },
+      { source: "/integrators", destination: "/contact", permanent: true },
+    ];
+  },
+
   async headers() {
     return [
       {

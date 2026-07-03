@@ -1,263 +1,173 @@
+import { Suspense } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { Container, Section, SectionHeading, Button, Chip } from "./components/ui";
-import Reveal from "./components/Reveal";
-import ArchitectureDiagram from "./components/ArchitectureDiagram";
-import { LINKS } from "./lib/site";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  HERO,
-  THREE_PARTS,
-  PILLARS,
-  SOFTWARE,
-  USE_CASES,
-} from "./lib/content";
+  faSitemap,
+  faShieldHalved,
+  faDiagramProject,
+  faArrowRightLong,
+  faLandmark,
+  faBuilding,
+  faMicrochip,
+  faRobot,
+} from "@fortawesome/free-solid-svg-icons";
+import { Container, Section, SectionHeading, Button } from "./components/ui";
+import HeroVerify from "./components/HeroVerify";
+import LatestEcosystems from "./components/LatestEcosystems";
+import ResolveDid from "./components/ResolveDid";
+import { HERO, THREE_PARTS, USE_CASES } from "./lib/content";
+import { LINKS } from "./lib/site";
+import { NETWORK_NAME } from "./lib/verana";
 
-function toneColor(tone: string) {
-  if (tone === "primary") return "var(--color-primary)";
-  if (tone === "accent") return "var(--color-accent)";
-  if (tone === "success") return "var(--color-success)";
-  return "var(--color-muted)";
-}
+// Live widgets read the testnet; regenerate in the background every 10 min.
+export const revalidate = 600;
+
+const PART_ICONS = [faSitemap, faShieldHalved, faDiagramProject];
+
+const USE_CASE_ICONS = [faLandmark, faBuilding, faMicrochip, faRobot];
 
 export default function Home() {
   return (
     <>
-      {/* Hero */}
-      <section className="grid-mesh border-b border-rule">
-        <Container className="py-20 sm:py-28">
-          <p className="eyebrow">{HERO.eyebrow}</p>
-          <h1 className="display mt-5 max-w-4xl text-4xl sm:text-6xl text-ink">
+      {/* Hero: the "verify first, then connect" animation is the backdrop */}
+      <section className="hero-glow relative overflow-hidden border-b border-rule">
+        <HeroVerify />
+        <Container className="relative z-10 py-24 sm:py-32">
+          <p className="eyebrow reveal">[ {HERO.eyebrow} ]</p>
+          <h1 className="display reveal mt-5 max-w-4xl text-4xl sm:text-6xl text-ink">
             {HERO.headline}
           </h1>
-          <p className="mt-6 max-w-2xl text-lg sm:text-xl text-muted leading-relaxed">
+          <p className="reveal mt-6 max-w-2xl text-lg text-muted leading-relaxed">
             {HERO.subhead}
           </p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Button href={LINKS.docs} external>
-              Start building <ArrowRight size={16} />
-            </Button>
-            <Button href="/playground" variant="ghost">
-              Try the demo
+          <div className="reveal mt-8 flex flex-wrap gap-3">
+            <Button href="/ecosystems">See how it works</Button>
+            <Button href="/build" variant="ghost">
+              Build on Verana
             </Button>
           </div>
         </Container>
       </section>
 
-      {/* Verana, in three parts */}
+      {/* The three parts: the organizing spine, in reading order */}
       <Section>
         <Container>
           <SectionHeading
-            eyebrow="What is Verana"
-            title="One trust infrastructure, in three parts"
-            intro="Verana is what you join or build on, what verifies before you connect, and what you discover trust through."
+            eyebrow="Verana, in three parts"
+            title="Ecosystems, identity, discovery"
+            intro="Three parts, one mechanism: sovereign ecosystems define who is accredited, verifiable identity proves it before any connection, and the Trust Graph makes it discoverable."
           />
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {THREE_PARTS.map((p) => (
-              <Reveal key={p.name} className="card flex flex-col p-6">
-                <div className="flex items-center gap-2">
-                  <span
-                    className="h-2.5 w-2.5 rounded-full"
-                    style={{ background: toneColor(p.tone) }}
-                    aria-hidden
+          <div className="reveal-stagger mt-8 grid gap-4 md:grid-cols-3">
+            {THREE_PARTS.map((p, i) => (
+              <Link
+                key={p.name}
+                href={p.href}
+                className="card group flex flex-col p-6 transition-colors hover:border-primary"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="eyebrow">{`${i + 1} · ${p.label}`}</span>
+                  <FontAwesomeIcon
+                    icon={PART_ICONS[i]}
+                    className="h-4 w-4 text-primary"
                   />
-                  <span className="eyebrow">{p.label}</span>
                 </div>
                 <h3 className="display mt-3 text-xl text-ink">{p.name}</h3>
-                <p className="mt-3 flex-1 text-muted">{p.body}</p>
+                <p className="mt-2 flex-1 text-sm text-muted">{p.body}</p>
                 {p.signature ? (
-                  <p className="mt-3 font-mono text-sm text-accent">
+                  <p className="mt-3 font-mono text-xs text-success-ink">
                     {p.signature}
                   </p>
                 ) : null}
-                <Link
-                  href={p.href}
-                  className="mt-4 inline-flex items-center gap-1 text-sm text-ink hover:text-primary"
-                >
-                  Learn more <ArrowRight size={14} />
-                </Link>
-              </Reveal>
+                <span className="mt-4 inline-flex items-center gap-2 text-sm text-accent">
+                  Explore
+                  <FontAwesomeIcon
+                    icon={faArrowRightLong}
+                    className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1"
+                  />
+                </span>
+              </Link>
             ))}
           </div>
         </Container>
       </Section>
 
-      {/* The problem */}
-      <Section className="border-y border-rule bg-surface">
-        <Container>
-          <SectionHeading
-            eyebrow="Why now"
-            title="Trust is not keeping pace with the internet"
-          />
-          <div className="mt-8 grid gap-5 sm:grid-cols-3">
-            {[
-              "Identity and credentials are fragmented and non-reusable across systems.",
-              "Services and connected objects cannot be verified before you connect to them.",
-              "AI agents act with no provable identity or accountability.",
-            ].map((t) => (
-              <div key={t} className="card p-6 text-muted">
-                {t}
-              </div>
-            ))}
+      {/* Live proof: the network is real */}
+      <Section className="border-t border-rule bg-surface">
+        <Container className="grid gap-10 lg:grid-cols-2">
+          <div>
+            <SectionHeading
+              eyebrow={`Live from ${NETWORK_NAME}`}
+              title="Watch verify-first work"
+              intro="Resolve a real DID and see its Proof-of-Trust: the service, the organization behind it, and the verified chain up to the ecosystem root."
+            />
+            <div className="reveal mt-6">
+              <ResolveDid compact />
+            </div>
           </div>
-          <p className="mt-8 max-w-2xl text-lg text-ink">
-            Digital ecosystems cannot scale because trust is not embedded by
-            design. Verana embeds it.
-          </p>
-        </Container>
-      </Section>
-
-      {/* What Verana is + architecture */}
-      <Section>
-        <Container>
-          <SectionHeading
-            eyebrow="How it works"
-            title="The open, public, neutral trust infrastructure"
-            intro="One mechanism for humans, organizations, services, and AI agents. Issue and verify any credential, across any ecosystem, interoperably, from KYC to diplomas to machine certificates."
-          />
-          <div className="mt-10">
-            <ArchitectureDiagram />
-          </div>
-          <div className="mt-6">
-            <Link
-              href="/how-it-works"
-              className="inline-flex items-center gap-1 text-sm text-ink hover:text-primary"
-            >
-              See how it works <ArrowRight size={14} />
-            </Link>
+          <div>
+            <SectionHeading
+              eyebrow="The network is growing"
+              title="Latest trusted ecosystems"
+              intro="The newest ecosystems that trust-resolve as TRUSTED against the public registry."
+            />
+            <div className="reveal mt-6">
+              <Suspense
+                fallback={
+                  <div className="card p-6 font-mono text-xs text-muted">
+                    querying the network...
+                  </div>
+                }
+              >
+                <LatestEcosystems limit={5} />
+              </Suspense>
+            </div>
           </div>
         </Container>
       </Section>
 
-      {/* Software */}
-      <Section className="border-y border-rule bg-surface">
-        <Container>
-          <SectionHeading
-            eyebrow="Software"
-            title="Open-source software you run yourself"
-            intro="Run-it-yourself reference implementations and SDKs (Apache 2.0), hosted anywhere: your cloud, on-prem, or your own jurisdiction."
-          />
-          <div className="mt-10 grid gap-5 sm:grid-cols-2">
-            {SOFTWARE.map((s) => (
-              <Reveal key={s.name} className="card p-6">
-                <div className="flex items-center justify-between gap-3">
-                  <h3 className="display text-lg text-ink">{s.name}</h3>
-                  <span className="font-mono text-xs text-muted">{s.interfaces}</span>
-                </div>
-                <p className="mt-3 text-sm text-muted">{s.what}</p>
-                <p className="mt-4 font-mono text-xs text-muted">{s.speaks}</p>
-              </Reveal>
-            ))}
-          </div>
-          <div className="mt-8">
-            <Button href="/software" variant="ghost">
-              All software
-            </Button>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Use cases */}
+      {/* Use cases teaser */}
       <Section>
         <Container>
           <SectionHeading
             eyebrow="Use cases"
             title="One trust infrastructure, many entry points"
-            intro="Overlapping lenses, not silos. You may recognize yourself in one or several. They all converge on the same verify-first primitive."
+            intro="Overlapping lenses, not silos: a bank doing reusable KYC today runs AI agents tomorrow. They all converge on the same verify-first primitive."
           />
-          <div className="mt-10 grid gap-5 sm:grid-cols-2">
-            {USE_CASES.map((u) => (
-              <Reveal key={u.name} className="card p-6">
-                <h3 className="display text-lg text-ink">{u.name}</h3>
-                <p className="mt-3 text-sm text-muted">{u.body}</p>
-                <p className="mt-4 font-mono text-xs text-muted">{u.software}</p>
-              </Reveal>
-            ))}
-          </div>
-          <div className="mt-8">
-            <Button href="/use-cases" variant="ghost">
-              Explore use cases
-            </Button>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Why Verana (pillars) */}
-      <Section className="border-y border-rule bg-surface">
-        <Container>
-          <SectionHeading eyebrow="What makes it unique" title="Why Verana" />
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {PILLARS.map((p) => (
-              <div key={p.title} className="card p-6">
-                <h3 className="font-semibold text-ink">{p.title}</h3>
-                <p className="mt-2 text-sm text-muted">{p.body}</p>
-              </div>
+          <div className="reveal-stagger mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {USE_CASES.map((u, i) => (
+              <Link
+                key={u.name}
+                href="/use-cases"
+                className="card group p-5 transition-colors hover:border-primary"
+              >
+                <FontAwesomeIcon
+                  icon={USE_CASE_ICONS[i]}
+                  className="h-4 w-4 text-accent"
+                />
+                <h3 className="mt-3 font-semibold text-ink">{u.name}</h3>
+                <p className="mt-2 text-sm text-muted">{u.pain}</p>
+              </Link>
             ))}
           </div>
         </Container>
       </Section>
 
-      {/* Open & public + See it work */}
-      <Section>
-        <Container className="grid gap-10 lg:grid-cols-2">
-          <div>
-            <SectionHeading
-              eyebrow="Open & public"
-              title="Owned by no one"
-            />
-            <p className="mt-4 text-muted">
-              Open standards, Apache-2.0 code, a permissionless public network,
-              and neutral governance. The specifications are owned by a
-              non-profit, the live network is governed by the Verana Council, and
-              the VNA token is owned by no one.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Button href={LINKS.github} variant="ghost" external>
-                GitHub
-              </Button>
-              <Button href={LINKS.foundation} variant="ghost" external>
-                Verana Foundation
-              </Button>
-            </div>
-          </div>
-          <div>
-            <SectionHeading eyebrow="See it work" title="Try the Playground" />
-            <p className="mt-4 text-muted">
-              Issue and verify a credential, query the Trust Graph, or watch an AI
-              agent authenticate and discover a service over MCP. Each demo ships
-              a copy-paste snippet.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Chip verified>verify first, then connect</Chip>
-              <Chip>trust graph</Chip>
-              <Chip>agentic / MCP</Chip>
-            </div>
-            <div className="mt-6">
-              <Button href="/playground">Open the Playground</Button>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Built on Verana + Start */}
+      {/* Open & public + closing CTA */}
       <Section className="border-t border-rule bg-surface">
         <Container className="text-center">
-          <p className="eyebrow">Built on Verana</p>
-          <h2 className="display mt-4 text-3xl sm:text-4xl text-ink">
-            Start building on the open trust infrastructure
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-muted">
-            Independent builders ship on the open protocol today, including 2060's
-            Hologram. Your turn.
+          <p className="display reveal mx-auto max-w-3xl text-2xl sm:text-3xl text-ink">
+            Open standards, Apache-2.0 code, a permissionless public network,
+            neutral governance. Owned by no one.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <div className="reveal mt-8 flex flex-wrap justify-center gap-3">
             <Button href={LINKS.docs} external>
-              Start building <ArrowRight size={16} />
+              Start building
             </Button>
-            <Button href="/playground" variant="ghost">
-              Try the demo
+            <Button href={LINKS.github} variant="ghost" external>
+              github.com/verana-labs
             </Button>
-            <Button href="/integrators" variant="ghost">
-              Talk to an integrator
+            <Button href="/contact" variant="ghost">
+              Talk to us
             </Button>
           </div>
         </Container>

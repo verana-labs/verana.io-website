@@ -2,16 +2,19 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
 import { LINKS } from "../lib/site";
 
+// The three concept pages are a reading sequence (spec-v2 §1); the numbers
+// make the progression legible.
 const NAV = [
-  { href: "/how-it-works", label: "How it works" },
-  { href: "/software", label: "Software" },
+  { href: "/ecosystems", label: "Ecosystems", seq: "1" },
+  { href: "/identity", label: "Identity", seq: "2" },
+  { href: "/discovery", label: "Discovery", seq: "3" },
   { href: "/use-cases", label: "Use cases" },
-  { href: "/playground", label: "Playground" },
   { href: "/build", label: "Build" },
 ];
 
@@ -30,6 +33,11 @@ export default function Nav() {
                 href={item.href}
                 className="text-sm text-muted transition-colors hover:text-ink"
               >
+                {item.seq ? (
+                  <span className="mr-1 font-mono text-[10px] text-accent">
+                    {item.seq}
+                  </span>
+                ) : null}
                 {item.label}
               </Link>
             </li>
@@ -52,7 +60,7 @@ export default function Nav() {
             className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-rule text-muted md:hidden"
             onClick={() => setOpen((v) => !v)}
           >
-            {open ? <X size={18} /> : <Menu size={18} />}
+            <FontAwesomeIcon icon={open ? faXmark : faBars} className="h-4 w-4" />
           </button>
         </div>
       </nav>

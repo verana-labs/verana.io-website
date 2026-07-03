@@ -10,14 +10,14 @@ export default function PageHero({
   intro?: string;
 }) {
   return (
-    <section className="grid-mesh border-b border-rule">
+    <section className="hero-glow border-b border-rule">
       <Container className="py-16 sm:py-20">
-        <p className="eyebrow">{eyebrow}</p>
-        <h1 className="display mt-4 max-w-3xl text-3xl sm:text-5xl text-ink">
+        <p className="eyebrow reveal">{eyebrow}</p>
+        <h1 className="display reveal mt-4 max-w-3xl text-4xl sm:text-6xl text-ink">
           {title}
         </h1>
         {intro ? (
-          <p className="mt-5 max-w-2xl text-lg text-muted leading-relaxed">
+          <p className="reveal mt-5 max-w-2xl text-lg text-muted leading-relaxed">
             {intro}
           </p>
         ) : null}

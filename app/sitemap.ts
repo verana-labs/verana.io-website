@@ -3,13 +3,11 @@ import { SITE_URL } from "./lib/site";
 
 const ROUTES = [
   "",
-  "/how-it-works",
-  "/software",
+  "/ecosystems",
+  "/identity",
+  "/discovery",
   "/use-cases",
-  "/playground",
   "/build",
-  "/integrators",
-  "/network",
   "/brand",
   "/contact",
   "/privacy",

@@ -134,6 +134,10 @@ body {
   background: var(--color-surface);
   border: 1px solid var(--color-rule);
   border-radius: 1rem;
+  box-shadow: 0 10px 32px -24px rgb(0 0 0 / 0.55);
+}
+[data-theme="light"] .card {
+  box-shadow: 0 10px 28px -24px rgb(11 11 18 / 0.28);
 }
 
 /* Buttons ------------------------------------------------------------------ */
@@ -166,29 +170,23 @@ body {
   border-color: var(--color-primary);
 }
 
-/* Protocol-grid / mesh hero background ------------------------------------- */
-.grid-mesh {
+/* Hero glow (the grid/mesh background is gone; the HeroVerify canvas is the
+   signature visual, this only adds soft color depth behind it) ------------- */
+.hero-glow {
   background-image:
     radial-gradient(
       circle at 18% 30%,
-      color-mix(in srgb, var(--color-primary) 22%, transparent) 0%,
-      transparent 45%
+      color-mix(in srgb, var(--color-primary) 20%, transparent) 0%,
+      transparent 48%
     ),
     radial-gradient(
-      circle at 85% 15%,
-      color-mix(in srgb, var(--color-accent) 16%, transparent) 0%,
-      transparent 50%
-    ),
-    linear-gradient(var(--color-rule) 1px, transparent 1px),
-    linear-gradient(90deg, var(--color-rule) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 44px 44px, 44px 44px;
-  background-position: 0 0, 0 0, -1px -1px, -1px -1px;
-}
-[data-theme="light"] .grid-mesh {
-  opacity: 0.9;
+      circle at 82% 20%,
+      color-mix(in srgb, var(--color-accent) 14%, transparent) 0%,
+      transparent 52%
+    );
 }
 
-/* Reveal-on-scroll --------------------------------------------------------- */
+/* Reveal-on-scroll (site-wide; observed globally by components/Reveal) ----- */
 .reveal {
   opacity: 0;
   transform: translateY(14px);
@@ -198,11 +196,70 @@ body {
   opacity: 1;
   transform: none;
 }
+
+/* Staggered variant for card grids: children arrive one after the other. */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal-stagger.is-visible > * {
+  opacity: 1;
+  transform: none;
+}
+.reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 90ms; }
+.reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 180ms; }
+.reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 270ms; }
+.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 360ms; }
+.reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 450ms; }
+.reveal-stagger.is-visible > *:nth-child(n + 7) { transition-delay: 540ms; }
+
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
+  .reveal,
+  .reveal-stagger > * {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+}
+
+/* Verified payoff: the TRUSTED state arrives as an event ------------------- */
+@keyframes pot-pop {
+  0% {
+    transform: scale(0.6);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-success) 55%, transparent);
+  }
+  60% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 14px transparent;
+  }
+}
+.pot-verified {
+  animation: pot-pop 0.7s ease-out;
+}
+
+/* Progressive arrival (query console results) ------------------------------ */
+@keyframes arrive {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-arrive {
+  animation: arrive 0.45s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pot-verified,
+  .animate-arrive {
+    animation: none;
   }
 }
 

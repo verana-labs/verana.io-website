@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Moon, Sun } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
 type Theme = "light" | "dark";
 
@@ -35,9 +36,9 @@ export default function ThemeToggle() {
       className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-rule text-muted hover:text-ink hover:border-primary transition-colors"
     >
       {mounted && theme === "dark" ? (
-        <Sun size={16} aria-hidden />
+        <FontAwesomeIcon icon={faSun} className="h-4 w-4" aria-hidden />
       ) : (
-        <Moon size={16} aria-hidden />
+        <FontAwesomeIcon icon={faMoon} className="h-4 w-4" aria-hidden />
       )}
     </button>
   );

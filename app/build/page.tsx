@@ -1,4 +1,13 @@
 import type { Metadata } from "next";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPlug,
+  faRobot,
+  faCubes,
+  faBook,
+  faCodeBranch,
+  faFileLines,
+} from "@fortawesome/free-solid-svg-icons";
 import { Container, Section, SectionHeading, Button } from "../components/ui";
 import PageHero from "../components/PageHero";
 import { LINKS } from "../lib/site";
@@ -6,25 +15,57 @@ import { LINKS } from "../lib/site";
 export const metadata: Metadata = {
   title: "Build",
   description:
-    "The developer onramp: first steps by interface (API, MCP, SDKs), then a hand-off to the full reference and tutorials at docs.verana.io.",
+    "The developer onramp: API, MCP, and SDKs, the open-source reference implementations, and the specifications. Full reference and tutorials live at docs.verana.io.",
 };
 
-const BLOCKS: { title: string; body: string }[] = [
+// Placeholder page (spec-v2 §3.6): a launchpad that hands off to
+// docs.verana.io, the specs, and GitHub. To be expanded in a later pass.
+
+const ENTRIES = [
   {
-    title: "Start in 5 minutes",
-    body: "Spin up a Service Wallet and make your first trust resolution, then continue in the docs for the full guide.",
+    icon: faPlug,
+    title: "API",
+    body: "Every module you run exposes an API: resolve trust, query the registry, issue and verify.",
+    href: LINKS.docs,
+    label: "docs.verana.io",
   },
   {
-    title: "By interface",
-    body: "API, MCP server, and SDKs. Entry points and quickstarts, each linking into the docs.",
+    icon: faRobot,
+    title: "MCP",
+    body: "Agent-native from the start: the resolver, the Trust Graph, and the Service Wallet speak MCP.",
+    href: LINKS.docs,
+    label: "docs.verana.io",
   },
   {
-    title: "Implement the standards",
-    body: "The Verifiable Trust and VPR specs for implementers, the TRQP query interface, and interop notes (OID4VC/EUDIW, DIDComm, MOSIP, credo-ts).",
+    icon: faCubes,
+    title: "SDKs",
+    body: "Embed a holder wallet in your mobile app, or add Verifiable Trust to an existing agent.",
+    href: LINKS.docs,
+    label: "docs.verana.io",
+  },
+];
+
+const REFERENCES = [
+  {
+    icon: faBook,
+    title: "Documentation",
+    body: "Full reference and tutorials live at docs.verana.io.",
+    href: LINKS.docs,
+    label: "docs.verana.io",
   },
   {
-    title: "Run the open source",
-    body: "The reference implementations (Apache 2.0), issue trackers, and contribution pointers. Deeper community and working-group participation lives at the Foundation.",
+    icon: faCodeBranch,
+    title: "Open source",
+    body: "The reference implementations, Apache 2.0.",
+    href: LINKS.github,
+    label: "github.com/verana-labs",
+  },
+  {
+    icon: faFileLines,
+    title: "Specifications",
+    body: "Implement the standards: Verifiable Trust and the Verifiable Public Registry.",
+    href: LINKS.trustSpec,
+    label: "Verifiable Trust spec",
   },
 ];
 
@@ -33,42 +74,65 @@ export default function Build() {
     <>
       <PageHero
         eyebrow="Build"
-        title="Your first step on Verana"
-        intro="A launchpad, not a tutorial silo. Get the first steps here, then the full reference and tutorials live at docs.verana.io."
+        title="Build on Verana"
+        intro="The developer onramp. Pick your interface, run the open source, implement the specs. Everything deep lives in the docs."
       />
+
       <Section>
-        <Container>
-          <div className="grid gap-5 sm:grid-cols-2">
-            {BLOCKS.map((b) => (
-              <div key={b.title} className="card p-6">
-                <h2 className="display text-lg text-ink">{b.title}</h2>
-                <p className="mt-2 text-sm text-muted">{b.body}</p>
-              </div>
-            ))}
+        <Container className="space-y-12">
+          <div>
+            <SectionHeading eyebrow="By interface" title="Three ways in" />
+            <div className="reveal-stagger mt-6 grid gap-4 sm:grid-cols-3">
+              {ENTRIES.map((e) => (
+                <a
+                  key={e.title}
+                  href={e.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="card group p-6 transition-colors hover:border-primary"
+                >
+                  <FontAwesomeIcon
+                    icon={e.icon}
+                    className="h-5 w-5 text-accent"
+                  />
+                  <h3 className="display mt-3 text-lg text-ink">{e.title}</h3>
+                  <p className="mt-2 text-sm text-muted">{e.body}</p>
+                  <p className="mt-3 font-mono text-xs text-accent">{e.label}</p>
+                </a>
+              ))}
+            </div>
           </div>
 
-          <div className="mt-10 card p-6 sm:p-8">
-            <SectionHeading
-              eyebrow="Reference & support"
-              title="Full reference and tutorials live at docs.verana.io"
-            />
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Button href={LINKS.docs} external>
-                Open the docs
-              </Button>
-              <Button href={LINKS.github} variant="ghost" external>
-                GitHub
-              </Button>
-              <Button href={LINKS.trustSpec} variant="ghost" external>
-                Verifiable Trust spec
-              </Button>
-              <Button href={LINKS.vprSpec} variant="ghost" external>
-                VPR spec
-              </Button>
-              <Button href="/integrators" variant="ghost">
-                Talk to an integrator
-              </Button>
+          <div>
+            <SectionHeading eyebrow="Reference" title="Go deeper" />
+            <div className="reveal-stagger mt-6 grid gap-4 sm:grid-cols-3">
+              {REFERENCES.map((e) => (
+                <a
+                  key={e.title}
+                  href={e.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="card group p-6 transition-colors hover:border-primary"
+                >
+                  <FontAwesomeIcon
+                    icon={e.icon}
+                    className="h-5 w-5 text-primary"
+                  />
+                  <h3 className="display mt-3 text-lg text-ink">{e.title}</h3>
+                  <p className="mt-2 text-sm text-muted">{e.body}</p>
+                  <p className="mt-3 font-mono text-xs text-accent">{e.label}</p>
+                </a>
+              ))}
             </div>
+          </div>
+
+          <div className="reveal flex flex-wrap gap-3">
+            <Button href={LINKS.docs} external>
+              Start building
+            </Button>
+            <Button href="/contact" variant="ghost">
+              Talk to us
+            </Button>
           </div>
         </Container>
       </Section>
