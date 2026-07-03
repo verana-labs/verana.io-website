@@ -800,14 +800,6 @@ export default function Ecosystems() {
                   />
                   delegation flows down
                 </span>
-                <span className="flex items-center gap-2">
-                  <FontAwesomeIcon
-                    icon={faArrowUp}
-                    className="h-3 w-3"
-                    style={{ color: "var(--color-success-ink)" }}
-                  />
-                  fees flow up
-                </span>
               </div>
             </div>
           </div>
