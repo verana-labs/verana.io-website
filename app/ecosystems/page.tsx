@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Glyph from "../components/Glyph";
 import {
@@ -32,7 +31,6 @@ import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { Container, Section, SectionHeading, Button } from "../components/ui";
 import PageHero from "../components/PageHero";
 import EcosystemExplorer from "../components/EcosystemExplorer";
-import LatestEcosystems from "../components/LatestEcosystems";
 import ConceptPager from "../components/ConceptPager";
 import { ECS, BUSINESS_MODELS } from "../lib/content";
 import { LINKS } from "../lib/site";
@@ -42,9 +40,6 @@ export const metadata: Metadata = {
   description:
     "Join or build a trust ecosystem: governance framework, credential schemas, accreditation tree, and a built-in business model, anchored on the Verifiable Public Registry.",
 };
-
-// Live widgets read the testnet; regenerate in the background every 10 min.
-export const revalidate = 600;
 
 const ECS_ICONS = [faBuilding, faUserTie, faServer, faIdBadge, faMobileScreen];
 
@@ -1023,26 +1018,6 @@ export default function Ecosystems() {
                   <p className="mt-2 text-sm text-muted">{e.body}</p>
                 </div>
               ))}
-            </div>
-          </div>
-
-          {/* live: the bridge from the model to the real network */}
-          <div>
-            <SectionHeading
-              eyebrow="Live from the network"
-              title="Ecosystems being created right now"
-              intro="The newest ecosystems on the network that trust-resolve as TRUSTED against the public registry."
-            />
-            <div className="reveal mt-6">
-              <Suspense
-                fallback={
-                  <div className="card p-6 font-mono text-xs text-muted">
-                    querying the network...
-                  </div>
-                }
-              >
-                <LatestEcosystems />
-              </Suspense>
             </div>
           </div>
 
