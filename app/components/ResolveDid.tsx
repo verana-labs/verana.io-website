@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMagnifyingGlass,
@@ -27,13 +27,19 @@ export default function ResolveDid({ compact = false }: { compact?: boolean }) {
   const [selected, setSelected] = useState(DEMO_DIDS[0].did);
   const [custom, setCustom] = useState("");
   const [state, setState] = useState<State>({ kind: "idle" });
+  const rootRef = useRef<HTMLDivElement | null>(null);
+  const autoFired = useRef(false);
 
   const did = custom.trim() || selected;
+  const didRef = useRef(did);
+  didRef.current = did;
+  const idleRef = useRef(true);
+  idleRef.current = state.kind === "idle";
 
-  async function resolve() {
-    setState({ kind: "loading", did });
+  async function resolveDid(target: string) {
+    setState({ kind: "loading", did: target });
     try {
-      const res = await fetch(`/api/resolve?did=${encodeURIComponent(did)}`);
+      const res = await fetch(`/api/resolve?did=${encodeURIComponent(target)}`);
       const data = await res.json();
       if (!res.ok) {
         setState({
@@ -52,8 +58,35 @@ export default function ResolveDid({ compact = false }: { compact?: boolean }) {
     }
   }
 
+  function resolve() {
+    autoFired.current = true; // manual action supersedes the auto-resolve
+    void resolveDid(did);
+  }
+
+  // When the widget scrolls into view and nothing has been resolved yet,
+  // resolve the selected DID (the first one by default) automatically.
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el || !("IntersectionObserver" in window)) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting && !autoFired.current && idleRef.current) {
+            autoFired.current = true;
+            void resolveDid(didRef.current);
+            io.disconnect();
+          }
+        }
+      },
+      { threshold: 0.4 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <div className="space-y-4">
+    <div ref={rootRef} className="space-y-4">
       <div className="flex flex-col gap-3 sm:flex-row">
         <select
           value={selected}
