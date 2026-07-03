@@ -26,36 +26,35 @@ function shortDid(did: string, max = 40): string {
 
 function EcosystemRow({ e }: { e: TrustedEcosystem }) {
   return (
-    <li className="flex flex-col gap-2 px-5 py-4 sm:flex-row sm:items-center">
-      <div className="min-w-0 flex-1">
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="chip chip-verified">
-            <FontAwesomeIcon icon={faShieldHalved} className="h-3 w-3" />
-            Trusted
-          </span>
-          <a
-            href={`${NETWORK_APP_URL}/tr/${e.id}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            title={`Open ecosystem ${e.id} on the network frontend`}
-            className="group inline-flex items-center gap-1.5 font-medium text-ink hover:text-accent"
-          >
-            {e.name}
-            <FontAwesomeIcon
-              icon={faArrowUpRightFromSquare}
-              className="h-3 w-3 text-muted transition-colors group-hover:text-accent"
-            />
-          </a>
-        </div>
-        <p className="mt-1 font-mono text-[11px] text-muted" title={e.did}>
-          {shortDid(e.did)}
-        </p>
+    <li className="px-5 py-4">
+      {/* row 1: trust marker + name, link to the network frontend on the right */}
+      <div className="flex items-center gap-2">
+        <span className="chip chip-verified shrink-0">
+          <FontAwesomeIcon icon={faShieldHalved} className="h-3 w-3" />
+          Trusted
+        </span>
+        <span className="min-w-0 truncate font-medium text-ink">{e.name}</span>
+        <a
+          href={`${NETWORK_APP_URL}/tr/${e.id}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          title={`Open ecosystem ${e.id} on the network frontend`}
+          aria-label={`Open ${e.name} on the network frontend`}
+          className="ml-auto shrink-0 text-muted transition-colors hover:text-accent"
+        >
+          <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="h-3.5 w-3.5" />
+        </a>
       </div>
-      <div className="flex shrink-0 items-center gap-4 font-mono text-xs text-muted">
+      {/* row 2: figures */}
+      <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-xs text-muted">
         <span>{e.activeSchemas} schemas</span>
         <span>{e.participants} participants</span>
         <span>{new Date(e.created).toISOString().slice(0, 10)}</span>
       </div>
+      {/* row 3: the DID */}
+      <p className="mt-1.5 font-mono text-[11px] text-muted" title={e.did}>
+        {shortDid(e.did)}
+      </p>
     </li>
   );
 }
