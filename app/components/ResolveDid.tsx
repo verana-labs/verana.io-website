@@ -8,8 +8,10 @@ import {
   faTriangleExclamation,
 } from "@fortawesome/free-solid-svg-icons";
 import ProofOfTrustCard from "./ProofOfTrustCard";
-import type { ResolveResult } from "../lib/verana";
+import type { ResolveResult, PotEnrichment } from "../lib/verana";
 import { DEMO_DIDS } from "../lib/content";
+
+type ResolvePayload = ResolveResult & { enrichment?: PotEnrichment };
 
 // The Resolve-a-DID widget (spec-v2 §2.3): pick a DID (or paste one), resolve
 // it live against the testnet resolver, and see the Proof-of-Trust. The site's
@@ -18,7 +20,7 @@ import { DEMO_DIDS } from "../lib/content";
 type State =
   | { kind: "idle" }
   | { kind: "loading"; did: string }
-  | { kind: "done"; result: ResolveResult }
+  | { kind: "done"; result: ResolvePayload }
   | { kind: "error"; message: string };
 
 export default function ResolveDid({ compact = false }: { compact?: boolean }) {
@@ -41,7 +43,7 @@ export default function ResolveDid({ compact = false }: { compact?: boolean }) {
         });
         return;
       }
-      setState({ kind: "done", result: data as ResolveResult });
+      setState({ kind: "done", result: data as ResolvePayload });
     } catch {
       setState({
         kind: "error",
@@ -112,7 +114,12 @@ export default function ResolveDid({ compact = false }: { compact?: boolean }) {
         </div>
       ) : null}
 
-      {state.kind === "done" ? <ProofOfTrustCard result={state.result} /> : null}
+      {state.kind === "done" ? (
+        <ProofOfTrustCard
+          result={state.result}
+          enrichment={state.result.enrichment}
+        />
+      ) : null}
     </div>
   );
 }

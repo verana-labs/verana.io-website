@@ -7,13 +7,20 @@ import {
   faCircleXmark,
   faLink,
   faArrowRightLong,
+  faArrowUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
-import type { ResolveResult, ResolvedCredential } from "../lib/verana";
+import type {
+  ResolveResult,
+  ResolvedCredential,
+  PotEnrichment,
+} from "../lib/verana";
 
 // Renders a trust-resolution result as a Proof-of-Trust card (spec-v2 §2.3):
 // service identity (ECS-Service claims), the organization or person behind it
 // (ECS-Org / ECS-Persona claims), the trust chain, and the status. UNTRUSTED
 // is a first-class result: the failed credentials teach verify-first.
+// Optional enrichment (from the DID documents) adds credential logos and
+// links to the Linked Verifiable Presentations.
 
 function claimStr(c: ResolvedCredential | undefined, key: string): string | null {
   const v = c?.claims?.[key];
@@ -28,12 +35,92 @@ function countryFlag(code: string): string | null {
   );
 }
 
-export default function ProofOfTrustCard({ result }: { result: ResolveResult }) {
+/** Host behind a did:web / did:webvh DID; null for other methods.
+ *  (Local copy of lib/verana's didServiceHost to keep the client bundle lean.) */
+function serviceHost(did: string): string | null {
+  const parts = did.split(":");
+  let host: string | undefined;
+  if (parts[1] === "web") host = parts[2];
+  else if (parts[1] === "webvh") host = parts[3];
+  if (!host) return null;
+  host = decodeURIComponent(host);
+  return /^[a-zA-Z0-9.-]+(?::\d+)?$/.test(host) ? host : null;
+}
+
+/** A DID, linked to the root server of the service for web/webvh methods. */
+function DidLink({ did, className = "" }: { did: string; className?: string }) {
+  const host = serviceHost(did);
+  if (!host) {
+    return <span className={`break-all font-mono ${className}`}>{did}</span>;
+  }
+  return (
+    <a
+      href={`https://${host}/`}
+      target="_blank"
+      rel="noopener noreferrer"
+      title={`Open https://${host}/`}
+      className={`break-all font-mono underline-offset-2 hover:text-accent hover:underline ${className}`}
+    >
+      {did}
+    </a>
+  );
+}
+
+function CredentialLogo({ logo, alt }: { logo?: string; alt: string }) {
+  if (!logo) return null;
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={logo}
+      alt={alt}
+      className="h-10 w-10 shrink-0 rounded-lg border border-rule bg-surface-2 object-contain p-1"
+    />
+  );
+}
+
+function BlockEyebrow({
+  icon,
+  label,
+  vpUrl,
+}: {
+  icon: typeof faServer;
+  label: string;
+  vpUrl?: string;
+}) {
+  return (
+    <span className="eyebrow flex items-center gap-2">
+      <FontAwesomeIcon icon={icon} className="h-3 w-3" />
+      {label}
+      {vpUrl ? (
+        <a
+          href={vpUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Open the verifiable credential"
+          aria-label={`Open the ${label} credential in a new tab`}
+          className="text-muted transition-colors hover:text-accent"
+        >
+          <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="h-3 w-3" />
+        </a>
+      ) : null}
+    </span>
+  );
+}
+
+export default function ProofOfTrustCard({
+  result,
+  enrichment = {},
+}: {
+  result: ResolveResult;
+  enrichment?: PotEnrichment;
+}) {
   const trusted = result.trustStatus === "TRUSTED";
   const service = result.credentials?.find((c) => c.ecsType === "ECS-SERVICE");
   const org = result.credentials?.find(
     (c) => c.ecsType === "ECS-ORG" || c.ecsType === "ECS-PERSONA"
   );
+  const serviceExtras = enrichment["ECS-SERVICE"];
+  const orgExtras = org ? enrichment[org.ecsType] : undefined;
 
   return (
     <div className="card overflow-hidden">
@@ -50,9 +137,7 @@ export default function ProofOfTrustCard({ result }: { result: ResolveResult }) 
             Untrusted
           </span>
         )}
-        <span className="break-all font-mono text-[11px] text-muted">
-          {result.did}
-        </span>
+        <DidLink did={result.did} className="text-[11px] text-muted" />
         <span className="ml-auto font-mono text-[11px] text-muted">
           block {result.evaluatedAtBlock}
         </span>
@@ -61,26 +146,29 @@ export default function ProofOfTrustCard({ result }: { result: ResolveResult }) 
       <div className="grid gap-6 p-5 sm:grid-cols-2">
         {/* the actor */}
         <div>
-          <span className="eyebrow flex items-center gap-2">
-            <FontAwesomeIcon icon={faServer} className="h-3 w-3" />
-            Service
-          </span>
+          <BlockEyebrow icon={faServer} label="Service" vpUrl={serviceExtras?.vpUrl} />
           {service ? (
-            <>
-              <p className="mt-2 font-semibold text-ink">
-                {claimStr(service, "name") ?? "Unnamed service"}
-              </p>
-              {claimStr(service, "type") ? (
-                <p className="mt-0.5 font-mono text-xs text-muted">
-                  {claimStr(service, "type")}
+            <div className="mt-2 flex items-start gap-3">
+              <CredentialLogo
+                logo={serviceExtras?.logo}
+                alt={`${claimStr(service, "name") ?? "Service"} logo`}
+              />
+              <div>
+                <p className="font-semibold text-ink">
+                  {claimStr(service, "name") ?? "Unnamed service"}
                 </p>
-              ) : null}
-              {claimStr(service, "description") ? (
-                <p className="mt-2 text-sm text-muted">
-                  {claimStr(service, "description")}
-                </p>
-              ) : null}
-            </>
+                {claimStr(service, "type") ? (
+                  <p className="mt-0.5 font-mono text-xs text-muted">
+                    {claimStr(service, "type")}
+                  </p>
+                ) : null}
+                {claimStr(service, "description") ? (
+                  <p className="mt-2 text-sm text-muted">
+                    {claimStr(service, "description")}
+                  </p>
+                ) : null}
+              </div>
+            </div>
           ) : (
             <p className="mt-2 text-sm text-muted">
               No ECS-Service credential presented.
@@ -90,38 +178,41 @@ export default function ProofOfTrustCard({ result }: { result: ResolveResult }) 
 
         {/* the backing */}
         <div>
-          <span className="eyebrow flex items-center gap-2">
-            <FontAwesomeIcon icon={faBuilding} className="h-3 w-3" />
-            Operated by
-          </span>
+          <BlockEyebrow icon={faBuilding} label="Operated by" vpUrl={orgExtras?.vpUrl} />
           {org ? (
-            <>
-              <p className="mt-2 font-semibold text-ink">
-                {(() => {
-                  const code = claimStr(org, "countryCode");
-                  const flag = code ? countryFlag(code) : null;
-                  return flag ? (
-                    <span
-                      role="img"
-                      aria-label={`Country: ${code}`}
-                      title={code ?? undefined}
-                      className="mr-1.5"
-                    >
-                      {flag}
-                    </span>
-                  ) : null;
-                })()}
-                {claimStr(org, "name") ?? "Unnamed organization"}
-              </p>
-              {claimStr(org, "registryId") ? (
-                <p className="mt-0.5 font-mono text-xs text-muted">
-                  {claimStr(org, "registryId")}
+            <div className="mt-2 flex items-start gap-3">
+              <CredentialLogo
+                logo={orgExtras?.logo}
+                alt={`${claimStr(org, "name") ?? "Organization"} logo`}
+              />
+              <div>
+                <p className="font-semibold text-ink">
+                  {(() => {
+                    const code = claimStr(org, "countryCode");
+                    const flag = code ? countryFlag(code) : null;
+                    return flag ? (
+                      <span
+                        role="img"
+                        aria-label={`Country: ${code}`}
+                        title={code ?? undefined}
+                        className="mr-1.5"
+                      >
+                        {flag}
+                      </span>
+                    ) : null;
+                  })()}
+                  {claimStr(org, "name") ?? "Unnamed organization"}
                 </p>
-              ) : null}
-              {claimStr(org, "address") ? (
-                <p className="mt-2 text-sm text-muted">{claimStr(org, "address")}</p>
-              ) : null}
-            </>
+                {claimStr(org, "registryId") ? (
+                  <p className="mt-0.5 font-mono text-xs text-muted">
+                    {claimStr(org, "registryId")}
+                  </p>
+                ) : null}
+                {claimStr(org, "address") ? (
+                  <p className="mt-2 text-sm text-muted">{claimStr(org, "address")}</p>
+                ) : null}
+              </div>
+            </div>
           ) : (
             <p className="mt-2 text-sm text-muted">
               No ECS-Organization or ECS-Persona credential presented.
@@ -144,16 +235,12 @@ export default function ProofOfTrustCard({ result }: { result: ResolveResult }) 
                 className="flex flex-wrap items-center gap-2 text-xs"
               >
                 <span className="chip">{c.ecsType}</span>
-                <span className="break-all font-mono text-muted">
-                  {c.issuedBy}
-                </span>
+                <DidLink did={c.issuedBy} className="text-muted" />
                 <FontAwesomeIcon
                   icon={faArrowRightLong}
                   className="h-3 w-3 text-muted"
                 />
-                <span className="break-all font-mono text-muted">
-                  {c.presentedBy}
-                </span>
+                <DidLink did={c.presentedBy} className="text-muted" />
                 {c.result === "VALID" ? (
                   <FontAwesomeIcon
                     icon={faCircleCheck}

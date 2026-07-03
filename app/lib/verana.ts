@@ -93,6 +93,125 @@ export async function resolveDid(
   return (await res.json()) as ResolveResult;
 }
 
+/**
+ * Host of the server behind a did:web / did:webvh DID (did:web:{host}...,
+ * did:webvh:{scid}:{host}...). Returns null for other methods.
+ */
+export function didServiceHost(did: string): string | null {
+  const parts = did.split(":");
+  let host: string | undefined;
+  if (parts[1] === "web") host = parts[2];
+  else if (parts[1] === "webvh") host = parts[3];
+  if (!host) return null;
+  host = decodeURIComponent(host);
+  return /^[a-zA-Z0-9.-]+(?::\d+)?$/.test(host) ? host : null;
+}
+
+export type PotCredentialExtras = {
+  /** Credential logo (data: or https: URL) from the linked VP. */
+  logo?: string;
+  /** URL of the Linked Verifiable Presentation carrying the credential. */
+  vpUrl?: string;
+};
+
+/** Per-ECS-type extras (logo + credential URL), keyed by ecsType. */
+export type PotEnrichment = Record<string, PotCredentialExtras>;
+
+type DidDocService = { type?: string; serviceEndpoint?: unknown };
+
+function isSafeImage(v: unknown): v is string {
+  return (
+    typeof v === "string" &&
+    (v.startsWith("data:image/") || v.startsWith("https://"))
+  );
+}
+
+/**
+ * Enrich a full resolve result with logos and credential (linked VP) URLs by
+ * reading each presenter's DID document at /.well-known/did.json and the
+ * Linked Verifiable Presentations it exposes (spec-v2 §2.3 card extras).
+ * Best-effort: failures simply yield no extras.
+ */
+export async function getPotEnrichment(
+  result: ResolveResult
+): Promise<PotEnrichment> {
+  const enrichment: PotEnrichment = {};
+  const vpCache = new Map<string, unknown[]>(); // presenter did -> fetched VPs+urls
+
+  async function linkedVps(
+    did: string
+  ): Promise<{ url: string; vp: Record<string, unknown> }[]> {
+    if (vpCache.has(did)) {
+      return vpCache.get(did) as { url: string; vp: Record<string, unknown> }[];
+    }
+    const out: { url: string; vp: Record<string, unknown> }[] = [];
+    try {
+      const host = didServiceHost(did);
+      if (host) {
+        const res = await fetch(`https://${host}/.well-known/did.json`, {
+          next: { revalidate: 600 },
+          signal: AbortSignal.timeout(8_000),
+        });
+        if (res.ok) {
+          const doc = (await res.json()) as { service?: DidDocService[] };
+          const urls = (doc.service ?? [])
+            .filter((s) => s.type === "LinkedVerifiablePresentation")
+            .map((s) => s.serviceEndpoint)
+            .filter((u): u is string => typeof u === "string" && u.startsWith("https://"))
+            .slice(0, 6);
+          const unique = [...new Set(urls)];
+          const vps = await Promise.all(
+            unique.map(async (url) => {
+              try {
+                const r = await fetch(url, {
+                  next: { revalidate: 600 },
+                  signal: AbortSignal.timeout(8_000),
+                });
+                if (!r.ok) return null;
+                return { url, vp: (await r.json()) as Record<string, unknown> };
+              } catch {
+                return null;
+              }
+            })
+          );
+          out.push(...vps.filter((v): v is { url: string; vp: Record<string, unknown> } => v !== null));
+        }
+      }
+    } catch {
+      // no extras for this presenter
+    }
+    vpCache.set(did, out);
+    return out;
+  }
+
+  for (const cred of result.credentials ?? []) {
+    if (!cred.ecsType || !cred.presentedBy) continue;
+    const vps = await linkedVps(cred.presentedBy);
+    for (const { url, vp } of vps) {
+      const raw = vp.verifiableCredential;
+      const vcs = Array.isArray(raw) ? raw : raw ? [raw] : [];
+      for (const vc of vcs as { credentialSubject?: Record<string, unknown> }[]) {
+        const subject = vc.credentialSubject;
+        if (!subject) continue;
+        const matches =
+          subject.id === cred.id ||
+          (typeof subject.name === "string" && subject.name === cred.claims?.name);
+        if (!matches) continue;
+        // The service and org credentials share a subject id; tell them apart
+        // by the claims that only one of them carries.
+        const looksOrg = "registryId" in subject || "countryCode" in subject;
+        const isOrgSlot = cred.ecsType !== "ECS-SERVICE";
+        if (looksOrg !== isOrgSlot) continue;
+        enrichment[cred.ecsType] = {
+          ...(isSafeImage(subject.logo) ? { logo: subject.logo } : {}),
+          vpUrl: url,
+        };
+      }
+    }
+  }
+  return enrichment;
+}
+
 /** Pick a display name out of a full resolve result (ECS credential claims). */
 export function resolvedName(r: ResolveResult): string | null {
   for (const ecs of ["ECS-SERVICE", "ECS-ORG", "ECS-PERSONA"]) {

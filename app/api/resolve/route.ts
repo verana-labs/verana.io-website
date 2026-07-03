@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { resolveDid } from "../../lib/verana";
+import { resolveDid, getPotEnrichment } from "../../lib/verana";
 
 // Proxies the Verana resolver for the Resolve-a-DID widget (spec-v2 §2.3).
 // The browser never talks to the upstream directly.
@@ -15,9 +15,12 @@ export async function GET(request: NextRequest) {
 
   try {
     const result = await resolveDid(did, "full");
-    return NextResponse.json(result, {
-      headers: { "Cache-Control": "public, max-age=120" },
-    });
+    // Best-effort extras from the DID documents (logos, credential URLs).
+    const enrichment = await getPotEnrichment(result).catch(() => ({}));
+    return NextResponse.json(
+      { ...result, enrichment },
+      { headers: { "Cache-Control": "public, max-age=120" } }
+    );
   } catch {
     return NextResponse.json(
       {
