@@ -19,6 +19,12 @@ import {
   faArrowUp,
   faBookOpen,
   faFileLines,
+  faGavel,
+  faLock,
+  faAnchor,
+  faHandshakeSlash,
+  faStar,
+  faFlask,
 } from "@fortawesome/free-solid-svg-icons";
 import { Container, Section, SectionHeading, Button } from "../components/ui";
 import PageHero from "../components/PageHero";
@@ -220,6 +226,209 @@ function TierTree() {
   );
 }
 
+/** The trust deposit of one participant over time, as a step chart: paid
+ *  operations grow it, an authority slashes it, repayment restores it. All
+ *  figures illustrative. Static server component; shares the TierTree card
+ *  anatomy and pill recipe. */
+function DepositChart() {
+  const SUCCESS = "var(--color-success)";
+  const MUTED = "var(--color-muted)";
+  const PRIMARY = "var(--color-primary)";
+
+  const pill = (label: string, x: number, y: number, color: string) => (
+    <g key={label} transform={`translate(${x}, ${y})`}>
+      <rect
+        x={-(label.length * 3.1 + 6)}
+        y={-9}
+        width={label.length * 6.2 + 12}
+        height={18}
+        rx={9}
+        fill="var(--color-surface)"
+        stroke={color}
+        strokeOpacity={0.5}
+      />
+      <text
+        textAnchor="middle"
+        dominantBaseline="central"
+        fontSize={9.5}
+        fontFamily="var(--font-mono)"
+        fill="var(--color-ink)"
+      >
+        {label}
+      </text>
+    </g>
+  );
+
+  return (
+    <svg
+      viewBox="0 0 960 300"
+      className="h-auto w-full min-w-[560px]"
+      role="img"
+      aria-label="Trust deposit over time: each paid trust operation commits Trust Units to the deposit, growing the trust score; an authority slashes 800 TU for misbehavior, making the participant non-trustable until the slash is repaid; after repayment the deposit and score grow again."
+    >
+      {/* grid + ticks */}
+      {[
+        { y: 60, label: "2,000 TU" },
+        { y: 160, label: "1,000" },
+        { y: 260, label: "0" },
+      ].map((t) => (
+        <g key={t.y}>
+          <line
+            x1={56}
+            y1={t.y}
+            x2={936}
+            y2={t.y}
+            stroke="var(--color-rule)"
+            strokeWidth={1}
+          />
+          <text
+            x={48}
+            y={t.y + 3}
+            textAnchor="end"
+            fontFamily="var(--font-mono)"
+            fontSize={10}
+            fill={MUTED}
+          >
+            {t.label}
+          </text>
+        </g>
+      ))}
+      <text
+        x={936}
+        y={282}
+        textAnchor="end"
+        fontFamily="var(--font-mono)"
+        fontSize={10}
+        fill={MUTED}
+      >
+        time →
+      </text>
+
+      {/* non-trustable window */}
+      <rect
+        x={560}
+        y={52}
+        width={140}
+        height={208}
+        rx={8}
+        fill={MUTED}
+        fillOpacity={0.07}
+      />
+
+      {/* area washes */}
+      <path
+        d="M64,260 H100 V245 H160 V230 H220 V210 H280 V195 H340 V175 H400 V150 H460 V125 H520 V100 H560 V260 Z"
+        fill={SUCCESS}
+        fillOpacity={0.1}
+      />
+      <path d="M560,260 V180 H700 V260 Z" fill={MUTED} fillOpacity={0.08} />
+      <path
+        d="M700,260 V100 H780 V90 H920 V260 Z"
+        fill={SUCCESS}
+        fillOpacity={0.1}
+      />
+
+      {/* step lines */}
+      <path
+        d="M64,260 H100 V245 H160 V230 H220 V210 H280 V195 H340 V175 H400 V150 H460 V125 H520 V100 H560"
+        fill="none"
+        stroke={SUCCESS}
+        strokeWidth={2}
+        strokeLinejoin="round"
+        strokeLinecap="round"
+      />
+      <path
+        d="M560,100 V180 H700"
+        fill="none"
+        stroke={MUTED}
+        strokeWidth={2}
+        strokeLinejoin="round"
+        strokeLinecap="round"
+      />
+      <path
+        d="M700,180 V100 H780 V90 H920"
+        fill="none"
+        stroke={SUCCESS}
+        strokeWidth={2}
+        strokeLinejoin="round"
+        strokeLinecap="round"
+      />
+
+      {/* the slashing authority */}
+      <line
+        x1={560}
+        y1={84}
+        x2={560}
+        y2={100}
+        stroke={MUTED}
+        strokeWidth={1}
+        opacity={0.55}
+      />
+      <circle cx={560} cy={70} r={18} fill={PRIMARY} opacity={0.12} />
+      <circle
+        cx={560}
+        cy={70}
+        r={14}
+        fill="var(--color-surface)"
+        stroke={PRIMARY}
+        strokeWidth={1.5}
+      />
+      <Glyph icon={faGavel} cx={560} cy={70} size={13} color={PRIMARY} />
+      <text
+        x={560}
+        y={42}
+        textAnchor="middle"
+        fontFamily="var(--font-mono)"
+        fontSize={9.5}
+        fill={MUTED}
+      >
+        authority
+      </text>
+
+      {/* annotations */}
+      <line
+        x1={255}
+        y1={157}
+        x2={278}
+        y2={192}
+        stroke={SUCCESS}
+        strokeWidth={1}
+        opacity={0.5}
+      />
+      {pill("+TU per paid operation", 250, 148, SUCCESS)}
+      {pill("slashed -800 TU", 467, 70, PRIMARY)}
+      {pill("non-trustable", 630, 205, MUTED)}
+      {pill("slash repaid", 700, 84, SUCCESS)}
+
+      {/* end payoff: the Trust Graph's star + TU rendering */}
+      {[852, 866, 880, 894, 908].map((cx, i) => (
+        <g key={cx} opacity={i === 4 ? 0.25 : 1}>
+          <Glyph icon={faStar} cx={cx} cy={60} size={11} color="#f5b942" />
+        </g>
+      ))}
+      <text
+        x={880}
+        y={78}
+        textAnchor="middle"
+        fontFamily="var(--font-mono)"
+        fontSize={10}
+        fill="var(--color-ink)"
+      >
+        1,700 TU
+      </text>
+      <circle cx={920} cy={90} r={9} fill={SUCCESS} opacity={0.12} />
+      <circle
+        cx={920}
+        cy={90}
+        r={5}
+        fill={SUCCESS}
+        stroke="var(--color-surface)"
+        strokeWidth={2}
+      />
+    </svg>
+  );
+}
+
 // What an ecosystem holds, as icon tiles (role-colored chips).
 const HOLDS = [
   {
@@ -384,30 +593,79 @@ export default function Ecosystems() {
           </div>
 
           {/* trust score */}
-          <div className="card reveal p-6 sm:p-8">
-            <span className="eyebrow flex items-center gap-2">
+          <div>
+            <span className="eyebrow reveal flex items-center gap-2">
               <FontAwesomeIcon icon={faScaleBalanced} className="h-3 w-3" />
               Trust score
             </span>
-            <h3 className="display mt-2 text-xl text-ink">
+            <h3 className="display reveal mt-2 text-xl text-ink">
               Skin in the game, earned not bought
             </h3>
-            <p className="mt-3 text-muted">
+            <p className="reveal mt-3 max-w-3xl text-muted">
               A fraction of every paid trust operation is committed to the
-              participant&apos;s trust deposit as Trust Units (TU): a
-              non-transferable, non-refundable, fiat-pegged measure of trust.
-              The deposit balance is the participant&apos;s{" "}
-              <strong className="text-ink">trust score</strong>, so it reflects
-              cumulative real usage, not market timing or capital.
+              participant&apos;s trust deposit as Trust Units (TU), and the
+              deposit balance is the{" "}
+              <strong className="text-ink">trust score</strong>.
             </p>
-            <p className="mt-3 text-muted">
-              Misbehavior is met with{" "}
-              <strong className="text-ink">slashing</strong>: a network or
-              ecosystem authority destroys Trust Units, lowering the score, and
-              while a slash is unrepaid the participant&apos;s permissions are
-              non-trustable. Because trust cannot be transferred or sold, only
-              earned, relying parties and the Trust Graph can rank and filter
-              by trust score and slashing history to favor accountable parties.
+
+            <div className="card reveal mt-6 overflow-hidden">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-rule bg-surface-2 px-4 py-3">
+                <span className="eyebrow flex items-center gap-2">
+                  <FontAwesomeIcon icon={faCoins} className="h-3 w-3" />
+                  Trust deposit over time
+                </span>
+                <span className="chip">
+                  <FontAwesomeIcon icon={faFlask} className="h-3 w-3" />
+                  Illustrative
+                </span>
+                <div className="ml-auto flex flex-wrap items-center gap-3">
+                  {[
+                    { color: "var(--color-success)", label: "earning · paid operations" },
+                    { color: "var(--color-muted)", label: "slashed · non-trustable" },
+                  ].map((l) => (
+                    <span
+                      key={l.label}
+                      className="flex items-center gap-1.5 font-mono text-[11px] text-muted"
+                    >
+                      <span
+                        aria-hidden
+                        className="h-2 w-2 rounded-full"
+                        style={{ background: l.color }}
+                      />
+                      {l.label}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="overflow-x-auto">
+                <DepositChart />
+              </div>
+              <div className="flex flex-wrap items-center gap-2 border-t border-rule px-5 py-3">
+                <span className="chip">
+                  <FontAwesomeIcon icon={faHandshakeSlash} className="h-3 w-3" />
+                  non-transferable
+                </span>
+                <span className="chip">
+                  <FontAwesomeIcon icon={faLock} className="h-3 w-3" />
+                  non-refundable
+                </span>
+                <span className="chip">
+                  <FontAwesomeIcon icon={faAnchor} className="h-3 w-3" />
+                  fiat-pegged
+                </span>
+                <span className="ml-auto font-mono text-[11px] text-muted">
+                  TU = Trust Units
+                </span>
+              </div>
+            </div>
+
+            <p className="reveal mt-3 max-w-3xl text-xs text-muted">
+              There is no path in for capital: TU cannot be bought or
+              transferred, only earned through real usage. On misbehavior, a
+              network or ecosystem authority destroys TU, and while a slash is
+              unrepaid the participant&apos;s permissions are non-trustable.
+              Relying parties and the Trust Graph rank and filter by trust
+              score and slashing history.
             </p>
           </div>
 
