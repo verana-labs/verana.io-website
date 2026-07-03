@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import Glyph from "../components/Glyph";
 import {
   faStamp,
   faCoins,
@@ -25,7 +25,10 @@ import {
   faHandshakeSlash,
   faStar,
   faFlask,
+  faUserPlus,
+  faLockOpen,
 } from "@fortawesome/free-solid-svg-icons";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { Container, Section, SectionHeading, Button } from "../components/ui";
 import PageHero from "../components/PageHero";
 import EcosystemExplorer from "../components/EcosystemExplorer";
@@ -43,31 +46,41 @@ export const metadata: Metadata = {
 // Live widgets read the testnet; regenerate in the background every 10 min.
 export const revalidate = 600;
 
-const BUSINESS_ICONS = [faStamp, faCoins, faScaleBalanced];
-
 const ECS_ICONS = [faBuilding, faUserTie, faServer, faIdBadge, faMobileScreen];
 
-/** Renders a Font Awesome icon's raw path inside an SVG (FontAwesomeIcon
- *  itself cannot be positioned in SVG coordinate space). */
-function Glyph({
-  icon,
-  cx,
-  cy,
-  size,
+/** Mono label pill on a surface-colored capsule (shared SVG recipe). */
+function Pill({
+  label,
+  x,
+  y,
   color,
 }: {
-  icon: IconDefinition;
-  cx: number;
-  cy: number;
-  size: number;
+  label: string;
+  x: number;
+  y: number;
   color: string;
 }) {
-  const [w, h] = icon.icon;
-  const d = icon.icon[4];
-  const s = size / Math.max(w, h);
   return (
-    <g transform={`translate(${cx - (w * s) / 2}, ${cy - (h * s) / 2}) scale(${s})`}>
-      <path d={Array.isArray(d) ? d.join(" ") : d} fill={color} />
+    <g transform={`translate(${x}, ${y})`}>
+      <rect
+        x={-(label.length * 3.1 + 6)}
+        y={-9}
+        width={label.length * 6.2 + 12}
+        height={18}
+        rx={9}
+        fill="var(--color-surface)"
+        stroke={color}
+        strokeOpacity={0.5}
+      />
+      <text
+        textAnchor="middle"
+        dominantBaseline="central"
+        fontSize={9.5}
+        fontFamily="var(--font-mono)"
+        fill="var(--color-ink)"
+      >
+        {label}
+      </text>
     </g>
   );
 }
@@ -94,7 +107,7 @@ function TierTree() {
     { x: 660, y: 174, r: 27, color: PRIMARY, icon: faCertificate, glyph: 20, label: "Verifier Grantor", sub: "accredits verifiers" },
     { x: 300, y: 296, r: 27, color: ACCENT, icon: faStamp, glyph: 20, label: "Issuer", sub: "issues credentials" },
     { x: 660, y: 296, r: 27, color: ACCENT, icon: faMagnifyingGlass, glyph: 20, label: "Verifier", sub: "requests proofs" },
-    { x: 480, y: 418, r: 27, color: SUCCESS, icon: faUsers, glyph: 20, label: "Holder", sub: "person · org · AI agent" },
+    { x: 480, y: 418, r: 27, color: SUCCESS, icon: faUsers, glyph: 20, label: "Holder", sub: "human · service · AI agent · connected object" },
   ];
 
   const edges: {
@@ -235,30 +248,6 @@ function DepositChart() {
   const MUTED = "var(--color-muted)";
   const PRIMARY = "var(--color-primary)";
 
-  const pill = (label: string, x: number, y: number, color: string) => (
-    <g key={label} transform={`translate(${x}, ${y})`}>
-      <rect
-        x={-(label.length * 3.1 + 6)}
-        y={-9}
-        width={label.length * 6.2 + 12}
-        height={18}
-        rx={9}
-        fill="var(--color-surface)"
-        stroke={color}
-        strokeOpacity={0.5}
-      />
-      <text
-        textAnchor="middle"
-        dominantBaseline="central"
-        fontSize={9.5}
-        fontFamily="var(--font-mono)"
-        fill="var(--color-ink)"
-      >
-        {label}
-      </text>
-    </g>
-  );
-
   return (
     <svg
       viewBox="0 0 960 300"
@@ -395,10 +384,10 @@ function DepositChart() {
         strokeWidth={1}
         opacity={0.5}
       />
-      {pill("+TU per paid operation", 250, 148, SUCCESS)}
-      {pill("slashed -800 TU", 467, 70, PRIMARY)}
-      {pill("non-trustable", 630, 205, MUTED)}
-      {pill("slash repaid", 700, 84, SUCCESS)}
+      <Pill label="+TU per paid operation" x={250} y={148} color={SUCCESS} />
+      <Pill label="slashed -800 TU" x={467} y={70} color={PRIMARY} />
+      <Pill label="non-trustable" x={630} y={205} color={MUTED} />
+      <Pill label="slash repaid" x={700} y={84} color={SUCCESS} />
 
       {/* end payoff: the Trust Graph's star + TU rendering */}
       {[852, 866, 880, 894, 908].map((cx, i) => (
@@ -425,6 +414,262 @@ function DepositChart() {
         stroke="var(--color-surface)"
         strokeWidth={2}
       />
+    </svg>
+  );
+}
+
+// The three fee-flow panels: the same participant-tree skeleton three times,
+// with only the payer and the fee path changing per business model.
+type FeePanel = {
+  index: string;
+  tag: string;
+  aria: string;
+  payerSlot: "issuer" | "verifier";
+  payerIcon: IconDefinition;
+  payerLabel: string;
+  payerSub?: string;
+  payerDashed?: boolean;
+  feePill: string;
+  shareToIssuer?: boolean;
+};
+
+const FEE_PANELS: FeePanel[] = [
+  {
+    index: "01",
+    tag: "per validity period · renewable",
+    aria: "Onboarding: an applicant pays a validation fee that flows up to the grantor and the ecosystem root.",
+    payerSlot: "issuer",
+    payerIcon: faUserPlus,
+    payerLabel: "applicant",
+    payerSub: "issuer · verifier · grantor",
+    payerDashed: true,
+    feePill: "validation fee",
+  },
+  {
+    index: "02",
+    tag: "per credential issued",
+    aria: "Pay-per-issuance: the issuer pays a fee for each credential it issues; the fee flows up to the grantor and the root.",
+    payerSlot: "issuer",
+    payerIcon: faStamp,
+    payerLabel: "issuer",
+    feePill: "fee per credential",
+  },
+  {
+    index: "03",
+    tag: "per credential verified",
+    aria: "Pay-per-verification: the verifier pays a fee for each verification, shared with the issuer and the rest of the tree.",
+    payerSlot: "verifier",
+    payerIcon: faMagnifyingGlass,
+    payerLabel: "verifier",
+    feePill: "fee per verification",
+    shareToIssuer: true,
+  },
+];
+
+/** One business model as a mini participant tree: skeleton in muted gray,
+ *  the payer lit, green fee arrows flowing up to the accrediting nodes. */
+function FeeFlowPanel({ panel, i }: { panel: FeePanel; i: number }) {
+  const MUTED = "var(--color-muted)";
+  const ACCENT = "var(--color-accent)";
+  const SUCCESS = "var(--color-success)";
+
+  const NODES = {
+    root: { x: 150, y: 36, icon: faSitemap },
+    ig: { x: 86, y: 112, icon: faCertificate },
+    vg: { x: 214, y: 112, icon: faCertificate },
+    issuer: { x: 86, y: 196, icon: faStamp },
+    verifier: { x: 214, y: 196, icon: faMagnifyingGlass },
+    holder: { x: 150, y: 272, icon: faUsers },
+  } as const;
+
+  const payer = NODES[panel.payerSlot];
+  const grantor = panel.payerSlot === "issuer" ? NODES.ig : NODES.vg;
+  // fee arrows hug the right side of the payer column; mirror for the verifier
+  const side = panel.payerSlot === "issuer" ? 1 : 1;
+  const px = payer.x + 12 * side;
+  const marker = `fee-arrow-${i}`;
+
+  const skeletonEdges: [keyof typeof NODES, keyof typeof NODES][] = [
+    ["root", "ig"],
+    ["root", "vg"],
+    ["ig", "issuer"],
+    ["vg", "verifier"],
+    ["issuer", "holder"],
+    ["verifier", "holder"],
+  ];
+
+  const coinBadge = (n: { x: number; y: number }, key: string) => (
+    <g key={key}>
+      <circle
+        cx={n.x + 13}
+        cy={n.y - 13}
+        r={7.5}
+        fill="var(--color-surface)"
+        stroke={SUCCESS}
+        strokeWidth={1.25}
+      />
+      <Glyph
+        icon={faCoins}
+        cx={n.x + 13}
+        cy={n.y - 13}
+        size={8}
+        color="var(--color-success-ink)"
+      />
+    </g>
+  );
+
+  const recipients = panel.shareToIssuer
+    ? [grantor, NODES.root, NODES.issuer]
+    : [grantor, NODES.root];
+
+  return (
+    <svg viewBox="0 0 300 320" className="mt-4 h-auto w-full" role="img" aria-label={panel.aria}>
+      <defs>
+        <marker
+          id={marker}
+          viewBox="0 0 10 10"
+          refX="9"
+          refY="5"
+          markerWidth="6"
+          markerHeight="6"
+          orient="auto-start-reverse"
+        >
+          <path d="M 0 0 L 10 5 L 0 10 z" fill={SUCCESS} />
+        </marker>
+      </defs>
+
+      {/* tier ticks */}
+      {(["T0", "T1", "T2", "T3"] as const).map((t, r) => (
+        <text
+          key={t}
+          x={8}
+          y={[39, 115, 199, 275][r]}
+          fontFamily="var(--font-mono)"
+          fontSize={8.5}
+          fill={MUTED}
+        >
+          {t}
+        </text>
+      ))}
+
+      {/* skeleton edges */}
+      {skeletonEdges.map(([a, b]) => (
+        <line
+          key={`${a}-${b}`}
+          x1={NODES[a].x}
+          y1={NODES[a].y}
+          x2={NODES[b].x}
+          y2={NODES[b].y}
+          stroke={MUTED}
+          strokeWidth={1.25}
+          opacity={0.35}
+        />
+      ))}
+
+      {/* skeleton nodes (the payer slot is drawn lit below) */}
+      {(Object.keys(NODES) as (keyof typeof NODES)[])
+        .filter((k) => k !== panel.payerSlot)
+        .map((k) => (
+          <g key={k}>
+            <circle
+              cx={NODES[k].x}
+              cy={NODES[k].y}
+              r={15}
+              fill="var(--color-surface)"
+              stroke={MUTED}
+              strokeOpacity={0.45}
+              strokeWidth={1.25}
+            />
+            <g opacity={0.55}>
+              <Glyph icon={NODES[k].icon} cx={NODES[k].x} cy={NODES[k].y} size={11} color={MUTED} />
+            </g>
+          </g>
+        ))}
+
+      {/* the payer, lit */}
+      <circle cx={payer.x} cy={payer.y} r={21} fill={ACCENT} opacity={0.12} />
+      <circle
+        cx={payer.x}
+        cy={payer.y}
+        r={17}
+        fill="var(--color-surface)"
+        stroke={ACCENT}
+        strokeWidth={2}
+        strokeDasharray={panel.payerDashed ? "3 3" : undefined}
+      />
+      <Glyph icon={panel.payerIcon} cx={payer.x} cy={payer.y} size={14} color={ACCENT} />
+      <text
+        x={payer.x}
+        y={payer.y + 30}
+        textAnchor="middle"
+        fontSize={9.5}
+        fontWeight={600}
+        fontFamily="var(--font-mono)"
+        fill="var(--color-ink)"
+        stroke="var(--color-surface)"
+        strokeWidth={3}
+        paintOrder="stroke"
+      >
+        {panel.payerLabel}
+      </text>
+      {panel.payerSub ? (
+        <text
+          x={payer.x}
+          y={payer.y + 42}
+          textAnchor="middle"
+          fontSize={8.5}
+          fontFamily="var(--font-mono)"
+          fill={MUTED}
+          stroke="var(--color-surface)"
+          strokeWidth={3}
+          paintOrder="stroke"
+        >
+          {panel.payerSub}
+        </text>
+      ) : null}
+
+      {/* direct fee: payer -> grantor */}
+      <path
+        d={`M ${px},${payer.y - 18} C ${px + 6},${payer.y - 40} ${px + 6},${
+          grantor.y + 38
+        } ${px},${grantor.y + 17}`}
+        fill="none"
+        stroke={SUCCESS}
+        strokeWidth={2}
+        markerEnd={`url(#${marker})`}
+      />
+      <Pill label={panel.feePill} x={150} y={154} color={SUCCESS} />
+
+      {/* distribution up the tree: grantor -> root, dashed */}
+      <path
+        d={`M ${grantor.x + (NODES.root.x > grantor.x ? 11 : -11)},${grantor.y - 11} L ${
+          NODES.root.x + (NODES.root.x > grantor.x ? -11 : 11)
+        },${NODES.root.y + 11}`}
+        fill="none"
+        stroke={SUCCESS}
+        strokeWidth={1.5}
+        strokeDasharray="4 3"
+        opacity={0.85}
+        markerEnd={`url(#${marker})`}
+      />
+
+      {/* verification fee share: verifier -> issuer */}
+      {panel.shareToIssuer ? (
+        <>
+          <path
+            d="M 197,205 Q 150,242 103,205"
+            fill="none"
+            stroke={SUCCESS}
+            strokeWidth={1.5}
+            strokeDasharray="4 3"
+            opacity={0.85}
+            markerEnd={`url(#${marker})`}
+          />
+          <Pill label="share to issuer" x={134} y={238} color={SUCCESS} />
+        </>
+      ) : null}
+
+      {recipients.map((n, j) => coinBadge(n, `coin-${j}`))}
     </svg>
   );
 }
@@ -575,21 +820,71 @@ export default function Ecosystems() {
               network and distributed up the tree to the accrediting
               participants:
             </p>
-            <div className="reveal-stagger mt-4 grid gap-4 sm:grid-cols-3">
-              {BUSINESS_MODELS.map((b, i) => (
-                <div key={b.title} className="card p-5">
-                  <FontAwesomeIcon
-                    icon={BUSINESS_ICONS[i]}
-                    className="h-4 w-4 text-accent"
-                  />
-                  <h3 className="mt-3 font-semibold text-ink">{b.title}</h3>
-                  <p className="mt-1 text-sm text-muted">{b.body}</p>
+            <div className="card reveal mt-4 overflow-hidden">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-rule bg-surface-2 px-4 py-3">
+                <span className="eyebrow flex items-center gap-2">
+                  <FontAwesomeIcon icon={faCoins} className="h-3 w-3" />
+                  Fee flows
+                </span>
+                <div className="ml-auto flex flex-wrap items-center gap-3">
+                  {[
+                    { color: "var(--color-accent)", label: "payer" },
+                    { color: "var(--color-success)", label: "fee flow" },
+                    { color: "var(--color-muted)", label: "participant tree" },
+                  ].map((l) => (
+                    <span
+                      key={l.label}
+                      className="flex items-center gap-1.5 font-mono text-[11px] text-muted"
+                    >
+                      <span
+                        aria-hidden
+                        className="h-2 w-2 rounded-full"
+                        style={{ background: l.color }}
+                      />
+                      {l.label}
+                    </span>
+                  ))}
                 </div>
-              ))}
+              </div>
+              <div className="grid divide-y divide-rule sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+                {FEE_PANELS.map((panel, i) => (
+                  <div key={panel.index} className="p-5">
+                    <div className="flex items-baseline gap-2">
+                      <span className="font-mono text-[11px] text-muted">
+                        {panel.index}
+                      </span>
+                      <h3 className="font-semibold text-ink">
+                        {BUSINESS_MODELS[i].title}
+                      </h3>
+                    </div>
+                    <p className="mt-0.5 font-mono text-[10px] uppercase tracking-wider text-muted">
+                      {panel.tag}
+                    </p>
+                    <FeeFlowPanel panel={panel} i={i} />
+                    <p className="mt-3 text-sm text-muted">
+                      {BUSINESS_MODELS[i].body}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-rule px-5 py-3">
+                <span className="flex items-center gap-2 font-mono text-xs text-muted">
+                  <FontAwesomeIcon
+                    icon={faArrowUp}
+                    className="h-3 w-3"
+                    style={{ color: "var(--color-success-ink)" }}
+                  />
+                  fees flow up to accrediting participants
+                </span>
+                <span className="font-mono text-xs text-muted">
+                  paid using the network
+                </span>
+                <span className="chip ml-auto">
+                  <FontAwesomeIcon icon={faLockOpen} className="h-3 w-3" />
+                  or fully open · no fees
+                </span>
+              </div>
             </div>
-            <p className="reveal mt-3 text-xs text-muted">
-              Schemas can also be fully open, with no fees.
-            </p>
           </div>
 
           {/* trust score */}

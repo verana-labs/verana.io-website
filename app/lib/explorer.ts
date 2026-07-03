@@ -3,7 +3,17 @@
 // ISO certification ecosystem); the "Republic of Utopia" builds its own
 // (a GovID domain ecosystem with an accreditation tree and business model).
 
-export type NodeKind = "ecosystem" | "service" | "agent" | "people" | "issuer";
+// Kinds map 1:1 to the participant-tree roles (same colors, same icons):
+// ecosystem/grantor = purple, issuer/verifier/service/agent = accent blue,
+// people (holders) = green.
+export type NodeKind =
+  | "ecosystem"
+  | "grantor"
+  | "issuer"
+  | "verifier"
+  | "service"
+  | "agent"
+  | "people";
 
 export type ExplorerNode = {
   id: string;
@@ -26,6 +36,8 @@ export type ExplorerEdge = {
   caption: string;
   /** Skip the label pill (edge stays clickable); avoids overlaps in fan-outs. */
   hideLabel?: boolean;
+  /** Position of the label pill along the edge, 0 (from) to 1 (to); default 0.5. */
+  labelT?: number;
 };
 
 export type ExplorerStep = {
@@ -224,6 +236,7 @@ export const ACME: ExplorerFixture = {
       to: "cert2",
       role: "accredits",
       label: "accredits issuer",
+      hideLabel: true,
       caption:
         "The ISO Certification Ecosystem accredits three independent certification bodies as issuers of the ISO 9001 credential.",
     },
@@ -243,6 +256,7 @@ export const ACME: ExplorerFixture = {
       to: "org",
       role: "issuer",
       label: "issues ISO 9001",
+      labelT: 0.7,
       caption:
         "CertBody B audited Acme and issued its ISO 9001 credential. Acme now proves its certification with a verifiable credential from an accredited body.",
     },
@@ -333,7 +347,7 @@ export const UTOPIA: ExplorerFixture = {
       id: "ministry",
       label: "Interior Ministry",
       sub: "issuer grantor",
-      kind: "issuer",
+      kind: "grantor",
       x: 460,
       y: 235,
       detail: [
@@ -345,7 +359,7 @@ export const UTOPIA: ExplorerFixture = {
       label: "Civil Registry North",
       sub: "accredited issuer",
       kind: "issuer",
-      x: 330,
+      x: 300,
       y: 370,
       detail: ["Accredited by the Interior Ministry to issue GovID credentials to citizens."],
     },
@@ -354,7 +368,7 @@ export const UTOPIA: ExplorerFixture = {
       label: "Civil Registry South",
       sub: "accredited issuer",
       kind: "issuer",
-      x: 560,
+      x: 590,
       y: 370,
       detail: ["Accredited by the Interior Ministry to issue GovID credentials to citizens."],
     },
@@ -362,7 +376,7 @@ export const UTOPIA: ExplorerFixture = {
       id: "bank",
       label: "Banks",
       sub: "accredited verifiers",
-      kind: "service",
+      kind: "verifier",
       x: 780,
       y: 235,
       detail: [
@@ -374,7 +388,7 @@ export const UTOPIA: ExplorerFixture = {
       id: "telco",
       label: "Telcos",
       sub: "accredited verifiers",
-      kind: "service",
+      kind: "verifier",
       x: 780,
       y: 370,
       detail: [
@@ -437,6 +451,7 @@ export const UTOPIA: ExplorerFixture = {
       to: "reg2",
       role: "accredits",
       label: "accredits issuer",
+      labelT: 0.55,
       caption:
         "The ministry accredits the regional civil registries as issuers of the GovID credential.",
     },
@@ -474,6 +489,7 @@ export const UTOPIA: ExplorerFixture = {
       to: "citizens",
       role: "issuer",
       label: "issues GovID",
+      labelT: 0.65,
       caption:
         "Civil registries issue GovID credentials to citizens, who hold them in their own wallets.",
     },
@@ -483,6 +499,7 @@ export const UTOPIA: ExplorerFixture = {
       to: "citizens",
       role: "verifier",
       label: "verifies GovID",
+      labelT: 0.35,
       caption:
         "A citizen opens a bank account with their GovID. The bank verifies the credential against the registry in real time, and pays a verification fee that flows up the tree.",
     },

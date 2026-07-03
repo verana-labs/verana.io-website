@@ -8,12 +8,15 @@ import {
   faRobot,
   faUsers,
   faStamp,
+  faCertificate,
+  faMagnifyingGlass,
   faChevronLeft,
   faChevronRight,
   faHandPointer,
   faCircleInfo,
 } from "@fortawesome/free-solid-svg-icons";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import Glyph from "./Glyph";
 import {
   EXPLORER_FIXTURES,
   type ExplorerFixture,
@@ -29,20 +32,25 @@ import {
 // full text, so the SVG stays decorative-plus and keyboard users get
 // everything through focusable nodes and the tour.
 
+// Same icons and colors as the participant tree above the explorer.
 const KIND_ICON: Record<NodeKind, IconDefinition> = {
   ecosystem: faSitemap,
+  grantor: faCertificate,
+  issuer: faStamp,
+  verifier: faMagnifyingGlass,
   service: faServer,
   agent: faRobot,
   people: faUsers,
-  issuer: faStamp,
 };
 
 const KIND_COLOR: Record<NodeKind, string> = {
   ecosystem: "var(--color-primary)",
+  grantor: "var(--color-primary)",
+  issuer: "var(--color-accent)",
+  verifier: "var(--color-accent)",
   service: "var(--color-accent)",
   agent: "var(--color-accent)",
   people: "var(--color-success)",
-  issuer: "var(--color-primary)",
 };
 
 const ROLE_COLOR: Record<EdgeRole, string> = {
@@ -71,8 +79,9 @@ function EdgeLine({
 }) {
   const a = fixture.nodes.find((n) => n.id === edge.from)!;
   const b = fixture.nodes.find((n) => n.id === edge.to)!;
-  const midX = (a.x + b.x) / 2;
-  const midY = (a.y + b.y) / 2;
+  const t = edge.labelT ?? 0.5;
+  const midX = a.x + (b.x - a.x) * t;
+  const midY = a.y + (b.y - a.y) * t;
   const color = ROLE_COLOR[edge.role];
   return (
     <g
@@ -171,6 +180,14 @@ function NodeShape({
         stroke={color}
         strokeWidth={selected ? 2.5 : 1.5}
       />
+      <Glyph
+        icon={KIND_ICON[node.kind]}
+        cx={node.x}
+        cy={node.y}
+        size={node.kind === "ecosystem" ? 24 : 20}
+        color={color}
+      />
+      {/* surface-colored halo keeps labels readable where edges pass under */}
       <text
         x={node.x}
         y={node.y + r + 16}
@@ -179,6 +196,9 @@ function NodeShape({
         fontWeight={600}
         fontFamily="var(--font-display)"
         fill="var(--color-ink)"
+        stroke="var(--color-surface)"
+        strokeWidth={4}
+        paintOrder="stroke"
       >
         {node.label}
       </text>
@@ -190,6 +210,9 @@ function NodeShape({
           fontSize={9.5}
           fontFamily="var(--font-mono)"
           fill="var(--color-muted)"
+          stroke="var(--color-surface)"
+          strokeWidth={3}
+          paintOrder="stroke"
         >
           {node.sub}
         </text>
