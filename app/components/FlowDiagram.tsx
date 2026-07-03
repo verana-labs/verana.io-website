@@ -99,8 +99,8 @@ export default function FlowDiagram({ flow }: { flow: Flow }) {
                   viewBox="0 0 10 10"
                   refX="9"
                   refY="5"
-                  markerWidth="6.5"
-                  markerHeight="6.5"
+                  markerWidth="5.5"
+                  markerHeight="5.5"
                   orient="auto-start-reverse"
                 >
                   <path d="M 0 0 L 10 5 L 0 10 z" fill={MARKER_COLORS[m]} />
@@ -202,9 +202,9 @@ export default function FlowDiagram({ flow }: { flow: Flow }) {
                   x2={x2 - 5 * dir}
                   y2={y}
                   stroke={style.color}
-                  strokeWidth={s.kind === "session" ? 1.8 : 1.4}
+                  strokeWidth={s.kind === "session" ? 1.3 : 1}
                   strokeDasharray={style.dash}
-                  opacity={0.85}
+                  opacity={0.8}
                   markerEnd={`url(#fd-${flow.id}-${style.marker})`}
                 />
                 <text
@@ -213,9 +213,9 @@ export default function FlowDiagram({ flow }: { flow: Flow }) {
                   textAnchor="middle"
                   fontSize={9.5}
                   fontFamily="var(--font-mono)"
-                  fill="var(--color-ink)"
+                  fill="var(--color-muted)"
                   stroke="var(--color-surface)"
-                  strokeWidth={3}
+                  strokeWidth={2.5}
                   paintOrder="stroke"
                 >
                   {s.label}
