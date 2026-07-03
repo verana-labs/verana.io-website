@@ -3,16 +3,26 @@ import {
   faShieldHalved,
   faSitemap,
   faSeedling,
+  faArrowUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   getLatestTrustedEcosystems,
   NETWORK_NAME,
+  NETWORK_APP_URL,
   type TrustedEcosystem,
 } from "../lib/verana";
 
 // Latest trusted ecosystems (spec-v2 §2.2): the newest ecosystems on the
 // network that trust-resolve as TRUSTED, live from the indexer + resolver.
 // Server component; the fetch layer caches so renders stay cheap.
+
+/** Middle-ellipsis truncation so long DIDs fit on one line. */
+function shortDid(did: string, max = 40): string {
+  if (did.length <= max) return did;
+  const head = Math.ceil((max - 3) * 0.6);
+  const tail = max - 3 - head;
+  return `${did.slice(0, head)}...${did.slice(-tail)}`;
+}
 
 function EcosystemRow({ e }: { e: TrustedEcosystem }) {
   return (
@@ -23,10 +33,22 @@ function EcosystemRow({ e }: { e: TrustedEcosystem }) {
             <FontAwesomeIcon icon={faShieldHalved} className="h-3 w-3" />
             Trusted
           </span>
-          <span className="font-medium text-ink">{e.name}</span>
+          <a
+            href={`${NETWORK_APP_URL}/tr/${e.id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={`Open ecosystem ${e.id} on the network frontend`}
+            className="group inline-flex items-center gap-1.5 font-medium text-ink hover:text-accent"
+          >
+            {e.name}
+            <FontAwesomeIcon
+              icon={faArrowUpRightFromSquare}
+              className="h-3 w-3 text-muted transition-colors group-hover:text-accent"
+            />
+          </a>
         </div>
-        <p className="mt-1 break-all font-mono text-[11px] text-muted">
-          {e.did}
+        <p className="mt-1 font-mono text-[11px] text-muted" title={e.did}>
+          {shortDid(e.did)}
         </p>
       </div>
       <div className="flex shrink-0 items-center gap-4 font-mono text-xs text-muted">

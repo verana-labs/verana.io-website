@@ -106,7 +106,7 @@ export default function Home() {
           </div>
           <div>
             <SectionHeading
-              eyebrow="The network is growing"
+              eyebrow="Testnet Ecosystems"
               title="Latest trusted ecosystems"
               intro="The newest ecosystems that trust-resolve as TRUSTED against the public registry."
             />

@@ -15,6 +15,10 @@ export const RESOLVER_URL =
 /** Human-readable network name shown next to live widgets. */
 export const NETWORK_NAME = process.env.VERANA_NETWORK_NAME ?? "testnet";
 
+/** The network frontend (trust-registry browser); /tr/{id} shows an ecosystem. */
+export const NETWORK_APP_URL =
+  process.env.NETWORK_APP_URL ?? "https://app.testnet.verana.network";
+
 export type TrustRegistry = {
   id: number;
   did: string;
