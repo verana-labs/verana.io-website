@@ -20,6 +20,14 @@ function claimStr(c: ResolvedCredential | undefined, key: string): string | null
   return typeof v === "string" && v.length > 0 ? v : null;
 }
 
+/** ISO 3166-1 alpha-2 country code as an emoji flag (e.g. "IN" -> 🇮🇳). */
+function countryFlag(code: string): string | null {
+  if (!/^[A-Za-z]{2}$/.test(code)) return null;
+  return String.fromCodePoint(
+    ...[...code.toUpperCase()].map((c) => 127397 + c.charCodeAt(0))
+  );
+}
+
 export default function ProofOfTrustCard({ result }: { result: ResolveResult }) {
   const trusted = result.trustStatus === "TRUSTED";
   const service = result.credentials?.find((c) => c.ecsType === "ECS-SERVICE");
@@ -89,13 +97,27 @@ export default function ProofOfTrustCard({ result }: { result: ResolveResult }) 
           {org ? (
             <>
               <p className="mt-2 font-semibold text-ink">
+                {(() => {
+                  const code = claimStr(org, "countryCode");
+                  const flag = code ? countryFlag(code) : null;
+                  return flag ? (
+                    <span
+                      role="img"
+                      aria-label={`Country: ${code}`}
+                      title={code ?? undefined}
+                      className="mr-1.5"
+                    >
+                      {flag}
+                    </span>
+                  ) : null;
+                })()}
                 {claimStr(org, "name") ?? "Unnamed organization"}
               </p>
-              <p className="mt-0.5 font-mono text-xs text-muted">
-                {[claimStr(org, "countryCode"), claimStr(org, "registryId")]
-                  .filter(Boolean)
-                  .join(" · ")}
-              </p>
+              {claimStr(org, "registryId") ? (
+                <p className="mt-0.5 font-mono text-xs text-muted">
+                  {claimStr(org, "registryId")}
+                </p>
+              ) : null}
               {claimStr(org, "address") ? (
                 <p className="mt-2 text-sm text-muted">{claimStr(org, "address")}</p>
               ) : null}
