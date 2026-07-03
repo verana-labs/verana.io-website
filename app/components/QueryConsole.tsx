@@ -102,7 +102,7 @@ const EXAMPLES: GraphExample[] = [
   },
   {
     id: "iso",
-    query: "Ecosystems that issue an ISO 42001 credential for France",
+    query: "Ecosystems that issue an ISO 42001 credential",
     results: [
       {
         name: "EU AI Trust Ecosystem",
