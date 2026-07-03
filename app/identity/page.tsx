@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Container, Section, SectionHeading, Button } from "../components/ui";
 import PageHero from "../components/PageHero";
 import ResolveDid from "../components/ResolveDid";
-import FlowDiagram from "../components/FlowDiagram";
+import Mermaid from "../components/Mermaid";
 import ConceptPager from "../components/ConceptPager";
 import { FLOWS } from "../lib/flows";
 import { LINKS } from "../lib/site";
@@ -64,8 +64,8 @@ export default function Identity() {
                   <span className="eyebrow">{flow.eyebrow}</span>
                   <h3 className="display mt-2 text-xl text-ink">{flow.title}</h3>
                   <p className="mt-2 max-w-3xl text-sm text-muted">{flow.intro}</p>
-                  <div className="mt-4">
-                    <FlowDiagram flow={flow} />
+                  <div className="card mt-4 p-6">
+                    <Mermaid chart={flow.mermaid} />
                   </div>
                 </div>
               ))}
