@@ -951,28 +951,7 @@ export default function Ecosystems() {
             </p>
           </div>
 
-          {/* b. worked examples: the centerpiece */}
-          <div>
-            <SectionHeading
-              eyebrow="Two worked examples"
-              title="Corporations join, and governments build"
-            />
-            <p className="reveal mt-4 max-w-3xl text-muted">
-              A corporation registers itself in Verana, then relates to the
-              registry in two complementary ways, and most participants do
-              both: <strong className="text-ink">join</strong> any number of
-              ecosystems as an accredited issuer, verifier, or holder, and{" "}
-              <strong className="text-ink">control</strong> any number of its
-              own. Explore both patterns: Acme Corp joins the ECS identity
-              baseline and an ISO certification ecosystem; the Republic of
-              Utopia builds a GovID ecosystem of its own.
-            </p>
-            <div className="reveal mt-6">
-              <EcosystemExplorer />
-            </div>
-          </div>
-
-          {/* c. ECS ecosystem */}
+          {/* b. ECS ecosystem: the identity baseline */}
           <div>
             <SectionHeading
               eyebrow="The identity baseline"
@@ -1018,6 +997,27 @@ export default function Ecosystems() {
                   <p className="mt-2 text-sm text-muted">{e.body}</p>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* c. worked examples: the centerpiece */}
+          <div>
+            <SectionHeading
+              eyebrow="Two worked examples"
+              title="Corporations join, and governments build"
+            />
+            <p className="reveal mt-4 max-w-3xl text-muted">
+              A corporation registers itself in Verana, then relates to the
+              registry in two complementary ways, and most participants do
+              both: <strong className="text-ink">join</strong> any number of
+              ecosystems as an accredited issuer, verifier, or holder, and{" "}
+              <strong className="text-ink">control</strong> any number of its
+              own. Explore both patterns: Acme Corp joins the ECS identity
+              baseline and an ISO certification ecosystem; the Republic of
+              Utopia builds a GovID ecosystem of its own.
+            </p>
+            <div className="reveal mt-6">
+              <EcosystemExplorer />
             </div>
           </div>
 

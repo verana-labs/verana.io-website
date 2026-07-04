@@ -51,15 +51,15 @@ const SCENES: SceneSpec[] = [
     nodes: [
       { id: "eco", x: 210, y: 64, r: 18, lit: true, icon: faLandmark, color: PRIMARY, label: "GovID Ecosystem", sub: "Republic of Utopia" },
       { id: "ministry", x: 105, y: 150, icon: faCertificate, color: PRIMARY, label: "Interior Ministry", sub: "issuer grantor" },
-      { id: "registries", x: 105, y: 240, icon: faStamp, color: ACCENT, label: "Civil registries", sub: "issuers" },
+      { id: "registries", x: 105, y: 240, icon: faStamp, color: ACCENT, label: "Civil registries" },
       { id: "citizen", x: 210, y: 300, icon: faUser, color: SUCCESS, label: "Citizen", sub: "GovID in wallet" },
       { id: "bank", x: 315, y: 240, icon: faMagnifyingGlass, color: ACCENT, label: "Bank", sub: "verifier" },
     ],
     edges: [
-      { from: "eco", to: "ministry", kind: "structural" },
-      { from: "ministry", to: "registries", kind: "structural", pill: { label: "accredits", x: 105, y: 208 } },
-      { from: "registries", to: "citizen", kind: "structural", pill: { label: "GovID", x: 150, y: 275 } },
-      { fromPt: [301, 251], toPt: [228, 293], kind: "verify", pill: { label: "verifies", x: 272, y: 258 } },
+      { from: "eco", to: "ministry", kind: "structural", arrow: true },
+      { from: "ministry", to: "registries", kind: "structural", arrow: true, pill: { label: "accredits", x: 105, y: 208 } },
+      { from: "registries", to: "citizen", kind: "structural", arrow: true, pill: { label: "issues GovID", x: 105, y: 284 } },
+      { fromPt: [228, 293], toPt: [301, 251], kind: "verify", pill: { label: "presents", x: 272, y: 258 } },
       { path: "M 315,220 C 345,150 300,95 232,72", kind: "fee", pill: { label: "verification fee", x: 330, y: 140 } },
     ],
     badges: [
@@ -86,11 +86,11 @@ const SCENES: SceneSpec[] = [
       { id: "supplier", x: 350, y: 90, icon: faBuilding, color: ACCENT, label: "Supplier", sub: "org credential" },
     ],
     edges: [
-      { from: "iso", to: "cert", kind: "structural" },
-      { from: "cert", to: "acme", kind: "structural", arrow: true, pill: { label: "ISO 9001", x: 152, y: 138 } },
-      { from: "acme", to: "employees", kind: "structural", pill: { label: "ECS-Badge", x: 172, y: 228 } },
-      { from: "acme", to: "services", kind: "structural", pill: { label: "ECS-Service", x: 280, y: 228 } },
-      { fromPt: [241, 136], toPt: [337, 102], kind: "verify", pill: { label: "verifies", x: 283, y: 134 } },
+      { from: "iso", to: "cert", kind: "structural", arrow: true },
+      { from: "cert", to: "acme", kind: "structural", arrow: true, pill: { label: "issues ISO 9001", x: 152, y: 138 } },
+      { from: "acme", to: "employees", kind: "structural", arrow: true, pill: { label: "issues ECS-Badge", x: 172, y: 228 } },
+      { from: "acme", to: "services", kind: "structural", arrow: true, pill: { label: "issues ECS-Service", x: 280, y: 228 } },
+      { fromPt: [337, 102], toPt: [241, 136], kind: "verify", pill: { label: "presents", x: 283, y: 134 } },
     ],
     badges: [{ x: 363, y: 77, kind: "check" }],
     steps: [
@@ -118,16 +118,16 @@ const SCENES: SceneSpec[] = [
       { id: "maintenance", x: 385, y: 312, r: 12, icon: faScrewdriverWrench, color: "var(--color-muted)", sub: "maintenance" },
     ],
     edges: [
-      { from: "operator", to: "m1", kind: "structural" },
-      { from: "operator", to: "m2", kind: "structural", pill: { label: "ECS-Service", x: 255, y: 122 } },
-      { from: "operator", to: "m3", kind: "structural" },
+      { from: "operator", to: "m1", kind: "structural", arrow: true },
+      { from: "operator", to: "m2", kind: "structural", arrow: true, pill: { label: "issues ECS-Service", x: 255, y: 122 } },
+      { from: "operator", to: "m3", kind: "structural", arrow: true },
       { from: "operator", to: "vpr", kind: "structuralDashed", pill: { label: "anchored", x: 165, y: 52 } },
-      { from: "collector", toPt: [90, 196], kind: "verify" },
-      { from: "collector", toPt: [170, 196], kind: "verify", pill: { label: "verify first", x: 120, y: 250 } },
-      { from: "collector", toPt: [250, 196], kind: "verify" },
+      { fromPt: [90, 196], to: "collector", kind: "verify" },
+      { fromPt: [170, 196], to: "collector", kind: "verify", pill: { label: "presents", x: 120, y: 250 } },
+      { fromPt: [250, 196], to: "collector", kind: "verify" },
       { path: "M 156,288 C 60,240 55,120 72,70", kind: "fee", pill: { label: "checks chain", x: 56, y: 168 } },
-      { from: "collector", to: "control", kind: "thin" },
-      { from: "collector", to: "maintenance", kind: "thin" },
+      { from: "control", to: "collector", kind: "thin" },
+      { from: "maintenance", to: "collector", kind: "thin" },
     ],
     badges: [
       { x: 101, y: 169, kind: "check" },
@@ -154,14 +154,14 @@ const SCENES: SceneSpec[] = [
       { id: "partner", x: 345, y: 255, icon: faRobot, color: ACCENT, label: "Partner agent", sub: "logistics" },
     ],
     edges: [
-      { from: "org", to: "agent", kind: "structural", pill: { label: "ECS-Service", x: 210, y: 108 } },
-      { from: "agent", to: "employee", kind: "verify" },
-      { from: "agent", to: "wallet", kind: "verify" },
+      { from: "org", to: "agent", kind: "structural", arrow: true, pill: { label: "issues ECS-Service", x: 210, y: 108 } },
+      { from: "employee", to: "agent", kind: "verify" },
+      { from: "wallet", to: "agent", kind: "verify" },
       { from: "agent", to: "graph", kind: "query", pill: { label: "trust-resolve", x: 264, y: 152 } },
       { from: "agent", to: "partner", kind: "session", pill: { label: "A2A session", x: 287, y: 226 } },
     ],
     pills: [
-      { label: "verify first", x: 126, y: 214, color: SUCCESS },
+      { label: "presents", x: 126, y: 214, color: SUCCESS },
       { label: "API", x: 330, y: 340, color: ACCENT },
       { label: "MCP", x: 378, y: 340, color: ACCENT },
     ],
@@ -191,8 +191,11 @@ export default function UseCases() {
       <Section>
         <Container className="space-y-10">
           <p className="reveal text-sm text-muted">
-            In every scene below, green arrows are verified interactions and
-            fees, and the numbers in the diagram match the steps beside it.
+            Every scene follows one arrow convention: accreditation and
+            issuance point at who receives them (grantor to issuer, issuer to
+            holder), and holders present their credentials to verifiers. Green
+            arrows are verified interactions and fees; the numbers in each
+            diagram match the steps beside it.
           </p>
 
           {USE_CASES.map((u, i) => (
