@@ -15,6 +15,7 @@ import {
   faIdCard,
   faServer,
   faIdBadge,
+  faWallet,
   faArrowsRotate,
   faMobileScreen,
   faChartLine,
@@ -214,7 +215,7 @@ function TrustGraphPipeline() {
           viewBox="0 0 960 618"
           className="h-auto w-full min-w-[720px]"
           role="img"
-          aria-label="The Trust Graph pipeline: the Verana public registry and the DID Documents on the web feed the indexer and the resolver; only verified trust results enter the typed graph of DIDs, ecosystems, schemas, credentials, participants, and endpoints, which user agents, AI agents, search engines, and auditors query."
+          aria-label="The Trust Graph pipeline: the Verana public registry and the DID Documents on the web, both maintained by each service's VS-Agent (the software that controls the DID and publishes its DID Document), feed the indexer and the resolver; only verified trust results enter the typed graph of DIDs, ecosystems, schemas, credentials, participants, and endpoints, which user agents, AI agents, search engines, and auditors query."
         >
           <defs>
             {(
@@ -293,8 +294,13 @@ function TrustGraphPipeline() {
           <line x1={508} y1={202} x2={592} y2={218} stroke={ACCENT} strokeWidth={1} opacity={0.4} />
           <Pill label="REST · Q1-Q4" x={630} y={222} color={ACCENT} />
 
-          {/* band 01: sources */}
+          {/* band 01: sources + the software that maintains them */}
+          <line x1={449} y1={58} x2={277} y2={58} stroke={ACCENT} strokeWidth={1.5} opacity={0.7} markerEnd="url(#tg-accent)" />
+          <Pill label="interacts" x={363} y={58} color={ACCENT} />
+          <line x1={511} y1={58} x2={683} y2={58} stroke={ACCENT} strokeWidth={1.5} opacity={0.7} markerEnd="url(#tg-accent)" />
+          <Pill label="controls · publishes" x={597} y={58} color={ACCENT} />
           <PipeNode x={240} y={58} r={30} color={PRIMARY} icon={faCubes} glyph={22} label="The VPR" sub="Verana L1 · registries · schemas · permissions · deposits" />
+          <PipeNode x={480} y={58} r={27} color={ACCENT} icon={faWallet} glyph={20} label="VS-Agent" sub="the software behind a VS" />
           <PipeNode x={720} y={58} r={30} color={ACCENT} icon={faFileLines} glyph={22} label="DID Documents" sub="Linked Verifiable Presentations · served from the web" />
 
           {/* band 02: pipeline modules */}
