@@ -14,7 +14,7 @@ import {
   faTableList,
   faIdCard,
   faServer,
-  faKey,
+  faIdBadge,
   faArrowsRotate,
   faMobileScreen,
   faChartLine,
@@ -214,7 +214,7 @@ function TrustGraphPipeline() {
           viewBox="0 0 960 618"
           className="h-auto w-full min-w-[720px]"
           role="img"
-          aria-label="The Trust Graph pipeline: the Verana public registry and the DID Documents on the web feed the indexer and the resolver; only verified trust results enter the typed graph of DIDs, registries, schemas, credentials, permissions, and endpoints, which user agents, AI agents, search engines, and auditors query."
+          aria-label="The Trust Graph pipeline: the Verana public registry and the DID Documents on the web feed the indexer and the resolver; only verified trust results enter the typed graph of DIDs, ecosystems, schemas, credentials, participants, and endpoints, which user agents, AI agents, search engines, and auditors query."
         >
           <defs>
             {(
@@ -311,8 +311,8 @@ function TrustGraphPipeline() {
           ))}
           <path d="M 330,318 C 288,348 288,368 330,398" fill="none" stroke={PRIMARY} strokeWidth={1.5} opacity={0.55} />
           <PipeNode x={480} y={352} r={26} color={ACCENT} icon={faFingerprint} glyph={19} label="Did" />
-          <PipeNode x={330} y={296} r={22} color={PRIMARY} icon={faKey} glyph={15} label="Permission" />
-          <PipeNode x={215} y={352} r={22} color={PRIMARY} icon={faSitemap} glyph={15} label="TrustRegistry" />
+          <PipeNode x={330} y={296} r={22} color={PRIMARY} icon={faIdBadge} glyph={15} label="Participant" />
+          <PipeNode x={215} y={352} r={22} color={PRIMARY} icon={faSitemap} glyph={15} label="Ecosystem" />
           <PipeNode x={330} y={420} r={22} color={PRIMARY} icon={faTableList} glyph={15} label="CredentialSchema" />
           <PipeNode x={745} y={352} r={22} color={ACCENT} icon={faServer} glyph={15} label="ServiceEndpoint" />
           <PipeNode x={630} y={420} r={22} color={SUCCESS} icon={faIdCard} glyph={15} label="Credential" />
