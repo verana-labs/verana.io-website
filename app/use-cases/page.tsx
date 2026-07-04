@@ -23,8 +23,26 @@ import {
   faScrewdriverWrench,
   faMobileScreen,
   faDiagramProject,
+  faWrench,
+  faGraduationCap,
+  faAward,
+  faLocationDot,
+  faSimCard,
+  faUserDoctor,
+  faIdCard,
+  faIdBadge,
+  faCakeCandles,
+  faNewspaper,
+  faCar,
+  faBoxesStacked,
+  faSeedling,
+  faRecycle,
+  faFileShield,
+  faTicket,
+  faHouse,
+  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import { Container, Section } from "../components/ui";
+import { Container, Section, SectionHeading } from "../components/ui";
 import PageHero from "../components/PageHero";
 import UseCaseScene, { type SceneSpec } from "../components/UseCaseScene";
 import { USE_CASES } from "../lib/content";
@@ -179,6 +197,31 @@ const SCENES: SceneSpec[] = [
   },
 ];
 
+// Concrete ecosystems anyone could stand up on the public registry: a name
+// and the credentials it would issue.
+const ECOSYSTEM_IDEAS = [
+  { icon: faWrench, name: "Trades Certification", creds: "plumbers · electricians · gas fitters" },
+  { icon: faGraduationCap, name: "University Ecosystem", creds: "diplomas · transcripts" },
+  { icon: faAward, name: "Micro-credentials", creds: "course badges · English C1" },
+  { icon: faMicrochip, name: "Device Certification", creds: "device models · safety marks" },
+  { icon: faRobot, name: "AI Agent Certification", creds: "agent compliance · ISO 42001" },
+  { icon: faLocationDot, name: "Address Certification", creds: "proof of residence · delivery" },
+  { icon: faSimCard, name: "Mobile Number (SIM)", creds: "telco-certified numbers" },
+  { icon: faUserDoctor, name: "Professional Licensing", creds: "doctors · lawyers · architects" },
+  { icon: faIdCard, name: "Reusable KYC", creds: "bank-grade identity, reused" },
+  { icon: faIdBadge, name: "Employee Badges", creds: "staff identity · roles" },
+  { icon: faCakeCandles, name: "Age Verification", creds: "18+ proofs, nothing more" },
+  { icon: faNewspaper, name: "Press Credentials", creds: "accredited journalists" },
+  { icon: faCar, name: "Driving & Mobility", creds: "driving licenses · vehicle titles" },
+  { icon: faBuilding, name: "Business Registry (KYB)", creds: "company existence · directors" },
+  { icon: faBoxesStacked, name: "Supply Chain & Customs", creds: "certificates of origin · AEO" },
+  { icon: faSeedling, name: "Food Origin & Safety", creds: "organic · protected origin" },
+  { icon: faRecycle, name: "Sustainability (ESG)", creds: "carbon footprint · ISO 14001" },
+  { icon: faFileShield, name: "Insurance Certificates", creds: "liability proofs for contractors" },
+  { icon: faTicket, name: "Ticketing & Access", creds: "verified tickets · venue access" },
+  { icon: faHouse, name: "Real Estate & Tenancy", creds: "tenancy references · titles" },
+];
+
 export default function UseCases() {
   return (
     <>
@@ -288,6 +331,50 @@ export default function UseCases() {
               </div>
             </article>
           ))}
+
+          {/* ecosystem ideas: the variety wall */}
+          <div>
+            <SectionHeading
+              eyebrow="Ecosystem ideas"
+              title="Ecosystems anyone can build"
+              intro="Anyone can create an ecosystem on the public registry: define the credential schema, accredit issuers and verifiers, set the business model. A few of the many:"
+            />
+            <div className="reveal-stagger mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {ECOSYSTEM_IDEAS.map((e) => (
+                <div key={e.name} className="card p-4">
+                  <div className="flex items-center gap-2.5">
+                    <FontAwesomeIcon
+                      icon={e.icon}
+                      className="h-4 w-4 shrink-0 text-primary"
+                    />
+                    <h3 className="text-sm font-semibold text-ink">{e.name}</h3>
+                  </div>
+                  <p className="mt-1.5 font-mono text-[11px] text-muted">
+                    {e.creds}
+                  </p>
+                </div>
+              ))}
+              <Link
+                href="/ecosystems"
+                className="card group flex flex-col justify-center p-4 transition-colors hover:border-primary"
+              >
+                <div className="flex items-center gap-2.5">
+                  <FontAwesomeIcon
+                    icon={faPlus}
+                    className="h-4 w-4 shrink-0 text-accent"
+                  />
+                  <h3 className="text-sm font-semibold text-ink">...and yours</h3>
+                </div>
+                <p className="mt-1.5 inline-flex items-center gap-2 font-mono text-[11px] text-accent">
+                  build an ecosystem
+                  <FontAwesomeIcon
+                    icon={faArrowRightLong}
+                    className="h-3 w-3 transition-transform group-hover:translate-x-1"
+                  />
+                </p>
+              </Link>
+            </div>
+          </div>
         </Container>
       </Section>
 
