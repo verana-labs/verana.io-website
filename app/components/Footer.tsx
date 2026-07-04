@@ -16,6 +16,7 @@ const COLUMNS: { title: string; links: { label: string; href: string; ext?: bool
   {
     title: "Ecosystem",
     links: [
+      { label: "Governance", href: "/governance" },
       { label: "Brand", href: "/brand" },
       { label: "Contact", href: "/contact" },
     ],

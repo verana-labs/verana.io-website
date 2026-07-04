@@ -16,7 +16,6 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/how-it-works", destination: "/ecosystems", permanent: true },
-      { source: "/software", destination: "/build", permanent: true },
       { source: "/playground", destination: "/identity", permanent: true },
       { source: "/network", destination: "/", permanent: true },
       { source: "/integrators", destination: "/contact", permanent: true },
