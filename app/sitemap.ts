@@ -7,7 +7,7 @@ const ROUTES = [
   "/identity",
   "/discovery",
   "/use-cases",
-  "/software",
+  "/infrastructure",
   "/governance",
   "/brand",
   "/contact",

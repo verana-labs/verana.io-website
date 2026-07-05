@@ -23,7 +23,7 @@ import PageHero from "../components/PageHero";
 import { LINKS } from "../lib/site";
 
 export const metadata: Metadata = {
-  title: "Software",
+  title: "Infrastructure",
   description:
     "The real modules of the Verana stack, by role: run the network, serve the trust data, discover and observe, operate as an organization, build services. Open source, run your own instance.",
 };
@@ -216,7 +216,7 @@ export default function Software() {
   return (
     <>
       <PageHero
-        eyebrow="Software"
+        eyebrow="Infrastructure"
         title="The stack, module by module"
         intro="Everything that runs Verana is open source: run the whole stack or any piece of it, in your own datacenter. The testnet instances below are live."
       />

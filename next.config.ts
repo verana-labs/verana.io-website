@@ -18,6 +18,7 @@ const nextConfig: NextConfig = {
       { source: "/how-it-works", destination: "/ecosystems", permanent: true },
       { source: "/playground", destination: "/identity", permanent: true },
       { source: "/build", destination: "https://docs.verana.io", permanent: true },
+      { source: "/software", destination: "/infrastructure", permanent: true },
       { source: "/network", destination: "/", permanent: true },
       { source: "/integrators", destination: "/contact", permanent: true },
     ];

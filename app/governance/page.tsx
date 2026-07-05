@@ -64,7 +64,7 @@ const BODIES = [
     icon: faCode,
     name: "Independent builders",
     body: "Anyone can build on the open protocol, without permission: run the software, join or create ecosystems, ship products and services.",
-    href: "/software",
+    href: "/infrastructure",
     label: "run the software",
     internal: true,
   },

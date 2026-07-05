@@ -15,7 +15,7 @@ const NAV = [
   { href: "/identity", label: "Identity", seq: "2" },
   { href: "/discovery", label: "Discovery", seq: "3" },
   { href: "/use-cases", label: "Use cases" },
-  { href: "/software", label: "Software" },
+  { href: "/infrastructure", label: "Infrastructure" },
 ];
 
 export default function Nav() {
