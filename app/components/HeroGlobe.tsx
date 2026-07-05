@@ -286,7 +286,8 @@ export default function HeroGlobe() {
         const world = { x: u.x * SPHERE_R * liftK, y: u.y * SPHERE_R * liftK, z: u.z * SPHERE_R * liftK };
         const r = rotate(world, yaw, pitch);
         const p = project(r);
-        const segAlpha = alpha * fog(r.z) * hemi(r.z);
+        const lenFade = 0.3 + 0.7 * Math.sin(Math.PI * t);
+        const segAlpha = alpha * lenFade * fog(r.z) * hemi(r.z);
         if (prev && started) {
           ctx.strokeStyle = rgba(color, segAlpha);
           ctx.lineWidth = lineWidth * scaleRef();
@@ -460,22 +461,58 @@ export default function HeroGlobe() {
         }
       }
 
-      /* -- registry core (ghost through the sphere) -------------------- */
+      /* -- registry core: the Council validator ring --------------------
+       * The network is governed and secured by the Verana Council: up to
+       * 25 seats, every member running a validator. The core is that ring,
+       * ghosted through the sphere: 25 seat points on a tilted, slowly
+       * precessing 3D ring around a small kernel (the ledger). It flashes
+       * when verification pulses arrive.
+       * ------------------------------------------------------------------ */
       const flash = coreFlash(raw);
       const coreP = project(rotate({ x: 0, y: 0, z: 0 }, yaw, pitch));
-      const coreAlpha = (isDark ? 0.5 : 0.42) + flash * 0.5;
-      ctx.fillStyle = rgba(PURPLE, coreAlpha);
+
+      // kernel: the ledger itself
+      ctx.fillStyle = rgba(PURPLE, (isDark ? 0.55 : 0.45) + flash * 0.4);
       ctx.beginPath();
-      ctx.arc(coreP.x, coreP.y, (3.2 + flash * 1.5) * scaleRef(), 0, Math.PI * 2);
+      ctx.arc(coreP.x, coreP.y, (2.8 + flash * 1.2) * scaleRef(), 0, Math.PI * 2);
       ctx.fill();
-      for (let ring = 0; ring < 2; ring++) {
-        const pulse = ((timeSec * 0.5 + ring * 0.5) % 1 + 1) % 1;
-        const rr = (8 + ring * 7 + pulse * 6 + flash * 6) * scaleRef();
-        ctx.strokeStyle = rgba(PURPLE, (0.3 - pulse * 0.22 + flash * 0.3) * boost);
-        ctx.lineWidth = 1 * scaleRef();
-        ctx.beginPath();
-        ctx.arc(coreP.x, coreP.y, rr, 0, Math.PI * 2);
-        ctx.stroke();
+
+      // 25 council seats on a tilted ring, precessing on its own clock
+      const SEATS = 25;
+      const RING_R = 0.15;
+      const TILT = 0.95; // ring plane tilt vs the globe's equator
+      const spin = timeSec * 0.22;
+      let prevSeat: { x: number; y: number; a: number } | null = null;
+      let firstSeat: { x: number; y: number; a: number } | null = null;
+      for (let i = 0; i <= SEATS; i++) {
+        const th = ((i % SEATS) / SEATS) * Math.PI * 2 + spin;
+        const base = { x: Math.cos(th) * RING_R, y: 0, z: Math.sin(th) * RING_R };
+        // tilt the ring plane around X
+        const tilted = {
+          x: base.x,
+          y: -base.z * Math.sin(TILT),
+          z: base.z * Math.cos(TILT),
+        };
+        const r = rotate(tilted, yaw, pitch);
+        const p = project(r);
+        const a = ((isDark ? 0.68 : 0.55) + flash * 0.32) * fog(r.z);
+        // faint ring path connecting the seats
+        if (prevSeat) {
+          ctx.strokeStyle = rgba(PURPLE, Math.min(prevSeat.a, a) * 0.5);
+          ctx.lineWidth = 0.8 * scaleRef();
+          ctx.beginPath();
+          ctx.moveTo(prevSeat.x, prevSeat.y);
+          ctx.lineTo(p.x, p.y);
+          ctx.stroke();
+        }
+        if (i < SEATS) {
+          ctx.fillStyle = rgba(PURPLE, Math.min(1, a));
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, (1.8 + flash * 0.7) * scaleRef() * Math.max(0.6, p.k), 0, Math.PI * 2);
+          ctx.fill();
+        }
+        prevSeat = { x: p.x, y: p.y, a };
+        if (!firstSeat) firstSeat = prevSeat;
       }
 
       /* -- additive pass: arcs, pulses, traffic ------------------------- */
@@ -527,7 +564,7 @@ export default function HeroGlobe() {
               const pw = { x: part.u.x * SPHERE_R, y: part.u.y * SPHERE_R, z: part.u.z * SPHERE_R };
               const pr = rotate(pw, yaw, pitch);
               const pp = project(pr);
-              const a = 0.32 * Math.min(rootA, fog(pr.z) * hemi(pr.z) * boost);
+              const a = 0.42 * Math.min(rootA, fog(pr.z) * hemi(pr.z) * boost);
               ctx.strokeStyle = rgba(PURPLE, a);
               ctx.lineWidth = 0.8 * scaleRef();
               ctx.beginPath();
@@ -537,16 +574,16 @@ export default function HeroGlobe() {
 
               const kind = part.kind === "service" ? blue : GREEN;
               const pa = fog(pr.z) * hemi(pr.z) * boost;
-              ctx.fillStyle = rgba(kind, Math.min(1, 0.85 * pa));
+              ctx.fillStyle = rgba(kind, Math.min(1, 0.95 * pa));
               ctx.beginPath();
-              ctx.arc(pp.x, pp.y, 2.5 * scaleRef() * Math.max(0.6, pp.k), 0, Math.PI * 2);
+              ctx.arc(pp.x, pp.y, 3 * scaleRef() * Math.max(0.6, pp.k), 0, Math.PI * 2);
               ctx.fill();
             }
             // root hex with halo (breathes on its own phase)
             const pulse = 1 + 0.08 * Math.sin(timeSec * 1.1 + ci * 1.7);
-            const hr = 10.5 * scaleRef() * Math.max(0.6, rp.k) * pulse;
+            const hr = 12 * scaleRef() * Math.max(0.6, rp.k) * pulse;
             const halo = ctx.createRadialGradient(rp.x, rp.y, 0, rp.x, rp.y, hr * 2.6);
-            halo.addColorStop(0, rgba(PURPLE, 0.22 * rootA));
+            halo.addColorStop(0, rgba(PURPLE, 0.3 * rootA));
             halo.addColorStop(1, rgba(PURPLE, 0));
             ctx.fillStyle = halo;
             ctx.beginPath();
@@ -576,9 +613,9 @@ export default function HeroGlobe() {
           z: r.z,
           draw: () => {
             const pulse = 1 + 0.1 * Math.sin(timeSec * 1.3 + ci * 2.1);
-            const hr = 8 * scaleRef() * Math.max(0.6, p.k) * pulse;
+            const hr = 9.5 * scaleRef() * Math.max(0.6, p.k) * pulse;
             const halo = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, hr * 2.8);
-            halo.addColorStop(0, rgba(blue, 0.28 * a));
+            halo.addColorStop(0, rgba(blue, 0.36 * a));
             halo.addColorStop(1, rgba(blue, 0));
             ctx.fillStyle = halo;
             ctx.beginPath();
