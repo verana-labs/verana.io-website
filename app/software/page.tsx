@@ -87,7 +87,7 @@ const GROUPS: Group[] = [
         icon: faShieldHalved,
         name: "Resolver",
         repo: { label: "verana-labs/verana-resolver", href: "https://github.com/verana-labs/verana-resolver" },
-        testnet: ["resolver.testnet.verana.network"],
+        testnet: ["resolver.testnet.verana.network/docs"],
         body: "The verification gate: resolves DIDs, dereferences the credentials presented as Linked VPs, and verifies accreditations per the Verifiable Trust spec. Exposes the trust-resolution REST API and a ToIP TRQP interface.",
       },
     ],
@@ -199,7 +199,7 @@ function ModuleCard({ m }: { m: Module }) {
         {m.testnet?.map((t) => (
           <a
             key={t}
-            href={`https://${t}/`}
+            href={`https://${t}`}
             target="_blank"
             rel="noopener noreferrer"
             className="break-all font-mono text-[11px] text-muted hover:text-accent"

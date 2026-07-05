@@ -438,7 +438,7 @@ export default function HeroGlobe() {
       if (!reduceMotion) scheduleAttempts(raw);
 
       const ws = worldScale();
-      const boost = isDark ? 1 : 0.78;
+      const boost = isDark ? 1 : 0.28;
 
       /* -- sphere suggestion: limb + latitude rings -------------------- */
       ctx.strokeStyle = rgba(PURPLE, (isDark ? 0.22 : 0.16) * boost);
