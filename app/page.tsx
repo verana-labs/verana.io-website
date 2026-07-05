@@ -12,7 +12,7 @@ import {
   faRobot,
 } from "@fortawesome/free-solid-svg-icons";
 import { Container, Section, SectionHeading, Button } from "./components/ui";
-import HeroVerify from "./components/HeroVerify";
+import HeroGlobe from "./components/HeroGlobe";
 import LatestEcosystems from "./components/LatestEcosystems";
 import ResolveDid from "./components/ResolveDid";
 import { HERO, THREE_PARTS, USE_CASES } from "./lib/content";
@@ -31,7 +31,7 @@ export default function Home() {
     <>
       {/* Hero: the "verify first, then connect" animation is the backdrop */}
       <section className="hero-glow relative overflow-hidden border-b border-rule">
-        <HeroVerify />
+        <HeroGlobe />
         <Container className="relative z-10 py-24 sm:py-32">
           <p className="eyebrow reveal">[ {HERO.eyebrow} ]</p>
           <h1 className="display reveal mt-5 max-w-4xl text-4xl sm:text-6xl text-ink">
