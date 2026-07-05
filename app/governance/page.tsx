@@ -64,8 +64,8 @@ const BODIES = [
     icon: faCode,
     name: "Independent builders",
     body: "Anyone can build on the open protocol, without permission: run the software, join or create ecosystems, ship products and services.",
-    href: "/build",
-    label: "build on Verana",
+    href: "/software",
+    label: "run the software",
     internal: true,
   },
 ];

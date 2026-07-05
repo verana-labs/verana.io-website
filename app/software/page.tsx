@@ -20,7 +20,6 @@ import {
 import Link from "next/link";
 import { Container, Section, SectionHeading, Button } from "../components/ui";
 import PageHero from "../components/PageHero";
-import ConceptPager from "../components/ConceptPager";
 import { LINKS } from "../lib/site";
 
 export const metadata: Metadata = {
@@ -236,7 +235,9 @@ export default function Software() {
           ))}
 
           <div className="reveal flex flex-wrap items-center gap-3">
-            <Button href="/build">Build on Verana</Button>
+            <Button href={LINKS.docs} external>
+              Build on Verana
+            </Button>
             <Button href={LINKS.github} variant="ghost" external>
               github.com/verana-labs
             </Button>
@@ -248,8 +249,6 @@ export default function Software() {
               <FontAwesomeIcon icon={faArrowRightLong} className="h-3.5 w-3.5" />
             </Link>
           </div>
-
-          <ConceptPager nextHref="/build" nextLabel="Build" />
         </Container>
       </Section>
     </>

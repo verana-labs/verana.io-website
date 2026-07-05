@@ -10,7 +10,6 @@ const COLUMNS: { title: string; links: { label: string; href: string; ext?: bool
       { label: "Verifiable identity", href: "/identity" },
       { label: "Discovery", href: "/discovery" },
       { label: "Use cases", href: "/use-cases" },
-      { label: "Build", href: "/build" },
     ],
   },
   {

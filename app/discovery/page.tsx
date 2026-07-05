@@ -403,7 +403,7 @@ export default function Discovery() {
             <Button href={LINKS.docs} variant="ghost" external>
               API and MCP docs
             </Button>
-            <Button href="/build" variant="ghost">
+            <Button href={LINKS.docs} variant="ghost" external>
               Build on Verana
             </Button>
           </div>

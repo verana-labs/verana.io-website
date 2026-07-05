@@ -42,7 +42,7 @@ export default function Home() {
           </p>
           <div className="reveal mt-8 flex flex-wrap gap-3">
             <Button href="/ecosystems">See how it works</Button>
-            <Button href="/build" variant="ghost">
+            <Button href={LINKS.docs} variant="ghost" external>
               Build on Verana
             </Button>
           </div>

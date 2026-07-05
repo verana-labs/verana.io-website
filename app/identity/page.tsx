@@ -306,7 +306,7 @@ export default function Identity() {
             <Button href={LINKS.trustSpec} variant="ghost" external>
               Verifiable Trust spec
             </Button>
-            <Button href="/build" variant="ghost">
+            <Button href={LINKS.docs} variant="ghost" external>
               Build on Verana
             </Button>
           </div>

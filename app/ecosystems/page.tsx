@@ -1025,7 +1025,7 @@ export default function Ecosystems() {
             <Button href={LINKS.vprSpec} variant="ghost" external>
               VPR spec
             </Button>
-            <Button href="/build" variant="ghost">
+            <Button href={LINKS.docs} variant="ghost" external>
               Build on Verana
             </Button>
           </div>
