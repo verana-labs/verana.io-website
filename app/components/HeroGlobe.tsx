@@ -312,7 +312,7 @@ export default function HeroGlobe() {
     const drawPulse = (world: Vec3, color: Rgb, alpha: number, radius: number, yaw: number, pitch: number) => {
       const r = rotate(world, yaw, pitch);
       const p = project(r);
-      const a = alpha * fog(r.z);
+      const a = alpha * fog(r.z) * (isDark ? 1 : 0.8);
       const rad = radius * scaleRef() * Math.max(0.6, p.k);
       const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, rad * 4);
       glow.addColorStop(0, rgba(color, a * (isDark ? 0.55 : 0.4)));
@@ -368,8 +368,9 @@ export default function HeroGlobe() {
       const blue = isDark ? BLUE : BLUE_LIGHT;
 
       // REACH: dashed arc grows toward the target
+      const damp = isDark ? 1 : 0.75;
       const reachT = Math.min(1, age / REACH_END);
-      drawSurfaceArc(corpU, at.target, VERIFY_LIFT, blue, 0.5, 1.1, yaw, pitch, 0, reachT, true);
+      drawSurfaceArc(corpU, at.target, VERIFY_LIFT, blue, 0.5 * damp, 1.1, yaw, pitch, 0, reachT, true);
 
       // RESOLVE: pulses dive from both endpoints to the registry core and back
       if (age > REACH_END && age <= RESOLVE_END) {
@@ -387,7 +388,7 @@ export default function HeroGlobe() {
       if (age > RESOLVE_END) {
         const v = (age - RESOLVE_END) / (VERDICT_END - RESOLVE_END); // 0..1
         if (at.ok) {
-          drawSurfaceArc(corpU, at.target, VERIFY_LIFT, GREEN, 0.75, 1.5, yaw, pitch, 0, v);
+          drawSurfaceArc(corpU, at.target, VERIFY_LIFT, GREEN, 0.75 * damp, 1.5, yaw, pitch, 0, v);
           const sparkU = slerp(corpU, at.target, v);
           const liftK = 1 + VERIFY_LIFT * Math.sin(Math.PI * v);
           drawPulse(
@@ -399,7 +400,7 @@ export default function HeroGlobe() {
             pitch
           );
         } else {
-          drawSurfaceArc(corpU, at.target, VERIFY_LIFT, blue, 0.4 * (1 - v), 1, yaw, pitch, 0, 1, true);
+          drawSurfaceArc(corpU, at.target, VERIFY_LIFT, blue, 0.4 * damp * (1 - v), 1, yaw, pitch, 0, 1, true);
         }
       }
     };
@@ -437,7 +438,7 @@ export default function HeroGlobe() {
       if (!reduceMotion) scheduleAttempts(raw);
 
       const ws = worldScale();
-      const boost = isDark ? 1 : 1.25;
+      const boost = isDark ? 1 : 0.78;
 
       /* -- sphere suggestion: limb + latitude rings -------------------- */
       ctx.strokeStyle = rgba(PURPLE, (isDark ? 0.22 : 0.16) * boost);
@@ -479,7 +480,7 @@ export default function HeroGlobe() {
       const coreP = project(rotate({ x: 0, y: 0, z: 0 }, yaw, pitch));
 
       // kernel: the ledger itself
-      ctx.fillStyle = rgba(PURPLE, (isDark ? 0.55 : 0.45) + flash * 0.4);
+      ctx.fillStyle = rgba(PURPLE, (isDark ? 0.55 : 0.34) + flash * 0.4);
       ctx.beginPath();
       ctx.arc(coreP.x, coreP.y, (2.8 + flash * 1.2) * scaleRef(), 0, Math.PI * 2);
       ctx.fill();
@@ -502,7 +503,7 @@ export default function HeroGlobe() {
         };
         const r = rotate(tilted, yaw, pitch);
         const p = project(r);
-        const a = ((isDark ? 0.68 : 0.55) + flash * 0.32) * fog(r.z);
+        const a = ((isDark ? 0.68 : 0.42) + flash * 0.32) * fog(r.z);
         // faint ring path connecting the seats
         if (prevSeat) {
           ctx.strokeStyle = rgba(PURPLE, Math.min(prevSeat.a, a) * 0.5);
