@@ -121,6 +121,13 @@ const CLUSTERS: Cluster[] = [
   cluster(-28, 28, 2.2, 5),
   cluster(-8, 118, 0.9, 4),
   cluster(30, -115, 1.9, 4),
+  cluster(62, -60, 0.7, 4),
+  cluster(55, 150, 2.6, 3),
+  cluster(-50, -30, 1.1, 4),
+  cluster(-45, 100, 0.5, 3),
+  cluster(5, -170, 1.7, 4),
+  cluster(-60, -130, 2.9, 3),
+  cluster(70, 90, 0.2, 4),
 ];
 
 // Corporations: surface anchors between clusters, lifted slightly off the
