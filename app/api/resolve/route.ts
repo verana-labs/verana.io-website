@@ -14,12 +14,23 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const result = await resolveDid(did, "full");
+    // Always hit the resolver live: a stale cached UNTRUSTED must never mask
+    // a fixed/refreshed resolver (the upstream caches evaluations itself).
+    const result = await resolveDid(did, "full", 30_000, { fresh: true });
     // Best-effort extras from the DID documents (logos, credential URLs).
     const enrichment = await getPotEnrichment(result).catch(() => ({}));
     return NextResponse.json(
       { ...result, enrichment },
-      { headers: { "Cache-Control": "public, max-age=120" } }
+      {
+        headers: {
+          // Only a positive verdict is briefly cacheable by the browser;
+          // negative verdicts must re-check so recoveries show immediately.
+          "Cache-Control":
+            result.trustStatus === "TRUSTED"
+              ? "public, max-age=60"
+              : "no-store",
+        },
+      }
     );
   } catch {
     return NextResponse.json(
