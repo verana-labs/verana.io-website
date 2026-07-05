@@ -80,17 +80,25 @@ export async function listTrustRegistries(
   return data.trust_registries ?? [];
 }
 
-/** Trust-resolve a DID against the resolver. */
+/** Trust-resolve a DID against the resolver.
+ *
+ *  `fresh: true` bypasses Next's data cache entirely — used by the
+ *  interactive Resolve-a-DID widget so that a fixed/refreshed resolver is
+ *  reflected immediately (the upstream resolver has its own ~1h evaluation
+ *  cache, so this stays cheap). The default cached mode is for background
+ *  aggregation (the latest-trusted-ecosystems scan), where a cached UNTRUSTED
+ *  only means an entry appears in the list up to 10 minutes late. */
 export async function resolveDid(
   did: string,
   detail: "summary" | "full" = "summary",
-  timeoutMs = 30_000
+  timeoutMs = 30_000,
+  opts: { fresh?: boolean } = {}
 ): Promise<ResolveResult> {
   const url =
     `${RESOLVER_URL}/v1/trust/resolve` +
     `?did=${encodeURIComponent(did)}&detail=${detail}`;
   const res = await fetch(url, {
-    next: { revalidate: 600 },
+    ...(opts.fresh ? { cache: "no-store" as const } : { next: { revalidate: 600 } }),
     signal: AbortSignal.timeout(timeoutMs),
   });
   if (!res.ok) throw new Error(`resolver failed: ${res.status}`);
