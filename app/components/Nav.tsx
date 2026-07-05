@@ -16,6 +16,7 @@ const NAV = [
   { href: "/discovery", label: "Discovery", seq: "3" },
   { href: "/use-cases", label: "Use cases" },
   { href: "/infrastructure", label: "Infrastructure" },
+  { href: "/about", label: "About" },
 ];
 
 export default function Nav() {
