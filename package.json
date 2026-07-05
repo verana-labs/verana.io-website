@@ -1,19 +1,33 @@
 {
-  "name": "verana-io-codex-site",
-  "private": true,
+  "name": "verana.io-website",
   "version": "0.1.0",
+  "private": true,
+  "description": "verana.io - the open trust infrastructure for the verifiable internet. Network and software front door of Verana (Next.js + Tailwind v4).",
+  "license": "Apache-2.0",
   "scripts": {
-    "build:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --minify",
-    "watch:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch",
-    "build": "hugo -d public",
-    "dev": "concurrently \"npm:watch:css\" \"hugo server -D\""
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^7.3.0",
+    "@fortawesome/free-brands-svg-icons": "^7.3.0",
+    "@fortawesome/free-solid-svg-icons": "^7.3.0",
+    "@fortawesome/react-fontawesome": "^3.3.1",
+    "next": "^15.3.4",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "sharp": "^0.34.5",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.45",
-    "postcss-cli": "^11.0.0",
-    "concurrently": "^9.0.1",
-    "tailwindcss": "^3.4.10",
-    "@tailwindcss/typography": "^0.5.15"
+    "@tailwindcss/postcss": "^4.1.11",
+    "@types/node": "^22.13.5",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.7.3"
   }
 }
