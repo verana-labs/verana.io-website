@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faIdCard,
   faStamp,
   faMagnifyingGlass,
   faShieldHalved,
@@ -33,7 +32,16 @@ export default function Integrations() {
           {/* MOSIP Inji suite */}
           <article className="card reveal overflow-hidden">
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-rule bg-surface-2 px-5 py-3.5">
-              <FontAwesomeIcon icon={faIdCard} className="h-4 w-4 text-primary" />
+              {/* official MOSIP logo (black wordmark) on a light chip so it
+                  reads in both themes */}
+              <span className="inline-flex items-center rounded-lg bg-white px-2.5 py-1.5">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/mosip-logo.png"
+                  alt="MOSIP"
+                  className="h-6 w-auto"
+                />
+              </span>
               <h2 className="display text-xl text-ink sm:text-2xl">
                 MOSIP · Inji suite
               </h2>
