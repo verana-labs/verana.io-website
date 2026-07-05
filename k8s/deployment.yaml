@@ -33,12 +33,9 @@ spec:
               value: "https://app.testnet.verana.network"
             - name: VERANA_NETWORK_NAME
               value: "testnet"
+            # Relaticle CRM (in-cluster, same instance as the Foundation site).
             - name: RELATICLE_API_URL
-              valueFrom:
-                secretKeyRef:
-                  name: verana-io-website-secrets
-                  key: RELATICLE_API_URL
-                  optional: true
+              value: http://relaticle.relaticle.svc.cluster.local
             - name: RELATICLE_API_TOKEN
               valueFrom:
                 secretKeyRef:
