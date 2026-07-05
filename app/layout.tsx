@@ -7,6 +7,8 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import AnnouncementBar from "./components/AnnouncementBar";
 import Reveal from "./components/Reveal";
+import JsonLd from "./components/JsonLd";
+import Analytics from "./components/Analytics";
 
 // Font Awesome: CSS is imported above, stop the runtime from re-injecting it.
 config.autoAddCss = false;
@@ -49,9 +51,16 @@ export const metadata: Metadata = {
   applicationName: SITE_NAME,
   alternates: { canonical: "/" },
   icons: {
-    icon: [{ url: "/favicon.ico" }],
-    apple: [{ url: "/apple-touch-icon.png" }],
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
+  manifest: "/site.webmanifest",
   openGraph: {
     type: "website",
     url: SITE_URL,
@@ -104,9 +113,11 @@ export default function RootLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <JsonLd />
       </head>
       <body className="bg-bg text-ink min-h-screen flex flex-col">
         <Reveal />
+        <Analytics />
         <AnnouncementBar />
         <Nav />
         <main className="flex-1">{children}</main>

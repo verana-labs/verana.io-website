@@ -1,11 +1,13 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "../lib/seo";
 import { Container, Section } from "../components/ui";
 import PageHero from "../components/PageHero";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Cookie policy",
-  description: "How verana.io uses cookies and local storage.",
-};
+  description:
+    "How verana.io uses cookies and local storage.",
+  path: "/cookies",
+});
 
 export default function Cookies() {
   return (

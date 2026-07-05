@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "../lib/seo";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,11 +12,12 @@ import {
 import { Container, Section, SectionHeading } from "../components/ui";
 import PageHero from "../components/PageHero";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Integrations",
   description:
     "Third-party software integrated with Verana. Live today: the MOSIP Inji suite, issuing and verifying national-ID credentials through the Verana trust layer.",
-};
+  path: "/integrations",
+});
 
 export default function Integrations() {
   return (

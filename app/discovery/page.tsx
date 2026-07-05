@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "../lib/seo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -29,11 +29,12 @@ import QueryConsole from "../components/QueryConsole";
 import ConceptPager from "../components/ConceptPager";
 import { LINKS } from "../lib/site";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Discovery",
   description:
     "The Trust Graph: discover services and ecosystems by the credentials they hold, scoped to an ecosystem, ranked by trust. A first-class surface for AI-agent discovery.",
-};
+  path: "/discovery",
+});
 
 const PRIMARY = "var(--color-primary)";
 const ACCENT = "var(--color-accent)";

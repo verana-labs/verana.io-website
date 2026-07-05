@@ -14,10 +14,11 @@ export const SITE_DESCRIPTION =
   "Verana is the open, public, neutral trust infrastructure for the internet. Join and build sovereign digital trust ecosystems, verify any service, organization, person or AI agent before you connect, and discover who you can trust. Open standards, open-source software, owned by no one.";
 
 // Default OpenGraph / Twitter image (1200x630). Lives in public/.
-export const OG_IMAGE = "/images/og-default.png";
+export const OG_IMAGE = "/images/og-default.jpg";
 
 // Google Analytics 4 measurement id (optional; empty disables analytics).
-export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
+// Shared gtag property with veranafoundation.org; empty disables analytics.
+export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-9H5406F02W";
 
 // Sister and related properties.
 export const LINKS = {

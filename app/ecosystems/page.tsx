@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "../lib/seo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Glyph from "../components/Glyph";
 import {
@@ -35,11 +35,12 @@ import ConceptPager from "../components/ConceptPager";
 import { ECS, BUSINESS_MODELS } from "../lib/content";
 import { LINKS } from "../lib/site";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Sovereign ecosystems",
   description:
     "Join or build a trust ecosystem: governance framework, credential schemas, accreditation tree, and a built-in business model, anchored on the Verifiable Public Registry.",
-};
+  path: "/ecosystems",
+});
 
 const ECS_ICONS = [faBuilding, faUserTie, faServer, faIdBadge, faMobileScreen];
 

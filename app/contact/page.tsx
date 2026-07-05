@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "../lib/seo";
 import { Container, Section } from "../components/ui";
 import PageHero from "../components/PageHero";
 import ContactForm from "../components/ContactForm";
 import { LINKS } from "../lib/site";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Contact",
-  description: "Get in touch with the Verana team.",
-};
+  description:
+    "Get in touch with the Verana team.",
+  path: "/contact",
+});
 
 export default function Contact() {
   return (

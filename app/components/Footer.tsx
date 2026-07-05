@@ -1,6 +1,10 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import Logo from "./Logo";
 import { LINKS, SITE_TAGLINE } from "../lib/site";
+import { CONSENT_KEY, CONSENT_EVENT } from "./Analytics";
 
 const COLUMNS: { title: string; links: { label: string; href: string; ext?: boolean }[] }[] = [
   {
@@ -41,6 +45,23 @@ const COLUMNS: { title: string; links: { label: string; href: string; ext?: bool
 ];
 
 export default function Footer() {
+  const [showBanner, setShowBanner] = useState(false);
+
+  useEffect(() => {
+    setShowBanner(localStorage.getItem(CONSENT_KEY) === null);
+  }, []);
+
+  function setConsent(value: "all" | "essential") {
+    try {
+      localStorage.setItem(CONSENT_KEY, value);
+      // Let the Analytics component pick up the choice without a reload.
+      window.dispatchEvent(new Event(CONSENT_EVENT));
+    } catch {
+      /* ignore */
+    }
+    setShowBanner(false);
+  }
+
   return (
     <footer className="border-t border-rule bg-surface">
       <div className="mx-auto max-w-6xl px-6 py-14">
@@ -92,6 +113,43 @@ export default function Footer() {
           </p>
         </div>
       </div>
+
+      {showBanner ? (
+        <div
+          role="dialog"
+          aria-live="polite"
+          aria-label="Cookie consent"
+          className="card fixed bottom-4 left-4 right-4 z-50 mx-auto max-w-xl p-5 sm:left-auto"
+        >
+          <p className="text-sm text-ink">
+            We use essential cookies to run this site and, with your consent,
+            analytics cookies to improve it. We do not sell data. See the{" "}
+            <Link href="/privacy" className="text-accent underline">
+              Privacy Policy
+            </Link>
+            .
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => setConsent("all")}
+              className="btn btn-primary px-4 py-2 text-sm"
+            >
+              Accept all
+            </button>
+            <button
+              type="button"
+              onClick={() => setConsent("essential")}
+              className="btn btn-ghost px-4 py-2 text-sm"
+            >
+              Essential only
+            </button>
+            <Link href="/cookies" className="btn btn-ghost px-4 py-2 text-sm">
+              Preferences
+            </Link>
+          </div>
+        </div>
+      ) : null}
     </footer>
   );
 }

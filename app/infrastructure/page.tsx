@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "../lib/seo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -22,11 +22,12 @@ import { Container, Section, SectionHeading, Button } from "../components/ui";
 import PageHero from "../components/PageHero";
 import { LINKS } from "../lib/site";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Infrastructure",
   description:
     "The real modules of the Verana stack, by role: run the network, serve the trust data, discover and observe, operate as an organization, build services. Open source, run your own instance.",
-};
+  path: "/infrastructure",
+});
 
 type Module = {
   icon: IconDefinition;

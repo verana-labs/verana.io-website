@@ -1,11 +1,13 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "../lib/seo";
 import { Container, Section } from "../components/ui";
 import PageHero from "../components/PageHero";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Terms of use",
-  description: "Terms governing use of verana.io.",
-};
+  description:
+    "Terms governing use of verana.io.",
+  path: "/terms",
+});
 
 export default function Terms() {
   return (

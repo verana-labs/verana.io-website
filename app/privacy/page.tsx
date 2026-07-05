@@ -1,11 +1,13 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "../lib/seo";
 import { Container, Section } from "../components/ui";
 import PageHero from "../components/PageHero";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Privacy policy",
-  description: "How verana.io handles personal data.",
-};
+  description:
+    "How verana.io handles personal data.",
+  path: "/privacy",
+});
 
 export default function Privacy() {
   return (

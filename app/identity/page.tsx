@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "../lib/seo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faIdBadge,
@@ -19,11 +19,12 @@ import { FLOWS } from "../lib/flows";
 import { LINKS } from "../lib/site";
 import { NETWORK_NAME } from "../lib/verana";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Verifiable identity",
   description:
     "Verify first, then connect: services are resolvable DIDs, peers trust-resolve each other against the public registry, and a Proof-of-Trust is shown before the first interaction.",
-};
+  path: "/identity",
+});
 
 const PRIMARY = "var(--color-primary)";
 const ACCENT = "var(--color-accent)";

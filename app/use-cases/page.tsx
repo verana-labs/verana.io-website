@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "../lib/seo";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -47,11 +47,12 @@ import PageHero from "../components/PageHero";
 import UseCaseScene, { type SceneSpec } from "../components/UseCaseScene";
 import { USE_CASES } from "../lib/content";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Use cases",
   description:
     "One trust infrastructure, many entry points: governments, enterprise and human credentials, connected objects (IoT), and agentic AI, told as concrete stories.",
-};
+  path: "/use-cases",
+});
 
 const ICONS = [faLandmark, faBuilding, faMicrochip, faRobot];
 

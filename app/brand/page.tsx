@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "../lib/seo";
 import { Container, Section, SectionHeading, Button } from "../components/ui";
 import PageHero from "../components/PageHero";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Brand",
   description:
     "Verana brand assets: logo, color tokens (light and dark), typography, and the press kit.",
-};
+  path: "/brand",
+});
 
 const SWATCHES: { name: string; role: string; hex: string }[] = [
   { name: "Verana Purple", role: "Primary", hex: "#763EF0" },

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "../lib/seo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLandmark,
@@ -14,11 +14,12 @@ import PageHero from "../components/PageHero";
 import UseCaseScene, { type SceneSpec } from "../components/UseCaseScene";
 import { LINKS } from "../lib/site";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "About",
   description:
     "Vision and mission of Verana, the open, public, neutral trust infrastructure; the roles of the Verana Foundation and the Verana Council; owned by no one.",
-};
+  path: "/about",
+});
 
 const PRIMARY = "var(--color-primary)";
 const ACCENT = "var(--color-accent)";

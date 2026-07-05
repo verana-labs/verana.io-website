@@ -16,8 +16,15 @@ import HeroGlobe from "./components/HeroGlobe";
 import LatestEcosystems from "./components/LatestEcosystems";
 import ResolveDid from "./components/ResolveDid";
 import { HERO, THREE_PARTS, USE_CASES } from "./lib/content";
-import { LINKS } from "./lib/site";
+import { LINKS, SITE_TAGLINE, SITE_DESCRIPTION } from "./lib/site";
+import { buildMetadata } from "./lib/seo";
 import { NETWORK_NAME } from "./lib/verana";
+
+export const metadata = buildMetadata({
+  title: SITE_TAGLINE,
+  description: SITE_DESCRIPTION,
+  path: "/",
+});
 
 // Live widgets read the testnet; regenerate in the background every 10 min.
 export const revalidate = 600;
