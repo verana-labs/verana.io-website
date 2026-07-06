@@ -13,13 +13,13 @@ import {
   faLink,
   faKey,
   faMagnifyingGlass,
-  faScaleBalanced,
 } from "@fortawesome/free-solid-svg-icons";
 import { Container, Section, SectionHeading, Button } from "./components/ui";
 import HeroGlobe from "./components/HeroGlobe";
 import LatestEcosystems from "./components/LatestEcosystems";
 import ResolveDid from "./components/ResolveDid";
 import SolvesVisual from "./components/SolvesVisual";
+import { FoundationLogo, CouncilLogo } from "./components/OrgLogos";
 import { HERO, THREE_PARTS, USE_CASES, SOLVES } from "./lib/content";
 import { LINKS, SITE_TAGLINE, SITE_DESCRIPTION } from "./lib/site";
 import { buildMetadata } from "./lib/seo";
@@ -191,11 +191,10 @@ export default function Home() {
               href="/about"
               className="card group flex flex-col p-6 transition-colors hover:border-primary"
             >
-              <div className="flex items-center justify-between">
-                <span className="eyebrow">The steward</span>
-                <FontAwesomeIcon icon={faLandmark} className="h-4 w-4 text-primary" />
-              </div>
-              <h3 className="display mt-3 text-xl text-ink">Verana Foundation</h3>
+              <span className="eyebrow">The steward</span>
+              <h3 className="mt-3">
+                <FoundationLogo />
+              </h3>
               <p className="mt-1 font-mono text-[11px] text-muted">
                 veranafoundation.org
               </p>
@@ -219,11 +218,10 @@ export default function Home() {
               href="/about"
               className="card group flex flex-col p-6 transition-colors hover:border-primary"
             >
-              <div className="flex items-center justify-between">
-                <span className="eyebrow">The governor</span>
-                <FontAwesomeIcon icon={faScaleBalanced} className="h-4 w-4 text-primary" />
-              </div>
-              <h3 className="display mt-3 text-xl text-ink">Verana Council</h3>
+              <span className="eyebrow">The governor</span>
+              <h3 className="mt-3">
+                <CouncilLogo />
+              </h3>
               <p className="mt-1 font-mono text-[11px] text-muted">
                 veranacouncil.org
               </p>
