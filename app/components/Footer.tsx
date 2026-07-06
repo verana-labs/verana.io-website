@@ -124,6 +124,14 @@ export default function Footer() {
 
         <div className="mt-12 flex flex-col gap-4 border-t border-rule pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap gap-4">
+            <a
+              href={LINKS.foundation}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-ink"
+            >
+              © {new Date().getFullYear()} Verana Foundation
+            </a>
             <Link href="/privacy" className="hover:text-ink">Privacy</Link>
             <Link href="/terms" className="hover:text-ink">Terms</Link>
             <Link href="/cookies" className="hover:text-ink">Cookies</Link>
