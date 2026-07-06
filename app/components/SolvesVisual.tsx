@@ -4,6 +4,7 @@ import {
   faQuestion,
   faArrowRightLong,
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Glyph from "./Glyph";
 import { Badge } from "./svg";
 
@@ -11,7 +12,9 @@ import { Badge } from "./svg";
 // twice, once blind (both ends unknown, "?") and once verify-first (both
 // ends checked, double-headed arrow: verification is mutual). Two nodes per
 // panel on purpose: this is the one diagram a non-technical visitor must be
-// able to read without a legend.
+// able to read without a legend. The two panels are separate SVGs so they
+// sit side by side on desktop and stack (with the arrow rotated) on mobile,
+// with no horizontal scrolling.
 
 const INK = "var(--color-ink)";
 const MUTED = "var(--color-muted)";
@@ -109,13 +112,89 @@ function UnknownBadge({ x, y }: { x: number; y: number }) {
   );
 }
 
-export default function SolvesVisual() {
+function TodayPanel() {
   return (
     <svg
-      viewBox="0 0 920 190"
-      className="h-auto w-full min-w-[640px]"
-      role="img"
-      aria-label="Today, an unknown entity, maybe a human, maybe a service, connects to a service that cannot be verified either: both ends carry a question mark. On Verana, both sides verify each other against the public registry before connecting: an employee of Example Ltd using a verified agent browser talks to Acme Corp's Accounting Agent, which presents verified Acme Corp and ISO 24001 credentials."
+      viewBox="0 0 435 150"
+      className="h-auto w-full max-w-[435px] sm:min-w-0 sm:max-w-none sm:flex-1"
+      aria-hidden="true"
+    >
+      <rect
+        x={1}
+        y={1}
+        width={433}
+        height={148}
+        rx={14}
+        fill={MUTED}
+        fillOpacity={0.05}
+        stroke={MUTED}
+        strokeOpacity={0.3}
+        strokeDasharray="6 5"
+      />
+      <text
+        x={18}
+        y={24}
+        fontFamily="var(--font-mono)"
+        fontSize={8.5}
+        letterSpacing="0.14em"
+        fill={MUTED}
+      >
+        TODAY
+      </text>
+      <text
+        x={217}
+        y={58}
+        textAnchor="middle"
+        fontSize={9}
+        fontFamily="var(--font-mono)"
+        fill={MUTED}
+        stroke={SURFACE}
+        strokeWidth={3}
+        paintOrder="stroke"
+      >
+        connect and hope
+      </text>
+      <line
+        x1={113}
+        y1={81}
+        x2={322}
+        y2={81}
+        stroke={MUTED}
+        strokeWidth={1.5}
+        strokeDasharray="4 4"
+        opacity={0.7}
+      />
+      <ActorNode
+        x={95}
+        y={81}
+        icon={faQuestion}
+        color={MUTED}
+        label="unknown entity"
+        subs={["a human? a service?"]}
+        dashed
+      />
+      <ActorNode
+        x={340}
+        y={81}
+        icon={faServer}
+        color={ACCENT}
+        label="a service"
+        subs={["who runs it?"]}
+        dashed
+      />
+      {/* neither end can verify the other */}
+      <UnknownBadge x={106} y={70} />
+      <UnknownBadge x={351} y={70} />
+    </svg>
+  );
+}
+
+function OnVeranaPanel() {
+  return (
+    <svg
+      viewBox="0 0 435 150"
+      className="h-auto w-full max-w-[435px] sm:min-w-0 sm:max-w-none sm:flex-1"
+      aria-hidden="true"
     >
       <defs>
         <marker
@@ -130,84 +209,11 @@ export default function SolvesVisual() {
           <path d="M 0 0 L 10 5 L 0 10 z" fill={SUCCESS} />
         </marker>
       </defs>
-
-      {/* TODAY panel: both ends unknown */}
       <rect
-        x={10}
-        y={14}
-        width={435}
-        height={150}
-        rx={14}
-        fill={MUTED}
-        fillOpacity={0.05}
-        stroke={MUTED}
-        strokeOpacity={0.3}
-        strokeDasharray="6 5"
-      />
-      <text
-        x={28}
-        y={38}
-        fontFamily="var(--font-mono)"
-        fontSize={8.5}
-        letterSpacing="0.14em"
-        fill={MUTED}
-      >
-        TODAY
-      </text>
-      <text
-        x={227}
-        y={72}
-        textAnchor="middle"
-        fontSize={9}
-        fontFamily="var(--font-mono)"
-        fill={MUTED}
-        stroke={SURFACE}
-        strokeWidth={3}
-        paintOrder="stroke"
-      >
-        connect and hope
-      </text>
-      <line
-        x1={123}
-        y1={95}
-        x2={332}
-        y2={95}
-        stroke={MUTED}
-        strokeWidth={1.5}
-        strokeDasharray="4 4"
-        opacity={0.7}
-      />
-      <ActorNode
-        x={105}
-        y={95}
-        icon={faQuestion}
-        color={MUTED}
-        label="unknown entity"
-        subs={["a human? a service?"]}
-        dashed
-      />
-      <ActorNode
-        x={350}
-        y={95}
-        icon={faServer}
-        color={ACCENT}
-        label="a service"
-        subs={["who runs it?"]}
-        dashed
-      />
-      {/* neither end can verify the other */}
-      <UnknownBadge x={116} y={84} />
-      <UnknownBadge x={361} y={84} />
-
-      {/* transition arrow */}
-      <Glyph icon={faArrowRightLong} cx={460} cy={95} size={16} color={MUTED} />
-
-      {/* ON VERANA panel: both ends verified, verification is mutual */}
-      <rect
-        x={475}
-        y={14}
-        width={435}
-        height={150}
+        x={1}
+        y={1}
+        width={433}
+        height={148}
         rx={14}
         fill={SUCCESS}
         fillOpacity={0.05}
@@ -215,8 +221,8 @@ export default function SolvesVisual() {
         strokeOpacity={0.35}
       />
       <text
-        x={493}
-        y={38}
+        x={18}
+        y={24}
         fontFamily="var(--font-mono)"
         fontSize={8.5}
         letterSpacing="0.14em"
@@ -225,8 +231,8 @@ export default function SolvesVisual() {
         ON VERANA
       </text>
       <text
-        x={692}
-        y={72}
+        x={217}
+        y={58}
         textAnchor="middle"
         fontSize={9.5}
         fontWeight={600}
@@ -239,10 +245,10 @@ export default function SolvesVisual() {
         verify each other, then connect
       </text>
       <line
-        x1={604}
-        y1={95}
-        x2={788}
-        y2={95}
+        x1={129}
+        y1={81}
+        x2={313}
+        y2={81}
         stroke={SUCCESS}
         strokeWidth={2}
         opacity={0.85}
@@ -250,24 +256,42 @@ export default function SolvesVisual() {
         markerEnd="url(#solves-success)"
       />
       <ActorNode
-        x={580}
-        y={95}
+        x={105}
+        y={81}
         icon={faUser}
         color={PERSON}
         label="you"
         subs={["employee of Example Ltd", "using agent browser ABC v1.5"]}
       />
       <ActorNode
-        x={815}
-        y={95}
+        x={340}
+        y={81}
         icon={faServer}
         color={ACCENT}
         label="Accounting Agent"
         subs={["Acme Corp", "ISO 24001"]}
       />
       {/* both ends verified */}
-      <Badge x={591} y={84} kind="check" />
-      <Badge x={826} y={84} kind="check" />
+      <Badge x={116} y={70} kind="check" />
+      <Badge x={351} y={70} kind="check" />
     </svg>
+  );
+}
+
+export default function SolvesVisual() {
+  return (
+    <div
+      role="img"
+      aria-label="Today, an unknown entity, maybe a human, maybe a service, connects to a service that cannot be verified either: both ends carry a question mark. On Verana, both sides verify each other against the public registry before connecting: an employee of Example Ltd using a verified agent browser talks to Acme Corp's Accounting Agent, which presents Acme Corp and ISO 24001 credentials."
+      className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4"
+    >
+      <TodayPanel />
+      <FontAwesomeIcon
+        icon={faArrowRightLong}
+        aria-hidden="true"
+        className="h-5 w-5 shrink-0 rotate-90 text-muted sm:rotate-0"
+      />
+      <OnVeranaPanel />
+    </div>
   );
 }
