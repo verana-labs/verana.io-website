@@ -132,36 +132,38 @@ export default function Home() {
         </Container>
       </Section>
 
-      {/* Live proof: the network is real */}
+      {/* Live proof — verifiable identity, resolve a DID */}
       <Section>
-        <Container className="grid gap-10 lg:grid-cols-2">
-          <div>
-            <SectionHeading
-              eyebrow={`2 · Verifiable identity · live from ${NETWORK_NAME}`}
-              title="Watch verify-first work"
-              intro="This is the second part above, running for real. Resolve a real DID and see its Proof-of-Trust: the service, the organization behind it, and the verified chain up to the ecosystem root."
-            />
-            <div className="reveal mt-6">
-              <ResolveDid compact />
-            </div>
+        <Container>
+          <SectionHeading
+            eyebrow={`Verifiable identity · live from ${NETWORK_NAME}`}
+            title="Watch verify-first work"
+            intro="This is the second part above, running for real. Resolve a real DID and see its Proof-of-Trust: the service, the organization behind it, and the verified chain up to the ecosystem root."
+          />
+          <div className="reveal mt-6">
+            <ResolveDid compact />
           </div>
-          <div>
-            <SectionHeading
-              eyebrow="Testnet Ecosystems"
-              title="Latest trusted ecosystems"
-              intro="The newest ecosystems that trust-resolve as TRUSTED against the public registry."
-            />
-            <div className="reveal mt-6">
-              <Suspense
-                fallback={
-                  <div className="card p-6 font-mono text-xs text-muted">
-                    querying the network...
-                  </div>
-                }
-              >
-                <LatestEcosystems limit={5} />
-              </Suspense>
-            </div>
+        </Container>
+      </Section>
+
+      {/* Live proof — latest trusted ecosystems */}
+      <Section className="border-t border-rule">
+        <Container>
+          <SectionHeading
+            eyebrow="Testnet Ecosystems"
+            title="Latest trusted ecosystems"
+            intro="The newest ecosystems that trust-resolve as TRUSTED against the public registry."
+          />
+          <div className="reveal mt-6">
+            <Suspense
+              fallback={
+                <div className="card p-6 font-mono text-xs text-muted">
+                  querying the network...
+                </div>
+              }
+            >
+              <LatestEcosystems limit={5} />
+            </Suspense>
           </div>
         </Container>
       </Section>
