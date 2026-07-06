@@ -3,9 +3,10 @@ import Glyph from "./Glyph";
 import { Badge } from "./svg";
 
 // The home "What Verana solves" before/after strip: the same connection
-// twice, once blind (unknown operator, "?") and once verify-first (operator
-// proven, check). Two nodes per panel on purpose: this is the one diagram a
-// non-technical visitor must be able to read without a legend.
+// twice, once blind (both ends unknown, "?") and once verify-first (both
+// ends checked, double-headed arrow: verification is mutual). Two nodes per
+// panel on purpose: this is the one diagram a non-technical visitor must be
+// able to read without a legend.
 
 const INK = "var(--color-ink)";
 const MUTED = "var(--color-muted)";
@@ -79,13 +80,34 @@ function ActorNode({
   );
 }
 
+/** Small "?" state badge on a node's rim: this end is unverified. */
+function UnknownBadge({ x, y }: { x: number; y: number }) {
+  return (
+    <g>
+      <circle cx={x} cy={y} r={7.5} fill={SURFACE} stroke={MUTED} strokeWidth={1.25} />
+      <text
+        x={x}
+        y={y}
+        textAnchor="middle"
+        dominantBaseline="central"
+        fontSize={9.5}
+        fontWeight={600}
+        fontFamily="var(--font-mono)"
+        fill={MUTED}
+      >
+        ?
+      </text>
+    </g>
+  );
+}
+
 export default function SolvesVisual() {
   return (
     <svg
       viewBox="0 0 920 190"
       className="h-auto w-full min-w-[640px]"
       role="img"
-      aria-label="Today, you connect to a service without knowing who runs it. On Verana, the same service proves who operates it against the public registry before you connect."
+      aria-label="Today, you connect to a service without knowing who runs it, and the service cannot verify you either: both ends carry a question mark. On Verana, both sides verify each other against the public registry before connecting: both ends carry a check mark."
     >
       <defs>
         <marker
@@ -101,7 +123,7 @@ export default function SolvesVisual() {
         </marker>
       </defs>
 
-      {/* TODAY panel */}
+      {/* TODAY panel: both ends unknown */}
       <rect
         x={10}
         y={14}
@@ -147,27 +169,16 @@ export default function SolvesVisual() {
         strokeDasharray="4 4"
         opacity={0.7}
       />
-      {/* unknown badge */}
-      <circle cx={227} cy={95} r={8.5} fill={SURFACE} stroke={MUTED} strokeWidth={1.5} />
-      <text
-        x={227}
-        y={95}
-        textAnchor="middle"
-        dominantBaseline="central"
-        fontSize={10}
-        fontWeight={600}
-        fontFamily="var(--font-mono)"
-        fill={MUTED}
-      >
-        ?
-      </text>
       <ActorNode x={105} y={95} icon={faUser} color={PERSON} label="you" sub="human or AI agent" />
       <ActorNode x={350} y={95} icon={faServer} color={ACCENT} label="a service" sub="who runs it?" dashed />
+      {/* neither end can verify the other */}
+      <UnknownBadge x={116} y={84} />
+      <UnknownBadge x={361} y={84} />
 
       {/* transition arrow */}
       <Glyph icon={faArrowRightLong} cx={460} cy={95} size={16} color={MUTED} />
 
-      {/* ON VERANA panel */}
+      {/* ON VERANA panel: both ends verified, verification is mutual */}
       <rect
         x={475}
         y={14}
@@ -201,19 +212,19 @@ export default function SolvesVisual() {
         strokeWidth={3}
         paintOrder="stroke"
       >
-        verify first, then connect
+        verify each other, then connect
       </text>
       <line
-        x1={588}
+        x1={594}
         y1={95}
-        x2={794}
+        x2={788}
         y2={95}
         stroke={SUCCESS}
         strokeWidth={2}
         opacity={0.85}
+        markerStart="url(#solves-success)"
         markerEnd="url(#solves-success)"
       />
-      <Badge x={692} y={95} kind="check" />
       <ActorNode x={570} y={95} icon={faUser} color={PERSON} label="you" sub="human or AI agent" />
       <ActorNode
         x={815}
@@ -223,6 +234,9 @@ export default function SolvesVisual() {
         label="the same service"
         sub="Acme Corp · verified"
       />
+      {/* both ends verified */}
+      <Badge x={581} y={84} kind="check" />
+      <Badge x={826} y={84} kind="check" />
     </svg>
   );
 }

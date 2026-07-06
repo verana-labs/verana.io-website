@@ -117,8 +117,9 @@ export default function Home() {
           <p className="reveal mt-5 max-w-3xl text-lg leading-relaxed text-ink">
             <strong>Verana is the public registry that fixes this.</strong>{" "}
             Ecosystems issue verifiable credentials to their participants, and
-            anyone can check any of them, in one query. Humans and AI agents,
-            verified the same way.
+            anyone can check any of them, in one query. Verification runs both
+            ways: you verify the service, and the service verifies you. Humans,
+            services, connected objects, and AI agents, verified the same way.
           </p>
           <div className="card reveal mt-8 overflow-hidden">
             <div className="overflow-x-auto p-4 sm:p-5">
