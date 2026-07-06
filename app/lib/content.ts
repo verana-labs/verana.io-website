@@ -162,7 +162,7 @@ export const SOLVES: Solve[] = [
   {
     title: "Be found by what you prove",
     tone: "success",
-    body: "No search engine can find \u201cthe accounting agent of Company B\u201d. The Trust Graph indexes services by their credentials, so humans and AI agents discover each other by proof, not keywords.",
+    body: "No search engine can find \u201cthe Accounting Agent of Acme Corp\u201d. The Trust Graph indexes services by their credentials, so humans and AI agents discover each other by proof, not keywords.",
   },
 ];
 
