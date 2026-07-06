@@ -110,12 +110,14 @@ export default function Home() {
       <Section className="border-t border-rule bg-surface">
         <Container>
           <SectionHeading
-            eyebrow="Use cases"
+            eyebrow="Why Verana"
             title="What Verana solves"
             intro="Online, nothing proves who is behind a service, an app, or an AI agent. So everyone re-verifies everything, or just trusts."
           />
-          <p className="reveal mt-5 max-w-3xl text-lg leading-relaxed text-ink">
-            <strong>Verana is the public registry that fixes this.</strong>{" "}
+          <p className="reveal mt-5 max-w-3xl text-lg leading-relaxed text-muted">
+            <strong className="text-ink">
+              Verana is the public infrastructure that fixes this.
+            </strong>{" "}
             Ecosystems issue verifiable credentials to their participants, and
             anyone can check any of them, in one query. Verification runs both
             ways: you verify the service, and the service verifies you. Humans,
