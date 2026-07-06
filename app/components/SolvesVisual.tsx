@@ -255,7 +255,7 @@ export default function SolvesVisual() {
         icon={faUser}
         color={PERSON}
         label="you"
-        subs={["employee of Example Ltd · verified", "using agent browser ABC v1.5 · verified"]}
+        subs={["employee of Example Ltd", "using agent browser ABC v1.5"]}
       />
       <ActorNode
         x={815}
@@ -263,7 +263,7 @@ export default function SolvesVisual() {
         icon={faServer}
         color={ACCENT}
         label="Accounting Agent"
-        subs={["Acme Corp · verified", "ISO 24001 · verified"]}
+        subs={["Acme Corp", "ISO 24001"]}
       />
       {/* both ends verified */}
       <Badge x={591} y={84} kind="check" />
