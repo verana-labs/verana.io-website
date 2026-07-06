@@ -255,7 +255,7 @@ export default function SolvesVisual() {
         icon={faUser}
         color={PERSON}
         label="you"
-        subs={["employee of Example Ltd", "using agent browser ABC v1.5 · verified"]}
+        subs={["employee of Example Ltd · verified", "using agent browser ABC v1.5 · verified"]}
       />
       <ActorNode
         x={815}
