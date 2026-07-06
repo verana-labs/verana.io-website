@@ -105,8 +105,35 @@ export default function Home() {
         </Container>
       </Section>
 
-      {/* Live proof: the network is real */}
+      {/* Use cases teaser */}
       <Section className="border-t border-rule bg-surface">
+        <Container>
+          <SectionHeading
+            eyebrow="Use cases"
+            title="Humans and AI agents, verified the same way"
+            intro="One trust infrastructure, many entry points, built for what's coming: a bank doing reusable KYC today runs AI agents tomorrow. Every lens converges on the same verify-first primitive."
+          />
+          <div className="reveal-stagger mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {USE_CASES.map((u, i) => (
+              <Link
+                key={u.name}
+                href="/use-cases"
+                className="card group p-5 transition-colors hover:border-primary"
+              >
+                <FontAwesomeIcon
+                  icon={USE_CASE_ICONS[i]}
+                  className="h-4 w-4 text-accent"
+                />
+                <h3 className="mt-3 font-semibold text-ink">{u.name}</h3>
+                <p className="mt-2 text-sm text-muted">{u.pain}</p>
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* Live proof: the network is real */}
+      <Section>
         <Container className="grid gap-10 lg:grid-cols-2">
           <div>
             <SectionHeading
@@ -135,33 +162,6 @@ export default function Home() {
                 <LatestEcosystems limit={5} />
               </Suspense>
             </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Use cases teaser */}
-      <Section>
-        <Container>
-          <SectionHeading
-            eyebrow="Use cases"
-            title="Humans and AI agents, verified the same way"
-            intro="One trust infrastructure, many entry points, built for what's coming: a bank doing reusable KYC today runs AI agents tomorrow. Every lens converges on the same verify-first primitive."
-          />
-          <div className="reveal-stagger mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {USE_CASES.map((u, i) => (
-              <Link
-                key={u.name}
-                href="/use-cases"
-                className="card group p-5 transition-colors hover:border-primary"
-              >
-                <FontAwesomeIcon
-                  icon={USE_CASE_ICONS[i]}
-                  className="h-4 w-4 text-accent"
-                />
-                <h3 className="mt-3 font-semibold text-ink">{u.name}</h3>
-                <p className="mt-2 text-sm text-muted">{u.pain}</p>
-              </Link>
-            ))}
           </div>
         </Container>
       </Section>
