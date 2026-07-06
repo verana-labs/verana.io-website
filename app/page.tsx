@@ -11,6 +11,7 @@ import {
   faMicrochip,
   faRobot,
   faLink,
+  faKey,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { Container, Section, SectionHeading, Button } from "./components/ui";
@@ -39,7 +40,7 @@ const USE_CASE_ICONS = [faLandmark, faBuilding, faMicrochip, faRobot];
 // Icons and tone colors for the "What Verana solves" rows; tones echo the
 // three-part spine (ecosystems = primary, identity = accent, discovery =
 // success) so each solve quietly points back at the part that delivers it.
-const SOLVE_ICONS = [faShieldHalved, faSitemap, faLink, faMagnifyingGlass];
+const SOLVE_ICONS = [faShieldHalved, faSitemap, faLink, faKey, faMagnifyingGlass];
 const SOLVE_TONE = {
   primary: "text-primary",
   accent: "text-accent",

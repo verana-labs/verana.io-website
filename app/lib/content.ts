@@ -155,6 +155,11 @@ export const SOLVES: Solve[] = [
     body: "A service publicly attaches credentials from any ecosystem: who operates it, its ISO certificate, its licenses. Anyone can check them.",
   },
   {
+    title: "Connect without accounts",
+    tone: "accent",
+    body: "No more creating an account and pasting an API key just to wire two services together: a service or agent connects by presenting its verifiable credentials, with nothing to provision on the other side.",
+  },
+  {
     title: "Be found by what you prove",
     tone: "success",
     body: "No search engine can find \u201cthe accounting agent of Company B\u201d. The Trust Graph indexes services by their credentials, so humans and AI agents discover each other by proof, not keywords.",
