@@ -121,11 +121,11 @@ export const BUSINESS_MODELS: BusinessModel[] = [
   },
   {
     title: "Pay-per-issuance",
-    body: "An issuer pays a fee each time it issues a credential of a schema.",
+    body: "An issuer pays a fee each time it issues a credential of a schema. Fees settle on the public registry; the credential itself stays off-chain, with its holder.",
   },
   {
     title: "Pay-per-verification",
-    body: "A verifier pays a fee each time it verifies a credential, shared with the issuer and the rest of the tree.",
+    body: "A verifier pays a fee each time it verifies a credential, shared with the issuer and the rest of the tree. Privacy preserving: payment for requesting a presentation is enforced on the registry, but the issuer cannot know or correlate who presented a credential to which verifier.",
   },
 ];
 
