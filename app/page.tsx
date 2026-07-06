@@ -53,6 +53,10 @@ export default function Home() {
               Build on Verana
             </Button>
           </div>
+          <p className="reveal mt-10 font-mono text-xs tracking-wide text-muted">
+            open standards · W3C DIDs · W3C Verifiable Credentials · DIDComm ·
+            OpenID4VC · TRQP
+          </p>
         </Container>
       </section>
 
@@ -79,6 +83,9 @@ export default function Home() {
                   />
                 </div>
                 <h3 className="display mt-3 text-xl text-ink">{p.name}</h3>
+                <p className="mt-1 font-mono text-[11px] text-muted">
+                  {p.audience}
+                </p>
                 <p className="mt-2 flex-1 text-sm text-muted">{p.body}</p>
                 {p.signature ? (
                   <p className="mt-3 font-mono text-xs text-success-ink">
@@ -103,9 +110,9 @@ export default function Home() {
         <Container className="grid gap-10 lg:grid-cols-2">
           <div>
             <SectionHeading
-              eyebrow={`Live from ${NETWORK_NAME}`}
+              eyebrow={`2 · Verifiable identity · live from ${NETWORK_NAME}`}
               title="Watch verify-first work"
-              intro="Resolve a real DID and see its Proof-of-Trust: the service, the organization behind it, and the verified chain up to the ecosystem root."
+              intro="This is the second part above, running for real. Resolve a real DID and see its Proof-of-Trust: the service, the organization behind it, and the verified chain up to the ecosystem root."
             />
             <div className="reveal mt-6">
               <ResolveDid compact />
@@ -137,8 +144,8 @@ export default function Home() {
         <Container>
           <SectionHeading
             eyebrow="Use cases"
-            title="One trust infrastructure, many entry points"
-            intro="Overlapping lenses, not silos: a bank doing reusable KYC today runs AI agents tomorrow. They all converge on the same verify-first primitive."
+            title="Humans and AI agents, verified the same way"
+            intro="One trust infrastructure, many entry points, built for what's coming: a bank doing reusable KYC today runs AI agents tomorrow. Every lens converges on the same verify-first primitive."
           />
           <div className="reveal-stagger mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {USE_CASES.map((u, i) => (
