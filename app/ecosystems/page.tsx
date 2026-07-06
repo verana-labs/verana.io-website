@@ -711,7 +711,7 @@ export default function Ecosystems() {
     <>
       <PageHero
         eyebrow="Sovereign ecosystems · 1 of 3"
-        title="Join or build an ecosystem"
+        title="Build your own trust ecosystem"
         intro="Verana is public, permissionless infrastructure: anyone can create their own trust ecosystem, or join the ecosystems they want."
       />
 
