@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.3.0](https://github.com/verana-labs/verana.io-website/compare/verana.io-website-v0.2.0...verana.io-website-v0.3.0) (2026-07-06)
+
+
+### Features
+
+* **ecosystems:** retitle page hero to "Build your own trust ecosystem" ([a70456d](https://github.com/verana-labs/verana.io-website/commit/a70456dda4c6f94785e023e8f3734cc962d3131e))
+* **home:** copy pass from external feedback round ([21ebc0f](https://github.com/verana-labs/verana.io-website/commit/21ebc0fae24d91decab32f477c843f9028702c67))
+* **home:** copy pass from external feedback round ([e0f668b](https://github.com/verana-labs/verana.io-website/commit/e0f668ba35a9566da156db9c1a801135e92d9673))
+* **home:** reorder sections and split the live-proof block ([#82](https://github.com/verana-labs/verana.io-website/issues/82)) ([6007495](https://github.com/verana-labs/verana.io-website/commit/6007495985d3ff62c37840553686ef39909fa4c7))
+* **home:** restructure use-cases section as "What Verana solves" ([#85](https://github.com/verana-labs/verana.io-website/issues/85)) ([2bf9f17](https://github.com/verana-labs/verana.io-website/commit/2bf9f17d96be4c56d52fa88d11c3fc31bdd6423c))
+* new og image ([#83](https://github.com/verana-labs/verana.io-website/issues/83)) ([cf4d8b4](https://github.com/verana-labs/verana.io-website/commit/cf4d8b4c0968698ace6365746cf4eafa2f920aa1))
+
+
+### Bug Fixes
+
+* **license:** replace MIT with Apache-2.0 to match declared license ([#84](https://github.com/verana-labs/verana.io-website/issues/84)) ([95bebfe](https://github.com/verana-labs/verana.io-website/commit/95bebfe71a3e4cf84638e057183c72893e2f5639))
+* **resolve:** stale cached UNTRUSTED must not mask a recovered resolver ([92a67f0](https://github.com/verana-labs/verana.io-website/commit/92a67f0dd3819e0b57410dd4ea534a6564dfae95))
+* **resolve:** stale cached UNTRUSTED must not mask a recovered resolver ([13059e0](https://github.com/verana-labs/verana.io-website/commit/13059e0d8a95eb39a7d0025d6dcf17d0a01bb3f7))
+* updated ecosystem title ([d22b8c1](https://github.com/verana-labs/verana.io-website/commit/d22b8c1aa8db0dc30301ae48aef6fb7e6db46847))
+* updated ecosystem title ([f898c2b](https://github.com/verana-labs/verana.io-website/commit/f898c2b4b3995380ed22b3afb92ca4bd5b94052e))
+
 ## [0.2.0](https://github.com/verana-labs/verana.io-website/compare/verana.io-website-v0.1.0...verana.io-website-v0.2.0) (2026-07-05)
 
 
