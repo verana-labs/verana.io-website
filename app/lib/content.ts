@@ -6,13 +6,14 @@ export const HERO = {
   eyebrow: "OPEN · PUBLIC · NEUTRAL",
   headline: "The Open Trust Infrastructure for the Verifiable Internet",
   subhead:
-    "Join and build sovereign digital trust ecosystems. Attach verifiable credentials to your services and agents, and make them identifiable, verifiable, and discoverable.",
+    "Build sovereign trust ecosystems on open standards (W3C Verifiable Credentials and DIDs, DIDComm), or join existing ones. Attach credentials to your services and AI agents, and make them identifiable, verifiable, and discoverable.",
 };
 
 export type ThreePart = {
   name: string;
   label: string;
   tone: "primary" | "accent" | "success";
+  audience: string;
   body: string;
   signature?: string;
   href: string;
@@ -24,13 +25,15 @@ export const THREE_PARTS: ThreePart[] = [
     name: "Trust Ecosystems",
     label: "Sovereign ecosystems",
     tone: "primary",
-    body: "Join or build ecosystems that issue and verify any credential. Each ecosystem self-defines its schemas, governance framework, participants, and business model.",
+    audience: "for ecosystem builders and joiners",
+    body: "Build ecosystems that issue and verify any credential, with your own schemas, governance framework, participants, and business model. Or join an existing one as an accredited issuer, verifier, or holder.",
     href: "/ecosystems",
   },
   {
     name: "Verifiable Trust",
     label: "Verifiable identity",
     tone: "accent",
+    audience: "for services, AI agents, and their operators",
     body: "Identify any service and the organization or person that controls it, and verify it before you connect.",
     signature: "Verify first. Then connect.",
     href: "/identity",
@@ -39,6 +42,7 @@ export const THREE_PARTS: ThreePart[] = [
     name: "The Trust Graph",
     label: "Discovery",
     tone: "success",
+    audience: "for users, agents, and search",
     body: "Discover services and ecosystems by the credentials they hold, ranked by trust. A first-class surface for AI-agent discovery.",
     href: "/discovery",
   },
@@ -144,7 +148,7 @@ export const USE_CASES: UseCase[] = [
       "Utopia creates its own GovID Ecosystem on the public registry: it publishes its governance framework, defines the GovID credential schema, and accredits participants.",
       "The Interior Ministry, as issuer grantor, accredits the regional civil registries. They issue GovID credentials to citizens, who hold them in their own wallets.",
       "A citizen opens a bank account in minutes: the bank, an accredited verifier, checks the GovID against the registry in real time and pays a verification fee that flows up the accreditation tree.",
-      "Everything runs on sovereign infrastructure Utopia hosts in its own jurisdiction: no SaaS, no vendor lock-in, and MOSIP-based national ID systems plug in directly.",
+      "Everything runs on sovereign infrastructure Utopia hosts in its own jurisdiction: no SaaS, no vendor lock-in, and MOSIP-based national ID systems plug in directly. The accreditation tree scales to thousands of relying parties without bilateral integrations.",
     ],
     mechanics: [
       { label: "How ecosystems work", href: "/ecosystems" },
@@ -152,14 +156,14 @@ export const USE_CASES: UseCase[] = [
     ],
   },
   {
-    name: "Enterprise & human credentials",
-    actors: "Acme Corp, its employees, its suppliers, and certification bodies.",
+    name: "Sectorial ecosystems",
+    actors: "Acme Corp, its employees, its suppliers, and certification bodies; the same pattern serves health, transport, notaries, and any sector body.",
     pain: "Employee access, partner onboarding, and B2B trust all rest on accounts, PDFs, and claims nobody can verify. An ISO certificate is a logo on a slide.",
     story: [
       "Acme registers its Main Organization service and identifies everything it runs: it issues ECS-Service credentials to its services and ECS-Badge credentials to its employees.",
       "A certification body accredited by an ISO ecosystem audits Acme and issues its ISO 9001 credential. The certification becomes provable, not asserted.",
       "Before ordering, Acme's systems verify the supplier's organization credential against the registry: B2B trust checked in real time, not assumed.",
-      "The same rails carry diplomas, professional certifications, and reusable KYC/KYB: join an existing ecosystem as issuer or verifier, the fastest path to production.",
+      "The same rails serve every sector: health, transport, notaries, enterprises extended to their partners. Join an existing sector ecosystem as issuer or verifier, the fastest path to production, or govern your own.",
     ],
     mechanics: [
       { label: "The Acme worked example", href: "/ecosystems" },

@@ -888,7 +888,9 @@ export default function Ecosystems() {
               A fraction of every paid trust operation is committed to the
               participant&apos;s trust deposit as Trust Units (TU), and the
               deposit balance is the{" "}
-              <strong className="text-ink">trust score</strong>.
+              <strong className="text-ink">trust score</strong>. The deposit
+              exists to make bad actors sanctionable: it is skin in the game
+              that an ecosystem authority can slash for misbehavior.
             </p>
 
             <div className="card reveal mt-6 overflow-hidden">
