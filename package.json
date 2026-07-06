@@ -1,6 +1,6 @@
 {
   "name": "verana.io-website",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "description": "verana.io - the open trust infrastructure for the verifiable internet. Network and software front door of Verana (Next.js + Tailwind v4).",
   "license": "Apache-2.0",
