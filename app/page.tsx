@@ -10,13 +10,15 @@ import {
   faBuilding,
   faMicrochip,
   faRobot,
+  faLink,
+  faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { Container, Section, SectionHeading, Button } from "./components/ui";
 import HeroGlobe from "./components/HeroGlobe";
 import LatestEcosystems from "./components/LatestEcosystems";
 import ResolveDid from "./components/ResolveDid";
 import SolvesVisual from "./components/SolvesVisual";
-import { HERO, THREE_PARTS, USE_CASES } from "./lib/content";
+import { HERO, THREE_PARTS, USE_CASES, SOLVES } from "./lib/content";
 import { LINKS, SITE_TAGLINE, SITE_DESCRIPTION } from "./lib/site";
 import { buildMetadata } from "./lib/seo";
 import { NETWORK_NAME } from "./lib/verana";
@@ -33,6 +35,16 @@ export const revalidate = 600;
 const PART_ICONS = [faSitemap, faShieldHalved, faDiagramProject];
 
 const USE_CASE_ICONS = [faLandmark, faBuilding, faMicrochip, faRobot];
+
+// Icons and tone colors for the "What Verana solves" rows; tones echo the
+// three-part spine (ecosystems = primary, identity = accent, discovery =
+// success) so each solve quietly points back at the part that delivers it.
+const SOLVE_ICONS = [faShieldHalved, faSitemap, faLink, faMagnifyingGlass];
+const SOLVE_TONE = {
+  primary: "text-primary",
+  accent: "text-accent",
+  success: "text-success-ink",
+} as const;
 
 export default function Home() {
   return (
@@ -119,10 +131,25 @@ export default function Home() {
               Verana is the public infrastructure that fixes this.
             </strong>{" "}
             Ecosystems issue verifiable credentials to their participants, and
-            anyone can check any of them, in one query. Verification runs both
-            ways: you verify the service, and the service verifies you. Humans,
-            services, connected objects, and AI agents, verified the same way.
+            anyone can check any of them, in one query. And identification is
+            only the start:
           </p>
+          <div className="reveal-stagger mt-6 grid gap-x-8 gap-y-5 sm:grid-cols-2">
+            {SOLVES.map((s, i) => (
+              <div key={s.title} className="flex gap-3.5">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-rule bg-surface-2">
+                  <FontAwesomeIcon
+                    icon={SOLVE_ICONS[i]}
+                    className={`h-4 w-4 ${SOLVE_TONE[s.tone]}`}
+                  />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-ink">{s.title}</h3>
+                  <p className="mt-1 text-sm text-muted">{s.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
           <div className="card reveal mt-8 overflow-hidden">
             <div className="overflow-x-auto p-4 sm:p-5">
               <SolvesVisual />

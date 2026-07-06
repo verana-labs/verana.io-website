@@ -129,6 +129,38 @@ export const BUSINESS_MODELS: BusinessModel[] = [
   },
 ];
 
+/** The failures of online trust that Verana fixes (home "What Verana solves",
+ *  spec-v2 decision 12). Tones map each solve to its part of the three-part
+ *  spine: ecosystems = primary, identity = accent, discovery = success. */
+export type Solve = {
+  title: string;
+  body: string;
+  tone: "primary" | "accent" | "success";
+};
+
+export const SOLVES: Solve[] = [
+  {
+    title: "Verify each other",
+    tone: "accent",
+    body: "A service proves who operates it, and verifies who connects to it: humans, services, connected objects, and AI agents, all the same way.",
+  },
+  {
+    title: "Manage trust dynamically",
+    tone: "primary",
+    body: "An ecosystem's issuers and verifiers are managed live on the public registry, with open standards: no static, closed lists to maintain and distribute.",
+  },
+  {
+    title: "Attach any credential",
+    tone: "accent",
+    body: "A service publicly attaches credentials from any ecosystem: who operates it, its ISO certificate, its licenses. Anyone can check them.",
+  },
+  {
+    title: "Be found by what you prove",
+    tone: "success",
+    body: "No search engine can find \u201cthe accounting agent of Company B\u201d. The Trust Graph indexes services by their credentials, so humans and AI agents discover each other by proof, not keywords.",
+  },
+];
+
 // Use cases as concrete, named-actor narratives (spec-v2 §3.5), told through
 // the same fictional universe as the worked examples on /ecosystems.
 export type UseCase = {

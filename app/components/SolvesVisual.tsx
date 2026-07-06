@@ -1,4 +1,9 @@
-import { faUser, faServer, faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUser,
+  faServer,
+  faQuestion,
+  faArrowRightLong,
+} from "@fortawesome/free-solid-svg-icons";
 import Glyph from "./Glyph";
 import { Badge } from "./svg";
 
@@ -21,7 +26,7 @@ function ActorNode({
   icon,
   color,
   label,
-  sub,
+  subs,
   dashed,
 }: {
   x: number;
@@ -29,7 +34,7 @@ function ActorNode({
   icon: typeof faUser;
   color: string;
   label: string;
-  sub: string;
+  subs: string[];
   dashed?: boolean;
 }) {
   const r = 15;
@@ -63,19 +68,22 @@ function ActorNode({
       >
         {label}
       </text>
-      <text
-        x={x}
-        y={y + r + 24}
-        textAnchor="middle"
-        fontSize={8.5}
-        fontFamily="var(--font-mono)"
-        fill={MUTED}
-        stroke={SURFACE}
-        strokeWidth={3}
-        paintOrder="stroke"
-      >
-        {sub}
-      </text>
+      {subs.map((sub, i) => (
+        <text
+          key={sub}
+          x={x}
+          y={y + r + 24 + i * 11}
+          textAnchor="middle"
+          fontSize={8.5}
+          fontFamily="var(--font-mono)"
+          fill={MUTED}
+          stroke={SURFACE}
+          strokeWidth={3}
+          paintOrder="stroke"
+        >
+          {sub}
+        </text>
+      ))}
     </g>
   );
 }
@@ -107,7 +115,7 @@ export default function SolvesVisual() {
       viewBox="0 0 920 190"
       className="h-auto w-full min-w-[640px]"
       role="img"
-      aria-label="Today, you connect to a service without knowing who runs it, and the service cannot verify you either: both ends carry a question mark. On Verana, both sides verify each other against the public registry before connecting: both ends carry a check mark."
+      aria-label="Today, an unknown entity, maybe a human, maybe a service, connects to a service that cannot be verified either: both ends carry a question mark. On Verana, both sides verify each other against the public registry before connecting: an employee of Example Ltd using a verified agent browser talks to Acme Corp's Accounting Agent, which presents verified Acme Corp and ISO 24001 credentials."
     >
       <defs>
         <marker
@@ -169,8 +177,24 @@ export default function SolvesVisual() {
         strokeDasharray="4 4"
         opacity={0.7}
       />
-      <ActorNode x={105} y={95} icon={faUser} color={PERSON} label="you" sub="human or AI agent" />
-      <ActorNode x={350} y={95} icon={faServer} color={ACCENT} label="a service" sub="who runs it?" dashed />
+      <ActorNode
+        x={105}
+        y={95}
+        icon={faQuestion}
+        color={MUTED}
+        label="unknown entity"
+        subs={["a human? a service?"]}
+        dashed
+      />
+      <ActorNode
+        x={350}
+        y={95}
+        icon={faServer}
+        color={ACCENT}
+        label="a service"
+        subs={["who runs it?"]}
+        dashed
+      />
       {/* neither end can verify the other */}
       <UnknownBadge x={116} y={84} />
       <UnknownBadge x={361} y={84} />
@@ -215,7 +239,7 @@ export default function SolvesVisual() {
         verify each other, then connect
       </text>
       <line
-        x1={594}
+        x1={604}
         y1={95}
         x2={788}
         y2={95}
@@ -225,17 +249,24 @@ export default function SolvesVisual() {
         markerStart="url(#solves-success)"
         markerEnd="url(#solves-success)"
       />
-      <ActorNode x={570} y={95} icon={faUser} color={PERSON} label="you" sub="human or AI agent" />
+      <ActorNode
+        x={580}
+        y={95}
+        icon={faUser}
+        color={PERSON}
+        label="you"
+        subs={["employee of Example Ltd", "using agent browser ABC v1.5 · verified"]}
+      />
       <ActorNode
         x={815}
         y={95}
         icon={faServer}
         color={ACCENT}
-        label="the same service"
-        sub="Acme Corp · verified"
+        label="Accounting Agent"
+        subs={["Acme Corp · verified", "ISO 24001 · verified"]}
       />
       {/* both ends verified */}
-      <Badge x={581} y={84} kind="check" />
+      <Badge x={591} y={84} kind="check" />
       <Badge x={826} y={84} kind="check" />
     </svg>
   );
