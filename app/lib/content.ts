@@ -129,12 +129,52 @@ export const BUSINESS_MODELS: BusinessModel[] = [
   },
 ];
 
+/** The failures of online trust that Verana fixes (home "What Verana solves",
+ *  spec-v2 decision 12). Tones map each solve to its part of the three-part
+ *  spine: ecosystems = primary, identity = accent, discovery = success. */
+export type Solve = {
+  title: string;
+  body: string;
+  tone: "primary" | "accent" | "success";
+};
+
+export const SOLVES: Solve[] = [
+  {
+    title: "Verify each other",
+    tone: "accent",
+    body: "A service proves who operates it, and verifies who connects to it: humans, services, connected objects, and AI agents, all the same way.",
+  },
+  {
+    title: "Manage trust dynamically",
+    tone: "primary",
+    body: "An ecosystem's issuers and verifiers are managed live on the public registry, with open standards: no static, closed lists to maintain and distribute.",
+  },
+  {
+    title: "Attach any credential",
+    tone: "accent",
+    body: "A service publicly attaches credentials from any ecosystem: who operates it, its ISO certificate, its licenses. Anyone can check them.",
+  },
+  {
+    title: "Connect without accounts",
+    tone: "accent",
+    body: "No more creating an account and pasting an API key just to wire two services together: a service or agent connects by presenting its verifiable credentials, with nothing to provision on the other side.",
+  },
+  {
+    title: "Be found by what you prove",
+    tone: "success",
+    body: "No search engine can find \u201cthe Accounting Agent of Acme Corp\u201d. The Trust Graph indexes services by their credentials, so humans and AI agents discover each other by proof, not keywords.",
+  },
+];
+
 // Use cases as concrete, named-actor narratives (spec-v2 §3.5), told through
 // the same fictional universe as the worked examples on /ecosystems.
 export type UseCase = {
   name: string;
   actors: string;
+  /** what goes wrong today (used on /use-cases) */
   pain: string;
+  /** the one-line result on Verana (used by the home teaser tiles) */
+  outcome: string;
   story: string[];
   mechanics: { label: string; href: string }[];
 };
@@ -144,6 +184,7 @@ export const USE_CASES: UseCase[] = [
     name: "Governments",
     actors: "The Republic of Utopia, its Interior Ministry, civil registries, banks, telcos, and citizens.",
     pain: "National identity is siloed: every bank and agency re-verifies people from scratch, and the state has no neutral rail to let the private sector rely on its credentials.",
+    outcome: "A reusable national ID: citizens prove who they are once, and every service can rely on it.",
     story: [
       "Utopia creates its own GovID Ecosystem on the public registry: it publishes its governance framework, defines the GovID credential schema, and accredits participants.",
       "The Interior Ministry, as issuer grantor, accredits the regional civil registries. They issue GovID credentials to citizens, who hold them in their own wallets.",
@@ -159,6 +200,7 @@ export const USE_CASES: UseCase[] = [
     name: "Sectorial ecosystems",
     actors: "Acme Corp, its employees, its suppliers, and certification bodies; the same pattern serves health, transport, notaries, and any sector body.",
     pain: "Employee access, partner onboarding, and B2B trust all rest on accounts, PDFs, and claims nobody can verify. An ISO certificate is a logo on a slide.",
+    outcome: "Diplomas, ISO certificates, and badges any partner can verify: health, transport, notaries, enterprise.",
     story: [
       "Acme registers its Main Organization service and identifies everything it runs: it issues ECS-Service credentials to its services and ECS-Badge credentials to its employees.",
       "A certification body accredited by an ISO ecosystem audits Acme and issues its ISO 9001 credential. The certification becomes provable, not asserted.",
@@ -174,6 +216,7 @@ export const USE_CASES: UseCase[] = [
     name: "Connected objects (IoT)",
     actors: "A grid operator, its smart meters and control systems, and the utilities that read them.",
     pain: "Millions of devices authenticate with baked-in secrets. When one is compromised or spoofed, nothing distinguishes a genuine meter from a fake one.",
+    outcome: "Devices that prove they are genuine before they connect to the network.",
     story: [
       "Each meter is a verifiable service: it holds an ECS-Service credential issued by the grid operator's organization service, anchored to the public registry.",
       "A utility's collector verifies each meter's credential chain before accepting readings: machine identity checked against the registry, not against a shared secret.",
@@ -187,6 +230,7 @@ export const USE_CASES: UseCase[] = [
     name: "Agentic AI",
     actors: "Acme's Corporate AI Agent, its employees, and partner companies' agents.",
     pain: "AI agents act at machine speed with no provable identity: anything can claim to be the support agent of Bank X, and no action is attributable to a responsible party.",
+    outcome: "AI agents that prove who operates them and who they act for, before they get access.",
     story: [
       "Acme's AI agent is itself a verifiable service: it holds an ECS-Service credential issued by Acme's organization service. The company visibly stands behind its agent.",
       "An employee connects: the agent verifies their ECS-Badge and their wallet's ECS-UserAgent against the registry before the first message. Verify first, then connect.",

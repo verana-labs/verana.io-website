@@ -32,6 +32,7 @@ export const LINKS = {
   hologram: "https://hologram.zone",
   linkedin: "https://www.linkedin.com/company/verana-foundation/",
   x: "https://x.com/Verana_io",
+  discord: "https://discord.gg/edjaFn252q",
 } as const;
 
 export const SOCIAL_LINKS = [

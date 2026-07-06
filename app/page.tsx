@@ -10,12 +10,17 @@ import {
   faBuilding,
   faMicrochip,
   faRobot,
+  faLink,
+  faKey,
+  faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { Container, Section, SectionHeading, Button } from "./components/ui";
 import HeroGlobe from "./components/HeroGlobe";
 import LatestEcosystems from "./components/LatestEcosystems";
 import ResolveDid from "./components/ResolveDid";
-import { HERO, THREE_PARTS, USE_CASES } from "./lib/content";
+import SolvesVisual from "./components/SolvesVisual";
+import { FoundationLogo, CouncilLogo } from "./components/OrgLogos";
+import { HERO, THREE_PARTS, USE_CASES, SOLVES } from "./lib/content";
 import { LINKS, SITE_TAGLINE, SITE_DESCRIPTION } from "./lib/site";
 import { buildMetadata } from "./lib/seo";
 import { NETWORK_NAME } from "./lib/verana";
@@ -32,6 +37,16 @@ export const revalidate = 600;
 const PART_ICONS = [faSitemap, faShieldHalved, faDiagramProject];
 
 const USE_CASE_ICONS = [faLandmark, faBuilding, faMicrochip, faRobot];
+
+// Icons and tone colors for the "What Verana solves" rows; tones echo the
+// three-part spine (ecosystems = primary, identity = accent, discovery =
+// success) so each solve quietly points back at the part that delivers it.
+const SOLVE_ICONS = [faShieldHalved, faSitemap, faLink, faKey, faMagnifyingGlass];
+const SOLVE_TONE = {
+  primary: "text-primary",
+  accent: "text-accent",
+  success: "text-success-ink",
+} as const;
 
 export default function Home() {
   return (
@@ -105,35 +120,133 @@ export default function Home() {
         </Container>
       </Section>
 
-      {/* Use cases teaser */}
+      {/* What Verana solves: one problem, one answer, breadth as proof */}
       <Section className="border-t border-rule bg-surface">
         <Container>
           <SectionHeading
-            eyebrow="Use cases"
-            title="Humans and AI agents, verified the same way"
-            intro="One trust infrastructure, many entry points, built for what's coming: a bank doing reusable KYC today runs AI agents tomorrow. Every lens converges on the same verify-first primitive."
+            eyebrow="Why Verana"
+            title="What Verana solves"
+            intro="Online, nothing proves who is behind a service, an app, or an AI agent. So everyone re-verifies everything, or just trusts."
           />
-          <div className="reveal-stagger mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <p className="reveal mt-5 max-w-3xl text-lg leading-relaxed text-muted">
+            <strong className="text-ink">
+              Verana is the public infrastructure that fixes this.
+            </strong>{" "}
+            Ecosystems issue verifiable credentials to their participants, and
+            anyone can check any of them, in one query. And identification is
+            only the start:
+          </p>
+          <div className="reveal-stagger mt-6 grid gap-x-8 gap-y-5 sm:grid-cols-2">
+            {SOLVES.map((s, i) => (
+              <div key={s.title} className="flex gap-3.5">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-rule bg-surface-2">
+                  <FontAwesomeIcon
+                    icon={SOLVE_ICONS[i]}
+                    className={`h-4 w-4 ${SOLVE_TONE[s.tone]}`}
+                  />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-ink">{s.title}</h3>
+                  <p className="mt-1 text-sm text-muted">{s.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="card reveal mt-8 overflow-hidden">
+            <div className="overflow-x-auto p-4 sm:p-5">
+              <SolvesVisual />
+            </div>
+          </div>
+          <div className="reveal-stagger mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {USE_CASES.map((u, i) => (
               <Link
                 key={u.name}
                 href="/use-cases"
                 className="card group p-5 transition-colors hover:border-primary"
               >
-                <FontAwesomeIcon
-                  icon={USE_CASE_ICONS[i]}
-                  className="h-4 w-4 text-accent"
-                />
-                <h3 className="mt-3 font-semibold text-ink">{u.name}</h3>
-                <p className="mt-2 text-sm text-muted">{u.pain}</p>
+                <div className="flex items-center gap-2.5">
+                  <FontAwesomeIcon
+                    icon={USE_CASE_ICONS[i]}
+                    className="h-4 w-4 text-accent"
+                  />
+                  <h3 className="font-semibold text-ink">{u.name}</h3>
+                </div>
+                <p className="mt-2 text-sm text-muted">{u.outcome}</p>
               </Link>
             ))}
           </div>
         </Container>
       </Section>
 
+      {/* Governance: openness and no ownership, summarized from /about */}
+      <Section className="border-t border-rule">
+        <Container>
+          <SectionHeading
+            eyebrow="Governance"
+            title="Owned by no one"
+            intro="Open standards, open-source code, a permissionless public network. Two non-profits answer for the commons by name, and the model is built so that no single party can own the trust layer."
+          />
+          <div className="reveal-stagger mt-8 grid gap-4 sm:grid-cols-2">
+            <Link
+              href="/about"
+              className="card group flex flex-col p-6 transition-colors hover:border-primary"
+            >
+              <span className="eyebrow">The steward</span>
+              <h3 className="mt-3">
+                <FoundationLogo />
+              </h3>
+              <p className="mt-1 font-mono text-[11px] text-muted">
+                veranafoundation.org
+              </p>
+              <p className="mt-2 flex-1 text-sm text-muted">
+                The non-profit steward of the commons: it owns and maintains
+                the Verifiable Trust and Verifiable Public Registry
+                specifications and stewards the open-source reference
+                implementations. Its work happens in public working groups,
+                and everything it produces stays open: openly licensed specs,
+                open-source code.
+              </p>
+              <span className="mt-4 inline-flex items-center gap-2 text-sm text-accent">
+                Learn more
+                <FontAwesomeIcon
+                  icon={faArrowRightLong}
+                  className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1"
+                />
+              </span>
+            </Link>
+            <Link
+              href="/about"
+              className="card group flex flex-col p-6 transition-colors hover:border-primary"
+            >
+              <span className="eyebrow">The governor</span>
+              <h3 className="mt-3">
+                <CouncilLogo />
+              </h3>
+              <p className="mt-1 font-mono text-[11px] text-muted">
+                veranacouncil.org
+              </p>
+              <p className="mt-2 flex-1 text-sm text-muted">
+                A neutral, non-profit Swiss association that governs and
+                secures the live network and the ECS identity baseline. Up to
+                25 seats, one member one vote, membership free of charge, and
+                every member runs a validator node. It governs only the
+                constitutional commons: no instrument to reach inside the
+                sovereign ecosystems built on the network.
+              </p>
+              <span className="mt-4 inline-flex items-center gap-2 text-sm text-accent">
+                Learn more
+                <FontAwesomeIcon
+                  icon={faArrowRightLong}
+                  className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1"
+                />
+              </span>
+            </Link>
+          </div>
+        </Container>
+      </Section>
+
       {/* Live proof — verifiable identity, resolve a DID */}
-      <Section>
+      <Section className="border-t border-rule">
         <Container>
           <SectionHeading
             eyebrow={`Verifiable identity · live from ${NETWORK_NAME}`}
