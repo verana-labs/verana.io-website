@@ -38,6 +38,12 @@ export default function Contact() {
                   </a>{" "}
                   to start building
                 </li>
+                <li>
+                  <a href={LINKS.discord} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+                    Discord
+                  </a>{" "}
+                  to chat with the community
+                </li>
                 <li>In person at IIW and standards venues</li>
                 <li>
                   Press kit on the{" "}
