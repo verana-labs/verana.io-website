@@ -50,7 +50,7 @@ import { USE_CASES } from "../lib/content";
 export const metadata = buildMetadata({
   title: "Use cases",
   description:
-    "One trust infrastructure, many entry points: governments, enterprise and human credentials, connected objects (IoT), and agentic AI, told as concrete stories.",
+    "One trust infrastructure, many entry points: governments, sectorial ecosystems (health, transport, notaries), connected objects (IoT), and agentic AI, told as concrete stories.",
   path: "/use-cases",
 });
 

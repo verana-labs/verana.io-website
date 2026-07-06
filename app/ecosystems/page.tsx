@@ -38,7 +38,7 @@ import { LINKS } from "../lib/site";
 export const metadata = buildMetadata({
   title: "Sovereign ecosystems",
   description:
-    "Join or build a trust ecosystem: governance framework, credential schemas, accreditation tree, and a built-in business model, anchored on the Verifiable Public Registry.",
+    "Build your own trust ecosystem: governance framework, credential schemas, accreditation tree, and a built-in business model, anchored on the Verifiable Public Registry. Or join existing ecosystems as an accredited issuer, verifier, or holder.",
   path: "/ecosystems",
 });
 
