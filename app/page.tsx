@@ -13,6 +13,7 @@ import {
   faLink,
   faKey,
   faMagnifyingGlass,
+  faScaleBalanced,
 } from "@fortawesome/free-solid-svg-icons";
 import { Container, Section, SectionHeading, Button } from "./components/ui";
 import HeroGlobe from "./components/HeroGlobe";
@@ -177,8 +178,77 @@ export default function Home() {
         </Container>
       </Section>
 
+      {/* Governance: openness and no ownership, summarized from /about */}
+      <Section className="border-t border-rule">
+        <Container>
+          <SectionHeading
+            eyebrow="Governance"
+            title="Owned by no one"
+            intro="Open standards, open-source code, a permissionless public network. Two non-profits answer for the commons by name, and the model is built so that no single party can own the trust layer."
+          />
+          <div className="reveal-stagger mt-8 grid gap-4 sm:grid-cols-2">
+            <Link
+              href="/about"
+              className="card group flex flex-col p-6 transition-colors hover:border-primary"
+            >
+              <div className="flex items-center justify-between">
+                <span className="eyebrow">The steward</span>
+                <FontAwesomeIcon icon={faLandmark} className="h-4 w-4 text-primary" />
+              </div>
+              <h3 className="display mt-3 text-xl text-ink">Verana Foundation</h3>
+              <p className="mt-1 font-mono text-[11px] text-muted">
+                veranafoundation.org
+              </p>
+              <p className="mt-2 flex-1 text-sm text-muted">
+                The non-profit steward of the commons: it owns and maintains
+                the Verifiable Trust and Verifiable Public Registry
+                specifications and stewards the open-source reference
+                implementations. Its work happens in public working groups,
+                and everything it produces stays open: openly licensed specs,
+                open-source code.
+              </p>
+              <span className="mt-4 inline-flex items-center gap-2 text-sm text-accent">
+                Learn more
+                <FontAwesomeIcon
+                  icon={faArrowRightLong}
+                  className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1"
+                />
+              </span>
+            </Link>
+            <Link
+              href="/about"
+              className="card group flex flex-col p-6 transition-colors hover:border-primary"
+            >
+              <div className="flex items-center justify-between">
+                <span className="eyebrow">The governor</span>
+                <FontAwesomeIcon icon={faScaleBalanced} className="h-4 w-4 text-primary" />
+              </div>
+              <h3 className="display mt-3 text-xl text-ink">Verana Council</h3>
+              <p className="mt-1 font-mono text-[11px] text-muted">
+                veranacouncil.org
+              </p>
+              <p className="mt-2 flex-1 text-sm text-muted">
+                A neutral, non-profit Swiss association that governs and
+                secures the live network and the ECS identity baseline. Up to
+                25 seats, one member one vote, membership free of charge, and
+                every member runs a validator node. It governs only the
+                constitutional commons: no instrument to reach inside the
+                sovereign ecosystems built on the network.
+              </p>
+              <span className="mt-4 inline-flex items-center gap-2 text-sm text-accent">
+                Learn more
+                <FontAwesomeIcon
+                  icon={faArrowRightLong}
+                  className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1"
+                />
+              </span>
+            </Link>
+          </div>
+        </Container>
+      </Section>
+
       {/* Live proof — verifiable identity, resolve a DID */}
-      <Section>
+      <Section className="border-t border-rule">
         <Container>
           <SectionHeading
             eyebrow={`Verifiable identity · live from ${NETWORK_NAME}`}
