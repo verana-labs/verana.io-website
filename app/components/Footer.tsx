@@ -2,9 +2,17 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDiscord, faLinkedinIn, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import Logo from "./Logo";
 import { LINKS, SITE_TAGLINE } from "../lib/site";
 import { CONSENT_KEY, CONSENT_EVENT } from "./Analytics";
+
+const SOCIALS = [
+  { label: "Discord", href: LINKS.discord, icon: faDiscord },
+  { label: "LinkedIn", href: LINKS.linkedin, icon: faLinkedinIn },
+  { label: "X", href: LINKS.x, icon: faXTwitter },
+] as const;
 
 const COLUMNS: { title: string; links: { label: string; href: string; ext?: boolean }[] }[] = [
   {
@@ -30,7 +38,6 @@ const COLUMNS: { title: string; links: { label: string; href: string; ext?: bool
     links: [
       { label: "Documentation", href: LINKS.docs, ext: true },
       { label: "GitHub", href: LINKS.github, ext: true },
-      { label: "Discord", href: LINKS.discord, ext: true },
       { label: "Verifiable Trust spec", href: LINKS.trustSpec, ext: true },
       { label: "VPR spec", href: LINKS.vprSpec, ext: true },
     ],
@@ -70,6 +77,20 @@ export default function Footer() {
           <div>
             <Logo />
             <p className="mt-4 max-w-xs text-sm text-muted">{SITE_TAGLINE}.</p>
+            <div className="mt-4 flex items-center gap-4">
+              {SOCIALS.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="text-muted transition-colors hover:text-ink"
+                >
+                  <FontAwesomeIcon icon={s.icon} className="h-5 w-5" />
+                </a>
+              ))}
+            </div>
           </div>
           {COLUMNS.map((col) => (
             <div key={col.title}>
