@@ -153,7 +153,7 @@ export default function Home() {
             ))}
           </div>
           <div className="card reveal mt-8 overflow-hidden">
-            <div className="overflow-x-auto p-4 sm:p-5">
+            <div className="p-4 sm:p-5">
               <SolvesVisual />
             </div>
           </div>
