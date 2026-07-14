@@ -259,6 +259,33 @@ export default function Home() {
         </Container>
       </Section>
 
+      {/* Try it yourself — the Verana Playground */}
+      <Section className="border-t border-rule bg-surface">
+        <Container>
+          <div className="card reveal flex flex-col gap-6 p-6 sm:p-8 lg:flex-row lg:items-center">
+            <div className="flex-1">
+              <span className="eyebrow">
+                Try it yourself · live on {NETWORK_NAME}
+              </span>
+              <h2 className="display mt-3 text-2xl sm:text-3xl text-ink">
+                The Verana Playground
+              </h2>
+              <p className="mt-3 max-w-2xl text-muted">
+                A guided, hands-on tour of verify-first: get a verifiable
+                credential from a demo issuer into a wallet on your phone, then
+                present it to a demo verifier, in about five minutes. No
+                account, no setup.
+              </p>
+            </div>
+            <div className="shrink-0">
+              <Button href={LINKS.playground} external>
+                Open the Playground
+              </Button>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
       {/* Live proof — latest trusted ecosystems */}
       <Section className="border-t border-rule">
         <Container>

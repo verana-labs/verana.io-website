@@ -24,6 +24,7 @@ export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-9H5406F02W"
 export const LINKS = {
   github: "https://github.com/verana-labs",
   docs: "https://docs.verana.io",
+  playground: "https://playground.main.demos.testnet.verana.network/",
   foundation: "https://veranafoundation.org",
   council: "https://veranacouncil.org",
   trustSpec: "https://verana-labs.github.io/verifiable-trust-spec/",
