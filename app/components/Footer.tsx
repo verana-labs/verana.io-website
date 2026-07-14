@@ -37,6 +37,7 @@ const COLUMNS: { title: string; links: { label: string; href: string; ext?: bool
     title: "Build on Verana",
     links: [
       { label: "Documentation", href: LINKS.docs, ext: true },
+      { label: "Playground", href: LINKS.playground, ext: true },
       { label: "GitHub", href: LINKS.github, ext: true },
       { label: "Verifiable Trust spec", href: LINKS.trustSpec, ext: true },
       { label: "VPR spec", href: LINKS.vprSpec, ext: true },

@@ -303,6 +303,27 @@ export default function Identity() {
             </div>
           </div>
 
+          {/* try it live: the Playground runs flow 1 for real */}
+          <div className="card reveal flex flex-col gap-4 p-6 sm:flex-row sm:items-center">
+            <div className="flex-1">
+              <span className="eyebrow">Try it yourself</span>
+              <h3 className="display mt-2 text-xl text-ink">
+                Run flow 1 in the Playground
+              </h3>
+              <p className="mt-2 max-w-2xl text-sm text-muted">
+                The Verana Playground walks you through the first flow for
+                real: connect a wallet on your phone to a demo issuer, receive
+                a credential, and present it to a demo verifier, live on the
+                testnet.
+              </p>
+            </div>
+            <div className="shrink-0">
+              <Button href={LINKS.playground} external>
+                Open the Playground
+              </Button>
+            </div>
+          </div>
+
           <div className="reveal flex flex-wrap gap-3">
             <Button href={LINKS.trustSpec} variant="ghost" external>
               Verifiable Trust spec
