@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Container, Section, SectionHeading, Button } from "../components/ui";
 import PageHero from "../components/PageHero";
+import Roadmap from "../components/Roadmap";
 import UseCaseScene, { type SceneSpec } from "../components/UseCaseScene";
 import { FoundationLogo, CouncilLogo } from "../components/OrgLogos";
 import { LINKS } from "../lib/site";
@@ -18,7 +19,7 @@ import { LINKS } from "../lib/site";
 export const metadata = buildMetadata({
   title: "About",
   description:
-    "Vision and mission of Verana, the open, public, neutral trust infrastructure; the roles of the Verana Foundation and the Verana Council; owned by no one.",
+    "Vision and mission of Verana, the open, public, neutral trust infrastructure; the roles of the Verana Foundation and the Verana Council; owned by no one. Plus the roadmap to mainnet.",
   path: "/about",
 });
 
@@ -170,6 +171,32 @@ export default function About() {
             membership, and program questions belong to the Foundation and the
             Council; this page only points the way.
           </p>
+        </Container>
+      </Section>
+
+      {/* Roadmap: the condensed 5-phase story; the authoritative, detailed
+          roadmap is verana-labs/verana-spec/ROADMAP.md, linked below. */}
+      <Section id="roadmap" className="pt-0">
+        <Container className="space-y-10">
+          <div className="reveal">
+            <SectionHeading
+              eyebrow="Roadmap"
+              title="From testnet to the trust layer"
+              intro="What has shipped, what is being built now, and the road to mainnet — condensed. The full, detailed roadmap lives with the specifications."
+            />
+          </div>
+
+          <Roadmap />
+
+          <a
+            href={LINKS.roadmap}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="reveal inline-flex items-center gap-2 font-mono text-xs text-accent hover:underline"
+          >
+            Full roadmap on GitHub
+            <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="h-3 w-3" />
+          </a>
 
           {/* CTA */}
           <div className="reveal flex flex-wrap gap-3">
