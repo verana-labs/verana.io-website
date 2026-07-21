@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.4.0](https://github.com/verana-labs/verana.io-website/compare/verana.io-website-v0.3.0...verana.io-website-v0.4.0) (2026-07-21)
+
+
+### Features
+
+* **about:** add condensed roadmap timeline section ([#94](https://github.com/verana-labs/verana.io-website/issues/94)) ([8b5b6b7](https://github.com/verana-labs/verana.io-website/commit/8b5b6b753e25a4da6eeec7f2185716d4e59db2c6))
+* **ecosystems:** state that pay-per-x fee flows are privacy preserving ([#88](https://github.com/verana-labs/verana.io-website/issues/88)) ([cd7b288](https://github.com/verana-labs/verana.io-website/commit/cd7b288a2eed1f6f734861aa5cc8b162af3fa96c))
+* link the Verana Playground from home, identity, and the footer ([#91](https://github.com/verana-labs/verana.io-website/issues/91)) ([9b62fe9](https://github.com/verana-labs/verana.io-website/commit/9b62fe93279233470b637f2f743c1bf0e108f749))
+* **seo:** refresh metadata for the merged content changes + recover stranded legal commit ([#86](https://github.com/verana-labs/verana.io-website/issues/86)) ([ccc59d8](https://github.com/verana-labs/verana.io-website/commit/ccc59d82a97069d42c88882f597af47c222d93f4))
+
+
+### Bug Fixes
+
+* **home:** stack the solves strip vertically on mobile ([#89](https://github.com/verana-labs/verana.io-website/issues/89)) ([085ab1e](https://github.com/verana-labs/verana.io-website/commit/085ab1eb098d580f4833f5aca1f08e6bbeb67f81))
+* restore /images/purple/vcred_trust_triangle.webp from the previous site ([#92](https://github.com/verana-labs/verana.io-website/issues/92)) ([1bd81b3](https://github.com/verana-labs/verana.io-website/commit/1bd81b35a001c6f332d9fe729adbd0a0e4a43469))
+* restore /images/verana-logo-verana.png used by email signatures ([#93](https://github.com/verana-labs/verana.io-website/issues/93)) ([71471ca](https://github.com/verana-labs/verana.io-website/commit/71471ca05bf66124bc2f400f640faceda80d099d))
+
 ## [0.3.0](https://github.com/verana-labs/verana.io-website/compare/verana.io-website-v0.2.0...verana.io-website-v0.3.0) (2026-07-06)
 
 
