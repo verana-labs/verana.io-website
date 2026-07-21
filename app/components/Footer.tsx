@@ -28,6 +28,7 @@ const COLUMNS: { title: string; links: { label: string; href: string; ext?: bool
     title: "Ecosystem",
     links: [
       { label: "About", href: "/about" },
+      { label: "Roadmap", href: "/about#roadmap" },
       { label: "Integrations", href: "/integrations" },
       { label: "Brand", href: "/brand" },
       { label: "Contact", href: "/contact" },

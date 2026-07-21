@@ -28,6 +28,7 @@ export const LINKS = {
   foundation: "https://veranafoundation.org",
   council: "https://veranacouncil.org",
   trustSpec: "https://verana-labs.github.io/verifiable-trust-spec/",
+  roadmap: "https://github.com/verana-labs/verana-spec/blob/main/ROADMAP.md",
   vprSpec: "https://verana-labs.github.io/verifiable-trust-vpr-spec/",
   company: "https://2060.io",
   hologram: "https://hologram.zone",

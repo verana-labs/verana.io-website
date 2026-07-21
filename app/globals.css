@@ -186,6 +186,82 @@ body {
     );
 }
 
+/* Roadmap timeline (/about#roadmap) ---------------------------------------- */
+.chip-progress {
+  color: var(--color-accent);
+  border-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-rule));
+}
+.chip-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .chip-progress .chip-dot {
+    animation: roadmap-pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes roadmap-pulse {
+    50% {
+      opacity: 0.35;
+    }
+  }
+}
+.roadmap-spine {
+  position: relative;
+  padding-left: 2.1rem;
+}
+/* Spine reads as the network's history: verified green over the shipped era,
+   electric blue at the current epoch, quiet rule below. Stop percentages
+   approximate the card heights; exactness doesn't matter visually. */
+.roadmap-spine::before {
+  content: "";
+  position: absolute;
+  left: 0.55rem;
+  top: 0.6rem;
+  bottom: 0.6rem;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--color-success) 0 16%,
+    var(--color-accent) 16% 38%,
+    var(--color-rule) 44%
+  );
+}
+.roadmap-stop {
+  position: relative;
+}
+.roadmap-stop::before {
+  content: "";
+  position: absolute;
+  left: -1.96rem;
+  top: 1.4rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-bg);
+  border: 2px solid var(--color-rule);
+}
+.roadmap-stop[data-status="shipped"]::before {
+  background: var(--color-success);
+  border-color: var(--color-success);
+}
+.roadmap-stop[data-status="progress"]::before {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 25%, transparent);
+}
+.roadmap-stop[data-status="progress"] > div {
+  border-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-rule));
+}
+.roadmap-item::before {
+  content: "▪";
+  color: var(--color-primary-bright);
+  margin-right: 0.45rem;
+  font-size: 0.7em;
+  vertical-align: 1px;
+}
+
 /* Reveal-on-scroll (site-wide; observed globally by components/Reveal) ----- */
 .reveal {
   opacity: 0;
