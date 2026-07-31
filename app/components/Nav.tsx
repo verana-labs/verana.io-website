@@ -47,12 +47,12 @@ export default function Nav() {
 
         <div className="ml-auto flex items-center gap-3">
           <a
-            href={LINKS.docs}
+            href={LINKS.playground}
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-primary hidden sm:inline-flex"
           >
-            Start building
+            Playground
           </a>
           <ThemeToggle />
           <button
@@ -82,12 +82,12 @@ export default function Nav() {
             ))}
             <li>
               <a
-                href={LINKS.docs}
+                href={LINKS.playground}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary mt-2 w-full"
               >
-                Start building
+                Playground
               </a>
             </li>
           </ul>
