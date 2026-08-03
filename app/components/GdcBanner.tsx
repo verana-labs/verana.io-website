@@ -4,12 +4,15 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
-export default function AnnouncementBar() {
+// Temporary banner: remove after GDC26 (September 3, 2026).
+const GDC_URL = "https://globaldigitalcollaboration.org/";
+
+export default function GdcBanner() {
   const [dismissed, setDismissed] = useState(true);
 
   useEffect(() => {
     try {
-      setDismissed(localStorage.getItem("verana-annc") === "1");
+      setDismissed(localStorage.getItem("verana-gdc26") === "1");
     } catch {
       setDismissed(false);
     }
@@ -19,17 +22,36 @@ export default function AnnouncementBar() {
 
   return (
     <div className="border-b border-rule bg-surface text-sm">
+      {/* GDC brand barcode strip, tiled at half its native 20px height. */}
+      <div
+        aria-hidden
+        className="h-2.5 w-full"
+        style={{
+          backgroundImage: "url(/images/gdc-barcode.png)",
+          backgroundRepeat: "repeat-x",
+          backgroundSize: "auto 100%",
+        }}
+      />
       <div className="mx-auto flex max-w-6xl items-center justify-center gap-3 px-6 py-2 text-muted">
         <span className="text-center">
-          Verana testnet is live. Mainnet targeted Q1 2027.
+          Meet Verana at the Global Digital Collaboration conference (GDC26),
+          September 1-3, 2026, Palexpo Geneva.{" "}
+          <a
+            href={GDC_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent hover:underline"
+          >
+            Learn more
+          </a>
         </span>
         <button
           type="button"
-          aria-label="Dismiss announcement"
+          aria-label="Dismiss GDC26 announcement"
           onClick={() => {
             setDismissed(true);
             try {
-              localStorage.setItem("verana-annc", "1");
+              localStorage.setItem("verana-gdc26", "1");
             } catch {
               /* ignore */
             }
