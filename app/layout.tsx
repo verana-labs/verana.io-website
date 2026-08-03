@@ -5,7 +5,6 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import "./globals.css";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import AnnouncementBar from "./components/AnnouncementBar";
 import GdcBanner from "./components/GdcBanner";
 import Reveal from "./components/Reveal";
 import JsonLd from "./components/JsonLd";
@@ -120,7 +119,6 @@ export default function RootLayout({
         <Reveal />
         <Analytics />
         <GdcBanner />
-        <AnnouncementBar />
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
