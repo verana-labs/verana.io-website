@@ -318,7 +318,7 @@ export default function Identity() {
               </p>
             </div>
             <div className="shrink-0">
-              <Button href={LINKS.playground} external>
+              <Button href={`${LINKS.playground}/personal-wallets`} external>
                 Open the Playground
               </Button>
             </div>
