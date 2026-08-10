@@ -266,7 +266,9 @@ export default function Software() {
             <div className="card reveal mt-6 overflow-hidden">
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-rule bg-surface-2 px-5 py-3.5">
                 <FontAwesomeIcon icon={faWallet} className="h-4 w-4 text-primary" />
-                <h3 className="display text-xl text-ink">VS-Agent</h3>
+                <h3 className="display text-xl text-ink">
+                  Verana&apos;s Business Wallet - VS-Agent
+                </h3>
                 <div className="ml-auto flex flex-wrap items-center gap-1.5">
                   <span className="chip chip-verified">reference implementation</span>
                   <span className="chip">Apache-2.0</span>
