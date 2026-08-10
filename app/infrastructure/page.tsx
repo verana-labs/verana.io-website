@@ -309,13 +309,6 @@ export default function Software() {
                     </div>
                   ))}
                 </div>
-                <p className="mt-6 max-w-3xl text-sm text-muted">
-                  Other open-source business wallets host Verifiable Services
-                  too, natively, with VS-Agent as a sidecar, or by adding trust
-                  resolution to an existing OpenID4VC stack. Each integrated
-                  wallet runs a live, Verana-verified demo service in the
-                  Playground.
-                </p>
               </div>
               <div className="flex flex-wrap items-center gap-3 border-t border-rule px-5 py-4">
                 <Button href={`${LINKS.playground}/business-wallets`} external>
