@@ -18,7 +18,7 @@ function WalletTile({ w }: { w: PersonalWallet }) {
       href={w.playgroundUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="card group flex items-center gap-3.5 p-4 transition-colors hover:border-primary"
+      className="card group flex items-center gap-3 p-3 transition-colors hover:border-primary"
     >
       {w.icon ? (
         // eslint-disable-next-line @next/next/no-img-element -- small remote icons from the playground repo
@@ -26,14 +26,14 @@ function WalletTile({ w }: { w: PersonalWallet }) {
           src={w.icon}
           alt=""
           aria-hidden
-          width={40}
-          height={40}
-          className="h-10 w-10 shrink-0 rounded-lg border border-rule bg-white object-contain p-1"
+          width={48}
+          height={48}
+          className="h-12 w-12 shrink-0 rounded-lg border border-rule bg-white object-contain"
         />
       ) : (
         <span
           aria-hidden
-          className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-surface-2 font-mono font-semibold text-primary"
+          className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-surface-2 font-mono font-semibold text-primary"
         >
           {w.name.charAt(0)}
         </span>
@@ -45,10 +45,8 @@ function WalletTile({ w }: { w: PersonalWallet }) {
             <span className="chip chip-verified shrink-0">recommended</span>
           ) : null}
         </span>
-        <span className="mt-0.5 block truncate text-sm text-muted">
-          {w.vendor}
-        </span>
-        <span className="mt-1.5 flex flex-wrap gap-1.5">
+        <span className="block truncate text-sm text-muted">{w.vendor}</span>
+        <span className="mt-1 flex flex-wrap gap-1.5">
           {w.formats.map((f) => (
             <span
               key={f}
