@@ -26,7 +26,7 @@ function WalletTile({ w }: { w: PersonalWallet }) {
             aria-hidden
             width={48}
             height={48}
-            className="h-12 w-12 shrink-0 rounded-lg border border-rule bg-white object-contain"
+            className="h-12 w-12 shrink-0 rounded-lg object-contain"
           />
         ) : (
           <span
