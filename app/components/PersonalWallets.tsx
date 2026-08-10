@@ -18,54 +18,56 @@ function WalletTile({ w }: { w: PersonalWallet }) {
       href={w.playgroundUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="card group flex items-center gap-3 p-3 transition-colors hover:border-primary"
+      className="card group flex flex-col gap-2 p-3 transition-colors hover:border-primary"
     >
-      {w.icon ? (
-        // eslint-disable-next-line @next/next/no-img-element -- small remote icons from the playground repo
-        <img
-          src={w.icon}
-          alt=""
-          aria-hidden
-          width={48}
-          height={48}
-          className="h-12 w-12 shrink-0 rounded-lg border border-rule bg-white object-contain"
+      <span className="flex items-center gap-3">
+        {w.icon ? (
+          // eslint-disable-next-line @next/next/no-img-element -- small remote icons from the playground repo
+          <img
+            src={w.icon}
+            alt=""
+            aria-hidden
+            width={48}
+            height={48}
+            className="h-12 w-12 shrink-0 rounded-lg border border-rule bg-white object-contain"
+          />
+        ) : (
+          <span
+            aria-hidden
+            className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-surface-2 font-mono font-semibold text-primary"
+          >
+            {w.name.charAt(0)}
+          </span>
+        )}
+        <span className="min-w-0 flex-1">
+          <span className="flex items-center gap-2">
+            <span className="truncate font-semibold text-ink">{w.name}</span>
+            {w.recommended ? (
+              <span className="chip chip-verified shrink-0">recommended</span>
+            ) : null}
+          </span>
+          <span className="block truncate text-sm text-muted">{w.vendor}</span>
+        </span>
+        <FontAwesomeIcon
+          icon={faArrowUpRightFromSquare}
+          className="h-3.5 w-3.5 shrink-0 text-muted transition-colors group-hover:text-accent"
         />
-      ) : (
-        <span
-          aria-hidden
-          className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-surface-2 font-mono font-semibold text-primary"
-        >
-          {w.name.charAt(0)}
-        </span>
-      )}
-      <span className="min-w-0 flex-1">
-        <span className="flex items-center gap-2">
-          <span className="truncate font-semibold text-ink">{w.name}</span>
-          {w.recommended ? (
-            <span className="chip chip-verified shrink-0">recommended</span>
-          ) : null}
-        </span>
-        <span className="block truncate text-sm text-muted">{w.vendor}</span>
-        <span className="mt-1 flex flex-wrap gap-1.5">
-          {w.formats.map((f) => (
-            <span
-              key={f}
-              className="rounded border border-rule px-1.5 py-0.5 font-mono text-[10px] text-muted"
-            >
-              {f}
-            </span>
-          ))}
-          {w.browser ? (
-            <span className="rounded border border-rule px-1.5 py-0.5 font-mono text-[10px] text-muted">
-              browser
-            </span>
-          ) : null}
-        </span>
       </span>
-      <FontAwesomeIcon
-        icon={faArrowUpRightFromSquare}
-        className="h-3.5 w-3.5 shrink-0 text-muted transition-colors group-hover:text-accent"
-      />
+      <span className="flex flex-wrap gap-1.5 pl-15">
+        {w.formats.map((f) => (
+          <span
+            key={f}
+            className="rounded border border-rule px-1.5 py-0.5 font-mono text-[10px] text-muted"
+          >
+            {f}
+          </span>
+        ))}
+        {w.browser ? (
+          <span className="rounded border border-rule px-1.5 py-0.5 font-mono text-[10px] text-muted">
+            browser
+          </span>
+        ) : null}
+      </span>
     </a>
   );
 }
