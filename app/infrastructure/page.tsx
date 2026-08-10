@@ -337,7 +337,7 @@ export default function Software() {
           <div id="personal-wallets">
             <SectionHeading
               eyebrow="02"
-              title="Personal wallets"
+              title="Choose your personal wallet"
               intro="The holder side: the app or browser a person uses to receive, hold, and present verifiable credentials. Each wallet below is integrated with Verana trust resolution: before accepting a credential or sharing a presentation, it checks the issuer or verifier against the public registry and shows the trust card."
             />
             <p className="reveal mt-4 flex items-center gap-2 text-sm text-muted">
