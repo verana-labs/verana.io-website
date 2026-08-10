@@ -1,8 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowUpRightFromSquare,
-  faTriangleExclamation,
-} from "@fortawesome/free-solid-svg-icons";
+import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
 import {
   listPersonalWallets,
   type PersonalWallet,
@@ -48,10 +45,6 @@ function WalletTile({ w }: { w: PersonalWallet }) {
           </span>
           <span className="block truncate text-sm text-muted">{w.vendor}</span>
         </span>
-        <FontAwesomeIcon
-          icon={faArrowUpRightFromSquare}
-          className="h-3.5 w-3.5 shrink-0 text-muted transition-colors group-hover:text-accent"
-        />
       </span>
       <span className="flex flex-wrap gap-1.5 pl-15">
         {w.formats.map((f) => (
