@@ -16,18 +16,27 @@ import {
   faGlobe,
   faClock,
   faArrowRightLong,
+  faIdBadge,
+  faArrowRightArrowLeft,
+  faLayerGroup,
+  faGears,
+  faMobileScreen,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { Container, Section, SectionHeading, Button } from "../components/ui";
 import PageHero from "../components/PageHero";
+import PersonalWallets from "../components/PersonalWallets";
 import { LINKS } from "../lib/site";
 
 export const metadata = buildMetadata({
   title: "Infrastructure",
   description:
-    "The real modules of the Verana stack, by role: run the network, serve the trust data, discover and observe, operate as an organization, build services. Open source, run your own instance.",
+    "The Verana stack, credentials first: build Verifiable Services with VS-Agent, hold and present credentials with the integrated personal wallets, then the network underneath. Open source, run your own instance.",
   path: "/infrastructure",
 });
+
+// The personal-wallet list is read live from the playground repo.
+export const revalidate = 3600;
 
 type Module = {
   icon: IconDefinition;
@@ -45,9 +54,24 @@ type Group = {
   modules: Module[];
 };
 
-// The real modules (spec-v2 §3.7/§3.8), by role in the stack. Everything with
-// a repo is open source and can be run as your own instance.
+// The network-side modules (spec-v2 §3.7/§3.8), by role in the stack.
+// Everything with a repo is open source and can be run as your own instance.
+// The credential-side software (VS-Agent, personal wallets) leads the page
+// in its own sections above.
 const GROUPS: Group[] = [
+  {
+    title: "Operate as an organization",
+    intro: "The web UI to fully operate Verana as a corporation.",
+    modules: [
+      {
+        icon: faBuilding,
+        name: "Frontend",
+        repo: { label: "verana-labs/verana-frontend", href: "https://github.com/verana-labs/verana-frontend" },
+        testnet: ["app.testnet.verana.network"],
+        body: "Create and manage ecosystems, schemas, and accreditations; browse trust registries. Uses the ledger, the indexer and resolver, and the Trust Graph.",
+      },
+    ],
+  },
   {
     title: "Run the network",
     intro:
@@ -125,31 +149,39 @@ const GROUPS: Group[] = [
       },
     ],
   },
+];
+
+// VS-Agent capabilities, aligned with the playground's business-wallets page.
+const VS_AGENT_CAPABILITIES: { icon: IconDefinition; title: string; body: string }[] = [
   {
-    title: "Operate as an organization",
-    intro: "The web UI to fully operate Verana as a corporation.",
-    modules: [
-      {
-        icon: faBuilding,
-        name: "Frontend",
-        repo: { label: "verana-labs/verana-frontend", href: "https://github.com/verana-labs/verana-frontend" },
-        testnet: ["app.testnet.verana.network"],
-        body: "Create and manage ecosystems, schemas, and accreditations; browse trust registries. Uses the ledger, the indexer and resolver, and the Trust Graph.",
-      },
-    ],
+    icon: faIdBadge,
+    title: "Holder, issuer, and verifier",
+    body: "One runtime plays all three roles under ecosystem accreditation: it holds its own credentials, issues to peers, and verifies presentations, with revocation support on every rail.",
   },
   {
-    title: "Build services",
-    intro:
-      "What a builder runs to put a Verifiable Service online: one VS-Agent per service.",
-    modules: [
-      {
-        icon: faWallet,
-        name: "VS-Agent",
-        repo: { label: "verana-labs/vs-agent", href: "https://github.com/verana-labs/vs-agent" },
-        body: "Container-based framework for building Verifiable Services: the service's cloud wallet. Supports DIDs, DIDComm, OpenID4VC and more (based on OpenWallet Foundation credo-ts). Executes ledger transactions (onboarding, issuing, verifying) and receives event notifications from the indexer and resolver. Accepts connections from VUAs and other VSs.",
-      },
-    ],
+    icon: faArrowRightArrowLeft,
+    title: "Dual transport",
+    body: "DIDComm (Issue Credential v2, Present Proof v2, vt-flow) and OpenID4VCI / OpenID4VP with SD-JWT VC, DCQL and Presentation Exchange, plus Token Status List revocation.",
+  },
+  {
+    icon: faLayerGroup,
+    title: "The right format for each credential",
+    body: "Public credentials as JSON-LD Linked VPs with on-chain digest anchoring; AnonCreds where presentations must stay unlinkable; SD-JWT VC for OpenID4VC interop.",
+  },
+  {
+    icon: faGears,
+    title: "Ecosystem-driven lifecycle",
+    body: "The vt-flow protocol turns on-chain ecosystem actions into wallet actions: onboarding triggers issuance, and a revoked participant means the credential is revoked, pushed to the holder, and cleaned up automatically. No polling.",
+  },
+  {
+    icon: faShieldHalved,
+    title: "Trust resolution built in",
+    body: "Every DIDComm connection and every OpenID4VP presentation is checked against the Verana registry before it is accepted: Proof-of-Trust on both transports, fail closed.",
+  },
+  {
+    icon: faRobot,
+    title: "Any service shape",
+    body: "Chat services on Hologram, MCP servers, A2A agents, and plain HTTP APIs, all declared under one DID. Plugin architecture, Docker self-hosting, REST admin API and NestJS / JS clients.",
   },
 ];
 
@@ -218,15 +250,126 @@ export default function Software() {
     <>
       <PageHero
         eyebrow="Infrastructure"
-        title="The stack, module by module"
-        intro="Everything that runs Verana is open source: run the whole stack or any piece of it, in your own datacenter. The testnet instances below are live."
+        title="The stack, credentials first"
+        intro="Everything that runs Verana is open source: run the whole stack or any piece of it, in your own datacenter. The credential side comes first: the software that builds Verifiable Services and the wallets people hold credentials with. The network underneath follows."
       />
 
       <Section>
         <Container className="space-y-12">
+          {/* 01 · Build services: VS-Agent, the reference business wallet */}
+          <div id="build-services">
+            <SectionHeading
+              eyebrow="01"
+              title="Build services"
+              intro="What a builder runs to put a Verifiable Service online: one VS-Agent per service. It is the reference business wallet of the Verana stack, and the runtime behind every demo service in the Verana Playground."
+            />
+            <div className="card reveal mt-6 overflow-hidden">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-rule bg-surface-2 px-5 py-3.5">
+                <FontAwesomeIcon icon={faWallet} className="h-4 w-4 text-primary" />
+                <h3 className="display text-xl text-ink">
+                  Verana&apos;s Business Wallet - VS-Agent
+                </h3>
+                <div className="ml-auto flex flex-wrap items-center gap-1.5">
+                  <span className="chip chip-verified">reference implementation</span>
+                  <span className="chip">Apache-2.0</span>
+                  <span className="chip">self-hosted</span>
+                </div>
+              </div>
+              <div className="p-5 sm:p-6">
+                <p className="max-w-3xl text-muted">
+                  VS-Agent is an open-source container that packs the complete
+                  stack of a{" "}
+                  <a
+                    href={LINKS.trustSpec}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-accent hover:underline"
+                  >
+                    Verifiable Service
+                  </a>
+                  : it gives a hosted service a resolvable DID, manages its
+                  credentials and Linked Verifiable Presentations, resolves
+                  trust before every exchange, and runs the registry operations
+                  for you.
+                </p>
+                <div className="reveal-stagger mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {VS_AGENT_CAPABILITIES.map((c) => (
+                    <div
+                      key={c.title}
+                      className="rounded-xl border border-rule bg-surface-2 p-5"
+                    >
+                      <div className="grid h-9 w-9 place-items-center rounded-lg bg-surface">
+                        <FontAwesomeIcon
+                          icon={c.icon}
+                          className="h-4 w-4 text-primary"
+                        />
+                      </div>
+                      <h4 className="mt-3 font-semibold text-ink">{c.title}</h4>
+                      <p className="mt-1.5 text-sm text-muted">{c.body}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="flex flex-wrap items-center gap-3 border-t border-rule px-5 py-4">
+                <Button href={`${LINKS.playground}/business-wallets`} external>
+                  Try it in the Playground
+                </Button>
+                <Button
+                  href="https://github.com/verana-labs/vs-agent"
+                  variant="ghost"
+                  external
+                >
+                  Get it on GitHub
+                </Button>
+                <a
+                  href="https://github.com/verana-labs/verana-spec/blob/main/v4/vs-agent/spec.md"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-xs text-accent hover:underline"
+                >
+                  Read the spec
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* 02 · Personal wallets: the holder side, live from the playground */}
+          <div id="personal-wallets">
+            <SectionHeading
+              eyebrow="02"
+              title="Choose your personal wallet"
+              intro="The holder side: the app or browser a person uses to receive, hold, and present verifiable credentials. Each wallet below is integrated with Verana trust resolution: before accepting a credential or sharing a presentation, it checks the issuer or verifier against the public registry and shows the trust card."
+            />
+            <p className="reveal mt-4 flex items-center gap-2 text-sm text-muted">
+              <FontAwesomeIcon
+                icon={faMobileScreen}
+                className="h-3.5 w-3.5 text-accent"
+              />
+              This list is built live from the Playground&apos;s wallet
+              registry; every wallet passed the demo-credential loop against
+              the testnet.
+            </p>
+            <div className="reveal mt-6">
+              <PersonalWallets />
+            </div>
+            <div className="reveal mt-6 flex flex-wrap items-center gap-3">
+              <Button href={`${LINKS.playground}/personal-wallets`} external>
+                Try a wallet in the Playground
+              </Button>
+              <Button
+                href={`${LINKS.playground}/integrate`}
+                variant="ghost"
+                external
+              >
+                Add your wallet
+              </Button>
+            </div>
+          </div>
+
+          {/* 03+ · The network underneath */}
           {GROUPS.map((g, i) => (
             <div key={g.title}>
-              <SectionHeading eyebrow={`0${i + 1}`} title={g.title} intro={g.intro} />
+              <SectionHeading eyebrow={`0${i + 3}`} title={g.title} intro={g.intro} />
               <div className="reveal-stagger mt-6 grid gap-4 md:grid-cols-2">
                 {g.modules.map((m) => (
                   <ModuleCard key={m.name} m={m} />
