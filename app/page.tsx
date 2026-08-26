@@ -16,6 +16,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Container, Section, SectionHeading, Button } from "./components/ui";
 import HeroGlobe from "./components/HeroGlobe";
+import IntroVideo from "./components/IntroVideo";
 import LatestEcosystems from "./components/LatestEcosystems";
 import ResolveDid from "./components/ResolveDid";
 import SolvesVisual from "./components/SolvesVisual";
@@ -75,8 +76,23 @@ export default function Home() {
         </Container>
       </section>
 
+      {/* Introduction video: the elevator pitch, right after the hero */}
+      <Section className="bg-surface">
+        <Container>
+          <SectionHeading
+            center
+            eyebrow="Introduction"
+            title="Watch the introduction"
+            intro="What Verana is and why the verifiable internet needs an open trust layer, in one short video."
+          />
+          <div className="reveal mx-auto mt-8 max-w-4xl">
+            <IntroVideo />
+          </div>
+        </Container>
+      </Section>
+
       {/* The three parts: the organizing spine, in reading order */}
-      <Section>
+      <Section className="border-t border-rule">
         <Container>
           <SectionHeading
             eyebrow="Verana, in three parts"
