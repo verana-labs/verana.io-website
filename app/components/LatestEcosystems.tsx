@@ -13,7 +13,7 @@ import {
 } from "../lib/verana";
 
 // Latest trusted ecosystems (spec-v2 §2.2): the newest ecosystems on the
-// network that trust-resolve as TRUSTED, live from the indexer + resolver.
+// network that trust-resolve as trusted, live from the indexer.
 // Server component; the fetch layer caches so renders stay cheap.
 
 /** Middle-ellipsis truncation so long DIDs fit on one line. */
@@ -35,7 +35,7 @@ function EcosystemRow({ e }: { e: TrustedEcosystem }) {
         </span>
         <span className="min-w-0 truncate font-medium text-ink">{e.name}</span>
         <a
-          href={`${NETWORK_APP_URL}/tr/${e.id}`}
+          href={`${NETWORK_APP_URL}/ecosystems/${e.id}`}
           target="_blank"
           rel="noopener noreferrer"
           title={`Open ecosystem ${e.id} on the network frontend`}

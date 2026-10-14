@@ -79,35 +79,52 @@ export const ECS: Ecs[] = [
   },
 ];
 
-// Pre-determined DIDs for the Resolve-a-DID widget (spec-v2 §2.3). All
-// verified TRUSTED on the testnet resolver, except where noted: an untrusted
-// entry is kept deliberately so visitors see what a failed proof looks like.
-export type DemoDid = { label: string; did: string };
+// Pre-determined services for the Resolve-a-DID widget (spec-v2 §2.3).
+// Services are listed by host, not by DID: a did:webvh changes with every
+// fresh agent, so /api/resolve looks up the host's current DID in the indexer.
+// "{network}" is replaced with the network name (VERANA_NETWORK_NAME). The
+// last entry is a fixed DID outside the registry, kept deliberately so
+// visitors see what a failed proof looks like.
+export type DemoService = { key: string; label: string } & (
+  | { host: string }
+  | { did: string }
+);
 
-export const DEMO_DIDS: DemoDid[] = [
+export const DEMO_SERVICES: DemoService[] = [
   {
+    key: "ecs-ecosystem",
+    label: "Verana ECS ecosystem (trust registry service)",
+    host: "ecs-ecosystem.{network}.verana.network",
+  },
+  {
+    key: "ecs-org-issuer",
+    label: "ECS organization credential issuer (service)",
+    host: "ecs-org-issuer.{network}.verana.network",
+  },
+  {
+    key: "example-org",
+    label: "Verana Example Organization (demo org)",
+    host: "organization-vs.example.demos.{network}.verana.network",
+  },
+  {
+    key: "playground-demo",
+    label: "Playground Demo (service)",
+    host: "playground-demo.playground.{network}.verana.network",
+  },
+  {
+    key: "vesta",
+    label: "Vesta Appliances (playground demo org)",
+    host: "vesta.playground.{network}.verana.network",
+  },
+  {
+    key: "hologram-org",
     label: "Hologram organization service (2060)",
-    did: "did:webvh:QmRhJBzLMF6L3REha9xFpLgxui9X5tFm4TDxHoEHpA8Kpr:organization.vs.hologram.zone",
+    host: "organization.vs.hologram.zone",
   },
   {
-    label: "University Student Hub (demo org)",
-    did: "did:webvh:QmQpPvXGUWaontZ1Jcz1Mf8WvBLT4g2AZARb7uEjonyFiC:organization-vs.orchid-demos.demos.testnet.verana.network",
-  },
-  {
-    label: "MOSIP Pilot Authority (org)",
-    did: "did:webvh:QmUNEzd1z2TktGLNhQKYuhNp6ckq4xzetHD5oVdH2YD3PA:organization-vs.mosip.testnet.verana.network",
-  },
-  {
-    label: "Inji Resident ID Issuer (service)",
-    did: "did:web:inji-certify-vs.mosip.testnet.verana.network",
-  },
-  {
-    label: "Inji Verify, Resident ID Verifier (service)",
-    did: "did:web:inji-verify.mosip.testnet.verana.network:v1:verify",
-  },
-  {
-    label: "ECS trust registry (currently fails verification)",
-    did: "did:webvh:QmcTCdA8z7cs7BwCKyrrJrTTmvff3wmxSn7WUZtP2iAM7T:ecs-trust-registry.testnet.verana.network",
+    key: "unregistered",
+    label: "A DID outside the registry (fails verification)",
+    did: "did:web:example.com",
   },
 ];
 

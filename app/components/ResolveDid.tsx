@@ -8,38 +8,40 @@ import {
   faTriangleExclamation,
 } from "@fortawesome/free-solid-svg-icons";
 import ProofOfTrustCard from "./ProofOfTrustCard";
-import type { ResolveResult, PotEnrichment } from "../lib/verana";
-import { DEMO_DIDS } from "../lib/content";
+import type { ResolvePayload } from "../lib/verana";
+import { DEMO_SERVICES } from "../lib/content";
 
-type ResolvePayload = ResolveResult & { enrichment?: PotEnrichment };
-
-// The Resolve-a-DID widget (spec-v2 §2.3): pick a DID (or paste one), resolve
-// it live against the testnet resolver, and see the Proof-of-Trust. The site's
-// signature interactive element: verify-first, watched live.
+// The Resolve-a-DID widget (spec-v2 §2.3): pick a demo service (or paste a
+// DID), resolve it live against the network indexer, and see the
+// Proof-of-Trust. The site's signature interactive element: verify-first,
+// watched live.
 
 type State =
   | { kind: "idle" }
-  | { kind: "loading"; did: string }
+  | { kind: "loading" }
   | { kind: "done"; result: ResolvePayload }
   | { kind: "error"; message: string };
 
 export default function ResolveDid({ compact = false }: { compact?: boolean }) {
-  const [selected, setSelected] = useState(DEMO_DIDS[0].did);
+  const [selected, setSelected] = useState(DEMO_SERVICES[0].key);
   const [custom, setCustom] = useState("");
   const [state, setState] = useState<State>({ kind: "idle" });
   const rootRef = useRef<HTMLDivElement | null>(null);
   const autoFired = useRef(false);
 
-  const did = custom.trim() || selected;
-  const didRef = useRef(did);
-  didRef.current = did;
+  // A pasted DID wins over the selected demo service.
+  const query = custom.trim()
+    ? `did=${encodeURIComponent(custom.trim())}`
+    : `service=${encodeURIComponent(selected)}`;
+  const queryRef = useRef(query);
+  queryRef.current = query;
   const idleRef = useRef(true);
   idleRef.current = state.kind === "idle";
 
   async function resolveDid(target: string) {
-    setState({ kind: "loading", did: target });
+    setState({ kind: "loading" });
     try {
-      const res = await fetch(`/api/resolve?did=${encodeURIComponent(target)}`);
+      const res = await fetch(`/api/resolve?${target}`);
       const data = await res.json();
       if (!res.ok) {
         setState({
@@ -60,7 +62,7 @@ export default function ResolveDid({ compact = false }: { compact?: boolean }) {
 
   function resolve() {
     autoFired.current = true; // manual action supersedes the auto-resolve
-    void resolveDid(did);
+    void resolveDid(query);
   }
 
   // When the widget scrolls into view and nothing has been resolved yet,
@@ -73,7 +75,7 @@ export default function ResolveDid({ compact = false }: { compact?: boolean }) {
         for (const entry of entries) {
           if (entry.isIntersecting && !autoFired.current && idleRef.current) {
             autoFired.current = true;
-            void resolveDid(didRef.current);
+            void resolveDid(queryRef.current);
             io.disconnect();
           }
         }
@@ -94,11 +96,11 @@ export default function ResolveDid({ compact = false }: { compact?: boolean }) {
             setSelected(e.target.value);
             setCustom("");
           }}
-          aria-label="Choose a DID to resolve"
+          aria-label="Choose a service to resolve"
           className="w-full min-w-0 flex-1 rounded-lg border border-rule bg-surface px-3 py-2.5 font-mono text-xs text-ink"
         >
-          {DEMO_DIDS.map((d) => (
-            <option key={d.did} value={d.did}>
+          {DEMO_SERVICES.map((d) => (
+            <option key={d.key} value={d.key}>
               {d.label}
             </option>
           ))}
@@ -148,10 +150,7 @@ export default function ResolveDid({ compact = false }: { compact?: boolean }) {
       ) : null}
 
       {state.kind === "done" ? (
-        <ProofOfTrustCard
-          result={state.result}
-          enrichment={state.result.enrichment}
-        />
+        <ProofOfTrustCard result={state.result} />
       ) : null}
     </div>
   );
