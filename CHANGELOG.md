@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.0](https://github.com/verana-labs/verana.io-website/compare/verana.io-website-v0.4.0...verana.io-website-v0.5.0) (2026-10-14)
+
+
+### Features
+
+* **infrastructure:** link the Trust Graph repo and its testnet API docs ([#102](https://github.com/verana-labs/verana.io-website/issues/102)) ([06eb1fb](https://github.com/verana-labs/verana.io-website/commit/06eb1fb99fa381b8b88bed268cfcdf6159778c83))
+* **trust:** resolve trust with the v4 indexer after the testnet migration ([#101](https://github.com/verana-labs/verana.io-website/issues/101)) ([b8735c2](https://github.com/verana-labs/verana.io-website/commit/b8735c2e7ca165547979173cc01fc3de3e042b96))
+
 ## [0.4.0](https://github.com/verana-labs/verana.io-website/compare/verana.io-website-v0.3.0...verana.io-website-v0.4.0) (2026-09-09)
 
 
