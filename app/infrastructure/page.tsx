@@ -124,7 +124,8 @@ const GROUPS: Group[] = [
       {
         icon: faDiagramProject,
         name: "Trust Graph",
-        comingLater: true,
+        repo: { label: "verana-labs/verana-graph", href: "https://github.com/verana-labs/verana-graph" },
+        testnet: ["graph.testnet.verana.network/docs"],
         body: "The typed discovery graph built from verified trust results: find services and ecosystems by the credentials they hold.",
       },
       {
