@@ -1,234 +1,179 @@
-// Server-side client for the Verana testnet indexer (trust-registry listing)
-// and resolver (trust resolution). All calls are made from route handlers or
+// Server-side client for the Verana indexer (v4): ecosystem listing and
+// Verifiable Trust resolution. All calls are made from route handlers or
 // server components, never from the browser, so the upstream stays hidden and
 // responses are cached by Next's fetch cache.
 //
-// Endpoints verified against testnet (spec-v2 §2.1):
-//   GET {INDEXER_URL}/verana/tr/v1/list?only_active=true&active_gf_only=true
-//   GET {RESOLVER_URL}/v1/trust/resolve?did=...&detail=summary|full
+// Endpoints (indexer OpenAPI, /openapi.json):
+//   GET  {INDEXER_URL}/v4/ecosystem/list?archived=false&limit=...
+//   POST {INDEXER_URL}/v4/verifiable-trust/resolve   (IDX-VT-QRY-1)
+//   GET  {INDEXER_URL}/v4/verifiable-trust/dids      (IDX-VT-QRY-3)
 
 export const INDEXER_URL =
   process.env.INDEXER_URL ?? "https://idx.testnet.verana.network";
-export const RESOLVER_URL =
-  process.env.RESOLVER_URL ?? "https://resolver.testnet.verana.network";
 
 /** Human-readable network name shown next to live widgets. */
 export const NETWORK_NAME = process.env.VERANA_NETWORK_NAME ?? "testnet";
 
-/** The network frontend (trust-registry browser); /tr/{id} shows an ecosystem. */
+/** The network frontend; /ecosystems/{id} shows an ecosystem. */
 export const NETWORK_APP_URL =
   process.env.NETWORK_APP_URL ?? "https://app.testnet.verana.network";
 
-export type TrustRegistry = {
+export type Ecosystem = {
   id: number;
   did: string;
   created: string;
-  deposit: number;
-  aka: string | null;
-  language: string;
-  participants: number;
   active_schemas: number;
-  issued: number;
-  verified: number;
+  participants: number;
 };
 
-export type ResolvedCredential = {
+/** ECS credential schemas, as named by the indexer (`ecsSchema`). */
+export type EcsSchema =
+  | "ServiceCredential"
+  | "OrganizationCredential"
+  | "PersonaCredential"
+  | "UserAgentCredential"
+  | "BadgeCredential";
+
+export type EcsCredential = {
+  ecsSchema: EcsSchema;
+  ecsSchemaVersion: string;
+  credentialSchemaId: number;
+  issuerParticipantId: number;
+  ecosystemId: number;
+  participantId: number;
+  /** Credential id; for an issued credential, "<issuer DID>#<uuid>". */
   id: string;
-  type: string;
-  claims: Record<string, unknown>;
-  format: string;
-  result: string;
-  ecsType: string;
-  issuedBy: string;
-  presentedBy: string;
-  permissionChain: unknown[];
+  issuedAtTime: string;
+  validFrom: string | null;
+  validUntil: string | null;
+  credentialSubject: Record<string, unknown>;
 };
 
-export type FailedCredential = {
+export type LinkedPresentation = {
+  /** URL of the Linked Verifiable Presentation. */
   id: string;
-  error: string;
-  format: string;
-  errorCode: string;
-  message?: string;
+  /** DID Document service entry that links it. */
+  serviceId: string;
+  unresolvableCredentialIds?: string[];
+  invalidCredentialIds?: string[];
 };
 
-export type ResolveResult = {
+/** Response of POST /v4/verifiable-trust/resolve with the sections this site
+ *  requests (ecsCredentials, presentations). */
+export type Resolution = {
   did: string;
-  trustStatus: "TRUSTED" | "UNTRUSTED";
-  production: boolean;
-  evaluatedAt: string;
+  trusted: boolean;
+  evaluatedAtTime: string;
   evaluatedAtBlock: number;
-  expiresAt: string;
-  credentials: ResolvedCredential[];
-  failedCredentials: FailedCredential[];
-  dereferenceErrors?: unknown[];
+  expiresAtTime: string | null;
+  corporationId: number;
+  ecsCredentials?: EcsCredential[];
+  presentations?: LinkedPresentation[];
 };
 
-/** List the latest active trust registries (ecosystems), newest first. */
-export async function listTrustRegistries(
-  max: number
-): Promise<TrustRegistry[]> {
-  const url =
-    `${INDEXER_URL}/verana/tr/v1/list` +
-    `?only_active=true&active_gf_only=true&response_max_size=${max}`;
+/** What /api/resolve returns: a resolution, or the DID the indexer has no
+ *  trust evaluation for (not a DID of the public registry). */
+export type ResolvePayload =
+  | ({ found: true; network: string } & Resolution)
+  | { found: false; network: string; did: string };
+
+/** List the latest non-archived ecosystems, newest first. */
+export async function listEcosystems(max: number): Promise<Ecosystem[]> {
+  const url = `${INDEXER_URL}/v4/ecosystem/list?archived=false&limit=${max}`;
   const res = await fetch(url, {
     next: { revalidate: 600 },
     signal: AbortSignal.timeout(15_000),
   });
-  if (!res.ok) throw new Error(`indexer list failed: ${res.status}`);
-  const data = (await res.json()) as { trust_registries?: TrustRegistry[] };
-  return data.trust_registries ?? [];
+  if (!res.ok) throw new Error(`indexer ecosystem list failed: ${res.status}`);
+  const data = (await res.json()) as { ecosystems?: Ecosystem[] };
+  return data.ecosystems ?? [];
 }
 
-/** Trust-resolve a DID against the resolver.
+/** Trust-resolve a DID against the indexer. Returns null when the indexer has
+ *  no trust evaluation for it (HTTP 404: the DID is not in the registry).
  *
- *  `fresh: true` bypasses Next's data cache entirely — used by the
- *  interactive Resolve-a-DID widget so that a fixed/refreshed resolver is
- *  reflected immediately (the upstream resolver has its own ~1h evaluation
- *  cache, so this stays cheap). The default cached mode is for background
- *  aggregation (the latest-trusted-ecosystems scan), where a cached UNTRUSTED
- *  only means an entry appears in the list up to 10 minutes late. */
+ *  `fresh: true` bypasses Next's data cache entirely, used by the interactive
+ *  Resolve-a-DID widget so a new registration or evaluation shows at once.
+ *  The default cached mode is for background aggregation (the
+ *  latest-trusted-ecosystems scan, the demo-service lookup). */
 export async function resolveDid(
   did: string,
-  detail: "summary" | "full" = "summary",
   timeoutMs = 30_000,
   opts: { fresh?: boolean } = {}
-): Promise<ResolveResult> {
-  const url =
-    `${RESOLVER_URL}/v1/trust/resolve` +
-    `?did=${encodeURIComponent(did)}&detail=${detail}`;
-  const res = await fetch(url, {
+): Promise<Resolution | null> {
+  const res = await fetch(`${INDEXER_URL}/v4/verifiable-trust/resolve`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      did,
+      ecsCredentials: true,
+      presentations: { unresolvableCredentialIds: true, invalidCredentialIds: true },
+    }),
     ...(opts.fresh ? { cache: "no-store" as const } : { next: { revalidate: 600 } }),
     signal: AbortSignal.timeout(timeoutMs),
   });
-  if (!res.ok) throw new Error(`resolver failed: ${res.status}`);
-  return (await res.json()) as ResolveResult;
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(`indexer resolve failed: ${res.status}`);
+  return (await res.json()) as Resolution;
+}
+
+/** Every DID the indexer can resolve (IDX-VT-QRY-3), all pages. */
+async function listIndexedDids(): Promise<string[]> {
+  const dids: string[] = [];
+  let cursor: string | null = null;
+  // Bounded: 10 pages of 10,000 DIDs is far beyond any current network.
+  for (let page = 0; page < 10; page++) {
+    const url =
+      `${INDEXER_URL}/v4/verifiable-trust/dids?limit=10000` +
+      (cursor ? `&cursor=${encodeURIComponent(cursor)}` : "");
+    const res = await fetch(url, {
+      next: { revalidate: 600 },
+      signal: AbortSignal.timeout(15_000),
+    });
+    if (!res.ok) throw new Error(`indexer dids failed: ${res.status}`);
+    const data = (await res.json()) as { dids?: string[]; nextCursor?: string | null };
+    dids.push(...(data.dids ?? []));
+    cursor = data.nextCursor ?? null;
+    if (!cursor) break;
+  }
+  return dids;
 }
 
 /**
- * Host of the server behind a did:web / did:webvh DID (did:web:{host}...,
- * did:webvh:{scid}:{host}...). Returns null for other methods.
+ * Resolve the service served at the root of `host`: the did:web:{host} or
+ * did:webvh:{scid}:{host} DID the indexer knows. A did:webvh changes with
+ * every fresh agent, so the demo services are listed by host and their
+ * current DID is looked up here. A redeployed host can leave older DIDs in
+ * the index; the trusted one with the latest evaluation wins. Null when no
+ * DID of that host is in the registry.
  */
-export function didServiceHost(did: string): string | null {
-  const parts = did.split(":");
-  let host: string | undefined;
-  if (parts[1] === "web") host = parts[2];
-  else if (parts[1] === "webvh") host = parts[3];
-  if (!host) return null;
-  host = decodeURIComponent(host);
-  return /^[a-zA-Z0-9.-]+(?::\d+)?$/.test(host) ? host : null;
-}
-
-export type PotCredentialExtras = {
-  /** Credential logo (data: or https: URL) from the linked VP. */
-  logo?: string;
-  /** URL of the Linked Verifiable Presentation carrying the credential. */
-  vpUrl?: string;
-};
-
-/** Per-ECS-type extras (logo + credential URL), keyed by ecsType. */
-export type PotEnrichment = Record<string, PotCredentialExtras>;
-
-type DidDocService = { type?: string; serviceEndpoint?: unknown };
-
-function isSafeImage(v: unknown): v is string {
-  return (
-    typeof v === "string" &&
-    (v.startsWith("data:image/") || v.startsWith("https://"))
+export async function resolveServiceHost(
+  host: string,
+  opts: { fresh?: boolean } = {}
+): Promise<Resolution | null> {
+  const candidates = (await listIndexedDids()).filter((did) => {
+    const parts = did.split(":");
+    if (parts[1] === "web") return parts.length === 3 && parts[2] === host;
+    if (parts[1] === "webvh") return parts.length === 4 && parts[3] === host;
+    return false;
+  });
+  const resolved = await Promise.all(
+    candidates.map((did) => resolveDid(did, 30_000, opts).catch(() => null))
   );
+  const found = resolved.filter((r): r is Resolution => r !== null);
+  found.sort(
+    (a, b) =>
+      Number(b.trusted) - Number(a.trusted) ||
+      b.evaluatedAtBlock - a.evaluatedAtBlock
+  );
+  return found[0] ?? null;
 }
 
-/**
- * Enrich a full resolve result with logos and credential (linked VP) URLs by
- * reading each presenter's DID document at /.well-known/did.json and the
- * Linked Verifiable Presentations it exposes (spec-v2 §2.3 card extras).
- * Best-effort: failures simply yield no extras.
- */
-export async function getPotEnrichment(
-  result: ResolveResult
-): Promise<PotEnrichment> {
-  const enrichment: PotEnrichment = {};
-  const vpCache = new Map<string, unknown[]>(); // presenter did -> fetched VPs+urls
-
-  async function linkedVps(
-    did: string
-  ): Promise<{ url: string; vp: Record<string, unknown> }[]> {
-    if (vpCache.has(did)) {
-      return vpCache.get(did) as { url: string; vp: Record<string, unknown> }[];
-    }
-    const out: { url: string; vp: Record<string, unknown> }[] = [];
-    try {
-      const host = didServiceHost(did);
-      if (host) {
-        const res = await fetch(`https://${host}/.well-known/did.json`, {
-          next: { revalidate: 600 },
-          signal: AbortSignal.timeout(8_000),
-        });
-        if (res.ok) {
-          const doc = (await res.json()) as { service?: DidDocService[] };
-          const urls = (doc.service ?? [])
-            .filter((s) => s.type === "LinkedVerifiablePresentation")
-            .map((s) => s.serviceEndpoint)
-            .filter((u): u is string => typeof u === "string" && u.startsWith("https://"))
-            .slice(0, 6);
-          const unique = [...new Set(urls)];
-          const vps = await Promise.all(
-            unique.map(async (url) => {
-              try {
-                const r = await fetch(url, {
-                  next: { revalidate: 600 },
-                  signal: AbortSignal.timeout(8_000),
-                });
-                if (!r.ok) return null;
-                return { url, vp: (await r.json()) as Record<string, unknown> };
-              } catch {
-                return null;
-              }
-            })
-          );
-          out.push(...vps.filter((v): v is { url: string; vp: Record<string, unknown> } => v !== null));
-        }
-      }
-    } catch {
-      // no extras for this presenter
-    }
-    vpCache.set(did, out);
-    return out;
-  }
-
-  for (const cred of result.credentials ?? []) {
-    if (!cred.ecsType || !cred.presentedBy) continue;
-    const vps = await linkedVps(cred.presentedBy);
-    for (const { url, vp } of vps) {
-      const raw = vp.verifiableCredential;
-      const vcs = Array.isArray(raw) ? raw : raw ? [raw] : [];
-      for (const vc of vcs as { credentialSubject?: Record<string, unknown> }[]) {
-        const subject = vc.credentialSubject;
-        if (!subject) continue;
-        const matches =
-          subject.id === cred.id ||
-          (typeof subject.name === "string" && subject.name === cred.claims?.name);
-        if (!matches) continue;
-        // The service and org credentials share a subject id; tell them apart
-        // by the claims that only one of them carries.
-        const looksOrg = "registryId" in subject || "countryCode" in subject;
-        const isOrgSlot = cred.ecsType !== "ECS-SERVICE";
-        if (looksOrg !== isOrgSlot) continue;
-        enrichment[cred.ecsType] = {
-          ...(isSafeImage(subject.logo) ? { logo: subject.logo } : {}),
-          vpUrl: url,
-        };
-      }
-    }
-  }
-  return enrichment;
-}
-
-/** Pick a display name out of a full resolve result (ECS credential claims). */
-export function resolvedName(r: ResolveResult): string | null {
-  for (const ecs of ["ECS-SERVICE", "ECS-ORG", "ECS-PERSONA"]) {
-    const cred = r.credentials?.find((c) => c.ecsType === ecs);
-    const name = cred?.claims?.name;
+/** Pick a display name out of a resolution (ECS credential claims). */
+export function resolvedName(r: Resolution): string | null {
+  for (const schema of ["ServiceCredential", "OrganizationCredential", "PersonaCredential"]) {
+    const cred = r.ecsCredentials?.find((c) => c.ecsSchema === schema);
+    const name = cred?.credentialSubject?.name;
     if (typeof name === "string" && name.length > 0) return name;
   }
   return null;
@@ -244,33 +189,33 @@ export type TrustedEcosystem = {
 };
 
 /**
- * Latest trusted ecosystems (spec-v2 §2.2): list the newest registries, trust-
- * resolve each DID, and keep only the TRUSTED ones. Scan is bounded so a
- * testnet full of e2e artifacts cannot stall the render; the widget's empty
+ * Latest trusted ecosystems (spec-v2 §2.2): list the newest ecosystems,
+ * trust-resolve each DID, and keep only the trusted ones. Scan is bounded so a
+ * network full of e2e artifacts cannot stall the render; the widget's empty
  * state handles a zero-result scan.
  */
 export async function getLatestTrustedEcosystems(
   want = 10,
   scanCap = 40
 ): Promise<TrustedEcosystem[]> {
-  const registries = await listTrustRegistries(scanCap);
+  const ecosystems = await listEcosystems(scanCap);
   const out: TrustedEcosystem[] = [];
   const batchSize = 8;
 
-  for (let i = 0; i < registries.length && out.length < want; i += batchSize) {
-    const batch = registries.slice(i, i + batchSize);
+  for (let i = 0; i < ecosystems.length && out.length < want; i += batchSize) {
+    const batch = ecosystems.slice(i, i + batchSize);
     const results = await Promise.all(
-      batch.map(async (reg) => {
+      batch.map(async (eco) => {
         try {
-          const r = await resolveDid(reg.did, "full", 8_000);
-          if (r.trustStatus !== "TRUSTED") return null;
+          const r = await resolveDid(eco.did, 8_000);
+          if (!r?.trusted) return null;
           return {
-            id: reg.id,
-            did: reg.did,
-            name: resolvedName(r) ?? reg.aka ?? reg.did,
-            created: reg.created,
-            activeSchemas: reg.active_schemas,
-            participants: reg.participants,
+            id: eco.id,
+            did: eco.did,
+            name: resolvedName(r) ?? eco.did,
+            created: eco.created,
+            activeSchemas: eco.active_schemas,
+            participants: eco.participants,
           } satisfies TrustedEcosystem;
         } catch {
           // Slow or unreachable resolution counts as not-shown, not an error.
