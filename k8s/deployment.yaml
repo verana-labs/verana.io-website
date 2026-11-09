@@ -27,6 +27,8 @@ spec:
             # here so ops can repoint without a rebuild, e.g. at mainnet).
             - name: INDEXER_URL
               value: "https://idx.testnet.verana.network"
+            - name: GRAPH_URL
+              value: "https://graph.testnet.verana.network"
             - name: NETWORK_APP_URL
               value: "https://app.testnet.verana.network"
             - name: VERANA_NETWORK_NAME

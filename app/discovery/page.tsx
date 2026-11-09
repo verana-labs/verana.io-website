@@ -25,9 +25,11 @@ import {
 import Glyph from "../components/Glyph";
 import { Container, Section, SectionHeading, Button } from "../components/ui";
 import PageHero from "../components/PageHero";
-import QueryConsole from "../components/QueryConsole";
+import TrustGraphSearch from "../components/TrustGraphSearch";
 import ConceptPager from "../components/ConceptPager";
 import { LINKS } from "../lib/site";
+import { NETWORK_NAME, NETWORK_APP_URL } from "../lib/verana";
+import { GRAPH_URL } from "../lib/graph";
 
 export const metadata = buildMetadata({
   title: "Discovery",
@@ -388,21 +390,21 @@ export default function Discovery() {
             </div>
           </div>
 
-          {/* simulated query console */}
+          {/* live query console */}
           <div>
             <SectionHeading
-              eyebrow="Try it"
+              eyebrow={`Try it · live from ${NETWORK_NAME}`}
               title="Query the Trust Graph"
-              intro="Three example queries, simulated with representative data. The first one queries Acme Corp, the corporation from the worked example on the ecosystems page. A live mode against the network indexer will follow."
+              intro="Search the live Trust Graph of the Verana network: type a word, pick services, ecosystems or credential schemas, and filter services by category. Every hit is a DID whose credentials verified against the public registry; untrusted or expired entries never enter the graph."
             />
             <div className="reveal mt-6">
-              <QueryConsole />
+              <TrustGraphSearch network={NETWORK_NAME} appUrl={NETWORK_APP_URL} />
             </div>
           </div>
 
           <div className="reveal flex flex-wrap gap-3">
-            <Button href={LINKS.docs} variant="ghost" external>
-              API and MCP docs
+            <Button href={`${GRAPH_URL}/docs`} variant="ghost" external>
+              Trust Graph API
             </Button>
             <Button href={LINKS.docs} variant="ghost" external>
               Build on Verana
