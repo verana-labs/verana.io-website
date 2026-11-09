@@ -335,8 +335,10 @@ export default function TrustGraphSearch({
   appUrl: string;
 }) {
   const [surface, setSurface] = useState<GraphSurface>("Did");
-  const [text, setText] = useState("");
-  const [query, setQuery] = useState("");
+  // Prefilled so the first paint already shows a filtered, recognisable list.
+  const DEFAULT_QUERY = "verana";
+  const [text, setText] = useState(DEFAULT_QUERY);
+  const [query, setQuery] = useState(DEFAULT_QUERY);
   const [typeFilter, setTypeFilter] = useState("");
   const [typeFacet, setTypeFacet] = useState<GraphFacet>([]);
   const [page, setPage] = useState<Page | null>(null);
