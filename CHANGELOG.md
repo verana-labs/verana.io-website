@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/verana-labs/verana.io-website/compare/verana.io-website-v0.5.0...verana.io-website-v0.6.0) (2026-11-09)
+
+
+### Features
+
+* **discovery:** query the live Trust Graph instead of a simulated console ([#104](https://github.com/verana-labs/verana.io-website/issues/104)) ([97b8506](https://github.com/verana-labs/verana.io-website/commit/97b8506c0fa033254ee68a59356b7bd9cdfe2314))
+
 ## [0.5.0](https://github.com/verana-labs/verana.io-website/compare/verana.io-website-v0.4.0...verana.io-website-v0.5.0) (2026-10-14)
 
 
