@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/verana-labs/verana.io-website/compare/verana.io-website-v0.6.0...verana.io-website-v0.7.0) (2026-11-09)
+
+
+### Features
+
+* **discovery:** prefill the Trust Graph search with "verana" ([#106](https://github.com/verana-labs/verana.io-website/issues/106)) ([df6c616](https://github.com/verana-labs/verana.io-website/commit/df6c6160329301592691c3c5467be2034d545998))
+
 ## [0.6.0](https://github.com/verana-labs/verana.io-website/compare/verana.io-website-v0.5.0...verana.io-website-v0.6.0) (2026-11-09)
 
 
