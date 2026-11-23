@@ -63,6 +63,7 @@ const PHASES: {
     items: [
       "Delegation for AI agents",
       "Enclave & HSM key custody",
+      "Post-quantum signatures (ML-DSA)",
       "Trust Spanning Protocol",
       "Personhood interop (OpenVTC)",
     ],
