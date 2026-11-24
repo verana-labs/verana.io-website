@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { buildMetadata } from "../lib/seo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
@@ -21,6 +22,7 @@ import {
   faLayerGroup,
   faGears,
   faMobileScreen,
+  faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { Container, Section, SectionHeading, Button } from "../components/ui";
@@ -151,6 +153,99 @@ const GROUPS: Group[] = [
     ],
   },
 ];
+
+// The post-quantum roadmap section sits right after this group, so the groups
+// after it are numbered one higher.
+const POST_QUANTUM_AFTER = GROUPS.findIndex((g) => g.title === "Run the network");
+
+// Post-quantum work, one track per card. Statuses are deliberately modest:
+// nothing here is a present capability of the network. Keep in step with the
+// "Post-quantum signatures" line of the roadmap (/about#roadmap).
+type PqTrack = {
+  icon: IconDefinition;
+  name: string;
+  status: { label: string; progress?: boolean };
+  body: string;
+  link: { label: string; href: string; internal?: boolean };
+};
+
+const POST_QUANTUM: PqTrack[] = [
+  {
+    icon: faIdBadge,
+    name: "Credentials",
+    status: { label: "in progress", progress: true },
+    body: "ML-DSA (FIPS 204) signatures contributed to OpenWallet Foundation Askar, the key library under Credo and VS-Agent. Merged upstream and flagged experimental. The JavaScript wrapper and the Credo integration are next.",
+    link: {
+      label: "openwallet-foundation/askar #507",
+      href: "https://github.com/openwallet-foundation/askar/pull/507",
+    },
+  },
+  {
+    icon: faCubes,
+    name: "Ledger",
+    status: { label: "planned" },
+    body: "The Verana L1 builds on the Cosmos SDK, which supports ML-DSA validator and account keys from v0.55. The upgrade is on the roadmap.",
+    link: { label: "see the roadmap", href: "/about#roadmap", internal: true },
+  },
+  {
+    icon: faUsers,
+    name: "Working group",
+    status: { label: "public" },
+    body: "The work happens in public, in the Post Quantum working group of the Verana Foundation.",
+    link: {
+      label: "Post Quantum WG on veranafoundation.org",
+      href: `${LINKS.foundation}/working-groups/post-quantum-wg`,
+    },
+  },
+];
+
+function PostQuantum({ eyebrow }: { eyebrow: string }) {
+  return (
+    <div id="post-quantum">
+      <SectionHeading
+        eyebrow={eyebrow}
+        title="Post-quantum roadmap"
+        intro="Today, credentials and ledger keys on Verana use classical signatures. This is the work to move them to the NIST post-quantum standards, in the open."
+      />
+      <div className="reveal-stagger mt-6 grid gap-4 md:grid-cols-3">
+        {POST_QUANTUM.map((t) => (
+          <div key={t.name} className="card flex flex-col p-5">
+            <div className="flex flex-wrap items-center gap-2">
+              <FontAwesomeIcon icon={t.icon} className="h-4 w-4 text-primary" />
+              <h3 className="font-semibold text-ink">{t.name}</h3>
+              <span
+                className={`chip ml-auto whitespace-nowrap ${t.status.progress ? "chip-progress" : ""}`}
+              >
+                {t.status.progress ? <span className="chip-dot" aria-hidden /> : null}
+                {t.status.label}
+              </span>
+            </div>
+            <p className="mt-2 flex-1 text-sm text-muted">{t.body}</p>
+            <div className="mt-3 border-t border-rule pt-3">
+              {t.link.internal ? (
+                <Link
+                  href={t.link.href}
+                  className="font-mono text-[11px] text-accent hover:underline"
+                >
+                  {t.link.label}
+                </Link>
+              ) : (
+                <a
+                  href={t.link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="break-all font-mono text-[11px] text-accent hover:underline"
+                >
+                  {t.link.label}
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 // VS-Agent capabilities, aligned with the playground's business-wallets page.
 const VS_AGENT_CAPABILITIES: { icon: IconDefinition; title: string; body: string }[] = [
@@ -369,14 +464,23 @@ export default function Software() {
 
           {/* 03+ · The network underneath */}
           {GROUPS.map((g, i) => (
-            <div key={g.title}>
-              <SectionHeading eyebrow={`0${i + 3}`} title={g.title} intro={g.intro} />
-              <div className="reveal-stagger mt-6 grid gap-4 md:grid-cols-2">
-                {g.modules.map((m) => (
-                  <ModuleCard key={m.name} m={m} />
-                ))}
+            <Fragment key={g.title}>
+              <div>
+                <SectionHeading
+                  eyebrow={`0${i + 3 + (i > POST_QUANTUM_AFTER ? 1 : 0)}`}
+                  title={g.title}
+                  intro={g.intro}
+                />
+                <div className="reveal-stagger mt-6 grid gap-4 md:grid-cols-2">
+                  {g.modules.map((m) => (
+                    <ModuleCard key={m.name} m={m} />
+                  ))}
+                </div>
               </div>
-            </div>
+              {i === POST_QUANTUM_AFTER ? (
+                <PostQuantum eyebrow={`0${i + 4}`} />
+              ) : null}
+            </Fragment>
           ))}
 
           <div className="reveal flex flex-wrap items-center gap-3">
