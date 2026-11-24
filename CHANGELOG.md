@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.1](https://github.com/verana-labs/verana.io-website/compare/verana.io-website-v0.7.0...verana.io-website-v0.7.1) (2026-11-24)
+
+
+### Bug Fixes
+
+* **build:** survive extensionless Google Fonts URLs in next/font ([#109](https://github.com/verana-labs/verana.io-website/issues/109)) ([ae45853](https://github.com/verana-labs/verana.io-website/commit/ae4585342e8972e54e1ac7c0003a11b4e91dc2ff))
+
 ## [0.7.0](https://github.com/verana-labs/verana.io-website/compare/verana.io-website-v0.6.0...verana.io-website-v0.7.0) (2026-11-09)
 
 
